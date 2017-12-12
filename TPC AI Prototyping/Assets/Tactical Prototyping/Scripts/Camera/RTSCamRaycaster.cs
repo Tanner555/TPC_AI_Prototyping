@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RTSPrototype
 {
@@ -21,10 +22,10 @@ namespace RTSPrototype
     public class RTSCamRaycaster : MonoBehaviour
     {
         #region Properties
-        //UiManager_Master uimaster
-        //{
-        //    get { return UiManager_Master.thisInstance; }
-        //}
+        RTSUiMaster uimaster
+        {
+            get { return RTSUiMaster.thisInstance; }
+        }
 
         RTSGameMaster gamemaster
         {
@@ -102,11 +103,11 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
                 Debug.LogError("GameMode is Null!");
                 Destroy(this);
             }
-            //if (uimaster == null)
-            //{
-            //    Debug.LogError("UIMaster is Null!");
-            //    Destroy(this);
-            //}
+            if (uimaster == null)
+            {
+                Debug.LogError("UIMaster is Null!");
+                Destroy(this);
+            }
 
             hasStarted = true;
         }
@@ -115,30 +116,30 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
         void Update()
         {
             //Makes Sure Code is Valid Before Running
-            //if (TimeToReturn()) return;
-            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //if (Physics.Raycast(ray, out rayHit, maxRaycastDepth))
-            //{
-            //    gObject = rayHit.collider.gameObject;
-            //    gObjectRoot = rayHit.collider.gameObject.transform.root.gameObject;
-            //    rayHitType = GetHitType();
-            //    if (rayHitType != rayHitTypeLastFrame)
-            //    {
-            //        //Layer has Changed
-            //        gamemaster.CallEventOnMouseCursorChange(rayHitType, rayHit);
-            //    }
-            //    gObjectLastFrame = gObject;
-            //    rayHitTypeLastFrame = rayHitType;
-            //}
-            //else
-            //{
-            //    if (gObjectLastFrame != null)
-            //    {
-            //        gamemaster.CallEventOnMouseCursorChange(rtsHitType.Unknown, rayHit);
-            //    }
-            //    gObjectLastFrame = null;
-            //    rayHitTypeLastFrame = rtsHitType.Unknown;
-            //}
+            if (TimeToReturn()) return;
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out rayHit, maxRaycastDepth))
+            {
+                gObject = rayHit.collider.gameObject;
+                gObjectRoot = rayHit.collider.gameObject.transform.root.gameObject;
+                rayHitType = GetHitType();
+                if (rayHitType != rayHitTypeLastFrame)
+                {
+                    //Layer has Changed
+                    gamemaster.CallEventOnMouseCursorChange(rayHitType, rayHit);
+                }
+                gObjectLastFrame = gObject;
+                rayHitTypeLastFrame = rayHitType;
+            }
+            else
+            {
+                if (gObjectLastFrame != null)
+                {
+                    gamemaster.CallEventOnMouseCursorChange(rtsHitType.Unknown, rayHit);
+                }
+                gObjectLastFrame = null;
+                rayHitTypeLastFrame = rtsHitType.Unknown;
+            }
 
         }
         #endregion
@@ -149,48 +150,48 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
             return new RTSRayCastDataObject { _hitType = rayHitType, _rayHit = rayHit };
         }
 
-        //rtsHitType GetHitType()
-        //{
-        //    hitTag = gObjectRoot.tag;
-        //    if (hitTag == AllyTag) return CheckAllyObject(gObjectRoot);
-        //    else if (hitTag == CoverTag) return rtsHitType.Cover;
-        //    else return CheckIfHitIsWalkable();
-        //}
+        rtsHitType GetHitType()
+        {
+            hitTag = gObjectRoot.tag;
+            if (hitTag == AllyTag) return CheckAllyObject(gObjectRoot);
+            else if (hitTag == CoverTag) return rtsHitType.Cover;
+            else return CheckIfHitIsWalkable();
+        }
 
-        //rtsHitType CheckAllyObject(GameObject gObjectRoot)
-        //{
-        //    hitAlly = gObjectRoot.GetComponent<AllyMember>();
-        //    if (hitAlly == null) return rtsHitType.Unknown;
-        //    return gamemode.AllyIsGenCommanderMember(hitAlly) ?
-        //        rtsHitType.Ally : rtsHitType.Enemy;
-        //}
+        rtsHitType CheckAllyObject(GameObject gObjectRoot)
+        {
+            hitAlly = gObjectRoot.GetComponent<AllyMember>();
+            if (hitAlly == null) return rtsHitType.Unknown;
+            return gamemode.AllyIsGenCommanderMember(hitAlly) ?
+                rtsHitType.Ally : rtsHitType.Enemy;
+        }
 
-        //rtsHitType CheckIfHitIsWalkable()
-        //{
-        //    return gamemode.isSurfaceReachableForAllyInCommand(rayHit) ?
-        //        rtsHitType.Walkable : rtsHitType.Unwalkable;
-        //}
+        rtsHitType CheckIfHitIsWalkable()
+        {
+            return gamemode.isSurfaceReachableForAllyInCommand(rayHit) ?
+                rtsHitType.Walkable : rtsHitType.Unwalkable;
+        }
 
-        //bool TimeToReturn()
-        //{
-        //    if (gamemode == null)
-        //    {
-        //        Debug.LogError("GameMode is Null!");
-        //        Destroy(this);
-        //        return true;
-        //    }
-        //    if (uimaster == null)
-        //    {
-        //        Debug.LogError("UIMaster is Null!");
-        //        Destroy(this);
-        //        return true;
-        //    }
-        //    if (uimaster.isUiAlreadyInUse) return true;
-        //    if (noMoreChecking) return true;
-        //    // Check if pointer is over an interactable UI element
-        //    if (EventSystem.current.IsPointerOverGameObject()) return true;
-        //    return false;
-        //}
+        bool TimeToReturn()
+        {
+            if (gamemode == null)
+            {
+                Debug.LogError("GameMode is Null!");
+                Destroy(this);
+                return true;
+            }
+            if (uimaster == null)
+            {
+                Debug.LogError("UIMaster is Null!");
+                Destroy(this);
+                return true;
+            }
+            if (uimaster.isUiAlreadyInUse) return true;
+            if (noMoreChecking) return true;
+            // Check if pointer is over an interactable UI element
+            if (EventSystem.current.IsPointerOverGameObject()) return true;
+            return false;
+        }
 
         void DestroyRaycaster()
         {

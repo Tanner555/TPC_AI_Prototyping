@@ -109,160 +109,160 @@ namespace RTSPrototype
             }
         }
 
-        //public void CallEventOnMouseCursorChange(rtsHitType hitType, RaycastHit hit)
-        //{
-        //    bool isNull = hit.collider == null || hit.collider.gameObject == null ||
-        //    hit.collider.gameObject.transform.root.gameObject == null;
-        //    if (isNull) hitType = rtsHitType.Unknown;
-        //    if (OnMouseCursorChange != null)
-        //    {
-        //        OnMouseCursorChange(hitType, hit);
-        //    }
+        public void CallEventOnMouseCursorChange(rtsHitType hitType, RaycastHit hit)
+        {
+            bool isNull = hit.collider == null || hit.collider.gameObject == null ||
+            hit.collider.gameObject.transform.root.gameObject == null;
+            if (isNull) hitType = rtsHitType.Unknown;
+            if (OnMouseCursorChange != null)
+            {
+                OnMouseCursorChange(hitType, hit);
+            }
 
-        //    bool _notAlly = hitType != rtsHitType.Ally && hitType != rtsHitType.Enemy;
+            bool _notAlly = hitType != rtsHitType.Ally && hitType != rtsHitType.Enemy;
 
-        //    if (gamemode.hasPrevHighAlly && _notAlly)
-        //    {
-        //        gamemode.hasPrevHighAlly = false;
-        //        if (gamemode.prevHighAlly == null) return;
-        //        //if (OnHoverLeaveAlly != null) OnHoverLeaveAlly(gamemode.prevHighAlly);
-        //        gamemode.prevHighAlly.npcMaster.CallEventOnHoverLeave(hitType, hit);
-        //    }
+            if (gamemode.hasPrevHighAlly && _notAlly)
+            {
+                gamemode.hasPrevHighAlly = false;
+                if (gamemode.prevHighAlly == null) return;
+                //if (OnHoverLeaveAlly != null) OnHoverLeaveAlly(gamemode.prevHighAlly);
+                gamemode.prevHighAlly.npcMaster.CallEventOnHoverLeave(hitType, hit);
+            }
 
-        //    GameObject hitObjectRoot = null;
-        //    if (hitType != rtsHitType.Unknown)
-        //    {
-        //        hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
-        //    }
+            GameObject hitObjectRoot = null;
+            if (hitType != rtsHitType.Unknown)
+            {
+                hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
+            }
 
-        //    switch (hitType)
-        //    {
-        //        case rtsHitType.Ally:
-        //            AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_ally == null) return;
-        //            gamemode.hasPrevHighAlly = true;
-        //            //if (OnHoverOverAlly != null) OnHoverOverAlly(_ally);
-        //            _ally.npcMaster.CallEventOnHoverOver(hitType, hit);
-        //            gamemode.prevHighAlly = _ally;
-        //            break;
-        //        case rtsHitType.Enemy:
-        //            AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_enemy == null) return;
-        //            gamemode.hasPrevHighAlly = true;
-        //            //if (OnHoverOverAlly != null) OnHoverOverAlly(_enemy);
-        //            _enemy.npcMaster.CallEventOnHoverOver(hitType, hit);
-        //            gamemode.prevHighAlly = _enemy;
-        //            break;
-        //        case rtsHitType.Cover:
-        //            break;
-        //        case rtsHitType.Walkable:
-        //            break;
-        //        case rtsHitType.Unwalkable:
-        //            break;
-        //        case rtsHitType.Unknown:
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+            switch (hitType)
+            {
+                case rtsHitType.Ally:
+                    AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_ally == null) return;
+                    gamemode.hasPrevHighAlly = true;
+                    //if (OnHoverOverAlly != null) OnHoverOverAlly(_ally);
+                    _ally.npcMaster.CallEventOnHoverOver(hitType, hit);
+                    gamemode.prevHighAlly = _ally;
+                    break;
+                case rtsHitType.Enemy:
+                    AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_enemy == null) return;
+                    gamemode.hasPrevHighAlly = true;
+                    //if (OnHoverOverAlly != null) OnHoverOverAlly(_enemy);
+                    _enemy.npcMaster.CallEventOnHoverOver(hitType, hit);
+                    gamemode.prevHighAlly = _enemy;
+                    break;
+                case rtsHitType.Cover:
+                    break;
+                case rtsHitType.Walkable:
+                    break;
+                case rtsHitType.Unwalkable:
+                    break;
+                case rtsHitType.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
 
-        //public void CallEventOnLeftClickSendHit()
-        //{
-        //    if (rayCaster != null && rayCaster.enabled == true)
-        //    {
-        //        var _info = rayCaster.GetRaycastInfo();
-        //        CallEventOnLeftClickSendHit(_info._hitType, _info._rayHit);
-        //    }
-        //}
+        public void CallEventOnLeftClickSendHit()
+        {
+            if (rayCaster != null && rayCaster.enabled == true)
+            {
+                var _info = rayCaster.GetRaycastInfo();
+                CallEventOnLeftClickSendHit(_info._hitType, _info._rayHit);
+            }
+        }
 
-        //private void CallEventOnLeftClickSendHit(rtsHitType hitType, RaycastHit hit)
-        //{
-        //    bool isNull = hit.collider == null || hit.collider.gameObject == null ||
-        //    hit.collider.gameObject.transform.root.gameObject == null;
-        //    if (isNull) hitType = rtsHitType.Unknown;
-        //    if (OnLeftClickSendHit != null)
-        //    {
-        //        OnLeftClickSendHit(hitType, hit);
-        //    }
-        //    GameObject hitObjectRoot = null;
-        //    if (hitType != rtsHitType.Unknown)
-        //    {
-        //        hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
-        //    }
+        private void CallEventOnLeftClickSendHit(rtsHitType hitType, RaycastHit hit)
+        {
+            bool isNull = hit.collider == null || hit.collider.gameObject == null ||
+            hit.collider.gameObject.transform.root.gameObject == null;
+            if (isNull) hitType = rtsHitType.Unknown;
+            if (OnLeftClickSendHit != null)
+            {
+                OnLeftClickSendHit(hitType, hit);
+            }
+            GameObject hitObjectRoot = null;
+            if (hitType != rtsHitType.Unknown)
+            {
+                hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
+            }
 
-        //    switch (hitType)
-        //    {
-        //        case rtsHitType.Ally:
-        //            AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_ally == null) return;
-        //            if (OnLeftClickAlly != null) OnLeftClickAlly(_ally);
-        //            break;
-        //        case rtsHitType.Enemy:
-        //            AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_enemy == null) return;
-        //            if (OnLeftClickEnemy != null) OnLeftClickEnemy(_enemy);
-        //            break;
-        //        case rtsHitType.Cover:
-        //            break;
-        //        case rtsHitType.Walkable:
-        //            break;
-        //        case rtsHitType.Unwalkable:
-        //            break;
-        //        case rtsHitType.Unknown:
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+            switch (hitType)
+            {
+                case rtsHitType.Ally:
+                    AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_ally == null) return;
+                    if (OnLeftClickAlly != null) OnLeftClickAlly(_ally);
+                    break;
+                case rtsHitType.Enemy:
+                    AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_enemy == null) return;
+                    if (OnLeftClickEnemy != null) OnLeftClickEnemy(_enemy);
+                    break;
+                case rtsHitType.Cover:
+                    break;
+                case rtsHitType.Walkable:
+                    break;
+                case rtsHitType.Unwalkable:
+                    break;
+                case rtsHitType.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
 
-        //public void CallEventOnRightClickSendHit()
-        //{
-        //    if (rayCaster != null && rayCaster.enabled == true)
-        //    {
-        //        var _info = rayCaster.GetRaycastInfo();
-        //        CallEventOnRightClickSendHit(_info._hitType, _info._rayHit);
-        //    }
-        //}
+        public void CallEventOnRightClickSendHit()
+        {
+            if (rayCaster != null && rayCaster.enabled == true)
+            {
+                var _info = rayCaster.GetRaycastInfo();
+                CallEventOnRightClickSendHit(_info._hitType, _info._rayHit);
+            }
+        }
 
-        //private void CallEventOnRightClickSendHit(rtsHitType hitType, RaycastHit hit)
-        //{
-        //    bool isNull = hit.collider == null || hit.collider.gameObject == null ||
-        //    hit.collider.gameObject.transform.root.gameObject == null;
-        //    if (isNull) hitType = rtsHitType.Unknown;
-        //    if (OnRightClickSendHit != null)
-        //    {
-        //        OnRightClickSendHit(hitType, hit);
-        //    }
-        //    GameObject hitObjectRoot = null;
-        //    if (hitType != rtsHitType.Unknown)
-        //    {
-        //        hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
-        //    }
+        private void CallEventOnRightClickSendHit(rtsHitType hitType, RaycastHit hit)
+        {
+            bool isNull = hit.collider == null || hit.collider.gameObject == null ||
+            hit.collider.gameObject.transform.root.gameObject == null;
+            if (isNull) hitType = rtsHitType.Unknown;
+            if (OnRightClickSendHit != null)
+            {
+                OnRightClickSendHit(hitType, hit);
+            }
+            GameObject hitObjectRoot = null;
+            if (hitType != rtsHitType.Unknown)
+            {
+                hitObjectRoot = hit.collider.gameObject.transform.root.gameObject;
+            }
 
-        //    switch (hitType)
-        //    {
-        //        case rtsHitType.Ally:
-        //            AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_ally == null) return;
-        //            if (OnRightClickAlly != null) OnRightClickAlly(_ally);
-        //            break;
-        //        case rtsHitType.Enemy:
-        //            AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
-        //            if (_enemy == null) return;
-        //            if (OnRightClickEnemy != null) OnRightClickEnemy(_enemy);
-        //            break;
-        //        case rtsHitType.Cover:
-        //            break;
-        //        case rtsHitType.Walkable:
-        //            break;
-        //        case rtsHitType.Unwalkable:
-        //            break;
-        //        case rtsHitType.Unknown:
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+            switch (hitType)
+            {
+                case rtsHitType.Ally:
+                    AllyMember _ally = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_ally == null) return;
+                    if (OnRightClickAlly != null) OnRightClickAlly(_ally);
+                    break;
+                case rtsHitType.Enemy:
+                    AllyMember _enemy = hitObjectRoot.GetComponent<AllyMember>();
+                    if (_enemy == null) return;
+                    if (OnRightClickEnemy != null) OnRightClickEnemy(_enemy);
+                    break;
+                case rtsHitType.Cover:
+                    break;
+                case rtsHitType.Walkable:
+                    break;
+                case rtsHitType.Unwalkable:
+                    break;
+                case rtsHitType.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
         #endregion
     }
 }

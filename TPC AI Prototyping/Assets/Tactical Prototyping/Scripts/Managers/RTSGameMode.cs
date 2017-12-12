@@ -301,14 +301,14 @@ namespace RTSPrototype
 
         //Used for CamRaycaster to determine if surface is walkable
         //by the AllyInCommand
-        //public bool isSurfaceReachableForAllyInCommand(RaycastHit hit)
-        //{
-        //    if (GeneralInCommand.AllyInCommand != null)
-        //    {
-        //        return GeneralInCommand.AllyInCommand.aiController.isSurfaceWalkable(hit);
-        //    }
-        //    return false;
-        //}
+        public bool isSurfaceReachableForAllyInCommand(RaycastHit hit)
+        {
+            if (GeneralInCommand.AllyInCommand != null)
+            {
+                return GeneralInCommand.AllyInCommand.aiController.isSurfaceWalkable(hit);
+            }
+            return false;
+        }
         #endregion
 
         #region Kills and Points Getters
@@ -603,6 +603,9 @@ namespace RTSPrototype
                         _thirdPersonCamera.DeathAnchor = _target.HeadTransform;
                     else
                         _thirdPersonCamera.DeathAnchor = null;
+
+                    //Initialize Character on Modified Camera Controller
+                    _thirdPersonCamera.InitializeAllyCharacter(_target);
                 }  
             }
             else

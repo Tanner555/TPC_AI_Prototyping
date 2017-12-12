@@ -72,8 +72,8 @@ namespace RTSPrototype
         void Update()
         {
             InputSetup();
-            //LeftMouseDownSetup();
-            //RightMouseDownSetup();
+            LeftMouseDownSetup();
+            RightMouseDownSetup();
         }
         #endregion
 
@@ -109,92 +109,92 @@ namespace RTSPrototype
 
         #region MouseSetup
 
-        //void LeftMouseDownSetup()
-        //{
-        //    if (UiIsEnabled) return;
-        //    if (Input.GetKey(KeyCode.Mouse0))
-        //    {
-        //        if (isRMHeldDown) return;
-        //        if (isLMHeldDown == false)
-        //        {
-        //            isLMHeldDown = true;
-        //            LMCurrentTimer = Time.time + LMHeldThreshold;
-        //        }
+        void LeftMouseDownSetup()
+        {
+            if (UiIsEnabled) return;
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                if (isRMHeldDown) return;
+                if (isLMHeldDown == false)
+                {
+                    isLMHeldDown = true;
+                    LMCurrentTimer = Time.time + LMHeldThreshold;
+                }
 
-        //        if (Time.time > LMCurrentTimer)
-        //        {
-        //            //Calls Every Update
-        //            //CreateSelectionSquare();
-        //            if (isLMHeldPastThreshold == false)
-        //            {
-        //                //OnMouseDown Code Goes Here
-        //                isLMHeldPastThreshold = true;
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (isLMHeldDown == true)
-        //        {
-        //            isLMHeldDown = false;
-        //            if (isLMHeldPastThreshold == true)
-        //            {
-        //                //When MouseDown Code Exits
-        //                isLMHeldPastThreshold = false;
-        //            }
-        //            else
-        //            {
-        //                //Mouse Button Was Let Go Before the Threshold
-        //                //Call the Click Event
-        //                gamemaster.CallEventOnLeftClickSendHit();
-        //            }
-        //        }
-        //    }
-        //}
+                if (Time.time > LMCurrentTimer)
+                {
+                    //Calls Every Update
+                    //CreateSelectionSquare();
+                    if (isLMHeldPastThreshold == false)
+                    {
+                        //OnMouseDown Code Goes Here
+                        isLMHeldPastThreshold = true;
+                    }
+                }
+            }
+            else
+            {
+                if (isLMHeldDown == true)
+                {
+                    isLMHeldDown = false;
+                    if (isLMHeldPastThreshold == true)
+                    {
+                        //When MouseDown Code Exits
+                        isLMHeldPastThreshold = false;
+                    }
+                    else
+                    {
+                        //Mouse Button Was Let Go Before the Threshold
+                        //Call the Click Event
+                        gamemaster.CallEventOnLeftClickSendHit();
+                    }
+                }
+            }
+        }
 
-        //void RightMouseDownSetup()
-        //{
-        //    if (UiIsEnabled) return;
-        //    if (Input.GetKey(KeyCode.Mouse1))
-        //    {
-        //        if (isLMHeldDown) return;
-        //        if (isRMHeldDown == false)
-        //        {
-        //            isRMHeldDown = true;
-        //            RMCurrentTimer = Time.time + RMHeldThreshold;
-        //        }
+        void RightMouseDownSetup()
+        {
+            if (UiIsEnabled) return;
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                if (isLMHeldDown) return;
+                if (isRMHeldDown == false)
+                {
+                    isRMHeldDown = true;
+                    RMCurrentTimer = Time.time + RMHeldThreshold;
+                }
 
-        //        if (Time.time > RMCurrentTimer)
-        //        {
-        //            if (isRMHeldPastThreshold == false)
-        //            {
-        //                //OnMouseDown Code Goes Here
-        //                isRMHeldPastThreshold = true;
-        //                gamemaster.CallEventEnableCameraMovement(true);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (isRMHeldDown == true)
-        //        {
-        //            isRMHeldDown = false;
-        //            if (isRMHeldPastThreshold == true)
-        //            {
-        //                //When MouseDown Code Exits
-        //                isRMHeldPastThreshold = false;
-        //                gamemaster.CallEventEnableCameraMovement(false);
-        //            }
-        //            else
-        //            {
-        //                //Mouse Button Was Let Go Before the Threshold
-        //                //Call the Click Event
-        //                gamemaster.CallEventOnRightClickSendHit();
-        //            }
-        //        }
-        //    }
+                if (Time.time > RMCurrentTimer)
+                {
+                    if (isRMHeldPastThreshold == false)
+                    {
+                        //OnMouseDown Code Goes Here
+                        isRMHeldPastThreshold = true;
+                        gamemaster.CallEventEnableCameraMovement(true);
+                    }
+                }
+            }
+            else
+            {
+                if (isRMHeldDown == true)
+                {
+                    isRMHeldDown = false;
+                    if (isRMHeldPastThreshold == true)
+                    {
+                        //When MouseDown Code Exits
+                        isRMHeldPastThreshold = false;
+                        gamemaster.CallEventEnableCameraMovement(false);
+                    }
+                    else
+                    {
+                        //Mouse Button Was Let Go Before the Threshold
+                        //Call the Click Event
+                        gamemaster.CallEventOnRightClickSendHit();
+                    }
+                }
+            }
 
-        //}
+        }
 
         #endregion
 
