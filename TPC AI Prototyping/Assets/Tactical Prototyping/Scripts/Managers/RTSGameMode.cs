@@ -589,9 +589,9 @@ namespace RTSPrototype
 
         void SetCameraCharacter(AllyMember _target)
         {
-            if (Camera.main && Camera.main.GetComponent<CameraController>())
+            if (Camera.main && Camera.main.GetComponent<RTSCameraController>())
             {
-                var _thirdPersonCamera = Camera.main.GetComponent<CameraController>();
+                var _thirdPersonCamera = Camera.main.GetComponent<RTSCameraController>();
                 if (_thirdPersonCamera.Character != _target.gameObject)
                 {
                     _thirdPersonCamera.Character = _target.gameObject;
