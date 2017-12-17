@@ -54,12 +54,13 @@ namespace RTSPrototype
                 //    myRTSNavBridge.LookAtTarget(currentPlayer.transform);
                 //}
             }
-
+            myEventHandler.EventCommandMove += OnCommandMove;
             myEventHandler.EventNpcDie += OnDeath;
         }
 
         private void OnDisable()
         {
+            myEventHandler.EventCommandMove -= OnCommandMove;
             myEventHandler.EventNpcDie -= OnDeath;
         }
 
@@ -105,6 +106,15 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        void OnCommandMove(rtsHitType hitType, RaycastHit hit)
+        {
+            if (AllCompsAreValid)
+            {
+                myNavAgent.SetDestination(hit.point);
+                myNavAgent.isStopped = false;
+            }
+        }
+
         void OnDeath()
         {
             var _mHitbox = transform.GetComponentInChildren<MeleeWeaponHitbox>();

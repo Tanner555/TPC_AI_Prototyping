@@ -70,6 +70,10 @@ namespace RTSPrototype
         public event AllyMemberHandler OnLeftClickEnemy;
         public event AllyMemberHandler OnRightClickAlly;
         public event AllyMemberHandler OnRightClickEnemy;
+
+        public delegate void AllySwitchHandler(PartyManager _party, AllyMember _toSet, AllyMember _current);
+        public event AllySwitchHandler OnAllySwitch;
+
         #endregion
 
         #region EventCalls
@@ -107,6 +111,12 @@ namespace RTSPrototype
             {
                 EventEnableCameraMovement(enable);
             }
+        }
+
+        public void CallOnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
+        {
+            if (OnAllySwitch != null)
+                OnAllySwitch(_party, _toSet, _current);
         }
 
         public void CallEventOnMouseCursorChange(rtsHitType hitType, RaycastHit hit)

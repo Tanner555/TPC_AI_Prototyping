@@ -213,7 +213,7 @@ namespace RTSPrototype
                     if(_ally != null)
                         _ally.npcMaster.CallEventPartySwitching();
                 }
-                gamemode.ProcessAllySwitch(this, _setToCommand, AllyInCommand);
+                gamemaster.CallOnAllySwitch(this, _setToCommand, AllyInCommand);
                 if (AllyInCommand != null)
                     AllyInCommand.GetComponent<AllyEventHandler>().CallEventSwitchingFromCom();
 

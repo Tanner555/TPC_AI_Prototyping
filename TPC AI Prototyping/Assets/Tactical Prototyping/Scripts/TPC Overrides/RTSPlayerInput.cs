@@ -11,6 +11,10 @@ namespace RTSPrototype
         #region RTSFieldsAndProps
         public static RTSPlayerInput thisInstance { get; protected set; }
 
+        RTSGameMaster gameMaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
         #endregion
 
         #region UnityMessages
@@ -22,8 +26,48 @@ namespace RTSPrototype
                 thisInstance = this;
 
         }
+
+        protected override void Start()
+        {
+            base.Start();
+            gameMaster.EventEnableCameraMovement += DisableMouseCursor;
+            gameMaster.OnAllySwitch += OnAllySwitchEnableHandler;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            gameMaster.EventEnableCameraMovement -= DisableMouseCursor;
+            gameMaster.OnAllySwitch -= OnAllySwitchEnableHandler;
+        }
+
+        protected override void LateUpdate()
+        {
+            
+        }
+
+        protected override void OnMouseDown()
+        {
+            
+        }
         #endregion
 
+        protected override void AllowGameplayInput(bool allow)
+        {
+            m_AllowGameplayInput = allow;
+        }
 
+        #region RTSHandlers{
+        void DisableMouseCursor(bool disable)
+        {
+            Cursor.lockState = (disable ? CursorLockMode.Locked : CursorLockMode.None);
+            Cursor.visible = !disable;
+        }
+
+        void OnAllySwitchEnableHandler(PartyManager _party, AllyMember _toSet, AllyMember _current)
+        {
+            DisableMouseCursor(false);
+        }
+        #endregion
     }
 }

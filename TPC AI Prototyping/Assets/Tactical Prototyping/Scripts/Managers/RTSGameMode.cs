@@ -93,7 +93,20 @@ namespace RTSPrototype
 
         #region Properties
         public PartyManager GeneralInCommand { get; protected set; }
-        public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
+        //GameMode must access GameMaster sooner than On Start
+        //To Subscribe Events and Prevent Errors when AllySwitching
+        public RTSGameMaster gamemaster
+        {
+            get
+            {
+                if (RTSGameMaster.thisInstance != null)
+                    return RTSGameMaster.thisInstance;
+                else if (GetComponent<RTSGameMaster>() != null)
+                    return GetComponent<RTSGameMaster>();
+                else
+                    return GameObject.FindObjectOfType<RTSGameMaster>();
+            }
+        }
         public RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
         //Static GameMode Instance For Easy Access
         [HideInInspector]
@@ -125,6 +138,7 @@ namespace RTSPrototype
         {
             ResetGameModeStats();
             InitializeGameModeValues();
+            SubscribeToEvents();
             if (thisInstance != null)
                 Debug.LogWarning("More than one instance of RTSGameMode in scene.");
             else
@@ -154,7 +168,7 @@ namespace RTSPrototype
 
         private void OnDisable()
         {
-            
+            UnsubscribeFromEvents();
         }
         // Use this for initialization
         void Start()
@@ -625,6 +639,16 @@ namespace RTSPrototype
             DefaultMatchStartingTime = Time.time + DefaultMatchTimeLimit;
             ERTSGameState waitingstate = ERTSGameState.EWaitingToStart;
             SetMatchState(waitingstate);
+        }
+
+        protected virtual void SubscribeToEvents()
+        {
+            gamemaster.OnAllySwitch += ProcessAllySwitch;
+        }
+
+        protected virtual void UnsubscribeFromEvents()
+        {
+            gamemaster.OnAllySwitch -= ProcessAllySwitch;
         }
 
         protected virtual void StartServices()
