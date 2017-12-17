@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Opsive.ThirdPersonController;
 using Opsive.ThirdPersonController.Wrappers.Abilities;
-//using Opsive.ThirdPersonController.Wrappers;
 
 namespace RTSPrototype
 {
@@ -42,18 +41,6 @@ namespace RTSPrototype
         void Start()
         {
             SetInitialReferences();
-            if (AllCompsAreValid)
-            {
-                //currentPlayer = GameObject.FindGameObjectWithTag("Player");
-                //if (currentPlayer == null)
-                //{
-                //    Debug.Log("Couldn't find local player");
-                //}
-                //else
-                //{
-                //    myRTSNavBridge.LookAtTarget(currentPlayer.transform);
-                //}
-            }
             myEventHandler.EventCommandMove += OnCommandMove;
             myEventHandler.EventNpcDie += OnDeath;
         }
@@ -88,23 +75,6 @@ namespace RTSPrototype
         }
         #endregion
 
-        #region Finders
-        Opsive.ThirdPersonController.Abilities.Ability FindAbility(System.Type _type)
-        {
-            if (AllCompsAreValid)
-            {
-                foreach (var _ability in myRigidbodyTPC.Abilities)
-                {
-                    if (_type.Equals(_ability.GetType()))
-                    {
-                        return _ability;
-                    }
-                }
-            }
-            return null;
-        }
-        #endregion
-
         #region Handlers
         void OnCommandMove(rtsHitType hitType, RaycastHit hit)
         {
@@ -120,6 +90,7 @@ namespace RTSPrototype
             }
             this.enabled = false;
         }
+
         #endregion
 
         void SetInitialReferences()
@@ -136,41 +107,6 @@ namespace RTSPrototype
             {
                 Debug.LogError("Not all comps are valid!");
             }
-        }
-
-        #region Commented Code
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    Debug.Log("Finding Ability...");
-        //    var _ability = FindAbility(typeof(HeightChange));
-        //    if (_ability != null)
-        //    {
-        //        Debug.Log(_ability.GetType().Name);
-        //        Debug.Log(_ability.IsActive);
-        //        if(!_ability.IsActive)
-        //        {
-        //            if (!myRigidbodyTPC.TryStartAbility(_ability))
-        //            {
-        //                Debug.Log("Ability Failed");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            myRigidbodyTPC.TryStopAbility(_ability);
-        //        }
-
-        //    }
-        //}
-
-        //if (Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    Debug.Log("Try using item");
-        //    if (!itemHandler.TryUseItem(typeof(PrimaryItemType)))
-        //    {
-        //        Debug.Log("Couldn't use primary weapon");
-        //    }
-        //}
-        #endregion
-        
+        }        
     }
 }

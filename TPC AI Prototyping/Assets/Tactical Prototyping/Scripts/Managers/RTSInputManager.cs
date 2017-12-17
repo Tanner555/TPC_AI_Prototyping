@@ -91,12 +91,16 @@ namespace RTSPrototype
                 CallPossessAllyAdd();
             if (Input.GetKeyDown(KeyCode.Keypad3))
                 CallPossessAllySubtract();
-            //if (Input.GetKeyDown(KeyCode.C))
-            //    CallCoverToggle();
-            //if (Input.GetKeyDown(KeyCode.Alpha2))
-            //    CallSelectNextWeapon();
-            //if (Input.GetKeyDown(KeyCode.Alpha1))
-            //    CallSelectPrevWeapon();
+            if (Input.GetKeyDown(KeyCode.C))
+                CallCoverToggle();
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                CallSelectNextWeapon();
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                CallSelectPrevWeapon();
+            if (Input.GetKeyDown(KeyCode.R))
+                CallTryReload();
+            if (Input.GetKeyDown(KeyCode.Space))
+                CallTryFire();
 
             //if (Input.GetKey(KeyCode.LeftShift))
             //    SprintingSetup();
@@ -298,7 +302,12 @@ namespace RTSPrototype
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
         void CallPossessAllySubtract() { gamemode.GeneralInCommand.PossessAllySubtract(); }
-        //void CallCoverToggle() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallEventToggleCover(); }
+        //TPC Events
+        void CallSelectPrevWeapon() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallOnSwitchToPrevItem(); }
+        void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallOnSwitchToNextItem(); }
+        void CallTryFire() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallOnTryFire(); }
+        void CallTryReload() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallOnTryReload(); }
+        void CallCoverToggle() { gamemode.GeneralInCommand.AllyInCommand.npcMaster.CallOnTryCrouch(); }
         //void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.pEventHandler.SetNextWeapon.Try(); }
         //void CallSelectPrevWeapon() { gamemode.GeneralInCommand.AllyInCommand.pEventHandler.SetPrevWeapon.Try(); }
 

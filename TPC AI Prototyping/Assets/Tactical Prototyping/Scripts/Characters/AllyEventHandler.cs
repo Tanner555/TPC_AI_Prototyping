@@ -25,6 +25,12 @@ namespace RTSPrototype
         public event GeneralEventHandler EventPartySwitching;
         public event GeneralEventHandler EventSetAsCommander;
         public event GeneralEventHandler EventKilledEnemy;
+        //Opsive TPC Events
+        public event GeneralEventHandler OnSwitchToPrevItem;
+        public event GeneralEventHandler OnSwitchToNextItem;
+        public event GeneralEventHandler OnTryFire;
+        public event GeneralEventHandler OnTryReload;
+        public event GeneralEventHandler OnTryCrouch;
 
         //public delegate void AmmoChangeEventHandler(Gun_Master gun, string ammoType, int currentAmmo, int carriedAmmo);
         //public event AmmoChangeEventHandler EventAmmoChanged;
@@ -115,6 +121,32 @@ namespace RTSPrototype
             {
                 EventNpcIdleAnim();
             }
+        }
+
+        //Opsive TPC Events
+        public void CallOnSwitchToPrevItem()
+        {
+            if (OnSwitchToPrevItem != null) OnSwitchToPrevItem();
+        }
+
+        public void CallOnSwitchToNextItem()
+        {
+            if (OnSwitchToNextItem != null) OnSwitchToNextItem();
+        }
+
+        public void CallOnTryFire()
+        {
+            if (OnTryFire != null) OnTryFire();
+        }
+
+        public void CallOnTryReload()
+        {
+            if (OnTryReload != null) OnTryReload();
+        }
+
+        public void CallOnTryCrouch()
+        {
+            if (OnTryCrouch != null) OnTryCrouch();
         }
 
         public void CallEventNpcDeductHealth(float health)

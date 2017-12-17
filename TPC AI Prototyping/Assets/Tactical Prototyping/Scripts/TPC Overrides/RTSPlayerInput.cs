@@ -15,6 +15,9 @@ namespace RTSPrototype
         {
             get { return RTSGameMaster.thisInstance; }
         }
+
+        //Used for input
+        bool isMovingCamera = false;
         #endregion
 
         #region UnityMessages
@@ -52,16 +55,20 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region Overrides
         protected override void AllowGameplayInput(bool allow)
         {
             m_AllowGameplayInput = allow;
         }
 
-        #region RTSHandlers{
+        #endregion
+
+        #region RTSHandlers
         void DisableMouseCursor(bool disable)
         {
             Cursor.lockState = (disable ? CursorLockMode.Locked : CursorLockMode.None);
             Cursor.visible = !disable;
+            isMovingCamera = disable;
         }
 
         void OnAllySwitchEnableHandler(PartyManager _party, AllyMember _toSet, AllyMember _current)
