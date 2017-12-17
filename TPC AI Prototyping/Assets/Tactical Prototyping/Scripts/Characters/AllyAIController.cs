@@ -108,11 +108,7 @@ namespace RTSPrototype
         #region Handlers
         void OnCommandMove(rtsHitType hitType, RaycastHit hit)
         {
-            if (AllCompsAreValid)
-            {
-                myNavAgent.SetDestination(hit.point);
-                myNavAgent.isStopped = false;
-            }
+            if (AllCompsAreValid) myRTSNavBridge.MoveToDestination(hit.point);
         }
 
         void OnDeath()

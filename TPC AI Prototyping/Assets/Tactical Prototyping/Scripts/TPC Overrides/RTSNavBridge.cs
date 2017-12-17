@@ -7,6 +7,7 @@ namespace RTSPrototype
 {
     public class RTSNavBridge : NavMeshAgentBridge
     {
+        #region FieldsandProps
         //Targeting
         public Transform targetTransform { get; protected set; }
         public bool isTargeting { get; protected set; }
@@ -17,26 +18,15 @@ namespace RTSPrototype
                 return targetTransform != null ? Quaternion.LookRotation(targetTransform.transform.position - transform.position) : new Quaternion();
             }
         }
-
-        public void LookAtTarget(Transform _target)
+        bool canUpdateMovement
         {
-            if(_target != null)
-            {
-                targetTransform = _target;
-                isTargeting = true;
-            }
-            else
-            {
-                StopTargeting();
-            }
+            get { return (!isMoving && !isTargeting) == false; }
         }
+        //NavMeshMovement
+        bool isMoving = false;
+        #endregion
 
-        public void StopTargeting()
-        {
-            targetTransform = null;
-            isTargeting = false;
-        }
-
+        #region UnityMessages
         protected override void FixedUpdate()
         {
             var velocity = Vector3.zero;
@@ -54,7 +44,8 @@ namespace RTSPrototype
             else
             {
                 // Only move if a path exists.
-                if (m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
+                // Update only when needed by targeting or move command
+                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
                 {
                     if (m_NavMeshAgent.updateRotation)
                     {
@@ -78,12 +69,57 @@ namespace RTSPrototype
                     }
                 }
             }
-
+            
             // Don't let the NavMeshAgent move the character - the controller can move it.
             m_NavMeshAgent.updatePosition = false;
             m_NavMeshAgent.velocity = Vector3.zero;
             m_Controller.Move(velocity.x, velocity.z, lookRotation);
             m_NavMeshAgent.nextPosition = m_Transform.position;
+
+            //Check for end of destination if moving
+            if (isMoving && ReachedDestination()) FinishMovingNavMesh();
         }
+        #endregion
+
+        #region Targetting
+        public void LookAtTarget(Transform _target)
+        {
+            if (_target != null)
+            {
+                targetTransform = _target;
+                isTargeting = true;
+            }
+            else
+            {
+                StopTargeting();
+            }
+        }
+
+        public void StopTargeting()
+        {
+            targetTransform = null;
+            isTargeting = false;
+        }
+        #endregion
+
+        #region NavMeshMovement
+        public void MoveToDestination(Vector3 _destination)
+        {
+            m_NavMeshAgent.SetDestination(_destination);
+            isMoving = true;
+        }
+
+        void FinishMovingNavMesh()
+        {
+            isMoving = false;
+        }
+
+        bool ReachedDestination()
+        {
+            return m_NavMeshAgent != null && m_NavMeshAgent.enabled && m_NavMeshAgent.remainingDistance != Mathf.Infinity &&
+                m_NavMeshAgent.remainingDistance <= 0.2f && !m_NavMeshAgent.pathPending && isMoving && m_NavMeshAgent.hasPath;
+        }
+        #endregion
+        
     }
 }
