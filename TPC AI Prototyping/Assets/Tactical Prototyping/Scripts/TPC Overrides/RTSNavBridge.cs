@@ -8,6 +8,7 @@ namespace RTSPrototype
     public class RTSNavBridge : NavMeshAgentBridge
     {
         #region FieldsandProps
+        AllyEventHandler myEventHandler { get { return GetComponent<AllyEventHandler>(); } }
         //Targeting
         public Transform targetTransform { get; protected set; }
         public bool isTargeting { get; protected set; }
@@ -15,7 +16,7 @@ namespace RTSPrototype
         {
             get
             {
-                return targetTransform != null ? Quaternion.LookRotation(targetTransform.transform.position - transform.position) : new Quaternion();
+                return targetTransform != null ? Quaternion.LookRotation(targetTransform.position - transform.position) : new Quaternion();
             }
         }
         bool canUpdateMovement
@@ -24,19 +25,26 @@ namespace RTSPrototype
         }
         //NavMeshMovement
         bool isMoving = false;
+        //LookRotation Local Variable
+        Quaternion lookRotation;
         #endregion
 
         #region UnityMessages
         protected override void FixedUpdate()
         {
             var velocity = Vector3.zero;
-            //Change if Target is set and targetting is active
-            Quaternion lookRotation;
+            //Change localRotation if targetting is active
             if (isTargeting && targetTransform != null)
                 lookRotation = lookTargetRotation;
             else
-                lookRotation = Quaternion.LookRotation(m_Transform.forward);
+            {
+                //Still targetting enemy but enemy transform is null
+                if (isTargeting)
+                    myEventHandler.CallEventStopTargettingEnemy();
 
+                lookRotation = Quaternion.LookRotation(m_Transform.forward);
+            }
+            
             if (m_NavMeshAgent.isOnOffMeshLink)
             {
                 UpdateOffMeshLink(ref velocity, ref lookRotation);
@@ -79,6 +87,16 @@ namespace RTSPrototype
             //Check for end of destination if moving
             if (isMoving && ReachedDestination()) FinishMovingNavMesh();
         }
+
+        private void Start()
+        {
+            SubToEvents();
+        }
+
+        private void OnDisable()
+        {
+            UnsubFromEvents();
+        }
         #endregion
 
         #region Targetting
@@ -102,6 +120,19 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region Handlers
+        void OnCommandAttack(AllyMember _ally)
+        {
+            if (_ally != null)
+                LookAtTarget(_ally.transform);
+        }
+
+        void OnCommandStopTargetting()
+        {
+            StopTargeting();
+        }
+        #endregion
+
         #region NavMeshMovement
         public void MoveToDestination(Vector3 _destination)
         {
@@ -120,6 +151,19 @@ namespace RTSPrototype
                 m_NavMeshAgent.remainingDistance <= 0.2f && !m_NavMeshAgent.pathPending && isMoving && m_NavMeshAgent.hasPath;
         }
         #endregion
-        
+
+        #region Initialization
+        void SubToEvents()
+        {
+            myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
+            myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
+        }
+
+        void UnsubFromEvents()
+        {
+            myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
+            myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
+        }
+        #endregion
     }
 }

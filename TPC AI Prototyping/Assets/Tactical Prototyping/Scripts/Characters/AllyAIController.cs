@@ -25,6 +25,18 @@ namespace RTSPrototype
         #endregion
 
         #region Properties
+        RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
+
+        RTSGameMode gamemode
+        {
+            get { return RTSGameMode.thisInstance; }
+        }
+
+        public AllyMember currentTargettedEnemy { get; protected set; }
+
         bool AllCompsAreValid
         {
             get
@@ -41,14 +53,18 @@ namespace RTSPrototype
         void Start()
         {
             SetInitialReferences();
-            myEventHandler.EventCommandMove += OnCommandMove;
+            myEventHandler.EventCommandAttackEnemy += HandleCommandAttackEnemy;
+            myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
             myEventHandler.EventNpcDie += OnDeath;
+            gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
         }
 
         private void OnDisable()
         {
-            myEventHandler.EventCommandMove -= OnCommandMove;
+            myEventHandler.EventCommandAttackEnemy -= HandleCommandAttackEnemy;
+            myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
             myEventHandler.EventNpcDie -= OnDeath;
+            gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;
         }
 
         // Update is called once per frame
@@ -76,9 +92,20 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnCommandMove(rtsHitType hitType, RaycastHit hit)
+        void HandleCommandAttackEnemy(AllyMember enemy)
         {
-            if (AllCompsAreValid) myRTSNavBridge.MoveToDestination(hit.point);
+            currentTargettedEnemy = enemy;
+        }
+
+        void HandleStopTargetting()
+        {
+            currentTargettedEnemy = null;
+        }
+
+        void OnEnableCameraMovement(bool _enable)
+        {
+            if (!allyMember.isCurrentPlayer) return;
+            myEventHandler.CallOnTryAim(_enable);
         }
 
         void OnDeath()

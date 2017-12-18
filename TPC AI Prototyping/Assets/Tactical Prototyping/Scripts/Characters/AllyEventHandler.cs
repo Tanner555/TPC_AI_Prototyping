@@ -9,6 +9,7 @@ namespace RTSPrototype
     {
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
+        public delegate void GeneralOneBoolHandler(bool _enable);
         public event GeneralEventHandler EventNpcDie;
         public event GeneralEventHandler EventNpcLowHealth;
         public event GeneralEventHandler EventNpcHealthRecovered;
@@ -25,12 +26,14 @@ namespace RTSPrototype
         public event GeneralEventHandler EventPartySwitching;
         public event GeneralEventHandler EventSetAsCommander;
         public event GeneralEventHandler EventKilledEnemy;
+        public event GeneralEventHandler EventStopTargettingEnemy;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
         public event GeneralEventHandler OnTryFire;
         public event GeneralEventHandler OnTryReload;
         public event GeneralEventHandler OnTryCrouch;
+        public event GeneralOneBoolHandler OnTryAim;
 
         //public delegate void AmmoChangeEventHandler(Gun_Master gun, string ammoType, int currentAmmo, int carriedAmmo);
         //public event AmmoChangeEventHandler EventAmmoChanged;
@@ -149,6 +152,11 @@ namespace RTSPrototype
             if (OnTryCrouch != null) OnTryCrouch();
         }
 
+        public void CallOnTryAim(bool _enable)
+        {
+            if (OnTryAim != null) OnTryAim(_enable);
+        }
+
         public void CallEventNpcDeductHealth(float health)
         {
             if (EventNpcDeductHealth != null)
@@ -156,7 +164,7 @@ namespace RTSPrototype
                 EventNpcDeductHealth(health);
             }
         }
-
+ 
         public void CallEventNpcIncreaseHealth(float health)
         {
             if (EventNpcIncreaseHealth != null)
@@ -204,12 +212,6 @@ namespace RTSPrototype
                 EventAmmoChanged();
             }
         }
-
-        //public void CallEventToggleCover()
-        //{
-        //    inCover = !inCover;
-        //    if (EventToggleCover != null) EventToggleCover();
-        //}
 
         public void CallEventSwitchingFromCom()
         {
@@ -261,6 +263,11 @@ namespace RTSPrototype
             {
                 EventCommandAttackEnemy(ally);
             }
+        }
+
+        public void CallEventStopTargettingEnemy()
+        {
+            if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
         }
 
         //public void CallEventSetNavSpeed(AllyMoveSpeed _navSpeed)

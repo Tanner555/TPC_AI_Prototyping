@@ -24,16 +24,15 @@ namespace RTSPrototype
 
         #region Components
         AllyEventHandler myEventHandler;
-        AllyMember allyMember;
-        AllyAIController aiController;
         ItemHandler itemHandler;
         Inventory myInventory; 
         RigidbodyCharacterController myController;
+        RTSNavBridge myNavBidge;
 
         bool AllCompsAreValid
         {
-            get { return myEventHandler && allyMember && aiController &&
-                    itemHandler && myInventory && myController; }
+            get { return myEventHandler && itemHandler && 
+                    myInventory && myController && myNavBidge; }
         }
         #endregion
 
@@ -56,10 +55,13 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        void OnCommandMove(rtsHitType hitType, RaycastHit hit)
+        {
+            if (AllCompsAreValid) myNavBidge.MoveToDestination(hit.point);
+        }
+
         void OnSetAimHandler(bool _isAiming)
         {
-            if (!allyMember.isCurrentPlayer) return;
-
             isAiming = _isAiming;
             myController.Aim = _isAiming;
         }
@@ -136,11 +138,11 @@ namespace RTSPrototype
         void InitialSetup()
         {
             myEventHandler = GetComponent<AllyEventHandler>();
-            allyMember = GetComponent<AllyMember>();
-            aiController = GetComponent<AllyAIController>();
             itemHandler = GetComponent<ItemHandler>();
             myInventory = GetComponent<Inventory>();
             myController = GetComponent<RigidbodyCharacterController>();
+            myNavBidge = GetComponent<RTSNavBridge>();
+
             if (!AllCompsAreValid)
             {
                 Debug.LogError("Not all Components can be found");
@@ -150,22 +152,24 @@ namespace RTSPrototype
         void SubToEvents()
         {
             if (!AllCompsAreValid) return;
-            gamemaster.EventEnableCameraMovement += OnSetAimHandler;
+            myEventHandler.OnTryAim += OnSetAimHandler;
             myEventHandler.OnSwitchToPrevItem += OnSwitchPrevItem;
             myEventHandler.OnSwitchToNextItem += OnSwitchNextItem;
             myEventHandler.OnTryFire += OnTryFire;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
+            myEventHandler.EventCommandMove += OnCommandMove;
         }
 
         void UnsubFromEvents()
         {
-            gamemaster.EventEnableCameraMovement -= OnSetAimHandler;
+            myEventHandler.OnTryAim -= OnSetAimHandler;
             myEventHandler.OnSwitchToPrevItem -= OnSwitchPrevItem;
             myEventHandler.OnSwitchToNextItem -= OnSwitchNextItem;
             myEventHandler.OnTryFire -= OnTryFire;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
+            myEventHandler.EventCommandMove -= OnCommandMove;
         }
         #endregion
     }
