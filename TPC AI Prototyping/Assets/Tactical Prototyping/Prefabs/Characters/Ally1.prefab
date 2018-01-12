@@ -81,10 +81,10 @@ GameObject:
   - component: {fileID: 4089414648790086}
   - component: {fileID: 33467479986145540}
   - component: {fileID: 23524032140184354}
-  - component: {fileID: 114748004637689014}
   - component: {fileID: 82786455379338444}
   - component: {fileID: 65661102712154412}
   - component: {fileID: 54447294761897540}
+  - component: {fileID: 114489911030366928}
   m_Layer: 2
   m_Name: SniperRifle
   m_TagString: Untagged
@@ -651,9 +651,9 @@ GameObject:
   - component: {fileID: 33835368944422460}
   - component: {fileID: 23843408222398824}
   - component: {fileID: 82477243074873286}
-  - component: {fileID: 114740004959874220}
   - component: {fileID: 65245098690090336}
   - component: {fileID: 54354255277631448}
+  - component: {fileID: 114845500091795520}
   m_Layer: 2
   m_Name: Pistol
   m_TagString: Untagged
@@ -941,9 +941,9 @@ GameObject:
   - component: {fileID: 33967639272597466}
   - component: {fileID: 23464813003768386}
   - component: {fileID: 82714633265497680}
-  - component: {fileID: 114553924073797878}
   - component: {fileID: 65753215594991912}
   - component: {fileID: 54935790651833378}
+  - component: {fileID: 114911889001884550}
   m_Layer: 2
   m_Name: Pistol
   m_TagString: Untagged
@@ -979,11 +979,11 @@ GameObject:
   - component: {fileID: 4735897691657234}
   - component: {fileID: 33808074047688046}
   - component: {fileID: 23878353284507700}
-  - component: {fileID: 114416309816127004}
   - component: {fileID: 82386080585507844}
   - component: {fileID: 65649635117959248}
-  - component: {fileID: 114899550490750034}
   - component: {fileID: 54097606174791476}
+  - component: {fileID: 114696338658535066}
+  - component: {fileID: 114990431605110420}
   m_Layer: 27
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -1277,10 +1277,10 @@ GameObject:
   - component: {fileID: 4989072662712496}
   - component: {fileID: 33530603856997192}
   - component: {fileID: 23974742034773090}
-  - component: {fileID: 114445931295659600}
   - component: {fileID: 82931602697733262}
   - component: {fileID: 65845931369297004}
   - component: {fileID: 54851159134564126}
+  - component: {fileID: 114612765608270182}
   m_Layer: 2
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -1423,9 +1423,9 @@ GameObject:
   - component: {fileID: 33901850768463734}
   - component: {fileID: 23534083900235470}
   - component: {fileID: 82570071523274830}
-  - component: {fileID: 114629424796468086}
   - component: {fileID: 65022125409259818}
   - component: {fileID: 54939313856193540}
+  - component: {fileID: 114835221788939174}
   m_Layer: 2
   m_Name: Shotgun
   m_TagString: Untagged
@@ -2780,15 +2780,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795908878115682}
-  m_LocalRotation: {x: -0, y: 0.03655579, z: -0, w: 0.99933165}
-  m_LocalPosition: {x: 3.34, y: 4.8, z: -5.78}
+  m_LocalRotation: {x: -0, y: 0.21578969, z: -0, w: 0.9764399}
+  m_LocalPosition: {x: 3.0699997, y: 4.8, z: -6.6200013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4063739145772196}
   - {fileID: 4109013848985618}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 4.19, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 24.924002, z: 0}
 --- !u!4 &4834102550710582
 Transform:
   m_ObjectHideFlags: 1
@@ -5261,561 +5261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405c005f1d61f2248a51d73ec2af3c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114416309816127004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563266102707096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: f7a7ff59e6f44ed41b780028c7e443f3, type: 2}
-  m_ItemName: Assault Rifle
-  m_DefaultStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_AimStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_EquipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UnequipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_CanAim: 1
-  m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-  m_RightItemSprite: 1
-  m_CrosshairsSprite:
-    m_Center: {fileID: 21300056, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Offset: 5
-    m_Left: {fileID: 21300064, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Top: {fileID: 21300058, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Right: {fileID: 21300062, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Bottom: {fileID: 21300060, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_AccuracyLossPercent: 2
-  m_TwoHandedItem: 1
-  m_NonDominantHandPosition: {fileID: 0}
-  m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: 70c0a3f8e11cd2944a3171e32cbf1c28, type: 2}
-  m_AimCameraState: 
-  m_UseStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UseInputName: Fire1
-  m_DualWieldUseInputName: Fire2
-  m_CanUseInAir: 1
-  m_DebugDrawFireRay: 0
-  m_ReloadStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_FirePoint: {fileID: 4334674122823796}
-  m_FireMode: 1
-  m_FireRate: 10
-  m_BurstRate: 5
-  m_ClipSize: 50
-  m_FireCount: 1
-  m_FireType: 0
-  m_FireOnUsedEvent: 0
-  m_WaitForEndUseEvent: 0
-  m_UseScope: 0
-  m_ReloadInputName: Reload
-  m_AutoReload: 1
-  m_RecoilAmount: 0.03
-  m_Spread: 0.01
-  m_RegenerateRate: 0
-  m_RegenerateAmount: 0
-  m_IdleAnimationStateName: 
-  m_FireAnimationStateName: 
-  m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 100000, guid: 2794fdea5c9fd6c4a89e3ffc3f45fa6f, type: 2}
-  m_ShellLocation: {fileID: 4514913944153432}
-  m_ShellForce: {x: -50, y: 10, z: 0}
-  m_ShellTorque: {x: 0, y: 0, z: 0}
-  m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 100000, guid: 2dd45cba069fb3340a0792f5eb7362c7, type: 2}
-  m_MuzzleFlashLocation: {fileID: 4852943991742166}
-  m_Smoke: {fileID: 100000, guid: 20e8c1c3975b5424988b8d3999108fe3, type: 2}
-  m_SmokeLocation: {fileID: 4737534138335528}
-  m_Particles: {fileID: 0}
-  m_FireSound:
-  - {fileID: 8300000, guid: 27e93e472274f7e4aa82c54dfd05bd35, type: 3}
-  m_FireSoundDelay: 0
-  m_EmptyFireSound:
-  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
-  m_ReloadSound: []
-  m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 0}
-  m_ProjectileAlwaysVisible: 0
-  m_ProjectileRestLocation: {fileID: 0}
-  m_ProjectileRestParent: {fileID: 0}
-  m_HitscanFireRange: 3.4028235e+38
-  m_HitscanImpactLayers:
-    serializedVersion: 2
-    m_Bits: 2147483625
-  m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 7
-  m_HitscanImpactForce: 0.1
-  m_DefaultHitscanDecal: {fileID: 100000, guid: 9b7a72265f46eef41ab48a568d6502a9,
-    type: 2}
-  m_DefaultHitscanDust: {fileID: 100000, guid: f3ed2988ed047264e8ec6e6b585ea14a, type: 2}
-  m_DefaultHitscanSpark: {fileID: 100000, guid: abb9cdac57d76d840badde8d36473ddc,
-    type: 2}
-  m_DefaultHitscanImpactSound: {fileID: 0}
-  m_Tracer: {fileID: 0}
-  m_TracerLocation: {fileID: 0}
-  m_Overheat: 0
-  m_OverheatShotCount: 0
-  m_CooldownDuration: 0
-  m_Flashlight: {fileID: 1510004509025096}
-  m_ToggleFlashlightInputName: Toggle Flashlight
-  m_ActivateFlashlightOnAim: 0
-  m_LaserSight: {fileID: 1432892156122276}
-  m_ToggleLaserSightInputName: Toggle Laser Sight
-  m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 1
---- !u!114 &114445931295659600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1803073767476596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: 4683da3d251a12f4a97e7311781ca6f7, type: 2}
-  m_ItemName: Rocket Launcher
-  m_DefaultStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_AimStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_EquipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UnequipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_CanAim: 1
-  m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300016, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-  m_RightItemSprite: 1
-  m_CrosshairsSprite:
-    m_Center: {fileID: 21300052, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Offset: 0
-    m_Left: {fileID: 0}
-    m_Top: {fileID: 0}
-    m_Right: {fileID: 0}
-    m_Bottom: {fileID: 0}
-    m_AccuracyLossPercent: 0.05
-  m_TwoHandedItem: 0
-  m_NonDominantHandPosition: {fileID: 0}
-  m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: 83e6b7c702f773943b0870b245e6062b, type: 2}
-  m_AimCameraState: 
-  m_UseStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UseInputName: Fire1
-  m_DualWieldUseInputName: Fire2
-  m_CanUseInAir: 1
-  m_DebugDrawFireRay: 0
-  m_ReloadStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_FirePoint: {fileID: 4323452653699168}
-  m_FireMode: 0
-  m_FireRate: 2
-  m_BurstRate: 5
-  m_ClipSize: 1
-  m_FireCount: 1
-  m_FireType: 0
-  m_FireOnUsedEvent: 0
-  m_WaitForEndUseEvent: 0
-  m_UseScope: 0
-  m_ReloadInputName: Reload
-  m_AutoReload: 1
-  m_RecoilAmount: 0.1
-  m_Spread: 0.01
-  m_RegenerateRate: 0
-  m_RegenerateAmount: 0
-  m_IdleAnimationStateName: 
-  m_FireAnimationStateName: 
-  m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 0}
-  m_ShellLocation: {fileID: 0}
-  m_ShellForce: {x: 0, y: 0, z: 0}
-  m_ShellTorque: {x: 0, y: 0, z: 0}
-  m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 0}
-  m_MuzzleFlashLocation: {fileID: 0}
-  m_Smoke: {fileID: 100000, guid: 75e46e069d570b7429d5dc63b8d58182, type: 2}
-  m_SmokeLocation: {fileID: 4606737883071074}
-  m_Particles: {fileID: 0}
-  m_FireSound:
-  - {fileID: 8300000, guid: 587a56e0f3bf45d43937429958140f20, type: 3}
-  m_FireSoundDelay: 0
-  m_EmptyFireSound: []
-  m_ReloadSound: []
-  m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 100000, guid: 4c8a01cd5312c70489cdd75480924a1f, type: 2}
-  m_ProjectileAlwaysVisible: 0
-  m_ProjectileRestLocation: {fileID: 0}
-  m_ProjectileRestParent: {fileID: 0}
-  m_HitscanFireRange: 3.4028235e+38
-  m_HitscanImpactLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 10
-  m_HitscanImpactForce: 5
-  m_DefaultHitscanDecal: {fileID: 0}
-  m_DefaultHitscanDust: {fileID: 0}
-  m_DefaultHitscanSpark: {fileID: 0}
-  m_DefaultHitscanImpactSound: {fileID: 0}
-  m_Tracer: {fileID: 0}
-  m_TracerLocation: {fileID: 0}
-  m_Overheat: 0
-  m_OverheatShotCount: 0
-  m_CooldownDuration: 0
-  m_Flashlight: {fileID: 0}
-  m_ToggleFlashlightInputName: Toggle Flashlight
-  m_ActivateFlashlightOnAim: 0
-  m_LaserSight: {fileID: 0}
-  m_ToggleLaserSightInputName: Toggle Laser Sight
-  m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 0
 --- !u!114 &114451494576594148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5848,6 +5293,285 @@ MonoBehaviour:
   m_NormalizedStrafeSpeed: -0.5
   m_StrafeCoverOffset: {x: 0.1, y: 0, z: 0.5}
   m_PopDistance: {x: 0.3, y: 0, z: 3}
+--- !u!114 &114489911030366928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054129539935052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemType: {fileID: 11400000, guid: b876b0067262c204eb9c350fe44ef7eb, type: 2}
+  m_ItemName: Sniper Rifle
+  m_DefaultStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_AimStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_EquipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UnequipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_CanAim: 1
+  m_RequireAim: 1
+  m_ItemSprite: {fileID: 21300132, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_RightItemSprite: 1
+  m_CrosshairsSprite:
+    m_Center: {fileID: 21300106, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Offset: 0
+    m_Left: {fileID: 0}
+    m_Top: {fileID: 0}
+    m_Right: {fileID: 0}
+    m_Bottom: {fileID: 0}
+    m_AccuracyLossPercent: 0.05
+  m_TwoHandedItem: 0
+  m_NonDominantHandPosition: {fileID: 0}
+  m_HolsterTarget: {fileID: 0}
+  m_ItemPickup: {fileID: 100000, guid: cfce133f1d2d5d443992a26d9aab6225, type: 2}
+  m_AimCameraState: Scope
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Fire1
+  m_DualWieldUseInputName: Fire2
+  m_CanUseInAir: 1
+  m_DebugDrawFireRay: 0
+  m_ReloadStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_FirePoint: {fileID: 4459210078548662}
+  m_FireMode: 0
+  m_FireRate: 1
+  m_BurstRate: 5
+  m_ClipSize: 8
+  m_FireCount: 1
+  m_FireType: 0
+  m_FireOnUsedEvent: 0
+  m_WaitForEndUseEvent: 0
+  m_UseScope: 1
+  m_ReloadInputName: Reload
+  m_AutoReload: 0
+  m_RecoilAmount: 0
+  m_Spread: 0
+  m_RegenerateRate: 0
+  m_RegenerateAmount: 0
+  m_IdleAnimationStateName: 
+  m_FireAnimationStateName: 
+  m_ReloadAnimationStateName: 
+  m_Shell: {fileID: 100000, guid: 2794fdea5c9fd6c4a89e3ffc3f45fa6f, type: 2}
+  m_ShellLocation: {fileID: 4951915604800368}
+  m_ShellForce: {x: 0, y: 0, z: 0}
+  m_ShellTorque: {x: 0, y: 0, z: 0}
+  m_ShellDelay: 0
+  m_MuzzleFlash: {fileID: 0}
+  m_MuzzleFlashLocation: {fileID: 0}
+  m_Smoke: {fileID: 0}
+  m_SmokeLocation: {fileID: 0}
+  m_Particles: {fileID: 0}
+  m_FireSound:
+  - {fileID: 8300000, guid: 383b716bce9f15b49b8a245b8d3e2ce7, type: 3}
+  m_FireSoundDelay: 0
+  m_EmptyFireSound:
+  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
+  m_ReloadSound: []
+  m_ReloadSoundDelay: 0
+  m_Projectile: {fileID: 0}
+  m_ProjectileAlwaysVisible: 0
+  m_ProjectileRestLocation: {fileID: 0}
+  m_ProjectileRestParent: {fileID: 0}
+  m_HitscanFireRange: 3.4028235e+38
+  m_HitscanImpactLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_HitscanDamageEvent: 
+  m_HitscanDamageAmount: 10
+  m_HitscanImpactForce: 5
+  m_DefaultHitscanDecal: {fileID: 100000, guid: a350915d26374cc4b81f5cb2d2ec3e62,
+    type: 2}
+  m_DefaultHitscanDust: {fileID: 100000, guid: 01ce7bbeaaab5ec46b3e7b22e09c2e12, type: 2}
+  m_DefaultHitscanSpark: {fileID: 100000, guid: fa6b93c32d015974d95dd2536ba56599,
+    type: 2}
+  m_DefaultHitscanImpactSound: {fileID: 0}
+  m_Tracer: {fileID: 0}
+  m_TracerLocation: {fileID: 0}
+  m_Overheat: 0
+  m_OverheatShotCount: 0
+  m_CooldownDuration: 0
+  m_Flashlight: {fileID: 0}
+  m_ToggleFlashlightInputName: Toggle Flashlight
+  m_ActivateFlashlightOnAim: 0
+  m_LaserSight: {fileID: 0}
+  m_ToggleLaserSightInputName: Toggle Laser Sight
+  m_ActivateLaserSightOnAim: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114492921640936554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6150,45 +5874,45 @@ MonoBehaviour:
   m_ImpactForce: 5
   m_DefaultDust: {fileID: 0}
   m_DefaultImpactSound: {fileID: 0}
---- !u!114 &114553924073797878
+--- !u!114 &114612765608270182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546829488955856}
+  m_GameObject: {fileID: 1803073767476596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: 2580c6a461a1a794a970914c497c3ba2, type: 2}
-  m_ItemName: Pistol
+  m_ItemType: {fileID: 11400000, guid: 4683da3d251a12f4a97e7311781ca6f7, type: 2}
+  m_ItemName: Rocket Launcher
   m_DefaultStates:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Idle
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 4
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Movement
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 4
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
           m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
@@ -6197,29 +5921,29 @@ MonoBehaviour:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Aim
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Aim
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
@@ -6227,29 +5951,29 @@ MonoBehaviour:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Equip
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Equip
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
@@ -6257,355 +5981,76 @@ MonoBehaviour:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Unequip
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_CanAim: 1
-  m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-  m_RightItemSprite: 0
-  m_CrosshairsSprite:
-    m_Center: {fileID: 21300022, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Offset: 8
-    m_Left: {fileID: 21300050, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Top: {fileID: 21300046, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Right: {fileID: 21300048, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Bottom: {fileID: 21300066, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_AccuracyLossPercent: 0.05
-  m_TwoHandedItem: 0
-  m_NonDominantHandPosition: {fileID: 0}
-  m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: b9594ad2df964d042bee2d3c98d4cffa, type: 2}
-  m_AimCameraState: 
-  m_UseStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UseInputName: Fire1
-  m_DualWieldUseInputName: Fire1
-  m_CanUseInAir: 1
-  m_DebugDrawFireRay: 0
-  m_ReloadStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 6
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_FirePoint: {fileID: 4341325527181638}
-  m_FireMode: 0
-  m_FireRate: 4
-  m_BurstRate: 1
-  m_ClipSize: 30
-  m_FireCount: 1
-  m_FireType: 0
-  m_FireOnUsedEvent: 0
-  m_WaitForEndUseEvent: 0
-  m_UseScope: 0
-  m_ReloadInputName: Reload
-  m_AutoReload: 0
-  m_RecoilAmount: 0.2
-  m_Spread: 0
-  m_RegenerateRate: 0
-  m_RegenerateAmount: 0
-  m_IdleAnimationStateName: 
-  m_FireAnimationStateName: 
-  m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 100000, guid: fcff4c44d69f24d48996d076cfc9bdcb, type: 2}
-  m_ShellLocation: {fileID: 4595231480123688}
-  m_ShellForce: {x: 0, y: 10, z: 10}
-  m_ShellTorque: {x: 0, y: 0, z: 0}
-  m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 100000, guid: 1782d8345c4d62545bc70c7ef2cf3975, type: 2}
-  m_MuzzleFlashLocation: {fileID: 4532622734159162}
-  m_Smoke: {fileID: 100000, guid: 7b0bce44cf6823d44b295d117771b98f, type: 2}
-  m_SmokeLocation: {fileID: 4352971537627370}
-  m_Particles: {fileID: 0}
-  m_FireSound:
-  - {fileID: 8300000, guid: 651ccc2084f4e874e8019e11c195b0ed, type: 3}
-  m_FireSoundDelay: 0
-  m_EmptyFireSound:
-  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
-  m_ReloadSound: []
-  m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 0}
-  m_ProjectileAlwaysVisible: 0
-  m_ProjectileRestLocation: {fileID: 0}
-  m_ProjectileRestParent: {fileID: 0}
-  m_HitscanFireRange: 3.4028235e+38
-  m_HitscanImpactLayers:
-    serializedVersion: 2
-    m_Bits: 2147483625
-  m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 5
-  m_HitscanImpactForce: 0.1
-  m_DefaultHitscanDecal: {fileID: 100000, guid: 53c61aa86b1411843bb13a98966979ae,
-    type: 2}
-  m_DefaultHitscanDust: {fileID: 100000, guid: f4bffe2da23a26b4e8a73165126fd262, type: 2}
-  m_DefaultHitscanSpark: {fileID: 100000, guid: 06392210ac61e8d4da100699b02c3cfd,
-    type: 2}
-  m_DefaultHitscanImpactSound: {fileID: 0}
-  m_Tracer: {fileID: 0}
-  m_TracerLocation: {fileID: 0}
-  m_Overheat: 0
-  m_OverheatShotCount: 0
-  m_CooldownDuration: 0
-  m_Flashlight: {fileID: 1960483751863582}
-  m_ToggleFlashlightInputName: Toggle Flashlight
-  m_ActivateFlashlightOnAim: 0
-  m_LaserSight: {fileID: 1740005953656622}
-  m_ToggleLaserSightInputName: Toggle Laser Sight
-  m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 1
---- !u!114 &114629424796468086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903504223930784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: 27999eff4c895eb479313c5106e23091, type: 2}
-  m_ItemName: Shotgun
-  m_DefaultStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
+          m_Layer: 2
           m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
-        - m_Name: Movement
+        - m_Name: Unequip
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
+          m_ItemNamePrefix: 0
+          m_Layer: 2
           m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_AimStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_EquipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UnequipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
   m_CanAim: 1
   m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300112, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_ItemSprite: {fileID: 21300016, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
   m_RightItemSprite: 1
   m_CrosshairsSprite:
-    m_Center: {fileID: 21300104, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Center: {fileID: 21300052, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     m_Offset: 0
     m_Left: {fileID: 0}
     m_Top: {fileID: 0}
     m_Right: {fileID: 0}
     m_Bottom: {fileID: 0}
     m_AccuracyLossPercent: 0.05
-  m_TwoHandedItem: 1
+  m_TwoHandedItem: 0
   m_NonDominantHandPosition: {fileID: 0}
   m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: 00b4a094e1626ab4897b8da1f4148bf1, type: 2}
+  m_ItemPickup: {fileID: 100000, guid: 83e6b7c702f773943b0870b245e6062b, type: 2}
   m_AimCameraState: 
   m_UseStates:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Attack
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Attack
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
@@ -6617,38 +6062,38 @@ MonoBehaviour:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Reload
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
       m_Groups:
       - m_StateOrder: 0
-        m_ComboTimeout: 0
+        m_ComboTimeout: 1
         m_States:
         - m_Name: Reload
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
-  m_FirePoint: {fileID: 4342116692274046}
+  m_FirePoint: {fileID: 4323452653699168}
   m_FireMode: 0
-  m_FireRate: 4
-  m_BurstRate: 1
-  m_ClipSize: 8
-  m_FireCount: 8
+  m_FireRate: 2
+  m_BurstRate: 5
+  m_ClipSize: 1
+  m_FireCount: 1
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -6656,58 +6101,56 @@ MonoBehaviour:
   m_ReloadInputName: Reload
   m_AutoReload: 1
   m_RecoilAmount: 0.1
-  m_Spread: 0.02
+  m_Spread: 0.01
   m_RegenerateRate: 0
   m_RegenerateAmount: 0
   m_IdleAnimationStateName: 
   m_FireAnimationStateName: 
   m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 100000, guid: 9f63c3ba733c8af49ae30363a2d6039e, type: 2}
-  m_ShellLocation: {fileID: 4858486059585984}
-  m_ShellForce: {x: 0, y: 5, z: 5}
+  m_Shell: {fileID: 0}
+  m_ShellLocation: {fileID: 0}
+  m_ShellForce: {x: 0, y: 0, z: 0}
   m_ShellTorque: {x: 0, y: 0, z: 0}
   m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 100000, guid: 8e7ab692fc0d0ec4ab4da263add5ba73, type: 2}
-  m_MuzzleFlashLocation: {fileID: 4345867518604428}
-  m_Smoke: {fileID: 100000, guid: f0b154a1fe29ea44fa17f83e797c4d98, type: 2}
-  m_SmokeLocation: {fileID: 4072343997069596}
+  m_MuzzleFlash: {fileID: 0}
+  m_MuzzleFlashLocation: {fileID: 0}
+  m_Smoke: {fileID: 100000, guid: 75e46e069d570b7429d5dc63b8d58182, type: 2}
+  m_SmokeLocation: {fileID: 4606737883071074}
   m_Particles: {fileID: 0}
   m_FireSound:
-  - {fileID: 8300000, guid: f5d7c2e02f58ff547942279867fbe753, type: 3}
+  - {fileID: 8300000, guid: 587a56e0f3bf45d43937429958140f20, type: 3}
   m_FireSoundDelay: 0
   m_EmptyFireSound:
   - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
   m_ReloadSound: []
   m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 0}
+  m_Projectile: {fileID: 100000, guid: 4c8a01cd5312c70489cdd75480924a1f, type: 2}
   m_ProjectileAlwaysVisible: 0
   m_ProjectileRestLocation: {fileID: 0}
   m_ProjectileRestParent: {fileID: 0}
   m_HitscanFireRange: 3.4028235e+38
   m_HitscanImpactLayers:
     serializedVersion: 2
-    m_Bits: 2147483625
+    m_Bits: 4294967295
   m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 2
-  m_HitscanImpactForce: 0.07
-  m_DefaultHitscanDecal: {fileID: 100000, guid: e66c61a8e9f12fb408f831aca1ba06fd,
-    type: 2}
-  m_DefaultHitscanDust: {fileID: 100000, guid: f89b8a7080c8f5649ad76d5697a1770a, type: 2}
-  m_DefaultHitscanSpark: {fileID: 100000, guid: 977ef2df42673e24fad008ebd0768fa1,
-    type: 2}
+  m_HitscanDamageAmount: 10
+  m_HitscanImpactForce: 5
+  m_DefaultHitscanDecal: {fileID: 0}
+  m_DefaultHitscanDust: {fileID: 0}
+  m_DefaultHitscanSpark: {fileID: 0}
   m_DefaultHitscanImpactSound: {fileID: 0}
   m_Tracer: {fileID: 0}
   m_TracerLocation: {fileID: 0}
   m_Overheat: 0
   m_OverheatShotCount: 0
   m_CooldownDuration: 0
-  m_Flashlight: {fileID: 1182842572995472}
+  m_Flashlight: {fileID: 0}
   m_ToggleFlashlightInputName: Toggle Flashlight
   m_ActivateFlashlightOnAim: 0
   m_LaserSight: {fileID: 0}
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114644778286287978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6991,6 +6434,299 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089d5c207d4d6af4bba434161cbef0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114696338658535066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563266102707096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemType: {fileID: 11400000, guid: f7a7ff59e6f44ed41b780028c7e443f3, type: 2}
+  m_ItemName: Assault Rifle
+  m_DefaultStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities:
+    - m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 0
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 4
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+      m_Ability: {fileID: 114359819425765536}
+  m_AimStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_EquipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UnequipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_CanAim: 1
+  m_RequireAim: 1
+  m_ItemSprite: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_RightItemSprite: 1
+  m_CrosshairsSprite:
+    m_Center: {fileID: 21300056, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Offset: 5
+    m_Left: {fileID: 21300064, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Top: {fileID: 21300058, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Right: {fileID: 21300062, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Bottom: {fileID: 21300060, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_AccuracyLossPercent: 2
+  m_TwoHandedItem: 1
+  m_NonDominantHandPosition: {fileID: 0}
+  m_HolsterTarget: {fileID: 0}
+  m_ItemPickup: {fileID: 100000, guid: 70c0a3f8e11cd2944a3171e32cbf1c28, type: 2}
+  m_AimCameraState: 
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Fire1
+  m_DualWieldUseInputName: Fire2
+  m_CanUseInAir: 1
+  m_DebugDrawFireRay: 0
+  m_ReloadStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_FirePoint: {fileID: 4334674122823796}
+  m_FireMode: 1
+  m_FireRate: 10
+  m_BurstRate: 5
+  m_ClipSize: 50
+  m_FireCount: 1
+  m_FireType: 0
+  m_FireOnUsedEvent: 0
+  m_WaitForEndUseEvent: 0
+  m_UseScope: 0
+  m_ReloadInputName: Reload
+  m_AutoReload: 1
+  m_RecoilAmount: 0.03
+  m_Spread: 0.01
+  m_RegenerateRate: 0
+  m_RegenerateAmount: 0
+  m_IdleAnimationStateName: 
+  m_FireAnimationStateName: 
+  m_ReloadAnimationStateName: 
+  m_Shell: {fileID: 100000, guid: 2794fdea5c9fd6c4a89e3ffc3f45fa6f, type: 2}
+  m_ShellLocation: {fileID: 4514913944153432}
+  m_ShellForce: {x: -50, y: 10, z: 0}
+  m_ShellTorque: {x: 0, y: 0, z: 0}
+  m_ShellDelay: 0
+  m_MuzzleFlash: {fileID: 100000, guid: 2dd45cba069fb3340a0792f5eb7362c7, type: 2}
+  m_MuzzleFlashLocation: {fileID: 4852943991742166}
+  m_Smoke: {fileID: 100000, guid: 20e8c1c3975b5424988b8d3999108fe3, type: 2}
+  m_SmokeLocation: {fileID: 4737534138335528}
+  m_Particles: {fileID: 0}
+  m_FireSound:
+  - {fileID: 8300000, guid: 27e93e472274f7e4aa82c54dfd05bd35, type: 3}
+  m_FireSoundDelay: 0
+  m_EmptyFireSound:
+  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
+  m_ReloadSound: []
+  m_ReloadSoundDelay: 0
+  m_Projectile: {fileID: 0}
+  m_ProjectileAlwaysVisible: 0
+  m_ProjectileRestLocation: {fileID: 0}
+  m_ProjectileRestParent: {fileID: 0}
+  m_HitscanFireRange: 3.4028235e+38
+  m_HitscanImpactLayers:
+    serializedVersion: 2
+    m_Bits: 2147483625
+  m_HitscanDamageEvent: 
+  m_HitscanDamageAmount: 7
+  m_HitscanImpactForce: 0.1
+  m_DefaultHitscanDecal: {fileID: 100000, guid: 9b7a72265f46eef41ab48a568d6502a9,
+    type: 2}
+  m_DefaultHitscanDust: {fileID: 100000, guid: f3ed2988ed047264e8ec6e6b585ea14a, type: 2}
+  m_DefaultHitscanSpark: {fileID: 100000, guid: abb9cdac57d76d840badde8d36473ddc,
+    type: 2}
+  m_DefaultHitscanImpactSound: {fileID: 0}
+  m_Tracer: {fileID: 0}
+  m_TracerLocation: {fileID: 0}
+  m_Overheat: 0
+  m_OverheatShotCount: 0
+  m_CooldownDuration: 0
+  m_Flashlight: {fileID: 1510004509025096}
+  m_ToggleFlashlightInputName: Toggle Flashlight
+  m_ActivateFlashlightOnAim: 0
+  m_LaserSight: {fileID: 1432892156122276}
+  m_ToggleLaserSightInputName: Toggle Laser Sight
+  m_ActivateLaserSightOnAim: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114705129861064068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7007,564 +6743,6 @@ MonoBehaviour:
   m_CanUseSecondaryItem: 1
   m_CanToggleFlashlight: 1
   m_CanToggleLaserSight: 1
---- !u!114 &114740004959874220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1349629078635496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: b9892dc51f8bab84590e65c39cd82e88, type: 2}
-  m_ItemName: Pistol
-  m_DefaultStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Idle
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_AimStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_EquipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 2
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UnequipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_CanAim: 1
-  m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-  m_RightItemSprite: 1
-  m_CrosshairsSprite:
-    m_Center: {fileID: 21300022, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Offset: 8
-    m_Left: {fileID: 21300050, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Top: {fileID: 21300046, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Right: {fileID: 21300048, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Bottom: {fileID: 21300066, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_AccuracyLossPercent: 0.05
-  m_TwoHandedItem: 0
-  m_NonDominantHandPosition: {fileID: 0}
-  m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: b9594ad2df964d042bee2d3c98d4cffa, type: 2}
-  m_AimCameraState: 
-  m_UseStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UseInputName: Fire1
-  m_DualWieldUseInputName: Fire2
-  m_CanUseInAir: 1
-  m_DebugDrawFireRay: 0
-  m_ReloadStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_FirePoint: {fileID: 4256139391803946}
-  m_FireMode: 0
-  m_FireRate: 4
-  m_BurstRate: 1
-  m_ClipSize: 30
-  m_FireCount: 1
-  m_FireType: 0
-  m_FireOnUsedEvent: 0
-  m_WaitForEndUseEvent: 0
-  m_UseScope: 0
-  m_ReloadInputName: Reload
-  m_AutoReload: 0
-  m_RecoilAmount: 0.2
-  m_Spread: 0
-  m_RegenerateRate: 0
-  m_RegenerateAmount: 0
-  m_IdleAnimationStateName: 
-  m_FireAnimationStateName: 
-  m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 100000, guid: fcff4c44d69f24d48996d076cfc9bdcb, type: 2}
-  m_ShellLocation: {fileID: 4234830462037906}
-  m_ShellForce: {x: 0, y: 10, z: 10}
-  m_ShellTorque: {x: 0, y: 0, z: 0}
-  m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 100000, guid: 1782d8345c4d62545bc70c7ef2cf3975, type: 2}
-  m_MuzzleFlashLocation: {fileID: 4781376771848330}
-  m_Smoke: {fileID: 100000, guid: 7b0bce44cf6823d44b295d117771b98f, type: 2}
-  m_SmokeLocation: {fileID: 4486758086712772}
-  m_Particles: {fileID: 0}
-  m_FireSound:
-  - {fileID: 8300000, guid: 651ccc2084f4e874e8019e11c195b0ed, type: 3}
-  m_FireSoundDelay: 0
-  m_EmptyFireSound:
-  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
-  m_ReloadSound: []
-  m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 0}
-  m_ProjectileAlwaysVisible: 0
-  m_ProjectileRestLocation: {fileID: 0}
-  m_ProjectileRestParent: {fileID: 0}
-  m_HitscanFireRange: 3.4028235e+38
-  m_HitscanImpactLayers:
-    serializedVersion: 2
-    m_Bits: 2147483625
-  m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 5
-  m_HitscanImpactForce: 0.1
-  m_DefaultHitscanDecal: {fileID: 100000, guid: 53c61aa86b1411843bb13a98966979ae,
-    type: 2}
-  m_DefaultHitscanDust: {fileID: 100000, guid: f4bffe2da23a26b4e8a73165126fd262, type: 2}
-  m_DefaultHitscanSpark: {fileID: 100000, guid: 06392210ac61e8d4da100699b02c3cfd,
-    type: 2}
-  m_DefaultHitscanImpactSound: {fileID: 0}
-  m_Tracer: {fileID: 0}
-  m_TracerLocation: {fileID: 0}
-  m_Overheat: 0
-  m_OverheatShotCount: 0
-  m_CooldownDuration: 0
-  m_Flashlight: {fileID: 1234977382998422}
-  m_ToggleFlashlightInputName: Toggle Flashlight
-  m_ActivateFlashlightOnAim: 0
-  m_LaserSight: {fileID: 1229111943396926}
-  m_ToggleLaserSightInputName: Toggle Laser Sight
-  m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 1
---- !u!114 &114748004637689014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054129539935052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622ebe3b28e45424f9003e0e901af2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ItemType: {fileID: 11400000, guid: b876b0067262c204eb9c350fe44ef7eb, type: 2}
-  m_ItemName: Sniper Rifle
-  m_DefaultStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Movement
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 12
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_AimStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 0
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Aim
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_EquipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Equip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UnequipStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Unequip
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 0
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_CanAim: 1
-  m_RequireAim: 1
-  m_ItemSprite: {fileID: 21300132, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-  m_RightItemSprite: 1
-  m_CrosshairsSprite:
-    m_Center: {fileID: 21300106, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    m_Offset: 0
-    m_Left: {fileID: 0}
-    m_Top: {fileID: 0}
-    m_Right: {fileID: 0}
-    m_Bottom: {fileID: 0}
-    m_AccuracyLossPercent: 0.05
-  m_TwoHandedItem: 0
-  m_NonDominantHandPosition: {fileID: 0}
-  m_HolsterTarget: {fileID: 0}
-  m_ItemPickup: {fileID: 100000, guid: cfce133f1d2d5d443992a26d9aab6225, type: 2}
-  m_AimCameraState: Scope
-  m_UseStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Attack
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_UseInputName: Fire1
-  m_DualWieldUseInputName: Fire2
-  m_CanUseInAir: 1
-  m_DebugDrawFireRay: 0
-  m_ReloadStates:
-    m_Idle:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Movement:
-      m_Groups:
-      - m_StateOrder: 0
-        m_ComboTimeout: 0
-        m_States:
-        - m_Name: Reload
-          m_TransitionDuration: 0.2
-          m_SpeedMultiplier: 1
-          m_CanReplay: 0
-          m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
-          m_ForceRootMotion: 0
-      m_GroupOrder: 0
-    m_Abilities: []
-  m_FirePoint: {fileID: 4459210078548662}
-  m_FireMode: 0
-  m_FireRate: 1
-  m_BurstRate: 5
-  m_ClipSize: 8
-  m_FireCount: 1
-  m_FireType: 0
-  m_FireOnUsedEvent: 0
-  m_WaitForEndUseEvent: 0
-  m_UseScope: 1
-  m_ReloadInputName: Reload
-  m_AutoReload: 0
-  m_RecoilAmount: 0
-  m_Spread: 0
-  m_RegenerateRate: 0
-  m_RegenerateAmount: 0
-  m_IdleAnimationStateName: 
-  m_FireAnimationStateName: 
-  m_ReloadAnimationStateName: 
-  m_Shell: {fileID: 100000, guid: 2794fdea5c9fd6c4a89e3ffc3f45fa6f, type: 2}
-  m_ShellLocation: {fileID: 4951915604800368}
-  m_ShellForce: {x: 0, y: 0, z: 0}
-  m_ShellTorque: {x: 0, y: 0, z: 0}
-  m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 0}
-  m_MuzzleFlashLocation: {fileID: 4834102550710582}
-  m_Smoke: {fileID: 0}
-  m_SmokeLocation: {fileID: 4098948579485676}
-  m_Particles: {fileID: 0}
-  m_FireSound:
-  - {fileID: 8300000, guid: 383b716bce9f15b49b8a245b8d3e2ce7, type: 3}
-  m_FireSoundDelay: 0
-  m_EmptyFireSound:
-  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
-  m_ReloadSound: []
-  m_ReloadSoundDelay: 0
-  m_Projectile: {fileID: 0}
-  m_ProjectileAlwaysVisible: 0
-  m_ProjectileRestLocation: {fileID: 0}
-  m_ProjectileRestParent: {fileID: 0}
-  m_HitscanFireRange: 3.4028235e+38
-  m_HitscanImpactLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 10
-  m_HitscanImpactForce: 5
-  m_DefaultHitscanDecal: {fileID: 100000, guid: a350915d26374cc4b81f5cb2d2ec3e62,
-    type: 2}
-  m_DefaultHitscanDust: {fileID: 100000, guid: 01ce7bbeaaab5ec46b3e7b22e09c2e12, type: 2}
-  m_DefaultHitscanSpark: {fileID: 100000, guid: fa6b93c32d015974d95dd2536ba56599,
-    type: 2}
-  m_DefaultHitscanImpactSound: {fileID: 0}
-  m_Tracer: {fileID: 0}
-  m_TracerLocation: {fileID: 0}
-  m_Overheat: 0
-  m_OverheatShotCount: 0
-  m_CooldownDuration: 0
-  m_Flashlight: {fileID: 0}
-  m_ToggleFlashlightInputName: Toggle Flashlight
-  m_ActivateFlashlightOnAim: 0
-  m_LaserSight: {fileID: 0}
-  m_ToggleLaserSightInputName: Toggle Laser Sight
-  m_ActivateLaserSightOnAim: 0
-  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114772879493442706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7775,6 +6953,285 @@ MonoBehaviour:
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
+--- !u!114 &114835221788939174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903504223930784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemType: {fileID: 11400000, guid: 27999eff4c895eb479313c5106e23091, type: 2}
+  m_ItemName: Shotgun
+  m_DefaultStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_AimStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_EquipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UnequipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_CanAim: 1
+  m_RequireAim: 1
+  m_ItemSprite: {fileID: 21300112, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_RightItemSprite: 1
+  m_CrosshairsSprite:
+    m_Center: {fileID: 21300104, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Offset: 0
+    m_Left: {fileID: 0}
+    m_Top: {fileID: 0}
+    m_Right: {fileID: 0}
+    m_Bottom: {fileID: 0}
+    m_AccuracyLossPercent: 0.05
+  m_TwoHandedItem: 1
+  m_NonDominantHandPosition: {fileID: 0}
+  m_HolsterTarget: {fileID: 0}
+  m_ItemPickup: {fileID: 100000, guid: 00b4a094e1626ab4897b8da1f4148bf1, type: 2}
+  m_AimCameraState: 
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Fire1
+  m_DualWieldUseInputName: Fire2
+  m_CanUseInAir: 1
+  m_DebugDrawFireRay: 0
+  m_ReloadStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_FirePoint: {fileID: 4342116692274046}
+  m_FireMode: 0
+  m_FireRate: 4
+  m_BurstRate: 5
+  m_ClipSize: 8
+  m_FireCount: 8
+  m_FireType: 0
+  m_FireOnUsedEvent: 0
+  m_WaitForEndUseEvent: 0
+  m_UseScope: 0
+  m_ReloadInputName: Reload
+  m_AutoReload: 1
+  m_RecoilAmount: 0.1
+  m_Spread: 0.02
+  m_RegenerateRate: 0
+  m_RegenerateAmount: 0
+  m_IdleAnimationStateName: 
+  m_FireAnimationStateName: 
+  m_ReloadAnimationStateName: 
+  m_Shell: {fileID: 100000, guid: 9f63c3ba733c8af49ae30363a2d6039e, type: 2}
+  m_ShellLocation: {fileID: 4858486059585984}
+  m_ShellForce: {x: 0, y: 5, z: 5}
+  m_ShellTorque: {x: 0, y: 0, z: 0}
+  m_ShellDelay: 0
+  m_MuzzleFlash: {fileID: 100000, guid: 8e7ab692fc0d0ec4ab4da263add5ba73, type: 2}
+  m_MuzzleFlashLocation: {fileID: 4345867518604428}
+  m_Smoke: {fileID: 100000, guid: f0b154a1fe29ea44fa17f83e797c4d98, type: 2}
+  m_SmokeLocation: {fileID: 4072343997069596}
+  m_Particles: {fileID: 0}
+  m_FireSound:
+  - {fileID: 8300000, guid: f5d7c2e02f58ff547942279867fbe753, type: 3}
+  m_FireSoundDelay: 0
+  m_EmptyFireSound:
+  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
+  m_ReloadSound: []
+  m_ReloadSoundDelay: 0
+  m_Projectile: {fileID: 0}
+  m_ProjectileAlwaysVisible: 0
+  m_ProjectileRestLocation: {fileID: 0}
+  m_ProjectileRestParent: {fileID: 0}
+  m_HitscanFireRange: 3.4028235e+38
+  m_HitscanImpactLayers:
+    serializedVersion: 2
+    m_Bits: 2147483625
+  m_HitscanDamageEvent: 
+  m_HitscanDamageAmount: 2
+  m_HitscanImpactForce: 0.07
+  m_DefaultHitscanDecal: {fileID: 100000, guid: e66c61a8e9f12fb408f831aca1ba06fd,
+    type: 2}
+  m_DefaultHitscanDust: {fileID: 100000, guid: f89b8a7080c8f5649ad76d5697a1770a, type: 2}
+  m_DefaultHitscanSpark: {fileID: 100000, guid: 977ef2df42673e24fad008ebd0768fa1,
+    type: 2}
+  m_DefaultHitscanImpactSound: {fileID: 0}
+  m_Tracer: {fileID: 0}
+  m_TracerLocation: {fileID: 0}
+  m_Overheat: 0
+  m_OverheatShotCount: 0
+  m_CooldownDuration: 0
+  m_Flashlight: {fileID: 1182842572995472}
+  m_ToggleFlashlightInputName: Toggle Flashlight
+  m_ActivateFlashlightOnAim: 0
+  m_LaserSight: {fileID: 0}
+  m_ToggleLaserSightInputName: Toggle Laser Sight
+  m_ActivateLaserSightOnAim: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114843230825088046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7962,6 +7419,285 @@ MonoBehaviour:
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
+--- !u!114 &114845500091795520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349629078635496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemType: {fileID: 11400000, guid: b9892dc51f8bab84590e65c39cd82e88, type: 2}
+  m_ItemName: Pistol
+  m_DefaultStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Idle
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Movement
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_AimStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_EquipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UnequipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_CanAim: 1
+  m_RequireAim: 1
+  m_ItemSprite: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_RightItemSprite: 1
+  m_CrosshairsSprite:
+    m_Center: {fileID: 21300022, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Offset: 8
+    m_Left: {fileID: 21300050, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Top: {fileID: 21300046, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Right: {fileID: 21300048, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Bottom: {fileID: 21300066, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_AccuracyLossPercent: 0.05
+  m_TwoHandedItem: 0
+  m_NonDominantHandPosition: {fileID: 0}
+  m_HolsterTarget: {fileID: 0}
+  m_ItemPickup: {fileID: 100000, guid: b9594ad2df964d042bee2d3c98d4cffa, type: 2}
+  m_AimCameraState: 
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Fire1
+  m_DualWieldUseInputName: Fire2
+  m_CanUseInAir: 1
+  m_DebugDrawFireRay: 0
+  m_ReloadStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_FirePoint: {fileID: 4256139391803946}
+  m_FireMode: 0
+  m_FireRate: 4
+  m_BurstRate: 5
+  m_ClipSize: 30
+  m_FireCount: 1
+  m_FireType: 0
+  m_FireOnUsedEvent: 0
+  m_WaitForEndUseEvent: 0
+  m_UseScope: 0
+  m_ReloadInputName: Reload
+  m_AutoReload: 0
+  m_RecoilAmount: 0.2
+  m_Spread: 0
+  m_RegenerateRate: 0
+  m_RegenerateAmount: 0
+  m_IdleAnimationStateName: 
+  m_FireAnimationStateName: 
+  m_ReloadAnimationStateName: 
+  m_Shell: {fileID: 100000, guid: fcff4c44d69f24d48996d076cfc9bdcb, type: 2}
+  m_ShellLocation: {fileID: 4234830462037906}
+  m_ShellForce: {x: 0, y: 10, z: 10}
+  m_ShellTorque: {x: 0, y: 0, z: 0}
+  m_ShellDelay: 0
+  m_MuzzleFlash: {fileID: 100000, guid: 1782d8345c4d62545bc70c7ef2cf3975, type: 2}
+  m_MuzzleFlashLocation: {fileID: 4781376771848330}
+  m_Smoke: {fileID: 100000, guid: 7b0bce44cf6823d44b295d117771b98f, type: 2}
+  m_SmokeLocation: {fileID: 4486758086712772}
+  m_Particles: {fileID: 0}
+  m_FireSound:
+  - {fileID: 8300000, guid: 651ccc2084f4e874e8019e11c195b0ed, type: 3}
+  m_FireSoundDelay: 0
+  m_EmptyFireSound:
+  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
+  m_ReloadSound: []
+  m_ReloadSoundDelay: 0
+  m_Projectile: {fileID: 0}
+  m_ProjectileAlwaysVisible: 0
+  m_ProjectileRestLocation: {fileID: 0}
+  m_ProjectileRestParent: {fileID: 0}
+  m_HitscanFireRange: 3.4028235e+38
+  m_HitscanImpactLayers:
+    serializedVersion: 2
+    m_Bits: 2147483625
+  m_HitscanDamageEvent: 
+  m_HitscanDamageAmount: 5
+  m_HitscanImpactForce: 0.1
+  m_DefaultHitscanDecal: {fileID: 100000, guid: 53c61aa86b1411843bb13a98966979ae,
+    type: 2}
+  m_DefaultHitscanDust: {fileID: 100000, guid: f4bffe2da23a26b4e8a73165126fd262, type: 2}
+  m_DefaultHitscanSpark: {fileID: 100000, guid: 06392210ac61e8d4da100699b02c3cfd,
+    type: 2}
+  m_DefaultHitscanImpactSound: {fileID: 0}
+  m_Tracer: {fileID: 0}
+  m_TracerLocation: {fileID: 0}
+  m_Overheat: 0
+  m_OverheatShotCount: 0
+  m_CooldownDuration: 0
+  m_Flashlight: {fileID: 1234977382998422}
+  m_ToggleFlashlightInputName: Toggle Flashlight
+  m_ActivateFlashlightOnAim: 0
+  m_LaserSight: {fileID: 1229111943396926}
+  m_ToggleLaserSightInputName: Toggle Laser Sight
+  m_ActivateLaserSightOnAim: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114863510223290954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7984,32 +7720,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd2d7578fe0a9d4a99c67da9bb8228c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114899550490750034
+--- !u!114 &114911889001884550
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1563266102707096}
+  m_GameObject: {fileID: 1546829488955856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4212382ce18e1144b9c1cab28d804bb9, type: 3}
+  m_Script: {fileID: 11500000, guid: c2887054f4f00db409c468b9195405a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ConsumableItemType: {fileID: 11400000, guid: 88e4d87160eb57d41a5a124b2f486019,
-    type: 2}
-  m_UseStates:
+  m_ItemType: {fileID: 11400000, guid: 2580c6a461a1a794a970914c497c3ba2, type: 2}
+  m_ItemName: Pistol
+  m_DefaultStates:
     m_Idle:
       m_Groups:
       - m_StateOrder: 0
         m_ComboTimeout: 1
         m_States:
-        - m_Name: Extension Attack
+        - m_Name: Idle
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Movement:
@@ -8017,57 +7753,252 @@ MonoBehaviour:
       - m_StateOrder: 0
         m_ComboTimeout: 1
         m_States:
-        - m_Name: Extension Attack
+        - m_Name: Movement
           m_TransitionDuration: 0.2
           m_SpeedMultiplier: 1
           m_CanReplay: 0
           m_ItemNamePrefix: 1
-          m_Layer: 14
-          m_IgnoreLowerPriority: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
-  m_UseInputName: Extension Fire1
+  m_AimStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Aim
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_EquipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Equip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UnequipStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Unequip
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 0
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_CanAim: 1
+  m_RequireAim: 1
+  m_ItemSprite: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+  m_RightItemSprite: 1
+  m_CrosshairsSprite:
+    m_Center: {fileID: 21300022, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Offset: 8
+    m_Left: {fileID: 21300050, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Top: {fileID: 21300046, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Right: {fileID: 21300048, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_Bottom: {fileID: 21300066, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    m_AccuracyLossPercent: 0.05
+  m_TwoHandedItem: 0
+  m_NonDominantHandPosition: {fileID: 0}
+  m_HolsterTarget: {fileID: 0}
+  m_ItemPickup: {fileID: 100000, guid: b9594ad2df964d042bee2d3c98d4cffa, type: 2}
+  m_AimCameraState: 
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Fire1
+  m_DualWieldUseInputName: Fire2
   m_CanUseInAir: 1
   m_DebugDrawFireRay: 0
-  m_FirePoint: {fileID: 4334674122823796}
+  m_ReloadStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Reload
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_FirePoint: {fileID: 4341325527181638}
   m_FireMode: 0
-  m_FireRate: 2
+  m_FireRate: 4
   m_BurstRate: 5
+  m_ClipSize: 30
   m_FireCount: 1
+  m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
-  m_RecoilAmount: 0.1
-  m_Spread: 0.01
+  m_UseScope: 0
+  m_ReloadInputName: Reload
+  m_AutoReload: 0
+  m_RecoilAmount: 0.2
+  m_Spread: 0
   m_RegenerateRate: 0
   m_RegenerateAmount: 0
-  m_Shell: {fileID: 0}
-  m_ShellLocation: {fileID: 0}
-  m_ShellForce: {x: 0, y: 0, z: 0}
+  m_IdleAnimationStateName: 
+  m_FireAnimationStateName: 
+  m_ReloadAnimationStateName: 
+  m_Shell: {fileID: 100000, guid: fcff4c44d69f24d48996d076cfc9bdcb, type: 2}
+  m_ShellLocation: {fileID: 4595231480123688}
+  m_ShellForce: {x: 0, y: 10, z: 10}
   m_ShellTorque: {x: 0, y: 0, z: 0}
   m_ShellDelay: 0
-  m_MuzzleFlash: {fileID: 0}
-  m_MuzzleFlashLocation: {fileID: 0}
-  m_Smoke: {fileID: 100000, guid: 20e8c1c3975b5424988b8d3999108fe3, type: 2}
-  m_SmokeLocation: {fileID: 4737534138335528}
-  m_FireParticles: {fileID: 0}
-  m_FireSound: []
+  m_MuzzleFlash: {fileID: 100000, guid: 1782d8345c4d62545bc70c7ef2cf3975, type: 2}
+  m_MuzzleFlashLocation: {fileID: 4532622734159162}
+  m_Smoke: {fileID: 100000, guid: 7b0bce44cf6823d44b295d117771b98f, type: 2}
+  m_SmokeLocation: {fileID: 4352971537627370}
+  m_Particles: {fileID: 0}
+  m_FireSound:
+  - {fileID: 8300000, guid: 651ccc2084f4e874e8019e11c195b0ed, type: 3}
   m_FireSoundDelay: 0
-  m_EmptyFireSound: []
-  m_Projectile: {fileID: 100000, guid: bffe92ea3cb793444a858dbd9156a592, type: 2}
+  m_EmptyFireSound:
+  - {fileID: 8300000, guid: 57e01c3aba014b14298b1796dbd2044b, type: 3}
+  m_ReloadSound: []
+  m_ReloadSoundDelay: 0
+  m_Projectile: {fileID: 0}
+  m_ProjectileAlwaysVisible: 0
+  m_ProjectileRestLocation: {fileID: 0}
+  m_ProjectileRestParent: {fileID: 0}
   m_HitscanFireRange: 3.4028235e+38
   m_HitscanImpactLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483625
   m_HitscanDamageEvent: 
-  m_HitscanDamageAmount: 10
-  m_HitscanImpactForce: 5
-  m_DefaultHitscanDecal: {fileID: 0}
-  m_DefaultHitscanDust: {fileID: 0}
-  m_DefaultHitscanSpark: {fileID: 0}
+  m_HitscanDamageAmount: 5
+  m_HitscanImpactForce: 0.1
+  m_DefaultHitscanDecal: {fileID: 100000, guid: 53c61aa86b1411843bb13a98966979ae,
+    type: 2}
+  m_DefaultHitscanDust: {fileID: 100000, guid: f4bffe2da23a26b4e8a73165126fd262, type: 2}
+  m_DefaultHitscanSpark: {fileID: 100000, guid: 06392210ac61e8d4da100699b02c3cfd,
+    type: 2}
   m_DefaultHitscanImpactSound: {fileID: 0}
   m_Tracer: {fileID: 0}
   m_TracerLocation: {fileID: 0}
+  m_Overheat: 0
+  m_OverheatShotCount: 0
+  m_CooldownDuration: 0
+  m_Flashlight: {fileID: 1960483751863582}
+  m_ToggleFlashlightInputName: Toggle Flashlight
+  m_ActivateFlashlightOnAim: 0
+  m_LaserSight: {fileID: 1740005953656622}
+  m_ToggleLaserSightInputName: Toggle Laser Sight
+  m_ActivateLaserSightOnAim: 0
+  m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114915324752237212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8127,6 +8058,90 @@ MonoBehaviour:
   m_CanSwitchToUnequippedItemType: 0
   m_DropItems: 1
   m_DroppedItemsParent: {fileID: 0}
+--- !u!114 &114990431605110420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563266102707096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae08779ea8b51449bb754347ba75949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConsumableItemType: {fileID: 11400000, guid: 88e4d87160eb57d41a5a124b2f486019,
+    type: 2}
+  m_UseStates:
+    m_Idle:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Movement:
+      m_Groups:
+      - m_StateOrder: 0
+        m_ComboTimeout: 1
+        m_States:
+        - m_Name: Attack
+          m_TransitionDuration: 0.2
+          m_SpeedMultiplier: 1
+          m_CanReplay: 0
+          m_ItemNamePrefix: 1
+          m_Layer: 2
+          m_IgnoreLowerPriority: 0
+          m_ForceRootMotion: 0
+      m_GroupOrder: 0
+    m_Abilities: []
+  m_UseInputName: Extension Fire1
+  m_CanUseInAir: 1
+  m_DebugDrawFireRay: 0
+  m_FirePoint: {fileID: 4334674122823796}
+  m_FireMode: 0
+  m_FireRate: 2
+  m_BurstRate: 5
+  m_FireCount: 1
+  m_FireOnUsedEvent: 0
+  m_WaitForEndUseEvent: 0
+  m_RecoilAmount: 0.1
+  m_Spread: 0.01
+  m_RegenerateRate: 0
+  m_RegenerateAmount: 0
+  m_Shell: {fileID: 0}
+  m_ShellLocation: {fileID: 0}
+  m_ShellForce: {x: 0, y: 0, z: 0}
+  m_ShellTorque: {x: 0, y: 0, z: 0}
+  m_ShellDelay: 0
+  m_MuzzleFlash: {fileID: 0}
+  m_MuzzleFlashLocation: {fileID: 0}
+  m_Smoke: {fileID: 100000, guid: 20e8c1c3975b5424988b8d3999108fe3, type: 2}
+  m_SmokeLocation: {fileID: 4737534138335528}
+  m_FireParticles: {fileID: 0}
+  m_FireSound: []
+  m_FireSoundDelay: 0
+  m_EmptyFireSound: []
+  m_Projectile: {fileID: 100000, guid: bffe92ea3cb793444a858dbd9156a592, type: 2}
+  m_HitscanFireRange: 3.4028235e+38
+  m_HitscanImpactLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_HitscanDamageEvent: 
+  m_HitscanDamageAmount: 10
+  m_HitscanImpactForce: 5
+  m_DefaultHitscanDecal: {fileID: 0}
+  m_DefaultHitscanDust: {fileID: 0}
+  m_DefaultHitscanSpark: {fileID: 0}
+  m_DefaultHitscanImpactSound: {fileID: 0}
+  m_Tracer: {fileID: 0}
+  m_TracerLocation: {fileID: 0}
 --- !u!120 &120162141991647164
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -8671,7 +8686,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.022393076, y: 0.09503562, z: 0.0026048871}
+  m_ConnectedAnchor: {x: -0.02239314, y: 0.09503562, z: 0.0026052392}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -8715,7 +8730,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.4064186, y: 0.16996834, z: -0.046881974}
+  m_ConnectedAnchor: {x: -0.40641862, y: 0.16996822, z: -0.046882212}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -8803,7 +8818,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.17167984, y: -0.000000036092604, z: -0.00000010430814}
+  m_ConnectedAnchor: {x: -0.17167982, y: -0.000000036092654, z: -0.00000022351745}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -8847,7 +8862,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.33543277, y: 0.00000011175871, z: 0.00000008940697}
+  m_ConnectedAnchor: {x: -0.33543268, y: 0.00000022351742, z: 0.000000059604645}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -8891,7 +8906,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.49180716, y: 0.000000060361366, z: -0.000000089407465}
+  m_ConnectedAnchor: {x: -0.49180722, y: -0.000000058847966, z: 0.0000001639137}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -8935,7 +8950,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.022393074, y: -0.095026605, z: 0.0026048555}
+  m_ConnectedAnchor: {x: -0.022393119, y: -0.09502678, z: 0.0026051013}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -8979,7 +8994,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.49180707, y: -0.000000038009613, z: 0.00000019371612}
+  m_ConnectedAnchor: {x: -0.49180707, y: -0.00000003678725, z: -0.000000104308675}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -9023,7 +9038,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.49289647, y: -0.001157774, z: -0.009451616}
+  m_ConnectedAnchor: {x: -0.49289647, y: -0.0011576548, z: -0.009451616}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -9067,7 +9082,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.3354331, y: 0.00000025331974, z: 0}
+  m_ConnectedAnchor: {x: -0.3354331, y: 0.00000020116568, z: 0.00000011920929}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
