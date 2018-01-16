@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Opsive.ThirdPersonController;
+using RTSCoreFramework;
 
 namespace RTSPrototype
 {
@@ -121,7 +122,7 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnCommandAttack(AllyMember _ally)
+        void OnCommandAttack(AllyMemberCore _ally)
         {
             if (_ally != null)
                 LookAtTarget(_ally.transform);

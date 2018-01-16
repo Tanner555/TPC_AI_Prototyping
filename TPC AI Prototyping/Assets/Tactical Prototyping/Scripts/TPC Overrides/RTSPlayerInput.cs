@@ -72,7 +72,7 @@ namespace RTSPrototype
             isMovingCamera = disable;
         }
 
-        void OnAllySwitchEnableHandler(PartyManager _party, AllyMember _toSet, AllyMember _current)
+        void OnAllySwitchEnableHandler(PartyManagerCore _party, AllyMemberCore _toSet, AllyMemberCore _current)
         {
             DisableMouseCursor(false);
         }

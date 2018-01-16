@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTSPrototype;
 
 namespace RTSCoreFramework
 {
@@ -53,7 +52,7 @@ namespace RTSCoreFramework
         public event RtsHitTypeAndRayCastHitHandler OnHoverLeave;
         public event RtsHitTypeAndRayCastHitHandler EventCommandMove;
 
-        public delegate void AllyHandler(AllyMember ally);
+        public delegate void AllyHandler(AllyMemberCore ally);
         public event AllyHandler EventCommandAttackEnemy;
 
         //public delegate void NavSpeedHandler(AllyMoveSpeed _navSpeed);
@@ -271,7 +270,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventCommandAttackEnemy(AllyMember ally)
+        public void CallEventCommandAttackEnemy(AllyMemberCore ally)
         {
             if (EventCommandAttackEnemy != null)
             {

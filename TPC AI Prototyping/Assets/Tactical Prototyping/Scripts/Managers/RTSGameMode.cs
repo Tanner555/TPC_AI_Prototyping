@@ -33,8 +33,9 @@ namespace RTSPrototype
         #endregion
 
         #region UIAndCameraProcessing
-        protected override void SetCameraCharacter(AllyMember _target)
+        protected override void SetCameraCharacter(AllyMemberCore _targetCore)
         {
+            AllyMember _target = (AllyMember)_targetCore;
             base.SetCameraCharacter(_target);
             if (Camera.main && Camera.main.GetComponent<RTSCameraController>())
             {

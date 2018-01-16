@@ -83,7 +83,7 @@ namespace RTSCoreFramework
 
         #region Properties
         public static IGBPI_DataHandler thisInstance { get; protected set; }
-        RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
+        RTSGameMode gamemode { get { return (RTSGameMode)RTSGameMode.thisInstance; } }
         #endregion
 
         #region ConditionDictionary

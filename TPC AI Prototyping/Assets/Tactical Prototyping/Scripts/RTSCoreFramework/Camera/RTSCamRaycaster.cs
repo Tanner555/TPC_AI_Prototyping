@@ -35,7 +35,7 @@ namespace RTSCoreFramework
 
         RTSGameMode gamemode
         {
-            get { return RTSGameMode.thisInstance; }
+            get { return (RTSGameMode)RTSGameMode.thisInstance; }
         }
 
         public static RTSCamRaycaster thisInstance { get; protected set; }

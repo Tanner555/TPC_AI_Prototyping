@@ -17,7 +17,7 @@ namespace RTSPrototype
 
         RTSGameMode gamemode
         {
-            get { return RTSGameMode.thisInstance; }
+            get { return (RTSGameMode)RTSGameMode.thisInstance; }
         }
 
         bool isAiming = false;

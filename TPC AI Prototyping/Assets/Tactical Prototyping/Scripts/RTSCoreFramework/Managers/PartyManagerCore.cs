@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTSPrototype;
 
 namespace RTSCoreFramework
 {
@@ -18,21 +17,21 @@ namespace RTSCoreFramework
         #endregion
 
         #region Properties
-        protected RTSGameMode gamemode
+        protected RTSGameModeCore gamemode
         {
-            get { return RTSGameMode.thisInstance; }
+            get { return RTSGameModeCore.thisInstance; }
         }
         protected RTSGameMaster gamemaster
         {
             get { return RTSGameMaster.thisInstance; }
         }
-        public AllyMember AllyInCommand { get; protected set; }
-        public List<AllyMember> PartyMembers
+        public AllyMemberCore AllyInCommand { get; protected set; }
+        public List<AllyMemberCore> PartyMembers
         {
             get; protected set;
         }
 
-        public AllyMember FirstNonPlayerAlly
+        public AllyMemberCore FirstNonPlayerAlly
         {
             get
             {
@@ -58,7 +57,7 @@ namespace RTSCoreFramework
         protected virtual void OnEnable()
         {
             //isInOverview = false;
-            PartyMembers = new List<AllyMember>();
+            PartyMembers = new List<AllyMemberCore>();
         }
 
         protected virtual void OnDisable()
@@ -77,7 +76,7 @@ namespace RTSCoreFramework
             gamemaster.OnLeftClickAlly += HandleLeftClickPartyMember;
             gamemaster.OnRightClickSendHit += HandleRightClick;
 
-            AllyMember firstAlly = FindPartyMembers(false, null);
+            AllyMemberCore firstAlly = FindPartyMembers(false, null);
             SetAllyInCommand(firstAlly);
         }
 
@@ -89,10 +88,10 @@ namespace RTSCoreFramework
         #endregion
 
         #region Find-Set-Possess-AllyInCommand
-        public AllyMember FindPartyMembers(bool pendingAllyLeave, AllyMember allyToLeave)
+        public AllyMemberCore FindPartyMembers(bool pendingAllyLeave, AllyMemberCore allyToLeave)
         {
             PartyMembers.Clear();
-            AllyMember[] Allies = GameObject.FindObjectsOfType<AllyMember>();
+            AllyMemberCore[] Allies = GameObject.FindObjectsOfType<AllyMemberCore>();
             foreach (var ally in Allies)
             {
                 if (pendingAllyLeave)
@@ -121,15 +120,15 @@ namespace RTSCoreFramework
             }
             else
             {
-                AllyMember firstallyfound = PartyMembers[0];
+                AllyMemberCore firstallyfound = PartyMembers[0];
                 return firstallyfound;
             }
         }
 
-        public AllyMember FindPartyMembers()
+        public AllyMemberCore FindPartyMembers()
         {
             PartyMembers.Clear();
-            AllyMember[] Allies = GameObject.FindObjectsOfType<AllyMember>();
+            AllyMemberCore[] Allies = GameObject.FindObjectsOfType<AllyMemberCore>();
             foreach (var ally in Allies)
             {
                 if (ally.GeneralCommander == this.GeneralCommander)
@@ -143,15 +142,15 @@ namespace RTSCoreFramework
             }
             else
             {
-                AllyMember firstallyfound = PartyMembers[0];
+                AllyMemberCore firstallyfound = PartyMembers[0];
                 return firstallyfound;
             }
         }
 
-        public void SetAllyInCommand(AllyMember _setToCommand)
+        public void SetAllyInCommand(AllyMemberCore _setToCommand)
         {
             bool _validSet = _setToCommand != null &&
-                _setToCommand.GetComponent<AllyMember>() != null &&
+                _setToCommand.GetComponent<AllyMemberCore>() != null &&
                 PartyMembers.Contains(_setToCommand);
 
             if (_validSet)
@@ -162,12 +161,12 @@ namespace RTSCoreFramework
                     if (_ally != null)
                         _ally.npcMaster.CallEventPartySwitching();
                 }
-                gamemaster.CallOnAllySwitch((PartyManager)this, _setToCommand, AllyInCommand);
+                gamemaster.CallOnAllySwitch((PartyManagerCore)this, _setToCommand, AllyInCommand);
                 if (AllyInCommand != null)
-                    AllyInCommand.GetComponent<AllyEventHandler>().CallEventSwitchingFromCom();
+                    AllyInCommand.GetComponent<AllyEventHandlerCore>().CallEventSwitchingFromCom();
 
                 AllyInCommand = _setToCommand;
-                AllyInCommand.GetComponent<AllyEventHandler>().CallEventSetAsCommander();
+                AllyInCommand.GetComponent<AllyEventHandlerCore>().CallEventSetAsCommander();
             }
         }
 
@@ -207,18 +206,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters
-        public bool AllyIsCurrentPlayer(AllyMember _ally)
+        public bool AllyIsCurrentPlayer(AllyMemberCore _ally)
         {
             return isCurrentPlayerCommander && _ally == AllyInCommand;
         }
-        public bool AllyIsAPartyMember(AllyMember _ally)
+        public bool AllyIsAPartyMember(AllyMemberCore _ally)
         {
             return PartyMembers.Contains(_ally);
         }
         #endregion
 
         #region EventCalls
-        public void CallEventNoPartyMembers(PartyManager partyMan, AllyMember lastMember, bool onDeath)
+        public void CallEventNoPartyMembers(PartyManagerCore partyMan, AllyMemberCore lastMember, bool onDeath)
         {
             if (EventNoPartyManagers != null)
             {
@@ -228,12 +227,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
-        protected void HandleNoPartyMembers(PartyManager _partyMan, AllyMember _lAlly, bool _onDeath)
+        protected void HandleNoPartyMembers(PartyManagerCore _partyMan, AllyMemberCore _lAlly, bool _onDeath)
         {
             AllyInCommand = null;
             gamemode.HandlePartyMemberWOutAllies(_partyMan, _lAlly, _onDeath);
         }
-        protected void HandleLeftClickPartyMember(AllyMember ally)
+        protected void HandleLeftClickPartyMember(AllyMemberCore ally)
         {
             if (!isCurrentPlayerCommander || noPartyCommandsAllowed) return;
             if (PartyMembers.Contains(ally) && ally != AllyInCommand)
@@ -250,7 +249,7 @@ namespace RTSCoreFramework
                     break;
                 case rtsHitType.Enemy:
                     GameObject _root = hit.collider.gameObject.transform.root.gameObject;
-                    AllyMember _enemy = _root.GetComponent<AllyMember>();
+                    AllyMemberCore _enemy = _root.GetComponent<AllyMemberCore>();
                     AllyInCommand.npcMaster.CallEventCommandAttackEnemy(_enemy);
                     break;
                 case rtsHitType.Cover:
@@ -271,7 +270,7 @@ namespace RTSCoreFramework
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
 
-        public delegate void ThreeParamPartyAllyBoolHandler(PartyManager partyMan, AllyMember lastMember, bool onDeath);
+        public delegate void ThreeParamPartyAllyBoolHandler(PartyManagerCore partyMan, AllyMemberCore lastMember, bool onDeath);
         public ThreeParamPartyAllyBoolHandler EventNoPartyManagers;
         #endregion
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTSPrototype;
 
 namespace RTSCoreFramework
 {
@@ -15,9 +14,9 @@ namespace RTSCoreFramework
             get { return RTSUiManager.thisInstance; }
         }
 
-        RTSGameMode gamemode
+        RTSGameModeCore gamemode
         {
-            get { return RTSGameMode.thisInstance; }
+            get { return RTSGameModeCore.thisInstance; }
         }
 
         RTSGameMaster gamemaster
@@ -54,7 +53,7 @@ namespace RTSCoreFramework
         //Sprinting Setup
         private bool isSprinting = false;
         //private AllyMoveSpeed setupMoveSpeed;
-        private AllyMember setupSprintAlly = null;
+        private AllyMemberCore setupSprintAlly = null;
         //UI is enabled
         private bool UiIsEnabled = false;
         #endregion
