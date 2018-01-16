@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     [System.Serializable]
     public class IGBPI_UI_Panel : MonoBehaviour, IPointerClickHandler,

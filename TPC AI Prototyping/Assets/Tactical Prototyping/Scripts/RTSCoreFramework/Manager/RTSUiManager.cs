@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using RTSPrototype;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     public class RTSUiManager : MonoBehaviour
     {

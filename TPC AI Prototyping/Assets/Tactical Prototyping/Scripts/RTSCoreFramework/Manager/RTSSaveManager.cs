@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     public class RTSSaveManager : MonoBehaviour
     {

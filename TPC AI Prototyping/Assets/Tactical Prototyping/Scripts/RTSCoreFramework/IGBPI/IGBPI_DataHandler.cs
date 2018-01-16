@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using RTSPrototype;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     public class IGBPI_DataHandler : MonoBehaviour
     {

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RTSPrototype;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     public class RTSUiMaster : MonoBehaviour
     {

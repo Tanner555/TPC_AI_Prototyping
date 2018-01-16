@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using RTSPrototype;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     /// <summary>
     /// Used to tell subs what type of object the Mouse Cursor is hitting

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     [CreateAssetMenu]
     public class IGBPI_Data : ScriptableObject
