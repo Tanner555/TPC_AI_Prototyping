@@ -6,7 +6,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AllyEventHandler : AllyEventHandlerCore
+    public class AllyEventHandlerWrapper : AllyEventHandlerCore
     {
         #region UnityMessages
         protected override void Awake()

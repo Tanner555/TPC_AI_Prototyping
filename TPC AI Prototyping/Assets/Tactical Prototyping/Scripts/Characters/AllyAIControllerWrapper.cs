@@ -8,7 +8,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AllyAIController : AllyAIControllerCore
+    public class AllyAIControllerWrapper : AllyAIControllerCore
     {
         #region Components
         RigidbodyCharacterController myRigidbodyTPC;
@@ -65,8 +65,8 @@ namespace RTSPrototype
         protected override void SetInitialReferences()
         {
             myNavAgent = GetComponent<NavMeshAgent>();
-            myEventHandler = GetComponent<AllyEventHandler>();
-            allyMember = GetComponent<AllyMember>();
+            myEventHandler = GetComponent<AllyEventHandlerWrapper>();
+            allyMember = GetComponent<AllyMemberWrapper>();
             myRigidbodyTPC = GetComponent<RigidbodyCharacterController>();
             myInventory = GetComponent<Inventory>();
             itemHandler = GetComponent<ItemHandler>();

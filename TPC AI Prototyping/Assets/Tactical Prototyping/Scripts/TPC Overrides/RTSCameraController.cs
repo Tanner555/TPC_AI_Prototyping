@@ -9,7 +9,7 @@ namespace RTSPrototype
     {
         #region RTSGameModeCalls
         //Handle when partymanager switches allyInCommand, rather than on awake
-        public void InitializeAllyCharacter(AllyMember ally)
+        public void InitializeAllyCharacter(AllyMemberWrapper ally)
         {
             //// If the character is not initialized on start then disable the controller - the controller won't function without a character.
             m_Character = ally.gameObject;

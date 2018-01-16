@@ -9,7 +9,7 @@ namespace RTSPrototype
     public class RTSNavBridge : NavMeshAgentBridge
     {
         #region FieldsandProps
-        AllyEventHandler myEventHandler { get { return GetComponent<AllyEventHandler>(); } }
+        AllyEventHandlerWrapper myEventHandler { get { return GetComponent<AllyEventHandlerWrapper>(); } }
         //Targeting
         public Transform targetTransform { get; protected set; }
         public bool isTargeting { get; protected set; }

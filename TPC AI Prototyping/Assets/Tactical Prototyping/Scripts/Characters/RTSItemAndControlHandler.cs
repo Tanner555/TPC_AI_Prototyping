@@ -15,16 +15,16 @@ namespace RTSPrototype
             get { return RTSGameMaster.thisInstance; }
         }
 
-        RTSGameMode gamemode
+        RTSGameModeWrapper gamemode
         {
-            get { return (RTSGameMode)RTSGameMode.thisInstance; }
+            get { return (RTSGameModeWrapper)RTSGameModeWrapper.thisInstance; }
         }
 
         bool isAiming = false;
         #endregion
 
         #region Components
-        AllyEventHandler myEventHandler;
+        AllyEventHandlerWrapper myEventHandler;
         ItemHandler itemHandler;
         Inventory myInventory; 
         RigidbodyCharacterController myController;
@@ -138,7 +138,7 @@ namespace RTSPrototype
         #region Initialization
         void InitialSetup()
         {
-            myEventHandler = GetComponent<AllyEventHandler>();
+            myEventHandler = GetComponent<AllyEventHandlerWrapper>();
             itemHandler = GetComponent<ItemHandler>();
             myInventory = GetComponent<Inventory>();
             myController = GetComponent<RigidbodyCharacterController>();
