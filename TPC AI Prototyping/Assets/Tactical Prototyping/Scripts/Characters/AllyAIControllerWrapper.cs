@@ -8,7 +8,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AllyAIControllerWrapper : AllyAIControllerCore
+    public class AllyAIControllerWrapper : AllyAIController
     {
         #region Components
         RigidbodyCharacterController myRigidbodyTPC;

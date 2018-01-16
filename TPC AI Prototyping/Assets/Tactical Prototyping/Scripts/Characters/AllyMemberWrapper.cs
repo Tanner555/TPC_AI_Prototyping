@@ -5,7 +5,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AllyMemberWrapper : AllyMemberCore
+    public class AllyMemberWrapper : AllyMember
     {
         #region Fields
         [Header("Camera Follow Transforms")]

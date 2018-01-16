@@ -6,7 +6,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class RTSGameModeWrapper : RTSGameModeCore
+    public class RTSGameModeWrapper : RTSGameMode
     {
         #region UnityMessages
         protected override void OnEnable()
@@ -33,7 +33,7 @@ namespace RTSPrototype
         #endregion
 
         #region UIAndCameraProcessing
-        protected override void SetCameraCharacter(AllyMemberCore _targetCore)
+        protected override void SetCameraCharacter(AllyMember _targetCore)
         {
             AllyMemberWrapper _target = (AllyMemberWrapper)_targetCore;
             base.SetCameraCharacter(_target);

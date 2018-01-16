@@ -122,7 +122,7 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnCommandAttack(AllyMemberCore _ally)
+        void OnCommandAttack(AllyMember _ally)
         {
             if (_ally != null)
                 LookAtTarget(_ally.transform);

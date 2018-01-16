@@ -5,7 +5,7 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class PartyManagerWrapper : PartyManagerCore
+    public class PartyManagerWrapper : PartyManager
     {
         #region UnityMessages
         protected override void OnEnable()
