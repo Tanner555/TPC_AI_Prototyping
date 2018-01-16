@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Opsive.ThirdPersonController.Input;
 using Opsive.ThirdPersonController;
+using RTSCoreFramework;
 
 namespace RTSPrototype
 {
