@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using RTSPrototype;
 
 namespace RTSCoreFramework
 {
@@ -83,7 +82,7 @@ namespace RTSCoreFramework
 
         #region Properties
         public static IGBPI_DataHandler thisInstance { get; protected set; }
-        RTSGameMode gamemode { get { return (RTSGameMode)RTSGameMode.thisInstance; } }
+        RTSGameModeCore gamemode { get { return RTSGameModeCore.thisInstance; } }
         #endregion
 
         #region ConditionDictionary
@@ -157,10 +156,10 @@ namespace RTSCoreFramework
         #region Structs
         public struct IGBPI_Condition
         {
-            public Func<AllyMember, bool> action;
+            public Func<AllyMemberCore, bool> action;
             public ConditionFilters filter;
 
-            public IGBPI_Condition(Func<AllyMember, bool> action, ConditionFilters filter)
+            public IGBPI_Condition(Func<AllyMemberCore, bool> action, ConditionFilters filter)
             {
                 this.action = action;
                 this.filter = filter;
@@ -169,10 +168,10 @@ namespace RTSCoreFramework
 
         public struct IGBPI_Action
         {
-            public Action<AllyMember> action;
+            public Action<AllyMemberCore> action;
             public ActionFilters filter;
 
-            public IGBPI_Action(Action<AllyMember> action, ActionFilters filter)
+            public IGBPI_Action(Action<AllyMemberCore> action, ActionFilters filter)
             {
                 this.action = action;
                 this.filter = filter;

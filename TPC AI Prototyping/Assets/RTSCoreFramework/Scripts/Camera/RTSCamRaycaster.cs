@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using RTSPrototype;
 
 namespace RTSCoreFramework
 {
@@ -33,9 +32,9 @@ namespace RTSCoreFramework
             get { return RTSGameMaster.thisInstance; }
         }
 
-        RTSGameMode gamemode
+        RTSGameModeCore gamemode
         {
-            get { return (RTSGameMode)RTSGameMode.thisInstance; }
+            get { return RTSGameModeCore.thisInstance; }
         }
 
         public static RTSCamRaycaster thisInstance { get; protected set; }
@@ -66,7 +65,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
         private GameObject gObject, gObjectRoot = null;
         private GameObject gObjectLastFrame = null;
         private string hitTag = "";
-        private AllyMember hitAlly = null;
+        private AllyMemberCore hitAlly = null;
 
         //For event initialization checking
         bool hasStarted = false;
@@ -161,7 +160,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
 
         rtsHitType CheckAllyObject(GameObject gObjectRoot)
         {
-            hitAlly = gObjectRoot.GetComponent<AllyMember>();
+            hitAlly = gObjectRoot.GetComponent<AllyMemberCore>();
             if (hitAlly == null) return rtsHitType.Unknown;
             return gamemode.AllyIsGenCommanderMember(hitAlly) ?
                 rtsHitType.Ally : rtsHitType.Enemy;
