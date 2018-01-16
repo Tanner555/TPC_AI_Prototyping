@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AllyMember : MonoBehaviour
+    public class AllyMember : AllyMemberCore
     {
         #region Fields
         //Inspector Set Variables
