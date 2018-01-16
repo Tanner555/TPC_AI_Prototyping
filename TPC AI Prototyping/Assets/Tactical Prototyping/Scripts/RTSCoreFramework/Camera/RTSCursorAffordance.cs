@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTSCoreFramework;
+using RTSPrototype;
 
-namespace RTSPrototype
+namespace RTSCoreFramework
 {
     public class RTSCursorAffordance : MonoBehaviour
     {
