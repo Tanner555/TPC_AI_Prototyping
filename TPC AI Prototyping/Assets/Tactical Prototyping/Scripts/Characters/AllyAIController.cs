@@ -113,6 +113,11 @@ namespace RTSPrototype
             var _mHitbox = transform.GetComponentInChildren<MeleeWeaponHitbox>();
             if (_mHitbox != null)
             {
+                SphereCollider _sphereCol;
+                if ((_sphereCol = _mHitbox.GetComponent<SphereCollider>()) != null)
+                {
+                    _sphereCol.enabled = false;
+                }
                 _mHitbox.SetActive(false);
             }
             this.enabled = false;
