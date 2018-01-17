@@ -49540,6 +49540,7 @@ MonoBehaviour:
   m_NearCrosshairsScale: {x: 1, y: 1, z: 1}
   m_FarCrosshairsScale: {x: 1, y: 1, z: 1}
   m_OnlyVisibleOnAim: 0
+  m_SetTargetLock: 1
 --- !u!1 &1751203755
 GameObject:
   m_ObjectHideFlags: 0
