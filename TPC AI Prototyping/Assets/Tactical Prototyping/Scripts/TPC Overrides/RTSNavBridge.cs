@@ -10,6 +10,7 @@ namespace RTSPrototype
     {
         #region FieldsandProps
         AllyEventHandlerWrapper myEventHandler { get { return GetComponent<AllyEventHandlerWrapper>(); } }
+        RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         //Targeting
         public Transform targetTransform { get; protected set; }
         public bool isTargeting { get; protected set; }
@@ -24,10 +25,14 @@ namespace RTSPrototype
         {
             get { return (!isMoving && !isTargeting) == false; }
         }
+        //Camera is Moving
+        private bool moveCamera = false;
         //NavMeshMovement
         bool isMoving = false;
         //LookRotation Local Variable
         Quaternion lookRotation;
+        //Velocity Rotation
+        Quaternion myVelRotation;
         #endregion
 
         #region UnityMessages
@@ -36,7 +41,9 @@ namespace RTSPrototype
             var velocity = Vector3.zero;
             //Change localRotation if targetting is active
             if (isTargeting && targetTransform != null)
+            {
                 lookRotation = lookTargetRotation;
+            }
             else
             {
                 //Still targetting enemy but enemy transform is null
@@ -132,6 +139,11 @@ namespace RTSPrototype
         {
             StopTargeting();
         }
+
+        void ToggleMoveCamera(bool enable)
+        {
+            moveCamera = enable;
+        }
         #endregion
 
         #region NavMeshMovement
@@ -158,12 +170,14 @@ namespace RTSPrototype
         {
             myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
+            gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
         }
 
         void UnsubFromEvents()
         {
             myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
+            gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
         }
         #endregion
     }
