@@ -34,13 +34,11 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            myEventHandler.EventNpcDie += OnDeath;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            myEventHandler.EventNpcDie -= OnDeath;
         }
         #endregion
 
@@ -62,6 +60,19 @@ namespace RTSPrototype
 
         #endregion
 
+        #region Initialization
+        protected override void SubToEvents()
+        {
+            base.SubToEvents();
+            myEventHandler.EventNpcDie += OnDeath;
+        }
+
+        protected override void UnSubFromEvents()
+        {
+            base.UnSubFromEvents();
+            myEventHandler.EventNpcDie -= OnDeath;
+        }
+
         protected override void SetInitialReferences()
         {
             myNavAgent = GetComponent<NavMeshAgent>();
@@ -76,6 +87,8 @@ namespace RTSPrototype
             {
                 Debug.LogError("Not all comps are valid!");
             }
-        }        
+        }
+        #endregion
+
     }
 }
