@@ -21,6 +21,15 @@ namespace RTSPrototype
                 return targetTransform != null ? Quaternion.LookRotation(targetTransform.position - transform.position) : new Quaternion();
             }
         }
+        protected Quaternion lookDestinationRotation
+        {
+            get
+            {
+                return (isMoving && !ReachedDestination()) ?
+                    Quaternion.LookRotation(m_NavMeshAgent.destination - transform.position) :
+                    Quaternion.LookRotation(m_Transform.forward);
+            }
+        }
         bool canUpdateMovement
         {
             get { return (!isMoving && !isTargeting) == false; }
@@ -38,62 +47,10 @@ namespace RTSPrototype
         #region UnityMessages
         protected override void FixedUpdate()
         {
-            var velocity = Vector3.zero;
-            //Change localRotation if targetting is active
-            if (isTargeting && targetTransform != null)
-            {
-                lookRotation = lookTargetRotation;
-            }
-            else
-            {
-                //Still targetting enemy but enemy transform is null
-                if (isTargeting)
-                    myEventHandler.CallEventStopTargettingEnemy();
-
-                lookRotation = Quaternion.LookRotation(m_Transform.forward);
-            }
-            
-            if (m_NavMeshAgent.isOnOffMeshLink)
-            {
-                UpdateOffMeshLink(ref velocity, ref lookRotation);
-            }
-            else
-            {
-                // Only move if a path exists.
-                // Update only when needed by targeting or move command
-                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
-                {
-                    if (m_NavMeshAgent.updateRotation)
-                    {
-                        lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
-                    }
-                    else
-                    {
-                        lookRotation = Quaternion.LookRotation(m_Transform.forward);
-                    }
-                    // The normalized velocity should be relative to the look direction.
-                    velocity = Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity;
-                    // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
-                    if (velocity.sqrMagnitude > 1)
-                    {
-                        velocity.Normalize();
-                        // Smoothly come to a stop at the destination.
-                        if (m_NavMeshAgent.remainingDistance < 1f)
-                        {
-                            velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
-                        }
-                    }
-                }
-            }
-            
-            // Don't let the NavMeshAgent move the character - the controller can move it.
-            m_NavMeshAgent.updatePosition = false;
-            m_NavMeshAgent.velocity = Vector3.zero;
-            m_Controller.Move(velocity.x, velocity.z, lookRotation);
-            m_NavMeshAgent.nextPosition = m_Transform.position;
-
-            //Check for end of destination if moving
-            if (isMoving && ReachedDestination()) FinishMovingNavMesh();
+            //Testing New Move Code
+            //ReplaceFixedMove();
+            //return;
+            MoveCharacterMain();
         }
 
         private void Start()
@@ -162,6 +119,141 @@ namespace RTSPrototype
         {
             return m_NavMeshAgent != null && m_NavMeshAgent.enabled && m_NavMeshAgent.remainingDistance != Mathf.Infinity &&
                 m_NavMeshAgent.remainingDistance <= 0.2f && !m_NavMeshAgent.pathPending && isMoving && m_NavMeshAgent.hasPath;
+        }
+        #endregion
+
+        #region MainMovementMethod
+        void MoveCharacterMain()
+        {
+            var velocity = Vector3.zero;
+            //Change localRotation if targetting is active
+            if (isTargeting && targetTransform != null)
+            {
+                lookRotation = lookTargetRotation;
+            }
+            else
+            {
+                //Still targetting enemy but enemy transform is null
+                if (isTargeting)
+                    myEventHandler.CallEventStopTargettingEnemy();
+
+                lookRotation = Quaternion.LookRotation(m_Transform.forward);
+            }
+
+            if (m_NavMeshAgent.isOnOffMeshLink)
+            {
+                UpdateOffMeshLink(ref velocity, ref lookRotation);
+            }
+            else
+            {
+                // Only move if a path exists.
+                // Update only when needed by targeting or move command
+                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
+                {
+                    if (m_NavMeshAgent.updateRotation)
+                    {
+                        lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
+                    }
+                    else
+                    {
+                        lookRotation = Quaternion.LookRotation(m_Transform.forward);
+                    }
+                    // The normalized velocity should be relative to the look direction.
+                    velocity = Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity;
+                    // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
+                    if (velocity.sqrMagnitude > 1)
+                    {
+                        velocity.Normalize();
+                        // Smoothly come to a stop at the destination.
+                        if (m_NavMeshAgent.remainingDistance < 1f)
+                        {
+                            velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
+                        }
+                    }
+                }
+            }
+
+            // Don't let the NavMeshAgent move the character - the controller can move it.
+            m_NavMeshAgent.updatePosition = false;
+            m_NavMeshAgent.velocity = Vector3.zero;
+            m_Controller.Move(velocity.x, velocity.z, lookRotation);
+            m_NavMeshAgent.nextPosition = m_Transform.position;
+
+            //Check for end of destination if moving
+            if (isMoving && ReachedDestination()) FinishMovingNavMesh();
+        }
+        #endregion
+
+        #region ReplaceMoveTesting
+        void ReplaceFixedMoveTesting()
+        {
+            var velocity = Vector3.zero;
+            //Change localRotation if targetting is active
+            if (isTargeting && targetTransform != null)
+            {
+                lookRotation = lookTargetRotation;
+            }
+            else
+            {
+                //Still targetting enemy but enemy transform is null
+                if (isTargeting)
+                    myEventHandler.CallEventStopTargettingEnemy();
+
+                //lookRotation = Quaternion.LookRotation(m_Transform.forward);
+                lookRotation = lookDestinationRotation;
+            }
+
+            if (m_NavMeshAgent.isOnOffMeshLink)
+            {
+                UpdateOffMeshLink(ref velocity, ref lookRotation);
+            }
+            else
+            {
+                // Only move if a path exists.
+                // Update only when needed by targeting or move command
+                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
+                {
+                    myVelRotation = lookRotation;
+                    if (m_NavMeshAgent.updateRotation)
+                    {
+                        myVelRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
+                        //lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
+                    }
+                    else
+                    {
+                        //lookRotation = Quaternion.LookRotation(m_Transform.forward);
+                        //myVelRotation = lookDestinationRotation;
+                    }
+                    // The normalized velocity should be relative to the look direction.
+                    velocity = (Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity);
+                    // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
+                    if (velocity.sqrMagnitude > 1)
+                    {
+                        //velocity.Normalize();
+                        // Smoothly come to a stop at the destination.
+                        if (m_NavMeshAgent.remainingDistance < 1f)
+                        {
+                            velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
+                        }
+                    }
+                    else
+                    {
+                        if(true/*velocity.sqrMagnitude < 0.3*/)
+                        {
+                            velocity *= 1.2f;
+                        }
+                    }
+                }
+            }
+
+            // Don't let the NavMeshAgent move the character - the controller can move it.
+            m_NavMeshAgent.updatePosition = false;
+            m_NavMeshAgent.velocity = Vector3.zero;
+            m_Controller.Move(velocity.x, velocity.z, lookRotation);
+            m_NavMeshAgent.nextPosition = m_Transform.position;
+
+            //Check for end of destination if moving
+            if (isMoving && ReachedDestination()) FinishMovingNavMesh();
         }
         #endregion
 
