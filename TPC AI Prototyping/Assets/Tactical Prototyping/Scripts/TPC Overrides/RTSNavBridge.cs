@@ -3,12 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Opsive.ThirdPersonController;
 using RTSCoreFramework;
+using System;
 
 namespace RTSPrototype
 {
     public class RTSNavBridge : NavMeshAgentBridge
     {
         #region FieldsandProps
+        AllyMember allyMember
+        {
+            get
+            {
+                if (_allyMember == null)
+                    _allyMember = GetComponent<AllyMember>();
+
+                return _allyMember;
+            }
+        }
+        AllyMember _allyMember = null;
+
         AllyEventHandlerWrapper myEventHandler { get { return GetComponent<AllyEventHandlerWrapper>(); } }
         RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         //Targeting
@@ -30,27 +43,44 @@ namespace RTSPrototype
                     Quaternion.LookRotation(m_Transform.forward);
             }
         }
-        bool canUpdateMovement
+        protected Quaternion mainCameraRotation
         {
-            get { return (!isMoving && !isTargeting) == false; }
+            get
+            {
+                return Camera.main ? Camera.main.transform.rotation : new Quaternion(0, 0, 0, 0);
+            }
         }
+
+        protected bool canUpdateMovement
+        {
+            get { return isMoving == true; }
+        }
+
         //Camera is Moving
         private bool moveCamera = false;
         //NavMeshMovement
         bool isMoving = false;
+        //See if need to rotate or continue moving
+        bool bIsShooting = false;
         //LookRotation Local Variable
         Quaternion lookRotation;
-        //Velocity Rotation
-        Quaternion myVelRotation;
         #endregion
 
         #region UnityMessages
         protected override void FixedUpdate()
         {
-            //Testing New Move Code
-            //ReplaceFixedMove();
-            //return;
-            MoveCharacterMain();
+            UpdateMovementOrRotate();
+            //if(allyMember && allyMember.isCurrentPlayer && moveCamera && RTSPlayerInput.thisInstance) {
+            //    if (isMoving == true)
+            //        FinishMovingNavMesh();
+
+            //    moveCharacterFreeLook();
+            //}
+            //else if(isMoving == true)
+            //{
+            //    ReplaceFixedMoveTesting();
+            //}
+
         }
 
         private void Start()
@@ -97,9 +127,14 @@ namespace RTSPrototype
             StopTargeting();
         }
 
-        void ToggleMoveCamera(bool enable)
+        void ToggleMoveCamera(bool _enable)
         {
-            moveCamera = enable;
+            moveCamera = _enable;
+        }
+
+        void TogglebIsShooting(bool _enable)
+        {
+            bIsShooting = _enable;
         }
         #endregion
 
@@ -126,19 +161,7 @@ namespace RTSPrototype
         void MoveCharacterMain()
         {
             var velocity = Vector3.zero;
-            //Change localRotation if targetting is active
-            if (isTargeting && targetTransform != null)
-            {
-                lookRotation = lookTargetRotation;
-            }
-            else
-            {
-                //Still targetting enemy but enemy transform is null
-                if (isTargeting)
-                    myEventHandler.CallEventStopTargettingEnemy();
-
-                lookRotation = Quaternion.LookRotation(m_Transform.forward);
-            }
+            lookRotation = Quaternion.LookRotation(m_Transform.forward);
 
             if (m_NavMeshAgent.isOnOffMeshLink)
             {
@@ -184,14 +207,18 @@ namespace RTSPrototype
         }
         #endregion
 
-        #region ReplaceMoveTesting
-        void ReplaceFixedMoveTesting()
+        #region MoveOrRotateMethod
+        void UpdateMovementOrRotate()
         {
-            var velocity = Vector3.zero;
             //Change localRotation if targetting is active
-            if (isTargeting && targetTransform != null)
+            if (bIsShooting && isTargeting && targetTransform != null)
             {
+                //Stand Still and Rotate towards Target
+                m_NavMeshAgent.updatePosition = false;
+                m_NavMeshAgent.velocity = Vector3.zero; 
+                Vector3 velocity = Vector3.zero;
                 lookRotation = lookTargetRotation;
+                m_Controller.Move(velocity.x, velocity.z, lookRotation);
             }
             else
             {
@@ -199,69 +226,177 @@ namespace RTSPrototype
                 if (isTargeting)
                     myEventHandler.CallEventStopTargettingEnemy();
 
-                //lookRotation = Quaternion.LookRotation(m_Transform.forward);
-                lookRotation = lookDestinationRotation;
-            }
-
-            if (m_NavMeshAgent.isOnOffMeshLink)
-            {
-                UpdateOffMeshLink(ref velocity, ref lookRotation);
-            }
-            else
-            {
-                // Only move if a path exists.
-                // Update only when needed by targeting or move command
-                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
-                {
-                    myVelRotation = lookRotation;
-                    if (m_NavMeshAgent.updateRotation)
-                    {
-                        myVelRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
-                        //lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
-                    }
-                    else
-                    {
-                        //lookRotation = Quaternion.LookRotation(m_Transform.forward);
-                        //myVelRotation = lookDestinationRotation;
-                    }
-                    // The normalized velocity should be relative to the look direction.
-                    velocity = (Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity);
-                    // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
-                    if (velocity.sqrMagnitude > 1)
-                    {
-                        //velocity.Normalize();
-                        // Smoothly come to a stop at the destination.
-                        if (m_NavMeshAgent.remainingDistance < 1f)
-                        {
-                            velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
-                        }
-                    }
-                    else
-                    {
-                        if(true/*velocity.sqrMagnitude < 0.3*/)
-                        {
-                            velocity *= 1.2f;
-                        }
-                    }
-                }
-            }
-
-            // Don't let the NavMeshAgent move the character - the controller can move it.
-            m_NavMeshAgent.updatePosition = false;
-            m_NavMeshAgent.velocity = Vector3.zero;
-            m_Controller.Move(velocity.x, velocity.z, lookRotation);
-            m_NavMeshAgent.nextPosition = m_Transform.position;
-
-            //Check for end of destination if moving
-            if (isMoving && ReachedDestination()) FinishMovingNavMesh();
+                MoveCharacterMain();
+            }   
         }
         #endregion
+
+        #region TestingNewRotation
+        #region TestFields
+        ////Velocity Rotation
+        //Quaternion myVelRotation;
+        //[SerializeField]
+        //private Transform myRotateTransform;
+        //float myHorizontalMovement = 0.0f;
+        //float myForwardMovement = 0.0f;
+        //Vector3 previousMMovement;
+        //Quaternion mLookRotation;
+        #endregion
+
+        #region MoveFreeLookTesting
+        //private void moveCharacterFreeLook()
+        //{
+        //    myHorizontalMovement = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.HorizontalInputName);
+        //    myForwardMovement = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.ForwardInputName);
+        //    MoveCameraTesting();
+        //    //var direction = Vector3.zero;
+        //    //direction.x = myHorizontalMovement;
+        //    //direction.z = myForwardMovement;
+        //    //direction.y = 0;
+        //    //if(direction.sqrMagnitude > 0.01f)
+        //    //{
+        //    //    if(isMoving == true)
+        //    //    {
+        //    //        FinishMovingNavMesh();
+        //    //    }
+
+        //    //}
+
+        //    //Quaternion _look = mainCameraRotation;
+
+        //    //m_Controller.LookInMoveDirection = true;
+        //    m_NavMeshAgent.updatePosition = false;
+        //    m_NavMeshAgent.velocity = Vector3.zero;
+        //    //m_Controller.MoveWithIndependentRotation(myHorizontalMovement, myForwardMovement, mLookRotation, ref myRotateTransform);
+        //}
+
+        //void MoveCameraTesting()
+        //{
+        //    mLookRotation = mainCameraRotation;
+        //    //var mousePosition = (Vector3)RTSPlayerInput.thisInstance.GetMousePosition();
+        //    //if ((mousePosition - previousMMovement).sqrMagnitude > 0.1f /*&& !m_Controller.IndependentLook()*/)
+        //    //{
+        //    //    var ray = Camera.main.ScreenPointToRay(mousePosition);
+        //    //    RaycastHit hit;
+        //    //    if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerManager.Mask.IgnoreInvisibleLayersPlayer, QueryTriggerInteraction.Ignore))
+        //    //    {
+        //    //        //var hitPosition = hit.point;
+        //    //        //hitPosition.y = m_Transform.position.y;
+        //    //        //mLookRotation = Quaternion.LookRotation(hitPosition - transform.position);
+
+        //    //        var direction = mousePosition - Camera.main.WorldToScreenPoint(m_Transform.position + m_Controller.CapsuleCollider.center);
+        //    //        // Convert the XY direction to an XYZ direction with Y equal to 0.
+        //    //        direction.z = direction.y;
+        //    //        direction.y = 0;
+        //    //        mLookRotation = Quaternion.LookRotation(direction);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        var direction = mousePosition - Camera.main.WorldToScreenPoint(m_Transform.position + m_Controller.CapsuleCollider.center);
+        //    //        // Convert the XY direction to an XYZ direction with Y equal to 0.
+        //    //        direction.z = direction.y;
+        //    //        direction.y = 0;
+        //    //        mLookRotation = Quaternion.LookRotation(direction);
+        //    //    }
+        //    //}
+        //    //else
+        //    //{
+        //    //    var direction = Vector3.zero;
+        //    //    direction.x = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.YawInputName);
+        //    //    direction.z = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.PitchInputName);
+        //    //    if (direction.sqrMagnitude > 0.1f)
+        //    //    {
+        //    //        mLookRotation = Quaternion.LookRotation(direction);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        mLookRotation = m_Transform.rotation;
+        //    //    }
+        //    //}
+        //    //previousMMovement = mousePosition;
+        //}
+        #endregion
+
+        #region ReplaceMoveTesting
+        //void ReplaceFixedMoveTesting()
+        //{
+        //    if (myRotateTransform == null)
+        //    {
+        //        Debug.Log("No Dummy Transform on RTSNavBridge");
+        //        return;
+        //    }
+
+        //    var velocity = Vector3.zero;
+        //    //Change localRotation if targetting is active
+        //    if (isTargeting && targetTransform != null)
+        //    {
+        //        lookRotation = lookTargetRotation;
+        //    }
+        //    else
+        //    {
+        //        //Still targetting enemy but enemy transform is null
+        //        if (isTargeting)
+        //            myEventHandler.CallEventStopTargettingEnemy();
+
+        //        //lookRotation = Quaternion.LookRotation(m_Transform.forward);
+        //        lookRotation = Quaternion.LookRotation(myRotateTransform.forward);
+        //    }
+
+        //    if (m_NavMeshAgent.isOnOffMeshLink)
+        //    {
+        //        Debug.Log("On off mesh link");
+        //        UpdateOffMeshLink(ref velocity, ref lookRotation);
+        //    }
+        //    else
+        //    {
+        //        // Only move if a path exists.
+        //        // Update only when needed by targeting or move command
+        //        if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
+        //        {
+        //            if (m_NavMeshAgent.updateRotation)
+        //            {
+        //                lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
+        //            }
+        //            else
+        //            {
+        //                //lookRotation = Quaternion.LookRotation(m_Transform.forward);
+        //                lookRotation = Quaternion.LookRotation(myRotateTransform.forward);
+        //            }
+        //            // The normalized velocity should be relative to the look direction.
+        //            velocity = Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity;
+        //            // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
+        //            if (velocity.sqrMagnitude > 1)
+        //            {
+        //                velocity.Normalize();
+        //                // Smoothly come to a stop at the destination.
+        //                if (m_NavMeshAgent.remainingDistance < 1f)
+        //                {
+        //                    velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    // Don't let the NavMeshAgent move the character - the controller can move it.
+        //    m_NavMeshAgent.updatePosition = false;
+        //    m_NavMeshAgent.velocity = Vector3.zero;
+        //    //Quaternion _look = isTargeting == false ? lookRotation : lookTargetRotation;
+        //    m_Controller.MoveWithIndependentRotation(velocity.x, velocity.z, lookRotation, ref myRotateTransform);
+        //    m_NavMeshAgent.nextPosition = m_Transform.position;
+
+        //    //Check for end of destination if moving
+        //    if (isMoving && ReachedDestination()) FinishMovingNavMesh();
+        //}
+        #endregion
+
+        #endregion       
 
         #region Initialization
         void SubToEvents()
         {
             myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
+            myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
         }
 
@@ -269,6 +404,7 @@ namespace RTSPrototype
         {
             myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
+            myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
         }
         #endregion

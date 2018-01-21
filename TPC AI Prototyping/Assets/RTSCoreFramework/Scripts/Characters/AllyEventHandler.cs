@@ -25,6 +25,7 @@ namespace RTSCoreFramework
         public event GeneralEventHandler EventSetAsCommander;
         public event GeneralEventHandler EventKilledEnemy;
         public event GeneralEventHandler EventStopTargettingEnemy;
+        public event GeneralOneBoolHandler EventToggleIsShooting;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
@@ -133,6 +134,14 @@ namespace RTSCoreFramework
             if (EventNpcIdleAnim != null)
             {
                 EventNpcIdleAnim();
+            }
+        }
+
+        public void CallEventToggleIsShooting(bool _enable)
+        {
+            if(EventToggleIsShooting != null)
+            {
+                EventToggleIsShooting(_enable);
             }
         }
         #endregion
