@@ -13,6 +13,10 @@ namespace RTSCoreFramework
         protected AllyMember allyMember;
         #endregion
 
+        #region Fields
+        bool bIsShooting = false;
+        #endregion
+
         #region Properties
         protected RTSGameMaster gamemaster
         {
@@ -25,6 +29,7 @@ namespace RTSCoreFramework
         }
 
         public AllyMember currentTargettedEnemy { get; protected set; }
+        public AllyMember previousTargettedEnemy { get; protected set; }
 
         protected virtual bool AllCompsAreValid
         {
@@ -92,18 +97,74 @@ namespace RTSCoreFramework
         #region Handlers
         protected virtual void HandleCommandAttackEnemy(AllyMember enemy)
         {
+            previousTargettedEnemy = currentTargettedEnemy;
             currentTargettedEnemy = enemy;
+            if(IsInvoking("UpdateBattleBehavior") == false)
+            {
+                StartBattleBehavior();
+            }
+            else if(IsInvoking("UpdateBattleBehavior") && previousTargettedEnemy != currentTargettedEnemy)
+            {
+                StopBattleBehavior();
+                Invoke("StartBattleBehavior", 0.05f);
+            }
         }
 
         protected virtual void HandleStopTargetting()
         {
             currentTargettedEnemy = null;
+            StopBattleBehavior();
         }
 
-        protected void OnEnableCameraMovement(bool _enable)
+        protected virtual void HandleOnMoveAlly(rtsHitType hitType, RaycastHit hit)
+        {
+            if(IsInvoking("UpdateBattleBehavior"))
+                StopBattleBehavior();
+        }
+
+        protected virtual void OnEnableCameraMovement(bool _enable)
         {
             if (!allyMember.isCurrentPlayer) return;
             myEventHandler.CallOnTryAim(_enable);
+        }
+
+        protected virtual void TogglebIsShooting(bool _enable)
+        {
+            bIsShooting = _enable;
+        }
+        #endregion
+
+        #region ShootingAndBattleBehavior
+        void UpdateBattleBehavior()
+        {
+            //If has line of sight to enemy
+            //and is within a given range,
+            //start shooting behavior
+            //else move towards target enemy
+            //possibly find a spot close enough if needed
+            if(bIsShooting == false)
+                StartShootingBehavior();
+        }
+
+        void StartBattleBehavior()
+        {
+            InvokeRepeating("UpdateBattleBehavior", 0f, 0.2f);
+        }
+
+        void StopBattleBehavior()
+        {
+            CancelInvoke("UpdateBattleBehavior");
+            StopShootingBehavior();
+        }
+
+        void StartShootingBehavior()
+        {
+            myEventHandler.CallEventToggleIsShooting(true);
+        }
+
+        void StopShootingBehavior()
+        {
+            myEventHandler.CallEventToggleIsShooting(false);
         }
         #endregion
 
@@ -112,6 +173,8 @@ namespace RTSCoreFramework
         {
             myEventHandler.EventCommandAttackEnemy += HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
+            myEventHandler.EventToggleIsShooting += TogglebIsShooting;
+            myEventHandler.EventCommandMove += HandleOnMoveAlly;
             gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
         }
 
@@ -119,6 +182,8 @@ namespace RTSCoreFramework
         {
             myEventHandler.EventCommandAttackEnemy -= HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
+            myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
+            myEventHandler.EventCommandMove -= HandleOnMoveAlly;
             gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;
         }
 
