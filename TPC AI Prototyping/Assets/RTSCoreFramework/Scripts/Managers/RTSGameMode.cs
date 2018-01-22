@@ -132,6 +132,10 @@ namespace RTSCoreFramework
 
         #endregion
 
+        #region Tags
+        public string AllyTag { get { return "Ally"; } }
+        #endregion
+
         #region UnityMessages
         protected virtual void OnEnable()
         {

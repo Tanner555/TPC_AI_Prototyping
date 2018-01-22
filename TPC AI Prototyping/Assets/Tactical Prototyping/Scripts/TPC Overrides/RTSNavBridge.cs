@@ -223,7 +223,7 @@ namespace RTSPrototype
             else
             {
                 //Still targetting enemy but enemy transform is null
-                if (isTargeting)
+                if (targetTransform == null && isTargeting)
                     myEventHandler.CallEventStopTargettingEnemy();
 
                 MoveCharacterMain();

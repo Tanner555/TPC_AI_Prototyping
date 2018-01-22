@@ -28,6 +28,8 @@ namespace RTSPrototype
                     && allyMember;
             }
         }
+
+        public AllyMemberWrapper currentTargettedEnemyWrapper { get; protected set; }
         #endregion
 
         #region UnityMessages
@@ -56,8 +58,22 @@ namespace RTSPrototype
                 _mHitbox.SetActive(false);
             }
             this.enabled = false;
+        }      
+
+        #endregion
+
+        #region Overrides
+        protected override void HandleCommandAttackEnemy(AllyMember enemy)
+        {
+            base.HandleCommandAttackEnemy(enemy);
+            currentTargettedEnemyWrapper = (AllyMemberWrapper)enemy;
         }
 
+        protected override void HandleStopTargetting()
+        {
+            base.HandleStopTargetting();
+            currentTargettedEnemyWrapper = null;
+        }
         #endregion
 
         #region Initialization

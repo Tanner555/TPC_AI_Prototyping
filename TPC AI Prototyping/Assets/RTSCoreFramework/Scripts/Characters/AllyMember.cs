@@ -34,6 +34,10 @@ namespace RTSCoreFramework
         public PartyManager partyManager { get; protected set; }
         public int FactionPlayerCount { get { return gamemode.GetAllyFactionPlayerCount((AllyMember)this); } }
         public int GeneralPlayerCount { get { return gamemode.GetAllyGeneralPlayerCount((AllyMember)this); } }
+        public virtual AllyMember enemyTarget
+        {
+            get { return aiController.currentTargettedEnemy; }
+        }
 
         public int PartyKills
         {

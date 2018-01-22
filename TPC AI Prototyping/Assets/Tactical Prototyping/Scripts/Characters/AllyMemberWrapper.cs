@@ -18,7 +18,21 @@ namespace RTSPrototype
         #region Properties
         public Transform ChestTransform { get { return chestTransform; } }
         public Transform HeadTransform { get { return headTransform; } }
+        public AllyAIControllerWrapper aiControllerWrapper
+        {
+            get
+            {
+                if (_aiControllerWrapper == null)
+                    _aiControllerWrapper = GetComponent<AllyAIControllerWrapper>();
 
+                return _aiControllerWrapper;
+            }
+        }
+        private AllyAIControllerWrapper _aiControllerWrapper = null;
+        public AllyMemberWrapper enemyTargetWrapper
+        {
+            get { return aiControllerWrapper.currentTargettedEnemyWrapper; }
+        }
         #endregion
 
         #region UnityMessages
