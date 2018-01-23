@@ -46,7 +46,7 @@ namespace RTSPrototype
         //{
         //    var fireDirection = FireDirection();
         //    RaycastHit m_RaycastHit;
-        //    if (validShot && Physics.Linecast(m_FirePoint.position, rootAlly.enemyTargetWrapper.ChestTransform.position, out m_RaycastHit))
+        //    if (validShot && Physics.Linecast(rootAlly.ChestTransform.position, rootAlly.enemyTargetWrapper.ChestTransform.position, out m_RaycastHit))
         //    {
         //        // Make sure we hit an ally before subtracting health
         //        Transform _enemyRoot = m_RaycastHit.transform.root;
