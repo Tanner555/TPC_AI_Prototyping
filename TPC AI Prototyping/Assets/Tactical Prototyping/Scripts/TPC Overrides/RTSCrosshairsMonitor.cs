@@ -28,12 +28,14 @@ namespace RTSPrototype
 
         void DisableCrosshairsHandler(bool enableCamera)
         {
-            DisableCrosshairs(!enableCamera);
+            //Complete Disable Crosshairs for now
+            //DisableCrosshairs(!enableCamera);
         }
 
         protected override void AttachCharacter(GameObject character)
         {
-            base.AttachCharacter(character);
+            //Complete Disable Crosshairs for now
+            //base.AttachCharacter(character);
             DisableCrosshairs(true);
         }
     }
