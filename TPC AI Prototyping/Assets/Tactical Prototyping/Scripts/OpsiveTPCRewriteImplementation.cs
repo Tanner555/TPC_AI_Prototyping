@@ -49,12 +49,14 @@ namespace RTSPrototype
         //    if (validShot && Physics.Linecast(m_FirePoint.position, rootAlly.enemyTargetWrapper.ChestTransform.position, out m_RaycastHit))
         //    {
         //        // Make sure we hit an ally before subtracting health
-        //        bool _isAlly = m_RaycastHit.transform.root.tag == gamemode.AllyTag;
+        //        Transform _enemyRoot = m_RaycastHit.transform.root;
+        //        bool _isEnemy = _enemyRoot.tag == gamemode.AllyTag;
         //        // If the Health component exists it will apply a force to the rigidbody in addition to deducting the health. Otherwise just apply the force to the rigidbody. 
         //        Health hitHealth;
-        //        if (_isAlly && (hitHealth = m_RaycastHit.transform.GetComponentInParent<Health>()) != null)
+        //        if (_isEnemy && (hitHealth = m_RaycastHit.transform.GetComponentInParent<Health>()) != null)
         //        {
         //            hitHealth.Damage(m_HitscanDamageAmount, m_RaycastHit.point, fireDirection * m_HitscanImpactForce, m_Character, m_RaycastHit.transform.gameObject);
+        //            _enemyRoot.SendMessage("SetDamageInstigator", rootAlly, SendMessageOptions.DontRequireReceiver);
         //        }
         //        else if (m_HitscanImpactForce > 0 && m_RaycastHit.rigidbody != null && !m_RaycastHit.rigidbody.isKinematic)
         //        {
