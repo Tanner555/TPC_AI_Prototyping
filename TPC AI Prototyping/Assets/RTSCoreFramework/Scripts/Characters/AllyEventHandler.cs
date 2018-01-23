@@ -26,12 +26,14 @@ namespace RTSCoreFramework
         }
         private bool _bIsAIMoving = false;
         public bool bIsFreeMoving { get; protected set; }
-        public bool bIsCommandShooting { get; protected set; }
-        public bool bIsAiShooting { get; protected set; }
+        public bool bIsCommandAttacking { get; protected set; }
+        public bool bIsAiAttacking { get; protected set; }
         public bool bIsAimingToShoot { get; protected set; }
         public bool bCanEnableAITactics
         {
-            get { return (bIsCommandMoving == true || bIsFreeMoving == true) == false && bIsCommandShooting == false; }
+            get { return (bIsCommandMoving || 
+                    bIsFreeMoving) == false && 
+                    bIsCommandAttacking == false; }
         }
         
         #endregion
@@ -104,8 +106,8 @@ namespace RTSCoreFramework
             bIsTacticsEnabled = false;
             bIsAimingToShoot = false;
             bIsFreeMoving = false;
-            bIsCommandShooting = false;
-            bIsAiShooting = false;
+            bIsCommandAttacking = false;
+            bIsAiAttacking = false;
         }
 
         protected virtual void OnDisable()
@@ -330,7 +332,7 @@ namespace RTSCoreFramework
 
         public void CallEventCommandMove(rtsHitType hitType, RaycastHit hit)
         {
-            bIsAimingToShoot = bIsCommandShooting = bIsAiShooting = false;
+            bIsAimingToShoot = bIsCommandAttacking = bIsAiAttacking = false;
             bIsCommandMoving = true;
             bIsAIMoving = false;
             if (EventPlayerCommandMove != null)
@@ -342,7 +344,7 @@ namespace RTSCoreFramework
         public void CallEventAIMove(Vector3 _point)
         {
             bIsAimingToShoot = false;
-            bIsCommandShooting = false;
+            bIsCommandAttacking = false;
             bIsAIMoving = true;
             bIsCommandMoving = false;
             if (EventAIMove != null) EventAIMove(_point);
@@ -351,8 +353,8 @@ namespace RTSCoreFramework
         public void CallEventCommandAttackEnemy(AllyMember ally)
         {
             bIsAIMoving = bIsCommandMoving = false;
-            bIsCommandShooting = true;
-            bIsAiShooting = false;
+            bIsCommandAttacking = true;
+            bIsAiAttacking = false;
             if (EventPlayerCommandAttackEnemy != null)
             {
                 EventPlayerCommandAttackEnemy(ally);
@@ -362,8 +364,8 @@ namespace RTSCoreFramework
         public void CallEventAICommandAttackEnemy(AllyMember ally)
         {
             bIsAIMoving = bIsCommandMoving = false;
-            bIsAiShooting = true;
-            bIsCommandShooting = false;
+            bIsAiAttacking = true;
+            bIsCommandAttacking = false;
             if (EventAICommandAttackEnemy != null)
             {
                 EventAICommandAttackEnemy(ally);
@@ -372,7 +374,7 @@ namespace RTSCoreFramework
 
         public void CallEventStopTargettingEnemy()
         {
-            bIsCommandShooting = bIsAiShooting = bIsAimingToShoot = false;
+            bIsCommandAttacking = bIsAiAttacking = bIsAimingToShoot = false;
             if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
         }
 

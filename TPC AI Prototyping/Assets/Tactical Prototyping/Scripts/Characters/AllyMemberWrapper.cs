@@ -32,6 +32,30 @@ namespace RTSPrototype
         }
         public CharacterHealth _myCharacterHealth = null;
 
+        public ItemHandler itemHandler
+        {
+            get
+            {
+                if (_itemHandler == null)
+                    _itemHandler = GetComponent<ItemHandler>();
+
+                return _itemHandler;
+            }
+        }
+        private ItemHandler _itemHandler = null;
+
+        public Inventory myInventory
+        {
+            get
+            {
+                if (_myInventory == null)
+                    _myInventory = GetComponent<Inventory>();
+
+                return _myInventory;
+            }
+        }
+        private Inventory _myInventory = null;
+
         #endregion
 
         #region Properties
@@ -69,6 +93,15 @@ namespace RTSPrototype
             }
         }
         #endregion
+
+        public override int CurrentEquipedAmmo
+        {
+            get
+            {
+                return myInventory.GetCurrentItemCount(typeof(PrimaryItemType), false) +
+                    myInventory.GetCurrentItemCount(typeof(PrimaryItemType), true);
+            }
+        }
 
         public AllyMemberWrapper enemyTargetWrapper
         {

@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b5d2ce57dd2b54d8bbda3508a7cbbd, type: 3}
   m_Name: TacticsSaveFile
   m_EditorClassIdentifier: 
-  IGBPIPanelData: []
+  IGBPIPanelData:
+  - order: 1
+    condition: 'Self: CurAmmo = 0'
+    action: 'Self: SwitchToNextWeapon'
+  - order: 2
+    condition: 'Self: Any'
+    action: 'Self: Attack Nearest Enemy'

@@ -162,6 +162,37 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region AITacticsCommands
+        public void AttackTargettedEnemy()
+        {
+            if(myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
+            {
+                Debug.Log(myEventHandler.bIsAiAttacking);
+                myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
+            }
+        }
+
+        public void Tactics_AttackClosestEnemy()
+        {
+            AllyMember _closestEnemy = FindClosestEnemy();
+            if (_closestEnemy != null)
+            {
+                currentTargettedEnemy = _closestEnemy;
+                //AttackTargettedEnemy();
+                //Testing
+                if (myEventHandler.bIsCommandAttacking == false && currentTargettedEnemy != null)
+                {
+                    Debug.Log(myEventHandler.bIsCommandAttacking);
+                    myEventHandler.CallEventCommandAttackEnemy(currentTargettedEnemy);
+                }
+            }
+            //else
+            //{
+            //    myEventHandler.CallEventStopTargettingEnemy();
+            //}
+        }
+        #endregion
+
         #region AITacticsHelpers
         protected virtual AllyMember FindClosestEnemy()
         {

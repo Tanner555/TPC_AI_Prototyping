@@ -90,6 +90,13 @@ namespace RTSCoreFramework
         {
             get { return AllyHealth > 0f; }
         }
+
+        //Ammo Properties
+        public virtual int CurrentEquipedAmmo
+        {
+            get { return 0; }
+        }
+
         #endregion
 
         #region PlayerComponents
@@ -98,7 +105,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region BooleanProperties
-        public bool AllComponentsAreValid
+        protected virtual bool AllComponentsAreValid
         {
             get { return allyEventHandler && aiController; }
         }
@@ -192,7 +199,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region Initialization
-        protected void SetInitialReferences()
+        protected virtual void SetInitialReferences()
         {
             allyEventHandler = GetComponent<AllyEventHandler>();
             aiController = GetComponent<AllyAIController>();
