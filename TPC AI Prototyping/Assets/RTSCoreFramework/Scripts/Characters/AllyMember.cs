@@ -64,6 +64,32 @@ namespace RTSCoreFramework
             get { return partyManager.PartyDeaths; }
             set { partyManager.PartyDeaths = value; }
         }
+
+        //Health Properties
+        public virtual float AllyHealth
+        {
+            get { return 0f; }
+        }
+
+        public virtual float AllyMaxHealth
+        {
+            get { return 100f; }
+        }
+
+        public virtual float AllyShield
+        {
+            get { return 0f; }
+        }
+
+        public virtual float AllyMaxShield
+        {
+            get { return 0f; }
+        }
+
+        public virtual bool IsAlive
+        {
+            get { return AllyHealth > 0f; }
+        }
         #endregion
 
         #region PlayerComponents

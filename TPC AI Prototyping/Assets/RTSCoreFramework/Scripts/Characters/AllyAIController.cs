@@ -221,7 +221,7 @@ namespace RTSCoreFramework
         #region ShootingAndBattleBehavior
         void UpdateBattleBehavior()
         {
-            if(currentTargettedEnemy == null)
+            if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
                 return;
