@@ -147,7 +147,7 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region AllyTacticsHelpers
+        #region AITacticsHelpers
         protected virtual AllyMember FindClosestEnemy()
         {
             AllyMember _closestEnemy = null;
@@ -167,8 +167,7 @@ namespace RTSCoreFramework
                 if (isEnemyFor(col.transform, out _enemy))
                 {
                     RaycastHit hit;
-                    if (Physics.Linecast(headTransform.position,
-                        _enemy.ChestTransform.position, out hit, sightLayers))
+                    if (hasLOSWithinRange(_enemy, out hit))
                     {
                         if (hit.transform.root == _enemy.transform.root)
                             scanEnemyList.Add(_enemy);
@@ -180,6 +179,12 @@ namespace RTSCoreFramework
                 _closestEnemy = DetermineClosestAllyFromList(scanEnemyList);
 
             return _closestEnemy;
+        }
+
+        bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
+        {
+            return Physics.Linecast(headTransform.position,
+                        _enemy.ChestTransform.position, out _hit, sightLayers);
         }
 
         AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
@@ -203,14 +208,26 @@ namespace RTSCoreFramework
         #region ShootingAndBattleBehavior
         void UpdateBattleBehavior()
         {
-            //Debug.Log(FindClosestEnemy());
-            //If has line of sight to enemy
-            //and is within a given range,
-            //start shooting behavior
-            //else move towards target enemy
-            //possibly find a spot close enough if needed
-            if(bIsShooting == false)
-                StartShootingBehavior();
+            RaycastHit _hit;
+            if(hasLOSWithinRange(currentTargettedEnemy, out _hit))
+            {
+                //start shooting behavior
+                if (bIsShooting == false)
+                    StartShootingBehavior();
+            }
+            else
+            {
+                if (bIsShooting == true)
+                    StopShootingBehavior();
+                //else move towards target enemy
+                //possibly find a spot close enough if needed
+                //should destinguish command move from ai move
+                //that would determine whether i should stop updating
+                //battle behavior
+
+            }
+
+            
         }
 
         void StartBattleBehavior()
