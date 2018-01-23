@@ -174,22 +174,30 @@ namespace RTSCoreFramework
 
         public void Tactics_AttackClosestEnemy()
         {
-            AllyMember _closestEnemy = FindClosestEnemy();
-            if (_closestEnemy != null)
+            if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
             {
-                currentTargettedEnemy = _closestEnemy;
-                //AttackTargettedEnemy();
-                //Testing
-                if (myEventHandler.bIsCommandAttacking == false && currentTargettedEnemy != null)
+                AllyMember _closestEnemy = FindClosestEnemy();
+                if (_closestEnemy != null)
                 {
-                    Debug.Log(myEventHandler.bIsCommandAttacking);
-                    myEventHandler.CallEventCommandAttackEnemy(currentTargettedEnemy);
+                    currentTargettedEnemy = _closestEnemy;
+                    //This works
+                    if (myEventHandler.bIsCommandAttacking == false && currentTargettedEnemy != null)
+                    {
+                        myEventHandler.CallEventCommandAttackEnemy(currentTargettedEnemy);
+                    }
+                    //This doesn't work
+                    //TODO: RTSPrototype Fix Tactics_AttackClosestEnemy issue when using AICommandAttackEnemy
+                    //if (myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
+                    //{
+                    //    Debug.Log(myEventHandler.bIsAiAttacking);
+                    //    myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
+                    //}
                 }
+                //else
+                //{
+                //    myEventHandler.CallEventStopTargettingEnemy();
+                //}
             }
-            //else
-            //{
-            //    myEventHandler.CallEventStopTargettingEnemy();
-            //}
         }
         #endregion
 
