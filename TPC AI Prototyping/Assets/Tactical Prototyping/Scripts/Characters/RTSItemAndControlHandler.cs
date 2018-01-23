@@ -29,11 +29,13 @@ namespace RTSPrototype
         Inventory myInventory; 
         RigidbodyCharacterController myController;
         RTSNavBridge myNavBidge;
+        AllyMember allyMember;
 
         bool AllCompsAreValid
         {
             get { return myEventHandler && itemHandler && 
-                    myInventory && myController && myNavBidge; }
+                    myInventory && myController && myNavBidge 
+                    && allyMember; }
         }
         #endregion
 
@@ -148,6 +150,7 @@ namespace RTSPrototype
             myInventory = GetComponent<Inventory>();
             myController = GetComponent<RigidbodyCharacterController>();
             myNavBidge = GetComponent<RTSNavBridge>();
+            allyMember = GetComponent<AllyMember>();
 
             if (!AllCompsAreValid)
             {

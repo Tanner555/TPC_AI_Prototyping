@@ -93,14 +93,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region PlayerComponents
-        public AllyEventHandler npcMaster { get; protected set; }
+        public AllyEventHandler allyEventHandler { get; protected set; }
         public AllyAIController aiController { get; protected set; }
         #endregion
 
         #region BooleanProperties
         public bool AllComponentsAreValid
         {
-            get { return npcMaster && aiController; }
+            get { return allyEventHandler && aiController; }
         }
 
         //public bool IsAlive
@@ -194,13 +194,13 @@ namespace RTSCoreFramework
         #region Initialization
         protected void SetInitialReferences()
         {
-            npcMaster = GetComponent<AllyEventHandler>();
+            allyEventHandler = GetComponent<AllyEventHandler>();
             aiController = GetComponent<AllyAIController>();
             TryFindingPartyManager();
 
             if (partyManager == null)
                 Debug.LogError("No partymanager on allymember!");
-            if (npcMaster == null)
+            if (allyEventHandler == null)
                 Debug.LogError("No npcmaster on allymember!");
             if (aiController == null)
                 Debug.LogError("No aiController on allymember!");
@@ -214,12 +214,12 @@ namespace RTSCoreFramework
 
         protected void SubToEvents()
         {
-            npcMaster.EventNpcDie += AllyOnDeath;
+            allyEventHandler.EventNpcDie += AllyOnDeath;
         }
 
         protected void UnSubFromEvents()
         {
-            npcMaster.EventNpcDie -= AllyOnDeath;
+            allyEventHandler.EventNpcDie -= AllyOnDeath;
         }
 
         public bool TryFindingPartyManager()

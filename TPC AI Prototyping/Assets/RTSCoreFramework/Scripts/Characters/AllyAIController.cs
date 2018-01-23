@@ -152,8 +152,7 @@ namespace RTSCoreFramework
 
         protected virtual void OnEnableCameraMovement(bool _enable)
         {
-            if (!allyMember.isCurrentPlayer) return;
-            myEventHandler.CallOnTryAim(_enable);
+            
         }
 
         protected virtual void TogglebIsShooting(bool _enable)

@@ -64,27 +64,23 @@ namespace RTSPrototype
         bool bIsShooting = false;
         //LookRotation Local Variable
         Quaternion lookRotation;
+        //Sprinting
+        bool bIsSprinting = false;
+        float speedMultiplier = 1f;
+        float walkSpeed = 1f;
+        float sprintSpeed = 1.5f;
         #endregion
 
         #region UnityMessages
         protected override void FixedUpdate()
         {
             UpdateMovementOrRotate();
-            //if(allyMember && allyMember.isCurrentPlayer && moveCamera && RTSPlayerInput.thisInstance) {
-            //    if (isMoving == true)
-            //        FinishMovingNavMesh();
-
-            //    moveCharacterFreeLook();
-            //}
-            //else if(isMoving == true)
-            //{
-            //    ReplaceFixedMoveTesting();
-            //}
 
         }
 
         private void Start()
         {
+            OnToggleSprinting();
             SubToEvents();
         }
 
@@ -126,6 +122,14 @@ namespace RTSPrototype
         {
             if (_ally != null)
                 LookAtTarget(_ally.transform);
+        }
+
+        void OnToggleSprinting()
+        {
+            bIsSprinting = myEventHandler.isSprinting;
+            speedMultiplier = bIsSprinting ?
+                sprintSpeed : walkSpeed;
+
         }
 
         void OnCommandStopTargetting()
@@ -194,11 +198,16 @@ namespace RTSPrototype
                     if (velocity.sqrMagnitude > 1)
                     {
                         velocity.Normalize();
-                        // Smoothly come to a stop at the destination.
-                        if (m_NavMeshAgent.remainingDistance < 1f)
-                        {
-                            velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
-                        }
+                    }
+                    // Smoothly come to a stop at the destination.
+                    if (m_NavMeshAgent.remainingDistance < 1f)
+                    {
+                        velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
+                    }
+                    else
+                    {
+                        //Change Velocity to Speed Multiplier
+                        velocity *= speedMultiplier;
                     }
                 }
             }
@@ -405,6 +414,7 @@ namespace RTSPrototype
             myEventHandler.EventAICommandAttackEnemy += OnAICommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
+            myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
         }
 
@@ -414,6 +424,7 @@ namespace RTSPrototype
             myEventHandler.EventAICommandAttackEnemy -= OnAICommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
+            myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
         }
         #endregion

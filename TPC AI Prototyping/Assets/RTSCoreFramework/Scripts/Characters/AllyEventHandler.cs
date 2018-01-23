@@ -6,6 +6,10 @@ namespace RTSCoreFramework
 {
     public class AllyEventHandler : MonoBehaviour
     {
+        #region FieldsAndProps
+        public bool isSprinting { get; protected set; }
+        #endregion
+
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
         public delegate void GeneralOneBoolHandler(bool _enable);
@@ -26,7 +30,8 @@ namespace RTSCoreFramework
         public event GeneralEventHandler EventKilledEnemy;
         public event GeneralEventHandler EventStopTargettingEnemy;
         public event GeneralEventHandler EventFinishedMoving;
-        public event GeneralOneBoolHandler EventToggleIsShooting;      
+        public event GeneralEventHandler EventToggleIsSprinting;
+        public event GeneralOneBoolHandler EventToggleIsShooting;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
@@ -67,7 +72,7 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void Awake()
         {
-
+            isSprinting = true;
         }
 
         protected virtual void OnDisable()
@@ -150,14 +155,17 @@ namespace RTSCoreFramework
             }
         }
 
+        public void CallEventToggleIsSprinting()
+        {
+            isSprinting = !isSprinting;
+            if (EventToggleIsSprinting != null) EventToggleIsSprinting();
+        }
+
         public void CallEventFinishedMoving()
         {
             if (EventFinishedMoving != null) EventFinishedMoving();
         }
-        #endregion
 
-        #region OpsiveEventCalls
-        //Opsive TPC Events
         public void CallOnSwitchToPrevItem()
         {
             if (OnSwitchToPrevItem != null) OnSwitchToPrevItem();
