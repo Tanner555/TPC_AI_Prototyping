@@ -164,7 +164,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire += OnTryFire;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
-            myEventHandler.EventCommandMove += OnPlayerCommandMove;
+            myEventHandler.EventPlayerCommandMove += OnPlayerCommandMove;
             myEventHandler.EventAIMove += OnAICommandMove;
         }
 
@@ -176,7 +176,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire -= OnTryFire;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
-            myEventHandler.EventCommandMove -= OnPlayerCommandMove;
+            myEventHandler.EventPlayerCommandMove -= OnPlayerCommandMove;
             myEventHandler.EventAIMove -= OnAICommandMove;
         }
         #endregion

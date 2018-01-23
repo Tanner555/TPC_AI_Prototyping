@@ -14,18 +14,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        bool bIsShooting = false;
-        bool bIsMoving = false;
-        float defaultFireRepeatRate = 0.25f;
+        protected bool bIsShooting = false;
+        protected bool bIsMoving = false;
+        protected float defaultFireRepeatRate = 0.25f;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
         public LayerMask allyLayers;
         public LayerMask sightLayers;
 
-        private Collider[] colliders;
-        private List<Transform> uniqueTransforms = new List<Transform>();
-        private List<AllyMember> scanEnemyList = new List<AllyMember>();
+        protected Collider[] colliders;
+        protected List<Transform> uniqueTransforms = new List<Transform>();
+        protected List<AllyMember> scanEnemyList = new List<AllyMember>();
         #endregion
 
         #region Properties
@@ -93,7 +93,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters
-        public bool isEnemyFor(Transform _transform, out AllyMember _ally)
+        public virtual bool isEnemyFor(Transform _transform, out AllyMember _ally)
         {
             _ally = null;
             if (_transform.root.GetComponent<AllyMember>())
@@ -102,32 +102,27 @@ namespace RTSCoreFramework
             return _ally != null && allyMember.IsEnemyFor(_ally);
         }
 
-        public bool isSurfaceWalkable(RaycastHit hit)
+        public virtual bool isSurfaceWalkable(RaycastHit hit)
         {
             return myNavAgent.CalculatePath(hit.point, myNavAgent.path) &&
             myNavAgent.path.status == NavMeshPathStatus.PathComplete;
         }
 
-        public float GetFiringRate()
+        public virtual float GetFiringRate()
         {
             return defaultFireRepeatRate;
         }
         #endregion
 
         #region Handlers
-        protected virtual void HandleCommandAttackEnemy(AllyMember enemy)
+        protected virtual void HandlePlayerCommandAttackEnemy(AllyMember enemy)
         {
-            previousTargettedEnemy = currentTargettedEnemy;
-            currentTargettedEnemy = enemy;
-            if(IsInvoking("UpdateBattleBehavior") == false)
-            {
-                StartBattleBehavior();
-            }
-            else if(IsInvoking("UpdateBattleBehavior") && previousTargettedEnemy != currentTargettedEnemy)
-            {
-                StopBattleBehavior();
-                Invoke("StartBattleBehavior", 0.05f);
-            }
+            CommandAttackEnemy(enemy);
+        }
+
+        protected virtual void HandleAICommandAttackEnemy(AllyMember enemy)
+        {
+            CommandAttackEnemy(enemy);
         }
 
         protected virtual void HandleStopTargetting()
@@ -205,7 +200,9 @@ namespace RTSCoreFramework
         {
             bool _bHit = Physics.Linecast(chestTransform.position,
                         _enemy.ChestTransform.position, out _hit);
-            return _bHit && _hit.transform != null && _hit.transform.root.tag == gamemode.AllyTag;
+            return _bHit && _hit.transform != null &&
+                _hit.transform.root.tag == gamemode.AllyTag &&
+                _hit.transform.root == _enemy.transform;
         }
 
         AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
@@ -227,7 +224,22 @@ namespace RTSCoreFramework
         #endregion
 
         #region ShootingAndBattleBehavior
-        void UpdateBattleBehavior()
+        protected virtual void CommandAttackEnemy(AllyMember enemy)
+        {
+            previousTargettedEnemy = currentTargettedEnemy;
+            currentTargettedEnemy = enemy;
+            if (IsInvoking("UpdateBattleBehavior") == false)
+            {
+                StartBattleBehavior();
+            }
+            else if (IsInvoking("UpdateBattleBehavior") && previousTargettedEnemy != currentTargettedEnemy)
+            {
+                StopBattleBehavior();
+                Invoke("StartBattleBehavior", 0.05f);
+            }
+        }
+
+        protected virtual void UpdateBattleBehavior()
         {
             if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
             {
@@ -253,30 +265,30 @@ namespace RTSCoreFramework
             
         }
 
-        void StartBattleBehavior()
+        protected virtual void StartBattleBehavior()
         {
             InvokeRepeating("UpdateBattleBehavior", 0f, 0.2f);
         }
 
-        void StopBattleBehavior()
+        protected virtual void StopBattleBehavior()
         {
             CancelInvoke("UpdateBattleBehavior");
             StopShootingBehavior();
         }
 
-        void StartShootingBehavior()
+        protected virtual void StartShootingBehavior()
         {
             myEventHandler.CallEventToggleIsShooting(true);
             InvokeRepeating("MakeFireRequest", 0.0f, GetFiringRate());
         }
 
-        void StopShootingBehavior()
+        protected virtual void StopShootingBehavior()
         {
             myEventHandler.CallEventToggleIsShooting(false);
             CancelInvoke("MakeFireRequest");
         }
 
-        void MakeFireRequest()
+        protected virtual void MakeFireRequest()
         {
             myEventHandler.CallOnTryFire();
         }
@@ -285,10 +297,11 @@ namespace RTSCoreFramework
         #region Initialization
         protected virtual void SubToEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy += HandleCommandAttackEnemy;
+            myEventHandler.EventPlayerCommandAttackEnemy += HandlePlayerCommandAttackEnemy;
+            myEventHandler.EventAICommandAttackEnemy += HandleAICommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
-            myEventHandler.EventCommandMove += HandleOnPlayerMoveAlly;
+            myEventHandler.EventPlayerCommandMove += HandleOnPlayerMoveAlly;
             myEventHandler.EventAIMove += HandleOnAIMoveAlly;
             myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
@@ -296,10 +309,11 @@ namespace RTSCoreFramework
 
         protected virtual void UnSubFromEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy -= HandleCommandAttackEnemy;
+            myEventHandler.EventPlayerCommandAttackEnemy -= HandlePlayerCommandAttackEnemy;
+            myEventHandler.EventAICommandAttackEnemy -= HandleAICommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
-            myEventHandler.EventCommandMove -= HandleOnPlayerMoveAlly;
+            myEventHandler.EventPlayerCommandMove -= HandleOnPlayerMoveAlly;
             myEventHandler.EventAIMove -= HandleOnAIMoveAlly;
             myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;

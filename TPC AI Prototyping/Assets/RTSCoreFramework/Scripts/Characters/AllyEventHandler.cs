@@ -51,14 +51,14 @@ namespace RTSCoreFramework
         public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event RtsHitTypeAndRayCastHitHandler OnHoverOver;
         public event RtsHitTypeAndRayCastHitHandler OnHoverLeave;
-        public event RtsHitTypeAndRayCastHitHandler EventCommandMove;
+        public event RtsHitTypeAndRayCastHitHandler EventPlayerCommandMove;
 
         public delegate void GeneralVector3Handler(Vector3 _point);
         public event GeneralVector3Handler EventAIMove;
 
         public delegate void AllyHandler(AllyMember ally);
         public event AllyHandler EventPlayerCommandAttackEnemy;
-        //public event AllyHandler EventAICommandAttackEnemy;
+        public event AllyHandler EventAICommandAttackEnemy;
 
         //public delegate void NavSpeedHandler(AllyMoveSpeed _navSpeed);
         //public event NavSpeedHandler EventSetNavSpeed;
@@ -282,9 +282,9 @@ namespace RTSCoreFramework
 
         public void CallEventCommandMove(rtsHitType hitType, RaycastHit hit)
         {
-            if (EventCommandMove != null)
+            if (EventPlayerCommandMove != null)
             {
-                EventCommandMove(hitType, hit);
+                EventPlayerCommandMove(hitType, hit);
             }
         }
 
@@ -301,13 +301,13 @@ namespace RTSCoreFramework
             }
         }
 
-        //public void CallEventAICommandAttackEnemy(AllyMember ally)
-        //{
-        //    if(EventAICommandAttackEnemy != null)
-        //    {
-        //        EventAICommandAttackEnemy(ally);
-        //    }
-        //}
+        public void CallEventAICommandAttackEnemy(AllyMember ally)
+        {
+            if (EventAICommandAttackEnemy != null)
+            {
+                EventAICommandAttackEnemy(ally);
+            }
+        }
 
         public void CallEventStopTargettingEnemy()
         {

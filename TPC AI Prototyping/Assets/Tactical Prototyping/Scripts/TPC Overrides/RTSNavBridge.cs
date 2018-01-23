@@ -116,7 +116,13 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnCommandAttack(AllyMember _ally)
+        void OnPlayerCommandAttack(AllyMember _ally)
+        {
+            if (_ally != null)
+                LookAtTarget(_ally.transform);
+        }
+
+        void OnAICommandAttack(AllyMember _ally)
         {
             if (_ally != null)
                 LookAtTarget(_ally.transform);
@@ -395,7 +401,8 @@ namespace RTSPrototype
         #region Initialization
         void SubToEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy += OnCommandAttack;
+            myEventHandler.EventPlayerCommandAttackEnemy += OnPlayerCommandAttack;
+            myEventHandler.EventAICommandAttackEnemy += OnAICommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
@@ -403,7 +410,8 @@ namespace RTSPrototype
 
         void UnsubFromEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy -= OnCommandAttack;
+            myEventHandler.EventPlayerCommandAttackEnemy -= OnPlayerCommandAttack;
+            myEventHandler.EventAICommandAttackEnemy -= OnAICommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
