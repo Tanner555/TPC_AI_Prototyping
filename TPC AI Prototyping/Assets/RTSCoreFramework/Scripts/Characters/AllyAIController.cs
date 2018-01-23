@@ -16,6 +16,7 @@ namespace RTSCoreFramework
         #region Fields
         bool bIsShooting = false;
         bool bIsMoving = false;
+        float defaultFireRepeatRate = 0.25f;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
@@ -106,6 +107,11 @@ namespace RTSCoreFramework
             return myNavAgent.CalculatePath(hit.point, myNavAgent.path) &&
             myNavAgent.path.status == NavMeshPathStatus.PathComplete;
         }
+
+        public float GetFiringRate()
+        {
+            return defaultFireRepeatRate;
+        }
         #endregion
 
         #region Handlers
@@ -128,6 +134,8 @@ namespace RTSCoreFramework
         {
             currentTargettedEnemy = null;
             StopBattleBehavior();
+            if (bIsMoving)
+                myEventHandler.CallEventAIMove(this.transform.position);
         }
 
         protected virtual void HandleOnPlayerMoveAlly(rtsHitType hitType, RaycastHit hit)
@@ -195,9 +203,9 @@ namespace RTSCoreFramework
         
         bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
-            Physics.Linecast(headTransform.position,
-                        _enemy.ChestTransform.position, out _hit, sightLayers);
-            return _hit.transform != null && _hit.transform.root.tag == gamemode.AllyTag;
+            bool _bHit = Physics.Linecast(chestTransform.position,
+                        _enemy.ChestTransform.position, out _hit);
+            return _bHit && _hit.transform != null && _hit.transform.root.tag == gamemode.AllyTag;
         }
 
         AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
@@ -259,11 +267,18 @@ namespace RTSCoreFramework
         void StartShootingBehavior()
         {
             myEventHandler.CallEventToggleIsShooting(true);
+            InvokeRepeating("MakeFireRequest", 0.0f, GetFiringRate());
         }
 
         void StopShootingBehavior()
         {
             myEventHandler.CallEventToggleIsShooting(false);
+            CancelInvoke("MakeFireRequest");
+        }
+
+        void MakeFireRequest()
+        {
+            myEventHandler.CallOnTryFire();
         }
         #endregion
 
