@@ -7,17 +7,7 @@ namespace RTSPrototype
 {
     public class AllyMemberWrapper : AllyMember
     {
-        #region Fields
-        [Header("Camera Follow Transforms")]
-        [SerializeField]
-        private Transform chestTransform;
-        [SerializeField]
-        private Transform headTransform;
-        #endregion
-
         #region Properties
-        public Transform ChestTransform { get { return chestTransform; } }
-        public Transform HeadTransform { get { return headTransform; } }
         public AllyAIControllerWrapper aiControllerWrapper
         {
             get

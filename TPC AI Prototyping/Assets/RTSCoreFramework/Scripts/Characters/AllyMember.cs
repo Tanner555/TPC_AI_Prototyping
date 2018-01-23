@@ -15,6 +15,12 @@ namespace RTSCoreFramework
         public bool Debug_InfiniteHealth = false;
         public bool Debug_DoNotShoot = false;
 
+        [Header("Camera Follow Transforms")]
+        [SerializeField]
+        protected Transform chestTransform;
+        [SerializeField]
+        protected Transform headTransform;
+
         //Gun Properties, Can Delete in the Future
         protected float lowAmmoThreshold = 14.0f;
         protected float firerate = 0.3f;
@@ -34,6 +40,10 @@ namespace RTSCoreFramework
         public PartyManager partyManager { get; protected set; }
         public int FactionPlayerCount { get { return gamemode.GetAllyFactionPlayerCount((AllyMember)this); } }
         public int GeneralPlayerCount { get { return gamemode.GetAllyGeneralPlayerCount((AllyMember)this); } }
+        //Camera Follow Transforms
+        public Transform ChestTransform { get { return chestTransform; } }
+        public Transform HeadTransform { get { return headTransform; } }
+
         public virtual AllyMember enemyTarget
         {
             get { return aiController.currentTargettedEnemy; }

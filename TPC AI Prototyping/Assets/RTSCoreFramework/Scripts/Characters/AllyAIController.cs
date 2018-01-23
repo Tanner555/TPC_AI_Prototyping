@@ -15,6 +15,15 @@ namespace RTSCoreFramework
 
         #region Fields
         bool bIsShooting = false;
+        //Used for finding closest ally
+        [Header("AI Finder Properties")]
+        public float sightRange = 40f;
+        public LayerMask allyLayers;
+        public LayerMask sightLayers;
+
+        private Collider[] colliders;
+        private List<Transform> uniqueTransforms = new List<Transform>();
+        private List<AllyMember> scanEnemyList = new List<AllyMember>();
         #endregion
 
         #region Properties
@@ -30,6 +39,10 @@ namespace RTSCoreFramework
 
         public AllyMember currentTargettedEnemy { get; protected set; }
         public AllyMember previousTargettedEnemy { get; protected set; }
+
+        //AllyMember Transforms
+        Transform headTransform { get { return allyMember.HeadTransform; } }
+        Transform chestTransform { get { return allyMember.ChestTransform; } }
 
         protected virtual bool AllCompsAreValid
         {
@@ -134,9 +147,63 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region AllyTacticsHelpers
+        protected virtual AllyMember FindClosestEnemy()
+        {
+            AllyMember _closestEnemy = null;
+            if (headTransform == null)
+            {
+                Debug.LogError("No head assigned on AIController, cannot run look service");
+                return _closestEnemy;
+            }
+            colliders = Physics.OverlapSphere(transform.position, sightRange, allyLayers);
+            AllyMember _enemy = null;
+            scanEnemyList.Clear();
+            uniqueTransforms.Clear();
+            foreach (Collider col in colliders)
+            {
+                if (uniqueTransforms.Contains(col.transform.root)) continue;
+                uniqueTransforms.Add(col.transform.root);
+                if (isEnemyFor(col.transform, out _enemy))
+                {
+                    RaycastHit hit;
+                    if (Physics.Linecast(headTransform.position,
+                        _enemy.ChestTransform.position, out hit, sightLayers))
+                    {
+                        if (hit.transform.root == _enemy.transform.root)
+                            scanEnemyList.Add(_enemy);
+                    }
+                }
+            }
+
+            if (scanEnemyList.Count > 0)
+                _closestEnemy = DetermineClosestAllyFromList(scanEnemyList);
+
+            return _closestEnemy;
+        }
+
+        AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
+        {
+            AllyMember _closestAlly = null;
+            float _closestDistance = Mathf.Infinity;
+            foreach (var _ally in _allies)
+            {
+                float _newDistance = Vector3.Distance(_ally.transform.position,
+                    transform.position);
+                if (_newDistance < _closestDistance)
+                {
+                    _closestDistance = _newDistance;
+                    _closestAlly = _ally;
+                }
+            }
+            return _closestAlly;
+        }
+        #endregion
+
         #region ShootingAndBattleBehavior
         void UpdateBattleBehavior()
         {
+            //Debug.Log(FindClosestEnemy());
             //If has line of sight to enemy
             //and is within a given range,
             //start shooting behavior

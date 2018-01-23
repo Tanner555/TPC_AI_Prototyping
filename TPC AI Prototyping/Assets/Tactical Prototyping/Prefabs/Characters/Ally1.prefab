@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 114359819425765536}
   - component: {fileID: 114052248880946264}
   - component: {fileID: 114675132079646358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ally1
   m_TagString: Ally
   m_Icon: {fileID: 0}
@@ -4958,7 +4958,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  myRotateTransform: {fileID: 4965076390904270}
 --- !u!114 &114052248880946264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5000,6 +4999,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a425afe260fe943ad1a1326fb7c928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightRange: 40
+  allyLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  sightLayers:
+    serializedVersion: 2
+    m_Bits: 3221225729
 --- !u!114 &114095915210318942
 MonoBehaviour:
   m_ObjectHideFlags: 1
