@@ -12,6 +12,7 @@ namespace RTSPrototype
     public class OpsiveTPCRewriteImplementation : MonoBehaviour
     {
         #region Used Code
+        #region Common Properties
         //RTSPrototype.AllyMemberWrapper rootAlly
         //{
         //    get
@@ -23,6 +24,18 @@ namespace RTSPrototype
         //    }
         //}
         //RTSPrototype.AllyMemberWrapper _rootAlly = null;
+
+        //RTSPrototype.AllyMemberWrapper allyMember
+        //{
+        //    get
+        //    {
+        //        if (_allyMember == null)
+        //            _allyMember = GetComponent<RTSPrototype.AllyMemberWrapper>();
+
+        //        return _allyMember;
+        //    }
+        //}
+        //RTSPrototype.AllyMemberWrapper _allyMember = null;
 
         //RTSCoreFramework.RTSGameMode gamemode
         //{
@@ -38,6 +51,16 @@ namespace RTSPrototype
         //          rootAlly.enemyTargetWrapper != null;
         //    }
         //}
+        #endregion
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-Health: Use isCurrentPlayer Property
+        /// To Make Sure only the Current Player Receives the UI updates.
+        /// </summary>
+        //void DamageLocal_SetHealthAmount_SetShieldAmount()
+        //{
+        //    if (allyMember.isCurrentPlayer)
+        //        ExecuteEvent("MyEvent", gameObject);
+        //}  
         /// <summary>
         /// RTSPrototype-OpsiveTPC-ShootableWeapon: Inside HitscanFire() method, comment out code
         /// and insert this function. Replaces default hitscan fire with autotargeting ally target.
@@ -82,11 +105,12 @@ namespace RTSPrototype
         //    }
         //}
         #endregion
-
+        
         #region Unused Code
         /// <summary>
         /// RTSPrototype-OpsiveTPC-RigidbodyCharacterController: Similar to Move Method, but rotates dummy
-        /// instead of character.
+        /// instead of character. Dummy Method didn't work properly, character still
+        /// rotated in same fashion as before, resorted to standing still when shooting for now.
         /// </summary>
         /// <param name="horizontalMovement">-1 to 1 value specifying the amount of horizontal movement.</param>
         /// <param name="forwardMovement">-1 to 1 value specifying the amount of forward movement.</param>
