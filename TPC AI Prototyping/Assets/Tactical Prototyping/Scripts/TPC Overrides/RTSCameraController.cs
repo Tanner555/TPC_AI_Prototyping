@@ -21,6 +21,16 @@ namespace RTSPrototype
             }
             InitializeCharacter(m_Character);
         }
+
+        protected override void RegisterEvents()
+        {
+            
+        }
+
+        protected override void Deactivate()
+        {
+            
+        }
         #endregion
 
         #region UnityMessages
