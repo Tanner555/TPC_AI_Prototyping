@@ -15,6 +15,7 @@ namespace RTSCoreFramework
 
         #region Fields
         bool bIsShooting = false;
+        bool bIsMoving = false;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
@@ -129,10 +130,21 @@ namespace RTSCoreFramework
             StopBattleBehavior();
         }
 
-        protected virtual void HandleOnMoveAlly(rtsHitType hitType, RaycastHit hit)
+        protected virtual void HandleOnPlayerMoveAlly(rtsHitType hitType, RaycastHit hit)
         {
+            bIsMoving = true;
             if(IsInvoking("UpdateBattleBehavior"))
                 StopBattleBehavior();
+        }
+
+        protected virtual void HandleOnAIMoveAlly(Vector3 _point)
+        {
+            bIsMoving = true;
+        }
+
+        protected virtual void HandleOnAIStopMoving()
+        {
+            bIsMoving = false;
         }
 
         protected virtual void OnEnableCameraMovement(bool _enable)
@@ -180,11 +192,12 @@ namespace RTSCoreFramework
 
             return _closestEnemy;
         }
-
+        
         bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
-            return Physics.Linecast(headTransform.position,
+            Physics.Linecast(headTransform.position,
                         _enemy.ChestTransform.position, out _hit, sightLayers);
+            return _hit.transform != null && _hit.transform.root.tag == gamemode.AllyTag;
         }
 
         AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
@@ -208,10 +221,14 @@ namespace RTSCoreFramework
         #region ShootingAndBattleBehavior
         void UpdateBattleBehavior()
         {
+            if(currentTargettedEnemy == null)
+            {
+                myEventHandler.CallEventStopTargettingEnemy();
+                return;
+            }
             RaycastHit _hit;
             if(hasLOSWithinRange(currentTargettedEnemy, out _hit))
             {
-                //start shooting behavior
                 if (bIsShooting == false)
                     StartShootingBehavior();
             }
@@ -219,14 +236,12 @@ namespace RTSCoreFramework
             {
                 if (bIsShooting == true)
                     StopShootingBehavior();
-                //else move towards target enemy
-                //possibly find a spot close enough if needed
-                //should destinguish command move from ai move
-                //that would determine whether i should stop updating
-                //battle behavior
 
+                if(bIsMoving == false)
+                {
+                    myEventHandler.CallEventAIMove(currentTargettedEnemy.transform.position);
+                }
             }
-
             
         }
 
@@ -255,19 +270,23 @@ namespace RTSCoreFramework
         #region Initialization
         protected virtual void SubToEvents()
         {
-            myEventHandler.EventCommandAttackEnemy += HandleCommandAttackEnemy;
+            myEventHandler.EventPlayerCommandAttackEnemy += HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
-            myEventHandler.EventCommandMove += HandleOnMoveAlly;
+            myEventHandler.EventCommandMove += HandleOnPlayerMoveAlly;
+            myEventHandler.EventAIMove += HandleOnAIMoveAlly;
+            myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
         }
 
         protected virtual void UnSubFromEvents()
         {
-            myEventHandler.EventCommandAttackEnemy -= HandleCommandAttackEnemy;
+            myEventHandler.EventPlayerCommandAttackEnemy -= HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
-            myEventHandler.EventCommandMove -= HandleOnMoveAlly;
+            myEventHandler.EventCommandMove -= HandleOnPlayerMoveAlly;
+            myEventHandler.EventAIMove -= HandleOnAIMoveAlly;
+            myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;
         }
 

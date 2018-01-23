@@ -25,7 +25,8 @@ namespace RTSCoreFramework
         public event GeneralEventHandler EventSetAsCommander;
         public event GeneralEventHandler EventKilledEnemy;
         public event GeneralEventHandler EventStopTargettingEnemy;
-        public event GeneralOneBoolHandler EventToggleIsShooting;
+        public event GeneralEventHandler EventFinishedMoving;
+        public event GeneralOneBoolHandler EventToggleIsShooting;      
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
@@ -52,8 +53,12 @@ namespace RTSCoreFramework
         public event RtsHitTypeAndRayCastHitHandler OnHoverLeave;
         public event RtsHitTypeAndRayCastHitHandler EventCommandMove;
 
+        public delegate void GeneralVector3Handler(Vector3 _point);
+        public event GeneralVector3Handler EventAIMove;
+
         public delegate void AllyHandler(AllyMember ally);
-        public event AllyHandler EventCommandAttackEnemy;
+        public event AllyHandler EventPlayerCommandAttackEnemy;
+        //public event AllyHandler EventAICommandAttackEnemy;
 
         //public delegate void NavSpeedHandler(AllyMoveSpeed _navSpeed);
         //public event NavSpeedHandler EventSetNavSpeed;
@@ -143,6 +148,11 @@ namespace RTSCoreFramework
             {
                 EventToggleIsShooting(_enable);
             }
+        }
+
+        public void CallEventFinishedMoving()
+        {
+            if (EventFinishedMoving != null) EventFinishedMoving();
         }
         #endregion
 
@@ -278,13 +288,26 @@ namespace RTSCoreFramework
             }
         }
 
+        public void CallEventAIMove(Vector3 _point)
+        {
+            if (EventAIMove != null) EventAIMove(_point);
+        }
+
         public void CallEventCommandAttackEnemy(AllyMember ally)
         {
-            if (EventCommandAttackEnemy != null)
+            if (EventPlayerCommandAttackEnemy != null)
             {
-                EventCommandAttackEnemy(ally);
+                EventPlayerCommandAttackEnemy(ally);
             }
         }
+
+        //public void CallEventAICommandAttackEnemy(AllyMember ally)
+        //{
+        //    if(EventAICommandAttackEnemy != null)
+        //    {
+        //        EventAICommandAttackEnemy(ally);
+        //    }
+        //}
 
         public void CallEventStopTargettingEnemy()
         {

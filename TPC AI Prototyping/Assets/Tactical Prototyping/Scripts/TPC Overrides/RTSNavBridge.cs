@@ -148,6 +148,7 @@ namespace RTSPrototype
         void FinishMovingNavMesh()
         {
             isMoving = false;
+            myEventHandler.CallEventFinishedMoving();
         }
 
         bool ReachedDestination()
@@ -394,7 +395,7 @@ namespace RTSPrototype
         #region Initialization
         void SubToEvents()
         {
-            myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
+            myEventHandler.EventPlayerCommandAttackEnemy += OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
@@ -402,7 +403,7 @@ namespace RTSPrototype
 
         void UnsubFromEvents()
         {
-            myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
+            myEventHandler.EventPlayerCommandAttackEnemy -= OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
