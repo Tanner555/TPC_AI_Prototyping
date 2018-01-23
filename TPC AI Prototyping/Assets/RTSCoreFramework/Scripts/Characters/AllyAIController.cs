@@ -15,7 +15,10 @@ namespace RTSCoreFramework
 
         #region Fields
         protected bool bIsShooting = false;
-        protected bool bIsMoving = false;
+        protected bool bIsMoving
+        {
+            get { return myEventHandler.bIsNavMoving; }
+        }
         protected float defaultFireRepeatRate = 0.25f;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
@@ -135,19 +138,17 @@ namespace RTSCoreFramework
 
         protected virtual void HandleOnPlayerMoveAlly(rtsHitType hitType, RaycastHit hit)
         {
-            bIsMoving = true;
             if(IsInvoking("UpdateBattleBehavior"))
                 StopBattleBehavior();
         }
 
         protected virtual void HandleOnAIMoveAlly(Vector3 _point)
         {
-            bIsMoving = true;
         }
 
         protected virtual void HandleOnAIStopMoving()
         {
-            bIsMoving = false;
+
         }
 
         protected virtual void OnEnableCameraMovement(bool _enable)

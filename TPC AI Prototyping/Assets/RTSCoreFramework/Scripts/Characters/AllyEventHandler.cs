@@ -8,6 +8,32 @@ namespace RTSCoreFramework
     {
         #region FieldsAndProps
         public bool isSprinting { get; protected set; }
+        public bool bIsTacticsEnabled { get; protected set; }
+        //Is moving through nav mesh agent, regardless of
+        //whether it's ai or a command
+        public bool bIsNavMoving { get { return _bIsNavMoving; } }
+        private bool _bIsNavMoving = false;
+        public bool bIsCommandMoving
+        {
+            get { return _bIsCommandMoving; }
+            set { _bIsCommandMoving = value; UpdatebIsNavMoving(); }
+        }
+        private bool _bIsCommandMoving = false;
+        public bool bIsAIMoving
+        {
+            get { return _bIsAIMoving; }
+            set { _bIsAIMoving = value; UpdatebIsNavMoving(); }
+        }
+        private bool _bIsAIMoving = false;
+        public bool bIsFreeMoving { get; protected set; }
+        public bool bIsCommandShooting { get; protected set; }
+        public bool bIsAiShooting { get; protected set; }
+        public bool bIsAimingToShoot { get; protected set; }
+        public bool bCanEnableAITactics
+        {
+            get { return (bIsCommandMoving == true || bIsFreeMoving == true) == false && bIsCommandShooting == false; }
+        }
+        
         #endregion
 
         #region DelegatesAndEvents
@@ -31,6 +57,8 @@ namespace RTSCoreFramework
         public event GeneralEventHandler EventStopTargettingEnemy;
         public event GeneralEventHandler EventFinishedMoving;
         public event GeneralEventHandler EventToggleIsSprinting;
+        public event GeneralOneBoolHandler EventToggleAllyTactics;
+        public event GeneralOneBoolHandler EventTogglebIsFreeMoving;
         public event GeneralOneBoolHandler EventToggleIsShooting;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
@@ -73,6 +101,11 @@ namespace RTSCoreFramework
         protected virtual void Awake()
         {
             isSprinting = true;
+            bIsTacticsEnabled = false;
+            bIsAimingToShoot = false;
+            bIsFreeMoving = false;
+            bIsCommandShooting = false;
+            bIsAiShooting = false;
         }
 
         protected virtual void OnDisable()
@@ -149,7 +182,8 @@ namespace RTSCoreFramework
 
         public void CallEventToggleIsShooting(bool _enable)
         {
-            if(EventToggleIsShooting != null)
+            bIsAimingToShoot = _enable;
+            if (EventToggleIsShooting != null)
             {
                 EventToggleIsShooting(_enable);
             }
@@ -163,6 +197,12 @@ namespace RTSCoreFramework
 
         public void CallEventFinishedMoving()
         {
+            bIsCommandMoving = false;
+            bIsAIMoving = false;
+            if (bCanEnableAITactics)
+            {
+                CallEventToggleAllyTactics(true);
+            }          
             if (EventFinishedMoving != null) EventFinishedMoving();
         }
 
@@ -290,6 +330,9 @@ namespace RTSCoreFramework
 
         public void CallEventCommandMove(rtsHitType hitType, RaycastHit hit)
         {
+            bIsAimingToShoot = bIsCommandShooting = bIsAiShooting = false;
+            bIsCommandMoving = true;
+            bIsAIMoving = false;
             if (EventPlayerCommandMove != null)
             {
                 EventPlayerCommandMove(hitType, hit);
@@ -298,11 +341,18 @@ namespace RTSCoreFramework
 
         public void CallEventAIMove(Vector3 _point)
         {
+            bIsAimingToShoot = false;
+            bIsCommandShooting = false;
+            bIsAIMoving = true;
+            bIsCommandMoving = false;
             if (EventAIMove != null) EventAIMove(_point);
         }
 
         public void CallEventCommandAttackEnemy(AllyMember ally)
         {
+            bIsAIMoving = bIsCommandMoving = false;
+            bIsCommandShooting = true;
+            bIsAiShooting = false;
             if (EventPlayerCommandAttackEnemy != null)
             {
                 EventPlayerCommandAttackEnemy(ally);
@@ -311,6 +361,9 @@ namespace RTSCoreFramework
 
         public void CallEventAICommandAttackEnemy(AllyMember ally)
         {
+            bIsAIMoving = bIsCommandMoving = false;
+            bIsAiShooting = true;
+            bIsCommandShooting = false;
             if (EventAICommandAttackEnemy != null)
             {
                 EventAICommandAttackEnemy(ally);
@@ -319,7 +372,30 @@ namespace RTSCoreFramework
 
         public void CallEventStopTargettingEnemy()
         {
+            bIsCommandShooting = bIsAiShooting = bIsAimingToShoot = false;
             if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
+        }
+
+        public void CallEventTogglebIsFreeMoving(bool _enable)
+        {
+            bIsFreeMoving = _enable;
+            bool _enableTactics = _enable && bCanEnableAITactics;
+            CallEventToggleAllyTactics(_enableTactics);
+            if (EventTogglebIsFreeMoving != null) EventTogglebIsFreeMoving(_enable);
+        }
+
+        //Want event handler to control event, makes code more centralized
+        private void CallEventToggleAllyTactics(bool _enable)
+        {
+            bIsTacticsEnabled = _enable;
+            if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);
+        }
+        #endregion
+
+        #region Helpers
+        void UpdatebIsNavMoving()
+        {
+            _bIsNavMoving = (bIsCommandMoving || bIsAIMoving);
         }
         #endregion
 

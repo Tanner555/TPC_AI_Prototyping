@@ -56,10 +56,12 @@ namespace RTSPrototype
             get { return isMoving == true; }
         }
 
+        //NavMeshMovement
+        bool isMoving { get { return myEventHandler.bIsNavMoving; } }
+
         //Camera is Moving
         private bool moveCamera = false;
-        //NavMeshMovement
-        bool isMoving = false;
+        
         //See if need to rotate or continue moving
         bool bIsShooting = false;
         //LookRotation Local Variable
@@ -152,12 +154,10 @@ namespace RTSPrototype
         public void MoveToDestination(Vector3 _destination)
         {
             m_NavMeshAgent.SetDestination(_destination);
-            isMoving = true;
         }
 
         void FinishMovingNavMesh()
         {
-            isMoving = false;
             myEventHandler.CallEventFinishedMoving();
         }
 
