@@ -284,7 +284,9 @@ namespace RTSCoreFramework
 
         protected virtual void UpdateBattleBehavior()
         {
-            if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
+            if(currentTargettedEnemy == null || 
+                currentTargettedEnemy.IsAlive == false ||
+                myEventHandler.bIsFreeMoving)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
                 myEventHandler.CallEventFinishedMoving();

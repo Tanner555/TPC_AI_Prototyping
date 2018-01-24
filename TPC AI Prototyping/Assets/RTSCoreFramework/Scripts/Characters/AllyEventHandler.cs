@@ -372,7 +372,8 @@ namespace RTSCoreFramework
         public void CallEventTogglebIsFreeMoving(bool _enable)
         {
             bIsFreeMoving = _enable;
-            bool _enableTactics = _enable && bCanEnableAITactics;
+            //If Free Moving Is Enabled, Diable Tactics
+            bool _enableTactics = !_enable && bCanEnableAITactics;
             CallEventToggleAllyTactics(_enableTactics);
             if (EventTogglebIsFreeMoving != null) EventTogglebIsFreeMoving(_enable);
         }
