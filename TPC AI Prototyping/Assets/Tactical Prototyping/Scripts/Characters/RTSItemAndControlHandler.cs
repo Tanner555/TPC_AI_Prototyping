@@ -58,16 +58,6 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnPlayerCommandMove(rtsHitType hitType, RaycastHit hit)
-        {
-            if (AllCompsAreValid) myNavBidge.MoveToDestination(hit.point);
-        }
-
-        void OnAICommandMove(Vector3 _point)
-        {
-            if (AllCompsAreValid) myNavBidge.MoveToDestination(_point);
-        }
-
         void OnSetAimHandler(bool _isAiming)
         {
             isAiming = _isAiming;
@@ -167,8 +157,6 @@ namespace RTSPrototype
             myEventHandler.OnTryFire += OnTryFire;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
-            myEventHandler.EventPlayerCommandMove += OnPlayerCommandMove;
-            myEventHandler.EventAIMove += OnAICommandMove;
         }
 
         void UnsubFromEvents()
@@ -179,8 +167,6 @@ namespace RTSPrototype
             myEventHandler.OnTryFire -= OnTryFire;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
-            myEventHandler.EventPlayerCommandMove -= OnPlayerCommandMove;
-            myEventHandler.EventAIMove -= OnAICommandMove;
         }
         #endregion
     }
