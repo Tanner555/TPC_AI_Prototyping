@@ -50,7 +50,7 @@ namespace RTSPrototype
 
         protected bool canUpdateMovement
         {
-            get { return isMoving == true; }
+            get { return isMoving; }
         }
 
         //NavMeshMovement
@@ -168,42 +168,35 @@ namespace RTSPrototype
         {
             var velocity = Vector3.zero;
             lookRotation = Quaternion.LookRotation(m_Transform.forward);
-
-            if (m_NavMeshAgent.isOnOffMeshLink)
+            
+            // Only move if a path exists.
+            // Update only when needed by targeting or move command
+            if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
             {
-                UpdateOffMeshLink(ref velocity, ref lookRotation);
-            }
-            else
-            {
-                // Only move if a path exists.
-                // Update only when needed by targeting or move command
-                if (canUpdateMovement && m_NavMeshAgent.desiredVelocity.sqrMagnitude > 0.01f)
+                if (m_NavMeshAgent.updateRotation)
                 {
-                    if (m_NavMeshAgent.updateRotation)
-                    {
-                        lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
-                    }
-                    else
-                    {
-                        lookRotation = Quaternion.LookRotation(m_Transform.forward);
-                    }
-                    // The normalized velocity should be relative to the look direction.
-                    velocity = Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity;
-                    // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
-                    if (velocity.sqrMagnitude > 1)
-                    {
-                        velocity.Normalize();
-                    }
-                    // Smoothly come to a stop at the destination.
-                    if (m_NavMeshAgent.remainingDistance < 1f)
-                    {
-                        velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
-                    }
-                    else
-                    {
-                        //Change Velocity to Speed Multiplier
-                        velocity *= speedMultiplier;
-                    }
+                    lookRotation = Quaternion.LookRotation(m_NavMeshAgent.desiredVelocity);
+                }
+                else
+                {
+                    lookRotation = Quaternion.LookRotation(m_Transform.forward);
+                }
+                // The normalized velocity should be relative to the look direction.
+                velocity = Quaternion.Inverse(lookRotation) * m_NavMeshAgent.desiredVelocity;
+                // Only normalize if the magnitude is greater than 1. This will allow the character to walk.
+                if (velocity.sqrMagnitude > 1)
+                {
+                    velocity.Normalize();
+                }
+                // Smoothly come to a stop at the destination.
+                if (m_NavMeshAgent.remainingDistance < 1f)
+                {
+                    velocity *= m_ArriveRampDownCurve.Evaluate(1 - m_NavMeshAgent.remainingDistance);
+                }
+                else
+                {
+                    //Change Velocity to Speed Multiplier
+                    velocity *= speedMultiplier;
                 }
             }
 
