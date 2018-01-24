@@ -292,6 +292,7 @@ namespace RTSCoreFramework
 
         public void CallEventSetAsCommander()
         {
+            CallEventFinishedMoving();
             if (EventSetAsCommander != null) EventSetAsCommander();
         }
 
