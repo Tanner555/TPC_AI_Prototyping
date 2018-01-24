@@ -170,7 +170,6 @@ namespace RTSCoreFramework
             {
                 if (myEventHandler.bIsAIMoving == false)
                 {
-                    Debug.Log("Moving to Leader");
                     myEventHandler.CallEventAIMove(allyInCommand.transform.position);
                 }
             }
@@ -178,7 +177,6 @@ namespace RTSCoreFramework
             {
                 if (myEventHandler.bIsAIMoving == true)
                 {
-                    Debug.Log("End Moving to Leader");
                     myEventHandler.CallEventFinishedMoving();
                 }
             }
@@ -292,6 +290,7 @@ namespace RTSCoreFramework
             if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
+                myEventHandler.CallEventFinishedMoving();
                 return;
             }
             RaycastHit _hit;

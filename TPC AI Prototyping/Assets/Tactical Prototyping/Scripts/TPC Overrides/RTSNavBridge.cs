@@ -233,10 +233,7 @@ namespace RTSPrototype
                     if (targetTransform == null && isTargeting)
                         myEventHandler.CallEventStopTargettingEnemy();
 
-                    //When Moving because of AI and Isn't Currently Targeting
-                    bool _isAiMovingWOutTarget = (!isTargeting && myEventHandler.bIsAIMoving) == false; 
-                    if (_isAiMovingWOutTarget)
-                        MoveCharacterMain();
+                    MoveCharacterMain();
                 }
             }
             else if (allyMember.bIsCurrentPlayer)
