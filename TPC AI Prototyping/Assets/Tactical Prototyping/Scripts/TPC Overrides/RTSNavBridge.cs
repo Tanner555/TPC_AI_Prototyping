@@ -212,7 +212,6 @@ namespace RTSPrototype
             m_NavMeshAgent.velocity = Vector3.zero;
             m_Controller.Move(velocity.x, velocity.z, lookRotation);
             m_NavMeshAgent.nextPosition = m_Transform.position;
-
             //Check for end of destination if moving
             if (isMoving && ReachedDestination()) FinishMovingNavMesh();
         }
@@ -221,7 +220,9 @@ namespace RTSPrototype
         #region MoveOrRotateMethod
         void UpdateMovementOrRotate()
         {
-            if (!myEventHandler.bIsFreeMoving)
+            bool _isFreeMoving = myEventHandler.bIsFreeMoving;
+            m_NavMeshAgent.updateRotation = !_isFreeMoving && isMoving;
+            if (!_isFreeMoving)
             {
                 //Change localRotation if targetting is active
                 if (bIsShooting && isTargeting && targetTransform != null)
@@ -240,8 +241,8 @@ namespace RTSPrototype
                         myEventHandler.CallEventStopTargettingEnemy();
 
                     //When Moving because of AI and Isn't Currently Targeting
-                    //Shouldn't Move Main Character
-                    if((!isTargeting && myEventHandler.bIsAIMoving) == false)
+                    bool _isAiMovingWOutTarget = (!isTargeting && myEventHandler.bIsAIMoving) == false; 
+                    if (_isAiMovingWOutTarget)
                         MoveCharacterMain();
                 }
             }

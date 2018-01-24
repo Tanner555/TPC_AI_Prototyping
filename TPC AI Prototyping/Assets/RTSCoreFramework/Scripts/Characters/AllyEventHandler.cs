@@ -282,6 +282,7 @@ namespace RTSCoreFramework
 
         public void CallEventSwitchingFromCom()
         {
+            if (bIsFreeMoving) CallEventTogglebIsFreeMoving(false);
             if (EventSwitchingFromCom != null) EventSwitchingFromCom();
         }
 
