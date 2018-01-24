@@ -75,10 +75,9 @@ namespace RTSCoreFramework
         public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event RtsHitTypeAndRayCastHitHandler OnHoverOver;
         public event RtsHitTypeAndRayCastHitHandler OnHoverLeave;
-        public event RtsHitTypeAndRayCastHitHandler EventPlayerCommandMove;
 
         public delegate void GeneralVector3Handler(Vector3 _point);
-        public event GeneralVector3Handler EventAIMove;
+        public event GeneralVector3Handler EventCommandMove;
 
         public delegate void AllyHandler(AllyMember ally);
         public event AllyHandler EventCommandAttackEnemy;
@@ -322,10 +321,7 @@ namespace RTSCoreFramework
             bIsAimingToShoot = bIsCommandAttacking = bIsAiAttacking = false;
             bIsCommandMoving = true;
             bIsAIMoving = false;
-            if (EventPlayerCommandMove != null)
-            {
-                EventPlayerCommandMove(hitType, hit);
-            }
+            CallEventCommandMove(hit.point);
         }
 
         public void CallEventAIMove(Vector3 _point)
@@ -334,7 +330,12 @@ namespace RTSCoreFramework
             bIsCommandAttacking = false;
             bIsAIMoving = true;
             bIsCommandMoving = false;
-            if (EventAIMove != null) EventAIMove(_point);
+            CallEventCommandMove(_point);
+        }
+
+        private void CallEventCommandMove(Vector3 _point)
+        {
+            if (EventCommandMove != null) EventCommandMove(_point);
         }
 
         public void CallEventPlayerCommandAttackEnemy(AllyMember ally)

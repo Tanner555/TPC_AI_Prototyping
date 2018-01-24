@@ -131,14 +131,13 @@ namespace RTSCoreFramework
             StopBattleBehavior();
         }
 
-        protected virtual void HandleOnPlayerMoveAlly(rtsHitType hitType, RaycastHit hit)
+        protected virtual void HandleOnMoveAlly(Vector3 _point)
         {
-            if(IsInvoking("UpdateBattleBehavior"))
-                StopBattleBehavior();
-        }
-
-        protected virtual void HandleOnAIMoveAlly(Vector3 _point)
-        {
+            if (myEventHandler.bIsCommandMoving)
+            {
+                if (IsInvoking("UpdateBattleBehavior"))
+                    StopBattleBehavior();
+            }
         }
 
         protected virtual void HandleOnAIStopMoving()
@@ -349,8 +348,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy += HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
-            myEventHandler.EventPlayerCommandMove += HandleOnPlayerMoveAlly;
-            myEventHandler.EventAIMove += HandleOnAIMoveAlly;
+            myEventHandler.EventCommandMove += HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
         }
@@ -360,8 +358,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy -= HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
-            myEventHandler.EventPlayerCommandMove -= HandleOnPlayerMoveAlly;
-            myEventHandler.EventAIMove -= HandleOnAIMoveAlly;
+            myEventHandler.EventCommandMove -= HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
             gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;
         }

@@ -120,11 +120,6 @@ namespace RTSPrototype
             m_NavMeshAgent.SetDestination(_destination);
         }
 
-        void MoveToDestination(rtsHitType _hitType, RaycastHit _hit)
-        {
-            m_NavMeshAgent.SetDestination(_hit.point);
-        }
-
         void OnCommandAttack(AllyMember _ally)
         {
             if (_ally != null)
@@ -293,8 +288,7 @@ namespace RTSPrototype
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
-            myEventHandler.EventPlayerCommandMove += MoveToDestination;
-            myEventHandler.EventAIMove += MoveToDestination;
+            myEventHandler.EventCommandMove += MoveToDestination;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
         }
 
@@ -304,8 +298,7 @@ namespace RTSPrototype
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;
-            myEventHandler.EventPlayerCommandMove -= MoveToDestination;
-            myEventHandler.EventAIMove -= MoveToDestination;
+            myEventHandler.EventCommandMove -= MoveToDestination;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
         }
         #endregion
