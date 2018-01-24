@@ -162,16 +162,13 @@ namespace RTSCoreFramework
             return Vector3.Distance(transform.position,
                 allyInCommand.transform.position) <= followDistance;
         }
-
+        
         public void Tactics_MoveToLeader()
         {
             if (allyMember.bIsGeneralInCommand) return;
             if (IsWithinFollowingDistance() == false)
             {
-                if (myEventHandler.bIsAIMoving == false)
-                {
-                    myEventHandler.CallEventAIMove(allyInCommand.transform.position);
-                }
+                myEventHandler.CallEventAIMove(allyInCommand.transform.position);
             }
             else
             {
