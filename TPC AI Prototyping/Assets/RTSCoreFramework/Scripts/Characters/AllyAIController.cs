@@ -241,11 +241,19 @@ namespace RTSCoreFramework
         
         bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
+            RaycastHit _myHit;
             bool _bHit = Physics.Linecast(chestTransform.position,
-                        _enemy.ChestTransform.position, out _hit);
-            return _bHit && _hit.transform != null &&
-                _hit.transform.root.tag == gamemode.AllyTag &&
-                _hit.transform.root == _enemy.transform;
+                        _enemy.ChestTransform.position, out _myHit);
+            _hit = _myHit;
+            bool _valid = _bHit && _myHit.transform != null &&
+                _myHit.transform.root.tag == gamemode.AllyTag;
+            if (_valid)
+            {
+                AllyMember _hitAlly = _myHit.transform.root.GetComponent<AllyMember>();
+                //TODO: RTSPrototype Fix hasLosWithinRange() hitting self instead of enemy
+                return _hitAlly == allyMember || _hitAlly.IsEnemyFor(allyMember);
+            }
+            return false;
         }
 
         AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
@@ -296,7 +304,9 @@ namespace RTSCoreFramework
             if(hasLOSWithinRange(currentTargettedEnemy, out _hit))
             {
                 if (bIsShooting == false)
+                {
                     StartShootingBehavior();
+                }
             }
             else
             {
