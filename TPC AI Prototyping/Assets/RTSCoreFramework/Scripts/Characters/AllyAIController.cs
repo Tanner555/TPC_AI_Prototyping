@@ -23,6 +23,7 @@ namespace RTSCoreFramework
         //Used for finding closest ally
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
+        public float followDistance = 5f;
         public LayerMask allyLayers;
         public LayerMask sightLayers;
 
@@ -44,6 +45,7 @@ namespace RTSCoreFramework
 
         public AllyMember currentTargettedEnemy { get; protected set; }
         public AllyMember previousTargettedEnemy { get; protected set; }
+        public AllyMember allyInCommand { get { return allyMember.partyManager.AllyInCommand; } }
 
         //AllyMember Transforms
         Transform headTransform { get { return allyMember.HeadTransform; } }
@@ -156,6 +158,33 @@ namespace RTSCoreFramework
         #endregion
 
         #region AITacticsCommands
+        public bool IsWithinFollowingDistance()
+        {
+            return Vector3.Distance(transform.position,
+                allyInCommand.transform.position) <= followDistance;
+        }
+
+        public void Tactics_MoveToLeader()
+        {
+            if (allyMember.bIsGeneralInCommand) return;
+            if (IsWithinFollowingDistance() == false)
+            {
+                if (myEventHandler.bIsAIMoving == false)
+                {
+                    Debug.Log("Moving to Leader");
+                    myEventHandler.CallEventAIMove(allyInCommand.transform.position);
+                }
+            }
+            else
+            {
+                if (myEventHandler.bIsAIMoving == true)
+                {
+                    Debug.Log("End Moving to Leader");
+                    myEventHandler.CallEventFinishedMoving();
+                }
+            }
+        }
+
         public void AttackTargettedEnemy()
         {
             if(myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)

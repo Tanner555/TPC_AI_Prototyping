@@ -15,3 +15,6 @@ MonoBehaviour:
   - order: 1
     condition: 'Self: CurAmmo = 0'
     action: 'Self: SwitchToNextWeapon'
+  - order: 2
+    condition: 'Self: Any'
+    action: 'Self: FollowLeader'

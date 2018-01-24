@@ -97,6 +97,9 @@ namespace RTSCoreFramework
             get { return 0; }
         }
 
+        //AI Props
+        public float FollowDistance { get { return aiController.followDistance; } }
+
         #endregion
 
         #region PlayerComponents
@@ -110,14 +113,9 @@ namespace RTSCoreFramework
             get { return allyEventHandler && aiController; }
         }
 
-        //public bool IsAlive
-        //{
-        //    get { return npcHealth.npcHealth > 0; }
-        //}
-
-        public bool isCurrentPlayer { get { return partyManager ? partyManager.AllyIsCurrentPlayer(this) : false; } }
-        public bool pManIsGeneralCommander { get { return partyManager.isCurrentPlayerCommander; } }
-        //public bool IsCarryingWeapon { get { return AllComponentsAreValid && pWeaponHandler.CurrentWeapon; } }
+        public bool bIsCurrentPlayer { get { return partyManager ? partyManager.AllyIsCurrentPlayer(this) : false; } }
+        public bool bIsGeneralInCommand { get { return partyManager ? partyManager.AllyIsGeneralInCommand(this) : false; } }
+        public bool bIsInGeneralCommanderParty { get { return partyManager.isCurrentPlayerCommander; } }
         #endregion
 
         #region UnityMessages

@@ -58,7 +58,7 @@ namespace RTSPrototype
         /// </summary>
         //void DamageLocal_SetHealthAmount_SetShieldAmount()
         //{
-        //    if (allyMember.isCurrentPlayer)
+        //    if (allyMember.bIsCurrentPlayer)
         //        ExecuteEvent("MyEvent", gameObject);
         //}  
         /// <summary>

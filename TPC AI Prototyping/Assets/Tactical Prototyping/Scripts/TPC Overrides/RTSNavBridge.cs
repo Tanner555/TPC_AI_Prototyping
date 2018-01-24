@@ -244,7 +244,7 @@ namespace RTSPrototype
                         MoveCharacterMain();
                 }
             }
-            else if (allyMember.isCurrentPlayer)
+            else if (allyMember.bIsCurrentPlayer)
             {
                 MoveFreely();
             }
@@ -262,7 +262,7 @@ namespace RTSPrototype
 
         void CheckForFreeMovement()
         {
-            if (allyMember.isCurrentPlayer == false) return;
+            if (allyMember.bIsCurrentPlayer == false) return;
 
             myHorizontalMovement = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.HorizontalInputName);
             myForwardMovement = RTSPlayerInput.thisInstance.GetAxisRaw(Constants.ForwardInputName);

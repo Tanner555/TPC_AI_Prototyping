@@ -210,6 +210,10 @@ namespace RTSCoreFramework
         {
             return isCurrentPlayerCommander && _ally == AllyInCommand;
         }
+        public bool AllyIsGeneralInCommand(AllyMember _ally)
+        {
+            return _ally == AllyInCommand;
+        }
         public bool AllyIsAPartyMember(AllyMember _ally)
         {
             return PartyMembers.Contains(_ally);

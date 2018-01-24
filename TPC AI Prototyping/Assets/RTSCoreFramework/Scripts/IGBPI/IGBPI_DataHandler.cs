@@ -16,7 +16,7 @@ namespace RTSCoreFramework
         }
         public enum ActionFilters
         {
-            Movement, Weapon, AI
+            Movement, Weapon, AI, Debugging
         }
 
         public ConditionFilters conditionFilter { get; protected set; }
@@ -89,6 +89,10 @@ namespace RTSCoreFramework
         public Dictionary<string, IGBPI_Condition> IGBPI_Conditions = new Dictionary<string, IGBPI_Condition>()
         {
             {"Self: Any", new IGBPI_Condition((_ally) => true, ConditionFilters.Standard) },
+            {"Leader: Not Within Follow Distance", new IGBPI_Condition((_ally) => 
+            { return !_ally.aiController.IsWithinFollowingDistance(); }, ConditionFilters.Standard) },
+            {"Leader: Within Follow Distance", new IGBPI_Condition((_ally) =>
+            { return _ally.aiController.IsWithinFollowingDistance(); }, ConditionFilters.Standard) },
             {"Self: Health < 100", new IGBPI_Condition((_ally) =>
             { return _ally.AllyHealth < 100; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 90", new IGBPI_Condition((_ally) =>
@@ -120,7 +124,11 @@ namespace RTSCoreFramework
             {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); }, ActionFilters.Weapon) },
             {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
-            { _ally.allyEventHandler.CallOnSwitchToPrevItem(); }, ActionFilters.Weapon) }
+            { _ally.allyEventHandler.CallOnSwitchToPrevItem(); }, ActionFilters.Weapon) },
+            {"Self: FollowLeader", new IGBPI_Action((_ally) =>
+            { _ally.aiController.Tactics_MoveToLeader(); }, ActionFilters.Movement) },
+            {"Debug: Log True Message", new IGBPI_Action((_ally) => 
+            Debug.Log("Condition is true, called from: " + _ally), ActionFilters.Debugging) }
         };
         #endregion
 
