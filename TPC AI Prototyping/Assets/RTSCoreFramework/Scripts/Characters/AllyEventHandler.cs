@@ -11,20 +11,9 @@ namespace RTSCoreFramework
         public bool bIsTacticsEnabled { get; protected set; }
         //Is moving through nav mesh agent, regardless of
         //whether it's ai or a command
-        public bool bIsNavMoving { get { return _bIsNavMoving; } }
-        private bool _bIsNavMoving = false;
-        public bool bIsCommandMoving
-        {
-            get { return _bIsCommandMoving; }
-            set { _bIsCommandMoving = value; UpdatebIsNavMoving(); }
-        }
-        private bool _bIsCommandMoving = false;
-        public bool bIsAIMoving
-        {
-            get { return _bIsAIMoving; }
-            set { _bIsAIMoving = value; UpdatebIsNavMoving(); }
-        }
-        private bool _bIsAIMoving = false;
+        public bool bIsNavMoving { get { return bIsCommandMoving || bIsAIMoving; } }
+        public bool bIsCommandMoving { get; protected set; }
+        public bool bIsAIMoving { get; protected set; }
         public bool bIsFreeMoving { get; protected set; }
         public bool bIsCommandAttacking { get; protected set; }
         public bool bIsAiAttacking { get; protected set; }
@@ -92,11 +81,8 @@ namespace RTSCoreFramework
         public event GeneralVector3Handler EventAIMove;
 
         public delegate void AllyHandler(AllyMember ally);
-        public event AllyHandler EventPlayerCommandAttackEnemy;
-        public event AllyHandler EventAICommandAttackEnemy;
+        public event AllyHandler EventCommandAttackEnemy;
 
-        //public delegate void NavSpeedHandler(AllyMoveSpeed _navSpeed);
-        //public event NavSpeedHandler EventSetNavSpeed;
         #endregion
 
         #region UnityMessages
@@ -350,15 +336,12 @@ namespace RTSCoreFramework
             if (EventAIMove != null) EventAIMove(_point);
         }
 
-        public void CallEventCommandAttackEnemy(AllyMember ally)
+        public void CallEventPlayerCommandAttackEnemy(AllyMember ally)
         {
             bIsAIMoving = bIsCommandMoving = false;
             bIsCommandAttacking = true;
             bIsAiAttacking = false;
-            if (EventPlayerCommandAttackEnemy != null)
-            {
-                EventPlayerCommandAttackEnemy(ally);
-            }
+            CallEventCommandAttackEnemy(ally);
         }
 
         public void CallEventAICommandAttackEnemy(AllyMember ally)
@@ -366,9 +349,14 @@ namespace RTSCoreFramework
             bIsAIMoving = bIsCommandMoving = false;
             bIsAiAttacking = true;
             bIsCommandAttacking = false;
-            if (EventAICommandAttackEnemy != null)
+            CallEventCommandAttackEnemy(ally);
+        }
+
+        private void CallEventCommandAttackEnemy(AllyMember ally)
+        {
+            if (EventCommandAttackEnemy != null)
             {
-                EventAICommandAttackEnemy(ally);
+                EventCommandAttackEnemy(ally);
             }
         }
 
@@ -391,13 +379,6 @@ namespace RTSCoreFramework
         {
             bIsTacticsEnabled = _enable;
             if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);
-        }
-        #endregion
-
-        #region Helpers
-        void UpdatebIsNavMoving()
-        {
-            _bIsNavMoving = (bIsCommandMoving || bIsAIMoving);
         }
         #endregion
 

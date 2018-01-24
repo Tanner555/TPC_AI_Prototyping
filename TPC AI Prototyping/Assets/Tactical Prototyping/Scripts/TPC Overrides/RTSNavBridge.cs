@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Opsive.ThirdPersonController;
+﻿using Opsive.ThirdPersonController;
 using RTSCoreFramework;
-using System;
+using UnityEngine;
 
 namespace RTSPrototype
 {
@@ -118,13 +115,7 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnPlayerCommandAttack(AllyMember _ally)
-        {
-            if (_ally != null)
-                LookAtTarget(_ally.transform);
-        }
-
-        void OnAICommandAttack(AllyMember _ally)
+        void OnCommandAttack(AllyMember _ally)
         {
             if (_ally != null)
                 LookAtTarget(_ally.transform);
@@ -296,8 +287,7 @@ namespace RTSPrototype
         #region Initialization
         void SubToEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy += OnPlayerCommandAttack;
-            myEventHandler.EventAICommandAttackEnemy += OnAICommandAttack;
+            myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
@@ -306,8 +296,7 @@ namespace RTSPrototype
 
         void UnsubFromEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy -= OnPlayerCommandAttack;
-            myEventHandler.EventAICommandAttackEnemy -= OnAICommandAttack;
+            myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;

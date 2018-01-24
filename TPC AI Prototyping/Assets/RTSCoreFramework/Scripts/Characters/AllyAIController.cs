@@ -118,12 +118,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
-        protected virtual void HandlePlayerCommandAttackEnemy(AllyMember enemy)
-        {
-            CommandAttackEnemy(enemy);
-        }
-
-        protected virtual void HandleAICommandAttackEnemy(AllyMember enemy)
+        protected virtual void HandleCommandAttackEnemy(AllyMember enemy)
         {
             CommandAttackEnemy(enemy);
         }
@@ -183,7 +178,7 @@ namespace RTSCoreFramework
                     //This works
                     if (myEventHandler.bIsCommandAttacking == false && currentTargettedEnemy != null)
                     {
-                        myEventHandler.CallEventCommandAttackEnemy(currentTargettedEnemy);
+                        myEventHandler.CallEventPlayerCommandAttackEnemy(currentTargettedEnemy);
                     }
                     //This doesn't work
                     //TODO: RTSPrototype Fix Tactics_AttackClosestEnemy issue when using AICommandAttackEnemy
@@ -336,8 +331,7 @@ namespace RTSCoreFramework
         #region Initialization
         protected virtual void SubToEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy += HandlePlayerCommandAttackEnemy;
-            myEventHandler.EventAICommandAttackEnemy += HandleAICommandAttackEnemy;
+            myEventHandler.EventCommandAttackEnemy += HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy += HandleStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventPlayerCommandMove += HandleOnPlayerMoveAlly;
@@ -348,8 +342,7 @@ namespace RTSCoreFramework
 
         protected virtual void UnSubFromEvents()
         {
-            myEventHandler.EventPlayerCommandAttackEnemy -= HandlePlayerCommandAttackEnemy;
-            myEventHandler.EventAICommandAttackEnemy -= HandleAICommandAttackEnemy;
+            myEventHandler.EventCommandAttackEnemy -= HandleCommandAttackEnemy;
             myEventHandler.EventStopTargettingEnemy -= HandleStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventPlayerCommandMove -= HandleOnPlayerMoveAlly;

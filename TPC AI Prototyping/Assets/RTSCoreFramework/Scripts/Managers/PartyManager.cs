@@ -250,7 +250,7 @@ namespace RTSCoreFramework
                 case rtsHitType.Enemy:
                     GameObject _root = hit.collider.gameObject.transform.root.gameObject;
                     AllyMember _enemy = _root.GetComponent<AllyMember>();
-                    AllyInCommand.allyEventHandler.CallEventCommandAttackEnemy(_enemy);
+                    AllyInCommand.allyEventHandler.CallEventPlayerCommandAttackEnemy(_enemy);
                     break;
                 case rtsHitType.Cover:
                     break;

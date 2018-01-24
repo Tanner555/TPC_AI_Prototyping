@@ -64,9 +64,9 @@ namespace RTSPrototype
         #endregion
 
         #region Overrides
-        protected override void HandlePlayerCommandAttackEnemy(AllyMember enemy)
+        protected override void HandleCommandAttackEnemy(AllyMember enemy)
         {
-            base.HandlePlayerCommandAttackEnemy(enemy);
+            base.HandleCommandAttackEnemy(enemy);
             currentTargettedEnemyWrapper = (AllyMemberWrapper)enemy;
         }
 
