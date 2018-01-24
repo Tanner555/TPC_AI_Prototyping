@@ -127,8 +127,6 @@ namespace RTSCoreFramework
         {
             currentTargettedEnemy = null;
             StopBattleBehavior();
-            if (bIsMoving)
-                myEventHandler.CallEventAIMove(this.transform.position);
         }
 
         protected virtual void HandleOnPlayerMoveAlly(rtsHitType hitType, RaycastHit hit)
@@ -175,23 +173,11 @@ namespace RTSCoreFramework
                 if (_closestEnemy != null)
                 {
                     currentTargettedEnemy = _closestEnemy;
-                    //This works
-                    if (myEventHandler.bIsCommandAttacking == false && currentTargettedEnemy != null)
+                    if (myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
                     {
-                        myEventHandler.CallEventPlayerCommandAttackEnemy(currentTargettedEnemy);
+                        myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
                     }
-                    //This doesn't work
-                    //TODO: RTSPrototype Fix Tactics_AttackClosestEnemy issue when using AICommandAttackEnemy
-                    //if (myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
-                    //{
-                    //    Debug.Log(myEventHandler.bIsAiAttacking);
-                    //    myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
-                    //}
                 }
-                //else
-                //{
-                //    myEventHandler.CallEventStopTargettingEnemy();
-                //}
             }
         }
         #endregion
