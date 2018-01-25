@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Tactical Prototyping/Maps/RTSMainMenu.unity
+    guid: c54140ef6f42d994a8d85dd1a6c95365
+  - enabled: 1
+    path: Assets/Tactical Prototyping/Maps/RTSProtoMap1.unity
+    guid: ace133f26077e184bbee0e924078d6b3
