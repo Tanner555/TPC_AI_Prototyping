@@ -7239,6 +7239,8 @@ MonoBehaviour:
   selAllyColor: {r: 0.27735728, g: 0.519076, b: 0.99264705, a: 0}
   selEnemyColor: {r: 1, g: 0.375, b: 0.375, a: 0}
   SelectionLight: {fileID: 108483810669067724}
+  waypointRendererMaterial: {fileID: 2100000, guid: 6d824634677c23d40b27f91a5aef6ce7,
+    type: 2}
 --- !u!114 &114538013341553628
 MonoBehaviour:
   m_ObjectHideFlags: 1
