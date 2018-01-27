@@ -61,8 +61,6 @@ conditionButton && actionButton;
 
         #region UIGameObjects
         [Header("Main Ui GameObjects")]
-        public GameObject PauseMenuUi;
-        public GameObject InventoryUi;
         public GameObject IGBPIUi;
 
         [Header("IGBPI Objects")]
@@ -193,14 +191,14 @@ conditionButton && actionButton;
         //Toggles Ui GameObjects
         void TogglePauseMenuUi(bool enable)
         {
-            if (PauseMenuUi != null)
-                PauseMenuUi.SetActive(enable);
+            //if (PauseMenuUi != null)
+            //    PauseMenuUi.SetActive(enable);
         }
 
         void ToggleInventoryUi(bool enable)
         {
-            if (InventoryUi != null)
-                InventoryUi.SetActive(enable);
+            //if (InventoryUi != null)
+            //    InventoryUi.SetActive(enable);
         }
 
         void ToggleIGBPIUi(bool enable)

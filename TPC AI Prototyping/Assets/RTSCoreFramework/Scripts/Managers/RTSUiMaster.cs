@@ -44,15 +44,8 @@ namespace RTSCoreFramework
         {
             get { return isInventoryUIOn || isPauseMenuOn || isIGBPIOn; }
         }
-
-        public bool isInventoryUIOn
-        {
-            get { return uiManager.InventoryUi.activeSelf; }
-        }
-        public bool isPauseMenuOn
-        {
-            get { return uiManager.PauseMenuUi.activeSelf; }
-        }
+        public bool isInventoryUIOn { get; protected set; }
+        public bool isPauseMenuOn { get; protected set; }
         public bool isIGBPIOn
         {
             get { return uiManager.IGBPIUi.activeSelf; }
@@ -70,39 +63,36 @@ namespace RTSCoreFramework
             if (thisInstance != null)
                 Debug.LogWarning("More than one instance of UIManagerMaster in scene.");
             else
+            {
                 thisInstance = this;
+                isInventoryUIOn = false;
+                isPauseMenuOn = false;
+            }
         }
         #endregion
 
         #region EventCalls
         public void CallEventMenuToggle()
         {
-            if (EventMenuToggle != null /*&& !isUiAlreadyInUse*/)
-            {
-                CallEventAnyUIToggle(!isPauseMenuOn);
-                EventMenuToggle(!isPauseMenuOn);
-                EnableRayCaster(!isPauseMenuOn);
-            }
+            isPauseMenuOn = !isPauseMenuOn;
+            CallEventAnyUIToggle(isPauseMenuOn);
+            if(EventMenuToggle != null) EventMenuToggle(isPauseMenuOn);
+            EnableRayCaster(!isPauseMenuOn);
         }
 
         public void CallEventInventoryUIToggle()
         {
-            if (EventInventoryUIToggle != null /*&& !isUiAlreadyInUse*/)
-            {
-                CallEventAnyUIToggle(!isInventoryUIOn);
-                EventInventoryUIToggle(!isInventoryUIOn);
-                EnableRayCaster(!isInventoryUIOn);
-            }
+            isInventoryUIOn = !isInventoryUIOn;
+            CallEventAnyUIToggle(isInventoryUIOn);
+            if(EventInventoryUIToggle != null) EventInventoryUIToggle(isInventoryUIOn);
+            EnableRayCaster(!isInventoryUIOn);
         }
 
         public void CallEventIGBPIToggle()
         {
-            if (EventIGBPIToggle != null /*&& !isUiAlreadyInUse*/)
-            {
-                CallEventAnyUIToggle(!isIGBPIOn);
-                EventIGBPIToggle(!isIGBPIOn);
-                EnableRayCaster(!isIGBPIOn);
-            }
+            CallEventAnyUIToggle(!isIGBPIOn);
+            if (EventIGBPIToggle != null) EventIGBPIToggle(!isIGBPIOn);
+            EnableRayCaster(!isIGBPIOn);
         }
 
         private void CallEventAnyUIToggle(bool _enabled)

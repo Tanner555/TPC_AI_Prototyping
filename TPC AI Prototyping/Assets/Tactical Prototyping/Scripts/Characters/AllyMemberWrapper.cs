@@ -9,6 +9,7 @@ namespace RTSPrototype
     public class AllyMemberWrapper : AllyMember
     {
         #region Components
+        //Wrappers
         public AllyAIControllerWrapper aiControllerWrapper
         {
             get
@@ -20,6 +21,7 @@ namespace RTSPrototype
             }
         }
         private AllyAIControllerWrapper _aiControllerWrapper = null;
+        //Third Person Controller
         public CharacterHealth myCharacterHealth
         {
             get
@@ -56,6 +58,24 @@ namespace RTSPrototype
         }
         private Inventory _myInventory = null;
 
+        //ORK Components
+        public ORKFramework.Behaviours.CombatantComponent RPGCombatantComponent
+        {
+            get
+            {
+                if (_rpgCombatant == null)
+                    _rpgCombatant = GetComponent<ORKFramework.Behaviours.CombatantComponent>();
+
+                return _rpgCombatant;
+            }
+        }
+        private ORKFramework.Behaviours.CombatantComponent _rpgCombatant = null;
+
+        public ORKFramework.Combatant RPGCombatant
+        {
+            get { return RPGCombatantComponent != null ? 
+                    RPGCombatantComponent.combatant : null; }
+        }
         #endregion
 
         #region Properties
@@ -124,6 +144,11 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
+            if(RPGCombatant != null)
+            {
+                Debug.Log("Combatant: " + RPGCombatant);
+                
+            }
         }
         #endregion
 

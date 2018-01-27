@@ -186,7 +186,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
                 Destroy(this);
                 return true;
             }
-            if (uimaster.isUiAlreadyInUse) return true;
+            if (uimaster.isUiAlreadyInUse) return true; 
             if (noMoreChecking) return true;
             // Check if pointer is over an interactable UI element
             if (EventSystem.current.IsPointerOverGameObject()) return true;
