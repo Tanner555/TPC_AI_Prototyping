@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -575660022, guid: f4979b3083d349140bb14b6ec7fc999a, type: 3}
   m_Name: ORKProject
   m_EditorClassIdentifier: 
-  time: 1/26/2018 8:49:30 PM
+  time: 1/27/2018 3:48:06 AM
   version: 2.14.4
   keys:
   - editorSettings
@@ -4463,7 +4463,17 @@ MonoBehaviour:
       selectCom=\"False\" useCombatantPart=\"False\" ownSelection=\"False\" closeScreen=\"False\"
       closeAfterSave=\"False\" useReq=\"False\" reqHide=\"False\" />\n\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t\t\t\t<_bool
       useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Inventory]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<description><![CDATA[Show
-      all the stuff.]]></description>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
+      all the stuff.]]></description>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
+      type=\"0\" screenID=\"2\" selectionID=\"0\" eventID=\"0\" reqID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool
+      selectCom=\"True\" useCombatantPart=\"False\" ownSelection=\"False\" closeScreen=\"False\"
+      closeAfterSave=\"False\" useReq=\"False\" reqHide=\"False\" />\n\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Equipment]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<description><![CDATA[Change
+      your equipment]]></description>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t\t<2
+      type=\"0\" screenID=\"3\" selectionID=\"0\" eventID=\"0\" reqID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool
+      selectCom=\"True\" useCombatantPart=\"False\" ownSelection=\"False\" closeScreen=\"False\"
+      closeAfterSave=\"False\" useReq=\"False\" reqHide=\"False\" />\n\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Abilities]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<description><![CDATA[Show
+      your abilities]]></description>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</2>\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
       guiBoxID=\"2\" >\n\t\t\t\t\t\t\t<_bool always=\"True\" contentFallback=\"True\"
       useTitle=\"False\" useCustomText=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[DescriptionMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t\t<2>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[InformationMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<infoDisplay
       guiBoxID=\"5\" >\n\t\t\t\t\t\t\t\t<pageKeys nextPageKey=\"0\" prevPageKey=\"0\"
@@ -4800,7 +4810,191 @@ MonoBehaviour:
       setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</newContentLayout>\n\t\t\t\t\t\t\t<headerTexts>\n\t\t\t\t\t\t\t\t<_bool
       useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t</headerTexts>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
       guiBoxID=\"2\" >\n\t\t\t\t\t\t\t<_bool always=\"True\" contentFallback=\"True\"
-      useTitle=\"False\" useCustomText=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[DescriptionMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t</part>\n\t\t\t\t</_subarrays>\n\t\t\t</1>\n\t\t</data>\n\t</_subarrays>\n</menuScreens>\n"
+      useTitle=\"False\" useCustomText=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[DescriptionMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t</part>\n\t\t\t\t</_subarrays>\n\t\t\t</1>\n\t\t\t<2
+      keyID=\"0\" reqID=\"0\" closeKeyID=\"0\" closeAudioType=\"3\" prevKeyID=\"0\"
+      nextKeyID=\"0\" prevPartKeyID=\"0\" nextPartKeyID=\"0\" musicStoreID=\"1\" >\n\t\t\t\t<_float
+      timeScale=\"1\" openVolume=\"1\" closeVolume=\"1\" />\n\t\t\t\t<_bool rememberSelection=\"False\"
+      allClosedResetSelection=\"False\" blockControl=\"True\" blockControlMaps=\"True\"
+      singleScreen=\"True\" closeOn2nd=\"True\" close2ndFocused=\"False\" closeFocusLost=\"False\"
+      pauseGame=\"False\" pauseTime=\"False\" freezePause=\"False\" setTimeScale=\"False\"
+      setORKScale=\"False\" useKey=\"False\" useReq=\"False\" useCloseKey=\"False\"
+      closeKeyNoReturn=\"False\" closeKeyAll=\"False\" aliveUser=\"False\" battleGroupUser=\"False\"
+      allowNonPlayer=\"False\" allowComChange=\"False\" changeOnlyBattle=\"True\"
+      allowPartChange=\"False\" noGeneralBG=\"False\" ownBG=\"False\" openWaitForEvent=\"False\"
+      closeWaitForEvent=\"False\" closeEventAfterFading=\"True\" eventOnlyWhenClosing=\"False\"
+      ownMusic=\"False\" />\n\t\t\t\t<_string>\n\t\t\t\t\t<name><![CDATA[Equipment]]></name>\n\t\t\t\t</_string>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<part>\n\t\t\t\t\t\t<0
+      guiBoxID=\"3\" clickCount=\"2\" display=\"2\" guiBoxID2=\"4\" equipPortraitTypeID=\"0\"
+      equipClickCount=\"2\" >\n\t\t\t\t\t\t\t<_bool allTypes=\"True\" showEmptyTypes=\"False\"
+      showTypePortraits=\"False\" useTypeTitle=\"False\" enableDrag=\"False\" enableClick=\"False\"
+      enableTooltip=\"False\" enableEmptyPartTooltip=\"False\" dropGive=\"False\"
+      dropToWorld=\"False\" showEquipBox=\"True\" showEquipPortraits=\"False\" allEquipment=\"False\"
+      unequipBeforeBack=\"False\" useTitle=\"False\" useNewContentLayout=\"False\"
+      equipEnableDrag=\"False\" equipEnableClick=\"False\" equipEnableTooltip=\"False\"
+      equipDropGive=\"False\" equipDropToWorld=\"False\" useSubMenu=\"False\" displayLevelPoints=\"False\"
+      displayLevelPointsList=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[EquipmentMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<typeSorter
+      sorting=\"2\" >\n\t\t\t\t\t\t\t\t<_bool invert=\"False\" />\n\t\t\t\t\t\t\t</typeSorter>\n\t\t\t\t\t\t\t<typeBackButton
+      type=\"0\" >\n\t\t\t\t\t\t\t\t<_bool useCustomButton=\"False\" />\n\t\t\t\t\t\t\t</typeBackButton>\n\t\t\t\t\t\t\t<typeContentLayout
+      titleType=\"2\" type=\"2\" infoType=\"0\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</typeContentLayout>\n\t\t\t\t\t\t\t<partHeaderTexts>\n\t\t\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t</partHeaderTexts>\n\t\t\t\t\t\t\t<emptyButton>\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<button>\n\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Empty]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</emptyButton>\n\t\t\t\t\t\t\t<contentSorter
+      sorting=\"1\" >\n\t\t\t\t\t\t\t\t<_bool invert=\"False\" />\n\t\t\t\t\t\t\t</contentSorter>\n\t\t\t\t\t\t\t<backButton
+      type=\"0\" >\n\t\t\t\t\t\t\t\t<_bool useCustomButton=\"False\" />\n\t\t\t\t\t\t\t</backButton>\n\t\t\t\t\t\t\t<unequipButton
+      type=\"1\" >\n\t\t\t\t\t\t\t\t<_bool useCustomButton=\"False\" />\n\t\t\t\t\t\t\t</unequipButton>\n\t\t\t\t\t\t\t<contentLayout
+      type=\"2\" infoType=\"1\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</contentLayout>\n\t\t\t\t\t\t\t<newContentLayout
+      type=\"2\" infoType=\"1\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</newContentLayout>\n\t\t\t\t\t\t\t<headerTexts>\n\t\t\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t</headerTexts>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
+      guiBoxID=\"2\" >\n\t\t\t\t\t\t\t<_bool always=\"True\" contentFallback=\"True\"
+      useTitle=\"False\" useCustomText=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[DescriptionMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t\t<2>\n\t\t\t\t\t\t\t<_bool
+      showOkButton=\"False\" showCancelButton=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[CombatantMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<infoDisplay
+      guiBoxID=\"5\" scope=\"0\" >\n\t\t\t\t\t\t\t\t<_bool isButton=\"False\" showChoiceIcon=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<pageKeys
+      nextPageKey=\"0\" prevPageKey=\"0\" pageAudioType=\"2\" >\n\t\t\t\t\t\t\t\t\t<_bool
+      acceptNext=\"False\" usePageKeys=\"False\" />\n\t\t\t\t\t\t\t\t</pageKeys>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<page>\n\t\t\t\t\t\t\t\t\t\t<0
+      hudID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t<_bool useTitle=\"False\" useHUD=\"False\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t<statusElement>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<0
+      type=\"0\" combatantOrigin=\"0\" originTargetIndex=\"0\" hasStatusPreview=\"2\"
+      isPreviewBlink=\"2\" isMenuUser=\"2\" isShopUser=\"2\" clickType=\"0\" callScreenID=\"0\"
+      screenReqID=\"0\" globalEventID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float
+      clickVolume=\"1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useRequirements=\"False\"
+      checkGameStates=\"False\" closeScreen=\"False\" closeScreenChange=\"True\" screenUseReq=\"False\"
+      box=\"False\" noFlash=\"False\" outsideBounds=\"False\" showBackground=\"False\"
+      expandBoundsBG=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_type><![CDATA[HUDStatus]]></_type>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<information
+      alignment=\"0\" vAlignment=\"2\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float lineSpacing=\"10\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<0><![CDATA[%n,
+      Lvl %]]></0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textFormat
+      colorID=\"2\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</textFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</information>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bounds
+      anchor=\"0\" relativeTo=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float width=\"100\"
+      height=\"30\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useLastElement=\"False\"
+      isPercentWidth=\"True\" adjustWidth=\"True\" isPercentHeight=\"False\" adjustHeight=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<position
+      0 0 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</bounds>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<1
+      type=\"2\" combatantOrigin=\"0\" originTargetIndex=\"0\" hasStatusPreview=\"2\"
+      isPreviewBlink=\"2\" isMenuUser=\"2\" isShopUser=\"2\" clickType=\"0\" callScreenID=\"0\"
+      screenReqID=\"0\" globalEventID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float
+      clickVolume=\"1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useRequirements=\"False\"
+      checkGameStates=\"False\" closeScreen=\"False\" closeScreenChange=\"True\" screenUseReq=\"False\"
+      box=\"False\" noFlash=\"False\" outsideBounds=\"False\" showBackground=\"False\"
+      expandBoundsBG=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_type><![CDATA[HUDStatus]]></_type>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<status
+      origin=\"0\" listValues=\"3\" statusID=\"0\" listTypeID=\"0\" listType=\"0\"
+      limitIn=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float barLimitMin=\"0\" barLimitMax=\"100\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool enableTooltip=\"False\" usePreviewBlink=\"True\"
+      useBar=\"False\" limitBarDisplay=\"False\" overrideBar=\"False\" previewUseNoChangeValueText=\"True\"
+      previewUseNoChangeChangeText=\"True\" previewOwnMinMaxCurrentText=\"False\"
+      previewOwnMinMaxChangeText=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<off
+      0 30 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<percentFormat><![CDATA[0.0]]></percentFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<previewPositiveFormat
+      colorID=\"0\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</previewPositiveFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<previewNegativeFormat
+      colorID=\"0\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</previewNegativeFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<text
+      alignment=\"0\" vAlignment=\"2\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float
+      lineSpacing=\"10\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<0><![CDATA[%n]]></0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textFormat
+      colorID=\"0\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</textFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</status>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bounds
+      anchor=\"0\" relativeTo=\"6\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float width=\"100\"
+      height=\"200\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useLastElement=\"True\"
+      isPercentWidth=\"True\" adjustWidth=\"True\" isPercentHeight=\"False\" adjustHeight=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<position
+      0 0 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</bounds>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<2
+      type=\"2\" combatantOrigin=\"0\" originTargetIndex=\"0\" hasStatusPreview=\"2\"
+      isPreviewBlink=\"2\" isMenuUser=\"2\" isShopUser=\"2\" clickType=\"0\" callScreenID=\"0\"
+      screenReqID=\"0\" globalEventID=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float
+      clickVolume=\"1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useRequirements=\"False\"
+      checkGameStates=\"False\" closeScreen=\"False\" closeScreenChange=\"True\" screenUseReq=\"False\"
+      box=\"False\" noFlash=\"False\" outsideBounds=\"False\" showBackground=\"False\"
+      expandBoundsBG=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_type><![CDATA[HUDStatus]]></_type>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<status
+      origin=\"1\" listValues=\"3\" statusID=\"0\" listTypeID=\"0\" listType=\"0\"
+      limitIn=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float barLimitMin=\"0\" barLimitMax=\"100\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool enableTooltip=\"False\" usePreviewBlink=\"True\"
+      useBar=\"False\" limitBarDisplay=\"False\" overrideBar=\"False\" previewUseNoChangeValueText=\"True\"
+      previewUseNoChangeChangeText=\"True\" previewOwnMinMaxCurrentText=\"False\"
+      previewOwnMinMaxChangeText=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<off
+      0 30 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<percentFormat><![CDATA[0.0]]></percentFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<previewPositiveFormat
+      colorID=\"3\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</previewPositiveFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<previewNegativeFormat
+      colorID=\"4\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</previewNegativeFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<text
+      alignment=\"2\" vAlignment=\"2\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float
+      lineSpacing=\"10\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<0><![CDATA[%]]></0>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_stringarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textFormat
+      colorID=\"0\" shadowColorID=\"1\" outlineColorID=\"1\" fontSize=\"20\" fontStyle=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool showShadow=\"True\" showOutline=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<shadowOffset
+      1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<outlineOffset 1 1 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_font
+      font=\"-1\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</textFormat>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</text>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</status>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bounds
+      anchor=\"0\" relativeTo=\"0\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_float width=\"100\"
+      height=\"200\" />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_bool useLastElement=\"True\"
+      isPercentWidth=\"True\" adjustWidth=\"True\" isPercentHeight=\"False\" adjustHeight=\"True\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<position
+      0 0 />\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</bounds>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</2>\n\t\t\t\t\t\t\t\t\t\t\t\t</statusElement>\n\t\t\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</page>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</infoDisplay>\n\t\t\t\t\t\t</2>\n\t\t\t\t\t</part>\n\t\t\t\t</_subarrays>\n\t\t\t</2>\n\t\t\t<3
+      keyID=\"0\" reqID=\"0\" closeKeyID=\"0\" closeAudioType=\"3\" prevKeyID=\"0\"
+      nextKeyID=\"0\" prevPartKeyID=\"0\" nextPartKeyID=\"0\" musicStoreID=\"1\" >\n\t\t\t\t<_float
+      timeScale=\"1\" openVolume=\"1\" closeVolume=\"1\" />\n\t\t\t\t<_bool rememberSelection=\"False\"
+      allClosedResetSelection=\"False\" blockControl=\"True\" blockControlMaps=\"True\"
+      singleScreen=\"True\" closeOn2nd=\"True\" close2ndFocused=\"False\" closeFocusLost=\"False\"
+      pauseGame=\"False\" pauseTime=\"False\" freezePause=\"False\" setTimeScale=\"False\"
+      setORKScale=\"False\" useKey=\"False\" useReq=\"False\" useCloseKey=\"False\"
+      closeKeyNoReturn=\"False\" closeKeyAll=\"False\" aliveUser=\"False\" battleGroupUser=\"False\"
+      allowNonPlayer=\"False\" allowComChange=\"False\" changeOnlyBattle=\"True\"
+      allowPartChange=\"False\" noGeneralBG=\"False\" ownBG=\"False\" openWaitForEvent=\"False\"
+      closeWaitForEvent=\"False\" closeEventAfterFading=\"True\" eventOnlyWhenClosing=\"False\"
+      ownMusic=\"False\" />\n\t\t\t\t<_string>\n\t\t\t\t\t<name><![CDATA[Abilities]]></name>\n\t\t\t\t</_string>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<part>\n\t\t\t\t\t\t<0
+      defaultAction=\"0\" startParentTypeID=\"0\" nextTypeKey=\"0\" prevTypeKey=\"0\"
+      typeKeysAudioType=\"1\" typeDisplay=\"1\" display=\"2\" guiBoxID=\"3\" guiBoxID2=\"4\"
+      abilityPortraitTypeID=\"0\" addTemporary=\"0\" clickCount=\"2\" increaseKey=\"0\"
+      decreaseKey=\"0\" >\n\t\t\t\t\t\t\t<_bool closeAfter=\"False\" closeAfterNoReturn=\"False\"
+      closeAfterAll=\"False\" useScreenCom=\"False\" animateUse=\"True\" allTypes=\"True\"
+      mergeSubTypes=\"False\" setStartParentType=\"False\" addAllTypeChoice=\"False\"
+      allTypeChoiceFirst=\"True\" useTypeKeys=\"False\" showEmptyTypes=\"False\" useTypeTitle=\"False\"
+      useNewTypeContentLayout=\"False\" showAbilityPortraits=\"False\" addAttacks=\"False\"
+      addCounter=\"False\" addClass=\"False\" addActive=\"True\" addPassive=\"True\"
+      useTitle=\"False\" enableDrag=\"False\" enableClick=\"False\" enableTooltip=\"False\"
+      dragInactive=\"False\" useNewContentLayout=\"False\" allowLvlChange=\"False\"
+      loopLevels=\"False\" useSubMenu=\"False\" displayLevelPoints=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[AbilityMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<typeSorter
+      sorting=\"1\" >\n\t\t\t\t\t\t\t\t<_bool invert=\"False\" />\n\t\t\t\t\t\t\t</typeSorter>\n\t\t\t\t\t\t\t<typeBackButton
+      type=\"0\" >\n\t\t\t\t\t\t\t\t<_bool useCustomButton=\"False\" />\n\t\t\t\t\t\t\t</typeBackButton>\n\t\t\t\t\t\t\t<typeContentLayout
+      type=\"2\" infoType=\"0\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</typeContentLayout>\n\t\t\t\t\t\t\t<newTypeContentLayout
+      type=\"2\" infoType=\"0\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</newTypeContentLayout>\n\t\t\t\t\t\t\t<typeHeaderTexts>\n\t\t\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t</typeHeaderTexts>\n\t\t\t\t\t\t\t<contentSorter
+      sorting=\"1\" >\n\t\t\t\t\t\t\t\t<_bool invert=\"False\" />\n\t\t\t\t\t\t\t</contentSorter>\n\t\t\t\t\t\t\t<backButton
+      type=\"0\" >\n\t\t\t\t\t\t\t\t<_bool useCustomButton=\"False\" />\n\t\t\t\t\t\t\t</backButton>\n\t\t\t\t\t\t\t<contentLayout
+      type=\"2\" infoType=\"1\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</contentLayout>\n\t\t\t\t\t\t\t<newContentLayout
+      type=\"2\" infoType=\"1\" >\n\t\t\t\t\t\t\t\t<_bool hideEmptyInfo=\"False\"
+      />\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool useCustomSkin=\"False\"
+      setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t</newContentLayout>\n\t\t\t\t\t\t\t<headerTexts>\n\t\t\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t</headerTexts>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
+      guiBoxID=\"2\" >\n\t\t\t\t\t\t\t<_bool always=\"True\" contentFallback=\"True\"
+      useTitle=\"False\" useCustomText=\"False\" />\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<_type><![CDATA[DescriptionMenuPart]]></_type>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t</part>\n\t\t\t\t</_subarrays>\n\t\t\t</3>\n\t\t</data>\n\t</_subarrays>\n</menuScreens>\n"
     lookUp:
       textures: []
       audioClips: []
