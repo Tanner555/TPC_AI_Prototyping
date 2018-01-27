@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -1501101930, guid: f4979b3083d349140bb14b6ec7fc999a, type: 3}
   m_Name: initAllyGroup
   m_EditorClassIdentifier: 
-  time: 1/26/2018 9:08:03 PM
+  time: 1/27/2018 4:26:15 AM
   version: 2.14.4
   data:
     name: gameEvent
@@ -29,7 +29,7 @@ MonoBehaviour:
       origin=\"0\" >\n\t\t\t\t</groupSelection>\n\t\t\t\t<usedObject type=\"0\" aID=\"0\"
       wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
       type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t</0>\n\t\t\t<1
-      groupID=\"0\" id=\"1\" level=\"1\" cLevel=\"1\" next=\"-1\" >\n\t\t\t\t<_bool
+      groupID=\"0\" id=\"1\" level=\"1\" cLevel=\"1\" next=\"2\" >\n\t\t\t\t<_bool
       actor=\"False\" showNotification=\"True\" showConsole=\"True\" useCombatantGroup=\"False\"
       otherGroup=\"False\" useInactive=\"False\" useStartInventory=\"True\" useStartEquipment=\"True\"
       useInitEvent=\"True\" setLevel=\"False\" setCLevel=\"False\" active=\"True\"
@@ -37,7 +37,10 @@ MonoBehaviour:
       532 38 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[JoinActiveGroupStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<groupSelection
       origin=\"0\" >\n\t\t\t\t</groupSelection>\n\t\t\t\t<usedObject type=\"0\" aID=\"0\"
       wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
-      type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t</1>\n\t\t</step>\n\t</_subarrays>\n</gameEvent>\n"
+      type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t</1>\n\t\t\t<2
+      id=\"0\" id2=\"0\" next=\"-1\" >\n\t\t\t\t<_bool completeLog=\"False\" showConsole=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      532 133 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[LearnLogTextStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t</2>\n\t\t</step>\n\t</_subarrays>\n</gameEvent>\n"
     lookUp:
       textures: []
       audioClips: []
