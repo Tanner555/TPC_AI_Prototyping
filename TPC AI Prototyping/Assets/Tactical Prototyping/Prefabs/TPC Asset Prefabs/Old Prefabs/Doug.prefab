@@ -5237,7 +5237,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_DamageDistanceThreshold: 0.5
   m_DamageSound: []
 --- !u!114 &114118399171892414
 MonoBehaviour:
@@ -7666,6 +7665,7 @@ MonoBehaviour:
   m_SettledThreshold: 0.01
   m_SettledFrameCount: 5
   m_DisableColliders: 1
+  m_RegisterDeathEvent: 1
   m_IgnoreColliders: []
 --- !u!114 &114652282424846318
 MonoBehaviour:

@@ -8,7 +8,7 @@ namespace RTSPrototype
 {
     public class RTSUiMasterWrapper : RTSUiMaster
     {
-        #region Overrides
+        #region Override Properties
         public override bool isPauseMenuOn
         {
             get
@@ -27,6 +27,9 @@ namespace RTSPrototype
             }
         }
 
+        #endregion
+
+        #region Override Methods
         public override void CallEventMenuToggle()
         {
             //If Ui Item isn't being used or Pause Menu is turned on

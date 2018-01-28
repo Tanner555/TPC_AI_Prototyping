@@ -129,6 +129,12 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region Fields
+        //Ork Fields
+        //ORKFramework.EquipmentPart[] previousEquipment;
+
+        #endregion
+
         #region UnityMessages
         protected override void OnEnable()
         {
@@ -144,13 +150,66 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            //if(RPGCombatant != null)
-            //{
-            //    Debug.Log("Combatant: " + RPGCombatant);
 
-            //}
-            
         }
+
+        #endregion
+
+        #region TestingEquipment
+        //void TestingRPGEquipment()
+        //{
+        //    //if (RPGCombatant != null)
+        //    //{
+        //    //    Debug.Log(RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, 50, 1));
+
+        //    //    //Debug.Log(RPGCombatant.Equipment.Settings.ToString());
+        //    //    //RPGCombatant.Equipment.IsEquipped()
+        //    //    Debug.Log("Count" + RPGCombatant.Equipment.GetAvailableParts().Count);
+        //    //    for (int i = 0; i < RPGCombatant.Equipment.GetAvailableParts().Count; i++)
+        //    //    {
+        //    //        if(RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, i, 1))
+        //    //        {
+        //    //            Debug.Log(i + " is equiped");
+        //    //            var _equipments = RPGCombatant.Inventory.GetEquipmentByPart(i, true, true);
+        //    //            Debug.Log(_equipments.Count);
+        //    //        }
+
+        //    //    }
+
+        //    //    //RPGCombatant.InventoryChanged += UpdateRPGEquipmentForTPC;
+        //    //    RPGCombatant.Equipment.Changed += UpdateRPGEquipmentForTPC;
+        //    //    //InvokeRepeating("UpdateRPGEquipmentForTPC", 0.5f, 0.5f);
+        //    //}
+        //}
+
+        //void UpdateRPGEquipmentForTPC(ORKFramework.Combatant _combatant)
+        //{
+        //    Debug.Log("Hello");
+        //    if (_combatant != null)
+        //    {
+        //        Debug.Log("Updating RPG Equipment");
+        //        //Debug.Log("Weapons " + _combatant.Equipment.GetAvailableParts)
+        //        //ORKFramework.ORK.Game.ActiveGroup.Inventory.Weapons.
+        //        foreach (var _currPart in ORKFramework.ORK.EquipmentParts.data)
+        //        {
+        //            if(_currPart.GetName() == "Left Arm" || _currPart.GetName() == "Right Arm")
+        //            {
+        //                Debug.Log(_currPart.GetName());
+        //            }
+        //            //if (previousEquipment != null && previousEquipment.Length > 0)
+        //            //{
+        //            //    foreach (var _prevPart in previousEquipment)
+        //            //    {
+        //            //        if (_currPart.GetData() != _prevPart.GetData())
+        //            //        {
+        //            //            Debug.Log("Equiping: " + _currPart.GetData().ToString());
+        //            //        }
+        //            //    }
+        //            //}
+        //        }
+        //        //previousEquipment = ORKFramework.ORK.EquipmentParts.data;
+        //    }
+        //}
         #endregion
 
     }
