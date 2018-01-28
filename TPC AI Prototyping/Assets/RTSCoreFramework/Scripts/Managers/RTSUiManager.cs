@@ -567,7 +567,7 @@ conditionButton && actionButton;
         void SubToEvents()
         {
             uiMaster.EventMenuToggle += TogglePauseMenuUi;
-            uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
+            //uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
             uiMaster.EventIGBPIToggle += ToggleIGBPIUi;
             uiMaster.EventAddDropdownInstance += AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance += DeregisterDropdownMenu;
@@ -579,7 +579,7 @@ conditionButton && actionButton;
         void UnsubEvents()
         {
             uiMaster.EventMenuToggle -= TogglePauseMenuUi;
-            uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
+            //uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
             uiMaster.EventIGBPIToggle -= ToggleIGBPIUi;
             uiMaster.EventAddDropdownInstance -= AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance -= DeregisterDropdownMenu;

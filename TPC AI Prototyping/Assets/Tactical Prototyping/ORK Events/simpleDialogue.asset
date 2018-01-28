@@ -11,49 +11,213 @@ MonoBehaviour:
   m_Script: {fileID: -1501101930, guid: f4979b3083d349140bb14b6ec7fc999a, type: 3}
   m_Name: simpleDialogue
   m_EditorClassIdentifier: 
-  time: 1/27/2018 3:28:26 AM
+  time: 1/27/2018 8:40:08 AM
   version: 2.14.4
   data:
     name: gameEvent
-    xmlData: "<gameEvent startIndex=\"0\" >\n\t<_bool blockingEvent=\"False\" blockMoveAI=\"False\"
+    xmlData: "<gameEvent startIndex=\"0\" >\n\t<_bool blockingEvent=\"True\" blockMoveAI=\"False\"
       blockActorMoveAI=\"False\" blockControlMaps=\"False\" clearFoundObjects=\"True\"
-      blockPlayer=\"False\" blockCamera=\"False\" clearBlocks=\"False\" mainCamera=\"True\"
+      blockPlayer=\"True\" blockCamera=\"True\" clearBlocks=\"False\" mainCamera=\"True\"
       cameraTag=\"False\" destroyPrefabs=\"False\" overrideNodeName=\"False\" />\n\t<_floatarrays>\n\t\t<nodePosition
       38 38 />\n\t</_floatarrays>\n\t<_string>\n\t\t<cameraName><![CDATA[]]></cameraName>\n\t\t<nodeName><![CDATA[]]></nodeName>\n\t</_string>\n\t<_subarrays>\n\t\t<actor>\n\t\t\t<0
       type=\"0\" memberIndex=\"0\" >\n\t\t\t\t<_bool isEventObject=\"True\" isFindObject=\"False\"
+      onlyBattle=\"False\" useRoot=\"False\" useSceneName=\"False\" setName=\"True\"
+      />\n\t\t\t\t<_string>\n\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t</_string>\n\t\t\t\t<_stringarrays>\n\t\t\t\t\t<actorName>\n\t\t\t\t\t\t<0><![CDATA[Green
+      Pants]]></0>\n\t\t\t\t\t</actorName>\n\t\t\t\t</_stringarrays>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t</_subarrays>\n\t\t\t</0>\n\t\t\t<1
+      type=\"1\" memberIndex=\"0\" >\n\t\t\t\t<_bool isEventObject=\"False\" isFindObject=\"False\"
       onlyBattle=\"False\" useRoot=\"False\" useSceneName=\"False\" setName=\"False\"
-      />\n\t\t\t\t<_string>\n\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t</_string>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t</_subarrays>\n\t\t\t</0>\n\t\t</actor>\n\t\t<waypoint>\n\t\t</waypoint>\n\t\t<prefab>\n\t\t</prefab>\n\t\t<audioClip>\n\t\t</audioClip>\n\t\t<step>\n\t\t\t<0
-      next=\"1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
-      285 38 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      />\n\t\t\t\t<_string>\n\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t</_string>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t</_subarrays>\n\t\t\t</1>\n\t\t</actor>\n\t\t<waypoint>\n\t\t</waypoint>\n\t\t<prefab>\n\t\t</prefab>\n\t\t<audioClip>\n\t\t</audioClip>\n\t\t<step>\n\t\t\t<0
+      origin=\"1\" nextFail=\"2\" next=\"1\" >\n\t\t\t\t<_bool useObject=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      266 38 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[CheckGameVariableStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t<0
+      conditionType=\"0\" type=\"0\" floatCheck=\"0\" vector3Check=\"1\" templateID=\"0\"
+      >\n\t\t\t\t\t\t\t\t<_bool isValid=\"True\" />\n\t\t\t\t\t\t\t\t<key type=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[BP_Quest]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</key>\n\t\t\t\t\t\t\t\t<stringValue
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[finished]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</stringValue>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</condition>\n\t\t\t</0>\n\t\t\t<1
+      next=\"-1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      513 38 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
       type=\"0\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
       clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
       atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
       useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
       onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
-      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Hi
-      there, you noble knight. Thanks you for killing the dragon for me. Here is 500
-      coins :)]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</0>\n\t\t\t<1
-      next=\"-1\" >\n\t\t\t\t<_bool showNotification=\"True\" showConsole=\"True\"
-      useSelectedData=\"False\" active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
-      532 38 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[AddToInventoryStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<usedObject
-      type=\"0\" aID=\"0\" wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Thanks
+      again for finding my #text.color2##text.boldUnderpants#<style#<color!]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</1>\n\t\t\t<2
+      origin=\"1\" nextFail=\"11\" next=\"3\" >\n\t\t\t\t<_bool useObject=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      19 133 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[CheckGameVariableStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t<0
+      conditionType=\"0\" type=\"0\" floatCheck=\"0\" vector3Check=\"1\" templateID=\"0\"
+      >\n\t\t\t\t\t\t\t\t<_bool isValid=\"True\" />\n\t\t\t\t\t\t\t\t<key type=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[BP_Quest]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</key>\n\t\t\t\t\t\t\t\t<stringValue
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[found]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</stringValue>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</condition>\n\t\t\t</2>\n\t\t\t<3
+      next=\"-1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      247 152 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"1\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Have
+      you found my #text.color2##text.boldUnderpants#<style#<color yet?]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t\t<defaultSelection
+      type=\"0\" origin=\"1\" multiVariableUseType=\"0\" formulaID=\"0\" value=\"0\"
+      value2=\"0\" rounding=\"0\" >\n\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\"
+      />\n\t\t\t\t\t\t<_bool useObject=\"True\" isInt=\"False\" isUTC=\"False\" />\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</defaultSelection>\n\t\t\t\t\t<headerTexts>\n\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t</headerTexts>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<choiceOption>\n\t\t\t\t\t\t\t<0
+      next=\"4\" origin=\"1\" statReqNeeded=\"0\" >\n\t\t\t\t\t\t\t\t<_bool showInactive=\"False\"
+      useCondition=\"False\" useObject=\"True\" useQuestCondition=\"False\" useStatusRequirements=\"False\"
+      addItem=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</condition>\n\t\t\t\t\t\t\t\t<item
+      type=\"0\" id=\"0\" level=\"1\" quantity=\"1\" >\n\t\t\t\t\t\t\t\t\t<_float
+      chance=\"100\" />\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<content>\n\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t<_bool
+      addInfo=\"False\" addTitle=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Yes]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t<infoText><![CDATA[]]></infoText>\n\t\t\t\t\t\t\t\t\t\t\t\t<titleText><![CDATA[]]></titleText>\n\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</content>\n\t\t\t\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t<1
+      next=\"-1\" origin=\"1\" statReqNeeded=\"0\" >\n\t\t\t\t\t\t\t\t<_bool showInactive=\"False\"
+      useCondition=\"False\" useObject=\"True\" useQuestCondition=\"False\" useStatusRequirements=\"False\"
+      addItem=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</condition>\n\t\t\t\t\t\t\t\t<item
+      type=\"0\" id=\"0\" level=\"1\" quantity=\"1\" >\n\t\t\t\t\t\t\t\t\t<_float
+      chance=\"100\" />\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<content>\n\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t<_bool
+      addInfo=\"False\" addTitle=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[No]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t<infoText><![CDATA[]]></infoText>\n\t\t\t\t\t\t\t\t\t\t\t\t<titleText><![CDATA[]]></titleText>\n\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</content>\n\t\t\t\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t</choiceOption>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</dialogue>\n\t\t\t</3>\n\t\t\t<4
+      nextFail=\"10\" next=\"5\" >\n\t\t\t\t<_bool useSelectedData=\"False\" active=\"True\"
+      overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      494 152 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[HasInInventoryStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<usedObject
+      type=\"0\" aID=\"1\" wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
       type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<item>\n\t\t\t\t\t\t<0
-      type=\"0\" id=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t<quantityValue type=\"0\" origin=\"1\"
+      type=\"0\" id=\"3\" level=\"1\" >\n\t\t\t\t\t\t\t<quantityValue type=\"0\" origin=\"1\"
       multiVariableUseType=\"0\" formulaID=\"0\" value=\"1\" value2=\"0\" rounding=\"0\"
       >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" />\n\t\t\t\t\t\t\t\t<_bool
       useObject=\"True\" isInt=\"False\" isUTC=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</quantityValue>\n\t\t\t\t\t\t\t<chanceValue
       type=\"0\" origin=\"1\" multiVariableUseType=\"0\" formulaID=\"0\" rounding=\"0\"
       >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" value=\"100\" value2=\"0\"
       />\n\t\t\t\t\t\t\t\t<_bool useObject=\"True\" isInt=\"False\" isUTC=\"False\"
-      />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</chanceValue>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t\t<1
-      type=\"3\" id=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t<quantityValue type=\"0\" origin=\"1\"
-      multiVariableUseType=\"0\" formulaID=\"0\" value=\"500\" value2=\"0\" rounding=\"0\"
+      />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</chanceValue>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</item>\n\t\t\t\t</_subarrays>\n\t\t\t</4>\n\t\t\t<5
+      next=\"6\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      741 152 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"0\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Wow,
+      thanks so much!\r\nHere, take this #text.italicWonderful potion#<style for your
+      trouble.]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</5>\n\t\t\t<6
+      next=\"7\" >\n\t\t\t\t<_bool drop=\"False\" showNotification=\"True\" showConsole=\"True\"
+      useSelectedData=\"False\" active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      969 152 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[RemoveFromInventoryStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<usedObject
+      type=\"0\" aID=\"1\" wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
+      type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<item>\n\t\t\t\t\t\t<0
+      type=\"0\" id=\"3\" level=\"1\" >\n\t\t\t\t\t\t\t<quantityValue type=\"0\" origin=\"1\"
+      multiVariableUseType=\"0\" formulaID=\"0\" value=\"1\" value2=\"0\" rounding=\"0\"
       >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" />\n\t\t\t\t\t\t\t\t<_bool
       useObject=\"True\" isInt=\"False\" isUTC=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</quantityValue>\n\t\t\t\t\t\t\t<chanceValue
       type=\"0\" origin=\"1\" multiVariableUseType=\"0\" formulaID=\"0\" rounding=\"0\"
       >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" value=\"100\" value2=\"0\"
       />\n\t\t\t\t\t\t\t\t<_bool useObject=\"True\" isInt=\"False\" isUTC=\"False\"
-      />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</chanceValue>\n\t\t\t\t\t\t</1>\n\t\t\t\t\t</item>\n\t\t\t\t</_subarrays>\n\t\t\t</1>\n\t\t</step>\n\t</_subarrays>\n</gameEvent>\n"
+      />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</chanceValue>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</item>\n\t\t\t\t</_subarrays>\n\t\t\t</6>\n\t\t\t<7
+      next=\"8\" >\n\t\t\t\t<_bool showNotification=\"True\" showConsole=\"True\"
+      useSelectedData=\"False\" active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      969 57 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[AddToInventoryStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<usedObject
+      type=\"0\" aID=\"1\" wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
+      type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<item>\n\t\t\t\t\t\t<0
+      type=\"0\" id=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t<quantityValue type=\"0\" origin=\"1\"
+      multiVariableUseType=\"0\" formulaID=\"0\" value=\"5\" value2=\"0\" rounding=\"0\"
+      >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" />\n\t\t\t\t\t\t\t\t<_bool
+      useObject=\"True\" isInt=\"False\" isUTC=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</quantityValue>\n\t\t\t\t\t\t\t<chanceValue
+      type=\"0\" origin=\"1\" multiVariableUseType=\"0\" formulaID=\"0\" rounding=\"0\"
+      >\n\t\t\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\" value=\"100\" value2=\"0\"
+      />\n\t\t\t\t\t\t\t\t<_bool useObject=\"True\" isInt=\"False\" isUTC=\"False\"
+      />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t</chanceValue>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</item>\n\t\t\t\t</_subarrays>\n\t\t\t</7>\n\t\t\t<8
+      id=\"3\" id2=\"0\" next=\"9\" >\n\t\t\t\t<_bool completeLog=\"False\" showConsole=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      1178 57 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[LearnLogTextStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t</8>\n\t\t\t<9
+      origin=\"1\" next=\"-1\" >\n\t\t\t\t<_bool useObject=\"True\" active=\"True\"
+      overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      1178 152 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ChangeGameVariableStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<change>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t<0
+      type=\"0\" floatOperator=\"7\" vector3Operator=\"2\" >\n\t\t\t\t\t\t\t\t<_bool
+      remove=\"False\" boolValue=\"False\" vector3Normalize=\"False\" />\n\t\t\t\t\t\t\t\t<key
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[BP_Quest]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</key>\n\t\t\t\t\t\t\t\t<stringValue
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[finished]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</stringValue>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</change>\n\t\t\t</9>\n\t\t\t<10
+      next=\"-1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      494 247 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"0\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Hey,
+      you don\u2019t have them!]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</10>\n\t\t\t<11
+      origin=\"1\" nextFail=\"13\" next=\"12\" >\n\t\t\t\t<_bool useObject=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      57 285 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[CheckGameVariableStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t<0
+      conditionType=\"0\" type=\"0\" floatCheck=\"0\" vector3Check=\"1\" templateID=\"0\"
+      >\n\t\t\t\t\t\t\t\t<_bool isValid=\"True\" />\n\t\t\t\t\t\t\t\t<key type=\"0\"
+      >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[BP_Quest]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</key>\n\t\t\t\t\t\t\t\t<stringValue
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[search]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</stringValue>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</condition>\n\t\t\t</11>\n\t\t\t<12
+      next=\"-1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      722 228 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"0\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Already
+      found my #text.color2##text.boldUnderpants#<style#<color?\r\nThey should be
+      somewhere on the road to town.]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</12>\n\t\t\t<13
+      next=\"-1\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      57 418 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"1\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Hi
+      there, fellow!\r\nI\u2019ve lost something, could you help me find it?]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t\t<defaultSelection
+      type=\"0\" origin=\"1\" multiVariableUseType=\"0\" formulaID=\"0\" value=\"0\"
+      value2=\"0\" rounding=\"0\" >\n\t\t\t\t\t\t<_float initialValue=\"0\" offset=\"0\"
+      />\n\t\t\t\t\t\t<_bool useObject=\"True\" isInt=\"False\" isUTC=\"False\" />\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t<name><![CDATA[]]></name>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</defaultSelection>\n\t\t\t\t\t<headerTexts>\n\t\t\t\t\t\t<_bool
+      useHeaders=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t</headerTexts>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<choiceOption>\n\t\t\t\t\t\t\t<0
+      next=\"14\" origin=\"1\" statReqNeeded=\"0\" >\n\t\t\t\t\t\t\t\t<_bool showInactive=\"False\"
+      useCondition=\"False\" useObject=\"True\" useQuestCondition=\"False\" useStatusRequirements=\"False\"
+      addItem=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</condition>\n\t\t\t\t\t\t\t\t<item
+      type=\"0\" id=\"0\" level=\"1\" quantity=\"1\" >\n\t\t\t\t\t\t\t\t\t<_float
+      chance=\"100\" />\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<content>\n\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t<_bool
+      addInfo=\"False\" addTitle=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Sure]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t<infoText><![CDATA[]]></infoText>\n\t\t\t\t\t\t\t\t\t\t\t\t<titleText><![CDATA[]]></titleText>\n\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</content>\n\t\t\t\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t<1
+      next=\"-1\" origin=\"1\" statReqNeeded=\"0\" >\n\t\t\t\t\t\t\t\t<_bool showInactive=\"False\"
+      useCondition=\"False\" useObject=\"True\" useQuestCondition=\"False\" useStatusRequirements=\"False\"
+      addItem=\"False\" />\n\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t<customSkin>\n\t\t\t\t\t\t\t\t\t<_bool
+      useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t\t\t\t\t\t\t</customSkin>\n\t\t\t\t\t\t\t\t<condition
+      needed=\"0\" >\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</condition>\n\t\t\t\t\t\t\t\t<item
+      type=\"0\" id=\"0\" level=\"1\" quantity=\"1\" >\n\t\t\t\t\t\t\t\t\t<_float
+      chance=\"100\" />\n\t\t\t\t\t\t\t\t</item>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<content>\n\t\t\t\t\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t\t\t\t\t<_bool
+      addInfo=\"False\" addTitle=\"False\" />\n\t\t\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t\t\t<name><![CDATA[Some
+      other time...]]></name>\n\t\t\t\t\t\t\t\t\t\t\t\t<infoText><![CDATA[]]></infoText>\n\t\t\t\t\t\t\t\t\t\t\t\t<titleText><![CDATA[]]></titleText>\n\t\t\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t</content>\n\t\t\t\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t</choiceOption>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</dialogue>\n\t\t\t</13>\n\t\t\t<14
+      next=\"15\" >\n\t\t\t\t<_bool active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      266 399 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ShowDialogueStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<dialogue
+      type=\"0\" guiBoxID=\"1\" actorID=\"0\" portraitType=\"0\" consoleTypeID=\"0\"
+      clipID=\"0\" cancelNext=\"-1\" >\n\t\t\t\t\t<_bool waitClose=\"True\" useSpeaker=\"True\"
+      atActorPosition=\"False\" speakerName=\"True\" speakerPortrait=\"False\" ownPortraitPosition=\"False\"
+      useTitle=\"False\" outputToConsole=\"False\" useAudio=\"False\" stopAudio=\"True\"
+      onSpeaker=\"False\" allowCancel=\"False\" blockAccept=\"False\" afterAudio=\"False\"
+      wait=\"False\" />\n\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t<posOff 0 0 />\n\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<posChildName><![CDATA[]]></posChildName>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<_stringarrays>\n\t\t\t\t\t\t<message>\n\t\t\t\t\t\t\t<0><![CDATA[Great!\r\nI\u2019ve
+      lost my #text.color2##text.boldUnderpants#<style#<color \u2026 they should be
+      somewhere on the road to town.\r\nPlease, bring them to me, it\u2019s getting
+      a little bit chilly without them.]]></0>\n\t\t\t\t\t\t</message>\n\t\t\t\t\t</_stringarrays>\n\t\t\t\t</dialogue>\n\t\t\t</14>\n\t\t\t<15
+      id=\"1\" id2=\"0\" next=\"16\" >\n\t\t\t\t<_bool completeLog=\"False\" showConsole=\"True\"
+      active=\"True\" overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      475 399 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[LearnLogTextStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t</15>\n\t\t\t<16
+      origin=\"1\" next=\"-1\" >\n\t\t\t\t<_bool useObject=\"True\" active=\"True\"
+      overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      684 399 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<objectID><![CDATA[]]></objectID>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[ChangeGameVariableStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<change>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t<0
+      type=\"0\" floatOperator=\"7\" vector3Operator=\"2\" >\n\t\t\t\t\t\t\t\t<_bool
+      remove=\"False\" boolValue=\"False\" vector3Normalize=\"False\" />\n\t\t\t\t\t\t\t\t<key
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[BP_Quest]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</key>\n\t\t\t\t\t\t\t\t<stringValue
+      type=\"0\" >\n\t\t\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t\t\t<value><![CDATA[search]]></value>\n\t\t\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t\t</stringValue>\n\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</change>\n\t\t\t</16>\n\t\t</step>\n\t</_subarrays>\n</gameEvent>\n"
     lookUp:
       textures: []
       audioClips: []

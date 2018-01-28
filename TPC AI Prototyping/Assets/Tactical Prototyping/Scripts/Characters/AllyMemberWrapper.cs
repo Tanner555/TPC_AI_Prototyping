@@ -144,11 +144,12 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            if(RPGCombatant != null)
-            {
-                Debug.Log("Combatant: " + RPGCombatant);
-                
-            }
+            //if(RPGCombatant != null)
+            //{
+            //    Debug.Log("Combatant: " + RPGCombatant);
+
+            //}
+            
         }
         #endregion
 

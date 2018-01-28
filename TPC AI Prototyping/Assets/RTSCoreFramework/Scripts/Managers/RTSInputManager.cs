@@ -82,8 +82,8 @@ namespace RTSCoreFramework
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 CallMenuToggle();
-            if (Input.GetKeyDown(KeyCode.I))
-                CallInventoryToggle();
+            //if (Input.GetKeyDown(KeyCode.I))
+            //    CallInventoryToggle();
             if (Input.GetKeyDown(KeyCode.B))
                 CallIGBPIToggle();
             if (UiIsEnabled) return;
@@ -300,7 +300,7 @@ namespace RTSCoreFramework
 
         #region InputCalls
         void CallMenuToggle() { uiMaster.CallEventMenuToggle(); }
-        void CallInventoryToggle() { uiMaster.CallEventInventoryUIToggle(); }
+        //void CallInventoryToggle() { uiMaster.CallEventInventoryUIToggle(); }
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
         void CallPossessAllySubtract() { gamemode.GeneralInCommand.PossessAllySubtract(); }
