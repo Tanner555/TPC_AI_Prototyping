@@ -150,8 +150,31 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-
+            //InvokeRepeating("WaitForGunn", 0.2f, 0.5f);
+            
+            
         }
+
+        //void WaitForGunn()
+        //{
+        //    if (bIsCurrentPlayer == false) return;
+        //    for (int i = 0; i < ORKFramework.ORK.Weapons.Count; i++)
+        //    {
+        //        var _slot = RPGCombatant.Equipment.GetFakeEquip(1, new ORKFramework.EquipShortcut(ORKFramework.EquipSet.Weapon, i, 1, 1));
+        //        foreach (var _s in _slot)
+        //        {
+        //            if (_s != null && _s.Equipment != null && _s.Equipped == true)
+        //            {
+        //                var _myHandler = GetComponent<RTSItemAndControlHandler>();
+        //                if (_myHandler != null && _myHandler.CheckForInventoryMatch(_s.Equipment.GetName()))
+        //                {
+        //                    _myHandler.SetEquippedItemFromString(_s.Equipment.GetName());
+        //                }
+        //            }
+        //        }
+        //    }
+                          
+        //}
 
         #endregion
 

@@ -21,6 +21,16 @@ namespace RTSPrototype
         }
 
         bool isAiming = false;
+        [Header("Gun Types")]
+        public ItemType AssualtRifleType;
+        public ItemType PistolType;
+        public ItemType ShotgunType;
+        public ItemType SniperRifleType;
+        public const string AssaultRifleName = "Assault Rifle";
+        public string AssaultRifName { get { return AssaultRifleName; } }
+        const string PistolName = "Pistol";
+        const string ShotgunName = "Shotgun";
+        const string SniperRifleName = "Sniper Rifle";
         #endregion
 
         #region Components
@@ -131,6 +141,53 @@ namespace RTSPrototype
             return null;
         }
         #endregion
+
+        #region TestingRPGInventoryToTPC
+        //TODO RTSPrototype Refactor, do not call from AllyMemberWrapper,
+        //but inside eventHandler instead
+        //public bool CheckForInventoryMatch(string _gun)
+        //{
+        //    bool _match = _gun == AssaultRifleName || _gun == PistolName ||
+        //        _gun == ShotgunName || _gun == SniperRifleName;
+        //    return _match;
+        //}
+
+        //public void SetEquippedItemFromString(string _gun)
+        //{
+        //    switch (_gun)
+        //    {
+        //        case AssaultRifleName:
+        //            SetEquippedItem(AssualtRifleType);
+        //            break;
+        //        case PistolName:
+        //            SetEquippedItem(PistolType);
+        //            break;
+        //        case ShotgunName:
+        //            SetEquippedItem(ShotgunType);
+        //            break;
+        //        case SniperRifleName:
+        //            SetEquippedItem(SniperRifleType);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
+
+        //void SetEquippedItem(ItemType _type)
+        //{
+        //    var _gun = myInventory.GetCurrentItem(typeof(PrimaryItemType));
+        //    if (_gun != null && _gun.ItemType != _type)
+        //    {
+        //        Debug.Log("Set Equipped Weapon " + _type.ToString());
+        //        myInventory.EquipItem((PrimaryItemType)_type);
+        //    }
+        //    else if (_gun == null)
+        //    {
+        //        Debug.Log("Not Setting Equipped Weapon " + _type.ToString());
+        //    }
+        //}
+        #endregion
+
 
         #region Initialization
         void InitialSetup()
