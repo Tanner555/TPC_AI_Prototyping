@@ -85,7 +85,12 @@ namespace RTSPrototype
         {
             get
             {
-                return myCharacterHealth.CurrentHealth;
+                return HPValue;
+                //return myCharacterHealth.CurrentHealth;
+            }
+            set
+            {
+                HPValue = (int)value;
             }
         }
 
@@ -93,25 +98,30 @@ namespace RTSPrototype
         {
             get
             {
-                return myCharacterHealth.MaxHealth;
+                return MaxHPValue;
+                //return myCharacterHealth.MaxHealth;
+            }
+            set
+            {
+                MaxHPValue = (int)value;
             }
         }
 
-        public override float AllyShield
-        {
-            get
-            {
-                return myCharacterHealth.CurrentShield;
-            }
-        }
+        //public override float AllyShield
+        //{
+        //    get
+        //    {
+        //        return myCharacterHealth.CurrentShield;
+        //    }
+        //}
 
-        public override float AllyMaxShield
-        {
-            get
-            {
-                return myCharacterHealth.MaxShield;
-            }
-        }
+        //public override float AllyMaxShield
+        //{
+        //    get
+        //    {
+        //        return myCharacterHealth.MaxShield;
+        //    }
+        //}
         #endregion
 
         #region ORK Status Properties
@@ -133,12 +143,12 @@ namespace RTSPrototype
         int HPValue
         {
             get { return RPGCombatant.Status[HPStatus.ID].GetValue(); }
-            set { RPGCombatant.Status[HPStatus.ID].SetValue(value, false, true, false, true, false, false); }
+            set { RPGCombatant.Status[HPStatus.ID].SetValue(value, false, false, false, true, false, false); }
         }
         int MaxHPValue
         {
             get { return RPGCombatant.Status[MaxHPStatus.ID].GetValue(); }
-            set { RPGCombatant.Status[MaxHPStatus.ID].SetValue(value, false, true, false, true, false, false); }
+            set { RPGCombatant.Status[MaxHPStatus.ID].SetValue(value, false, false, false, true, false, false); }
         }
         int ATKValue
         {
@@ -298,27 +308,35 @@ namespace RTSPrototype
             
         }
 
-        
+        #endregion
 
+        #region Getters
+        public override int GetDamageRate()
+        {
+            return ATKValue;
+        }
+        #endregion
+
+        #region Testing
         void EquipTesting()
         {
-            if (bIsCurrentPlayer == false) return;
-            Debug.Log("ATK " + ATKValue);
-            Debug.Log("DEF " + DEFValue);
+            //if (bIsCurrentPlayer == false) return;
+            //Debug.Log("ATK " + ATKValue);
+            //Debug.Log("DEF " + DEFValue);
 
-            var _inventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
+            //var _inventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
 
-            var _w = GetWeaponFromName("Shotgun");
-            if (_w != null)
-            {
-                Debug.Log("Equipping " + _w.GetName());
-                var _shortcut = new ORKFramework.EquipShortcut(ORKFramework.EquipSet.Weapon, _w.ID, 1, 1);
-                var _b = RPGCombatant.Equipment.Equip(RightHandID, _shortcut, RPGCombatant.Inventory, false, false);
-                Debug.Log("Is Equipped " + RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, _w.ID, 1));
-                Debug.Log("Right Hand " + RightHandName);
-                Debug.Log("Left Hand " + LeftHandName);
-                RPGCombatant.Equipment.FireChanged();
-            }
+            //var _w = GetWeaponFromName("Shotgun");
+            //if (_w != null)
+            //{
+            //    Debug.Log("Equipping " + _w.GetName());
+            //    var _shortcut = new ORKFramework.EquipShortcut(ORKFramework.EquipSet.Weapon, _w.ID, 1, 1);
+            //    var _b = RPGCombatant.Equipment.Equip(RightHandID, _shortcut, RPGCombatant.Inventory, false, false);
+            //    Debug.Log("Is Equipped " + RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, _w.ID, 1));
+            //    Debug.Log("Right Hand " + RightHandName);
+            //    Debug.Log("Left Hand " + LeftHandName);
+            //    RPGCombatant.Equipment.FireChanged();
+            //}
 
             //var _potion = GetItemFromName("Potion");
             //if(_potion != null)
@@ -375,7 +393,7 @@ namespace RTSPrototype
             //    }
             //}
         }
-        string _previousName = "";
+
         //void WaitForGunn()
         //{
         //    if (bIsCurrentPlayer == false) return;
@@ -394,9 +412,8 @@ namespace RTSPrototype
         //            }
         //        }
         //    }
-                          
-        //}
 
+        //}
         #endregion
 
     }

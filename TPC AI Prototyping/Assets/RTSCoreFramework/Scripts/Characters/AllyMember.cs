@@ -68,14 +68,16 @@ namespace RTSCoreFramework
         //Health Properties
         public virtual float AllyHealth
         {
-            get { return 0f; }
+            get { return _allyHealth; }
+            set { _allyHealth = value; }
         }
-
+        private float _allyHealth = 0;
         public virtual float AllyMaxHealth
         {
-            get { return 100f; }
+            get { return _allyMaxHealth; }
+            set { _allyMaxHealth = value; }
         }
-
+        private float _allyMaxHealth = 100f;
         public virtual float AllyShield
         {
             get { return 0f; }
@@ -194,6 +196,10 @@ namespace RTSCoreFramework
             return player.AllyFaction != AllyFaction;
         }
 
+        public virtual int GetDamageRate()
+        {
+            return 1;
+        }
         #endregion
 
         #region Initialization

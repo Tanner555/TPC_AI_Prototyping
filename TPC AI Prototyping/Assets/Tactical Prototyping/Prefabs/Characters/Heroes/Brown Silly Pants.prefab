@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 114925658411416062}
   - component: {fileID: 114249416517724874}
   - component: {fileID: 114421887326299698}
-  - component: {fileID: 114600537374164830}
+  - component: {fileID: 114404146306861610}
   - component: {fileID: 195208604093827474}
   - component: {fileID: 114598603881580930}
   - component: {fileID: 114733039229918674}
@@ -6640,6 +6640,56 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114404146306861610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771f070d3b40003428d00015f1379ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Invincible: 0
+  m_MaxHealth: 100
+  m_MaxShield: 0
+  m_ShieldRegenerativeInitialWait: 2
+  m_ShieldRegenerativeAmount: 0.1
+  m_ShieldRegenerativeWait: 0.2
+  m_DamageMultipliers: []
+  m_SpawnedObjectsOnDeath: []
+  m_DestroyedObjectsOnDeath: []
+  m_DeactivateOnDeath: 0
+  m_DeactivateOnDeathDelay: 0
+  m_DeathLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  m_TimeInvincibleAfterSpawn: 0
+  m_UseFallDamage: 0
+  m_MinFallDamageHeight: 0
+  m_DeathHeight: 0
+  m_MinFallDamage: 0
+  m_MaxFallDamage: 0
+  m_DamageCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_DamageSound: []
 --- !u!114 &114406654147334474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7064,56 +7114,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114600537374164830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768055428005526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f22e019b4a8b24c96fca57a5616db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Invincible: 0
-  m_MaxHealth: 100
-  m_MaxShield: 0
-  m_ShieldRegenerativeInitialWait: 2
-  m_ShieldRegenerativeAmount: 0.1
-  m_ShieldRegenerativeWait: 0.2
-  m_DamageMultipliers: []
-  m_SpawnedObjectsOnDeath: []
-  m_DestroyedObjectsOnDeath: []
-  m_DeactivateOnDeath: 0
-  m_DeactivateOnDeathDelay: 0
-  m_DeathLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  m_TimeInvincibleAfterSpawn: 0
-  m_UseFallDamage: 0
-  m_MinFallDamageHeight: 0
-  m_DeathHeight: 0
-  m_MinFallDamage: 0
-  m_MaxFallDamage: 0
-  m_DamageCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_DamageSound: []
 --- !u!114 &114609972097716982
 MonoBehaviour:
   m_ObjectHideFlags: 1

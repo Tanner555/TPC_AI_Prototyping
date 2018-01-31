@@ -154,20 +154,27 @@ namespace RTSCoreFramework
 
         void HandleDeath()
         {
-            if (SelectionLight != null)
-            {
-                SelectionLight.enabled = false;
-                Destroy(this);
-            }
+            DestroyOnDeath();
         }
 
         void HandleGameOver()
         {
+            DestroyOnDeath();
+        }
+
+        void DestroyOnDeath()
+        {
             if (SelectionLight != null)
             {
-                SelectionLight.enabled = false;
-                Destroy(this);
+                SelectionLight.enabled = true;
+                Destroy(SelectionLight);
             }
+            if (waypointRenderer != null)
+            {
+                waypointRenderer.enabled = true;
+                Destroy(waypointRenderer);
+            }
+            Destroy(this);
         }
 
         void HandleCameraMovement(bool _isMoving)
