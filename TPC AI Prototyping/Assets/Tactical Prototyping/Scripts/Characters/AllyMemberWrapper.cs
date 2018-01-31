@@ -114,6 +114,149 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region ORK Status Properties
+        //Ork Value Names
+        string MaxHPName = "MaxHP";
+        string HPName = "HP";
+        string MaxMPName = "MaxMP";
+        string MPName = "MP";
+        string ATKName = "ATK";
+        string DEFName = "DEF";
+        string MATKName = "MATK";
+        string MDEFName = "MDEF";
+        string AGIName = "AGI";
+        string DEXName = "DEX";
+        string LUKName = "LUK";
+        string EXPName = "EXP";
+
+        //Ork Value Getters
+        int HPValue
+        {
+            get { return RPGCombatant.Status[HPStatus.ID].GetValue(); }
+            set { RPGCombatant.Status[HPStatus.ID].SetValue(value, false, true, false, true, false, false); }
+        }
+        int MaxHPValue
+        {
+            get { return RPGCombatant.Status[MaxHPStatus.ID].GetValue(); }
+            set { RPGCombatant.Status[MaxHPStatus.ID].SetValue(value, false, true, false, true, false, false); }
+        }
+        int ATKValue
+        {
+            get { return RPGCombatant.Status[ATKStatus.ID].GetValue(); }
+        }
+        int DEFValue
+        {
+            get { return RPGCombatant.Status[DEFStatus.ID].GetValue(); }
+        }
+        //Status Values Properties
+        ORKFramework.StatusValueSetting HPStatus
+        {
+            get
+            {
+                if (_HPStatus == null)
+                    _HPStatus = GetRPGStatusFromName(HPName);
+
+                return _HPStatus;
+            }
+        }
+        ORKFramework.StatusValueSetting _HPStatus = null;
+        ORKFramework.StatusValueSetting MaxHPStatus
+        {
+            get
+            {
+                if (_MaxHPStatus == null)
+                    _MaxHPStatus = GetRPGStatusFromName(MaxHPName);
+
+                return _MaxHPStatus;
+            }
+        }
+        ORKFramework.StatusValueSetting _MaxHPStatus = null;
+        ORKFramework.StatusValueSetting ATKStatus
+        {
+            get
+            {
+                if (_ATKStatus == null)
+                    _ATKStatus = GetRPGStatusFromName(ATKName);
+
+                return _ATKStatus;
+            }
+        }
+        ORKFramework.StatusValueSetting _ATKStatus = null;
+        ORKFramework.StatusValueSetting DEFStatus
+        {
+            get
+            {
+                if (_DEFStatus == null)
+                    _DEFStatus = GetRPGStatusFromName(DEFName);
+
+                return _DEFStatus;
+            }
+        }
+        ORKFramework.StatusValueSetting _DEFStatus = null;
+
+        ORKFramework.StatusValueSetting GetRPGStatusFromName(string _value)
+        {
+            foreach (var _status in ORKFramework.ORK.StatusValues.data)
+            {
+                if (_status.GetName() == _value)
+                    return _status;
+            }
+            return null;
+        }
+        #endregion
+
+        #region ORK Equipment Properties
+        ORKFramework.EquipPartSlot HelmetEquipSlot { get { return RPGCombatant.Equipment[HelmetID]; } }
+        ORKFramework.EquipPartSlot RightHandEquipSlot { get { return RPGCombatant.Equipment[RightHandID]; } }
+        ORKFramework.EquipPartSlot LeftHandEquipSlot { get { return RPGCombatant.Equipment[LeftHandID]; } }
+        ORKFramework.EquipPartSlot ArmorEquipSlot { get { return RPGCombatant.Equipment[ArmorID]; } }
+        ORKFramework.EquipPartSlot AccessoryEquipSlot { get { return RPGCombatant.Equipment[AccessoryID]; } }
+
+        int HelmetID { get { return 0; } }
+        int RightHandID { get { return 1; } }
+        int LeftHandID { get { return 2; } }
+        int ArmorID { get { return 3; } }
+        int AccessoryID { get { return 4; } }
+
+        string HelmetName { get { return HelmetEquipSlot.Equipped ? HelmetEquipSlot.Equipment.GetName() : ""; } }
+        string RightHandName { get { return RightHandEquipSlot.Equipped ? RightHandEquipSlot.Equipment.GetName() : ""; } }
+        string LeftHandName { get { return LeftHandEquipSlot.Equipped ? LeftHandEquipSlot.Equipment.GetName() : ""; } }
+        string ArmorName { get { return ArmorEquipSlot.Equipped ? ArmorEquipSlot.Equipment.GetName() : ""; } }
+        string AccessoryName { get { return AccessoryEquipSlot.Equipped ? AccessoryEquipSlot.Equipment.GetName() : ""; } }
+
+        List<string> EquipmentNames
+        {
+            get
+            {
+                return new List<string>(){ HelmetName, RightHandName,
+                LeftHandName, ArmorName, AccessoryName };
+            }
+        }
+
+        #endregion
+
+        #region ORKInventoryAndGameProperties
+        ORKFramework.Item GetItemFromName(string _name)
+        {
+            foreach (var _item in ORKFramework.ORK.Items.data)
+            {
+                if (_item.GetName() == _name)
+                    return _item;
+            }
+            return null;
+        }
+
+        ORKFramework.Weapon GetWeaponFromName(string _name)
+        {
+            foreach (var _weapon in ORKFramework.ORK.Weapons.data)
+            {
+                if (_weapon.GetName() == _name)
+                    return _weapon;
+            }
+            return null;
+        }
+        #endregion
+
         public override int CurrentEquipedAmmo
         {
             get
@@ -127,6 +270,7 @@ namespace RTSPrototype
         {
             get { return aiControllerWrapper.currentTargettedEnemyWrapper; }
         }
+
         #endregion
 
         #region Fields
@@ -150,11 +294,88 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            //InvokeRepeating("WaitForGunn", 0.2f, 0.5f);
-            
+            InvokeRepeating("EquipTesting", 1, 0.5f);
             
         }
 
+        
+
+        void EquipTesting()
+        {
+            if (bIsCurrentPlayer == false) return;
+            Debug.Log("ATK " + ATKValue);
+            Debug.Log("DEF " + DEFValue);
+
+            var _inventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
+
+            var _w = GetWeaponFromName("Shotgun");
+            if (_w != null)
+            {
+                Debug.Log("Equipping " + _w.GetName());
+                var _shortcut = new ORKFramework.EquipShortcut(ORKFramework.EquipSet.Weapon, _w.ID, 1, 1);
+                var _b = RPGCombatant.Equipment.Equip(RightHandID, _shortcut, RPGCombatant.Inventory, false, false);
+                Debug.Log("Is Equipped " + RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, _w.ID, 1));
+                Debug.Log("Right Hand " + RightHandName);
+                Debug.Log("Left Hand " + LeftHandName);
+                RPGCombatant.Equipment.FireChanged();
+            }
+
+            //var _potion = GetItemFromName("Potion");
+            //if(_potion != null)
+            //{
+            //    Debug.Log("Adding Potion");
+            //    var _pgain = new ORKFramework.ItemGain()
+            //    {
+            //        chance = 100,
+            //        quantity = 1,
+            //        level = 1,
+            //        type = ORKFramework.ItemDropType.Item,
+            //        id = _potion.ID
+            //    };
+            //    _inventory.Add(new ORKFramework.ItemGain[1] { _pgain }, true, true);
+            //}
+
+            //var _weapon = GetWeaponFromName("Pistol");
+            //if(_weapon != null)
+            //{
+            //    var _gain = new ORKFramework.ItemGain()
+            //    {
+            //        chance = 100,
+            //        quantity = 1,
+            //        level = 1,
+            //        type = ORKFramework.ItemDropType.Weapon,
+            //        id = _weapon.ID
+            //    };
+            //    RPGCombatant.Inventory.Add(new ORKFramework.ItemGain[1] { _gain}, false, false);
+            //}
+
+            //Debug.Log("W "+ORKFramework.ORK.Weapons.data.Length);
+            //Debug.Log("I "+ORKFramework.ORK.Items.data.Length);
+            //Debug.Log("Right Equipped " + RightHandName);
+            //Debug.Log("Left Equipped " + LeftHandName);
+            //Debug.Log("Right IsEquipped " + RightHandEquipSlot.Equipped.ToString());
+            //Debug.Log("Left IsEquipped " + LeftHandEquipSlot.Equipped.ToString());
+            //var _rpgInventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
+            //RPGCombatant.Inventory.Add(RightHandEquipSlot.Equipment, false, false, false);
+            //Debug.Log(RPGCombatant.Inventory.Weapons.GetCount(0));
+            //RPGCombatant.Inventory.Add(new ORKFramework.ItemGain[2], false, false);
+
+            //foreach (var _item in _rpgInventory.GetContent(false,false,true,false,0,false))
+            //{
+            //    Debug.Log(_item);
+            //}
+            //if (RightHandEquipSlot.Equipped)
+            //{
+            //    var _myHandler = GetComponent<RTSItemAndControlHandler>();
+            //    if (_previousName != RightHandName) Debug.Log(RightHandName);
+            //    _previousName = RightHandName;
+            //    if (_myHandler != null && _myHandler.CheckForInventoryMatch(RightHandName))
+            //    {
+            //        _myHandler.SetEquippedItemFromString(RightHandName);
+            //    }
+            //}
+        }
+        string _previousName = "";
         //void WaitForGunn()
         //{
         //    if (bIsCurrentPlayer == false) return;
@@ -176,63 +397,6 @@ namespace RTSPrototype
                           
         //}
 
-        #endregion
-
-        #region TestingEquipment
-        //void TestingRPGEquipment()
-        //{
-        //    //if (RPGCombatant != null)
-        //    //{
-        //    //    Debug.Log(RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, 50, 1));
-
-        //    //    //Debug.Log(RPGCombatant.Equipment.Settings.ToString());
-        //    //    //RPGCombatant.Equipment.IsEquipped()
-        //    //    Debug.Log("Count" + RPGCombatant.Equipment.GetAvailableParts().Count);
-        //    //    for (int i = 0; i < RPGCombatant.Equipment.GetAvailableParts().Count; i++)
-        //    //    {
-        //    //        if(RPGCombatant.Equipment.IsEquipped(ORKFramework.EquipSet.Weapon, i, 1))
-        //    //        {
-        //    //            Debug.Log(i + " is equiped");
-        //    //            var _equipments = RPGCombatant.Inventory.GetEquipmentByPart(i, true, true);
-        //    //            Debug.Log(_equipments.Count);
-        //    //        }
-
-        //    //    }
-
-        //    //    //RPGCombatant.InventoryChanged += UpdateRPGEquipmentForTPC;
-        //    //    RPGCombatant.Equipment.Changed += UpdateRPGEquipmentForTPC;
-        //    //    //InvokeRepeating("UpdateRPGEquipmentForTPC", 0.5f, 0.5f);
-        //    //}
-        //}
-
-        //void UpdateRPGEquipmentForTPC(ORKFramework.Combatant _combatant)
-        //{
-        //    Debug.Log("Hello");
-        //    if (_combatant != null)
-        //    {
-        //        Debug.Log("Updating RPG Equipment");
-        //        //Debug.Log("Weapons " + _combatant.Equipment.GetAvailableParts)
-        //        //ORKFramework.ORK.Game.ActiveGroup.Inventory.Weapons.
-        //        foreach (var _currPart in ORKFramework.ORK.EquipmentParts.data)
-        //        {
-        //            if(_currPart.GetName() == "Left Arm" || _currPart.GetName() == "Right Arm")
-        //            {
-        //                Debug.Log(_currPart.GetName());
-        //            }
-        //            //if (previousEquipment != null && previousEquipment.Length > 0)
-        //            //{
-        //            //    foreach (var _prevPart in previousEquipment)
-        //            //    {
-        //            //        if (_currPart.GetData() != _prevPart.GetData())
-        //            //        {
-        //            //            Debug.Log("Equiping: " + _currPart.GetData().ToString());
-        //            //        }
-        //            //    }
-        //            //}
-        //        }
-        //        //previousEquipment = ORKFramework.ORK.EquipmentParts.data;
-        //    }
-        //}
         #endregion
 
     }

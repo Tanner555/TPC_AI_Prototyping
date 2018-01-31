@@ -145,47 +145,48 @@ namespace RTSPrototype
         #region TestingRPGInventoryToTPC
         //TODO RTSPrototype Refactor, do not call from AllyMemberWrapper,
         //but inside eventHandler instead
-        //public bool CheckForInventoryMatch(string _gun)
-        //{
-        //    bool _match = _gun == AssaultRifleName || _gun == PistolName ||
-        //        _gun == ShotgunName || _gun == SniperRifleName;
-        //    return _match;
-        //}
+        public bool CheckForInventoryMatch(string _gun)
+        {
+            bool _match = _gun == AssaultRifleName || _gun == PistolName ||
+                _gun == ShotgunName || _gun == SniperRifleName;
+            return _match;
+        }
 
-        //public void SetEquippedItemFromString(string _gun)
-        //{
-        //    switch (_gun)
-        //    {
-        //        case AssaultRifleName:
-        //            SetEquippedItem(AssualtRifleType);
-        //            break;
-        //        case PistolName:
-        //            SetEquippedItem(PistolType);
-        //            break;
-        //        case ShotgunName:
-        //            SetEquippedItem(ShotgunType);
-        //            break;
-        //        case SniperRifleName:
-        //            SetEquippedItem(SniperRifleType);
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+        public void SetEquippedItemFromString(string _gun)
+        {
+            switch (_gun)
+            {
+                case AssaultRifleName:
+                    SetEquippedItem(AssualtRifleType);
+                    break;
+                case PistolName:
+                    SetEquippedItem(PistolType);
+                    break;
+                case ShotgunName:
+                    Debug.Log("Shotgun being equipped");
+                    SetEquippedItem(ShotgunType);
+                    break;
+                case SniperRifleName:
+                    SetEquippedItem(SniperRifleType);
+                    break;
+                default:
+                    break;
+            }
+        }
 
-        //void SetEquippedItem(ItemType _type)
-        //{
-        //    var _gun = myInventory.GetCurrentItem(typeof(PrimaryItemType));
-        //    if (_gun != null && _gun.ItemType != _type)
-        //    {
-        //        Debug.Log("Set Equipped Weapon " + _type.ToString());
-        //        myInventory.EquipItem((PrimaryItemType)_type);
-        //    }
-        //    else if (_gun == null)
-        //    {
-        //        Debug.Log("Not Setting Equipped Weapon " + _type.ToString());
-        //    }
-        //}
+        void SetEquippedItem(ItemType _type)
+        {
+            var _gun = myInventory.GetCurrentItem(typeof(PrimaryItemType));
+            if (_gun != null && _gun.ItemType != _type)
+            {
+                Debug.Log("Set Equipped Weapon " + _type.ToString());
+                myInventory.EquipItem((PrimaryItemType)_type);
+            }
+            else if (_gun == null)
+            {
+                Debug.Log("Not Setting Equipped Weapon " + _type.ToString());
+            }
+        }
         #endregion
 
 
