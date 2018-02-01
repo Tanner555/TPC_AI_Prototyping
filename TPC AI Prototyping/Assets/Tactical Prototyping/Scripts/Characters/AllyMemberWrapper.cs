@@ -320,6 +320,7 @@ namespace RTSPrototype
         #region Handlers
         public override void AllyTakeDamage(float amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
+            SetDamageInstigator(_instigator);
             if (IsAlive == false) return;
             if(AllyHealth > HPStatus.minValue)
             {
