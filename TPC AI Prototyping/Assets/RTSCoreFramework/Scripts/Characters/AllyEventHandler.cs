@@ -102,7 +102,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region EventCalls
-        public void CallEventNpcDie()
+        public virtual void CallEventNpcDie()
         {
             if (EventNpcDie != null)
             {

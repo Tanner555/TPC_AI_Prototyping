@@ -172,6 +172,11 @@ namespace RTSCoreFramework
             {
                 myRigidbody.AddForceAtPosition(force, position);
             }
+
+            if (IsAlive == false)
+            {
+                allyEventHandler.CallEventNpcDie();
+            }
         }
 
         protected virtual void SetDamageInstigator(AllyMember _instigator)

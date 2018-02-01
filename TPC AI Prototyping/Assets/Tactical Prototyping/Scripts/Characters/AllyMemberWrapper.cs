@@ -293,7 +293,6 @@ namespace RTSPrototype
 
             if (IsAlive == false)
             {
-                EventHandler.ExecuteEvent(gameObject, "OnDeath");
                 EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(gameObject, "OnDeathDetails", force, position, _instigator.gameObject);
             }
         }
