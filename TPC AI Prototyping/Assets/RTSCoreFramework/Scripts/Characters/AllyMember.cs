@@ -66,31 +66,28 @@ namespace RTSCoreFramework
         }
 
         //Health Properties
-        public virtual float AllyHealth
+        public virtual int AllyHealth
         {
             get { return _allyHealth; }
-            set { _allyHealth = value; }
+            protected set { _allyHealth = value; }
         }
-        private float _allyHealth = 0;
-        public virtual float AllyMaxHealth
+        private int _allyHealth = 100;
+        public virtual int AllyMaxHealth
         {
             get { return _allyMaxHealth; }
-            set { _allyMaxHealth = value; }
+            protected set { _allyMaxHealth = value; }
         }
-        private float _allyMaxHealth = 100f;
-        public virtual float AllyShield
-        {
-            get { return 0f; }
-        }
+        private int _allyMaxHealth = 100;
 
-        public virtual float AllyMaxShield
+        public virtual int AllyMinHealth
         {
-            get { return 0f; }
+            get { return _allyMinHealth; }
         }
+        private int _allyMinHealth = 0;
 
         public virtual bool IsAlive
         {
-            get { return AllyHealth > 0f; }
+            get { return AllyHealth > AllyMinHealth; }
         }
 
         //Ammo Properties
@@ -162,9 +159,19 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
-        public virtual void AllyTakeDamage(float amount, Vector3 position, Vector3 force, AllyMember attacker, GameObject hitGameObject)
+        public virtual void AllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
-
+            SetDamageInstigator(_instigator);
+            if (IsAlive == false) return;
+            if (AllyHealth > AllyMinHealth)
+            {
+                AllyHealth = Mathf.Max(AllyMinHealth, AllyHealth - amount);
+            }
+            // Apply a force to the hit rigidbody if the force is greater than 0.
+            if (myRigidbody != null && !myRigidbody.isKinematic && force.sqrMagnitude > 0)
+            {
+                myRigidbody.AddForceAtPosition(force, position);
+            }
         }
 
         protected virtual void SetDamageInstigator(AllyMember _instigator)
