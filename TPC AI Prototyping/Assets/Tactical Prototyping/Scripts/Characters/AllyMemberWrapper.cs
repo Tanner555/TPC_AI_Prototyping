@@ -79,7 +79,6 @@ namespace RTSPrototype
         #endregion
 
         #region Properties
-
         #region HealthProps
         public override float AllyHealth
         {
@@ -104,6 +103,14 @@ namespace RTSPrototype
             set
             {
                 MaxHPValue = (int)value;
+            }
+        }
+
+        public override bool IsAlive
+        {
+            get
+            {
+                return AllyHealth > HPStatus.minValue;
             }
         }
 
@@ -308,6 +315,31 @@ namespace RTSPrototype
             
         }
 
+        #endregion
+
+        #region Handlers
+        public override void AllyTakeDamage(float amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
+        {
+            if (IsAlive == false) return;
+            if(AllyHealth > HPStatus.minValue)
+            {
+                AllyHealth = Mathf.Max(HPStatus.minValue, AllyHealth - amount);
+            }
+            // Apply a force to the hit rigidbody if the force is greater than 0.
+            if (myRigidbody != null && !myRigidbody.isKinematic && force.sqrMagnitude > 0)
+            {
+                myRigidbody.AddForceAtPosition(force, position);
+            }
+            if (bIsCurrentPlayer)
+                EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject>(gameObject, "OnHealthDamageDetails", amount, position, force, _instigator.gameObject);
+
+            if (IsAlive == false)
+            {
+                EventHandler.ExecuteEvent(gameObject, "OnDeath");
+                EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(gameObject, "OnDeathDetails", force, position, _instigator.gameObject);
+
+            }
+        }
         #endregion
 
         #region Getters

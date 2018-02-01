@@ -105,6 +105,17 @@ namespace RTSCoreFramework
         #endregion
 
         #region PlayerComponents
+        protected Rigidbody myRigidbody
+        {
+            get
+            {
+                if (_myRigidbody == null)
+                    _myRigidbody = GetComponent<Rigidbody>();
+
+                return _myRigidbody;
+            }
+        }
+        Rigidbody _myRigidbody = null;
         public AllyEventHandler allyEventHandler { get; protected set; }
         public AllyAIController aiController { get; protected set; }
         #endregion
@@ -151,7 +162,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
-        void SetDamageInstigator(AllyMember _instigator)
+        public virtual void AllyTakeDamage(float amount, Vector3 position, Vector3 force, AllyMember attacker, GameObject hitGameObject)
+        {
+
+        }
+
+        protected virtual void SetDamageInstigator(AllyMember _instigator)
         {
             if (_instigator != null && _instigator != DamageInstigator)
             {
