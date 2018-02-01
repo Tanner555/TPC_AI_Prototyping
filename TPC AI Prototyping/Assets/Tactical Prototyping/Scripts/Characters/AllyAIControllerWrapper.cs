@@ -81,13 +81,13 @@ namespace RTSPrototype
         protected override void SubToEvents()
         {
             base.SubToEvents();
-            myEventHandler.EventNpcDie += OnDeath;
+            myEventHandler.EventAllyDied += OnDeath;
         }
 
         protected override void UnSubFromEvents()
         {
             base.UnSubFromEvents();
-            myEventHandler.EventNpcDie -= OnDeath;
+            myEventHandler.EventAllyDied -= OnDeath;
         }
 
         protected override void SetInitialReferences()

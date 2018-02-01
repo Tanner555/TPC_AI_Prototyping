@@ -21,9 +21,9 @@ namespace RTSPrototype
         #endregion
 
         #region Overrides
-        public override void CallEventNpcDie()
+        public override void CallEventAllyDied()
         {
-            base.CallEventNpcDie();
+            base.CallEventAllyDied();
             EventHandler.ExecuteEvent(this.gameObject, "OnDeath");
         }
         #endregion

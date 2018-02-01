@@ -26,7 +26,7 @@ namespace RTSCoreFramework
             get { return GetComponent<AllyMember>(); }
         }
 
-        AllyEventHandler npcMaster
+        AllyEventHandler myEventHandler
         {
             get { return GetComponent<AllyEventHandler>(); }
         }
@@ -57,11 +57,11 @@ namespace RTSCoreFramework
         #region UnityMessages
         private void OnDisable()
         {
-            npcMaster.OnHoverOver -= OnCursEnter;
-            npcMaster.OnHoverLeave -= OnCursExit;
-            npcMaster.EventNpcDie -= HandleDeath;
-            npcMaster.EventCommandMove -= SetupWaypointRenderer;
-            npcMaster.EventFinishedMoving -= DisableWaypointRenderer;
+            myEventHandler.OnHoverOver -= OnCursEnter;
+            myEventHandler.OnHoverLeave -= OnCursExit;
+            myEventHandler.EventAllyDied -= HandleDeath;
+            myEventHandler.EventCommandMove -= SetupWaypointRenderer;
+            myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -70,11 +70,11 @@ namespace RTSCoreFramework
         void Start()
         {
             SelectionLight.enabled = false;
-            npcMaster.OnHoverOver += OnCursEnter;
-            npcMaster.OnHoverLeave += OnCursExit;
-            npcMaster.EventNpcDie += HandleDeath;
-            npcMaster.EventCommandMove += SetupWaypointRenderer;
-            npcMaster.EventFinishedMoving += DisableWaypointRenderer;
+            myEventHandler.OnHoverOver += OnCursEnter;
+            myEventHandler.OnHoverLeave += OnCursExit;
+            myEventHandler.EventAllyDied += HandleDeath;
+            myEventHandler.EventCommandMove += SetupWaypointRenderer;
+            myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -115,7 +115,7 @@ namespace RTSCoreFramework
         void WaitToSetupWaypointRenderer()
         {
             if (myNavMesh == null || myNavMesh.path == null ||
-                npcMaster.bIsAIMoving)
+                myEventHandler.bIsAIMoving)
                 return;
 
             if (waypointRenderer != null && waypointRenderer.enabled == false)

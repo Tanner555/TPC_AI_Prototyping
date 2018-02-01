@@ -175,7 +175,7 @@ namespace RTSCoreFramework
 
             if (IsAlive == false)
             {
-                allyEventHandler.CallEventNpcDie();
+                allyEventHandler.CallEventAllyDied();
             }
         }
 
@@ -240,7 +240,7 @@ namespace RTSCoreFramework
             if (partyManager == null)
                 Debug.LogError("No partymanager on allymember!");
             if (allyEventHandler == null)
-                Debug.LogError("No npcmaster on allymember!");
+                Debug.LogError("No eventHandler on allymember!");
             if (aiController == null)
                 Debug.LogError("No aiController on allymember!");
 
@@ -253,12 +253,12 @@ namespace RTSCoreFramework
 
         protected void SubToEvents()
         {
-            allyEventHandler.EventNpcDie += AllyOnDeath;
+            allyEventHandler.EventAllyDied += AllyOnDeath;
         }
 
         protected void UnSubFromEvents()
         {
-            allyEventHandler.EventNpcDie -= AllyOnDeath;
+            allyEventHandler.EventAllyDied -= AllyOnDeath;
         }
 
         public bool TryFindingPartyManager()

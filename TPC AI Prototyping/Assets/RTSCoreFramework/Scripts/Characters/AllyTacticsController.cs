@@ -7,7 +7,7 @@ namespace RTSCoreFramework
     public class AllyTacticsController : MonoBehaviour
     {
         #region Properties
-        AllyEventHandler npcMaster { get { return GetComponent<AllyEventHandler>(); } }
+        AllyEventHandler myEventHandler { get { return GetComponent<AllyEventHandler>(); } }
         AllyMember allyMember { get { return GetComponent<AllyMember>(); } }
         AllyAIController aiController { get { return GetComponent<AllyAIController>(); } }
 
@@ -22,7 +22,7 @@ namespace RTSCoreFramework
         {
             get
             {
-                return allyMember && npcMaster && aiController &&
+                return allyMember && myEventHandler && aiController &&
                   gamemode && gameMaster && uiManager && saveManager;
             }
         }
@@ -187,15 +187,15 @@ namespace RTSCoreFramework
         void SubToEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete += OnSaveTactics;
-            npcMaster.EventToggleAllyTactics += HandleToggleTactics;
-            npcMaster.EventNpcDie += HandleAllyDeath;
+            myEventHandler.EventToggleAllyTactics += HandleToggleTactics;
+            myEventHandler.EventAllyDied += HandleAllyDeath;
         }
 
         void UnsubFromEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete -= OnSaveTactics;
-            npcMaster.EventToggleAllyTactics -= HandleToggleTactics;
-            npcMaster.EventNpcDie -= HandleAllyDeath;
+            myEventHandler.EventToggleAllyTactics -= HandleToggleTactics;
+            myEventHandler.EventAllyDied -= HandleAllyDeath;
         }
         #endregion
 

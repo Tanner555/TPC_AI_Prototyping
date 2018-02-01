@@ -30,17 +30,7 @@ namespace RTSCoreFramework
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
         public delegate void GeneralOneBoolHandler(bool _enable);
-        public event GeneralEventHandler EventNpcDie;
-        public event GeneralEventHandler EventNpcLowHealth;
-        public event GeneralEventHandler EventNpcHealthRecovered;
-        public event GeneralEventHandler EventNpcWalkAnim;
-        public event GeneralEventHandler EventNpcStruckAnim;
-        public event GeneralEventHandler EventNpcAttackAnim;
-        public event GeneralEventHandler EventNpcRecoveredAnim;
-        public event GeneralEventHandler EventNpcIdleAnim;
-        public event GeneralEventHandler EventInventoryChanged;
-        public event GeneralEventHandler EventHandsEmpty;
-        public event GeneralEventHandler EventAmmoChanged;
+        public event GeneralEventHandler EventAllyDied;
         public event GeneralEventHandler EventSwitchingFromCom;
         public event GeneralEventHandler EventPartySwitching;
         public event GeneralEventHandler EventSetAsCommander;
@@ -58,19 +48,6 @@ namespace RTSCoreFramework
         public event GeneralEventHandler OnTryReload;
         public event GeneralEventHandler OnTryCrouch;
         public event GeneralOneBoolHandler OnTryAim;
-
-        //public delegate void AmmoChangeEventHandler(Gun_Master gun, string ammoType, int currentAmmo, int carriedAmmo);
-        //public event AmmoChangeEventHandler EventAmmoChanged;
-
-        public delegate void HealthEventHandler(float health);
-        public event HealthEventHandler EventNpcDeductHealth;
-        public event HealthEventHandler EventNpcIncreaseHealth;
-
-        public delegate void AmmoPickupEventHandler(string ammoName, int quantity);
-        public event AmmoPickupEventHandler EventPickedUpAmmo;
-
-        public delegate void NPCRelationsChangeEventHandler();
-        public event NPCRelationsChangeEventHandler EventNPCRelationsChange;
 
         public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event RtsHitTypeAndRayCastHitHandler OnHoverOver;
@@ -102,68 +79,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region EventCalls
-        public virtual void CallEventNpcDie()
+        public virtual void CallEventAllyDied()
         {
-            if (EventNpcDie != null)
+            if (EventAllyDied != null)
             {
-                EventNpcDie();
+                EventAllyDied();
                 this.enabled = false;
-            }
-        }
-
-        public void CallEventNpcLowHealth()
-        {
-            if (EventNpcLowHealth != null)
-            {
-                EventNpcLowHealth();
-            }
-        }
-
-        public void CallEventNpcHealthRecovered()
-        {
-            if (EventNpcHealthRecovered != null)
-            {
-                EventNpcHealthRecovered();
-            }
-        }
-
-        public void CallEventNpcWalkAnim()
-        {
-            if (EventNpcWalkAnim != null)
-            {
-                EventNpcWalkAnim();
-            }
-        }
-
-        public void CallEventNpcStruckAnim()
-        {
-            if (EventNpcStruckAnim != null)
-            {
-                EventNpcStruckAnim();
-            }
-        }
-
-        public void CallEventNpcAttackAnim()
-        {
-            if (EventNpcAttackAnim != null)
-            {
-                EventNpcAttackAnim();
-            }
-        }
-
-        public void CallEventNpcRecoveredAnim()
-        {
-            if (EventNpcRecoveredAnim != null)
-            {
-                EventNpcRecoveredAnim();
-            }
-        }
-
-        public void CallEventNpcIdleAnim()
-        {
-            if (EventNpcIdleAnim != null)
-            {
-                EventNpcIdleAnim();
             }
         }
 
@@ -221,62 +142,6 @@ namespace RTSCoreFramework
         public void CallOnTryAim(bool _enable)
         {
             if (OnTryAim != null) OnTryAim(_enable);
-        }
-
-        public void CallEventNpcDeductHealth(float health)
-        {
-            if (EventNpcDeductHealth != null)
-            {
-                EventNpcDeductHealth(health);
-            }
-        }
-
-        public void CallEventNpcIncreaseHealth(float health)
-        {
-            if (EventNpcIncreaseHealth != null)
-            {
-                EventNpcIncreaseHealth(health);
-            }
-        }
-
-        public void CallEventNPCRelationsChange()
-        {
-            if (EventNPCRelationsChange != null)
-            {
-                EventNPCRelationsChange();
-            }
-        }
-
-        public void CallEventPickedUpAmmo(string ammoName, int quantity)
-        {
-            if (EventPickedUpAmmo != null)
-            {
-                EventPickedUpAmmo(ammoName, quantity);
-            }
-        }
-
-        public void CallEventInventoryChanged()
-        {
-            if (EventInventoryChanged != null)
-            {
-                EventInventoryChanged();
-            }
-        }
-
-        public void CallEventHandsEmpty()
-        {
-            if (EventHandsEmpty != null)
-            {
-                EventHandsEmpty();
-            }
-        }
-
-        public void CallEventAmmoChanged()
-        {
-            if (EventAmmoChanged != null)
-            {
-                EventAmmoChanged();
-            }
         }
 
         public void CallEventSwitchingFromCom()
