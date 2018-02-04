@@ -243,7 +243,7 @@ namespace RTSCoreFramework
             if (EventTogglebIsFreeMoving != null) EventTogglebIsFreeMoving(_enable);
         }
 
-        //Want event handler to control event, makes code more centralized
+        //Event handler controls bIsTacticsEnabled, makes code more centralized
         private void CallEventToggleAllyTactics(bool _enable)
         {
             bIsTacticsEnabled = _enable;

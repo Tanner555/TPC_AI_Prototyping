@@ -279,7 +279,6 @@ namespace RTSPrototype
         {
             base.Start();
             InvokeRepeating("EquipTesting", 1, 0.5f);
-            
         }
 
         #endregion
@@ -296,6 +295,12 @@ namespace RTSPrototype
                 EventHandler.ExecuteEvent<Vector3, Vector3, GameObject>(gameObject, "OnDeathDetails", force, position, _instigator.gameObject);
             }
         }
+
+        public override void AllyOnDeath()
+        {
+            base.AllyOnDeath();
+
+        }
         #endregion
 
         #region Getters
@@ -308,6 +313,7 @@ namespace RTSPrototype
         #region Testing
         void EquipTesting()
         {
+            //Debug.Log("HP " + HPValue);
             //if (bIsCurrentPlayer == false) return;
             //Debug.Log("ATK " + ATKValue);
             //Debug.Log("DEF " + DEFValue);

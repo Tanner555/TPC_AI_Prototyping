@@ -187,7 +187,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void AllyOnDeath()
+        public virtual void AllyOnDeath()
         {
             //if gamemode, find allies and exclude this ally
             if (gamemode != null && partyManager != null)
