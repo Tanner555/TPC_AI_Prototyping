@@ -159,8 +159,12 @@ namespace RTSCoreFramework
         #region AITacticsCommands
         public bool IsWithinFollowingDistance()
         {
+            //Temp fix for PartyManager Delaying AllyInCommand Init Methods
+            var _allyInCommand = allyInCommand;
+            if (_allyInCommand == null) return false;
+
             return Vector3.Distance(transform.position,
-                allyInCommand.transform.position) <= followDistance;
+                _allyInCommand.transform.position) <= followDistance;
         }
         
         public void Tactics_MoveToLeader()

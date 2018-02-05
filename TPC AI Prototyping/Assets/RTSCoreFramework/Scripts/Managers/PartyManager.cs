@@ -76,6 +76,11 @@ namespace RTSCoreFramework
             gamemaster.OnLeftClickAlly += HandleLeftClickPartyMember;
             gamemaster.OnRightClickSendHit += HandleRightClick;
 
+            Invoke("OnDelayStart", 0.5f);
+        }
+
+        void OnDelayStart()
+        {
             AllyMember firstAlly = FindPartyMembers(false, null);
             SetAllyInCommand(firstAlly);
         }

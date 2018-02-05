@@ -314,9 +314,11 @@ namespace RTSPrototype
         void EquipTesting()
         {
             //Debug.Log("HP " + HPValue);
-            //if (bIsCurrentPlayer == false) return;
-            //Debug.Log("ATK " + ATKValue);
-            //Debug.Log("DEF " + DEFValue);
+            if (bIsCurrentPlayer == false) return;
+            Debug.Log("ATK " + ATKValue);
+            Debug.Log("DEF " + DEFValue);
+            Debug.Log("Right Hand " + RightHandName);
+            Debug.Log("Left Hand " + LeftHandName);
 
             //var _inventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
 

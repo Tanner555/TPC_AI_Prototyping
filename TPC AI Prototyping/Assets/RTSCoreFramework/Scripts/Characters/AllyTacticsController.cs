@@ -7,16 +7,53 @@ namespace RTSCoreFramework
     public class AllyTacticsController : MonoBehaviour
     {
         #region Properties
-        AllyEventHandler myEventHandler { get { return GetComponent<AllyEventHandler>(); } }
-        AllyMember allyMember { get { return GetComponent<AllyMember>(); } }
-        AllyAIController aiController { get { return GetComponent<AllyAIController>(); } }
+        AllyEventHandler myEventHandler
+        {
+            get
+            {
+                if(_myEventHandler == null)
+                    _myEventHandler = GetComponent<AllyEventHandler>();
 
+                return _myEventHandler;
+            }
+        }
+        private AllyEventHandler _myEventHandler = null;
+        AllyMember allyMember
+        {
+            get
+            {
+                if(_allyMember == null) 
+                    _allyMember = GetComponent<AllyMember>();
+
+                return _allyMember;
+            }
+        }
+        private AllyMember _allyMember = null;
+        AllyAIController aiController
+        {
+            get
+            {
+                if(_aiController == null)
+                    _aiController = GetComponent<AllyAIController>();
+
+                return _aiController;
+            }
+        }
+        private AllyAIController _aiController = null;
         RTSGameMaster gameMaster { get { return RTSGameMaster.thisInstance; } }
         RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
         RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
         RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
         RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
         IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
+        PartyManager myPartyManager { get { return allyMember ? allyMember.partyManager : null; } }
+        AllyMember allyInCommand
+        {
+            get
+            {
+                return myPartyManager != null ? myPartyManager.AllyInCommand : null;
+            }
+        }
 
         bool AllyComponentsAreReady
         {
@@ -143,6 +180,10 @@ namespace RTSCoreFramework
                 UnsubFromEvents();
                 Destroy(this);
             }
+
+            //Temporary Fix for PartyManager Delaying Initial AllyInCommand Methods
+            if (allyInCommand == null) return;
+
             evalTactics.Clear();
             foreach (var _tactic in AllyTacticsList)
             {
@@ -158,7 +199,6 @@ namespace RTSCoreFramework
                     _currentExecution.action.action(allyMember);
                 }
             }
-
         }
 
         AllyTacticsItem EvaluateTacticalConditionOrders(List<AllyTacticsItem> _tactics)

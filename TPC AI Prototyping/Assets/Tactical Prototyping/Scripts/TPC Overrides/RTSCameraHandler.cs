@@ -48,7 +48,13 @@ namespace RTSPrototype
         #region UnityMessages
         protected void OnDisable()
         {
-            gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
+            //Temp Fix For Party Man Delay Init Methods
+            //gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
+        }
+
+        private void OnEnable()
+        {
+            
         }
 
         protected void Start()
