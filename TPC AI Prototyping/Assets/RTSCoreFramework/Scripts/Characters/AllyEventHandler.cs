@@ -59,6 +59,9 @@ namespace RTSCoreFramework
         public delegate void AllyHandler(AllyMember ally);
         public event AllyHandler EventCommandAttackEnemy;
 
+        public delegate void TwoBoolTwoStringHandler(bool lEquipped, string lHand, bool rEquipped, string rHand);
+        public event TwoBoolTwoStringHandler OnEquipmentChanged;
+
         #endregion
 
         #region UnityMessages
@@ -248,6 +251,12 @@ namespace RTSCoreFramework
         {
             bIsTacticsEnabled = _enable;
             if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);
+        }
+
+        public void CallOnEquipmentChanged(bool lEquipped, string lHand, bool rEquipped, string rHand)
+        {
+            if (OnEquipmentChanged != null)
+                OnEquipmentChanged(lEquipped, lHand, rEquipped, rHand);
         }
         #endregion
 

@@ -257,12 +257,6 @@ namespace RTSPrototype
 
         #endregion
 
-        #region Fields
-        //Ork Fields
-        //ORKFramework.EquipmentPart[] previousEquipment;
-
-        #endregion
-
         #region UnityMessages
         protected override void OnEnable()
         {
@@ -277,13 +271,26 @@ namespace RTSPrototype
 
         protected override void Start()
         {
-            base.Start();
-            InvokeRepeating("EquipTesting", 1, 0.5f);
+            base.Start();       
+        }
+
+        protected override void OnDelayStart()
+        {
+            base.OnDelayStart();
         }
 
         #endregion
 
         #region Handlers
+        void OnEquipChange(ORKFramework.Combatant c)
+        {
+            allyEventHandler.CallOnEquipmentChanged(
+                LeftHandEquipSlot.Equipped,
+                LeftHandName,
+                RightHandEquipSlot.Equipped,
+                RightHandName);
+        }
+
         public override void AllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             base.AllyTakeDamage(amount, position, force, _instigator, hitGameObject);
@@ -310,15 +317,29 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region Initialization
+        protected override void SubToEvents()
+        {
+            base.SubToEvents();
+            RPGCombatant.Equipment.Changed += OnEquipChange;
+        }
+
+        protected override void UnSubFromEvents()
+        {
+            base.UnSubFromEvents();
+            RPGCombatant.Equipment.Changed -= OnEquipChange;
+        }
+        #endregion
+
         #region Testing
         void EquipTesting()
         {
             //Debug.Log("HP " + HPValue);
-            if (bIsCurrentPlayer == false) return;
-            Debug.Log("ATK " + ATKValue);
-            Debug.Log("DEF " + DEFValue);
-            Debug.Log("Right Hand " + RightHandName);
-            Debug.Log("Left Hand " + LeftHandName);
+            //if (bIsCurrentPlayer == false) return;
+            //Debug.Log("ATK " + ATKValue);
+            //Debug.Log("DEF " + DEFValue);
+            //Debug.Log("Right Hand " + RightHandName);
+            //Debug.Log("Left Hand " + LeftHandName);
 
             //var _inventory = ORKFramework.ORK.Game.ActiveGroup.Inventory;
 

@@ -155,6 +155,14 @@ namespace RTSCoreFramework
                 SubToEvents();
                 hasStarted = true;
             }
+            //Create Overrideable Late Start to Accommodate 
+            //Assets Having Long StartUp 
+            Invoke("OnDelayStart", 0.5f);
+        }
+
+        protected virtual void OnDelayStart()
+        {
+
         }
         #endregion
 
@@ -251,12 +259,12 @@ namespace RTSCoreFramework
 
         }
 
-        protected void SubToEvents()
+        protected virtual void SubToEvents()
         {
             allyEventHandler.EventAllyDied += AllyOnDeath;
         }
 
-        protected void UnSubFromEvents()
+        protected virtual void UnSubFromEvents()
         {
             allyEventHandler.EventAllyDied -= AllyOnDeath;
         }

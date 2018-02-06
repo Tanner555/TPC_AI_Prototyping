@@ -68,6 +68,21 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        void OnEquipmentChanged(bool lEquipped, string lHand, bool rEquipped, string rHand)
+        {
+            Debug.Log("On Equipment Changed");
+            if (lEquipped)
+            {
+                if (CheckForInventoryMatch(lHand))
+                    SetEquippedItemFromString(lHand);
+            }
+            else if (rEquipped)
+            {
+                if (CheckForInventoryMatch(rHand))
+                    SetEquippedItemFromString(rHand);
+            }
+        }
+
         void OnSetAimHandler(bool _isAiming)
         {
             isAiming = _isAiming;
@@ -142,17 +157,15 @@ namespace RTSPrototype
         }
         #endregion
 
-        #region TestingRPGInventoryToTPC
-        //TODO RTSPrototype Refactor, do not call from AllyMemberWrapper,
-        //but inside eventHandler instead
-        public bool CheckForInventoryMatch(string _gun)
+        #region RPGInventoryToTPC
+        private bool CheckForInventoryMatch(string _gun)
         {
             bool _match = _gun == AssaultRifleName || _gun == PistolName ||
                 _gun == ShotgunName || _gun == SniperRifleName;
             return _match;
         }
 
-        public void SetEquippedItemFromString(string _gun)
+        private void SetEquippedItemFromString(string _gun)
         {
             switch (_gun)
             {
@@ -163,7 +176,6 @@ namespace RTSPrototype
                     SetEquippedItem(PistolType);
                     break;
                 case ShotgunName:
-                    Debug.Log("Shotgun being equipped");
                     SetEquippedItem(ShotgunType);
                     break;
                 case SniperRifleName:
@@ -188,7 +200,6 @@ namespace RTSPrototype
             }
         }
         #endregion
-
 
         #region Initialization
         void InitialSetup()
@@ -215,6 +226,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire += OnTryFire;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
+            myEventHandler.OnEquipmentChanged += OnEquipmentChanged;
         }
 
         void UnsubFromEvents()
@@ -225,6 +237,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire -= OnTryFire;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
+            myEventHandler.OnEquipmentChanged -= OnEquipmentChanged;
         }
         #endregion
     }

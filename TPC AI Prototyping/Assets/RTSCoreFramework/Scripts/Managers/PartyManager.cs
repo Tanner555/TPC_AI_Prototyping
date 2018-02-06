@@ -79,7 +79,7 @@ namespace RTSCoreFramework
             Invoke("OnDelayStart", 0.5f);
         }
 
-        void OnDelayStart()
+        protected virtual void OnDelayStart()
         {
             AllyMember firstAlly = FindPartyMembers(false, null);
             SetAllyInCommand(firstAlly);
