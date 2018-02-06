@@ -277,6 +277,12 @@ namespace RTSPrototype
         protected override void OnDelayStart()
         {
             base.OnDelayStart();
+            //Equip Whatever the Combatant is Holding
+            allyEventHandler.CallOnEquipmentChanged(
+                LeftHandEquipSlot.Equipped,
+                LeftHandName,
+                RightHandEquipSlot.Equipped,
+                RightHandName);
         }
 
         #endregion

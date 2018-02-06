@@ -4851,7 +4851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Invincible: 0
-  m_MaxHealth: 100
   m_MaxShield: 0
   m_ShieldRegenerativeInitialWait: 2
   m_ShieldRegenerativeAmount: 0.1
@@ -7001,6 +7000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089d5c207d4d6af4bba434161cbef0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AssualtRifleType: {fileID: 0}
+  PistolType: {fileID: 0}
+  ShotgunType: {fileID: 0}
+  SniperRifleType: {fileID: 0}
 --- !u!114 &114705129861064068
 MonoBehaviour:
   m_ObjectHideFlags: 1

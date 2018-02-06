@@ -8126,6 +8126,7 @@ MonoBehaviour:
   PistolType: {fileID: 11400000, guid: b9892dc51f8bab84590e65c39cd82e88, type: 2}
   ShotgunType: {fileID: 11400000, guid: 27999eff4c895eb479313c5106e23091, type: 2}
   SniperRifleType: {fileID: 11400000, guid: b876b0067262c204eb9c350fe44ef7eb, type: 2}
+  FistType: {fileID: 11400000, guid: fa6bc05a2ffe1a6498cf1ec9c13f5ce2, type: 2}
 --- !u!114 &114869781364842932
 MonoBehaviour:
   m_ObjectHideFlags: 1

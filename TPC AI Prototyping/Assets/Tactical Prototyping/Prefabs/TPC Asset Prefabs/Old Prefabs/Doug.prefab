@@ -5200,7 +5200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Invincible: 0
-  m_MaxHealth: 100
   m_MaxShield: 100
   m_ShieldRegenerativeInitialWait: 2
   m_ShieldRegenerativeAmount: 0.1

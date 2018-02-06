@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -575660022, guid: f4979b3083d349140bb14b6ec7fc999a, type: 3}
   m_Name: ORKProject
   m_EditorClassIdentifier: 
-  time: 2/5/2018 6:15:15 PM
+  time: 2/6/2018 12:08:14 AM
   version: 2.14.4
   keys:
   - editorSettings
@@ -4900,7 +4900,141 @@ MonoBehaviour:
       />\n\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t</statusBonus>\n\t\t\t\t\t\t\t\t\t\t<statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t</statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t<atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t<defAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</defAttrBonus>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</custom>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</bonus>\n\t\t\t\t\t\t\t<autoEffects>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</autoEffects>\n\t\t\t\t\t\t\t<variableChanges>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</variableChanges>\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<randomSVBonus>\n\t\t\t\t\t\t\t\t</randomSVBonus>\n\t\t\t\t\t\t\t\t<randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t</randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t<randomDefAttrBonus>\n\t\t\t\t\t\t\t\t</randomDefAttrBonus>\n\t\t\t\t\t\t\t\t<setDefenceAttribute>\n\t\t\t\t\t\t\t\t\t<0
       attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
       attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t</setDefenceAttribute>\n\t\t\t\t\t\t\t\t<equipmentAbility>\n\t\t\t\t\t\t\t\t</equipmentAbility>\n\t\t\t\t\t\t\t\t<battleSound>\n\t\t\t\t\t\t\t\t</battleSound>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</level>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Mug
-      Knife]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</3>\n\t\t</data>\n\t</_subarrays>\n</weapons>\n"
+      Knife]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</3>\n\t\t\t<4
+      animationID=\"0\" animationBattleID=\"0\" itemType=\"3\" quantityLimit=\"99\"
+      inventoryAddType=\"0\" selectionID=\"0\" equipType=\"1\" lvlType=\"0\" expID=\"0\"
+      >\n\t\t\t\t<_float sympathyChange=\"0\" inventorySpace=\"1\" />\n\t\t\t\t<_bool
+      ownAttack=\"False\" ownCounter=\"False\" ownAnims=\"False\" ownAnimsBattle=\"False\"
+      viewerLocalRotation=\"False\" dropable=\"True\" stealable=\"True\" oneTimeEquip=\"False\"
+      ownLimitQuantity=\"False\" limitQuantity=\"False\" overrideInventoryAddType=\"False\"
+      ownSelection=\"False\" ownNotifications=\"False\" ownConsoleLevelUp=\"False\"
+      ownConsoleAdd=\"False\" ownConsoleRemove=\"False\" ownConsoleIncrDurab=\"False\"
+      ownConsoleDecrDurab=\"False\" ownConsoleOutworn=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t<viewerRotOff 0 0 0 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_boolarrays>\n\t\t\t\t\t<equipPart
+      False True False False False />\n\t\t\t\t\t<blockPart False False True False
+      False />\n\t\t\t\t\t<blockViewer False False False False False />\n\t\t\t\t</_boolarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t</_string>\n\t\t\t\t<_gameobject
+      prefab=\"7\" viewerPrefab=\"8\" />\n\t\t\t\t<price buyPrice=\"500\" sellPrice=\"50\"
+      sellSetter=\"0\" rounding=\"3\" >\n\t\t\t\t\t<_bool sellable=\"True\" />\n\t\t\t\t</price>\n\t\t\t\t<equipRequirements
+      needed=\"0\" >\n\t\t\t\t\t<_bool autoUnequip=\"False\" />\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</equipRequirements>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t\t<level>\n\t\t\t\t\t\t<0
+      lvlPoints=\"0\" durabilityType=\"0\" svBonusType=\"0\" atkAttrBonusType=\"0\"
+      defAttrBonusType=\"0\" >\n\t\t\t\t\t\t\t<_bool ownDescription=\"False\" ownPrefab=\"False\"
+      ownViewerPrefab=\"False\" viewerLocalRotation=\"False\" ownPrice=\"False\" ownEquipRequirements=\"False\"
+      useDurability=\"False\" autoInitDurability=\"False\" svBonusAddPrevious=\"True\"
+      atkAttrBonusAddPrevious=\"True\" defAttrBonusAddPrevious=\"True\" variableUsePrevious=\"True\"
+      variableSave=\"True\" variableUseWhenLoading=\"True\" />\n\t\t\t\t\t\t\t<_intarrays>\n\t\t\t\t\t\t\t\t<addEquipmentPart
+      />\n\t\t\t\t\t\t\t\t<blockedEquipmentPart />\n\t\t\t\t\t\t\t</_intarrays>\n\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t\t\t\t<viewerRotOff
+      0 0 0 />\n\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<bonus>\n\t\t\t\t\t\t\t\t<_bool
+      useCustomBonus=\"True\" />\n\t\t\t\t\t\t\t\t<custom>\n\t\t\t\t\t\t\t\t\t<_float
+      hitBonus=\"0\" counterBonus=\"0\" criticalBonus=\"0\" blockBonus=\"0\" escapeBonus=\"0\"
+      walkBonus=\"0\" runBonus=\"0\" sprintBonus=\"0\" itemStealBonus=\"0\" moneyStealBonus=\"0\"
+      itemLimitBonus=\"0\" randomBattleBonus=\"0\" expFactorBonus=\"0\" gridMoveRangeBonus=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<statusBonus>\n\t\t\t\t\t\t\t\t\t\t\t<0
+      statusID=\"4\" bonus=\"15\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<_float bonusPercent=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t</statusBonus>\n\t\t\t\t\t\t\t\t\t\t<statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t</statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t<atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t<defAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</defAttrBonus>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</custom>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</bonus>\n\t\t\t\t\t\t\t<autoEffects>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</autoEffects>\n\t\t\t\t\t\t\t<variableChanges>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</variableChanges>\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<randomSVBonus>\n\t\t\t\t\t\t\t\t</randomSVBonus>\n\t\t\t\t\t\t\t\t<randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t</randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t<randomDefAttrBonus>\n\t\t\t\t\t\t\t\t</randomDefAttrBonus>\n\t\t\t\t\t\t\t\t<setDefenceAttribute>\n\t\t\t\t\t\t\t\t\t<0
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t</setDefenceAttribute>\n\t\t\t\t\t\t\t\t<equipmentAbility>\n\t\t\t\t\t\t\t\t</equipmentAbility>\n\t\t\t\t\t\t\t\t<battleSound>\n\t\t\t\t\t\t\t\t</battleSound>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</level>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Assault
+      Rifle]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</4>\n\t\t\t<5
+      animationID=\"0\" animationBattleID=\"0\" itemType=\"3\" quantityLimit=\"99\"
+      inventoryAddType=\"0\" selectionID=\"0\" equipType=\"0\" lvlType=\"0\" expID=\"0\"
+      >\n\t\t\t\t<_float sympathyChange=\"0\" inventorySpace=\"1\" />\n\t\t\t\t<_bool
+      ownAttack=\"False\" ownCounter=\"False\" ownAnims=\"False\" ownAnimsBattle=\"False\"
+      viewerLocalRotation=\"False\" dropable=\"True\" stealable=\"True\" oneTimeEquip=\"False\"
+      ownLimitQuantity=\"False\" limitQuantity=\"False\" overrideInventoryAddType=\"False\"
+      ownSelection=\"False\" ownNotifications=\"False\" ownConsoleLevelUp=\"False\"
+      ownConsoleAdd=\"False\" ownConsoleRemove=\"False\" ownConsoleIncrDurab=\"False\"
+      ownConsoleDecrDurab=\"False\" ownConsoleOutworn=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t<viewerRotOff 0 0 0 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_boolarrays>\n\t\t\t\t\t<equipPart
+      False True False False False />\n\t\t\t\t\t<blockPart False False False False
+      False />\n\t\t\t\t\t<blockViewer False False False False False />\n\t\t\t\t</_boolarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t</_string>\n\t\t\t\t<_gameobject
+      prefab=\"9\" viewerPrefab=\"10\" />\n\t\t\t\t<price buyPrice=\"250\" sellPrice=\"50\"
+      sellSetter=\"0\" rounding=\"3\" >\n\t\t\t\t\t<_bool sellable=\"True\" />\n\t\t\t\t</price>\n\t\t\t\t<equipRequirements
+      needed=\"0\" >\n\t\t\t\t\t<_bool autoUnequip=\"False\" />\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</equipRequirements>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t\t<level>\n\t\t\t\t\t\t<0
+      lvlPoints=\"0\" durabilityType=\"0\" svBonusType=\"0\" atkAttrBonusType=\"0\"
+      defAttrBonusType=\"0\" >\n\t\t\t\t\t\t\t<_bool ownDescription=\"False\" ownPrefab=\"False\"
+      ownViewerPrefab=\"False\" viewerLocalRotation=\"False\" ownPrice=\"False\" ownEquipRequirements=\"False\"
+      useDurability=\"False\" autoInitDurability=\"False\" svBonusAddPrevious=\"True\"
+      atkAttrBonusAddPrevious=\"True\" defAttrBonusAddPrevious=\"True\" variableUsePrevious=\"True\"
+      variableSave=\"True\" variableUseWhenLoading=\"True\" />\n\t\t\t\t\t\t\t<_intarrays>\n\t\t\t\t\t\t\t\t<addEquipmentPart
+      />\n\t\t\t\t\t\t\t\t<blockedEquipmentPart />\n\t\t\t\t\t\t\t</_intarrays>\n\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t\t\t\t<viewerRotOff
+      0 0 0 />\n\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<bonus>\n\t\t\t\t\t\t\t\t<_bool
+      useCustomBonus=\"True\" />\n\t\t\t\t\t\t\t\t<custom>\n\t\t\t\t\t\t\t\t\t<_float
+      hitBonus=\"0\" counterBonus=\"0\" criticalBonus=\"0\" blockBonus=\"0\" escapeBonus=\"0\"
+      walkBonus=\"0\" runBonus=\"0\" sprintBonus=\"0\" itemStealBonus=\"0\" moneyStealBonus=\"0\"
+      itemLimitBonus=\"0\" randomBattleBonus=\"0\" expFactorBonus=\"0\" gridMoveRangeBonus=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<statusBonus>\n\t\t\t\t\t\t\t\t\t\t\t<0
+      statusID=\"4\" bonus=\"10\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<_float bonusPercent=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t</statusBonus>\n\t\t\t\t\t\t\t\t\t\t<statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t</statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t<atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t<defAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</defAttrBonus>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</custom>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</bonus>\n\t\t\t\t\t\t\t<autoEffects>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</autoEffects>\n\t\t\t\t\t\t\t<variableChanges>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</variableChanges>\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<randomSVBonus>\n\t\t\t\t\t\t\t\t</randomSVBonus>\n\t\t\t\t\t\t\t\t<randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t</randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t<randomDefAttrBonus>\n\t\t\t\t\t\t\t\t</randomDefAttrBonus>\n\t\t\t\t\t\t\t\t<setDefenceAttribute>\n\t\t\t\t\t\t\t\t\t<0
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t</setDefenceAttribute>\n\t\t\t\t\t\t\t\t<equipmentAbility>\n\t\t\t\t\t\t\t\t</equipmentAbility>\n\t\t\t\t\t\t\t\t<battleSound>\n\t\t\t\t\t\t\t\t</battleSound>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</level>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Pistol]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</5>\n\t\t\t<6
+      animationID=\"0\" animationBattleID=\"0\" itemType=\"3\" quantityLimit=\"99\"
+      inventoryAddType=\"0\" selectionID=\"0\" equipType=\"1\" lvlType=\"0\" expID=\"0\"
+      >\n\t\t\t\t<_float sympathyChange=\"0\" inventorySpace=\"1\" />\n\t\t\t\t<_bool
+      ownAttack=\"False\" ownCounter=\"False\" ownAnims=\"False\" ownAnimsBattle=\"False\"
+      viewerLocalRotation=\"False\" dropable=\"True\" stealable=\"True\" oneTimeEquip=\"False\"
+      ownLimitQuantity=\"False\" limitQuantity=\"False\" overrideInventoryAddType=\"False\"
+      ownSelection=\"False\" ownNotifications=\"False\" ownConsoleLevelUp=\"False\"
+      ownConsoleAdd=\"False\" ownConsoleRemove=\"False\" ownConsoleIncrDurab=\"False\"
+      ownConsoleDecrDurab=\"False\" ownConsoleOutworn=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t<viewerRotOff 0 0 0 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_boolarrays>\n\t\t\t\t\t<equipPart
+      False True False False False />\n\t\t\t\t\t<blockPart False False True False
+      False />\n\t\t\t\t\t<blockViewer False False False False False />\n\t\t\t\t</_boolarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t</_string>\n\t\t\t\t<_gameobject
+      prefab=\"11\" viewerPrefab=\"12\" />\n\t\t\t\t<price buyPrice=\"500\" sellPrice=\"50\"
+      sellSetter=\"0\" rounding=\"3\" >\n\t\t\t\t\t<_bool sellable=\"True\" />\n\t\t\t\t</price>\n\t\t\t\t<equipRequirements
+      needed=\"0\" >\n\t\t\t\t\t<_bool autoUnequip=\"False\" />\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</equipRequirements>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t\t<level>\n\t\t\t\t\t\t<0
+      lvlPoints=\"0\" durabilityType=\"0\" svBonusType=\"0\" atkAttrBonusType=\"0\"
+      defAttrBonusType=\"0\" >\n\t\t\t\t\t\t\t<_bool ownDescription=\"False\" ownPrefab=\"False\"
+      ownViewerPrefab=\"False\" viewerLocalRotation=\"False\" ownPrice=\"False\" ownEquipRequirements=\"False\"
+      useDurability=\"False\" autoInitDurability=\"False\" svBonusAddPrevious=\"True\"
+      atkAttrBonusAddPrevious=\"True\" defAttrBonusAddPrevious=\"True\" variableUsePrevious=\"True\"
+      variableSave=\"True\" variableUseWhenLoading=\"True\" />\n\t\t\t\t\t\t\t<_intarrays>\n\t\t\t\t\t\t\t\t<addEquipmentPart
+      />\n\t\t\t\t\t\t\t\t<blockedEquipmentPart />\n\t\t\t\t\t\t\t</_intarrays>\n\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t\t\t\t<viewerRotOff
+      0 0 0 />\n\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<bonus>\n\t\t\t\t\t\t\t\t<_bool
+      useCustomBonus=\"True\" />\n\t\t\t\t\t\t\t\t<custom>\n\t\t\t\t\t\t\t\t\t<_float
+      hitBonus=\"0\" counterBonus=\"0\" criticalBonus=\"0\" blockBonus=\"0\" escapeBonus=\"0\"
+      walkBonus=\"0\" runBonus=\"0\" sprintBonus=\"0\" itemStealBonus=\"0\" moneyStealBonus=\"0\"
+      itemLimitBonus=\"0\" randomBattleBonus=\"0\" expFactorBonus=\"0\" gridMoveRangeBonus=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<statusBonus>\n\t\t\t\t\t\t\t\t\t\t\t<0
+      statusID=\"4\" bonus=\"25\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<_float bonusPercent=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t</statusBonus>\n\t\t\t\t\t\t\t\t\t\t<statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t</statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t<atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t<defAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</defAttrBonus>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</custom>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</bonus>\n\t\t\t\t\t\t\t<autoEffects>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</autoEffects>\n\t\t\t\t\t\t\t<variableChanges>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</variableChanges>\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<randomSVBonus>\n\t\t\t\t\t\t\t\t</randomSVBonus>\n\t\t\t\t\t\t\t\t<randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t</randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t<randomDefAttrBonus>\n\t\t\t\t\t\t\t\t</randomDefAttrBonus>\n\t\t\t\t\t\t\t\t<setDefenceAttribute>\n\t\t\t\t\t\t\t\t\t<0
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t</setDefenceAttribute>\n\t\t\t\t\t\t\t\t<equipmentAbility>\n\t\t\t\t\t\t\t\t</equipmentAbility>\n\t\t\t\t\t\t\t\t<battleSound>\n\t\t\t\t\t\t\t\t</battleSound>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</level>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Shotgun]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</6>\n\t\t\t<7
+      animationID=\"0\" animationBattleID=\"0\" itemType=\"3\" quantityLimit=\"99\"
+      inventoryAddType=\"0\" selectionID=\"0\" equipType=\"1\" lvlType=\"0\" expID=\"0\"
+      >\n\t\t\t\t<_float sympathyChange=\"0\" inventorySpace=\"1\" />\n\t\t\t\t<_bool
+      ownAttack=\"False\" ownCounter=\"False\" ownAnims=\"False\" ownAnimsBattle=\"False\"
+      viewerLocalRotation=\"False\" dropable=\"True\" stealable=\"True\" oneTimeEquip=\"False\"
+      ownLimitQuantity=\"False\" limitQuantity=\"False\" overrideInventoryAddType=\"False\"
+      ownSelection=\"False\" ownNotifications=\"False\" ownConsoleLevelUp=\"False\"
+      ownConsoleAdd=\"False\" ownConsoleRemove=\"False\" ownConsoleIncrDurab=\"False\"
+      ownConsoleDecrDurab=\"False\" ownConsoleOutworn=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t<viewerRotOff 0 0 0 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_boolarrays>\n\t\t\t\t\t<equipPart
+      False True False False False />\n\t\t\t\t\t<blockPart False False True False
+      False />\n\t\t\t\t\t<blockViewer False False False False False />\n\t\t\t\t</_boolarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t</_string>\n\t\t\t\t<_gameobject
+      prefab=\"13\" viewerPrefab=\"14\" />\n\t\t\t\t<price buyPrice=\"800\" sellPrice=\"50\"
+      sellSetter=\"0\" rounding=\"3\" >\n\t\t\t\t\t<_bool sellable=\"True\" />\n\t\t\t\t</price>\n\t\t\t\t<equipRequirements
+      needed=\"0\" >\n\t\t\t\t\t<_bool autoUnequip=\"False\" />\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<statusRequirement>\n\t\t\t\t\t\t</statusRequirement>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</equipRequirements>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<portrait>\n\t\t\t\t\t</portrait>\n\t\t\t\t\t<level>\n\t\t\t\t\t\t<0
+      lvlPoints=\"0\" durabilityType=\"0\" svBonusType=\"0\" atkAttrBonusType=\"0\"
+      defAttrBonusType=\"0\" >\n\t\t\t\t\t\t\t<_bool ownDescription=\"False\" ownPrefab=\"False\"
+      ownViewerPrefab=\"False\" viewerLocalRotation=\"False\" ownPrice=\"False\" ownEquipRequirements=\"False\"
+      useDurability=\"False\" autoInitDurability=\"False\" svBonusAddPrevious=\"True\"
+      atkAttrBonusAddPrevious=\"True\" defAttrBonusAddPrevious=\"True\" variableUsePrevious=\"True\"
+      variableSave=\"True\" variableUseWhenLoading=\"True\" />\n\t\t\t\t\t\t\t<_intarrays>\n\t\t\t\t\t\t\t\t<addEquipmentPart
+      />\n\t\t\t\t\t\t\t\t<blockedEquipmentPart />\n\t\t\t\t\t\t\t</_intarrays>\n\t\t\t\t\t\t\t<_floatarrays>\n\t\t\t\t\t\t\t\t<spawnOffset
+      0 0 0 />\n\t\t\t\t\t\t\t\t<viewerPosOff 0 0 0 />\n\t\t\t\t\t\t\t\t<viewerRotOff
+      0 0 0 />\n\t\t\t\t\t\t\t</_floatarrays>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<viewerName><![CDATA[]]></viewerName>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t\t<bonus>\n\t\t\t\t\t\t\t\t<_bool
+      useCustomBonus=\"True\" />\n\t\t\t\t\t\t\t\t<custom>\n\t\t\t\t\t\t\t\t\t<_float
+      hitBonus=\"0\" counterBonus=\"0\" criticalBonus=\"0\" blockBonus=\"0\" escapeBonus=\"0\"
+      walkBonus=\"0\" runBonus=\"0\" sprintBonus=\"0\" itemStealBonus=\"0\" moneyStealBonus=\"0\"
+      itemLimitBonus=\"0\" randomBattleBonus=\"0\" expFactorBonus=\"0\" gridMoveRangeBonus=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t\t<statusBonus>\n\t\t\t\t\t\t\t\t\t\t\t<0
+      statusID=\"4\" bonus=\"25\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<_float bonusPercent=\"0\"
+      />\n\t\t\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t\t</statusBonus>\n\t\t\t\t\t\t\t\t\t\t<statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t</statusChangeModifier>\n\t\t\t\t\t\t\t\t\t\t<atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</atkAttrBonus>\n\t\t\t\t\t\t\t\t\t\t<defAttrBonus>\n\t\t\t\t\t\t\t\t\t\t</defAttrBonus>\n\t\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t\t</custom>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</bonus>\n\t\t\t\t\t\t\t<autoEffects>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</autoEffects>\n\t\t\t\t\t\t\t<variableChanges>\n\t\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t\t<gameVariable>\n\t\t\t\t\t\t\t\t\t</gameVariable>\n\t\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t\t</variableChanges>\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<randomSVBonus>\n\t\t\t\t\t\t\t\t</randomSVBonus>\n\t\t\t\t\t\t\t\t<randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t</randomAtkAttrBonus>\n\t\t\t\t\t\t\t\t<randomDefAttrBonus>\n\t\t\t\t\t\t\t\t</randomDefAttrBonus>\n\t\t\t\t\t\t\t\t<setDefenceAttribute>\n\t\t\t\t\t\t\t\t\t<0
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
+      attribute=\"0\" >\n\t\t\t\t\t\t\t\t\t\t<_bool setAttribute=\"False\" />\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t</setDefenceAttribute>\n\t\t\t\t\t\t\t\t<equipmentAbility>\n\t\t\t\t\t\t\t\t</equipmentAbility>\n\t\t\t\t\t\t\t\t<battleSound>\n\t\t\t\t\t\t\t\t</battleSound>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</level>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Sniper
+      Rifle]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</7>\n\t\t</data>\n\t</_subarrays>\n</weapons>\n"
     lookUp:
       textures: []
       audioClips: []
@@ -4912,6 +5046,14 @@ MonoBehaviour:
       - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
       - {fileID: 100000, guid: 0d6f26b1d3e5ed34ea9b61884a2252e1, type: 2}
       - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
+      - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
+      - {fileID: 100000, guid: 6af42c32d7181dd46a234e8b4e6aa996, type: 2}
+      - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
+      - {fileID: 100000, guid: 61a4bbad42cbc3d46b9760c75690925d, type: 2}
+      - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
+      - {fileID: 100000, guid: 93e00c08af7da664390c0fe232961b00, type: 2}
+      - {fileID: 100000, guid: df41354b81615c348ac173bd3d0d4119, type: 2}
+      - {fileID: 100000, guid: b24fd3c54e57e5043a96facdd24ce46f, type: 2}
       guiSkins: []
       materials: []
       fonts: []
@@ -5399,8 +5541,9 @@ MonoBehaviour:
       usePhaseMenu=\"False\" useClassLevel=\"False\" ownLvlUp=\"False\" ownShortcutListCount=\"True\"
       replaceDefaultShortcuts=\"False\" replaceDefaultAutoAddSlots=\"False\" replaceDefaultAutoArrangeSlots=\"False\"
       />\n\t\t\t\t<_intarrays>\n\t\t\t\t\t<controlMap />\n\t\t\t\t</_intarrays>\n\t\t\t\t<equipment>\n\t\t\t\t\t<_boolarrays>\n\t\t\t\t\t\t<equipPart
-      True True True True True />\n\t\t\t\t\t\t<weapon True True True True />\n\t\t\t\t\t\t<armor
-      True True True True True True True True True True />\n\t\t\t\t\t</_boolarrays>\n\t\t\t\t</equipment>\n\t\t\t\t<bonus>\n\t\t\t\t\t<_bool
+      True True True True True />\n\t\t\t\t\t\t<weapon True True True True True True
+      True True />\n\t\t\t\t\t\t<armor True True True True True True True True True
+      True />\n\t\t\t\t\t</_boolarrays>\n\t\t\t\t</equipment>\n\t\t\t\t<bonus>\n\t\t\t\t\t<_bool
       useCustomBonus=\"False\" />\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<bonuses>\n\t\t\t\t\t\t</bonuses>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</bonus>\n\t\t\t\t<autoEffects>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<effect>\n\t\t\t\t\t\t</effect>\n\t\t\t\t\t\t<attackEffect>\n\t\t\t\t\t\t</attackEffect>\n\t\t\t\t\t\t<defenceEffect>\n\t\t\t\t\t\t</defenceEffect>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</autoEffects>\n\t\t\t\t<abilityDevelopment>\n\t\t\t\t\t<_intarrays>\n\t\t\t\t\t\t<abilityDevelopmentID
       />\n\t\t\t\t\t</_intarrays>\n\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t<atLevel>\n\t\t\t\t\t\t</atLevel>\n\t\t\t\t\t\t<abilityTree>\n\t\t\t\t\t\t</abilityTree>\n\t\t\t\t\t</_subarrays>\n\t\t\t\t</abilityDevelopment>\n\t\t\t\t<_subarrays>\n\t\t\t\t\t<atkAttrStart>\n\t\t\t\t\t</atkAttrStart>\n\t\t\t\t\t<defAttrStart>\n\t\t\t\t\t</defAttrStart>\n\t\t\t\t\t<defaultShortcut>\n\t\t\t\t\t</defaultShortcut>\n\t\t\t\t\t<autoAddShortcuts>\n\t\t\t\t\t</autoAddShortcuts>\n\t\t\t\t\t<autoArrangeShortcuts>\n\t\t\t\t\t</autoArrangeShortcuts>\n\t\t\t\t\t<languageInfo>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t\t<name><![CDATA[Player
       Class]]></name>\n\t\t\t\t\t\t\t\t<description><![CDATA[]]></description>\n\t\t\t\t\t\t\t</_string>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</languageInfo>\n\t\t\t\t</_subarrays>\n\t\t\t</0>\n\t\t</data>\n\t</_subarrays>\n</classes>\n"
@@ -5806,8 +5949,8 @@ MonoBehaviour:
       />\n\t\t\t\t\t\t</2>\n\t\t\t\t\t</itemDrop>\n\t\t\t\t\t<startEquipment>\n\t\t\t\t\t\t<0
       startLevel=\"1\" maxLevel=\"10\" >\n\t\t\t\t\t\t\t<_subarrays>\n\t\t\t\t\t\t\t\t<equipment>\n\t\t\t\t\t\t\t\t\t<0
       type=\"0\" equipID=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</0>\n\t\t\t\t\t\t\t\t\t<1
-      type=\"1\" equipID=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t\t<2
-      type=\"0\" equipID=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</2>\n\t\t\t\t\t\t\t\t\t<3
+      type=\"1\" equipID=\"6\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</1>\n\t\t\t\t\t\t\t\t\t<2
+      type=\"0\" equipID=\"-1\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</2>\n\t\t\t\t\t\t\t\t\t<3
       type=\"0\" equipID=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</3>\n\t\t\t\t\t\t\t\t\t<4
       type=\"0\" equipID=\"0\" level=\"1\" >\n\t\t\t\t\t\t\t\t\t</4>\n\t\t\t\t\t\t\t\t</equipment>\n\t\t\t\t\t\t\t</_subarrays>\n\t\t\t\t\t\t</0>\n\t\t\t\t\t</startEquipment>\n\t\t\t\t\t<aiBehaviour>\n\t\t\t\t\t</aiBehaviour>\n\t\t\t\t\t<aiBehaviourSlot>\n\t\t\t\t\t</aiBehaviourSlot>\n\t\t\t\t\t<aiRulesetSlot>\n\t\t\t\t\t</aiRulesetSlot>\n\t\t\t\t\t<defendEvent>\n\t\t\t\t\t\t<0>\n\t\t\t\t\t\t\t<_float
       chance=\"100\" />\n\t\t\t\t\t\t\t<_bool field=\"False\" setPrefabs=\"False\"
@@ -8093,13 +8236,13 @@ MonoBehaviour:
       guiBoxID=\"0\" qGuiBoxID=\"0\" iGuiBoxID=\"0\" >\n\t\t<_bool exitAfterSave=\"False\"
       showExitQuestion=\"False\" oneBox=\"False\" useTitle=\"False\" useQuestion=\"True\"
       useQTitle=\"False\" useChoice=\"False\" useInfo=\"True\" useITitle=\"False\"
-      ownBG=\"False\" />\n\t\t<_stringarrays>\n\t\t\t<message>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</message>\n\t\t</_stringarrays>\n\t\t<cancelButton
+      ownBG=\"False\" />\n\t\t<_stringarrays>\n\t\t\t<message>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</message>\n\t\t\t<qMessage>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</qMessage>\n\t\t\t<iMessage>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</iMessage>\n\t\t</_stringarrays>\n\t\t<cancelButton
       type=\"0\" >\n\t\t\t<_bool useCustomButton=\"False\" />\n\t\t</cancelButton>\n\t\t<fileCustomSkin>\n\t\t\t<_bool
       useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t</fileCustomSkin>\n\t\t<emptyCustomSkin>\n\t\t\t<_bool
       useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t</emptyCustomSkin>\n\t</saveMenu>\n\t<loadMenu
       guiBoxID=\"0\" qGuiBoxID=\"0\" iGuiBoxID=\"0\" >\n\t\t<_bool oneBox=\"False\"
       useTitle=\"False\" allAutoSaveSlots=\"False\" useQuestion=\"True\" useQTitle=\"False\"
-      useChoice=\"False\" useInfo=\"True\" useITitle=\"False\" ownBG=\"False\" />\n\t\t<_stringarrays>\n\t\t\t<message>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</message>\n\t\t</_stringarrays>\n\t\t<cancelButton
+      useChoice=\"False\" useInfo=\"True\" useITitle=\"False\" ownBG=\"False\" />\n\t\t<_stringarrays>\n\t\t\t<message>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</message>\n\t\t\t<qMessage>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</qMessage>\n\t\t\t<iMessage>\n\t\t\t\t<0><![CDATA[]]></0>\n\t\t\t</iMessage>\n\t\t</_stringarrays>\n\t\t<cancelButton
       type=\"0\" >\n\t\t\t<_bool useCustomButton=\"False\" />\n\t\t</cancelButton>\n\t\t<fileCustomSkin>\n\t\t\t<_bool
       useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t</fileCustomSkin>\n\t\t<emptyCustomSkin>\n\t\t\t<_bool
       useCustomSkin=\"False\" setIconSize=\"False\" />\n\t\t</emptyCustomSkin>\n\t</loadMenu>\n\t<savePoint

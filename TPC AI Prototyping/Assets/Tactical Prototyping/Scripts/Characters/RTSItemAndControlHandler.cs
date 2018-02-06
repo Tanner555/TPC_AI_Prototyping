@@ -26,6 +26,8 @@ namespace RTSPrototype
         public ItemType PistolType;
         public ItemType ShotgunType;
         public ItemType SniperRifleType;
+        public ItemType FistType;
+
         public const string AssaultRifleName = "Assault Rifle";
         public string AssaultRifName { get { return AssaultRifleName; } }
         const string PistolName = "Pistol";
@@ -70,7 +72,6 @@ namespace RTSPrototype
         #region Handlers
         void OnEquipmentChanged(bool lEquipped, string lHand, bool rEquipped, string rHand)
         {
-            Debug.Log("On Equipment Changed");
             if (lEquipped)
             {
                 if (CheckForInventoryMatch(lHand))
@@ -80,6 +81,10 @@ namespace RTSPrototype
             {
                 if (CheckForInventoryMatch(rHand))
                     SetEquippedItemFromString(rHand);
+            }
+            else if(FistType != null)
+            {
+                SetEquippedItem(FistType);
             }
         }
 
@@ -191,7 +196,6 @@ namespace RTSPrototype
             var _gun = myInventory.GetCurrentItem(typeof(PrimaryItemType));
             if (_gun != null && _gun.ItemType != _type)
             {
-                Debug.Log("Set Equipped Weapon " + _type.ToString());
                 myInventory.EquipItem((PrimaryItemType)_type);
             }
             else if (_gun == null)

@@ -2139,14 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48d99351406c1d428f08ba92d47440d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuUi: {fileID: 1636003651518848}
-  InventoryUi: {fileID: 1240067736846298}
   IGBPIUi: {fileID: 1714208924332890}
-  healthText: {fileID: 114653726265776062}
-  AmmoPanel: {fileID: 1158995208682012}
-  currentAmmoText: {fileID: 114770119258884844}
-  carriedAmmoText: {fileID: 114557387467790992}
-  hurtCanvas: {fileID: 0}
   UI_Panel_Prefab: {fileID: 1945189304736280, guid: 137a07ea11ab8c948b49b92b7fa3e4ab,
     type: 2}
   ButtonChoicePrefab: {fileID: 1685901198168472, guid: 2883c7655c97e1b4e923bb37ddb2947d,

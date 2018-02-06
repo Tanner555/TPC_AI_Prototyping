@@ -313,13 +313,14 @@ MonoBehaviour:
       id=\"4\" levelInit=\"0\" levelMinOffset=\"-5\" levelMaxOffset=\"5\" levelMinRandom=\"1\"
       levelMaxRandom=\"99\" classInit=\"0\" classMinOffset=\"-5\" classMaxOffset=\"5\"
       classMinRandom=\"1\" classMaxRandom=\"99\" >\n\t\t\t\t\t<_bool useStartInventory=\"True\"
-      useStartEquipment=\"True\" levelOnlyBattle=\"False\" classOnlyBattle=\"False\"
+      useStartEquipment=\"True\" useInitEvent=\"True\" levelOnlyBattle=\"False\" classOnlyBattle=\"False\"
       />\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<levelKey><![CDATA[]]></levelKey>\n\t\t\t\t\t\t<classKey><![CDATA[]]></classKey>\n\t\t\t\t\t</_string>\n\t\t\t\t</combatantSetting>\n\t\t\t</18>\n\t\t\t<19
       groupID=\"0\" id=\"0\" level=\"1\" cLevel=\"1\" next=\"20\" >\n\t\t\t\t<_bool
       actor=\"True\" showNotification=\"True\" showConsole=\"True\" useCombatantGroup=\"False\"
       otherGroup=\"False\" useInactive=\"False\" useStartInventory=\"True\" useStartEquipment=\"True\"
-      setLevel=\"False\" setCLevel=\"False\" active=\"True\" overrideNodeName=\"False\"
-      />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition 722 133 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[JoinActiveGroupStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<groupSelection
+      useInitEvent=\"True\" setLevel=\"False\" setCLevel=\"False\" active=\"True\"
+      overrideNodeName=\"False\" />\n\t\t\t\t<_floatarrays>\n\t\t\t\t\t<nodePosition
+      722 133 />\n\t\t\t\t</_floatarrays>\n\t\t\t\t<_string>\n\t\t\t\t\t<nodeName><![CDATA[]]></nodeName>\n\t\t\t\t\t<_type><![CDATA[JoinActiveGroupStep]]></_type>\n\t\t\t\t</_string>\n\t\t\t\t<groupSelection
       origin=\"0\" >\n\t\t\t\t</groupSelection>\n\t\t\t\t<usedObject type=\"0\" aID=\"0\"
       wID=\"0\" pID=\"0\" pID2=\"-1\" >\n\t\t\t\t\t<_string>\n\t\t\t\t\t\t<childName><![CDATA[]]></childName>\n\t\t\t\t\t</_string>\n\t\t\t\t\t<objectKey
       type=\"0\" >\n\t\t\t\t\t\t<_string>\n\t\t\t\t\t\t\t<value><![CDATA[]]></value>\n\t\t\t\t\t\t</_string>\n\t\t\t\t\t</objectKey>\n\t\t\t\t</usedObject>\n\t\t\t</19>\n\t\t\t<20
