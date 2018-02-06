@@ -1347,7 +1347,6 @@ GameObject:
   - component: {fileID: 114353107095760730}
   - component: {fileID: 114939998160306228}
   - component: {fileID: 114862791138248778}
-  - component: {fileID: 114993129115636704}
   - component: {fileID: 114525557394550478}
   m_Layer: 8
   m_Name: EnemyAssaultSoldier
@@ -8198,48 +8197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6b8039500a22b43a2eb33f06b6290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114993129115636704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825627822260076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 676035192, guid: f5c55b3678e89c6409bf2371aaef7c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleType: 0
-  factionID: 1
-  combatantSetting:
-    id: 2
-    useStartInventory: 1
-    useStartEquipment: 1
-    useInitEvent: 1
-    levelInit: 0
-    levelOnlyBattle: 0
-    levelMinOffset: -5
-    levelMaxOffset: 5
-    levelMinRandom: 1
-    levelMaxRandom: 99
-    levelKey: 
-    classInit: 0
-    classOnlyBattle: 0
-    classMinOffset: -5
-    classMaxOffset: 5
-    classMinRandom: 1
-    classMaxRandom: 99
-    classKey: 
-  battleComponentObject: {fileID: 0}
-  setBCPos: 0
-  setBCRot: 0
-  useNearestArena: 0
-  arenaRange: 20
-  blockMoveAI: 0
-  ownMoveAI: 0
-  moveAIID: 0
-  randomWaypointOrder: 0
-  waypoints: []
 --- !u!114 &114998145413549734
 MonoBehaviour:
   m_ObjectHideFlags: 1

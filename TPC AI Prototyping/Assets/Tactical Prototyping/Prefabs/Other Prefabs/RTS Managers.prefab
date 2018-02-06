@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1909704301872178}
+  m_IsPrefabParent: 1
+--- !u!1 &1116183501613854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4185075042547060}
+  - component: {fileID: 114642444853133984}
+  m_Layer: 0
+  m_Name: PartyManagerForEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1245148991828238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4058494446640414}
+  - component: {fileID: 114433783553032088}
+  m_Layer: 0
+  m_Name: PartyManagerForAllies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1909704301872178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4807102168982228}
+  - component: {fileID: 114218957903503726}
+  - component: {fileID: 114142273811661268}
+  - component: {fileID: 114435293813522060}
+  - component: {fileID: 114189638851984324}
+  - component: {fileID: 114786682207096632}
+  - component: {fileID: 114416084807247614}
+  m_Layer: 0
+  m_Name: RTS Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4058494446640414
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245148991828238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4807102168982228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4185075042547060
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116183501613854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4807102168982228}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4807102168982228
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.892903, y: 11.616028, z: 23.753946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4058494446640414}
+  - {fileID: 4185075042547060}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114142273811661268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8d834b463c40847bdd0de01e09cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
+  isInventoryUIOn: 0
+  isMenuOn: 0
+--- !u!114 &114189638851984324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ec802660faf38448c8f95024b365cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IGBPIDataObject: {fileID: 11400000, guid: 6107c06253afaf143bc1370ca73d7889, type: 2}
+--- !u!114 &114218957903503726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e79e410dc71d70439ed74a31404facb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllyFaction: 00000000
+  EnemyFaction: 01000000
+  GeneralMembers: []
+  TargetKillCount: 0
+  CurrentEnemyCount: 0
+  TargetGoal: 2
+  RoundScaleMultiplier: 2
+  AmmoInLevel: 0
+  LostGame: 0
+  RemainingMinutes: 0
+  RemainingSeconds: 0
+  DefaultMatchTimeLimit: 0
+--- !u!114 &114416084807247614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e5b49132d1e7f40a80c30a1de58792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ForceMobileInput: 0
+  m_ForceStandaloneInput: 0
+  m_DisableWithEscape: 1
+  m_DisableCursor: 0
+  m_DisableWhenButtonDown: 0
+--- !u!114 &114433783553032088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245148991828238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d5635ec06de1e48aa2cd9fc45290ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GeneralCommander: 0
+  GeneralFaction: 0
+  PartyKills: 0
+  PartyPoints: 0
+  PartyDeaths: 0
+--- !u!114 &114435293813522060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be05302c9e941cf44847130ecc9e001d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RMHeldThreshold: 0.15
+  LMHeldThreshold: 0.15
+  SelectionImage: {fileID: 0}
+--- !u!114 &114642444853133984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116183501613854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d5635ec06de1e48aa2cd9fc45290ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GeneralCommander: 1
+  GeneralFaction: 1
+  PartyKills: 0
+  PartyPoints: 0
+  PartyDeaths: 0
+--- !u!114 &114786682207096632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41843a65a9ad7bf46a3a00a0d95a6727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

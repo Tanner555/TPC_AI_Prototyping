@@ -1209,7 +1209,6 @@ GameObject:
   - component: {fileID: 114176505884411434}
   - component: {fileID: 114981557185281530}
   - component: {fileID: 114983068936097046}
-  - component: {fileID: 114681744465918368}
   - component: {fileID: 114192841167202860}
   m_Layer: 8
   m_Name: Brown Silly Pants
@@ -7593,48 +7592,6 @@ MonoBehaviour:
     m_TransitionDuration: 0.2
     m_SpeedMultiplier: 1
     m_CanReplay: 0
---- !u!114 &114681744465918368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768055428005526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 676035192, guid: f5c55b3678e89c6409bf2371aaef7c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleType: 0
-  factionID: 0
-  combatantSetting:
-    id: 0
-    useStartInventory: 1
-    useStartEquipment: 1
-    useInitEvent: 1
-    levelInit: 0
-    levelOnlyBattle: 0
-    levelMinOffset: -5
-    levelMaxOffset: 5
-    levelMinRandom: 1
-    levelMaxRandom: 99
-    levelKey: 
-    classInit: 0
-    classOnlyBattle: 0
-    classMinOffset: -5
-    classMaxOffset: 5
-    classMinRandom: 1
-    classMaxRandom: 99
-    classKey: 
-  battleComponentObject: {fileID: 0}
-  setBCPos: 0
-  setBCRot: 0
-  useNearestArena: 0
-  arenaRange: 20
-  blockMoveAI: 0
-  ownMoveAI: 0
-  moveAIID: 0
-  randomWaypointOrder: 0
-  waypoints: []
 --- !u!114 &114713235223828240
 MonoBehaviour:
   m_ObjectHideFlags: 1
