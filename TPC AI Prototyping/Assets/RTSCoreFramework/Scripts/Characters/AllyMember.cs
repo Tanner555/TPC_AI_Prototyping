@@ -165,6 +165,9 @@ namespace RTSCoreFramework
                 SubToEvents();
                 hasStarted = true;
             }
+            //Add Ally to PartyMembers Rather than Finding them
+            //To Make Spawning Easier
+            if (partyManager != null) partyManager.AddPartyMember(this);
             //Create Overrideable Late Start to Accommodate 
             //Assets Having Long StartUp 
             Invoke("OnDelayStart", 0.5f);

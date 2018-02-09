@@ -81,8 +81,7 @@ namespace RTSCoreFramework
 
         protected virtual void OnDelayStart()
         {
-            AllyMember firstAlly = FindPartyMembers(false, null);
-            SetAllyInCommand(firstAlly);
+
         }
 
         // Update is called once per frame
@@ -93,6 +92,20 @@ namespace RTSCoreFramework
         #endregion
 
         #region Find-Set-Possess-AllyInCommand
+        public void AddPartyMember(AllyMember _ally)
+        {
+            bool _validAdd = _ally != null &&
+                AllyHasSameGeneral(_ally) &&
+                AllyIsAPartyMember(_ally) == false &&
+                _ally.IsAlive;
+            if (_validAdd)
+            {
+                PartyMembers.Add(_ally);
+                if (AllyInCommand == null)
+                    SetAllyInCommand(_ally);
+            }
+        }
+
         public AllyMember FindPartyMembers(bool pendingAllyLeave, AllyMember allyToLeave)
         {
             PartyMembers.Clear();
@@ -222,6 +235,10 @@ namespace RTSCoreFramework
         public bool AllyIsAPartyMember(AllyMember _ally)
         {
             return PartyMembers.Contains(_ally);
+        }
+        public bool AllyHasSameGeneral(AllyMember _ally)
+        {
+            return _ally.GeneralCommander == this.GeneralCommander;
         }
         #endregion
 
