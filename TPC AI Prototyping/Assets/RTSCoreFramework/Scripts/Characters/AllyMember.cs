@@ -37,7 +37,17 @@ namespace RTSCoreFramework
         public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
         public AllyMember DamageInstigator { get; protected set; }
         //Faction Properties
-        public PartyManager partyManager { get; protected set; }
+        public PartyManager partyManager
+        {
+            get
+            {
+                if (_partyManager == null)
+                    _partyManager = FindPartyManager();
+
+                return _partyManager;
+            }
+        }
+        private PartyManager _partyManager = null;
         public int FactionPlayerCount { get { return gamemode.GetAllyFactionPlayerCount((AllyMember)this); } }
         public int GeneralPlayerCount { get { return gamemode.GetAllyGeneralPlayerCount((AllyMember)this); } }
         //Camera Follow Transforms
@@ -226,7 +236,18 @@ namespace RTSCoreFramework
         private void DestroyAlly() { Destroy(this); }
         #endregion
 
-        #region Getters
+        #region Getters - Finders
+        public PartyManager FindPartyManager()
+        {
+            PartyManager _foundPMan = null;
+            foreach (var pManager in GameObject.FindObjectsOfType<PartyManager>())
+            {
+                if (pManager.GeneralCommander == GeneralCommander)
+                    _foundPMan = pManager;
+            }
+            return _foundPMan;
+        }
+
         public bool IsEnemyFor(AllyMember player)
         {
             return player.AllyFaction != AllyFaction;
@@ -243,7 +264,6 @@ namespace RTSCoreFramework
         {
             allyEventHandler = GetComponent<AllyEventHandler>();
             aiController = GetComponent<AllyAIController>();
-            TryFindingPartyManager();
 
             if (partyManager == null)
                 Debug.LogError("No partymanager on allymember!");
@@ -267,16 +287,6 @@ namespace RTSCoreFramework
         protected virtual void UnSubFromEvents()
         {
             allyEventHandler.EventAllyDied -= AllyOnDeath;
-        }
-
-        public bool TryFindingPartyManager()
-        {
-            foreach (var pManager in GameObject.FindObjectsOfType<PartyManager>())
-            {
-                if (pManager.GeneralCommander == GeneralCommander)
-                    partyManager = pManager;
-            }
-            return partyManager != null;
         }
         #endregion
 
