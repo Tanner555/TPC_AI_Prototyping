@@ -2259,6 +2259,161 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1572065488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1572065490}
+  - component: {fileID: 1572065489}
+  m_Layer: 0
+  m_Name: Enemy Spawner 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1572065489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572065488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1192135705, guid: f5c55b3678e89c6409bf2371aaef7c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSceneID: 0
+  sceneID: 0
+  autoDestroy: 1
+  repeatDestroy: 0
+  destroyCheckTime: 1
+  checkObjectVariables: 0
+  variableCondition:
+    needed: 0
+    gameVariable: []
+  setObjectVariables: 0
+  variableSetter:
+    gameVariable: []
+  questCondition:
+    neededQuests: 0
+    questStatus: []
+    neededTasks: 0
+    taskStatus: []
+  startType: 1
+  inBlockedControl: 0
+  customType: 
+  autoStartAfter: 0
+  allowClick: 1
+  overrideClickDistance: 0
+  maxClickDistance: 3
+  useMoveToInteraction: 1
+  destinationObject: {fileID: 0}
+  overrideInteractionRadius: 0
+  interactionRadius: 1
+  overrideStopDistance: 0
+  stopDistance: 1
+  overrideMoveToSpeed: 0
+  moveToSpeed:
+    type: 1
+    speed: 5
+  keyToPress: 0
+  keyPressInTrigger: 0
+  keyPressWhileColliding: 0
+  dropItem:
+    type: 0
+    id: 0
+    level: 1
+    quantity: 1
+    chance: 100
+  consumeDrop: 0
+  startByCollider: 1
+  startByTrigger: 1
+  startByRootObject: 0
+  useOtherObject: 0
+  startObjectCheck:
+    checkName: 0
+    isTag: 0
+    name: 
+    components: []
+  horizontalPlane: 0
+  useFront: 1
+  useBack: 1
+  useLeft: 1
+  useRight: 1
+  repeatCheckSpawn: 0
+  repeatCheckTime: 0
+  useAppearingChance: 0
+  appearingChance: 100
+  appearingChanceFailSetID: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  spawnRandom: 0
+  respawnRandom: 0
+  roundSpawnPosition: 0
+  rememberCombatants: 0
+  spawnerID: 
+  spawnPoint: []
+  battleComponentObject: {fileID: 0}
+  setBCPos: 0
+  setBCRot: 0
+  useNearestArena: 0
+  arenaRange: 20
+  battleType: 0
+  combatant:
+  - factionID: 2
+    useGroup: 0
+    id: 0
+    member:
+      id: 6
+      useStartInventory: 1
+      useStartEquipment: 1
+      useInitEvent: 1
+      levelInit: 0
+      levelOnlyBattle: 0
+      levelMinOffset: -5
+      levelMaxOffset: 5
+      levelMinRandom: 1
+      levelMaxRandom: 99
+      levelKey: 
+      classInit: 0
+      classOnlyBattle: 0
+      classMinOffset: -5
+      classMaxOffset: 5
+      classMinRandom: 1
+      classMaxRandom: 99
+      classKey: 
+  quantity: 01000000
+  randomRotation: 00
+  setScale: 00
+  scale:
+  - {x: 1, y: 1, z: 1}
+  spawnAll: 00
+  respawn: 00
+  respawnTime:
+  - 60
+  blockMoveAI: 00
+  ownMoveAI: 00
+  moveAIID: 00000000
+  randomWaypointOrder: 0
+  waypoints: []
+--- !u!4 &1572065490
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572065488}
+  m_LocalRotation: {x: -0, y: 0.12545344, z: -0, w: 0.9920995}
+  m_LocalPosition: {x: 311.69, y: 32.93, z: 419.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 14.4140005, z: 0}
 --- !u!1 &1592413845
 GameObject:
   m_ObjectHideFlags: 0
