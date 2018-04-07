@@ -15,18 +15,15 @@ namespace RTSCoreFramework
 
         #region Fields
         protected bool bIsShooting = false;
-        protected bool bIsMoving
-        {
-            get { return myEventHandler.bIsNavMoving; }
-        }
         protected float defaultFireRepeatRate = 0.25f;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
         public float followDistance = 5f;
-        //TODO: RTSPrototype Delete Layers In AIController and use GameMode Layers instead
-        public LayerMask allyLayers;
-        public LayerMask sightLayers;
+        //Private Layers using gamemode values
+        //Set to -1 to compare an unset layer
+        private LayerMask __allyLayers = -1;
+        private LayerMask __sightLayers = -1;
 
         protected Collider[] colliders;
         protected List<Transform> uniqueTransforms = new List<Transform>();
@@ -51,6 +48,34 @@ namespace RTSCoreFramework
         //AllyMember Transforms
         Transform headTransform { get { return allyMember.HeadTransform; } }
         Transform chestTransform { get { return allyMember.ChestTransform; } }
+
+        //Layer Props
+        public LayerMask allyLayers
+        {
+            get
+            {
+                if (__allyLayers == -1)
+                    __allyLayers = gamemode.AllyLayers;
+
+                return __allyLayers;
+            }
+        }
+
+        public LayerMask sightLayers
+        {
+            get
+            {
+                if (__sightLayers == -1)
+                    __sightLayers = gamemode.SightLayers;
+
+                return __sightLayers;
+            }
+        }
+
+        protected bool bIsMoving
+        {
+            get { return myEventHandler.bIsNavMoving; }
+        }
 
         protected virtual bool AllCompsAreValid
         {
