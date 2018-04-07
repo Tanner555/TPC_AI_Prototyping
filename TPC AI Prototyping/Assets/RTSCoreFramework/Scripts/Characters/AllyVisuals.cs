@@ -62,6 +62,7 @@ namespace RTSCoreFramework
             myEventHandler.EventAllyDied -= HandleDeath;
             myEventHandler.EventCommandMove -= SetupWaypointRenderer;
             myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
+            myEventHandler.EventPartySwitching -= DisableWaypointRenderer;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -75,6 +76,7 @@ namespace RTSCoreFramework
             myEventHandler.EventAllyDied += HandleDeath;
             myEventHandler.EventCommandMove += SetupWaypointRenderer;
             myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
+            myEventHandler.EventPartySwitching += DisableWaypointRenderer;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
