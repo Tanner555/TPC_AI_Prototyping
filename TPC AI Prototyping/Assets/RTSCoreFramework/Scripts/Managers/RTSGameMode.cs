@@ -140,9 +140,23 @@ namespace RTSCoreFramework
         [SerializeField]
         private LayerMask sightLayers;
 
+        [Header("Single Layers for Easy Retrieval")]
+        [SerializeField]
+        private string singleAllyLayerName = "Ally";
+        [SerializeField]
+        private string singleCurrentPlayerLayerName = "CurrentPlayerAlly";
+
         //Layer Getters
         public LayerMask AllyLayers { get { return allyLayers; } }
         public LayerMask SightLayers { get { return sightLayers; } }
+        public LayerMask SingleAllyLayer
+        {
+            get { return LayerMask.NameToLayer(singleAllyLayerName); }
+        }
+        public LayerMask SingleCurrentPlayerLayer
+        {
+            get { return LayerMask.NameToLayer(singleCurrentPlayerLayerName); }
+        }
 
         //Tag Getters
         public string AllyTag { get { return "Ally"; } }

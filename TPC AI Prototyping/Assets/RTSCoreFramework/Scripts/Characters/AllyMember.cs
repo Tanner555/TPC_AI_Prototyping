@@ -208,6 +208,19 @@ namespace RTSCoreFramework
             }
         }
 
+        protected virtual void OnPartySwitch()
+        {
+            //Switch Tags Depending on whether isCurrentPlayer
+            if (bIsCurrentPlayer)
+            {
+                gameObject.layer = gamemode.SingleCurrentPlayerLayer;
+            }
+            else
+            {
+                gameObject.layer = gamemode.SingleAllyLayer;
+            }
+        }
+
         public virtual void AllyOnDeath()
         {
             //if gamemode, find allies and exclude this ally
@@ -224,7 +237,7 @@ namespace RTSCoreFramework
                 }
                 //Add to death count
                 PartyDeaths += 1;
-
+                
                 gamemode.ProcessAllyDeath(this);
                 Invoke("DestroyAlly", 0.1f);
             }
@@ -285,11 +298,13 @@ namespace RTSCoreFramework
         protected virtual void SubToEvents()
         {
             allyEventHandler.EventAllyDied += AllyOnDeath;
+            allyEventHandler.EventPartySwitching += OnPartySwitch;
         }
 
         protected virtual void UnSubFromEvents()
         {
             allyEventHandler.EventAllyDied -= AllyOnDeath;
+            allyEventHandler.EventPartySwitching -= OnPartySwitch;
         }
         #endregion
 

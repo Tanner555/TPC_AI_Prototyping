@@ -156,10 +156,16 @@ MonoBehaviour:
   DefaultMatchTimeLimit: 0
   allyLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   sightLayers:
     serializedVersion: 2
-    m_Bits: 3221225729
+    m_Bits: 3221226241
+  singleAllyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  singleCurrentPlayerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114416084807247614
 MonoBehaviour:
   m_ObjectHideFlags: 1

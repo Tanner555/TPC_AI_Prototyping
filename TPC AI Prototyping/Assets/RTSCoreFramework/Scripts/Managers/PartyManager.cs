@@ -173,18 +173,19 @@ namespace RTSCoreFramework
 
             if (_validSet)
             {
-                foreach (var _ally in PartyMembers)
-                {
-                    //TODO: RTSPrototype Fix null exception from foreach loop, this should not happen
-                    if (_ally != null)
-                        _ally.allyEventHandler.CallEventPartySwitching();
-                }
                 gamemaster.CallOnAllySwitch((PartyManager)this, _setToCommand, AllyInCommand);
                 if (AllyInCommand != null)
                     AllyInCommand.GetComponent<AllyEventHandler>().CallEventSwitchingFromCom();
 
                 AllyInCommand = _setToCommand;
                 AllyInCommand.GetComponent<AllyEventHandler>().CallEventSetAsCommander();
+                //Set PartySwitching Event Afterwards for more accurate party data retreival
+                foreach (var _ally in PartyMembers)
+                {
+                    //TODO: RTSPrototype Fix null exception from foreach loop, this should not happen
+                    if (_ally != null)
+                        _ally.allyEventHandler.CallEventPartySwitching();
+                }
             }
         }
 
