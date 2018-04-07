@@ -132,8 +132,22 @@ namespace RTSCoreFramework
 
         #endregion
 
-        #region Tags
+        #region LayersAndTags
+        //Layers
+        [Header("Layers For AI and Raycasting")]
+        [SerializeField]
+        private LayerMask allyLayers;
+        [SerializeField]
+        private LayerMask sightLayers;
+
+        //Layer Getters
+        public LayerMask AllyLayers { get { return allyLayers; } }
+        public LayerMask SightLayers { get { return sightLayers; } }
+
+        //Tag Getters
         public string AllyTag { get { return "Ally"; } }
+        public string CoverTag { get { return "Cover"; } }
+
         #endregion
 
         #region UnityMessages

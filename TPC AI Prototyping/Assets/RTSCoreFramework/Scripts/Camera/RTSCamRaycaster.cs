@@ -47,14 +47,33 @@ namespace RTSCoreFramework
 gamemode.GeneralInCommand.PartyMembers.Count <= 0;
             }
         }
+
+        private string AllyTag
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(__allyTag))
+                    __allyTag = gamemode.AllyTag;
+
+                return __allyTag;
+            }
+        }
+        private string CoverTag
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(__coverTag))
+                    __coverTag = gamemode.CoverTag;
+
+                return __coverTag;
+            }
+        }
         #endregion
 
         #region Fields
         //Tags
-        [SerializeField]
-        private string AllyTag = "Ally";
-        [SerializeField]
-        private string CoverTag = "Cover";
+        private string __allyTag = "";
+        private string __coverTag = "";
 
         //Method Fields
         private float maxRaycastDepth = 100f; // Hard coded value

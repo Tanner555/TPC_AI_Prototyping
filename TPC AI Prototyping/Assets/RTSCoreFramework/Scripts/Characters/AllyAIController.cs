@@ -24,6 +24,7 @@ namespace RTSCoreFramework
         [Header("AI Finder Properties")]
         public float sightRange = 40f;
         public float followDistance = 5f;
+        //TODO: RTSPrototype Delete Layers In AIController and use GameMode Layers instead
         public LayerMask allyLayers;
         public LayerMask sightLayers;
 
