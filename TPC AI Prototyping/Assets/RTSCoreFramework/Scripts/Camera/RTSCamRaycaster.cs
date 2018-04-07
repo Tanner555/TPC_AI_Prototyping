@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace RTSCoreFramework
 {
+    #region Public Structs
     /// <summary>
     /// Used to tell subs what type of object the Mouse Cursor is hitting
     /// </summary>
@@ -18,6 +19,7 @@ namespace RTSCoreFramework
         public rtsHitType _hitType;
         public RaycastHit _rayHit;
     }
+    #endregion
 
     public class RTSCamRaycaster : MonoBehaviour
     {
@@ -68,12 +70,26 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
                 return __coverTag;
             }
         }
+        //Ally Layer that excludes CurrentPlayer
+        private LayerMask sightNoCurrentPlayerLayer
+        {
+            get
+            {
+                if (__sightNoCurrentPlayerLayers == -1)
+                    __sightNoCurrentPlayerLayers = gamemode.SightNoCurrentPlayerLayers;
+
+                return __sightNoCurrentPlayerLayers;
+            }
+        }
+
         #endregion
 
         #region Fields
         //Tags
         private string __allyTag = "";
         private string __coverTag = "";
+
+        private LayerMask __sightNoCurrentPlayerLayers = -1;
 
         //Method Fields
         private float maxRaycastDepth = 100f; // Hard coded value
@@ -142,7 +158,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
             //Makes Sure Code is Valid Before Running
             if (TimeToReturn()) return;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out rayHit, maxRaycastDepth))
+            if (Physics.Raycast(ray, out rayHit, maxRaycastDepth, sightNoCurrentPlayerLayer))
             {
                 gObject = rayHit.collider.gameObject;
                 gObjectRoot = rayHit.collider.gameObject.transform.root.gameObject;

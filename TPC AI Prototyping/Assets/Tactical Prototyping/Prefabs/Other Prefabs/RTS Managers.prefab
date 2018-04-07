@@ -159,13 +159,12 @@ MonoBehaviour:
     m_Bits: 768
   sightLayers:
     serializedVersion: 2
-    m_Bits: 3221226241
-  singleAllyLayer:
+    m_Bits: 3288335105
+  sightNoCurrentPlayerLayers:
     serializedVersion: 2
-    m_Bits: 256
-  singleCurrentPlayerLayer:
-    serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 3288334593
+  singleAllyLayerName: Ally
+  singleCurrentPlayerLayerName: CurrentPlayerAlly
 --- !u!114 &114416084807247614
 MonoBehaviour:
   m_ObjectHideFlags: 1

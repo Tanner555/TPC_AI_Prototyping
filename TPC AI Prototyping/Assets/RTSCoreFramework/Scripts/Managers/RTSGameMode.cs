@@ -139,6 +139,8 @@ namespace RTSCoreFramework
         private LayerMask allyLayers;
         [SerializeField]
         private LayerMask sightLayers;
+        [SerializeField]
+        private LayerMask sightNoCurrentPlayerLayers;
 
         [Header("Single Layers for Easy Retrieval")]
         [SerializeField]
@@ -149,6 +151,8 @@ namespace RTSCoreFramework
         //Layer Getters
         public LayerMask AllyLayers { get { return allyLayers; } }
         public LayerMask SightLayers { get { return sightLayers; } }
+        public LayerMask SightNoCurrentPlayerLayers { get { return sightNoCurrentPlayerLayers; } }
+
         public LayerMask SingleAllyLayer
         {
             get { return LayerMask.NameToLayer(singleAllyLayerName); }
