@@ -1335,6 +1335,7 @@ GameObject:
   - component: {fileID: 114337753060850616}
   - component: {fileID: 114505142003567552}
   - component: {fileID: 114893248757319296}
+  - component: {fileID: 114940800323444018}
   m_Layer: 8
   m_Name: Blue Silly Pants
   m_TagString: Ally
@@ -6552,12 +6553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 40
   followDistance: 5
-  allyLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  sightLayers:
-    serializedVersion: 2
-    m_Bits: 3221225729
 --- !u!114 &114322132988961348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8300,6 +8295,17 @@ MonoBehaviour:
   m_SpeedMultiplier: 1
   m_Indicator: {fileID: 0}
   m_MinFallHeight: 0
+--- !u!114 &114940800323444018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb35a6d04180274690f291c2d302af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &120435993857251058
 LineRenderer:
   m_ObjectHideFlags: 1

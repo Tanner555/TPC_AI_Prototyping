@@ -1210,6 +1210,7 @@ GameObject:
   - component: {fileID: 114981557185281530}
   - component: {fileID: 114983068936097046}
   - component: {fileID: 114192841167202860}
+  - component: {fileID: 114721911958027200}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -7616,6 +7617,18 @@ MonoBehaviour:
   m_MovementCycleNormalizedLength: 0.5
   m_MovementCycleLegOffset: 0
   m_UniformAcceleration: 0
+--- !u!114 &114721911958027200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb35a6d04180274690f291c2d302af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterType: 1
 --- !u!114 &114733039229918674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8183,12 +8196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 40
   followDistance: 5
-  allyLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  sightLayers:
-    serializedVersion: 2
-    m_Bits: 3221225729
 --- !u!114 &114959455293341962
 MonoBehaviour:
   m_ObjectHideFlags: 1

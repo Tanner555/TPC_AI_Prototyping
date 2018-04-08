@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4185075042547060}
   - component: {fileID: 114642444853133984}
+  - component: {fileID: 114619592547327426}
   m_Layer: 0
   m_Name: PartyManagerForEnemies
   m_TagString: Untagged
@@ -36,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4058494446640414}
   - component: {fileID: 114433783553032088}
+  - component: {fileID: 114181219453061748}
   m_Layer: 0
   m_Name: PartyManagerForAllies
   m_TagString: Untagged
@@ -57,6 +59,7 @@ GameObject:
   - component: {fileID: 114189638851984324}
   - component: {fileID: 114786682207096632}
   - component: {fileID: 114416084807247614}
+  - component: {fileID: 114925828901233208}
   m_Layer: 0
   m_Name: RTS Managers
   m_TagString: Untagged
@@ -119,6 +122,17 @@ MonoBehaviour:
   isGameOver: 0
   isInventoryUIOn: 0
   isMenuOn: 0
+--- !u!114 &114181219453061748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245148991828238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b49c9726854024cbec72a5518ede98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114189638851984324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,6 +225,17 @@ MonoBehaviour:
   RMHeldThreshold: 0.15
   LMHeldThreshold: 0.15
   SelectionImage: {fileID: 0}
+--- !u!114 &114619592547327426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116183501613854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b49c9726854024cbec72a5518ede98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114642444853133984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,5 +261,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41843a65a9ad7bf46a3a00a0d95a6727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114925828901233208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad48d57880cc3c849894dd386c122a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
