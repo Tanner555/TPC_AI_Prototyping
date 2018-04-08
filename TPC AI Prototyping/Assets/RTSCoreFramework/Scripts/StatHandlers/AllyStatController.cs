@@ -8,7 +8,9 @@ namespace RTSCoreFramework
     {
         #region Fields
         [Header("Will be used to identify the character")]
-        public RTSCharacterType CharacterType;
+        public RTSCharacterType characterType;
+
+        private CharacterStats myCharacterStats;
         #endregion
 
         #region Properties
@@ -34,7 +36,7 @@ namespace RTSCoreFramework
         // Use this for initialization
         void Start()
         {
-            InitializeCharacter();
+            InitializeCharacterStats();
         }
 
         // Update is called once per frame
@@ -42,13 +44,11 @@ namespace RTSCoreFramework
         {
 
         }
-
-        void InitializeCharacter()
-        {
-            //TODO: RTSPrototype StatController Consider Changing Initialize Method For Enemies
-            statHandler.RequestCharacterStatEntry(allyMember, CharacterType);
-        }
         #endregion
 
+        void InitializeCharacterStats()
+        {
+            myCharacterStats = statHandler.RetrieveCharacterStats(allyMember, characterType);
+        }
     }
 }
