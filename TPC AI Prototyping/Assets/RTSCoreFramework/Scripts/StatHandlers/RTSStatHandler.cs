@@ -20,7 +20,9 @@ namespace RTSCoreFramework
     {
         [Tooltip("Used to Identify a Character")]
         public RTSCharacterType CharacterType;
-        
+
+        //Health Stats
+        public int MaxHealth;
         public int Health;
     }
     [System.Serializable]

@@ -82,19 +82,13 @@ namespace RTSPrototype
         #region HealthProps
         public override int AllyHealth
         {
-            get { return HPValue; }
-            protected set { HPValue = value; }
+            get { return allyStatController.Stat_Health; }
+            protected set { allyStatController.Stat_Health = value; }
         }
 
         public override int AllyMaxHealth
         {
-            get { return MaxHPValue; }
-            protected set { MaxHPValue = value; }
-        }
-
-        public override int AllyMinHealth
-        {
-            get { return HPStatus.minValue; }
+            get { return allyStatController.Stat_MaxHealth; }
         }
         #endregion
 

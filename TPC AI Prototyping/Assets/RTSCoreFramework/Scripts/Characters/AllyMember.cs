@@ -85,7 +85,6 @@ namespace RTSCoreFramework
         public virtual int AllyMaxHealth
         {
             get { return _allyMaxHealth; }
-            protected set { _allyMaxHealth = value; }
         }
         private int _allyMaxHealth = 100;
 
@@ -125,12 +124,16 @@ namespace RTSCoreFramework
         Rigidbody _myRigidbody = null;
         public AllyEventHandler allyEventHandler { get; protected set; }
         public AllyAIController aiController { get; protected set; }
+        protected AllyStatController allyStatController { get; set; }
         #endregion
 
         #region BooleanProperties
         protected virtual bool AllComponentsAreValid
         {
-            get { return allyEventHandler && aiController; }
+            get {
+                return allyEventHandler && aiController &&
+                  allyStatController;
+            }
         }
 
         public bool bIsCurrentPlayer { get { return partyManager ? partyManager.AllyIsCurrentPlayer(this) : false; } }
@@ -280,6 +283,7 @@ namespace RTSCoreFramework
         {
             allyEventHandler = GetComponent<AllyEventHandler>();
             aiController = GetComponent<AllyAIController>();
+            allyStatController = GetComponent<AllyStatController>();
 
             if (partyManager == null)
                 Debug.LogError("No partymanager on allymember!");
@@ -287,6 +291,8 @@ namespace RTSCoreFramework
                 Debug.LogError("No eventHandler on allymember!");
             if (aiController == null)
                 Debug.LogError("No aiController on allymember!");
+            if (allyStatController == null)
+                Debug.LogError("No allyStatController on allymember!");
 
             if (AllyFaction == RTSGameMode.EFactions.Faction_Default)
             {

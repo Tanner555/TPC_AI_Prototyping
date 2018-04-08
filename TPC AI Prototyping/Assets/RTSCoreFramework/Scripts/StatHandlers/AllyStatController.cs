@@ -13,7 +13,7 @@ namespace RTSCoreFramework
         private CharacterStats myCharacterStats;
         #endregion
 
-        #region Properties
+        #region SetupProperties
         AllyMember allyMember
         {
             get
@@ -28,13 +28,32 @@ namespace RTSCoreFramework
 
         RTSStatHandler statHandler
         {
-            get { return RTSStatHandler.thisInstance; }
+            get
+            {
+                //For Faster Access when using OnEnable method
+                if(RTSStatHandler.thisInstance != null) 
+                    return RTSStatHandler.thisInstance;
+
+                return GameObject.FindObjectOfType<RTSStatHandler>();
+            }
+        }
+        #endregion
+
+        #region AccessProperties
+        public int Stat_Health
+        {
+            get { return myCharacterStats.Health; }
+            set { myCharacterStats.Health = value; }
+        }
+        public int Stat_MaxHealth
+        {
+            get { return myCharacterStats.MaxHealth; }
         }
         #endregion
 
         #region UnityMessages
         // Use this for initialization
-        void Start()
+        void OnEnable()
         {
             InitializeCharacterStats();
         }
