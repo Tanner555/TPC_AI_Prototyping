@@ -8,7 +8,7 @@ namespace RTSCoreFramework
     {
         #region Fields
         [Header("Will be used to identify the character")]
-        public RTSCharacterType characterType;
+        public ECharacterType characterType;
 
         private CharacterStats myCharacterStats;
         #endregion

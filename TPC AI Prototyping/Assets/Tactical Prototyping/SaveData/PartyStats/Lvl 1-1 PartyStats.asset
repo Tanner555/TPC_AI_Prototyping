@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4e53810a32329ab48b8d98184b1299c1, type: 3}
   m_Name: Lvl 1-1 PartyStats
-  m_EditorClassIdentifier: Assembly-CSharp:RTSCoreFramework:PartyStatsData
+  m_EditorClassIdentifier: 
   PartyStatList:
   - Commander: 0
     healthPotionAmount: 10

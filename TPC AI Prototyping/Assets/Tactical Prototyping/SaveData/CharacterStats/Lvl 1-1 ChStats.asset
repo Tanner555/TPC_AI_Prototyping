@@ -8,16 +8,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 96c3482c89a319f4a876f048c5a36cbc, type: 3}
   m_Name: Lvl 1-1 ChStats
-  m_EditorClassIdentifier: Assembly-CSharp:RTSCoreFramework:CharacterStatsData
+  m_EditorClassIdentifier: 
   CharacterStatList:
   - CharacterType: 0
     MaxHealth: 100
     Health: 100
+    EquippedWeapon: 0
+    PrimaryWeapon: 2
+    SecondaryWeapon: 1
   - CharacterType: 1
     MaxHealth: 100
     Health: 100
+    EquippedWeapon: 0
+    PrimaryWeapon: 2
+    SecondaryWeapon: 1
   - CharacterType: 2
     MaxHealth: 100
     Health: 100
+    EquippedWeapon: 0
+    PrimaryWeapon: 2
+    SecondaryWeapon: 1

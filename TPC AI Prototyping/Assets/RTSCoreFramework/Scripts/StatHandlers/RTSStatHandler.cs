@@ -4,60 +4,13 @@ using UnityEngine;
 
 namespace RTSCoreFramework
 {
-    #region Enums
-    public enum RTSCharacterType
-    {
-        BlueSillyPants, BrownSillyPants, EvilAssaultVillian1,
-
-        //Only Used When Character Type Could Not Be Found
-        NoCharacterType
-    }
-    #endregion
-
-    #region Structs
-    [System.Serializable]
-    public struct CharacterStats
-    {
-        [Tooltip("Used to Identify a Character")]
-        public RTSCharacterType CharacterType;
-
-        //Health Stats
-        public int MaxHealth;
-        public int Health;
-    }
-    [System.Serializable]
-    public struct PartyStats
-    {
-        [Tooltip("Used to Identify the Commander")]
-        public RTSGameMode.ECommanders Commander;
-
-        public int healthPotionAmount;
-    }
-    #endregion
-
-    #region ScriptableObjects
-    [CreateAssetMenu(menuName = "RTSPrototype/CharacterStatsData")]
-    public class CharacterStatsData : ScriptableObject
-    {
-        [Header("Character Stats")]
-        [SerializeField]
-        public List<CharacterStats> CharacterStatList;
-    }
-    [CreateAssetMenu(menuName = "RTSPrototype/PartyStatsData")]
-    public class PartyStatsData: ScriptableObject
-    {
-        [Header("Party Stats")]
-        [SerializeField]
-        public List<PartyStats> PartyStatList;
-    }
-    #endregion
-
     public class RTSStatHandler : MonoBehaviour
     {
         #region Dictionaries
         //Used to Retrieve Information from A Character and Commander Enum
-        protected Dictionary<RTSCharacterType, CharacterStats> CharacterStatDictionary = new Dictionary<RTSCharacterType, CharacterStats>();
+        protected Dictionary<ECharacterType, CharacterStats> CharacterStatDictionary = new Dictionary<ECharacterType, CharacterStats>();
         protected Dictionary<RTSGameMode.ECommanders, PartyStats> PartyStatDictionary = new Dictionary<RTSGameMode.ECommanders, PartyStats>();
+        protected Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary = new Dictionary<EWeaponType, WeaponStats>();
         #endregion
 
         #region Fields
@@ -67,6 +20,9 @@ namespace RTSCoreFramework
         [Header("Data Containing Party Stats")]
         [SerializeField]
         protected PartyStatsData partyStatsData;
+        [Header("Data Containing Weapon Stats")]
+        [SerializeField]
+        protected WeaponStatsData weaponStatsData;
         #endregion
 
         #region Properties
@@ -90,25 +46,7 @@ namespace RTSCoreFramework
             else
                 thisInstance = this;
 
-            //Transfer Values From Serialized List To A Dictionary
-            if (characterStatsData == null)
-            {
-                Debug.LogError("No CharacterStats Data on StatHandler");
-                return;
-            }
-            foreach (var _stat in characterStatsData.CharacterStatList)
-            {
-                CharacterStatDictionary.Add(_stat.CharacterType, _stat);
-            }
-            if (partyStatsData == null)
-            {
-                Debug.LogError("No PartyStats Data on StatHandler");
-                return;
-            }
-            foreach (var _stat in partyStatsData.PartyStatList)
-            {
-                PartyStatDictionary.Add(_stat.Commander, _stat);
-            }
+            InitializeDictionaryValues();
         }
 
         // Use this for initialization
@@ -124,8 +62,45 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Initialization
+        void InitializeDictionaryValues()
+        {
+            //Transfer Values From Serialized List To A Dictionary
+            //Character Data
+            if (characterStatsData == null)
+            {
+                Debug.LogError("No CharacterStats Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in characterStatsData.CharacterStatList)
+            {
+                CharacterStatDictionary.Add(_stat.CharacterType, _stat);
+            }
+            //Party Data
+            if (partyStatsData == null)
+            {
+                Debug.LogError("No PartyStats Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in partyStatsData.PartyStatList)
+            {
+                PartyStatDictionary.Add(_stat.Commander, _stat);
+            }
+            //Weapon Data
+            if (weaponStatsData == null)
+            {
+                Debug.LogError("No WeaponStats Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in weaponStatsData.WeaponStatList)
+            {
+                WeaponStatDictionary.Add(_stat.WeaponType, _stat);
+            }
+        }
+        #endregion
+
         #region CharacterStatRequests
-        public CharacterStats RetrieveCharacterStats(AllyMember _ally, RTSCharacterType _cType)
+        public CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
         {
             if (CharacterStatDictionary.ContainsKey(_cType))
             {
@@ -134,7 +109,7 @@ namespace RTSCoreFramework
             Debug.Log("Character Type: " + _cType.ToString() + " could not be found");
             return new CharacterStats
             {
-                CharacterType = RTSCharacterType.NoCharacterType,
+                CharacterType = ECharacterType.NoCharacterType,
                 Health = 0
             };
         }

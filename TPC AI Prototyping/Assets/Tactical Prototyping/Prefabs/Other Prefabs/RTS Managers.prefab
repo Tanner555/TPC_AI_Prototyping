@@ -274,5 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad48d57880cc3c849894dd386c122a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStatsData: {fileID: 11400000, guid: 4798fa4b931fa0b499abaf08e68f3991, type: 2}
-  partyStatsData: {fileID: 11400000, guid: d6f2ef4077128d2429cffd94ed50772f, type: 2}
+  characterStatsData: {fileID: 11400000, guid: e70711de95bfbf54da9cd2b552ee2cd4, type: 2}
+  partyStatsData: {fileID: 11400000, guid: 0f2685a46a552374c94e463e1995dfe2, type: 2}
+  weaponStatsData: {fileID: 11400000, guid: 78f598e6d98d1b04aa98c1f8522dac9b, type: 2}
