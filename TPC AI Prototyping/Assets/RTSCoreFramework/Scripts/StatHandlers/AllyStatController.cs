@@ -88,7 +88,12 @@ namespace RTSCoreFramework
 
         private void Start()
         {
+            Invoke("OnDelayStart", 0.5f);
             RetrieveAllWeaponStats();
+        }
+
+        private void OnDelayStart()
+        {
             //Equip whatever the ally is holding
             eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
         }
