@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -575660022, guid: f4979b3083d349140bb14b6ec7fc999a, type: 3}
   m_Name: ORKProject
   m_EditorClassIdentifier: 
-  time: 2/9/2018 8:29:40 AM
+  time: 4/9/2018 2:50:46 AM
   version: 2.14.4
   keys:
   - editorSettings
@@ -8406,7 +8406,7 @@ MonoBehaviour:
       >\n\t<_float waitTime=\"0\" />\n\t<_bool mainMenuLoadAsync=\"False\" autoCall=\"True\"
       newGameLoadAsync=\"False\" newGameStopMusic=\"True\" setStartGroup=\"False\"
       useFadeOut=\"True\" useFadeIn=\"True\" />\n\t<_string>\n\t\t<mainMenuScene><![CDATA[0
-      Main Menu]]></mainMenuScene>\n\t\t<newGameScene><![CDATA[1 Town]]></newGameScene>\n\t</_string>\n\t<_eventasset
+      Main Menu]]></mainMenuScene>\n\t\t<newGameScene><![CDATA[TPS Demo Map]]></newGameScene>\n\t</_string>\n\t<_eventasset
       startEvent=\"0\" />\n\t<fadeOut interpolation=\"0\" >\n\t\t<_float time=\"0.5\"
       />\n\t\t<_bool alpha=\"True\" red=\"False\" green=\"False\" blue=\"False\" fromCurrent=\"False\"
       />\n\t\t<_floatarrays>\n\t\t\t<startColor 0 0 0 0 />\n\t\t\t<endColor 0 0 0
