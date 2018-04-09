@@ -298,7 +298,7 @@ namespace RTSPrototype
         #region Getters
         public override int GetDamageRate()
         {
-            return ATKValue;
+            return allyStatController.CalculateDamageRate();
         }
         #endregion
 

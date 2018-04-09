@@ -10,7 +10,7 @@ namespace RTSCoreFramework
         //Used to Retrieve Information from A Character and Commander Enum
         protected Dictionary<ECharacterType, CharacterStats> CharacterStatDictionary = new Dictionary<ECharacterType, CharacterStats>();
         protected Dictionary<RTSGameMode.ECommanders, PartyStats> PartyStatDictionary = new Dictionary<RTSGameMode.ECommanders, PartyStats>();
-        protected Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary = new Dictionary<EWeaponType, WeaponStats>();
+        protected Dictionary<EWeaponType, WeaponStats> weaponStatDictionary = new Dictionary<EWeaponType, WeaponStats>();
         #endregion
 
         #region Fields
@@ -36,6 +36,13 @@ namespace RTSCoreFramework
         //{
         //    get { return PartyStatDictionary; }
         //}
+        #endregion
+
+        #region Getters
+        public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
+        {
+            get { return weaponStatDictionary; }
+        }
         #endregion
 
         #region UnityMessages
@@ -94,7 +101,7 @@ namespace RTSCoreFramework
             }
             foreach (var _stat in weaponStatsData.WeaponStatList)
             {
-                WeaponStatDictionary.Add(_stat.WeaponType, _stat);
+                weaponStatDictionary.Add(_stat.WeaponType, _stat);
             }
         }
         #endregion

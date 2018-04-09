@@ -11,6 +11,7 @@ namespace RTSCoreFramework
         public ECharacterType characterType;
 
         private CharacterStats myCharacterStats;
+        private Dictionary<EWeaponType, WeaponStats> allWeaponStats = new Dictionary<EWeaponType, WeaponStats>();
         #endregion
 
         #region SetupProperties
@@ -87,6 +88,7 @@ namespace RTSCoreFramework
 
         private void Start()
         {
+            RetrieveAllWeaponStats();
             //Equip whatever the ally is holding
             eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
         }
@@ -94,6 +96,27 @@ namespace RTSCoreFramework
         private void OnDisable()
         {
             UnsubFromEvents();
+        }
+        #endregion
+
+        #region Getters
+        public int CalculateDamageRate()
+        {
+            var _weapon = GetWeaponStats();
+            return _weapon.DamageRate;
+        }
+
+        private WeaponStats GetWeaponStats()
+        {
+            switch (myCharacterStats.EquippedWeapon)
+            {
+                case EEquipType.Primary:
+                    return allWeaponStats[myCharacterStats.PrimaryWeapon];
+                case EEquipType.Secondary:
+                    return allWeaponStats[myCharacterStats.SecondaryWeapon];
+                default:
+                    return new WeaponStats();
+            }
         }
         #endregion
 
@@ -138,6 +161,10 @@ namespace RTSCoreFramework
         void InitializeCharacterStats()
         {
             myCharacterStats = statHandler.RetrieveCharacterStats(allyMember, characterType);
+        }
+        void RetrieveAllWeaponStats()
+        {
+            allWeaponStats = statHandler.WeaponStatDictionary;
         }
         #endregion
 
