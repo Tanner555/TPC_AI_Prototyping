@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Lvl 1-1 Data
-  m_EditorClassIdentifier: Assembly-CSharp:RTSCoreFramework:RTSStatsData
+  m_Name: Lvl 1-1 ChStats
+  m_EditorClassIdentifier: Assembly-CSharp:RTSCoreFramework:CharacterStatsData
   CharacterStatList:
   - CharacterType: 0
     MaxHealth: 100
@@ -21,8 +21,3 @@ MonoBehaviour:
   - CharacterType: 2
     MaxHealth: 100
     Health: 100
-  PartyStatList:
-  - Commander: 0
-    healthPotionAmount: 10
-  - Commander: 1
-    healthPotionAmount: 10

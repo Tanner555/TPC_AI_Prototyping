@@ -36,12 +36,17 @@ namespace RTSCoreFramework
     #endregion
 
     #region ScriptableObjects
-    [CreateAssetMenu(menuName = "RTSPrototype/RTSStatsData")]
-    public class RTSStatsData : ScriptableObject
+    [CreateAssetMenu(menuName = "RTSPrototype/CharacterStatsData")]
+    public class CharacterStatsData : ScriptableObject
     {
-        [Header("Character and Party Stats")]
+        [Header("Character Stats")]
         [SerializeField]
         public List<CharacterStats> CharacterStatList;
+    }
+    [CreateAssetMenu(menuName = "RTSPrototype/PartyStatsData")]
+    public class PartyStatsData: ScriptableObject
+    {
+        [Header("Party Stats")]
         [SerializeField]
         public List<PartyStats> PartyStatList;
     }
@@ -56,9 +61,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        [Header("Data Containing Character and Party Stats")]
+        [Header("Data Containing Character Stats")]
         [SerializeField]
-        protected RTSStatsData rtsStatsData;
+        protected CharacterStatsData characterStatsData;
+        [Header("Data Containing Party Stats")]
+        [SerializeField]
+        protected PartyStatsData partyStatsData;
         #endregion
 
         #region Properties
@@ -83,12 +91,21 @@ namespace RTSCoreFramework
                 thisInstance = this;
 
             //Transfer Values From Serialized List To A Dictionary
-            if (rtsStatsData == null) return;
-            foreach (var _stat in rtsStatsData.CharacterStatList)
+            if (characterStatsData == null)
+            {
+                Debug.LogError("No CharacterStats Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in characterStatsData.CharacterStatList)
             {
                 CharacterStatDictionary.Add(_stat.CharacterType, _stat);
             }
-            foreach (var _stat in rtsStatsData.PartyStatList)
+            if (partyStatsData == null)
+            {
+                Debug.LogError("No PartyStats Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in partyStatsData.PartyStatList)
             {
                 PartyStatDictionary.Add(_stat.Commander, _stat);
             }

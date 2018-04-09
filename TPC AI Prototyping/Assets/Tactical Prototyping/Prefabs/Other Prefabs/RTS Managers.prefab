@@ -274,4 +274,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad48d57880cc3c849894dd386c122a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rtsStatsData: {fileID: 11400000, guid: 6fa4bbeac4d46cc4ebe0c7f18ede3ff2, type: 2}
+  characterStatsData: {fileID: 11400000, guid: 4798fa4b931fa0b499abaf08e68f3991, type: 2}
+  partyStatsData: {fileID: 11400000, guid: d6f2ef4077128d2429cffd94ed50772f, type: 2}
