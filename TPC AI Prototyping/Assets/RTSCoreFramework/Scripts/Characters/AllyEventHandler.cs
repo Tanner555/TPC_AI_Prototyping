@@ -59,8 +59,10 @@ namespace RTSCoreFramework
         public delegate void AllyHandler(AllyMember ally);
         public event AllyHandler EventCommandAttackEnemy;
 
-        public delegate void TwoBoolTwoStringHandler(bool lEquipped, string lHand, bool rEquipped, string rHand);
-        public event TwoBoolTwoStringHandler OnEquipmentChanged;
+        public delegate void EEquipTypeHandler(EEquipType _eType);
+        public delegate void EWeaponTypeHandler(EEquipType _eType, EWeaponType _weaponType, bool _equipped);
+        public event EEquipTypeHandler OnEquipTypeChanged;
+        public event EWeaponTypeHandler OnWeaponChanged;
 
         #endregion
 
@@ -253,10 +255,18 @@ namespace RTSCoreFramework
             if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);
         }
 
-        public void CallOnEquipmentChanged(bool lEquipped, string lHand, bool rEquipped, string rHand)
+        public void CallOnEquipTypeChanged(EEquipType _eType)
         {
-            if (OnEquipmentChanged != null)
-                OnEquipmentChanged(lEquipped, lHand, rEquipped, rHand);
+            if (OnEquipTypeChanged != null)
+            {
+                OnEquipTypeChanged(_eType);
+            }
+        }
+
+        public void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        {
+            if (OnWeaponChanged != null)
+                OnWeaponChanged(_eType, _weaponType, _equipped);
         }
         #endregion
 

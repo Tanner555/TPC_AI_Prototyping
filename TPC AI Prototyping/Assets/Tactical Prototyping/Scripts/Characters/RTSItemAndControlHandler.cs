@@ -60,6 +60,11 @@ namespace RTSPrototype
 
         private void Start()
         {
+            
+        }
+
+        private void OnEnable()
+        {
             SubToEvents();
         }
 
@@ -70,21 +75,30 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnEquipmentChanged(bool lEquipped, string lHand, bool rEquipped, string rHand)
+        void OnWeaponTypeChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
-            if (lEquipped)
+            if (_equipped)
             {
-                if (CheckForInventoryMatch(lHand))
-                    SetEquippedItemFromString(lHand);
-            }
-            else if (rEquipped)
-            {
-                if (CheckForInventoryMatch(rHand))
-                    SetEquippedItemFromString(rHand);
-            }
-            else if(FistType != null)
-            {
-                SetEquippedItem(FistType);
+                switch (_weaponType)
+                {
+                    case EWeaponType.Fist:
+                        SetEquippedItem(FistType);
+                        break;
+                    case EWeaponType.Pistol:
+                        SetEquippedItem(PistolType);
+                        break;
+                    case EWeaponType.AssaultRifle:
+                        SetEquippedItem(AssualtRifleType);
+                        break;
+                    case EWeaponType.Shotgun:
+                        SetEquippedItem(ShotgunType);
+                        break;
+                    case EWeaponType.SniperRifle:
+                        SetEquippedItem(SniperRifleType);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -163,34 +177,6 @@ namespace RTSPrototype
         #endregion
 
         #region RPGInventoryToTPC
-        private bool CheckForInventoryMatch(string _gun)
-        {
-            bool _match = _gun == AssaultRifleName || _gun == PistolName ||
-                _gun == ShotgunName || _gun == SniperRifleName;
-            return _match;
-        }
-
-        private void SetEquippedItemFromString(string _gun)
-        {
-            switch (_gun)
-            {
-                case AssaultRifleName:
-                    SetEquippedItem(AssualtRifleType);
-                    break;
-                case PistolName:
-                    SetEquippedItem(PistolType);
-                    break;
-                case ShotgunName:
-                    SetEquippedItem(ShotgunType);
-                    break;
-                case SniperRifleName:
-                    SetEquippedItem(SniperRifleType);
-                    break;
-                default:
-                    break;
-            }
-        }
-
         void SetEquippedItem(ItemType _type)
         {
             var _gun = myInventory.GetCurrentItem(typeof(PrimaryItemType));
@@ -230,7 +216,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire += OnTryFire;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
-            myEventHandler.OnEquipmentChanged += OnEquipmentChanged;
+            myEventHandler.OnWeaponChanged += OnWeaponTypeChanged;
         }
 
         void UnsubFromEvents()
@@ -241,7 +227,7 @@ namespace RTSPrototype
             myEventHandler.OnTryFire -= OnTryFire;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
-            myEventHandler.OnEquipmentChanged -= OnEquipmentChanged;
+            myEventHandler.OnWeaponChanged -= OnWeaponTypeChanged;
         }
         #endregion
     }

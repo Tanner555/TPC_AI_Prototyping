@@ -26,6 +26,18 @@ namespace RTSCoreFramework
         }
         AllyMember __allyMember = null;
 
+        AllyEventHandler eventHandler
+        {
+            get
+            {
+                if (__eventHandler == null)
+                    __eventHandler = GetComponent<AllyEventHandler>();
+
+                return __eventHandler;
+            }
+        }
+        AllyEventHandler __eventHandler = null;
+
         RTSStatHandler statHandler
         {
             get
@@ -40,6 +52,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region AccessProperties
+        //Health
         public int Stat_Health
         {
             get { return myCharacterStats.Health; }
@@ -49,6 +62,19 @@ namespace RTSCoreFramework
         {
             get { return myCharacterStats.MaxHealth; }
         }
+        //Weapons
+        public EEquipType Stat_EquipType
+        {
+            get { return myCharacterStats.EquippedWeapon; }
+        }
+        public EWeaponType Stat_PrimaryWeapon
+        {
+            get { return myCharacterStats.PrimaryWeapon; }
+        }
+        public EWeaponType Stat_SecondaryWeapon
+        {
+            get { return myCharacterStats.SecondaryWeapon; }
+        }
         #endregion
 
         #region UnityMessages
@@ -56,18 +82,65 @@ namespace RTSCoreFramework
         void OnEnable()
         {
             InitializeCharacterStats();
+            SubToEvents();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
+            //Equip whatever the ally is holding
+            eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
+        }
 
+        private void OnDisable()
+        {
+            UnsubFromEvents();
         }
         #endregion
 
+        #region Handlers
+        void HandleEquipTypeChanged(EEquipType _eType)
+        {
+            myCharacterStats.EquippedWeapon = _eType;
+            var _weapon = myCharacterStats.EquippedWeapon == EEquipType.Primary ?
+                myCharacterStats.PrimaryWeapon : myCharacterStats.SecondaryWeapon;
+            eventHandler.CallOnWeaponChanged(myCharacterStats.EquippedWeapon, _weapon, true);
+            
+        }
+        void HandleWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        {
+            switch (_eType)
+            {
+                case EEquipType.Primary:
+                    if (_weaponType != myCharacterStats.PrimaryWeapon)
+                        myCharacterStats.PrimaryWeapon = _weaponType;
+                    break;
+                case EEquipType.Secondary:
+                    if (_weaponType != myCharacterStats.SecondaryWeapon)
+                        myCharacterStats.SecondaryWeapon = _weaponType;
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+        #region Initialization
+        void SubToEvents()
+        {
+            eventHandler.OnEquipTypeChanged += HandleEquipTypeChanged;
+            eventHandler.OnWeaponChanged += HandleWeaponChanged;
+        }
+        void UnsubFromEvents()
+        {
+            eventHandler.OnEquipTypeChanged -= HandleEquipTypeChanged;
+            eventHandler.OnWeaponChanged -= HandleWeaponChanged;
+        }
         void InitializeCharacterStats()
         {
             myCharacterStats = statHandler.RetrieveCharacterStats(allyMember, characterType);
         }
+        #endregion
+
+
     }
 }

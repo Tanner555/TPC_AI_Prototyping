@@ -271,26 +271,11 @@ namespace RTSPrototype
         protected override void OnDelayStart()
         {
             base.OnDelayStart();
-            //Equip Whatever the Combatant is Holding
-            allyEventHandler.CallOnEquipmentChanged(
-                LeftHandEquipSlot.Equipped,
-                LeftHandName,
-                RightHandEquipSlot.Equipped,
-                RightHandName);
         }
 
         #endregion
 
         #region Handlers
-        void OnEquipChange(ORKFramework.Combatant c)
-        {
-            allyEventHandler.CallOnEquipmentChanged(
-                LeftHandEquipSlot.Equipped,
-                LeftHandName,
-                RightHandEquipSlot.Equipped,
-                RightHandName);
-        }
-
         public override void AllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             base.AllyTakeDamage(amount, position, force, _instigator, hitGameObject);
@@ -321,13 +306,11 @@ namespace RTSPrototype
         protected override void SubToEvents()
         {
             base.SubToEvents();
-            RPGCombatant.Equipment.Changed += OnEquipChange;
         }
 
         protected override void UnSubFromEvents()
         {
             base.UnSubFromEvents();
-            RPGCombatant.Equipment.Changed -= OnEquipChange;
         }
         #endregion
 
