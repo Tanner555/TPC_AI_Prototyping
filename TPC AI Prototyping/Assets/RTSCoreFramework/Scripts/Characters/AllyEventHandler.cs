@@ -64,6 +64,9 @@ namespace RTSCoreFramework
         public event EEquipTypeHandler OnEquipTypeChanged;
         public event EWeaponTypeHandler OnWeaponChanged;
 
+        public delegate void TwoIntArgsHandler(int _firstNum, int _secondNum);
+        public event TwoIntArgsHandler OnAmmoChanged;
+
         #endregion
 
         #region UnityMessages
@@ -77,7 +80,35 @@ namespace RTSCoreFramework
             bIsAiAttacking = false;
         }
 
+        protected virtual void Start()
+        {
+            Invoke("OnDelayStart", 0.5f);
+            SubToEvents();
+        }
+
+        protected virtual void OnDelayStart()
+        {
+            SubToEventsLater();
+        }
+
         protected virtual void OnDisable()
+        {
+            UnsubFromEvents();
+        }
+        #endregion
+
+        #region Initialization
+        protected virtual void SubToEvents()
+        {
+
+        }
+
+        protected virtual void SubToEventsLater()
+        {
+
+        }
+
+        protected virtual void UnsubFromEvents()
         {
 
         }
@@ -267,6 +298,11 @@ namespace RTSCoreFramework
         {
             if (OnWeaponChanged != null)
                 OnWeaponChanged(_eType, _weaponType, _equipped);
+        }
+
+        protected void CallOnAmmoChanged(int _loaded, int _unloaded)
+        {
+            if (OnAmmoChanged != null) OnAmmoChanged(_loaded, _unloaded);
         }
         #endregion
 

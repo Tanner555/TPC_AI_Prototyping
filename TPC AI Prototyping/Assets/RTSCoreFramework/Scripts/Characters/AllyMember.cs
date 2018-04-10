@@ -252,6 +252,11 @@ namespace RTSCoreFramework
             }
         }
 
+        private void OnEquippedWeaponAmmoChanged(int _loaded, int _unloaded)
+        {
+
+        }
+
         private void DestroyAlly() { Destroy(this); }
         #endregion
 
@@ -305,12 +310,14 @@ namespace RTSCoreFramework
         {
             allyEventHandler.EventAllyDied += AllyOnDeath;
             allyEventHandler.EventPartySwitching += OnPartySwitch;
+            allyEventHandler.OnAmmoChanged += OnEquippedWeaponAmmoChanged;
         }
 
         protected virtual void UnSubFromEvents()
         {
             allyEventHandler.EventAllyDied -= AllyOnDeath;
             allyEventHandler.EventPartySwitching -= OnPartySwitch;
+            allyEventHandler.OnAmmoChanged -= OnEquippedWeaponAmmoChanged;
         }
         #endregion
 
