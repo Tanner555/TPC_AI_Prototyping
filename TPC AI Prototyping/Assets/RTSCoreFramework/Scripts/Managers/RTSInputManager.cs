@@ -58,6 +58,8 @@ namespace RTSCoreFramework
         private bool bScrollIsCurrentlyPositive = false;
         //Scroll Timer Handling
         private bool isScrolling = false;
+        //Used to Fix First Scroll Not Working Issue
+        private bool bBeganScrolling = false;
         //Stop Scroll Functionality
         [Header("Mouse ScrollWheel Config")]
         public float scrollStoppedThreshold = 0.15f;
@@ -134,7 +136,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region MouseSetup
-
         void LeftMouseDownSetup()
         {
             if (UiIsEnabled) return;
@@ -230,6 +231,14 @@ namespace RTSCoreFramework
             {
                 if (isLMHeldDown) return;
                 bScrollIsCurrentlyPositive = bScrollAxisIsPositive;
+
+                //Fixes First Scroll Not Working Issue
+                if (bBeganScrolling == false)
+                {
+                    bBeganScrolling = true;
+                    gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                }
+
                 if (bScrollWasPreviouslyPositive != bScrollIsCurrentlyPositive)
                 {
                     gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);

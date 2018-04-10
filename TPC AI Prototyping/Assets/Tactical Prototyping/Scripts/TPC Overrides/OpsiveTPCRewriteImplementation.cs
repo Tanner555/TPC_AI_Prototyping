@@ -61,6 +61,7 @@ namespace RTSPrototype
         //    if (allyMember.bIsCurrentPlayer)
         //        ExecuteEvent("MyEvent", gameObject);
         //}  
+
         /// <summary>
         /// RTSPrototype-OpsiveTPC-ShootableWeapon: Inside HitscanFire() method, comment out code
         /// and insert this function. Replaces default hitscan fire with autotargeting ally target.
@@ -101,6 +102,17 @@ namespace RTSPrototype
         //    {
         //        AddHitscanTracer(m_FirePoint.position + fireDirection * 1000);
         //    }
+        //}
+
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-CameraHandler: Inside Update() method, comment out ln of code
+        /// at the end, where m_StepZoom is being set.
+        /// This allows me to use a custom stepzoom solution in my RTSCameraController inherited class.
+        /// </summary>
+        //void Update()
+        //{
+        //    m_StepZoom = m_CameraController.ActiveState.StepZoomSensitivity > 0 ?
+        //    m_PlayerInput.GetAxisRaw(Constants.StepZoomName) : 0;
         //}
         #endregion
 

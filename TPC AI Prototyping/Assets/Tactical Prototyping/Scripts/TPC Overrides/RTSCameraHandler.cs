@@ -31,8 +31,6 @@ namespace RTSPrototype
         {
             zoomCamera = enable;
             zoomAxisIsPositive = isPositive;
-            Debug.Log("Toggle Zoom: " + zoomCamera.ToString());
-            Debug.Log("Is Positive: " + zoomAxisIsPositive.ToString());
         }
         #endregion
 
@@ -81,10 +79,13 @@ namespace RTSPrototype
             {
                 base.Update();
             }
+            if (zoomCamera)
+            {
+                m_StepZoom = zoomAxisIsPositive ? 0.1f : -0.1f;
+            }
             else
             {
-                m_StepZoom = m_CameraController.ActiveState.StepZoomSensitivity > 0 ?
-                    m_PlayerInput.GetAxisRaw(Constants.StepZoomName) : 0;
+                m_StepZoom = 0.0f;
             }
         }
         #endregion
