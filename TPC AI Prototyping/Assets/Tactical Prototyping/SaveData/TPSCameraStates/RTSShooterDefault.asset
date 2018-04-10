@@ -42,9 +42,9 @@ MonoBehaviour:
   m_ViewDistance: 10
   m_ViewStep: 5
   m_LookDirection: {x: 0, y: 0, z: 1}
-  m_ApplyStepZoom: 0
-  m_StepZoomSensitivity: 0
-  m_MinStepZoom: 0
+  m_ApplyStepZoom: 1
+  m_StepZoomSensitivity: 600
+  m_MinStepZoom: -30
   m_MaxStepZoom: 0
   m_ApplyCollisionRadius: 1
   m_CollisionRadius: 0.01

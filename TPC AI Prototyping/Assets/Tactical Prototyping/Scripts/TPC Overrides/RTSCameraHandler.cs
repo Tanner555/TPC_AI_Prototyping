@@ -68,6 +68,11 @@ namespace RTSPrototype
             {
                 base.Update();
             }
+            else
+            {
+                m_StepZoom = m_CameraController.ActiveState.StepZoomSensitivity > 0 ?
+                    m_PlayerInput.GetAxisRaw(Constants.StepZoomName) : 0;
+            }
         }
         #endregion
 

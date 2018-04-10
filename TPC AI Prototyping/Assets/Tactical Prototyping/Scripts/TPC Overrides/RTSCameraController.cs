@@ -33,6 +33,13 @@ namespace RTSPrototype
         }
         #endregion
 
+        #region Properties
+        RTSPlayerInput myPlayerInput
+        {
+            get { return RTSPlayerInput.thisInstance; }
+        }
+        #endregion
+
         #region UnityMessages
         protected override void Awake()
         {

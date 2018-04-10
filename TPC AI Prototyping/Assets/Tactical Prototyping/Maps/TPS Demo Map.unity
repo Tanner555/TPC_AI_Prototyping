@@ -35342,7 +35342,7 @@ Prefab:
     - target: {fileID: 224847135165846710, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -171
       objectReference: {fileID: 0}
     - target: {fileID: 224847135165846710, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
@@ -35352,7 +35352,7 @@ Prefab:
     - target: {fileID: 224847135165846710, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 224455930587037022, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
@@ -35372,7 +35372,7 @@ Prefab:
     - target: {fileID: 224455930587037022, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -171
       objectReference: {fileID: 0}
     - target: {fileID: 224455930587037022, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
@@ -35382,7 +35382,7 @@ Prefab:
     - target: {fileID: 224455930587037022, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 224483478355065584, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
@@ -35402,7 +35402,7 @@ Prefab:
     - target: {fileID: 224483478355065584, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -171
       objectReference: {fileID: 0}
     - target: {fileID: 224483478355065584, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
@@ -35412,7 +35412,7 @@ Prefab:
     - target: {fileID: 224483478355065584, guid: dbf792c42164a7c478896153a366de10,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 302
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf792c42164a7c478896153a366de10, type: 2}
