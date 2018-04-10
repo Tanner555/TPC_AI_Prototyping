@@ -30,9 +30,9 @@ namespace RTSCoreFramework
         }
 
         //Mouse Setup - Scrolling
-        private bool scrollAxisIsPositive
+        private bool bScrollAxisIsPositive
         {
-            get { return scrollInputAxisValue > 0.0f; }
+            get { return scrollInputAxisValue >= 0.0f; }
         }
 
         #endregion
@@ -55,12 +55,14 @@ namespace RTSCoreFramework
         private string scrollInputName = "Mouse ScrollWheel";
         private float scrollInputAxisValue = 0.0f;
         private bool bScrollWasPreviouslyPositive = false;
+        private bool bScrollIsCurrentlyPositive = false;
         //Scroll Timer Handling
-        [Header("Mouse ScrollWheel Config")]
-        public float scrollHeldThreshold = 0.15f;
         private bool isScrolling = false;
-        private bool isScrollingPastThreshold = false;
-        private float scrollCurrentTimer = 5f;
+        //Stop Scroll Functionality
+        [Header("Mouse ScrollWheel Config")]
+        public float scrollStoppedThreshold = 0.15f;
+        private bool isNotScrollingPastThreshold = false;
+        private float noScrollCurrentTimer = 5f;
         //Handles Multi Unit Selection
         [Header("Selection Config")]
         [SerializeField]
@@ -91,7 +93,7 @@ namespace RTSCoreFramework
             InputSetup();
             LeftMouseDownSetup();
             RightMouseDownSetup();
-            MouseScrollWheelSetup();
+            StopMouseScrollWheelSetup();
         }
         #endregion
 
@@ -220,51 +222,55 @@ namespace RTSCoreFramework
 
         }
 
-        void MouseScrollWheelSetup()
+        void StopMouseScrollWheelSetup()
         {
             if (UiIsEnabled) return;
             scrollInputAxisValue = Input.GetAxis(scrollInputName);
-            if(Mathf.Abs(scrollInputAxisValue) > 0.0f)
+            if (Mathf.Abs(scrollInputAxisValue) > 0.0f)
             {
-                Debug.Log("Scrolling Wheel");
                 if (isLMHeldDown) return;
-                if(isScrolling == false)
+                bScrollIsCurrentlyPositive = bScrollAxisIsPositive;
+                if (bScrollWasPreviouslyPositive != bScrollIsCurrentlyPositive)
                 {
-                    isScrolling = true;
-                    scrollCurrentTimer = Time.time + scrollHeldThreshold;
+                    gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                    bScrollWasPreviouslyPositive = bScrollAxisIsPositive;
                 }
 
-                if(Time.time > scrollCurrentTimer)
+                if (isScrolling == false)
                 {
-                    if(isScrollingPastThreshold == false)
+                    isScrolling = true;
+                    if (isNotScrollingPastThreshold == true)
                     {
-                        //OnScrollWheel Code Goes Here
-                        isScrollingPastThreshold = true;
-                        gamemaster.CallEventEnableCameraZoom(true, scrollAxisIsPositive);
+                        //When ScrollWheel Code Starts
+                        isNotScrollingPastThreshold = false;
+                        gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                        bScrollWasPreviouslyPositive = bScrollAxisIsPositive;
+                    }
+                    else
+                    {
+                        //Scroll Wheel Started Before the Stop Threshold
+                        //Do nothing for now
                     }
                 }
             }
             else
             {
-                if(isScrolling == true)
+                if (isScrolling == true)
                 {
-                    Debug.Log("Stop Scrolling Wheel");
                     isScrolling = false;
-                    if(isScrollingPastThreshold == true)
+                    noScrollCurrentTimer = Time.time + scrollStoppedThreshold;
+                }
+
+                if (Time.time > noScrollCurrentTimer)
+                {
+                    if (isNotScrollingPastThreshold == false)
                     {
-                        //When ScrollWheel Code Exits
-                        isScrollingPastThreshold = false;
-                        gamemaster.CallEventEnableCameraZoom(false, scrollAxisIsPositive);
-                    }
-                    else
-                    {
-                        //Scroll Wheel Stopped Before the Threshold
-                        //Do nothing for now
+                        //OnScrollWheel Stopping Code Goes Here
+                        isNotScrollingPastThreshold = true;
+                        gamemaster.CallEventEnableCameraZoom(false, bScrollAxisIsPositive);
                     }
                 }
             }
-
-            bScrollWasPreviouslyPositive = scrollAxisIsPositive;
         }
 
         #endregion

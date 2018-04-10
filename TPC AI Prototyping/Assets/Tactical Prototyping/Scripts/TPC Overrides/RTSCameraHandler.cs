@@ -29,7 +29,7 @@ namespace RTSPrototype
 
         void ToggleZoomCamera(bool enable, bool isPositive)
         {
-            zoomCamera = true;
+            zoomCamera = enable;
             zoomAxisIsPositive = isPositive;
             Debug.Log("Toggle Zoom: " + zoomCamera.ToString());
             Debug.Log("Is Positive: " + zoomAxisIsPositive.ToString());
