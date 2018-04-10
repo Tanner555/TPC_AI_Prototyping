@@ -139,8 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852a867ae0549ca4eb0839ca0a525896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllyTag: Ally
-  CoverTag: Cover
 --- !u!114 &114301875693343704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,14 +166,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CameraStates:
-  - {fileID: 11400000, guid: 962cd01174b637e408531d6723dd269b, type: 2}
-  - {fileID: 11400000, guid: e683102a72f35ac41b0b09685f086b45, type: 2}
-  - {fileID: 11400000, guid: 21fa7de79182e95438d31cfc07675c4d, type: 2}
-  - {fileID: 11400000, guid: 1844ea7b99469324bbc06b8a5c60ab41, type: 2}
-  - {fileID: 11400000, guid: 7980ae0c1009f4849addfa8cc356f285, type: 2}
-  - {fileID: 11400000, guid: a65b7728e05a21b429a727750ce9cc57, type: 2}
-  - {fileID: 11400000, guid: 0ca1f832848191d41b87f987f1a08ab5, type: 2}
-  - {fileID: 11400000, guid: 538a526fa30055e40988a5fd134d2d28, type: 2}
+  - {fileID: 11400000, guid: 7efb3f71f42cf3c488de230ecde955b6, type: 2}
+  - {fileID: 11400000, guid: 8b217f10429d9e140989d7e0d34c4606, type: 2}
+  - {fileID: 11400000, guid: 96452e9923fca3d449433c76edbf5056, type: 2}
+  - {fileID: 11400000, guid: 6dcb30e5cc33ac743bacd3106e37ced4, type: 2}
+  - {fileID: 11400000, guid: 8c6e4608d21b94f4ca43147286765f87, type: 2}
+  - {fileID: 11400000, guid: a7d92e077e4b26a4383d37cc5e4389b6, type: 2}
+  - {fileID: 11400000, guid: f44983a9063ebc04c8912df48186bffa, type: 2}
+  - {fileID: 11400000, guid: 933bfb9f2ba3fa0478dd3c9a2c04ace3, type: 2}
   m_InitCharacterOnStart: 0
   m_Character: {fileID: 0}
   m_Anchor: {fileID: 0}
