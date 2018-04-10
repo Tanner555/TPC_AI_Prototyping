@@ -29,6 +29,12 @@ namespace RTSCoreFramework
             get { return RTSCamRaycaster.thisInstance; }
         }
 
+        //Mouse Setup - Scrolling
+        private bool scrollAxisIsPositive
+        {
+            get { return scrollInputAxisValue > 0.0f; }
+        }
+
         #endregion
 
         #region Fields
@@ -48,6 +54,7 @@ namespace RTSCoreFramework
         //Scroll Input
         private string scrollInputName = "Mouse ScrollWheel";
         private float scrollInputAxisValue = 0.0f;
+        private bool bScrollWasPreviouslyPositive = false;
         //Scroll Timer Handling
         [Header("Mouse ScrollWheel Config")]
         public float scrollHeldThreshold = 0.15f;
@@ -233,7 +240,7 @@ namespace RTSCoreFramework
                     {
                         //OnScrollWheel Code Goes Here
                         isScrollingPastThreshold = true;
-                        gamemaster.CallEventEnableCameraZoom(true, scrollInputAxisValue > 0.0f);
+                        gamemaster.CallEventEnableCameraZoom(true, scrollAxisIsPositive);
                     }
                 }
             }
@@ -247,7 +254,7 @@ namespace RTSCoreFramework
                     {
                         //When ScrollWheel Code Exits
                         isScrollingPastThreshold = false;
-                        gamemaster.CallEventEnableCameraZoom(false, scrollInputAxisValue > 0.0f);
+                        gamemaster.CallEventEnableCameraZoom(false, scrollAxisIsPositive);
                     }
                     else
                     {
@@ -256,6 +263,8 @@ namespace RTSCoreFramework
                     }
                 }
             }
+
+            bScrollWasPreviouslyPositive = scrollAxisIsPositive;
         }
 
         #endregion
