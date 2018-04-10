@@ -16,12 +16,23 @@ namespace RTSPrototype
         }
 
         private bool moveCamera = false;
+        //Zooming
+        private bool zoomCamera = false;
+        private bool zoomAxisIsPositive = false;
         #endregion
 
         #region RTSHandlers
         void ToggleMoveCamera(bool enable)
         {
             moveCamera = enable;
+        }
+
+        void ToggleZoomCamera(bool enable, bool isPositive)
+        {
+            zoomCamera = true;
+            zoomAxisIsPositive = isPositive;
+            Debug.Log("Toggle Zoom: " + zoomCamera.ToString());
+            Debug.Log("Is Positive: " + zoomAxisIsPositive.ToString());
         }
         #endregion
 
@@ -50,6 +61,7 @@ namespace RTSPrototype
         {
             //Temp Fix For Party Man Delay Init Methods
             //gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
+            gamemaster.EventEnableCameraZoom -= ToggleZoomCamera;
         }
 
         private void OnEnable()
@@ -60,6 +72,7 @@ namespace RTSPrototype
         protected void Start()
         {
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
+            gamemaster.EventEnableCameraZoom += ToggleZoomCamera;
         }
 
         protected override void Update()

@@ -55,6 +55,9 @@ namespace RTSCoreFramework
         public event OneBoolArgsHandler EventEnableCameraMovement;
         //public event OneBoolArgsHandler EventEnableSelectionBox;
 
+        public delegate void TwoBoolArgsHandler(bool enable, bool isPositive);
+        public event TwoBoolArgsHandler EventEnableCameraZoom;
+
         //Used by CamRaycaster to broadcast mouse hit type
         public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event RtsHitTypeAndRayCastHitHandler OnMouseCursorChange;
@@ -111,6 +114,11 @@ namespace RTSCoreFramework
             {
                 EventEnableCameraMovement(enable);
             }
+        }
+
+        public void CallEventEnableCameraZoom(bool enable, bool isPositive)
+        {
+            if (EventEnableCameraZoom != null) EventEnableCameraZoom(enable, isPositive);
         }
 
         public void CallOnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
