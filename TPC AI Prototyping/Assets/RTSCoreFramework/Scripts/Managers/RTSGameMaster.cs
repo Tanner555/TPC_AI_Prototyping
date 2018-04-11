@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RTSCoreFramework
 {
@@ -18,6 +19,7 @@ namespace RTSCoreFramework
         }
 
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
+
         #endregion
 
         #region Fields
@@ -126,7 +128,9 @@ namespace RTSCoreFramework
             if (OnAllySwitch != null)
                 OnAllySwitch(_party, _toSet, _current);
         }
+        #endregion
 
+        #region EventCalls-MouseCursorAndClickHandlers
         public void CallEventOnMouseCursorChange(rtsHitType hitType, RaycastHit hit)
         {
             bool isNull = hit.collider == null || hit.collider.gameObject == null ||
@@ -186,7 +190,8 @@ namespace RTSCoreFramework
 
         public void CallEventOnLeftClickSendHit()
         {
-            if (rayCaster != null && rayCaster.enabled == true)
+            if (rayCaster != null && rayCaster.enabled == true &&
+                !EventSystem.current.IsPointerOverGameObject())
             {
                 var _info = rayCaster.GetRaycastInfo();
                 CallEventOnLeftClickSendHit(_info._hitType, _info._rayHit);
@@ -235,7 +240,8 @@ namespace RTSCoreFramework
 
         public void CallEventOnRightClickSendHit()
         {
-            if (rayCaster != null && rayCaster.enabled == true)
+            if (rayCaster != null && rayCaster.enabled == true &&
+                !EventSystem.current.IsPointerOverGameObject())
             {
                 var _info = rayCaster.GetRaycastInfo();
                 CallEventOnRightClickSendHit(_info._hitType, _info._rayHit);
@@ -282,5 +288,6 @@ namespace RTSCoreFramework
             }
         }
         #endregion
+        
     }
 }
