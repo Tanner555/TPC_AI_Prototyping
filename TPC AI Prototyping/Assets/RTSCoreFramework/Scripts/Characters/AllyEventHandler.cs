@@ -24,6 +24,8 @@ namespace RTSCoreFramework
                     bIsFreeMoving) == false && 
                     bIsCommandAttacking == false; }
         }
+
+        protected bool bHasStartedFromDelay = false;
         
         #endregion
 
@@ -88,6 +90,7 @@ namespace RTSCoreFramework
 
         protected virtual void OnDelayStart()
         {
+            bHasStartedFromDelay = true;
             SubToEventsLater();
         }
 
@@ -191,7 +194,7 @@ namespace RTSCoreFramework
             if (EventPartySwitching != null) EventPartySwitching();
         }
 
-        public void CallEventSetAsCommander()
+        public virtual void CallEventSetAsCommander()
         {
             CallEventFinishedMoving();
             if (EventSetAsCommander != null) EventSetAsCommander();

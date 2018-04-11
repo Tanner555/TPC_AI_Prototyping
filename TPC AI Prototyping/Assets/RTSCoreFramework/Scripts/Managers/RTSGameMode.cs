@@ -481,7 +481,7 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region AllyProcessing
+        #region Handlers
         public virtual void ProcessAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
             if (_toSet != null && _party.isCurrentPlayerCommander)
@@ -489,6 +489,13 @@ namespace RTSCoreFramework
                 SetThirdPersonCam(_party, _toSet, _current);
                 SetUiTargetAlly(_toSet);
             }
+        }
+        #endregion
+
+        #region UITargetHandlers
+        protected virtual void UiTargetHandle_OnAmmoChanged(int _loaded, int _unloaded)
+        {
+
         }
         #endregion
 
@@ -501,16 +508,45 @@ namespace RTSCoreFramework
 
         protected virtual void SetCameraCharacter(AllyMember _target)
         {
-
+            //Base Method, Override to Add Functionality
         }
 
         protected void SetUiTargetAlly(AllyMember _allyToSet)
         {
             if (_allyToSet != null)
             {
+                SetupUITargetHandlers(UiTargetAlly, _allyToSet);
                 //Set to Command
                 UiTargetAlly = _allyToSet;
             }
+        }
+
+        protected virtual void SetupUITargetHandlers(AllyMember _previousAlly, AllyMember _currentAlly)
+        {
+            if(_previousAlly != null)
+            {
+                UnsubscribeFromUiTargetHandlers(_previousAlly);
+            }
+            if(_currentAlly != null)
+            {
+                SubscribeToUiTargetHandlers(_currentAlly);
+            }
+        }
+
+        protected virtual void SubscribeToUiTargetHandlers(AllyMember _target)
+        {
+            if (_target == null) return;
+            var _handler = _target.allyEventHandler;
+            //Sub to Current UiTarget Handlers
+            _handler.OnAmmoChanged += UiTargetHandle_OnAmmoChanged;
+        }
+
+        protected virtual void UnsubscribeFromUiTargetHandlers(AllyMember _target)
+        {
+            if (_target == null) return;
+            var _handler = _target.allyEventHandler;
+            //Unsub From Previous UiTarget Handlers
+            _handler.OnAmmoChanged -= UiTargetHandle_OnAmmoChanged;
         }
         #endregion
 

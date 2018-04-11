@@ -38,6 +38,15 @@ namespace RTSPrototype
         #endregion
 
         #region Overrides
+        public override void CallEventSetAsCommander()
+        {
+            base.CallEventSetAsCommander();
+            if (bHasStartedFromDelay)
+            {
+                RequestCallAmmoChangedEvent();
+            }
+        }
+
         public override void CallEventAllyDied()
         {
             base.CallEventAllyDied();
