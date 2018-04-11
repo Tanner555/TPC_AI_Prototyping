@@ -57,7 +57,11 @@ namespace RTSCoreFramework
         public int Stat_Health
         {
             get { return myCharacterStats.Health; }
-            set { myCharacterStats.Health = value; }
+            set
+            {
+                myCharacterStats.Health = value;
+                CallOnHealthChanged();
+            }
         }
         public int Stat_MaxHealth
         {
@@ -96,6 +100,7 @@ namespace RTSCoreFramework
         {
             //Equip whatever the ally is holding
             eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
+            CallOnHealthChanged();
         }
 
         private void OnDisable()
@@ -152,6 +157,13 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Helpers
+        void CallOnHealthChanged()
+        {
+            eventHandler.CallOnHealthChanged(myCharacterStats.Health, myCharacterStats.MaxHealth);
+        }
+        #endregion
+
         #region Initialization
         void SubToEvents()
         {
@@ -172,7 +184,6 @@ namespace RTSCoreFramework
             allWeaponStats = statHandler.WeaponStatDictionary;
         }
         #endregion
-
 
     }
 }

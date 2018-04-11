@@ -68,6 +68,7 @@ namespace RTSCoreFramework
 
         public delegate void TwoIntArgsHandler(int _firstNum, int _secondNum);
         public event TwoIntArgsHandler OnAmmoChanged;
+        public event TwoIntArgsHandler OnHealthChanged;
 
         #endregion
 
@@ -306,6 +307,11 @@ namespace RTSCoreFramework
         protected void CallOnAmmoChanged(int _loaded, int _unloaded)
         {
             if (OnAmmoChanged != null) OnAmmoChanged(_loaded, _unloaded);
+        }
+
+        public void CallOnHealthChanged(int _current, int _max)
+        {
+            if (OnHealthChanged != null) OnHealthChanged(_current, _max);
         }
         #endregion
 
