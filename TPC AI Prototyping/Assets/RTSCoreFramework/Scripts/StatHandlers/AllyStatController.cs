@@ -80,6 +80,15 @@ namespace RTSCoreFramework
         {
             get { return myCharacterStats.SecondaryWeapon; }
         }
+        //Other Character Stats
+        public ECharacterType Stat_CharacterType
+        {
+            get { return myCharacterStats.CharacterType; }
+        }
+        public string Stat_CharacterName
+        {
+            get { return myCharacterStats.CharacterType.ToString(); }
+        }
         #endregion
 
         #region UnityMessages

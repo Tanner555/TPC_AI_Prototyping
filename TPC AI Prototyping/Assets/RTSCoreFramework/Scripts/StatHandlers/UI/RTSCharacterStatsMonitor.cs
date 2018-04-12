@@ -82,7 +82,13 @@ namespace RTSCoreFramework
             if (_currentTarget != null && !_currentTarget.bAllyIsUiTarget)
             {
                 SubscribeToUiTargetHandlers(_currentTarget);
+                TransferCharacterStatsToText(_currentTarget);
             }
+        }
+
+        protected virtual void TransferCharacterStatsToText(AllyMember _ally)
+        {
+            CharacterNameText.text = _ally.CharacterName;
         }
         #endregion
 

@@ -80,6 +80,14 @@ namespace RTSPrototype
             }
         }
 
+        public override string CharacterName
+        {
+            get
+            {
+                return allyStatController.Stat_CharacterName;
+            }
+        }
+
         public AllyMemberWrapper enemyTargetWrapper
         {
             get { return aiControllerWrapper.currentTargettedEnemyWrapper; }

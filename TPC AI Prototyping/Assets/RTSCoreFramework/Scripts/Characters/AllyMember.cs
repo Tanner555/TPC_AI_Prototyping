@@ -105,6 +105,12 @@ namespace RTSCoreFramework
             get { return 0; }
         }
 
+        //Character Stat Properties
+        public virtual string CharacterName
+        {
+            get { return "MyName"; }
+        }
+
         //AI Props
         public float FollowDistance { get { return aiController.followDistance; } }
 
