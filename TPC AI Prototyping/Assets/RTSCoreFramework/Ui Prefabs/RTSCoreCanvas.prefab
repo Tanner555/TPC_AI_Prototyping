@@ -3657,6 +3657,7 @@ MonoBehaviour:
   choiceNavigateRight: {fileID: 114000070248465434}
   conditionButton: {fileID: 114761596675408642}
   actionButton: {fileID: 114849433186868412}
+  CharacterStatsPanels: {fileID: 1465545985871672}
 --- !u!114 &114050410290780142
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,10 @@ namespace RTSCoreFramework
         {
             get { return RTSGameMaster.thisInstance; }
         }
+        protected RTSUiMaster uiMaster
+        {
+            get { return RTSUiMaster.thisInstance; }
+        }
         public AllyMember AllyInCommand { get; protected set; }
         public List<AllyMember> PartyMembers
         {
@@ -44,12 +48,12 @@ namespace RTSCoreFramework
             }
         }
 
-        public bool noPartyCommandsAllowed
+        public bool bNoPartyCommandsAllowed
         {
             get { return PartyMembers.Count <= 0; }
         }
 
-        public bool isCurrentPlayerCommander { get { return GeneralCommander == gamemode.GeneralInCommand.GeneralCommander; } }
+        public bool bIsCurrentPlayerCommander { get { return GeneralCommander == gamemode.GeneralInCommand.GeneralCommander; } }
 
         #endregion
 
@@ -102,7 +106,14 @@ namespace RTSCoreFramework
             {
                 PartyMembers.Add(_ally);
                 if (AllyInCommand == null)
+                {
                     SetAllyInCommand(_ally);
+                }
+                //Only Call if PartyManager is the Current Player's General
+                if (uiMaster && bIsCurrentPlayerCommander)
+                {
+                    uiMaster.CallRegisterAllyToCharacterStatMonitor(this, _ally);
+                }
             }
         }
 
@@ -227,7 +238,7 @@ namespace RTSCoreFramework
         #region Getters
         public bool AllyIsCurrentPlayer(AllyMember _ally)
         {
-            return isCurrentPlayerCommander && _ally == AllyInCommand;
+            return bIsCurrentPlayerCommander && _ally == AllyInCommand;
         }
         public bool AllyIsGeneralInCommand(AllyMember _ally)
         {
@@ -261,7 +272,7 @@ namespace RTSCoreFramework
         }
         protected void HandleLeftClickPartyMember(AllyMember ally)
         {
-            if (!isCurrentPlayerCommander || noPartyCommandsAllowed) return;
+            if (!bIsCurrentPlayerCommander || bNoPartyCommandsAllowed) return;
             if (PartyMembers.Contains(ally) && ally != AllyInCommand)
             {
                 SetAllyInCommand(ally);
@@ -269,7 +280,7 @@ namespace RTSCoreFramework
         }
         protected void HandleRightClick(rtsHitType hitType, RaycastHit hit)
         {
-            if (!isCurrentPlayerCommander || noPartyCommandsAllowed) return;
+            if (!bIsCurrentPlayerCommander || bNoPartyCommandsAllowed) return;
             switch (hitType)
             {
                 case rtsHitType.Ally:

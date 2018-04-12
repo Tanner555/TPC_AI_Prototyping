@@ -8,7 +8,16 @@ namespace RTSCoreFramework
     public class RTSUiManager : MonoBehaviour
     {
         #region Components
-        public RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
+        public RTSUiMaster uiMaster
+        {
+            get
+            {
+                if(RTSUiMaster.thisInstance != null)
+                    return RTSUiMaster.thisInstance;
+
+                return GetComponent<RTSUiMaster>();
+            }
+        }
         #endregion
 
         #region Properties
@@ -30,6 +39,11 @@ namespace RTSCoreFramework
         public IGBPI_UI_Panel PreviousPanelSelection
         {
             get; protected set;
+        }
+
+        public bool AllUiCompsAreValid
+        {
+            get { return IGBPICompsAreValid && CharacterStatsPanels; }
         }
 
         public bool IGBPICompsAreValid
@@ -73,6 +87,9 @@ conditionButton && actionButton;
         public Button choiceNavigateRight;
         public Button conditionButton;
         public Button actionButton;
+
+        [Header("Character Stats Objects")]
+        public GameObject CharacterStatsPanels;
         #endregion
 
         #region UnityMessages
@@ -83,23 +100,19 @@ conditionButton && actionButton;
             else
                 thisInstance = this;
 
-            if (!IGBPICompsAreValid)
+            if (!AllUiCompsAreValid)
                 Debug.LogError("Please drag components into their slots");
 
             UI_Panel_Members = new List<IGBPI_UI_Panel>();
             DisableIGBPIEditButtons();
 
-            if (hasStarted == true)
-                SubToEvents();
-
-
+            SubToEvents();
         }
 
         private void Start()
         {
             if (hasStarted == false)
             {
-                SubToEvents();
                 hasStarted = true;
             }
         }
@@ -187,7 +200,7 @@ conditionButton && actionButton;
         }
         #endregion
 
-        #region Handlers
+        #region Handlers-General/Toggles
         //Toggles Ui GameObjects
         void TogglePauseMenuUi(bool enable)
         {
@@ -217,7 +230,9 @@ conditionButton && actionButton;
                 IGBPIUi.SetActive(enable);
             
         }
+        #endregion
 
+        #region Handlers-IGBPI
         void SelectUIPanel(IGBPI_UI_Panel _info)
         {
             if (_info && _info.gameObject && _info.AllTextAreValid)
@@ -299,6 +314,13 @@ conditionButton && actionButton;
                     _count++;
                 }
             }
+        }
+        #endregion
+
+        #region Handlers-CharactersStats
+        void RegisterAllyToCharacterStatMonitor(PartyManager _party, AllyMember _ally)
+        {
+            Debug.Log("Registering Ally " + _ally);
         }
         #endregion
 
@@ -566,26 +588,34 @@ conditionButton && actionButton;
         #region Initialization
         void SubToEvents()
         {
+            //Toggles
             uiMaster.EventMenuToggle += TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
             uiMaster.EventIGBPIToggle += ToggleIGBPIUi;
+            //IGBPI
             uiMaster.EventAddDropdownInstance += AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance += DeregisterDropdownMenu;
             uiMaster.EventUIPanelSelectionChanged += SelectUIPanel;
             uiMaster.EventReorderIGBPIPanels += ReorderIGBPIPanels;
             uiMaster.EventMovePanelUI += MoveIGBPIPanel;
+            //CharacterStats
+            uiMaster.RegisterAllyToCharacterStatMonitor += RegisterAllyToCharacterStatMonitor;
         }
 
         void UnsubEvents()
         {
+            //Toggles
             uiMaster.EventMenuToggle -= TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
             uiMaster.EventIGBPIToggle -= ToggleIGBPIUi;
+            //IGBPI
             uiMaster.EventAddDropdownInstance -= AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance -= DeregisterDropdownMenu;
             uiMaster.EventUIPanelSelectionChanged -= SelectUIPanel;
             uiMaster.EventReorderIGBPIPanels -= ReorderIGBPIPanels;
             uiMaster.EventMovePanelUI -= MoveIGBPIPanel;
+            //CharacterStats
+            uiMaster.RegisterAllyToCharacterStatMonitor -= RegisterAllyToCharacterStatMonitor;
         }
         #endregion
 

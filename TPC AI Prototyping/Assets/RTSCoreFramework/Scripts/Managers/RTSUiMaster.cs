@@ -24,6 +24,9 @@ namespace RTSCoreFramework
         public event GeneralEventHandler EventResetAllPaneUIMenus;
         public event GeneralEventHandler EventReorderIGBPIPanels;
         public event GeneralEventHandler EventOnSaveIGBPIComplete;
+        //Character Stat Events
+        public delegate void RegisterAllyToStatHandler(PartyManager _party, AllyMember _ally);
+        public event RegisterAllyToStatHandler RegisterAllyToCharacterStatMonitor;
         #endregion
 
         #region Properties
@@ -69,7 +72,7 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region EventCalls
+        #region EventCalls-General/Toggles
         public virtual void CallEventMenuToggle()
         {
             //If Ui Item isn't being used or Pause Menu is turned on
@@ -100,7 +103,9 @@ namespace RTSCoreFramework
             if (EventAnyUIToggle != null) EventAnyUIToggle(_enabled);
         }
 
-        //IGBPI
+        #endregion
+
+        #region EventCalls-IGBPI
         public void CallEventAddDropdownInstance()
         {
             if (EventAddDropdownInstance != null)
@@ -157,6 +162,18 @@ namespace RTSCoreFramework
         {
             if (EventOnSaveIGBPIComplete != null)
                 EventOnSaveIGBPIComplete();
+        }
+        #endregion
+
+        #region EventCalls-CharacterStats
+        public void CallRegisterAllyToCharacterStatMonitor(PartyManager _party, AllyMember _ally)
+        {
+            //Only Call if PartyManager is the Current Player's General
+            if (RegisterAllyToCharacterStatMonitor != null &&
+                _party && _party.bIsCurrentPlayerCommander)
+            {
+                RegisterAllyToCharacterStatMonitor(_party, _ally);
+            }
         }
         #endregion
 

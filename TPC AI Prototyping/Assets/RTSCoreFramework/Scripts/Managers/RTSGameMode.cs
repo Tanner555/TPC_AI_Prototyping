@@ -484,7 +484,7 @@ namespace RTSCoreFramework
         #region Handlers
         public virtual void ProcessAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
-            if (_toSet != null && _party.isCurrentPlayerCommander)
+            if (_toSet != null && _party.bIsCurrentPlayerCommander)
             {
                 SetThirdPersonCam(_party, _toSet, _current);
                 SetUiTargetAlly(_toSet);
@@ -502,7 +502,7 @@ namespace RTSCoreFramework
         #region UIAndCameraProcessing
         void SetThirdPersonCam(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
-            if (!_party.isCurrentPlayerCommander) return;
+            if (!_party.bIsCurrentPlayerCommander) return;
             SetCameraCharacter(_toSet);
         }
 
@@ -555,7 +555,7 @@ namespace RTSCoreFramework
         public void HandlePartyMemberWOutAllies(PartyManager _partyMan, AllyMember _lAlly, bool _onDeath)
         {
             Debug.Log("No party members called on gamemode!");
-            if (_onDeath && _partyMan.isCurrentPlayerCommander)
+            if (_onDeath && _partyMan.bIsCurrentPlayerCommander)
             {
                 Debug.Log("All player allies are dead, Game Over!");
                 gamemaster.CallEventGameOver();
