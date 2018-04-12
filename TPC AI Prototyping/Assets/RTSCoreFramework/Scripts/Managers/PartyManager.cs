@@ -282,7 +282,10 @@ namespace RTSCoreFramework
                 case rtsHitType.Cover:
                     break;
                 case rtsHitType.Walkable:
-                    AllyInCommand.allyEventHandler.CallEventCommandMove(hitType, hit);
+                    if (AllyInCommand.allyEventHandler.bIsFreeMoving == false)
+                    {
+                        AllyInCommand.allyEventHandler.CallEventCommandMove(hitType, hit);
+                    }
                     break;
                 case rtsHitType.Unwalkable:
                     break;
