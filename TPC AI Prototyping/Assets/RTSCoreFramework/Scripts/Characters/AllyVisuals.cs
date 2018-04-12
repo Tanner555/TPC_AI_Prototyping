@@ -61,6 +61,7 @@ namespace RTSCoreFramework
             myEventHandler.OnHoverLeave -= OnCursExit;
             myEventHandler.EventAllyDied -= HandleDeath;
             myEventHandler.EventCommandMove -= SetupWaypointRenderer;
+            myEventHandler.EventTogglebIsFreeMoving -= CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
             myEventHandler.EventPartySwitching -= DisableWaypointRenderer;
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
@@ -76,6 +77,7 @@ namespace RTSCoreFramework
             myEventHandler.OnHoverLeave += OnCursExit;
             myEventHandler.EventAllyDied += HandleDeath;
             myEventHandler.EventCommandMove += SetupWaypointRenderer;
+            myEventHandler.EventTogglebIsFreeMoving += CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
             myEventHandler.EventPartySwitching += DisableWaypointRenderer;
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
@@ -161,6 +163,15 @@ namespace RTSCoreFramework
             if (waypointRenderer != null)
             {
                 waypointRenderer.enabled = false;
+            }
+        }
+
+        void CheckToDisableWaypointRenderer(bool _isFreeMoving)
+        {
+            //If Free Moving, Need to disable waypoint renderer
+            if (_isFreeMoving)
+            {
+                DisableWaypointRenderer();
             }
         }
 

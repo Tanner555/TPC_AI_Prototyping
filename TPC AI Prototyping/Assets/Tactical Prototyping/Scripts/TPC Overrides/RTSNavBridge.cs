@@ -19,7 +19,18 @@ namespace RTSPrototype
         }
         AllyMember _allyMember = null;
 
-        AllyEventHandlerWrapper myEventHandler { get { return GetComponent<AllyEventHandlerWrapper>(); } }
+        AllyEventHandlerWrapper myEventHandler
+        {
+            get
+            {
+                if (_myEventHandler == null)
+                    _myEventHandler = GetComponent<AllyEventHandlerWrapper>();
+
+                return _myEventHandler;
+            }
+        }
+        AllyEventHandlerWrapper _myEventHandler;
+
         RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         //Targeting
         public Transform targetTransform { get; protected set; }
@@ -117,7 +128,14 @@ namespace RTSPrototype
         #region Handlers
         void MoveToDestination(Vector3 _destination)
         {
+            m_NavMeshAgent.ResetPath();
             m_NavMeshAgent.SetDestination(_destination);
+            float _distance = Vector3.Distance(m_NavMeshAgent.path.corners[0], m_Transform.position);
+            if(_distance >= 3.0f)
+            {
+                Debug.Log("Path is not accurate, updating position...");
+                m_NavMeshAgent.updatePosition = true;
+            }
         }
 
         void OnCommandAttack(AllyMember _ally)
