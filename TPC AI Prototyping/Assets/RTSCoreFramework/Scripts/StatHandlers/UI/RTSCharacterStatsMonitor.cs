@@ -128,6 +128,13 @@ namespace RTSCoreFramework
             if (AllCompsAreValid == false) return;
             CurrentHealthText.text = _current.ToString();
             MaxHealthText.text = _max.ToString();
+            Slider _slider = UiHealthSlider.GetComponent<Slider>();
+            if (_slider != null)
+            {
+                _slider = UiHealthSlider.GetComponent<Slider>();
+                _slider.maxValue = _max;
+                _slider.value = _current;
+            }
         }
 
         protected virtual void UiTargetHandle_OnAllyDeath()
