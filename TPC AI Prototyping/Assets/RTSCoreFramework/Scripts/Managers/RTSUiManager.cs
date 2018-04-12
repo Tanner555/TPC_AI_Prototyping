@@ -43,7 +43,8 @@ namespace RTSCoreFramework
 
         public bool AllUiCompsAreValid
         {
-            get { return IGBPICompsAreValid && CharacterStatsPanels; }
+            get { return IGBPICompsAreValid && CharacterStatsPanels &&
+                    CharacterStatsPrefab; }
         }
 
         public bool IGBPICompsAreValid
@@ -90,6 +91,7 @@ conditionButton && actionButton;
 
         [Header("Character Stats Objects")]
         public GameObject CharacterStatsPanels;
+        public GameObject CharacterStatsPrefab;
         #endregion
 
         #region UnityMessages
@@ -323,19 +325,13 @@ conditionButton && actionButton;
             if (AllUiCompsAreValid == false || 
                 _party == null || _ally == null) return;
 
-            foreach(Transform _statPanel in CharacterStatsPanels.transform)
+            var _statGameObject = GameObject.Instantiate(CharacterStatsPrefab, 
+                CharacterStatsPanels.transform) as GameObject;
+            var _statsMonitor = _statGameObject.GetComponent<RTSCharacterStatsMonitor>();
+            if (_statsMonitor != null &&
+                _statsMonitor.bUiTargetIsSet == false)
             {
-                if(_statPanel.gameObject.activeSelf == false)
-                {
-                    _statPanel.gameObject.SetActive(true);
-                    var _statsMonitor = _statPanel.GetComponent<RTSCharacterStatsMonitor>();
-                    if (_statsMonitor != null &&
-                        _statsMonitor.bUiTargetIsSet == false)
-                    {
-                        _statsMonitor.HookAllyCharacter(_ally);
-                    }
-                    break;
-                }
+                _statsMonitor.HookAllyCharacter(_ally);
             }
         }
         #endregion
