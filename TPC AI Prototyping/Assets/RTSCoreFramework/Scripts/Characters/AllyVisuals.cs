@@ -63,6 +63,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove -= SetupWaypointRenderer;
             myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
             myEventHandler.EventPartySwitching -= DisableWaypointRenderer;
+            myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -77,6 +78,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove += SetupWaypointRenderer;
             myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
             myEventHandler.EventPartySwitching += DisableWaypointRenderer;
+            myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -149,6 +151,14 @@ namespace RTSCoreFramework
         void DisableWaypointRenderer()
         {
             if(waypointRenderer != null)
+            {
+                waypointRenderer.enabled = false;
+            }
+        }
+
+        void DisableWaypointRenderer(AllyMember _ally)
+        {
+            if (waypointRenderer != null)
             {
                 waypointRenderer.enabled = false;
             }
