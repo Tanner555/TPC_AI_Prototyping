@@ -25,6 +25,9 @@ namespace RTSCoreFramework
                     bIsCommandAttacking == false; }
         }
 
+        //Ui Target Info
+        public bool bAllyIsUiTarget { get; protected set; }
+
         protected bool bHasStartedFromDelay = false;
         
         #endregion
@@ -312,6 +315,13 @@ namespace RTSCoreFramework
         public void CallOnHealthChanged(int _current, int _max)
         {
             if (OnHealthChanged != null) OnHealthChanged(_current, _max);
+        }
+        #endregion
+
+        #region PublicMethods
+        public void SetAllyIsUiTarget(bool _isTarget)
+        {
+            bAllyIsUiTarget = _isTarget;
         }
         #endregion
 

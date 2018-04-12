@@ -55,7 +55,7 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region HookingUiTarget
+        #region HookingUiTarget-Initialization
         public void HookAllyCharacter(AllyMember _targetToSet)
         {
             if(AllCompsAreValid == false)
@@ -73,39 +73,53 @@ namespace RTSCoreFramework
 
         protected virtual void SetupUITargetHandlers(AllyMember _previousTarget, AllyMember _currentTarget)
         {
-            if (_previousTarget != null)
+            if (_previousTarget != null && _previousTarget.bAllyIsUiTarget)
             {
                 UnsubscribeFromUiTargetHandlers(_previousTarget);
             }
-            if (_currentTarget != null)
+            if (_currentTarget != null && !_currentTarget.bAllyIsUiTarget)
             {
                 SubscribeToUiTargetHandlers(_currentTarget);
             }
         }
+        #endregion
 
+        #region HookingUiTarget-Subscribe/Desubscribe
         protected virtual void SubscribeToUiTargetHandlers(AllyMember _target)
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
+            _handler.SetAllyIsUiTarget(true);
             //Sub to Current UiTarget Handlers
             _handler.OnHealthChanged += UiTargetHandle_OnHealthChanged;
+            _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
         }
 
         protected virtual void UnsubscribeFromUiTargetHandlers(AllyMember _target)
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
+            _handler.SetAllyIsUiTarget(false);
             //Unsub From Previous UiTarget Handlers
             _handler.OnHealthChanged -= UiTargetHandle_OnHealthChanged;
+            _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
         }
         #endregion
-
+        
         #region UITargetHandlers
         protected virtual void UiTargetHandle_OnHealthChanged(int _current, int _max)
         {
             if (AllCompsAreValid == false) return;
             CurrentHealthText.text = _current.ToString();
             MaxHealthText.text = _max.ToString();
+        }
+
+        protected virtual void UiTargetHandle_OnAllyDeath()
+        {
+            if(uiTarget != null && uiTarget.bAllyIsUiTarget)
+            {
+                UnsubscribeFromUiTargetHandlers(uiTarget);
+            }
         }
         #endregion
 

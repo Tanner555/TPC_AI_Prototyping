@@ -139,6 +139,8 @@ namespace RTSCoreFramework
         public bool bIsCurrentPlayer { get { return partyManager ? partyManager.AllyIsCurrentPlayer(this) : false; } }
         public bool bIsGeneralInCommand { get { return partyManager ? partyManager.AllyIsGeneralInCommand(this) : false; } }
         public bool bIsInGeneralCommanderParty { get { return partyManager.isCurrentPlayerCommander; } }
+        //Ui Target Info
+        public bool bAllyIsUiTarget { get { return allyEventHandler.bAllyIsUiTarget; } }
         #endregion
 
         #region UnityMessages
