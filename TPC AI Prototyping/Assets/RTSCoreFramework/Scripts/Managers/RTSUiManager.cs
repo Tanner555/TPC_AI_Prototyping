@@ -320,7 +320,23 @@ conditionButton && actionButton;
         #region Handlers-CharactersStats
         void RegisterAllyToCharacterStatMonitor(PartyManager _party, AllyMember _ally)
         {
-            Debug.Log("Registering Ally " + _ally);
+            if (AllUiCompsAreValid == false || 
+                _party == null || _ally == null) return;
+
+            foreach(Transform _statPanel in CharacterStatsPanels.transform)
+            {
+                if(_statPanel.gameObject.activeSelf == false)
+                {
+                    _statPanel.gameObject.SetActive(true);
+                    var _statsMonitor = _statPanel.GetComponent<RTSCharacterStatsMonitor>();
+                    if (_statsMonitor != null &&
+                        _statsMonitor.bUiTargetIsSet == false)
+                    {
+                        _statsMonitor.HookAllyCharacter(_ally);
+                    }
+                    break;
+                }
+            }
         }
         #endregion
 

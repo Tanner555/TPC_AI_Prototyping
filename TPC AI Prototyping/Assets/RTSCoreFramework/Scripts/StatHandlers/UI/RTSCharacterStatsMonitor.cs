@@ -16,6 +16,8 @@ namespace RTSCoreFramework
                   && MaxAbilityText && CharacterNameText;
             }
         }
+
+        public bool bUiTargetIsSet { get; protected set; }
         #endregion
 
         #region Fields
@@ -89,7 +91,7 @@ namespace RTSCoreFramework
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
-            _handler.SetAllyIsUiTarget(true);
+            SetAllyIsUiTarget(_target, true);
             //Sub to Current UiTarget Handlers
             _handler.OnHealthChanged += UiTargetHandle_OnHealthChanged;
             _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
@@ -99,13 +101,21 @@ namespace RTSCoreFramework
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
-            _handler.SetAllyIsUiTarget(false);
+            SetAllyIsUiTarget(_target, false);
             //Unsub From Previous UiTarget Handlers
             _handler.OnHealthChanged -= UiTargetHandle_OnHealthChanged;
             _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
         }
+
+        void SetAllyIsUiTarget(AllyMember _target, bool _isTarget)
+        {
+            if (_target == null) return;
+            var _handler = _target.allyEventHandler;
+            _handler.SetAllyIsUiTarget(_isTarget);
+            bUiTargetIsSet = _isTarget;
+        }
         #endregion
-        
+
         #region UITargetHandlers
         protected virtual void UiTargetHandle_OnHealthChanged(int _current, int _max)
         {
@@ -122,6 +132,5 @@ namespace RTSCoreFramework
             }
         }
         #endregion
-
     }
 }
