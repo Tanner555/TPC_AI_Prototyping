@@ -79,6 +79,10 @@ namespace RTSCoreFramework
         public delegate void AllySwitchHandler(PartyManager _party, AllyMember _toSet, AllyMember _current);
         public event AllySwitchHandler OnAllySwitch;
 
+        public delegate void UiTargetHookHandler(AllyMember _target, AllyEventHandler _eventHandler, PartyManager _party);
+        public event UiTargetHookHandler OnRegisterUiTarget;
+        public event UiTargetHookHandler OnDeregisterUiTarget;
+
         #endregion
 
         #region EventCalls
@@ -127,6 +131,18 @@ namespace RTSCoreFramework
         {
             if (OnAllySwitch != null)
                 OnAllySwitch(_party, _toSet, _current);
+        }
+
+        public void CallOnRegisterUiTarget(AllyMember _target, AllyEventHandler _eventHandler, PartyManager _party)
+        {
+            if (OnRegisterUiTarget != null)
+                OnRegisterUiTarget(_target, _eventHandler, _party);
+        }
+
+        public void CallOnDeregisterUiTarget(AllyMember _target, AllyEventHandler _eventHandler, PartyManager _party)
+        {
+            if (OnDeregisterUiTarget != null)
+                OnDeregisterUiTarget(_target, _eventHandler, _party);
         }
         #endregion
 

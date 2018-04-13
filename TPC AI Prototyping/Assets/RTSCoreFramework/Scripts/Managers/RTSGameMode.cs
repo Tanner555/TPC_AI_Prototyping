@@ -492,13 +492,6 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region UITargetHandlers
-        protected virtual void UiTargetHandle_OnAmmoChanged(int _loaded, int _unloaded)
-        {
-
-        }
-        #endregion
-
         #region UIAndCameraProcessing
         void SetThirdPersonCam(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
@@ -537,16 +530,14 @@ namespace RTSCoreFramework
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
-            //Sub to Current UiTarget Handlers
-            _handler.OnAmmoChanged += UiTargetHandle_OnAmmoChanged;
+            gamemaster.CallOnRegisterUiTarget(_target, _handler, _target.partyManager);
         }
 
         protected virtual void UnsubscribeFromUiTargetHandlers(AllyMember _target)
         {
             if (_target == null) return;
             var _handler = _target.allyEventHandler;
-            //Unsub From Previous UiTarget Handlers
-            _handler.OnAmmoChanged -= UiTargetHandle_OnAmmoChanged;
+            gamemaster.CallOnDeregisterUiTarget(_target, _handler, _target.partyManager);
         }
         #endregion
 
