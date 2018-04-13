@@ -30408,6 +30408,46 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114067682711184188, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980837761372242, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: hoverColor.a
+      value: 0.654902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114067682711184188, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114067682711184188, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114067682711184188, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980837761372242, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: hoverColor.r
+      value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980837761372242, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: hoverColor.g
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980837761372242, guid: dbf792c42164a7c478896153a366de10,
+        type: 2}
+      propertyPath: hoverColor.b
+      value: 0.05882353
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf792c42164a7c478896153a366de10, type: 2}
   m_IsPrefabParent: 0

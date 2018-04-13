@@ -115,10 +115,10 @@ namespace RTSCoreFramework
                 CallPossessAllySubtract();
             if (Input.GetKeyDown(KeyCode.C))
                 CallCoverToggle();
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                CallSelectNextWeapon();
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                CallSelectPrevWeapon();
+            //if (Input.GetKeyDown(KeyCode.Alpha2))
+            //    CallSelectNextWeapon();
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //    CallSelectPrevWeapon();
             if (Input.GetKeyDown(KeyCode.R))
                 CallTryReload();
             if (Input.GetKeyDown(KeyCode.Space))
@@ -384,8 +384,8 @@ namespace RTSCoreFramework
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
         void CallPossessAllySubtract() { gamemode.GeneralInCommand.PossessAllySubtract(); }
-        void CallSelectPrevWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToPrevItem(); }
-        void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToNextItem(); }
+        //void CallSelectPrevWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToPrevItem(); }
+        //void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToNextItem(); }
         void CallTryFire() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryFire(); }
         void CallTryReload() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryReload(); }
         void CallCoverToggle() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryCrouch(); }

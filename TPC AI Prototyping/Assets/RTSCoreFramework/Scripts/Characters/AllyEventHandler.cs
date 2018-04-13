@@ -27,6 +27,9 @@ namespace RTSCoreFramework
 
         //Ui Target Info
         public bool bAllyIsUiTarget { get; protected set; }
+        //Character Stats
+        public EEquipType MyEquippedType { get; protected set; }
+        public EWeaponType MyEquippedWeaponType { get; protected set; }
 
         protected bool bHasStartedFromDelay = false;
         
@@ -295,16 +298,24 @@ namespace RTSCoreFramework
 
         public void CallOnEquipTypeChanged(EEquipType _eType)
         {
-            if (OnEquipTypeChanged != null)
-            {
-                OnEquipTypeChanged(_eType);
-            }
+            MyEquippedType = _eType;
+            if (OnEquipTypeChanged != null) OnEquipTypeChanged(_eType);
+        }
+
+        public void CallToggleEquippedWeapon()
+        {
+            var _toggleType = MyEquippedType == EEquipType.Primary ?
+                EEquipType.Secondary : EEquipType.Primary;
+            CallOnEquipTypeChanged(_toggleType);
         }
 
         public void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
+            MyEquippedWeaponType = _weaponType;
             if (OnWeaponChanged != null)
+            {
                 OnWeaponChanged(_eType, _weaponType, _equipped);
+            }
         }
 
         protected void CallOnAmmoChanged(int _loaded, int _unloaded)
