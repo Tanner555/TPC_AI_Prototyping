@@ -323,6 +323,7 @@ namespace RTSCoreFramework
 
         public void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
+            MyUnequippedWeaponType = MyEquippedWeaponType;
             MyEquippedWeaponType = _weaponType;
             if (OnWeaponChanged != null)
             {
@@ -352,7 +353,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region PublicMethods
-        public void UpdateEquippedWeaponAmmoCount(EEquipType _eType, int _loaded, int _unloaded)
+        /// <summary>
+        /// Used Primarily to update unequipped ammo count, called
+        /// from allyStatsController.
+        /// </summary>
+        /// <param name="_eType"></param>
+        /// <param name="_loaded"></param>
+        /// <param name="_unloaded"></param>
+        public void UpdateWeaponAmmoCount(EEquipType _eType, int _loaded, int _unloaded)
         {
             if(_eType == EEquipType.Primary)
             {

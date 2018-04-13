@@ -146,7 +146,6 @@ namespace RTSCoreFramework
         /// this method is called to update the unequipped weapon type
         /// on the allyEventHandler.
         /// </summary>
-        /// <param name="_eType"></param>
         void UpdateUnequippedWeaponType()
         {
             EWeaponType _weapon = eventHandler.MyUnequippedType == EEquipType.Primary ?

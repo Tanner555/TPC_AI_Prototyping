@@ -92,7 +92,7 @@ namespace RTSPrototype
             EEquipType _unequippedEType = myEventHandler.MyEquippedType == EEquipType.Primary ?
                 EEquipType.Secondary : EEquipType.Primary;
             GetAmmoCountForEquipType(out _loaded, out _unloaded);
-            myEventHandler.UpdateEquippedWeaponAmmoCount(EEquipType.Secondary,
+            myEventHandler.UpdateWeaponAmmoCount(EEquipType.Secondary,
                 _loaded, _unloaded);
         }
 
