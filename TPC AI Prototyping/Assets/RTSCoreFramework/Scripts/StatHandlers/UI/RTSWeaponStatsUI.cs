@@ -166,16 +166,10 @@ namespace RTSCoreFramework
                 uiTargetHandler == null || 
                 bHasRegisteredTarget == false) return;
 
-            if (bIsUiTargetHoldingPrimary)
-            {
-                PrimaryLoadedText.text = _loaded.ToString();
-                PrimaryUnloadedText.text = _max.ToString();
-            }
-            else
-            {
-                SecondaryLoadedText.text = _loaded.ToString();
-                SecondaryUnloadedText.text = _max.ToString();
-            }
+            PrimaryLoadedText.text = uiTargetHandler.PrimaryLoadedAmmoAmount.ToString();
+            PrimaryUnloadedText.text = uiTargetHandler.PrimaryUnloadedAmmoAmount.ToString();
+            SecondaryLoadedText.text = uiTargetHandler.SecondaryLoadedAmmoAmount.ToString();
+            SecondaryUnloadedText.text = uiTargetHandler.SecondaryUnloadedAmmoAmount.ToString();
         }
 
         void OnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
