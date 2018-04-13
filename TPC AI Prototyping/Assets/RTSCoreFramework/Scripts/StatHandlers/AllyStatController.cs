@@ -103,6 +103,7 @@ namespace RTSCoreFramework
         {
             Invoke("OnDelayStart", 0.5f);
             RetrieveAllWeaponStats();
+            UpdateUnequippedWeaponType();
         }
 
         private void OnDelayStart()
@@ -140,6 +141,19 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        /// <summary>
+        /// It's not really a Handler right now. When the game starts,
+        /// this method is called to update the unequipped weapon type
+        /// on the allyEventHandler.
+        /// </summary>
+        /// <param name="_eType"></param>
+        void UpdateUnequippedWeaponType()
+        {
+            EWeaponType _weapon = eventHandler.MyUnequippedType == EEquipType.Primary ?
+                myCharacterStats.PrimaryWeapon : myCharacterStats.SecondaryWeapon;
+            eventHandler.UpdateUnequippedWeaponType(_weapon);
+        }
+
         void HandleEquipTypeChanged(EEquipType _eType)
         {
             myCharacterStats.EquippedWeapon = _eType;

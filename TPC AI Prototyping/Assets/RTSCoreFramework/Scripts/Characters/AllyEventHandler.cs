@@ -29,7 +29,15 @@ namespace RTSCoreFramework
         public bool bAllyIsUiTarget { get; protected set; }
         //Character Weapon Stats
         public EEquipType MyEquippedType { get; protected set; }
+        public EEquipType MyUnequippedType
+        {
+            get {
+                return MyEquippedType == EEquipType.Primary ?
+                  EEquipType.Secondary : EEquipType.Primary;
+            }
+        }
         public EWeaponType MyEquippedWeaponType { get; protected set; }
+        public EWeaponType MyUnequippedWeaponType { get; protected set; }
         public int PrimaryLoadedAmmoAmount { get; protected set; }
         public int PrimaryUnloadedAmmoAmount { get; protected set; }
         public int SecondaryLoadedAmmoAmount { get; protected set; }
@@ -344,6 +352,26 @@ namespace RTSCoreFramework
         #endregion
 
         #region PublicMethods
+        public void UpdateEquippedWeaponAmmoCount(EEquipType _eType, int _loaded, int _unloaded)
+        {
+            if(_eType == EEquipType.Primary)
+            {
+                PrimaryLoadedAmmoAmount = _loaded;
+                PrimaryUnloadedAmmoAmount = _unloaded;
+            }
+            else
+            {
+                SecondaryLoadedAmmoAmount = _loaded;
+                SecondaryUnloadedAmmoAmount = _unloaded;
+            }
+            CallOnAmmoChanged(_loaded, _unloaded);
+        }
+
+        public void UpdateUnequippedWeaponType(EWeaponType _weaponType)
+        {
+            MyUnequippedWeaponType = _weaponType;
+        }
+
         public void SetAllyIsUiTarget(bool _isTarget)
         {
             bAllyIsUiTarget = _isTarget;

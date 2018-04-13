@@ -60,7 +60,12 @@ namespace RTSPrototype
 
         private void Start()
         {
-            
+            Invoke("OnDelayStart", 0.5f);
+        }
+
+        private void OnDelayStart()
+        {
+            OnUnequippedAmmoChanged();
         }
 
         private void OnEnable()
@@ -75,30 +80,27 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        /// <summary>
+        /// No Event Yet, But considering using this as a handler when
+        /// picking up ammo. Used to Update Unequipped Ammo When Weapon Switch
+        /// Hasn't Yet Occurred.
+        /// </summary>
+        void OnUnequippedAmmoChanged()
+        {
+            int _loaded = 0;
+            int _unloaded = 0;
+            EEquipType _unequippedEType = myEventHandler.MyEquippedType == EEquipType.Primary ?
+                EEquipType.Secondary : EEquipType.Primary;
+            GetAmmoCountForEquipType(out _loaded, out _unloaded);
+            myEventHandler.UpdateEquippedWeaponAmmoCount(EEquipType.Secondary,
+                _loaded, _unloaded);
+        }
+
         void OnWeaponTypeChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
             if (_equipped)
             {
-                switch (_weaponType)
-                {
-                    case EWeaponType.Fist:
-                        SetEquippedItem(FistType);
-                        break;
-                    case EWeaponType.Pistol:
-                        SetEquippedItem(PistolType);
-                        break;
-                    case EWeaponType.AssaultRifle:
-                        SetEquippedItem(AssualtRifleType);
-                        break;
-                    case EWeaponType.Shotgun:
-                        SetEquippedItem(ShotgunType);
-                        break;
-                    case EWeaponType.SniperRifle:
-                        SetEquippedItem(SniperRifleType);
-                        break;
-                    default:
-                        break;
-                }
+                SetEquippedItem(GetTPSItemFromWeaponType(_weaponType));
             }
         }
 
@@ -157,7 +159,39 @@ namespace RTSPrototype
         }
         #endregion
 
-        #region Finders
+        #region Finders/Getters
+        void GetAmmoCountForEquipType(out int _loaded, out int _unloaded)
+        {
+            ItemType _item = 
+                GetTPSItemFromWeaponType(myEventHandler.MyUnequippedWeaponType);
+            GetAmmoCountForItemType(_item, out _loaded, out _unloaded);
+        }
+
+        void GetAmmoCountForItemType(ItemType _item, out int _loaded, out int _unloaded)
+        {
+            _loaded = myInventory.GetItemCount(_item, true);
+            _unloaded = myInventory.GetItemCount(_item, false);
+        }
+
+        ItemType GetTPSItemFromWeaponType(EWeaponType _weaponType)
+        {
+            switch (_weaponType)
+            {
+                case EWeaponType.Fist:
+                    return FistType;
+                case EWeaponType.Pistol:
+                    return PistolType;
+                case EWeaponType.AssaultRifle:
+                    return AssualtRifleType;
+                case EWeaponType.Shotgun:
+                    return ShotgunType;
+                case EWeaponType.SniperRifle:
+                    return SniperRifleType;
+                default:
+                    return null;
+            }
+        }
+
         //Make sure to use wrapper ability namespace, 
         //otherwise the method won't find the ability
         Opsive.ThirdPersonController.Abilities.Ability FindAbility(System.Type _type)
