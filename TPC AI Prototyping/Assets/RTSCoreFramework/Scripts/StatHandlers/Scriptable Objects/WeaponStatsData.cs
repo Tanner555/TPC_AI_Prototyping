@@ -6,7 +6,9 @@ namespace RTSCoreFramework
 {
     public enum EWeaponType
     {
-        Fist, Pistol, AssaultRifle, Shotgun, SniperRifle
+        Fist, Pistol, AssaultRifle, Shotgun, SniperRifle,
+        //Used For Null Error Checking
+        NoWeaponType = -1
     }
 
     public enum EEquipType
@@ -20,6 +22,7 @@ namespace RTSCoreFramework
         [Tooltip("Used to Identify a Weapon")]
         public EWeaponType WeaponType;
 
+        public Sprite WeaponIcon;
         //Weapon Stats
         public int DamageRate;
         public int Accuracy;

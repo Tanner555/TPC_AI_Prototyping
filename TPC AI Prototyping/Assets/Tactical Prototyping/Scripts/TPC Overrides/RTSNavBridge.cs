@@ -146,7 +146,7 @@ namespace RTSPrototype
 
         void OnToggleSprinting()
         {
-            bIsSprinting = myEventHandler.isSprinting;
+            bIsSprinting = myEventHandler.bIsSprinting;
             speedMultiplier = bIsSprinting ?
                 sprintSpeed : walkSpeed;
 

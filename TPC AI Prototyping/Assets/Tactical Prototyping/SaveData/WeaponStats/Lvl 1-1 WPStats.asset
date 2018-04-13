@@ -13,17 +13,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponStatList:
   - WeaponType: 0
+    WeaponIcon: {fileID: 21300070, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 5
     Accuracy: 2
   - WeaponType: 1
+    WeaponIcon: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 15
     Accuracy: 35
   - WeaponType: 2
+    WeaponIcon: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 25
     Accuracy: 150
   - WeaponType: 3
+    WeaponIcon: {fileID: 21300112, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 75
     Accuracy: 45
   - WeaponType: 4
+    WeaponIcon: {fileID: 21300132, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 100
     Accuracy: 100

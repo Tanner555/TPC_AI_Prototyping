@@ -35,6 +35,9 @@ namespace RTSCoreFramework
         [Header("Highlight Color")]
         [SerializeField]
         Color hoverColor = Color.gray;
+        [Header("Equipped/UnEquipped Colors")]
+        [SerializeField] Color EquippedColor;
+        [SerializeField] Color UnequippedColor;
         //UiTargetInfo
         AllyMember currentUiTarget = null;
         bool bHasRegisteredTarget = false;
@@ -184,12 +187,22 @@ namespace RTSCoreFramework
         #region HelperMethods
         void UpdateWeaponUiGameObjects(EEquipType _eType)
         {
+            Sprite _equippedIcon = uiTargetHandler.MyEquippedWeaponIcon;
+            Sprite _unequippedIcon = uiTargetHandler.MyUnequippedWeaponIcon;
             if (_eType == EEquipType.Primary)
             {
                 PrimaryWeaponGameObject.transform.SetSiblingIndex(1);
                 SecondaryWeaponGameObject.transform.SetSiblingIndex(0);
                 PrimaryWeaponGameObject.transform.localScale = EquippedScale;
                 SecondaryWeaponGameObject.transform.localScale = UnequippedScale;
+
+                if (_equippedIcon && _unequippedIcon)
+                {
+                    PrimaryWeaponUIImage.sprite = _equippedIcon;
+                    PrimaryWeaponUIImage.color = EquippedColor;
+                    SecondaryWeaponUIImage.sprite = _unequippedIcon;
+                    SecondaryWeaponUIImage.color = UnequippedColor;
+                }
             }
             else
             {
@@ -197,7 +210,15 @@ namespace RTSCoreFramework
                 SecondaryWeaponGameObject.transform.SetSiblingIndex(1);
                 PrimaryWeaponGameObject.transform.localScale = UnequippedScale;
                 SecondaryWeaponGameObject.transform.localScale = EquippedScale;
+                if (_equippedIcon && _unequippedIcon)
+                {
+                    SecondaryWeaponUIImage.sprite = _equippedIcon;
+                    SecondaryWeaponUIImage.color = EquippedColor;
+                    PrimaryWeaponUIImage.sprite = _unequippedIcon;
+                    PrimaryWeaponUIImage.color = UnequippedColor;
+                }
             }
+            
         }
         #endregion
 

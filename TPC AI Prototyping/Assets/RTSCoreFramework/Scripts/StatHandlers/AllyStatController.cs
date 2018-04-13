@@ -138,6 +138,11 @@ namespace RTSCoreFramework
                     return new WeaponStats();
             }
         }
+
+        private WeaponStats GetWeaponStatsFromWeaponType(EWeaponType _weaponType)
+        {
+            return allWeaponStats[_weaponType];
+        }
         #endregion
 
         #region Handlers
@@ -148,9 +153,13 @@ namespace RTSCoreFramework
         /// </summary>
         void UpdateUnequippedWeaponType()
         {
-            EWeaponType _weapon = eventHandler.MyUnequippedType == EEquipType.Primary ?
-                myCharacterStats.PrimaryWeapon : myCharacterStats.SecondaryWeapon;
-            eventHandler.UpdateUnequippedWeaponType(_weapon);
+            //Explicitly Set Weapon Because Unequipped weapon type
+            //on allyEventHandler doesn't become set till OnDelayStart
+            EWeaponType _weapon = myCharacterStats.EquippedWeapon == EEquipType.Primary ?
+                myCharacterStats.SecondaryWeapon : myCharacterStats.PrimaryWeapon;
+            eventHandler.UpdateUnequippedWeaponStats(
+                GetWeaponStatsFromWeaponType(
+                    _weapon));
         }
 
         void HandleEquipTypeChanged(EEquipType _eType)

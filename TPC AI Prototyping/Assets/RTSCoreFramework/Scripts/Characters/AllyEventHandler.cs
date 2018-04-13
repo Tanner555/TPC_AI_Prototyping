@@ -1,13 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RTSCoreFramework
 {
     public class AllyEventHandler : MonoBehaviour
     {
+        #region InstanceProperties
+        RTSStatHandler globalStatHandler
+        {
+            get
+            {
+                if (_globalStatHandler == null)
+                    _globalStatHandler = RTSStatHandler.thisInstance;
+
+                return _globalStatHandler;
+            }
+        }
+        RTSStatHandler _globalStatHandler = null;
+        #endregion
+
         #region FieldsAndProps
-        public bool isSprinting { get; protected set; }
+        public bool bIsSprinting { get; protected set; }
         public bool bIsTacticsEnabled { get; protected set; }
         //Is moving through nav mesh agent, regardless of
         //whether it's ai or a command
@@ -36,12 +51,24 @@ namespace RTSCoreFramework
                   EEquipType.Secondary : EEquipType.Primary;
             }
         }
-        public EWeaponType MyEquippedWeaponType { get; protected set; }
-        public EWeaponType MyUnequippedWeaponType { get; protected set; }
+        public EWeaponType MyEquippedWeaponType
+        {
+            get { return _MyEquippedWeaponType; }
+            set { _MyEquippedWeaponType = value; }
+        }
+        private EWeaponType _MyEquippedWeaponType = EWeaponType.NoWeaponType;
+        public EWeaponType MyUnequippedWeaponType
+        {
+            get { return _MyUnequippedWeaponType; }
+            set { _MyUnequippedWeaponType = value; }
+        }
+        private EWeaponType _MyUnequippedWeaponType = EWeaponType.NoWeaponType;
         public int PrimaryLoadedAmmoAmount { get; protected set; }
         public int PrimaryUnloadedAmmoAmount { get; protected set; }
         public int SecondaryLoadedAmmoAmount { get; protected set; }
         public int SecondaryUnloadedAmmoAmount { get; protected set; }
+        public Sprite MyEquippedWeaponIcon { get; protected set; }
+        public Sprite MyUnequippedWeaponIcon { get; protected set; }
 
         protected bool bHasStartedFromDelay = false;
         
@@ -93,7 +120,7 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void Awake()
         {
-            isSprinting = true;
+            bIsSprinting = true;
             bIsTacticsEnabled = false;
             bIsAimingToShoot = false;
             bIsFreeMoving = false;
@@ -157,7 +184,7 @@ namespace RTSCoreFramework
 
         public void CallEventToggleIsSprinting()
         {
-            isSprinting = !isSprinting;
+            bIsSprinting = !bIsSprinting;
             if (EventToggleIsSprinting != null) EventToggleIsSprinting();
         }
 
@@ -323,8 +350,26 @@ namespace RTSCoreFramework
 
         public void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
-            MyUnequippedWeaponType = MyEquippedWeaponType;
+            //If MyEquippedWeaponType Hasn't Been Set, Do Not Update MyUnequippedWeaponType
+            if (MyEquippedWeaponType != EWeaponType.NoWeaponType)
+            {
+                MyUnequippedWeaponType = MyEquippedWeaponType;
+            }
             MyEquippedWeaponType = _weaponType;
+            if(globalStatHandler && 
+                globalStatHandler.WeaponStatDictionary.ContainsKey(MyEquippedWeaponType) &&
+                globalStatHandler.WeaponStatDictionary.ContainsKey(MyUnequippedWeaponType)){
+                MyEquippedWeaponIcon =
+                globalStatHandler.WeaponStatDictionary
+                [MyEquippedWeaponType].WeaponIcon;
+                if (MyUnequippedWeaponType != EWeaponType.NoWeaponType)
+                {
+                    MyUnequippedWeaponIcon =
+                    globalStatHandler.WeaponStatDictionary
+                    [MyUnequippedWeaponType].WeaponIcon;
+                }
+            }
+            
             if (OnWeaponChanged != null)
             {
                 OnWeaponChanged(_eType, _weaponType, _equipped);
@@ -374,10 +419,15 @@ namespace RTSCoreFramework
             }
             CallOnAmmoChanged(_loaded, _unloaded);
         }
-
-        public void UpdateUnequippedWeaponType(EWeaponType _weaponType)
+        /// <summary>
+        /// Used to update a few unequipped weapon stats
+        /// from allystatcontroller, on start
+        /// </summary>
+        /// <param name="_weaponStats"></param>
+        public void UpdateUnequippedWeaponStats(WeaponStats _weaponStats)
         {
-            MyUnequippedWeaponType = _weaponType;
+            MyUnequippedWeaponType = _weaponStats.WeaponType;
+            MyUnequippedWeaponIcon = _weaponStats.WeaponIcon;
         }
 
         public void SetAllyIsUiTarget(bool _isTarget)
