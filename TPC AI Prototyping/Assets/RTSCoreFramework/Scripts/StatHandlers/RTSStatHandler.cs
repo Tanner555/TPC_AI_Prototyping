@@ -27,6 +27,11 @@ namespace RTSCoreFramework
 
         #region Properties
         public static RTSStatHandler thisInstance { get; protected set; }
+
+        public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
+        {
+            get { return weaponStatDictionary; }
+        }
         // I'll probably use public methods to access and update stats
         //public Dictionary<RTSCharacterType, CharacterStats> GetCharacterStats
         //{
@@ -39,9 +44,50 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters
-        public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
+        /// <summary>
+        ///  Used to retrieve an Anonymous Character's Stats, that may update
+        ///  from a specific character instance if the instance is the player's
+        ///  general partymembers.
+        /// </summary>
+        /// <param name="_ally"></param>
+        /// <param name="_cType"></param>
+        /// <returns></returns>
+        public CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
         {
-            get { return weaponStatDictionary; }
+            return RetrieveAnonymousCharacterStats(_cType);
+        }
+        /// <summary>
+        ///  Used to retrieve an Anonymous Character's Stats, that will not update
+        ///  from a specific character instance.
+        /// </summary>
+        /// <param name="_cType"></param>
+        /// <returns></returns>
+        public CharacterStats RetrieveAnonymousCharacterStats(ECharacterType _cType)
+        {
+            if (CharacterStatDictionary.ContainsKey(_cType))
+            {
+                return CharacterStatDictionary[_cType];
+            }
+            Debug.Log("Character Type: " + _cType.ToString() + " could not be found");
+            return new CharacterStats
+            {
+                CharacterType = ECharacterType.NoCharacterType,
+                Health = 0
+            };
+        }
+
+        public PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
+        {
+            if (PartyStatDictionary.ContainsKey(_commander))
+            {
+                return PartyStatDictionary[_commander];
+            }
+            Debug.Log("Commander: " + _commander.ToString() + " could not be found");
+            return new PartyStats
+            {
+                Commander = RTSGameMode.ECommanders.Commander_06,
+                healthPotionAmount = 0
+            };
         }
         #endregion
 
@@ -105,37 +151,5 @@ namespace RTSCoreFramework
             }
         }
         #endregion
-
-        #region CharacterStatRequests
-        public CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
-        {
-            if (CharacterStatDictionary.ContainsKey(_cType))
-            {
-                return CharacterStatDictionary[_cType];
-            }
-            Debug.Log("Character Type: " + _cType.ToString() + " could not be found");
-            return new CharacterStats
-            {
-                CharacterType = ECharacterType.NoCharacterType,
-                Health = 0
-            };
-        }
-
-        public PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
-        {
-            if (PartyStatDictionary.ContainsKey(_commander))
-            {
-                return PartyStatDictionary[_commander];
-            }
-            Debug.Log("Commander: " + _commander.ToString() + " could not be found");
-            return new PartyStats
-            {
-                Commander = RTSGameMode.ECommanders.Commander_06,
-                healthPotionAmount = 0
-            };
-        }
-
-        #endregion
-
     }
 }

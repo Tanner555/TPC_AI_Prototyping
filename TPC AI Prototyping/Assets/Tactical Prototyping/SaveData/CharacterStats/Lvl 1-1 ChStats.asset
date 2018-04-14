@@ -13,18 +13,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterStatList:
   - CharacterType: 0
+    CharacterPrefab: {fileID: 1712568748307802, guid: b79383dd7a5bd6c44b682fac0b95ec07,
+      type: 2}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
   - CharacterType: 1
+    CharacterPrefab: {fileID: 1768055428005526, guid: 9a4d6a79cda7e9548a317034fd6997fa,
+      type: 2}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
   - CharacterType: 2
+    CharacterPrefab: {fileID: 1825627822260076, guid: ba668e5df35b7684392f86da7a48d39c,
+      type: 2}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0

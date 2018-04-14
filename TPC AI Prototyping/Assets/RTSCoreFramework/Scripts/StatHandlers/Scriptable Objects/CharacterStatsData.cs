@@ -9,7 +9,7 @@ namespace RTSCoreFramework
         BlueSillyPants, BrownSillyPants, EvilAssaultVillian1,
 
         //Only Used When Character Type Could Not Be Found
-        NoCharacterType
+        NoCharacterType = -1
     }
 
     [System.Serializable]
@@ -17,6 +17,8 @@ namespace RTSCoreFramework
     {
         [Tooltip("Used to Identify a Character")]
         public ECharacterType CharacterType;
+        [Tooltip("Used to Spawn a Character")]
+        public GameObject CharacterPrefab;
 
         [Header("Health Stats")]
         public int MaxHealth;

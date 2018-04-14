@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RTSTimer {
-
-    float timerRate = 0.0f;
-    float currentTimer = 0.0f;
-
-    public RTSTimer(float rate)
+namespace RTSCoreFramework
+{
+    public class RTSTimer
     {
-        timerRate = rate;
-    }
+        float timerRate = 0.0f;
+        float currentTimer = 0.0f;
 
-    public void StartTimer()
-    {
-        currentTimer = Time.time + timerRate;
-    }
+        public RTSTimer(float rate)
+        {
+            timerRate = rate;
+        }
 
-    public bool IsTimerFinished()
-    {
-        return Time.time > currentTimer;
+        public void StartTimer()
+        {
+            currentTimer = Time.time + timerRate;
+        }
+
+        public bool IsTimerFinished()
+        {
+            return Time.time > currentTimer;
+        }
     }
 }
