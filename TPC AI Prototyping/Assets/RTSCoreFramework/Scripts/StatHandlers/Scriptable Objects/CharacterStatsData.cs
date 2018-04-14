@@ -6,7 +6,12 @@ namespace RTSCoreFramework
 {
     public enum ECharacterType
     {
-        BlueSillyPants, BrownSillyPants, EvilAssaultVillian1,
+        //Characters
+        //Allies
+        BlueSillyPants = 0, BrownSillyPants = 1,
+        SillyGirlMedic = 2,
+        //Villians
+        EvilAssaultVillian1 = 25,
 
         //Only Used When Character Type Could Not Be Found
         NoCharacterType = -1
