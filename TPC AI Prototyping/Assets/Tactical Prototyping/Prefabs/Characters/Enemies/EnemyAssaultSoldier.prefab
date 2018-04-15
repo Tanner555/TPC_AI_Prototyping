@@ -6028,7 +6028,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114215177812978064
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6071,7 +6071,7 @@ MonoBehaviour:
   m_PulseSpeed: 0.5
 --- !u!114 &114234195813627858
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6423,7 +6423,7 @@ MonoBehaviour:
     m_CanReplay: 0
 --- !u!114 &114317458611840042
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6473,7 +6473,7 @@ MonoBehaviour:
   m_FootWeightAdjustmentSpeed: 5
 --- !u!114 &114353107095760730
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6514,7 +6514,7 @@ MonoBehaviour:
   followDistance: 5
 --- !u!114 &114365759644294196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6543,7 +6543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114394860583792196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -7698,7 +7698,7 @@ MonoBehaviour:
   m_DefaultImpactSound: {fileID: 0}
 --- !u!114 &114689182436087296
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -7739,7 +7739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb35a6d04180274690f291c2d302af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 2
+  characterType: 25
 --- !u!114 &114742390091941854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8106,7 +8106,7 @@ MonoBehaviour:
   m_Footsteps: []
 --- !u!114 &114939998160306228
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}

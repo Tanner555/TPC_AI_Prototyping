@@ -15989,14 +15989,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4602498048454864, guid: f8565c42386af194a9ecdfc5b2f9a011, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602498048454864, guid: f8565c42386af194a9ecdfc5b2f9a011, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8565c42386af194a9ecdfc5b2f9a011, type: 2}
   m_IsPrefabParent: 0
@@ -36084,6 +36076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Invincible: 0
+  m_MaxHealth: 0
   m_MaxShield: 0
   m_ShieldRegenerativeInitialWait: 0
   m_ShieldRegenerativeAmount: 0

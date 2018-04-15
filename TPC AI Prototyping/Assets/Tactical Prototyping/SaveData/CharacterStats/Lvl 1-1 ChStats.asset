@@ -28,7 +28,7 @@ MonoBehaviour:
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
-  - CharacterType: 2
+  - CharacterType: 25
     CharacterPrefab: {fileID: 1825627822260076, guid: ba668e5df35b7684392f86da7a48d39c,
       type: 2}
     MaxHealth: 100
