@@ -1305,8 +1305,16 @@ GameObject:
   - component: {fileID: 114758336117380332}
   - component: {fileID: 114839641392372228}
   - component: {fileID: 114815560031180000}
+  - component: {fileID: 114939782792276948}
+  - component: {fileID: 114646617548109750}
+  - component: {fileID: 114815830175392318}
+  - component: {fileID: 114473590096971394}
   - component: {fileID: 114318541859586470}
   - component: {fileID: 114911107101201148}
+  - component: {fileID: 114269516441092220}
+  - component: {fileID: 114158992663278294}
+  - component: {fileID: 114301417828063028}
+  - component: {fileID: 114337753060850616}
   - component: {fileID: 114505142003567552}
   - component: {fileID: 114893248757319296}
   - component: {fileID: 114940800323444018}
@@ -5040,12 +5048,14 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114269516441092220}
+  - {fileID: 114939782792276948}
+  - {fileID: 114646617548109750}
+  - {fileID: 114158992663278294}
+  - {fileID: 114337753060850616}
+  - {fileID: 114815830175392318}
+  - {fileID: 114301417828063028}
+  - {fileID: 114473590096971394}
   m_SelectedAbility: 3
 --- !u!114 &114050705213877726
 MonoBehaviour:
@@ -6345,6 +6355,38 @@ MonoBehaviour:
     m_TransitionDuration: 0.2
     m_SpeedMultiplier: 1
     m_CanReplay: 0
+--- !u!114 &114158992663278294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4808aa70acfd1c4e99fff41161272be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 3
+  m_InputName: Action
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 21300042, guid: 0bc6c6bd93187444bb1c45e410184ad6, type: 3}
+  m_TakeCoverDistance: 0.5
+  m_CoverLayer:
+    serializedVersion: 2
+    m_Bits: 67108864
+  m_MinMoveToTargetSpeed: 0.5
+  m_TakeCoverRotationSpeed: 4
+  m_CoverOffset: 0.05
+  m_CanStandOffset: 0
+  m_CoverSpherecastRadius: 0.05
+  m_CoverAngleThreshold: 1
+  m_CrouchColliderAdjustment: -0.5
+  m_NormalizedStrafeSpeed: -0.5
+  m_StrafeCoverOffset: {x: 0.1, y: 0, z: 0.5}
+  m_PopDistance: {x: 0.3, y: 0, z: 3}
 --- !u!114 &114175959307595018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6377,6 +6419,24 @@ MonoBehaviour:
   m_CanUseSecondaryItem: 1
   m_CanToggleFlashlight: 1
   m_CanToggleLaserSight: 1
+--- !u!114 &114269516441092220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114277628777102000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6393,6 +6453,34 @@ MonoBehaviour:
   - {fileID: 1122728735778270}
   - {fileID: 1780157951426444}
   m_Footsteps: []
+--- !u!114 &114301417828063028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114318541859586470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6696,6 +6784,25 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114337753060850616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb04d49c0f37314bb0dd270eb9e016b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 4
+  m_InputName: Action
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 21300088, guid: 0bc6c6bd93187444bb1c45e410184ad6, type: 3}
+  m_UnequipCurrentItem: 0
 --- !u!114 &114453718869523398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6791,6 +6898,30 @@ MonoBehaviour:
   m_DefaultHitscanImpactSound: {fileID: 0}
   m_Tracer: {fileID: 0}
   m_TracerLocation: {fileID: 0}
+--- !u!114 &114473590096971394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c6067b743e80c4fa161fe4d557c43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 7
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_RagdollDeath: 1
+  m_SettledThreshold: 0.01
+  m_SettledFrameCount: 5
+  m_DisableColliders: 1
+  m_RegisterDeathEvent: 1
+  m_IgnoreColliders: []
 --- !u!114 &114492238304884668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7392,6 +7523,30 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 0
+--- !u!114 &114646617548109750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9db9d1e20a3e5f42beb79b5387baa19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 2
+  m_InputName: Jump
+  m_StartType: 2
+  m_StopType: 0
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_Force: 5
+  m_DoubleJumpForce: 0
+  m_RecurrenceDelay: 0.2
+  m_MovementCycleNormalizedLength: 0.5
+  m_MovementCycleLegOffset: 0
+  m_UniformAcceleration: 0
 --- !u!114 &114658392014472910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7923,6 +8078,33 @@ MonoBehaviour:
   chestTransform: {fileID: 4036816210230702}
   headTransform: {fileID: 4036816210230702}
   _myCharacterHealth: {fileID: 0}
+--- !u!114 &114815830175392318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679bf183e5d16764780c710541fe14ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 5
+  m_InputName: Change Speeds
+  m_StartType: 2
+  m_StopType: 2
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_SpeedChangeMultiplier: 2
+  m_MinSpeedChangeValue: -2
+  m_MaxSpeedChangeValue: 2
+  m_CanAim: 0
+  m_UseStamina: 0
+  m_MaxStamina: 100
+  m_StaminaDecreaseRate: 0.5
+  m_StaminaIncreaseRate: 0.1
+  m_AutoStartController: 0
 --- !u!114 &114839641392372228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8021,6 +8203,25 @@ MonoBehaviour:
   m_MinWidth: 0.3
   m_MaxWidth: 0.5
   m_PulseSpeed: 0.5
+--- !u!114 &114939782792276948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1121139791ef946b19dcf710f21c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 1
+  m_InputName: 
+  m_StartType: 0
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_MinFallHeight: 0
 --- !u!114 &114940800323444018
 MonoBehaviour:
   m_ObjectHideFlags: 1

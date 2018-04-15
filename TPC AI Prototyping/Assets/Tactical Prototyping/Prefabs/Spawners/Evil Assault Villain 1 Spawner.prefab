@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd4b8827c0b6b048979aa6129593241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterType: 25
+  CharacterType: 2
   isFriendlyAlly: 0
   FriendlyColor: {r: 0, g: 1, b: 0, a: 1}
   EnemyColor: {r: 1, g: 0, b: 0, a: 1}
