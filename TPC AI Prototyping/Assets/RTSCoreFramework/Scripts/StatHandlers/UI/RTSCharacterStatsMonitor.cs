@@ -96,20 +96,20 @@ namespace RTSCoreFramework
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (AllCompsAreValid && PortraitPanelImage != null && uiTarget != null &&
+            if (uiTarget != null &&
                 uiTargetHandler && !uiTarget.bIsCurrentPlayer)
             {
-                PortraitPanelImage.color = HighlightColor;
+                SetToHighlightColor();
                 uiTargetHandler.CallEventOnHoverOver();
             }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (AllCompsAreValid && PortraitPanelImage != null && uiTarget != null && 
-                uiTargetHandler && !uiTarget.bIsCurrentPlayer)
+            if (uiTarget != null && uiTargetHandler && 
+                !uiTarget.bIsCurrentPlayer)
             {
-                PortraitPanelImage.color = NormalPortraitPanelColor;
+                SetToNormalColor();
                 uiTargetHandler.CallEventOnHoverLeave();
             }
         }
@@ -137,6 +137,10 @@ namespace RTSCoreFramework
             {
                 SetupUITargetHandlers(uiTarget, _targetToSet);
                 uiTarget = _targetToSet;
+                if (uiTarget.bIsCurrentPlayer)
+                {
+                    SetToSelectedColor();
+                }
             }
         }
 
@@ -168,6 +172,8 @@ namespace RTSCoreFramework
             //Sub to Current UiTarget Handlers
             _handler.OnHealthChanged += UiTargetHandle_OnHealthChanged;
             _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
+            _handler.EventSetAsCommander += UiTargetHandle_SetAsCommander;
+            _handler.EventSwitchingFromCom += UiTargetHandle_SwitchFromCommander;
         }
 
         protected virtual void UnsubscribeFromUiTargetHandlers(AllyMember _target)
@@ -178,6 +184,8 @@ namespace RTSCoreFramework
             //Unsub From Previous UiTarget Handlers
             _handler.OnHealthChanged -= UiTargetHandle_OnHealthChanged;
             _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
+            _handler.EventSetAsCommander -= UiTargetHandle_SetAsCommander;
+            _handler.EventSwitchingFromCom -= UiTargetHandle_SwitchFromCommander;
         }
 
         void SetAllyIsUiTarget(AllyMember _target, bool _isTarget)
@@ -209,6 +217,42 @@ namespace RTSCoreFramework
             if(uiTarget != null && uiTarget.bAllyIsUiTarget)
             {
                 UnsubscribeFromUiTargetHandlers(uiTarget);
+            }
+        }
+
+        protected virtual void UiTargetHandle_SetAsCommander()
+        {
+            SetToSelectedColor();
+        }
+
+        protected virtual void UiTargetHandle_SwitchFromCommander()
+        {
+            SetToNormalColor();
+        }
+        #endregion
+
+        #region Helpers
+        void SetToHighlightColor()
+        {
+            if(AllCompsAreValid && PortraitPanelImage != null)
+            {
+                PortraitPanelImage.color = HighlightColor;
+            }
+        }
+
+        void SetToSelectedColor()
+        {
+            if (AllCompsAreValid && PortraitPanelImage != null)
+            {
+                PortraitPanelImage.color = SelectedColor;
+            }
+        }
+
+        void SetToNormalColor()
+        {
+            if (AllCompsAreValid && PortraitPanelImage != null)
+            {
+                PortraitPanelImage.color = NormalPortraitPanelColor;
             }
         }
         #endregion
