@@ -52,6 +52,8 @@ namespace RTSCoreFramework
         NavMeshAgent _myNavMesh = null;
 
         bool cameraIsMoving = false;
+
+        bool bHasSwitched = false;
         #endregion
 
         #region UnityMessages
@@ -63,7 +65,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove -= SetupWaypointRenderer;
             myEventHandler.EventTogglebIsFreeMoving -= CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
-            myEventHandler.EventPartySwitching -= DisableWaypointRenderer;
+            myEventHandler.EventPartySwitching -= OnPartySwitch;
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
@@ -79,7 +81,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove += SetupWaypointRenderer;
             myEventHandler.EventTogglebIsFreeMoving += CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
-            myEventHandler.EventPartySwitching += DisableWaypointRenderer;
+            myEventHandler.EventPartySwitching += OnPartySwitch;
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
@@ -120,7 +122,8 @@ namespace RTSCoreFramework
 
         void WaitToSetupWaypointRenderer()
         {
-            if (myNavMesh == null || myNavMesh.path == null ||
+            if (bHasSwitched || myNavMesh == null || 
+                myNavMesh.path == null ||
                 myEventHandler.bIsAIMoving)
                 return;
 
@@ -173,6 +176,18 @@ namespace RTSCoreFramework
             {
                 DisableWaypointRenderer();
             }
+        }
+
+        void OnPartySwitch()
+        {
+            DisableWaypointRenderer();
+            bHasSwitched = true;
+            Invoke("SetbHasSwitchedToFalse", 0.2f);
+        }
+
+        void SetbHasSwitchedToFalse()
+        {
+            bHasSwitched = false;
         }
 
         void HandleDeath()
