@@ -116,10 +116,14 @@ namespace RTSCoreFramework
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (uiTarget != null && uiTargetHandler)
+            bool _leftClick = eventData.button == 
+                PointerEventData.InputButton.Left;
+            if (_leftClick && uiTarget != null && uiTargetHandler && 
+                !uiTarget.bIsCurrentPlayer &&
+                uiTarget.partyManager != null)
             {
-                //Call SetToCommand Method or Event on uiTarget's 
-                //PartyManager or GameMaster or GameMode
+                uiTarget.partyManager.SetAllyInCommand(uiTarget);
+                uiTargetHandler.CallEventOnHoverLeave();
             }
         }
         #endregion
