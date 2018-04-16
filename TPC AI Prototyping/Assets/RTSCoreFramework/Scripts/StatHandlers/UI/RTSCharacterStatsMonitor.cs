@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace RTSCoreFramework
 {
-    public class RTSCharacterStatsMonitor : MonoBehaviour
+    public class RTSCharacterStatsMonitor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         #region Properties
         bool AllCompsAreValid
@@ -15,6 +16,12 @@ namespace RTSCoreFramework
                   && CurrentHealthText && MaxHealthText && CurrentAbilityText
                   && MaxAbilityText && CharacterNameText && UiCharacterPortraitPanel;
             }
+        }
+
+        //UiTarget Props
+        AllyEventHandler uiTargetHandler
+        {
+            get { return uiTarget.allyEventHandler; }
         }
 
         public bool bUiTargetIsSet { get; protected set; }
@@ -87,16 +94,37 @@ namespace RTSCoreFramework
             }
         }
 
-        // Use this for initialization
-        void Start()
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            
+            if (StatPanelImage != null)
+            {
+                StatPanelImage.color = HighlightColor;
+            }
+            if(uiTarget != null && uiTargetHandler)
+            {
+                //Call OnHoverOver on uiTargetHandler
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnPointerExit(PointerEventData eventData)
         {
+            if (StatPanelImage != null)
+            {
+                StatPanelImage.color = NormalStatPanelColor;
+            }
+            if (uiTarget != null && uiTargetHandler)
+            {
+                //Call OnHoverLeave on uiTargetHandler
+            }
+        }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (uiTarget != null && uiTargetHandler)
+            {
+                //Call SetToCommand Method or Event on uiTarget's 
+                //PartyManager or GameMaster or GameMode
+            }
         }
         #endregion
 
