@@ -82,6 +82,8 @@ namespace RTSCoreFramework
         //Not Serialized Colors Used to Reference Start Color
         Color NormalStatPanelColor;
         Color NormalPortraitPanelColor;
+        //hover info fields
+        bool bIsHighlighted = false;
         #endregion
 
         #region UnityMessages
@@ -99,7 +101,6 @@ namespace RTSCoreFramework
             if (uiTarget != null &&
                 uiTargetHandler && !uiTarget.bIsCurrentPlayer)
             {
-                SetToHighlightColor();
                 uiTargetHandler.CallEventOnHoverOver();
             }
         }
@@ -109,7 +110,6 @@ namespace RTSCoreFramework
             if (uiTarget != null && uiTargetHandler && 
                 !uiTarget.bIsCurrentPlayer)
             {
-                SetToNormalColor();
                 uiTargetHandler.CallEventOnHoverLeave();
             }
         }
@@ -174,6 +174,8 @@ namespace RTSCoreFramework
             _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander += UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom += UiTargetHandle_SwitchFromCommander;
+            _handler.OnHoverOver += UiTargetHandle_OnHoverOver;
+            _handler.OnHoverLeave += UiTargetHandle_OnHoverLeave;
         }
 
         protected virtual void UnsubscribeFromUiTargetHandlers(AllyMember _target)
@@ -186,6 +188,8 @@ namespace RTSCoreFramework
             _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander -= UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom -= UiTargetHandle_SwitchFromCommander;
+            _handler.OnHoverOver -= UiTargetHandle_OnHoverOver;
+            _handler.OnHoverLeave -= UiTargetHandle_OnHoverLeave;
         }
 
         void SetAllyIsUiTarget(AllyMember _target, bool _isTarget)
@@ -229,6 +233,24 @@ namespace RTSCoreFramework
         {
             SetToNormalColor();
         }
+
+        protected virtual void UiTargetHandle_OnHoverOver()
+        {
+            if(bIsHighlighted == false && uiTarget != null &&
+                !uiTarget.bIsCurrentPlayer)
+            {
+                SetToHighlightColor();
+            }
+        }
+
+        protected virtual void UiTargetHandle_OnHoverLeave()
+        {
+            if (bIsHighlighted && uiTarget != null &&
+                !uiTarget.bIsCurrentPlayer)
+            {
+                SetToNormalColor();
+            }
+        }
         #endregion
 
         #region Helpers
@@ -236,6 +258,7 @@ namespace RTSCoreFramework
         {
             if(AllCompsAreValid && PortraitPanelImage != null)
             {
+                bIsHighlighted = true;
                 PortraitPanelImage.color = HighlightColor;
             }
         }
@@ -244,6 +267,7 @@ namespace RTSCoreFramework
         {
             if (AllCompsAreValid && PortraitPanelImage != null)
             {
+                bIsHighlighted = false;
                 PortraitPanelImage.color = SelectedColor;
             }
         }
@@ -252,6 +276,7 @@ namespace RTSCoreFramework
         {
             if (AllCompsAreValid && PortraitPanelImage != null)
             {
+                bIsHighlighted = false;
                 PortraitPanelImage.color = NormalPortraitPanelColor;
             }
         }
