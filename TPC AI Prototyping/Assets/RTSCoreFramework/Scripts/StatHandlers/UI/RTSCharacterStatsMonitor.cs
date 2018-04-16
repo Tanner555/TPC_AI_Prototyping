@@ -13,16 +13,43 @@ namespace RTSCoreFramework
             get {
                 return UiCharacterPortrait && UiHealthSlider && UiAbilitySlider
                   && CurrentHealthText && MaxHealthText && CurrentAbilityText
-                  && MaxAbilityText && CharacterNameText;
+                  && MaxAbilityText && CharacterNameText && UiCharacterPortraitPanel;
             }
         }
 
         public bool bUiTargetIsSet { get; protected set; }
+
+        //Easy Access Image Props
+        Image StatPanelImage
+        {
+            get
+            {
+                if (_StatPanelImage == null)
+                    _StatPanelImage = GetComponent<Image>();
+
+                return _StatPanelImage;
+            }
+        }
+        Image _StatPanelImage = null;
+
+        Image PortraitPanelImage
+        {
+            get
+            {
+                if (_PortraitPanelImage == null)
+                    _PortraitPanelImage = GetComponent<Image>();
+
+                return _PortraitPanelImage;
+            }
+        }
+        Image _PortraitPanelImage = null;
         #endregion
 
         #region Fields
         //Ui Gameobjects
         [Header("Ui GameObjects")]
+        [SerializeField]
+        Image UiCharacterPortraitPanel;
         [SerializeField]
         Image UiCharacterPortrait;
         [SerializeField]
@@ -41,13 +68,29 @@ namespace RTSCoreFramework
         Text CharacterNameText;
         //Ui Target Info
         AllyMember uiTarget = null;
+        //Colors
+        [Header("Colors")]
+        [SerializeField] Color HighlightColor;
+        [SerializeField] Color SelectedColor;
+        //Not Serialized Colors Used to Reference Start Color
+        Color NormalStatPanelColor;
+        Color NormalPortraitPanelColor;
         #endregion
 
         #region UnityMessages
+        private void OnEnable()
+        {
+            if (AllCompsAreValid)
+            {
+                NormalStatPanelColor = StatPanelImage.color;
+                NormalPortraitPanelColor = PortraitPanelImage.color;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame

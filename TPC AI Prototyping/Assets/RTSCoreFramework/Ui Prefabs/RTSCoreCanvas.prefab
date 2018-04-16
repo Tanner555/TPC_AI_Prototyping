@@ -2301,7 +2301,7 @@ MonoBehaviour:
   conditionButton: {fileID: 114512750229868368}
   actionButton: {fileID: 114984793348344388}
   CharacterStatsPanels: {fileID: 1036266877865324}
-  CharacterStatsPrefab: {fileID: 1783087992963054, guid: 385dc4c45f93ed2468ca54c81ed61ed4,
+  CharacterStatsPrefab: {fileID: 1534986942412352, guid: 385dc4c45f93ed2468ca54c81ed61ed4,
     type: 2}
 --- !u!114 &114050711714917206
 MonoBehaviour:
