@@ -44,7 +44,7 @@ namespace RTSCoreFramework
             get
             {
                 if (_PortraitPanelImage == null)
-                    _PortraitPanelImage = GetComponent<Image>();
+                    _PortraitPanelImage = UiCharacterPortraitPanel.GetComponent<Image>();
 
                 return _PortraitPanelImage;
             }
@@ -96,25 +96,21 @@ namespace RTSCoreFramework
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (StatPanelImage != null)
+            if (AllCompsAreValid && PortraitPanelImage != null && uiTarget != null &&
+                uiTargetHandler && !uiTarget.bIsCurrentPlayer)
             {
-                StatPanelImage.color = HighlightColor;
-            }
-            if(uiTarget != null && uiTargetHandler)
-            {
-                //Call OnHoverOver on uiTargetHandler
+                PortraitPanelImage.color = HighlightColor;
+                uiTargetHandler.CallEventOnHoverOver();
             }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (StatPanelImage != null)
+            if (AllCompsAreValid && PortraitPanelImage != null && uiTarget != null && 
+                uiTargetHandler && !uiTarget.bIsCurrentPlayer)
             {
-                StatPanelImage.color = NormalStatPanelColor;
-            }
-            if (uiTarget != null && uiTargetHandler)
-            {
-                //Call OnHoverLeave on uiTargetHandler
+                PortraitPanelImage.color = NormalPortraitPanelColor;
+                uiTargetHandler.CallEventOnHoverLeave();
             }
         }
 

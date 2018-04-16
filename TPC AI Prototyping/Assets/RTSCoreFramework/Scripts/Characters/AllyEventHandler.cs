@@ -96,9 +96,10 @@ namespace RTSCoreFramework
         public event GeneralEventHandler OnTryCrouch;
         public event GeneralOneBoolHandler OnTryAim;
 
-        public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
-        public event RtsHitTypeAndRayCastHitHandler OnHoverOver;
-        public event RtsHitTypeAndRayCastHitHandler OnHoverLeave;
+        //May use delegate in the future
+        //public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
+        public event GeneralEventHandler OnHoverOver;
+        public event GeneralEventHandler OnHoverLeave;
 
         public delegate void GeneralVector3Handler(Vector3 _point);
         public event GeneralVector3Handler EventCommandMove;
@@ -253,17 +254,27 @@ namespace RTSCoreFramework
 
         public void CallEventOnHoverOver(rtsHitType hitType, RaycastHit hit)
         {
-            if (OnHoverOver != null)
-            {
-                OnHoverOver(hitType, hit);
-            }
+            CallEventOnHoverOver();
         }
 
         public void CallEventOnHoverLeave(rtsHitType hitType, RaycastHit hit)
         {
+            CallEventOnHoverLeave();
+        }
+
+        public void CallEventOnHoverOver()
+        {
+            if (OnHoverOver != null)
+            {
+                OnHoverOver();
+            }
+        }
+
+        public void CallEventOnHoverLeave()
+        {
             if (OnHoverLeave != null)
             {
-                OnHoverLeave(hitType, hit);
+                OnHoverLeave();
             }
         }
 

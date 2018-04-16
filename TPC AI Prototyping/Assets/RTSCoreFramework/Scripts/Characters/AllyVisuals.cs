@@ -88,7 +88,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region CursorHoverandExit
-        void OnCursEnter(rtsHitType hitType, RaycastHit hit)
+        void OnCursEnter()
         {
             if (cameraIsMoving) return;
             SelectionLight.enabled = true;
@@ -103,7 +103,7 @@ namespace RTSCoreFramework
 
         }
 
-        void OnCursExit(rtsHitType hitType, RaycastHit hit)
+        void OnCursExit()
         {
             if (cameraIsMoving) return;
             SelectionLight.enabled = false;

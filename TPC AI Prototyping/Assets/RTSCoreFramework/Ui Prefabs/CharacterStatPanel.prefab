@@ -746,7 +746,7 @@ MonoBehaviour:
   CurrentAbilityText: {fileID: 114785784570445072}
   MaxAbilityText: {fileID: 114060238059942660}
   CharacterNameText: {fileID: 114071383363173898}
-  HighlightColor: {r: 0.5176471, g: 0.4862745, b: 0.88235295, a: 0.3137255}
+  HighlightColor: {r: 0.5176471, g: 0.4862745, b: 0.88235295, a: 1}
   SelectedColor: {r: 0.9485294, g: 0.84925133, b: 0.048821356, a: 0.78431374}
 --- !u!114 &114606310283961616
 MonoBehaviour:
