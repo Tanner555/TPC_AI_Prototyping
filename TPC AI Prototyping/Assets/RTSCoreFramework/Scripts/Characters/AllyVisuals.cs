@@ -54,6 +54,8 @@ namespace RTSCoreFramework
         bool cameraIsMoving = false;
 
         bool bHasSwitched = false;
+
+        float waypointUpdateRate = 0.5f;
         #endregion
 
         #region UnityMessages
@@ -116,45 +118,18 @@ namespace RTSCoreFramework
         #region Handlers
         void SetupWaypointRenderer(Vector3 _point)
         {
-            Invoke("WaitToSetupWaypointRenderer", 0.1f);
-            
-        }
-
-        void WaitToSetupWaypointRenderer()
-        {
-            if (bHasSwitched || myNavMesh == null || 
-                myNavMesh.path == null ||
-                myEventHandler.bIsAIMoving)
-                return;
-
-            if (waypointRenderer != null && waypointRenderer.enabled == false)
+            if (IsInvoking("UpdateWaypointRenderer"))
             {
-                waypointRenderer.enabled = true;
+                CancelInvoke("UpdateWaypointRenderer");
             }
-            else if (waypointRenderer == null)
-            {
-                waypointRenderer = this.gameObject.AddComponent<LineRenderer>();
-                if (waypointRendererMaterial != null)
-                    waypointRenderer.material = waypointRendererMaterial;
-
-                waypointRenderer.startWidth = 0.05f;
-                waypointRenderer.endWidth = 0.05f;
-                waypointRenderer.startColor = Color.yellow;
-                waypointRenderer.endColor = Color.yellow;
-            }
-
-            var path = myNavMesh.path;
-
-            waypointRenderer.positionCount = path.corners.Length;
-
-            for (int i = 0; i < path.corners.Length; i++)
-            {
-                waypointRenderer.SetPosition(i, path.corners[i]);
-            }
+            InvokeRepeating("UpdateWaypointRenderer", 0.1f, waypointUpdateRate);
         }
 
         void DisableWaypointRenderer()
         {
+            if (IsInvoking("UpdateWaypointRenderer"))
+                CancelInvoke("UpdateWaypointRenderer");
+
             if(waypointRenderer != null)
             {
                 waypointRenderer.enabled = false;
@@ -226,6 +201,41 @@ namespace RTSCoreFramework
             if (_enabled && SelectionLight != null && SelectionLight.enabled)
             {
                 SelectionLight.enabled = false;
+            }
+        }
+        #endregion
+
+        #region Helpers
+        void UpdateWaypointRenderer()
+        {
+            if (bHasSwitched || myNavMesh == null ||
+                myNavMesh.path == null ||
+                myEventHandler.bIsAIMoving)
+                return;
+
+            if (waypointRenderer != null && waypointRenderer.enabled == false)
+            {
+                waypointRenderer.enabled = true;
+            }
+            else if (waypointRenderer == null)
+            {
+                waypointRenderer = this.gameObject.AddComponent<LineRenderer>();
+                if (waypointRendererMaterial != null)
+                    waypointRenderer.material = waypointRendererMaterial;
+
+                waypointRenderer.startWidth = 0.05f;
+                waypointRenderer.endWidth = 0.05f;
+                waypointRenderer.startColor = Color.yellow;
+                waypointRenderer.endColor = Color.yellow;
+            }
+
+            var path = myNavMesh.path;
+
+            waypointRenderer.positionCount = path.corners.Length;
+
+            for (int i = 0; i < path.corners.Length; i++)
+            {
+                waypointRenderer.SetPosition(i, path.corners[i]);
             }
         }
         #endregion
