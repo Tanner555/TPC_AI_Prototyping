@@ -1974,6 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48d99351406c1d428f08ba92d47440d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuUiPanel: {fileID: 1906972738641858}
   IGBPIUi: {fileID: 1762210194784580}
   UI_Panel_Prefab: {fileID: 1945189304736280, guid: 137a07ea11ab8c948b49b92b7fa3e4ab,
     type: 2}
@@ -4283,8 +4284,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CallEventRestartLevel
+      - m_Target: {fileID: 114050203822098792}
+        m_MethodName: CallRestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4890,8 +4891,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CallEventGoToMenuScene
+      - m_Target: {fileID: 114050203822098792}
+        m_MethodName: CallGoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

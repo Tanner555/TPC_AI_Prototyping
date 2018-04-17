@@ -26,6 +26,8 @@ namespace RTSCoreFramework
             get; protected set;
         }
 
+        public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
+
         public IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         public RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
 
@@ -44,7 +46,7 @@ namespace RTSCoreFramework
         public bool AllUiCompsAreValid
         {
             get { return IGBPICompsAreValid && CharacterStatsPanels &&
-                    CharacterStatsPrefab; }
+                    CharacterStatsPrefab && MenuUiPanel; }
         }
 
         public bool IGBPICompsAreValid
@@ -76,6 +78,7 @@ conditionButton && actionButton;
 
         #region UIGameObjects
         [Header("Main Ui GameObjects")]
+        public GameObject MenuUiPanel;
         public GameObject IGBPIUi;
 
         [Header("IGBPI Objects")]
@@ -125,7 +128,7 @@ conditionButton && actionButton;
         }
         #endregion
 
-        #region ButtonCalls
+        #region ButtonCalls-IGBPI
         public void CallAddDropdown()
         {
             if (uiMaster != null) uiMaster.CallEventAddDropdownInstance();
@@ -202,12 +205,24 @@ conditionButton && actionButton;
         }
         #endregion
 
+        #region ButtonCalls-MainMenu
+        public void CallGoToMainMenu()
+        {
+            gamemaster.CallEventGoToMenuScene();
+        }
+
+        public void CallRestartLevel()
+        {
+            gamemaster.CallEventRestartLevel();   
+        }
+        #endregion
+
         #region Handlers-General/Toggles
         //Toggles Ui GameObjects
         void TogglePauseMenuUi(bool enable)
         {
-            //if (PauseMenuUi != null)
-            //    PauseMenuUi.SetActive(enable);
+            if (MenuUiPanel != null)
+                MenuUiPanel.SetActive(enable);
         }
 
         void ToggleInventoryUi(bool enable)

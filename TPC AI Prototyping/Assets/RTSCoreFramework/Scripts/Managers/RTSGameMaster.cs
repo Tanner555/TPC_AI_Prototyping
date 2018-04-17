@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace RTSCoreFramework
 {
@@ -34,6 +35,13 @@ namespace RTSCoreFramework
         public bool isGameOver;
         public bool isInventoryUIOn;
         public bool isMenuOn;
+
+        /// <summary>
+        /// Temporary Field to load the main menu
+        /// Will Probably Change in the Future
+        /// </summary>
+        [SerializeField]
+        public Object MainMenuScene;
         #endregion
 
         #region UnityMessages
@@ -57,8 +65,8 @@ namespace RTSCoreFramework
 
         #region Events and Delegates
         public delegate void GameManagerEventHandler();
-        public event GameManagerEventHandler RestartLevelEvent;
-        public event GameManagerEventHandler GoToMenuSceneEvent;
+        //public event GameManagerEventHandler RestartLevelEvent;
+        //public event GameManagerEventHandler GoToMenuSceneEvent;
         public event GameManagerEventHandler GameOverEvent;
 
         public delegate void OneBoolArgsHandler(bool enable);
@@ -97,17 +105,18 @@ namespace RTSCoreFramework
         #region EventCalls
         public void CallEventRestartLevel()
         {
-            if (RestartLevelEvent != null)
-            {
-                RestartLevelEvent();
-            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void CallEventGoToMenuScene()
         {
-            if (GoToMenuSceneEvent != null)
+            if (MainMenuScene != null)
             {
-                GoToMenuSceneEvent();
+                SceneManager.LoadScene(MainMenuScene.name);
+            }
+            else
+            {
+                Debug.Log("Please drag a scene into the main menu handler");
             }
         }
 

@@ -122,6 +122,7 @@ MonoBehaviour:
   isGameOver: 0
   isInventoryUIOn: 0
   isMenuOn: 0
+  MainMenuScene: {fileID: 102900000, guid: 755f27ea593b7d047a01bb33d9ff5223, type: 3}
 --- !u!114 &114181219453061748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RMHeldThreshold: 0.15
   LMHeldThreshold: 0.15
+  scrollStoppedThreshold: 0.15
   SelectionImage: {fileID: 0}
 --- !u!114 &114619592547327426
 MonoBehaviour:

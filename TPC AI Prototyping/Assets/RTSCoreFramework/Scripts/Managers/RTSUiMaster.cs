@@ -48,7 +48,10 @@ namespace RTSCoreFramework
             get { return isPauseMenuOn || isIGBPIOn; }
         }
         //Override Inside Wrapper Class
-        public virtual bool isPauseMenuOn { get { return false; } }
+        public virtual bool isPauseMenuOn
+        {
+            get { return uiManager.MenuUiPanel.activeSelf; }
+        }
         public virtual bool isIGBPIOn
         {
             get { return uiManager.IGBPIUi.activeSelf; }
@@ -82,8 +85,8 @@ namespace RTSCoreFramework
 
         private void WaitToCallEventMenuToggle()
         {
-            CallEventAnyUIToggle(isPauseMenuOn);
-            if (EventMenuToggle != null) EventMenuToggle(isPauseMenuOn);
+            CallEventAnyUIToggle(!isPauseMenuOn);
+            if (EventMenuToggle != null) EventMenuToggle(!isPauseMenuOn);
             EnableRayCaster(!isPauseMenuOn);
         }
 
