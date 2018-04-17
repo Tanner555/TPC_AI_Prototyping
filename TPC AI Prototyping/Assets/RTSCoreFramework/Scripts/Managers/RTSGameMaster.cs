@@ -20,6 +20,14 @@ namespace RTSCoreFramework
 
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
 
+        //Access Properties
+        public bool bIsGamePaused
+        {
+            get { return _bIsGamePaused; }
+            set { _bIsGamePaused = value; }
+        }
+        private bool _bIsGamePaused = false;
+
         #endregion
 
         #region Fields
@@ -55,6 +63,7 @@ namespace RTSCoreFramework
 
         public delegate void OneBoolArgsHandler(bool enable);
         public event OneBoolArgsHandler EventEnableCameraMovement;
+        public event OneBoolArgsHandler OnToggleIsGamePaused;
         //public event OneBoolArgsHandler EventEnableSelectionBox;
 
         public delegate void TwoBoolArgsHandler(bool enable, bool isPositive);
@@ -120,6 +129,16 @@ namespace RTSCoreFramework
             {
                 EventEnableCameraMovement(enable);
             }
+        }
+        
+        public void CallOnToggleIsGamePaused()
+        {
+            bIsGamePaused = !bIsGamePaused;
+            if (OnToggleIsGamePaused != null)
+            {
+                OnToggleIsGamePaused(bIsGamePaused);
+            }
+            Time.timeScale = bIsGamePaused ? 0f : 1f;
         }
 
         public void CallEventEnableCameraZoom(bool enable, bool isPositive)

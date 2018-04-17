@@ -122,7 +122,7 @@ namespace RTSCoreFramework
             if (Input.GetKeyDown(KeyCode.R))
                 CallTryReload();
             if (Input.GetKeyDown(KeyCode.Space))
-                CallTryFire();
+                CallToggleIsGamePaused();
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 CallSprintToggle();
 
@@ -388,6 +388,7 @@ namespace RTSCoreFramework
         //void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToNextItem(); }
         void CallTryFire() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryFire(); }
         void CallTryReload() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryReload(); }
+        void CallToggleIsGamePaused() { gamemaster.CallOnToggleIsGamePaused(); }
         void CallCoverToggle() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryCrouch(); }
         void CallSprintToggle() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallEventToggleIsSprinting(); }
 
