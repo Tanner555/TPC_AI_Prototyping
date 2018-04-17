@@ -61,7 +61,7 @@ namespace RTSCoreFramework
         public IEnumerator YieldSave_IGBPI_Values(List<IGBPIPanelValue> _values)
         {
             Save_IGBPI_Values(_values);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
             Debug.Log("Finished Saving");
         }
 

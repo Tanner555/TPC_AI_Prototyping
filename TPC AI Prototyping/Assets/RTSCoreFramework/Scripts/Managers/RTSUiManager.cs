@@ -445,7 +445,7 @@ conditionButton && actionButton;
                     uiMaster.CallEventRemoveDropdownInstance(_invalidPanel);
                 }
 
-                yield return new WaitForSeconds(0.8f);
+                yield return new WaitForSecondsRealtime(0.8f);
 
                 if (_saveData.Count > 0)
                 {
@@ -460,7 +460,7 @@ conditionButton && actionButton;
 
         IEnumerator LoadIGBPIDataAfterWait(float _seconds)
         {
-            yield return new WaitForSeconds(_seconds);
+            yield return new WaitForSecondsRealtime(_seconds);
             foreach (var _data in saveManager.Load_IGBPI_PanelValues())
             {
                 panelCreationValues = _data;
@@ -481,7 +481,7 @@ conditionButton && actionButton;
                 UI_Panel_Members.Remove(_info);
                 Destroy(_info.gameObject);
             }
-            yield return new WaitForSeconds(_seconds);
+            yield return new WaitForSecondsRealtime(_seconds);
             uiMaster.CallEventReorderIGBPIPanels();
         }
 
@@ -598,7 +598,7 @@ conditionButton && actionButton;
 
         IEnumerator RemoveAllIGBPIPanelsAfterWait(float _seconds)
         {
-            yield return new WaitForSeconds(_seconds);
+            yield return new WaitForSecondsRealtime(_seconds);
             foreach (Transform _trans in behaviorContentTransform)
             {
                 if (_trans.GetComponent<IGBPI_UI_Panel>())
