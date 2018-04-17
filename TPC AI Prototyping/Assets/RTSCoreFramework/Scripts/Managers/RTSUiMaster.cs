@@ -42,6 +42,11 @@ namespace RTSCoreFramework
 
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
 
+        RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
+
         //For Ui Conflict Checking
         public virtual bool isUiAlreadyInUse
         {

@@ -19,6 +19,11 @@ namespace RTSCoreFramework
             get { return RTSGameMode.thisInstance; }
         }
 
+        RTSUiMaster uiMaster
+        {
+            get { return RTSUiMaster.thisInstance; }
+        }
+
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
 
         //Access Properties
@@ -45,21 +50,24 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (thisInstance != null)
                 Debug.LogWarning("More than one instance of GameManagerMaster in scene.");
             else
                 thisInstance = this;
 
-            //Listen to Opsive TPC Events
 
         }
 
-        private void OnDisable()
+        protected virtual void Start()
         {
-            //UnSub from TPC Events
+            SubToEvents();
+        }
 
+        protected virtual void OnDisable()
+        {
+            UnsubFromEvents();
         }
         #endregion
 
@@ -105,11 +113,13 @@ namespace RTSCoreFramework
         #region EventCalls
         public void CallEventRestartLevel()
         {
+            CallOnToggleIsGamePaused(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void CallEventGoToMenuScene()
         {
+            CallOnToggleIsGamePaused(false);
             if (MainMenuScene != null)
             {
                 SceneManager.LoadScene(MainMenuScene.name);
@@ -143,6 +153,16 @@ namespace RTSCoreFramework
         public void CallOnToggleIsGamePaused()
         {
             bIsGamePaused = !bIsGamePaused;
+            if (OnToggleIsGamePaused != null)
+            {
+                OnToggleIsGamePaused(bIsGamePaused);
+            }
+            Time.timeScale = bIsGamePaused ? 0f : 1f;
+        }
+
+        public void CallOnToggleIsGamePaused(bool _enable)
+        {
+            bIsGamePaused = _enable;
             if (OnToggleIsGamePaused != null)
             {
                 OnToggleIsGamePaused(bIsGamePaused);
@@ -332,6 +352,25 @@ namespace RTSCoreFramework
             }
         }
         #endregion
-        
+
+        #region Handlers
+        void HandleAnyUIToggle(bool _enable)
+        {
+            CallOnToggleIsGamePaused(_enable);
+        }
+        #endregion
+
+        #region Initialization
+        protected virtual void SubToEvents()
+        {
+            uiMaster.EventAnyUIToggle += HandleAnyUIToggle;
+        }
+
+        protected virtual void UnsubFromEvents()
+        {
+            uiMaster.EventAnyUIToggle -= HandleAnyUIToggle;
+        }
+        #endregion
+
     }
 }
