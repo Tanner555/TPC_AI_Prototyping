@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Tactical Prototyping/Maps/RTSMainMenu.unity
+    guid: 755f27ea593b7d047a01bb33d9ff5223
+  - enabled: 1
     path: Assets/Tactical Prototyping/Maps/TPS Demo Map.unity
     guid: 3adab7a5a46d94443b6129e7d3c8dbbd
