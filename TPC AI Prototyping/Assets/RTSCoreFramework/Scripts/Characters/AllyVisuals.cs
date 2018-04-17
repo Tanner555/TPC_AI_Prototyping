@@ -14,6 +14,10 @@ namespace RTSCoreFramework
         public Light SelectionLight;
         [Header("Ally Waypoint Navigation")]
         public Material waypointRendererMaterial;
+        private float waypointStartWidth = 0.05f;
+        private float waypointEndWidth = 0.05f;
+        private Color waypointStartColor = Color.yellow;
+        private Color waypointEndColor = Color.yellow;
         private LineRenderer waypointRenderer;
 
         RTSGameMaster gamemaster
@@ -223,10 +227,10 @@ namespace RTSCoreFramework
                 if (waypointRendererMaterial != null)
                     waypointRenderer.material = waypointRendererMaterial;
 
-                waypointRenderer.startWidth = 0.05f;
-                waypointRenderer.endWidth = 0.05f;
-                waypointRenderer.startColor = Color.yellow;
-                waypointRenderer.endColor = Color.yellow;
+                waypointRenderer.startWidth = waypointStartWidth;
+                waypointRenderer.endWidth = waypointEndWidth;
+                waypointRenderer.startColor = waypointStartColor;
+                waypointRenderer.endColor = waypointEndColor;
             }
 
             var path = myNavMesh.path;
