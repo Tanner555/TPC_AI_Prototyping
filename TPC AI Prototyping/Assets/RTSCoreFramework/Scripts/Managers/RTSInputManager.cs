@@ -29,6 +29,12 @@ namespace RTSCoreFramework
             get { return RTSCamRaycaster.thisInstance; }
         }
 
+        //Time Properties
+        float CurrentGameTime
+        {
+            get { return Time.unscaledTime; }
+        }
+
         //Mouse Setup - Scrolling
         private bool bScrollAxisIsPositive
         {
@@ -145,10 +151,10 @@ namespace RTSCoreFramework
                 if (isLMHeldDown == false)
                 {
                     isLMHeldDown = true;
-                    LMCurrentTimer = Time.time + LMHeldThreshold;
+                    LMCurrentTimer = CurrentGameTime + LMHeldThreshold;
                 }
 
-                if (Time.time > LMCurrentTimer)
+                if (CurrentGameTime > LMCurrentTimer)
                 {
                     //Calls Every Update
                     //CreateSelectionSquare();
@@ -188,10 +194,10 @@ namespace RTSCoreFramework
                 if (isRMHeldDown == false)
                 {
                     isRMHeldDown = true;
-                    RMCurrentTimer = Time.time + RMHeldThreshold;
+                    RMCurrentTimer = CurrentGameTime + RMHeldThreshold;
                 }
 
-                if (Time.time > RMCurrentTimer)
+                if (CurrentGameTime > RMCurrentTimer)
                 {
                     if (isRMHeldPastThreshold == false)
                     {
@@ -267,10 +273,10 @@ namespace RTSCoreFramework
                 if (isScrolling == true)
                 {
                     isScrolling = false;
-                    noScrollCurrentTimer = Time.time + scrollStoppedThreshold;
+                    noScrollCurrentTimer = CurrentGameTime + scrollStoppedThreshold;
                 }
 
-                if (Time.time > noScrollCurrentTimer)
+                if (CurrentGameTime > noScrollCurrentTimer)
                 {
                     if (isNotScrollingPastThreshold == false)
                     {
