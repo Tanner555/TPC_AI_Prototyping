@@ -543,9 +543,13 @@ GameObject:
   - component: {fileID: 114367440867516650}
   - component: {fileID: 114026391534509768}
   - component: {fileID: 114342628504177224}
-  m_Layer: 0
+  - component: {fileID: 114767309043329046}
+  - component: {fileID: 114192351338335698}
+  - component: {fileID: 114161254777440462}
+  - component: {fileID: 114026581900362700}
+  m_Layer: 8
   m_Name: Pink Robot
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2664,6 +2668,24 @@ MonoBehaviour:
   SelectionLight: {fileID: 108490819571892380}
   waypointRendererMaterial: {fileID: 2100000, guid: 6d824634677c23d40b27f91a5aef6ce7,
     type: 2}
+--- !u!114 &114026581900362700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114056903438044656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2720,6 +2742,57 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114161254777440462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4808aa70acfd1c4e99fff41161272be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 3
+  m_InputName: Action
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 21300042, guid: 0bc6c6bd93187444bb1c45e410184ad6, type: 3}
+  m_TakeCoverDistance: 0.5
+  m_CoverLayer:
+    serializedVersion: 2
+    m_Bits: 67108864
+  m_MinMoveToTargetSpeed: 0.5
+  m_TakeCoverRotationSpeed: 4
+  m_CoverOffset: 0.05
+  m_CanStandOffset: 0
+  m_CoverSpherecastRadius: 0.05
+  m_CoverAngleThreshold: 1
+  m_CrouchColliderAdjustment: -0.5
+  m_NormalizedStrafeSpeed: -0.5
+  m_StrafeCoverOffset: {x: 0.1, y: 0, z: 0.5}
+  m_PopDistance: {x: 0.3, y: 0, z: 3}
+--- !u!114 &114192351338335698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb04d49c0f37314bb0dd270eb9e016b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 4
+  m_InputName: Action
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 21300088, guid: 0bc6c6bd93187444bb1c45e410184ad6, type: 3}
+  m_UnequipCurrentItem: 0
 --- !u!114 &114193999584328654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2921,11 +2994,15 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
+  - {fileID: 114026581900362700}
   - {fileID: 114736277984060244}
   - {fileID: 114907406613321782}
+  - {fileID: 114161254777440462}
+  - {fileID: 114192351338335698}
   - {fileID: 114056903438044656}
+  - {fileID: 114767309043329046}
   - {fileID: 114872855573280074}
-  m_SelectedAbility: -1
+  m_SelectedAbility: 6
 --- !u!114 &114654262727679264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2983,6 +3060,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6b8039500a22b43a2eb33f06b6290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114767309043329046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114804419344320448
 MonoBehaviour:
   m_ObjectHideFlags: 1
