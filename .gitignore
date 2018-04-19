@@ -6,7 +6,10 @@
 /TPC AI Prototyping/.vs/
 # Node Canvas
 /TPC AI Prototyping/Assets/ParadoxNotion
-# Power UI
+# ProCore (for Unity 2017.3)
+/TPC AI Prototyping/Assets/ProCore
+/TPC AI Prototyping/Assets/ProCore.meta
+# Power UI, No Longer Used
 /TPC AI Prototyping/Assets/PowerUI
 # Moon Sharp, No Longer Used
 /TPC AI Prototyping/Assets/Plugins
@@ -25,7 +28,7 @@
 # Models Used For Testing
 /TPC AI Prototyping/Assets/ModelsAndAssets
 /TPC AI Prototyping/Assets/ModelsAndAssets.meta
-# ORK Framework
+# ORK Framework, No Longer Used
 /TPC AI Prototyping/Assets/_ORK_Project_Backups
 /TPC AI Prototyping/Assets/ORK Framework/DLL
 /TPC AI Prototyping/Assets/ORK Framework/DLL.meta
