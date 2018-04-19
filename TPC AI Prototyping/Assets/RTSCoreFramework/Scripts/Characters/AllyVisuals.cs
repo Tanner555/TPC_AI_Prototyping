@@ -72,6 +72,7 @@ namespace RTSCoreFramework
             myEventHandler.EventTogglebIsFreeMoving -= CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving -= DisableWaypointRenderer;
             myEventHandler.EventPartySwitching -= OnPartySwitch;
+            myEventHandler.EventCommandAttackEnemy -= OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
@@ -88,6 +89,7 @@ namespace RTSCoreFramework
             myEventHandler.EventTogglebIsFreeMoving += CheckToDisableWaypointRenderer;
             myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
             myEventHandler.EventPartySwitching += OnPartySwitch;
+            myEventHandler.EventCommandAttackEnemy += OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
@@ -158,6 +160,13 @@ namespace RTSCoreFramework
         }
 
         void OnPartySwitch()
+        {
+            DisableWaypointRenderer();
+            bHasSwitched = true;
+            Invoke("SetbHasSwitchedToFalse", 0.2f);
+        }
+
+        void OnCmdAttackEnemy(AllyMember _ally)
         {
             DisableWaypointRenderer();
             bHasSwitched = true;
