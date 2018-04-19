@@ -88,6 +88,14 @@ namespace RTSPrototype
             }
         }
 
+        public override Sprite CharacterPortrait
+        {
+            get
+            {
+                return allyStatController.Stat_CharacterPortrait;
+            }
+        }
+
         public AllyMemberWrapper enemyTargetWrapper
         {
             get { return aiControllerWrapper.currentTargettedEnemyWrapper; }

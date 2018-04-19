@@ -15,6 +15,8 @@ MonoBehaviour:
   - CharacterType: 0
     CharacterPrefab: {fileID: 1712568748307802, guid: b79383dd7a5bd6c44b682fac0b95ec07,
       type: 2}
+    CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
+      type: 3}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0
@@ -23,6 +25,8 @@ MonoBehaviour:
   - CharacterType: 1
     CharacterPrefab: {fileID: 1768055428005526, guid: 9a4d6a79cda7e9548a317034fd6997fa,
       type: 2}
+    CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
+      type: 3}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0
@@ -31,6 +35,8 @@ MonoBehaviour:
   - CharacterType: 25
     CharacterPrefab: {fileID: 1825627822260076, guid: ba668e5df35b7684392f86da7a48d39c,
       type: 2}
+    CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
+      type: 3}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0
@@ -39,6 +45,8 @@ MonoBehaviour:
   - CharacterType: 2
     CharacterPrefab: {fileID: 1497344684296414, guid: 0461d4feeb2792744b75b45278f266de,
       type: 2}
+    CharacterPortrait: {fileID: 21300000, guid: c1ee90923a530864cb7a6f70a5500b68,
+      type: 3}
     MaxHealth: 100
     Health: 100
     EquippedWeapon: 0

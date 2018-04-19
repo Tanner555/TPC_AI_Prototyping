@@ -141,6 +141,11 @@ namespace RTSCoreFramework
             {
                 SetupUITargetHandlers(uiTarget, _targetToSet);
                 uiTarget = _targetToSet;
+                //Set Character Portrait
+                if(uiTarget.CharacterPortrait != null)
+                {
+                    UiCharacterPortrait.sprite = uiTarget.CharacterPortrait;
+                }
                 if (uiTarget.bIsCurrentPlayer)
                 {
                     SetToSelectedColor();

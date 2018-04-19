@@ -24,6 +24,7 @@ namespace RTSCoreFramework
         public ECharacterType CharacterType;
         [Tooltip("Used to Spawn a Character")]
         public GameObject CharacterPrefab;
+        public Sprite CharacterPortrait;
 
         [Header("Health Stats")]
         public int MaxHealth;

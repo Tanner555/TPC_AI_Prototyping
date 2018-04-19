@@ -89,6 +89,10 @@ namespace RTSCoreFramework
         {
             get { return myCharacterStats.CharacterType.ToString(); }
         }
+        public Sprite Stat_CharacterPortrait
+        {
+            get { return myCharacterStats.CharacterPortrait; }
+        }
         #endregion
 
         #region UnityMessages
