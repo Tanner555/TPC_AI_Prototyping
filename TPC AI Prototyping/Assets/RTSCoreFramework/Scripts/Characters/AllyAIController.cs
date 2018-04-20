@@ -135,7 +135,13 @@ namespace RTSCoreFramework
 
         public virtual bool isSurfaceWalkable(RaycastHit hit)
         {
-            return myNavAgent.CalculatePath(hit.point, myNavAgent.path) &&
+            return myNavAgent.enabled && myNavAgent.CalculatePath(hit.point, myNavAgent.path) &&
+            myNavAgent.path.status == NavMeshPathStatus.PathComplete;
+        }
+
+        public virtual bool isSurfaceWalkable(Vector3 _point)
+        {
+            return myNavAgent.enabled && myNavAgent.CalculatePath(_point, myNavAgent.path) &&
             myNavAgent.path.status == NavMeshPathStatus.PathComplete;
         }
 

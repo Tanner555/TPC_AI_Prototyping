@@ -294,6 +294,16 @@ namespace RTSCoreFramework
         {
             return 1;
         }
+
+        public virtual bool isSurfaceWalkable(RaycastHit hit)
+        {
+            return aiController.isSurfaceWalkable(hit);
+        }
+
+        public virtual bool isSurfaceWalkable(Vector3 _point)
+        {
+            return aiController.isSurfaceWalkable(_point);
+        }
         #endregion
 
         #region Initialization

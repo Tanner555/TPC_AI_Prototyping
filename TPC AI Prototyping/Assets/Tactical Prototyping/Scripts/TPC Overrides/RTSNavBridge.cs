@@ -128,14 +128,18 @@ namespace RTSPrototype
         #region Handlers
         void MoveToDestination(Vector3 _destination)
         {
-            m_NavMeshAgent.ResetPath();
-            m_NavMeshAgent.SetDestination(_destination);
-            float _distance = Vector3.Distance(m_NavMeshAgent.path.corners[0], m_Transform.position);
-            if(_distance >= 3.0f)
+            if (allyMember.isSurfaceWalkable(_destination))
             {
-                Debug.Log("Path is not accurate, updating position...");
-                m_NavMeshAgent.updatePosition = true;
+                m_NavMeshAgent.ResetPath();
+                m_NavMeshAgent.SetDestination(_destination);
+                float _distance = Vector3.Distance(m_NavMeshAgent.path.corners[0], m_Transform.position);
+                if (_distance >= 3.0f)
+                {
+                    Debug.Log("Path is not accurate, updating position...");
+                    m_NavMeshAgent.updatePosition = true;
+                }
             }
+            Invoke("CheckWalkable", 0.2f);
         }
 
         void OnCommandAttack(AllyMember _ally)
@@ -293,6 +297,29 @@ namespace RTSPrototype
                 if (myEventHandler.bIsFreeMoving)
                     myEventHandler.CallEventTogglebIsFreeMoving(false);
             }
+        }
+        #endregion
+
+        #region NavMeshChecking/Reset
+        void CheckWalkable()
+        {
+            if (!allyMember.isSurfaceWalkable(m_NavMeshAgent.destination))
+            {
+                myEventHandler.CallEventFinishedMoving();
+                Invoke("ResetNavmeshAgent", 0.1f);
+            }
+        }
+
+        void ResetNavmeshAgent()
+        {
+            Debug.Log("Destination isn't walkable, resetting agent");
+            ToggleNavMeshAgent();
+            Invoke("ToggleNavMeshAgent", 0.1f);
+        }
+
+        void ToggleNavMeshAgent()
+        {
+            m_NavMeshAgent.enabled = !m_NavMeshAgent.enabled;
         }
         #endregion
 
