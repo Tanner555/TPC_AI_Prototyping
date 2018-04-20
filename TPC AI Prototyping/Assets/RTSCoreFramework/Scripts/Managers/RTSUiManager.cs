@@ -46,7 +46,8 @@ namespace RTSCoreFramework
         public bool AllUiCompsAreValid
         {
             get { return IGBPICompsAreValid && CharacterStatsPanels &&
-                    CharacterStatsPrefab && MenuUiPanel; }
+                    CharacterStatsPrefab && MenuUiPanel && WinnerUiPanel &&
+                    NextLevelButton && GameOverUiPanel; }
         }
 
         public bool IGBPICompsAreValid
@@ -80,6 +81,11 @@ conditionButton && actionButton;
         [Header("Main Ui GameObjects")]
         public GameObject MenuUiPanel;
         public GameObject IGBPIUi;
+
+        [Header("Winner/GameOver UI")]
+        public GameObject WinnerUiPanel;
+        public GameObject NextLevelButton;
+        public GameObject GameOverUiPanel;
 
         [Header("IGBPI Objects")]
         public GameObject UI_Panel_Prefab;
@@ -246,6 +252,19 @@ conditionButton && actionButton;
             if (IGBPIUi != null)
                 IGBPIUi.SetActive(enable);
             
+        }
+
+        //Winner / GameOver Activations
+        void ActivateWinnerUi()
+        {
+            if (AllUiCompsAreValid == false) return;
+            WinnerUiPanel.SetActive(true);
+        }
+
+        void ActivateGameOverUi()
+        {
+            if (AllUiCompsAreValid == false) return;
+            GameOverUiPanel.SetActive(true);
         }
         #endregion
 
@@ -619,6 +638,8 @@ conditionButton && actionButton;
             uiMaster.EventMenuToggle += TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
             uiMaster.EventIGBPIToggle += ToggleIGBPIUi;
+            gamemaster.EventAllObjectivesCompleted += ActivateWinnerUi;
+            gamemaster.GameOverEvent += ActivateGameOverUi;
             //IGBPI
             uiMaster.EventAddDropdownInstance += AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance += DeregisterDropdownMenu;
@@ -635,6 +656,8 @@ conditionButton && actionButton;
             uiMaster.EventMenuToggle -= TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
             uiMaster.EventIGBPIToggle -= ToggleIGBPIUi;
+            gamemaster.EventAllObjectivesCompleted -= ActivateWinnerUi;
+            gamemaster.GameOverEvent -= ActivateGameOverUi;
             //IGBPI
             uiMaster.EventAddDropdownInstance -= AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance -= DeregisterDropdownMenu;
