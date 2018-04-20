@@ -97,10 +97,12 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region CursorHoverandExit
+        #region Handlers-CursorHoverandExit
         void OnCursEnter()
         {
-            if (cameraIsMoving) return;
+            if (cameraIsMoving ||
+                thisAlly.bIsCurrentPlayer) return;
+
             SelectionLight.enabled = true;
             if (friend)
             {
