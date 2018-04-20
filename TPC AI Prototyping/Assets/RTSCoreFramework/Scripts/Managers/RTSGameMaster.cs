@@ -9,6 +9,11 @@ namespace RTSCoreFramework
     public class RTSGameMaster : MonoBehaviour
     {
         #region Properties
+        public RTSGameInstance gameInstance
+        {
+            get { return RTSGameInstance.thisInstance; }
+        }
+
         public static RTSGameMaster thisInstance
         {
             get; protected set;
@@ -114,20 +119,13 @@ namespace RTSCoreFramework
         public void CallEventRestartLevel()
         {
             CallOnToggleIsGamePaused(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameInstance.RestartCurrentLevel();
         }
 
         public void CallEventGoToMenuScene()
         {
             CallOnToggleIsGamePaused(false);
-            if (MainMenuScene != null)
-            {
-                SceneManager.LoadScene(MainMenuScene.name);
-            }
-            else
-            {
-                Debug.Log("Please drag a scene into the main menu handler");
-            }
+            gameInstance.GoToMainMenu();
         }
 
         public void CallEventGameOver()

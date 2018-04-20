@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70561d5f55503b4799fa8332a75eea3, type: 3}
+  m_Name: RTSLevelData
+  m_EditorClassIdentifier: 
+  LevelSettingsList:
+  - LevelName: Main Menu
+    Level: 0
+    LevelImage: {fileID: 0}
+    Scene: {fileID: 102900000, guid: 755f27ea593b7d047a01bb33d9ff5223, type: 3}
+  - LevelName: Training Level
+    Level: 1
+    LevelImage: {fileID: 0}
+    Scene: {fileID: 102900000, guid: 3a6bbbac7e5589b4cab41ac4b6f6ce46, type: 3}

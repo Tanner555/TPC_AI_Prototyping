@@ -12,18 +12,21 @@ namespace RTSCoreFramework
     /// </summary>
     public class RTSMainMenuHandler : MonoBehaviour
     {
+        RTSGameInstance gameInstance
+        {
+            get { return RTSGameInstance.thisInstance; }
+        }
+
         [SerializeField]
-        public Object LoadScene;
+        public LevelIndex loadLevel;
+        [SerializeField]
+        public ScenarioIndex scenario;
 
         public void Btn_PlayGame()
         {
-            if (LoadScene != null)
+            if(gameInstance != null)
             {
-                SceneManager.LoadScene(LoadScene.name);
-            }
-            else
-            {
-                Debug.Log("Please drag a scene into the main menu handler");
+                gameInstance.LoadLevel(loadLevel, scenario);
             }
         }
 
