@@ -144,6 +144,7 @@ namespace RTSCoreFramework
 
         public void CallEventGameOver()
         {
+            EnableRayCaster(false);
             if (GameOverEvent != null)
             {
                 if (!isGameOver)
@@ -161,6 +162,7 @@ namespace RTSCoreFramework
 
         public void CallEventAllObjectivesCompleted()
         {
+            EnableRayCaster(false);
             if (EventAllObjectivesCompleted != null) EventAllObjectivesCompleted();
         }
 
@@ -189,7 +191,23 @@ namespace RTSCoreFramework
             {
                 OnToggleIsGamePaused(bIsGamePaused);
             }
-            Time.timeScale = bIsGamePaused ? 0f : 1f;
+            //Time.timeScale = bIsGamePaused ? 0f : 1f;
+            if (bIsGamePaused)
+            {
+                Invoke("ToggleTimeScale", 0.2f);
+            }
+            else
+            {
+                //Cannot Invoke Methods While Timescale is 0
+                //Time.timeScale = bIsGamePaused ? 0f : 1f;
+                Time.timeScale = 1f;
+            }
+        }
+
+        private void ToggleTimeScale()
+        {
+            //Time.timeScale = bIsGamePaused ? 0f : 1f;
+            Time.timeScale = 0f;
         }
 
         public void CallEventEnableCameraZoom(bool enable, bool isPositive)
@@ -391,6 +409,13 @@ namespace RTSCoreFramework
         protected virtual void UnsubFromEvents()
         {
             uiMaster.EventAnyUIToggle -= HandleAnyUIToggle;
+        }
+        #endregion
+
+        #region Helpers
+        void EnableRayCaster(bool _enable)
+        {
+            if (rayCaster != null) rayCaster.enabled = _enable;
         }
         #endregion
 

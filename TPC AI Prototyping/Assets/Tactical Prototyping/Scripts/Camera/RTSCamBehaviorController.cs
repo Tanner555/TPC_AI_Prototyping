@@ -38,12 +38,16 @@ namespace RTSPrototype
         private void OnDisable()
         {
             myGameMaster.OnAllySwitch -= OnAllySwitch;
+            myGameMaster.EventAllObjectivesCompleted -= DisableCamBehaviors;
+            myGameMaster.GameOverEvent -= DisableCamBehaviors;
         }
 
         // Use this for initialization
         void Start()
         {
             myGameMaster.OnAllySwitch += OnAllySwitch;
+            myGameMaster.EventAllObjectivesCompleted += DisableCamBehaviors;
+            myGameMaster.GameOverEvent += DisableCamBehaviors;
         }
 
         void OnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
@@ -53,6 +57,13 @@ namespace RTSPrototype
                 partyHasInitAlly = true;
                 ToggleCamBehaviors(true);
             }
+        }
+
+        void DisableCamBehaviors()
+        {
+            myCamController.enabled = false;
+            myCamHandler.enabled = false;
+            myCamMonitor.enabled = false;
         }
 
         void ToggleCamBehaviors(bool _enable)

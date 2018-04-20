@@ -23,6 +23,7 @@ namespace RTSCoreFramework
         {
             gamemaster.OnMouseCursorChange -= OnLayerChanged;
             gamemaster.GameOverEvent -= HandleGameOver;
+            gamemaster.EventAllObjectivesCompleted -= HandleGameOver;
             gamemaster.GoToMenuSceneEvent -= SetCursorToNull;
             uimaster.EventAnyUIToggle -= HandleUIEnabled;
             //uimaster.EventIGBPIToggle -= HandleUIEnabled;
@@ -34,6 +35,7 @@ namespace RTSCoreFramework
         {
             gamemaster.OnMouseCursorChange += OnLayerChanged;
             gamemaster.GameOverEvent += HandleGameOver;
+            gamemaster.EventAllObjectivesCompleted += HandleGameOver;
             gamemaster.GoToMenuSceneEvent += SetCursorToNull;
             uimaster.EventAnyUIToggle += HandleUIEnabled;
             //uimaster.EventIGBPIToggle += HandleUIEnabled;
