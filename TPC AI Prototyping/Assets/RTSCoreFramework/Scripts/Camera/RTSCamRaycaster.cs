@@ -244,10 +244,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
         {
             //Change Layer If UI is toggled to false
             //This will fix the mouse cursor not having accurate image
-            if(_isEnabled == false)
-            {
-                gamemaster.CallEventOnMouseCursorChange(rayHitType, rayHit);
-            }
+            gamemaster.CallEventOnMouseCursorChange(rayHitType, rayHit);
         }
 
         void DestroyRaycaster()

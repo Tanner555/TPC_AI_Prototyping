@@ -42,6 +42,14 @@ namespace RTSCoreFramework
 
         void OnLayerChanged(rtsHitType hitType, RaycastHit hit)
         {
+            //TODO: RTSPrototype Set Cursor To Null Whenever UI is in use
+            //[Doesn't Work]Temporary Fix Whenever OnLayerChange is called
+            //and Ui is being used
+            //if (uimaster.isUiAlreadyInUse)
+            //{
+            //    Cursor.SetCursor(null, cursorHotspot, CursorMode.Auto);
+            //    return;
+            //}
             switch (hitType)
             {
                 case rtsHitType.Ally:
