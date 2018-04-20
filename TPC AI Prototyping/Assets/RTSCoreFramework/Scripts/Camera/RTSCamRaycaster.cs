@@ -121,7 +121,7 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
 
             if (hasStarted == true)
             {
-                gamemaster.GameOverEvent += DestroyRaycaster;
+                SubToEvents();
             }
 
             //MyCursorChangeTimer.StartTimer();
@@ -129,14 +129,14 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
 
         private void OnDisable()
         {
-            gamemaster.GameOverEvent -= DestroyRaycaster;
+            UnsubFromEvents();
         }
 
         private void Start()
         {
             if (hasStarted == false)
             {
-                gamemaster.GameOverEvent += DestroyRaycaster;
+                SubToEvents();
             }
             if (gamemode == null)
             {
@@ -237,10 +237,36 @@ gamemode.GeneralInCommand.PartyMembers.Count <= 0;
             if (EventSystem.current.IsPointerOverGameObject()) return true;
             return false;
         }
+        #endregion
+
+        #region Handlers
+        void OnUIToggleChanged(bool _isEnabled)
+        {
+            //Change Layer If UI is toggled to false
+            //This will fix the mouse cursor not having accurate image
+            if(_isEnabled == false)
+            {
+                gamemaster.CallEventOnMouseCursorChange(rayHitType, rayHit);
+            }
+        }
 
         void DestroyRaycaster()
         {
             Destroy(this);
+        }
+        #endregion
+
+        #region Initialization
+        void SubToEvents()
+        {
+            uimaster.EventAnyUIToggle += OnUIToggleChanged;
+            gamemaster.GameOverEvent += DestroyRaycaster;
+        }
+
+        void UnsubFromEvents()
+        {
+            uimaster.EventAnyUIToggle -= OnUIToggleChanged;
+            gamemaster.GameOverEvent -= DestroyRaycaster;
         }
         #endregion
     }
