@@ -235,9 +235,20 @@ namespace RTSCoreFramework
         {
             if (GeneralInCommand.AllyInCommand != null)
             {
-                return GeneralInCommand.AllyInCommand.aiController.isSurfaceWalkable(hit);
+                return GeneralInCommand.AllyInCommand.isSurfaceWalkable(hit);
             }
             return false;
+        }
+
+        public bool isEveryEnemyDead()
+        {
+            bool _allDead = true;
+            foreach (var _gen in GeneralMembers)
+            {
+                if (_gen.bIsCurrentPlayerCommander) continue;
+                if (_gen.PartyMembers.Count > 0) _allDead = false;
+            }
+            return _allDead;
         }
 
         public int GetAllyFactionPlayerCount(AllyMember teamMember)
@@ -545,7 +556,6 @@ namespace RTSCoreFramework
         //Ui and Ally Processing
         public void HandlePartyMemberWOutAllies(PartyManager _partyMan, AllyMember _lAlly, bool _onDeath)
         {
-            Debug.Log("No party members called on gamemode!");
             if (_onDeath && _partyMan.bIsCurrentPlayerCommander)
             {
                 Debug.Log("All player allies are dead, Game Over!");
@@ -558,6 +568,12 @@ namespace RTSCoreFramework
                     SetUiTargetAlly(_enemy);
                 }
             }
+            else if(_onDeath && isEveryEnemyDead())
+            {
+                Debug.Log("All enemies are dead, you won!");
+                gamemaster.CallEventAllEnemiesAreDead();
+            }
+
         }
 
         public virtual void ProcessAllyDeath(AllyMember _ally)

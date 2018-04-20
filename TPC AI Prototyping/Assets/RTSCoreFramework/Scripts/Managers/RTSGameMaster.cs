@@ -81,6 +81,8 @@ namespace RTSCoreFramework
         public event GameManagerEventHandler RestartLevelEvent;
         public event GameManagerEventHandler GoToMenuSceneEvent;
         public event GameManagerEventHandler GameOverEvent;
+        public event GameManagerEventHandler EventAllEnemiesAreDead;
+        public event GameManagerEventHandler EventAllObjectivesCompleted;
 
         public delegate void OneBoolArgsHandler(bool enable);
         public event OneBoolArgsHandler EventEnableCameraMovement;
@@ -150,6 +152,16 @@ namespace RTSCoreFramework
                     GameOverEvent();
                 }
             }
+        }
+
+        public void CallEventAllEnemiesAreDead()
+        {
+            if (EventAllEnemiesAreDead != null) EventAllEnemiesAreDead();
+        }
+
+        public void CallEventAllObjectivesCompleted()
+        {
+            if (EventAllObjectivesCompleted != null) EventAllObjectivesCompleted();
         }
 
         public void CallEventEnableCameraMovement(bool enable)
