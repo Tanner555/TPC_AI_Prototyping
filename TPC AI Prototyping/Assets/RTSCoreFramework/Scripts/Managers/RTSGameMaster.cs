@@ -78,8 +78,8 @@ namespace RTSCoreFramework
 
         #region Events and Delegates
         public delegate void GameManagerEventHandler();
-        //public event GameManagerEventHandler RestartLevelEvent;
-        //public event GameManagerEventHandler GoToMenuSceneEvent;
+        public event GameManagerEventHandler RestartLevelEvent;
+        public event GameManagerEventHandler GoToMenuSceneEvent;
         public event GameManagerEventHandler GameOverEvent;
 
         public delegate void OneBoolArgsHandler(bool enable);
@@ -119,12 +119,24 @@ namespace RTSCoreFramework
         public void CallEventRestartLevel()
         {
             CallOnToggleIsGamePaused(false);
+            if (RestartLevelEvent != null) RestartLevelEvent();
+            Invoke("WaitToRestartLevel", 0.2f);
+        }
+
+        private void WaitToRestartLevel()
+        {
             gameInstance.RestartCurrentLevel();
         }
 
         public void CallEventGoToMenuScene()
         {
             CallOnToggleIsGamePaused(false);
+            if (GoToMenuSceneEvent != null) GoToMenuSceneEvent();
+            Invoke("WaitToGoToMenuScene", 0.2f);
+        }
+
+        private void WaitToGoToMenuScene()
+        {
             gameInstance.GoToMainMenu();
         }
 
