@@ -5256,7 +5256,7 @@ MonoBehaviour:
   m_DefaultImpactSound: {fileID: 0}
 --- !u!114 &114118242432156082
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -5565,7 +5565,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 0
 --- !u!114 &114176505884411434
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114289333403305254
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -6962,7 +6962,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &114483047170152196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -6986,7 +6986,7 @@ MonoBehaviour:
   m_IgnoreColliders: []
 --- !u!114 &114548611130069228
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7521,7 +7521,7 @@ MonoBehaviour:
     m_Abilities: []
 --- !u!114 &114637046136929584
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7615,7 +7615,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114713235223828240
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -8290,7 +8290,7 @@ MonoBehaviour:
   m_DroppedItemsParent: {fileID: 0}
 --- !u!114 &114981557185281530
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
