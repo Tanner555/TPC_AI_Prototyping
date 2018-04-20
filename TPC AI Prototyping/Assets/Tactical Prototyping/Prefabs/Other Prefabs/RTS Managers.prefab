@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114786682207096632}
   - component: {fileID: 114416084807247614}
   - component: {fileID: 114925828901233208}
+  - component: {fileID: 114369450698923008}
   m_Layer: 0
   m_Name: RTS Managers
   m_TagString: Untagged
@@ -180,6 +181,17 @@ MonoBehaviour:
     m_Bits: 3288334593
   singleAllyLayerName: Ally
   singleCurrentPlayerLayerName: CurrentPlayerAlly
+--- !u!114 &114369450698923008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ade67113a312d49bd2947299dc6731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114416084807247614
 MonoBehaviour:
   m_ObjectHideFlags: 1
