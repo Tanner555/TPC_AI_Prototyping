@@ -198,6 +198,13 @@ namespace RTSCoreFramework
             return Vector3.Distance(transform.position,
                 _allyInCommand.transform.position) <= followDistance;
         }
+
+        public bool Tactics_IsEnemyWithinSightRange()
+        {
+            AllyMember _closestEnemy = FindClosestEnemy();
+            if(_closestEnemy != null) currentTargettedEnemy = _closestEnemy;
+            return (_closestEnemy != null);
+        }
         
         public void Tactics_MoveToLeader()
         {
@@ -217,28 +224,33 @@ namespace RTSCoreFramework
 
         public void AttackTargettedEnemy()
         {
-            if(myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
+            if(currentTargettedEnemy != null &&
+                currentTargettedEnemy.IsAlive)
             {
-                Debug.Log(myEventHandler.bIsAiAttacking);
-                myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
+                if(myEventHandler.bIsAiAttacking == false)
+                    myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
+            }
+            else if(myEventHandler.bIsAiAttacking)
+            {
+                myEventHandler.CallEventStopTargettingEnemy();
             }
         }
 
-        public void Tactics_AttackClosestEnemy()
-        {
-            if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
-            {
-                AllyMember _closestEnemy = FindClosestEnemy();
-                if (_closestEnemy != null)
-                {
-                    currentTargettedEnemy = _closestEnemy;
-                    if (myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
-                    {
-                        myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
-                    }
-                }
-            }
-        }
+        //public void Tactics_AttackClosestEnemy()
+        //{
+        //    if(currentTargettedEnemy == null || currentTargettedEnemy.IsAlive == false)
+        //    {
+        //        AllyMember _closestEnemy = FindClosestEnemy();
+        //        if (_closestEnemy != null)
+        //        {
+        //            currentTargettedEnemy = _closestEnemy;
+        //            if (myEventHandler.bIsAiAttacking == false && currentTargettedEnemy != null)
+        //            {
+        //                myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
+        //            }
+        //        }
+        //    }
+        //}
         #endregion
 
         #region AITacticsHelpers

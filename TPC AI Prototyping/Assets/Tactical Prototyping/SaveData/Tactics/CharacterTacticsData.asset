@@ -20,7 +20,13 @@ MonoBehaviour:
     Tactics: []
   - CharacterName: Silly Girl Medic
     CharacterType: 2
-    Tactics: []
+    Tactics:
+    - order: 1
+      condition: 'Enemy: WithinSightRange'
+      action: 'Self: Attack Targetted Enemy'
   - CharacterName: Evil Assault Villian 1
     CharacterType: 25
-    Tactics: []
+    Tactics:
+    - order: 1
+      condition: 'Enemy: WithinSightRange'
+      action: 'Self: Attack Targetted Enemy'

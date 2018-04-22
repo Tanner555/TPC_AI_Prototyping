@@ -11,8 +11,8 @@ namespace RTSCoreFramework
         #region Enums
         public enum ConditionFilters
         {
-            Standard, AllyHealth, AllyGun,
-            TargetedEnemyHealth, TargetedEnemyGun
+            Standard = 0, AllyHealth = 1, AllyGun = 2,
+            TargetedEnemy = 3
         }
         public enum ActionFilters
         {
@@ -110,7 +110,9 @@ namespace RTSCoreFramework
             {"Self: CurAmmo = 0", new IGBPI_Condition((_ally) =>
             { return _ally.CurrentEquipedAmmo == 0; }, ConditionFilters.AllyGun) },
             {"Self: CurAmmo > 0", new IGBPI_Condition((_ally) =>
-            { return _ally.CurrentEquipedAmmo > 0; }, ConditionFilters.AllyGun) }
+            { return _ally.CurrentEquipedAmmo > 0; }, ConditionFilters.AllyGun) },
+            {"Enemy: WithinSightRange", new IGBPI_Condition((_ally) => 
+            { return _ally.aiController.Tactics_IsEnemyWithinSightRange(); }, ConditionFilters.TargetedEnemy)  },
         };
         #endregion
 
@@ -119,8 +121,8 @@ namespace RTSCoreFramework
         {
             {"Self: Attack Targetted Enemy", new IGBPI_Action((_ally) =>
             { _ally.aiController.AttackTargettedEnemy(); }, ActionFilters.AI) },
-            {"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
-            { _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
+            //{"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
+            //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
             {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); }, ActionFilters.Weapon) },
             {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
