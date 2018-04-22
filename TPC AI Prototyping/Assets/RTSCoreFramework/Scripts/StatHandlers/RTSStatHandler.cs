@@ -80,6 +80,19 @@ namespace RTSCoreFramework
             };
         }
 
+        public CharacterTactics RetrieveCharacterTactics(ECharacterType _cType, AllyMember _ally)
+        {
+            if (CharacterTacticsDictionary.ContainsKey(_cType))
+            {
+                return CharacterTacticsDictionary[_cType];
+            }
+            Debug.Log("Character Tactics For Type: " + _cType.ToString() + " could not be found");
+            return new CharacterTactics
+            {
+                CharacterType = ECharacterType.NoCharacterType
+            };
+        }
+
         public PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
         {
             if (PartyStatDictionary.ContainsKey(_commander))

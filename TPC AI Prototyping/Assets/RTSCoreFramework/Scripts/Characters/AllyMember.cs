@@ -111,6 +111,11 @@ namespace RTSCoreFramework
             get { return "MyName"; }
         }
 
+        public virtual ECharacterType CharacterType
+        {
+            get { return ECharacterType.NoCharacterType; }
+        }
+
         public virtual Sprite CharacterPortrait
         {
             get { return null; }

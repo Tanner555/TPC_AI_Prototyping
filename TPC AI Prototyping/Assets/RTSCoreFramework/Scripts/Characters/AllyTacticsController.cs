@@ -40,6 +40,17 @@ namespace RTSCoreFramework
             }
         }
         private AllyAIController _aiController = null;
+        RTSStatHandler statHandler
+        {
+            get
+            {
+                //For Faster Access when using OnEnable method
+                if (RTSStatHandler.thisInstance != null)
+                    return RTSStatHandler.thisInstance;
+
+                return GameObject.FindObjectOfType<RTSStatHandler>();
+            }
+        }
         RTSGameMaster gameMaster { get { return RTSGameMaster.thisInstance; } }
         RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
         RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
@@ -72,7 +83,6 @@ namespace RTSCoreFramework
         private List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
         public List<AllyTacticsItem> AllyTacticsList;
         public int executionsPerSec = 5;
-
         #endregion
 
         #region UnityMessages
@@ -147,7 +157,9 @@ namespace RTSCoreFramework
         void LoadAndExecuteAllyTactics()
         {
             UnLoadAndCancelTactics();
-            foreach (var _data in saveManager.Load_IGBPI_PanelValues())
+            var _tactics = statHandler.RetrieveCharacterTactics(
+                    allyMember.CharacterType, allyMember);
+            foreach (var _data in _tactics.Tactics)
             {
                 bool _hasCondition = dataHandler.IGBPI_Conditions.ContainsKey(_data.condition);
                 bool _hasAction = dataHandler.IGBPI_Actions.ContainsKey(_data.action);
@@ -167,7 +179,10 @@ namespace RTSCoreFramework
 
         void UnLoadAndCancelTactics()
         {
-            CancelInvoke("ExecuteAllyTacticsList");
+            if (IsInvoking("ExecuteAllyTacticsList"))
+            {
+                CancelInvoke("ExecuteAllyTacticsList");
+            }
             AllyTacticsList.Clear();
         }
 

@@ -88,6 +88,14 @@ namespace RTSPrototype
             }
         }
 
+        public override ECharacterType CharacterType
+        {
+            get
+            {
+                return allyStatController.Stat_CharacterType;
+            }
+        }
+
         public override Sprite CharacterPortrait
         {
             get
