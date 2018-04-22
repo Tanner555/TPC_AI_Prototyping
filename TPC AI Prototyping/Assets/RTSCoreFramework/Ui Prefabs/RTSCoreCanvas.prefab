@@ -2277,7 +2277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.66176474, g: 0.66176474, b: 0.66176474, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2319,6 +2319,7 @@ MonoBehaviour:
   choiceNavigateRight: {fileID: 114993768673206688}
   conditionButton: {fileID: 114512750229868368}
   actionButton: {fileID: 114984793348344388}
+  IGBPITitleText: {fileID: 114067794168944316}
   CharacterStatsPanels: {fileID: 1036266877865324}
   CharacterStatsPrefab: {fileID: 1534986942412352, guid: 385dc4c45f93ed2468ca54c81ed61ed4,
     type: 2}
@@ -2439,8 +2440,8 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 82
-    m_FontStyle: 0
-    m_BestFit: 0
+    m_FontStyle: 3
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 108
     m_Alignment: 4

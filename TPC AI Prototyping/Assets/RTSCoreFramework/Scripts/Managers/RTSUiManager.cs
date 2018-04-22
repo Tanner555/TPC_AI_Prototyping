@@ -61,7 +61,7 @@ namespace RTSCoreFramework
 ButtonChoicePrefab && behaviorContentTransform &&
 choiceMenuTransform && choiceIndicatorText &&
 choiceNavigateLeft && choiceNavigateRight &&
-conditionButton && actionButton;
+conditionButton && actionButton && IGBPITitleText;
             }
         }
         
@@ -100,6 +100,8 @@ conditionButton && actionButton;
         public Button choiceNavigateRight;
         public Button conditionButton;
         public Button actionButton;
+        //Used To Indicate Which Character Contains Tactics
+        public Text IGBPITitleText;
 
         [Header("Character Stats Objects")]
         public GameObject CharacterStatsPanels;
@@ -253,6 +255,7 @@ conditionButton && actionButton;
 
         void ToggleIGBPIUi(bool enable)
         {
+            if (AllUiCompsAreValid == false) return;
             if (enable == false)
             {
                 uiMaster.CallEventUIPanelSelectionChanged(null);
@@ -265,7 +268,14 @@ conditionButton && actionButton;
 
             if (IGBPIUi != null)
                 IGBPIUi.SetActive(enable);
-            
+
+            if (IGBPIUi.activeSelf)
+            {
+                //Indicate Who Owns These Tactics
+                IGBPITitleText.text =
+                    gamemode.CurrentPlayer.CharacterType.ToString() +
+                    "'s Tactics";
+            }
         }
 
         //Winner / GameOver Activations
