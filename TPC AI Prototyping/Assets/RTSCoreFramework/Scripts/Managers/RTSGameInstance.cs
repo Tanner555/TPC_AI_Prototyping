@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -85,14 +86,21 @@ namespace RTSCoreFramework
 
         public void GoToNextLevel()
         {
-            //TODO:RTSPrototype Implement GoToNextLevel Functionality
-
+            LevelSettings _level;
+            if(GetNextLevelIsSuccessful(out _level))
+            {
+                LoadLevel(_level.Level, ScenarioIndex.Scenario_1);
+            }
+            else
+            {
+                Debug.LogError("Couldn't Load Next Level Because Level Settings doesn't exist");
+            }
         }
 
         public void GoToNextScenario()
         {
             //TODO:RTSPrototype Implement GoToNextScenario Functionality
-
+            Debug.Log("Going to next scenario");
         }
         #endregion
 
@@ -111,7 +119,46 @@ namespace RTSCoreFramework
 
         private bool IsLoadingNextLevelPermitted()
         {
+            LevelSettings _level;
+            return GetNextLevelIsSuccessful(out _level);
+        }
+
+        private bool GetNextLevelIsSuccessful(out LevelSettings _level)
+        {
+            var _keysDic = levelSettingsDictionary.Keys;
+            var _keysList = _keysDic.ToList();
+            int _keyIndex = _keysList.IndexOf(CurrentLevel);
+            LevelIndex _nextLevel = GetLevelIndexFromNumber(_keyIndex + 1);
+            if (_keyIndex + 1 > 0 && _keyIndex + 1 <= _keysList.Count && 
+                _nextLevel != LevelIndex.No_Level &&
+                levelSettingsDictionary.ContainsKey(_nextLevel))
+            {
+                _level = levelSettingsDictionary[_nextLevel];
+                return true;
+            }
+            _level = levelSettingsDictionary[CurrentLevel];
             return false;
+        }
+
+        private LevelIndex GetLevelIndexFromNumber(int _index)
+        {
+            switch (_index)
+            {
+                case 0:
+                    return LevelIndex.Main_Menu;
+                case 1:
+                    return LevelIndex.Level_1;
+                case 2:
+                    return LevelIndex.Level_2;
+                case 3:
+                    return LevelIndex.Level_3;
+                case 4:
+                    return LevelIndex.Level_4;
+                case 5:
+                    return LevelIndex.Level_5;
+                default:
+                    return LevelIndex.No_Level;
+            }
         }
         #endregion
 
