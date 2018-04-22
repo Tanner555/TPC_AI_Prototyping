@@ -9,6 +9,7 @@ namespace RTSCoreFramework
         #region Dictionaries
         //Used to Retrieve Information from A Character and Commander Enum
         protected Dictionary<ECharacterType, CharacterStats> CharacterStatDictionary = new Dictionary<ECharacterType, CharacterStats>();
+        protected Dictionary<ECharacterType, CharacterTactics> CharacterTacticsDictionary = new Dictionary<ECharacterType, CharacterTactics>();
         protected Dictionary<RTSGameMode.ECommanders, PartyStats> PartyStatDictionary = new Dictionary<RTSGameMode.ECommanders, PartyStats>();
         protected Dictionary<EWeaponType, WeaponStats> weaponStatDictionary = new Dictionary<EWeaponType, WeaponStats>();
         #endregion
@@ -17,6 +18,9 @@ namespace RTSCoreFramework
         [Header("Data Containing Character Stats")]
         [SerializeField]
         protected CharacterStatsData characterStatsData;
+        [Header("Data Containing Character Tactics")]
+        [SerializeField]
+        protected CharacterTacticsData characterTacticsData;
         [Header("Data Containing Party Stats")]
         [SerializeField]
         protected PartyStatsData partyStatsData;
@@ -128,6 +132,16 @@ namespace RTSCoreFramework
             foreach (var _stat in characterStatsData.CharacterStatList)
             {
                 CharacterStatDictionary.Add(_stat.CharacterType, _stat);
+            }
+            //Tactics Data
+            if(CharacterTacticsDictionary == null)
+            {
+                Debug.LogError("No Tactics Data on StatHandler");
+                return;
+            }
+            foreach (var _stat in characterTacticsData.CharacterTacticsList)
+            {
+                CharacterTacticsDictionary.Add(_stat.CharacterType, _stat);
             }
             //Party Data
             if (partyStatsData == null)
