@@ -11,6 +11,7 @@ namespace RTSCoreFramework
         #region Dictionaries
         //Used to Retrieve Information About a Level
         protected Dictionary<LevelIndex, LevelSettings> levelSettingsDictionary = new Dictionary<LevelIndex, LevelSettings>();
+        protected Dictionary<ScenarioIndex, ScenarioSettings> currentScenarioSettingsDictionary = new Dictionary<ScenarioIndex, ScenarioSettings>();
         #endregion
 
         #region Properties
@@ -21,12 +22,34 @@ namespace RTSCoreFramework
             get { return levelSettingsDictionary; }
         }
 
-        //Used For Quick References, May use public methods in the future
-        public LevelIndex CurrentLevel = LevelIndex.No_Level;
-        public ScenarioIndex CurrentScenario = ScenarioIndex.No_Scenario;
+        public Dictionary<ScenarioIndex, ScenarioSettings> CurrentScenarioSettingsDictionary
+        {
+            get { return currentScenarioSettingsDictionary; }
+        }
+        
+        //Used To Protect Against Invalid Retrieval of CurrentScenarioSettings
+        protected bool bCurrentScenarioIsValid
+        {
+            get { return CurrentScenario != ScenarioIndex.No_Scenario; }
+        }
+        //Quick Getter For Scenario Settings, Could Cause Issues
+        protected ScenarioSettings CurrentScenarioSettings
+        {
+            get
+            {
+                if(bCurrentScenarioIsValid)
+                    return currentScenarioSettingsDictionary[CurrentScenario];
+
+                return new ScenarioSettings();
+            }
+        }
         #endregion
 
         #region Fields
+        //Used For Quick References, May use public methods in the future
+        public LevelIndex CurrentLevel = LevelIndex.Main_Menu;
+        public ScenarioIndex CurrentScenario = ScenarioIndex.No_Scenario;
+
         [Header("Data Containing Level Settings")]
         [SerializeField]
         protected LevelSettingsData levelSettingsData;
@@ -65,6 +88,7 @@ namespace RTSCoreFramework
             {
                 CurrentLevel = _level;
                 CurrentScenario = _scenario;
+                UpdateScenarioDictionary();
                 SceneManager.LoadScene(_levelSettings.Scene.name);
             }
             else
@@ -99,8 +123,15 @@ namespace RTSCoreFramework
 
         public void GoToNextScenario()
         {
-            //TODO:RTSPrototype Implement GoToNextScenario Functionality
-            Debug.Log("Going to next scenario");
+            ScenarioSettings _scenario;
+            if(GetNextScenarioIsSuccessful(out _scenario))
+            {
+                LoadLevel(CurrentLevel, _scenario.Scenario);
+            }
+            else
+            {
+                Debug.LogError("Couldn't Load Next Scenario Because Scenario Settings doesn't exist");
+            }
         }
         #endregion
 
@@ -112,11 +143,53 @@ namespace RTSCoreFramework
             return _nextScenario || _nextLevel;
         }
 
+        //Next Scenario Getters
         private bool IsLoadingNextScenarioPermitted()
         {
+            ScenarioSettings _scenario;
+            return GetNextScenarioIsSuccessful(out _scenario);
+        }
+
+        private bool GetNextScenarioIsSuccessful(out ScenarioSettings _scenario)
+        {
+            _scenario = CurrentScenarioSettings;
+            if (bCurrentScenarioIsValid == false) return false;
+            var _keysDic = currentScenarioSettingsDictionary.Keys;
+            var _keysList = _keysDic.ToList();
+            int _keyIndex = _keysList.IndexOf(CurrentScenario);
+            ScenarioIndex _nextScenario = GetScenarioIndexFromNumber(_keyIndex + 1);
+            if (_keyIndex + 1 > 0 && _keyIndex + 1 <= _keysList.Count - 1 &&
+                _nextScenario != ScenarioIndex.No_Scenario &&
+                currentScenarioSettingsDictionary.ContainsKey(_nextScenario))
+            {
+                _scenario = currentScenarioSettingsDictionary[_nextScenario];
+                return true;
+            }
             return false;
         }
 
+        private ScenarioIndex GetScenarioIndexFromNumber(int _index)
+        {
+            switch (_index)
+            {
+                case 0:
+                    return ScenarioIndex.Scenario_1;
+                case 1:
+                    return ScenarioIndex.Scenario_2;
+                case 2:
+                    return ScenarioIndex.Scenario_3;
+                case 3:
+                    return ScenarioIndex.Scenario_4;
+                case 4:
+                    return ScenarioIndex.Scenario_5;
+                case 5:
+                    return ScenarioIndex.Scenario_6;
+                default:
+                    return ScenarioIndex.No_Scenario;
+            }
+        }
+
+        //Next Level Getters
         private bool IsLoadingNextLevelPermitted()
         {
             LevelSettings _level;
@@ -129,7 +202,7 @@ namespace RTSCoreFramework
             var _keysList = _keysDic.ToList();
             int _keyIndex = _keysList.IndexOf(CurrentLevel);
             LevelIndex _nextLevel = GetLevelIndexFromNumber(_keyIndex + 1);
-            if (_keyIndex + 1 > 0 && _keyIndex + 1 <= _keysList.Count && 
+            if (_keyIndex + 1 > 0 && _keyIndex + 1 <= _keysList.Count - 1 && 
                 _nextLevel != LevelIndex.No_Level &&
                 levelSettingsDictionary.ContainsKey(_nextLevel))
             {
@@ -158,6 +231,18 @@ namespace RTSCoreFramework
                     return LevelIndex.Level_5;
                 default:
                     return LevelIndex.No_Level;
+            }
+        }
+        #endregion
+
+        #region Updaters
+        void UpdateScenarioDictionary()
+        {
+            currentScenarioSettingsDictionary.Clear();
+            var _currentLevelSettings = levelSettingsDictionary[CurrentLevel];        
+            foreach (var _scenarioSettings in _currentLevelSettings.ScenarioSettingsList)
+            {
+                currentScenarioSettingsDictionary.Add(_scenarioSettings.Scenario, _scenarioSettings);
             }
         }
         #endregion

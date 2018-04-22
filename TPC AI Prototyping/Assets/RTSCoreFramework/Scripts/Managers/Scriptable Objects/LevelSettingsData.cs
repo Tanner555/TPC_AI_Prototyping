@@ -29,16 +29,20 @@ namespace RTSCoreFramework
     }
 
     [System.Serializable]
+    public struct ScenarioSettings
+    {
+        public string ScenarioName;
+        public ScenarioIndex Scenario;
+    }
+
+    [System.Serializable]
     public struct LevelSettings
     {
         public string LevelName;
         public LevelIndex Level;
         public Sprite LevelImage;
         public Object Scene;
-        //May add a Scenario Amount in the future
-        //Not Needed Right Now
-        //public string ScenarioName;
-        //public ScenarioIndex Scenario;
+        public List<ScenarioSettings> ScenarioSettingsList;
     }
 
     [CreateAssetMenu(menuName = "RTSPrototype/LevelSettingsData")]

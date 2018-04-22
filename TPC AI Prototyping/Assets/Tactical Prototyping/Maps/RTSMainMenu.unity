@@ -431,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ebcbe20dc5e134dad0364db8f2a6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentLevel: -1
+  CurrentLevel: 0
   CurrentScenario: -1
   levelSettingsData: {fileID: 11400000, guid: 82d2cad50bbbd42428daffb8dcfa9412, type: 2}
 --- !u!4 &1065482686
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadLevel: 1
-  scenario: 1
+  scenario: 0
 --- !u!1 &1810269240
 GameObject:
   m_ObjectHideFlags: 0
