@@ -6,10 +6,9 @@ namespace RTSCoreFramework
 {
     public class RTSSaveManager : MonoBehaviour
     {
-        [SerializeField]
-        private IGBPIDataCore IGBPIDataObject;
         public static RTSSaveManager thisInstance { get; protected set; }
         IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
+        RTSStatHandler statHandler { get { return RTSStatHandler.thisInstance; } }
 
         private void OnEnable()
         {
@@ -20,10 +19,11 @@ namespace RTSCoreFramework
 
         }
 
-        public List<IGBPIPanelValue> Load_IGBPI_PanelValues()
+        public List<IGBPIPanelValue> Load_IGBPI_PanelValues(ECharacterType _cType)
         {
-            if (!isIGBPISavingPermitted()) return null;
-            return ValidateIGBPIValues(IGBPIDataObject.IGBPIPanelData);
+            CharacterTactics _tactics;
+            if (!isIGBPISavingPermitted(_cType, out _tactics)) return null;
+            return ValidateIGBPIValues(_tactics.Tactics);
         }
 
         public List<IGBPIPanelValue> ValidateIGBPIValues(List<IGBPIPanelValue> _values)
@@ -45,29 +45,33 @@ namespace RTSCoreFramework
             return _validValues;
         }
 
-        public void Save_IGBPI_Values(List<IGBPIPanelValue> _values)
+        public void Save_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
         {
-            if (!isIGBPISavingPermitted()) return;
-            IGBPIDataObject.IGBPIPanelData.Clear();
-            IGBPIDataObject.IGBPIPanelData = ValidateIGBPIValues(_values);
+            CharacterTactics _tactics;
+            if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
             //TODO: RTSPrototype Find Another Way to Save IGBPI Values
             //Serializable Objects cannot be used in builds
+            var _Debug_CharacterTacticsObject = statHandler.DebugGET_CharacterTacticsData;
+            int _index = _Debug_CharacterTacticsObject.CharacterTacticsList.IndexOf(_tactics);
+            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.Clear();
+            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.AddRange(ValidateIGBPIValues(_values));         
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(IGBPIDataObject);
+            UnityEditor.EditorUtility.SetDirty(_Debug_CharacterTacticsObject);
             UnityEditor.AssetDatabase.SaveAssets();
 #endif
         }
 
-        public IEnumerator YieldSave_IGBPI_Values(List<IGBPIPanelValue> _values)
+        public IEnumerator YieldSave_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
         {
-            Save_IGBPI_Values(_values);
+            Save_IGBPI_Values(_cType, _values);
             yield return new WaitForSecondsRealtime(0.5f);
             Debug.Log("Finished Saving");
         }
 
-        public void Save_IGBPI_PanelValues(List<IGBPI_UI_Panel> _panels)
+        public void Save_IGBPI_PanelValues(ECharacterType _cType, List<IGBPI_UI_Panel> _panels)
         {
-            if (!isIGBPISavingPermitted()) return;
+            CharacterTactics _tactics;
+            if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
             List<IGBPIPanelValue> _saveValues = new List<IGBPIPanelValue>();
             foreach (var _panel in _panels)
             {
@@ -77,14 +81,15 @@ namespace RTSCoreFramework
                     _panel.actionText.text
                 ));
             }
-            Save_IGBPI_Values(_saveValues);
+            Save_IGBPI_Values(_cType, _saveValues);
         }
 
-        bool isIGBPISavingPermitted()
+        bool isIGBPISavingPermitted(ECharacterType _cType, out CharacterTactics _tactics)
         {
-            if (IGBPIDataObject == null)
+            _tactics = GetTacticsFromCharacter(_cType);
+            if (_tactics.CharacterType == ECharacterType.NoCharacterType)
             {
-                Debug.LogError("No IGBPI Data Object on Save Manager");
+                Debug.LogError("No IGBPI Data Object on Save Manager For Character Type " + _tactics.CharacterType.ToString());
                 return false;
             }
             if (dataHandler == null)
@@ -93,6 +98,16 @@ namespace RTSCoreFramework
                 return false;
             }
             return true;
+        }
+
+        CharacterTactics GetTacticsFromCharacter(ECharacterType _cType)
+        {
+            return statHandler.RetrieveAnonymousCharacterTactics(_cType);
+        }
+
+        List<IGBPIPanelValue> GetPanelValuesFromCharacter(ECharacterType _cType)
+        {
+            return GetTacticsFromCharacter(_cType).Tactics;
         }
     }
 }

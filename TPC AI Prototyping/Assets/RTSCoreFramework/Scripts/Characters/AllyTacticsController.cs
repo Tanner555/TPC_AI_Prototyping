@@ -158,7 +158,7 @@ namespace RTSCoreFramework
         {
             UnLoadAndCancelTactics();
             var _tactics = statHandler.RetrieveCharacterTactics(
-                    allyMember.CharacterType, allyMember);
+                    allyMember, allyMember.CharacterType);
             foreach (var _data in _tactics.Tactics)
             {
                 bool _hasCondition = dataHandler.IGBPI_Conditions.ContainsKey(_data.condition);

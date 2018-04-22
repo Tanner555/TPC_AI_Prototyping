@@ -32,9 +32,22 @@ namespace RTSCoreFramework
         #region Properties
         public static RTSStatHandler thisInstance { get; protected set; }
 
+        RTSGameMode gamemode
+        {
+            get { return RTSGameMode.thisInstance; }
+        }
+
         public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
         {
             get { return weaponStatDictionary; }
+        }
+
+        /// <summary>
+        /// Used Only For Debugging, Need to implement actual saving in the future
+        /// </summary>
+        public CharacterTacticsData DebugGET_CharacterTacticsData
+        {
+            get { return characterTacticsData; }
         }
         // I'll probably use public methods to access and update stats
         //public Dictionary<RTSCharacterType, CharacterStats> GetCharacterStats
@@ -48,6 +61,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters
+        public CharacterStats RetrieveCurrentPlayerStats()
+        {
+            var _cPlayer = gamemode.CurrentPlayer;
+            return RetrieveCharacterStats(_cPlayer, _cPlayer.CharacterType);
+        }
+
+        public CharacterTactics RetrieveCurrentPlayerTactics()
+        {
+            var _cPlayer = gamemode.CurrentPlayer;
+            return RetrieveCharacterTactics(_cPlayer, _cPlayer.CharacterType);
+        }
+        
         /// <summary>
         ///  Used to retrieve an Anonymous Character's Stats, that may update
         ///  from a specific character instance if the instance is the player's
@@ -80,7 +105,18 @@ namespace RTSCoreFramework
             };
         }
 
-        public CharacterTactics RetrieveCharacterTactics(ECharacterType _cType, AllyMember _ally)
+        public CharacterTactics RetrieveCharacterTactics(AllyMember _ally, ECharacterType _cType)
+        {
+            return RetrieveAnonymousCharacterTactics(_cType);
+        }
+
+        /// <summary>
+        ///  Used to retrieve an Anonymous Character's Tactics, that will not update
+        ///  from a specific character instance.
+        /// </summary>
+        /// <param name="_cType"></param>
+        /// <returns></returns>
+        public CharacterTactics RetrieveAnonymousCharacterTactics(ECharacterType _cType)
         {
             if (CharacterTacticsDictionary.ContainsKey(_cType))
             {

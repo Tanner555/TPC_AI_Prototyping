@@ -92,6 +92,10 @@ namespace RTSCoreFramework
 
         #region Properties
         public PartyManager GeneralInCommand { get; protected set; }
+        public AllyMember CurrentPlayer
+        {
+            get { return GeneralInCommand.AllyInCommand; }
+        }
         //GameMode must access GameMaster sooner than On Start
         //To Subscribe Events and Prevent Errors when AllySwitching
         public RTSGameMaster gamemaster

@@ -27,10 +27,12 @@ namespace RTSCoreFramework
         }
 
         public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
+        public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
 
         public IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         public RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
         public RTSGameInstance gameInstance { get { return RTSGameInstance.thisInstance; } }
+        public RTSStatHandler statHandler { get { return RTSStatHandler.thisInstance; } }
 
         //UGBPI
         public bool isBehaviorUIOn { get { return IGBPIUi != null && IGBPIUi.activeSelf; } }
@@ -499,7 +501,8 @@ conditionButton && actionButton;
 
                 if (_saveData.Count > 0)
                 {
-                    saveManager.Save_IGBPI_PanelValues(_saveData);
+                    var _cType = gamemode.CurrentPlayer.CharacterType;
+                    saveManager.Save_IGBPI_PanelValues(_cType, _saveData);
                     uiMaster.CallEventOnSaveIGBPIComplete();
                     Debug.Log("Save Successful");
                 }
@@ -511,7 +514,8 @@ conditionButton && actionButton;
         IEnumerator LoadIGBPIDataAfterWait(float _seconds)
         {
             yield return new WaitForSecondsRealtime(_seconds);
-            foreach (var _data in saveManager.Load_IGBPI_PanelValues())
+            var _cType = gamemode.CurrentPlayer.CharacterType;
+            foreach (var _data in saveManager.Load_IGBPI_PanelValues(_cType))
             {
                 panelCreationValues = _data;
                 usePanelCreationValues = true;
