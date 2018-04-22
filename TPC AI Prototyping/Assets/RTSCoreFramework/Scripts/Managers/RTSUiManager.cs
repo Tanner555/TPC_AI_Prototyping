@@ -30,6 +30,7 @@ namespace RTSCoreFramework
 
         public IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         public RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
+        public RTSGameInstance gameInstance { get { return RTSGameInstance.thisInstance; } }
 
         //UGBPI
         public bool isBehaviorUIOn { get { return IGBPIUi != null && IGBPIUi.activeSelf; } }
@@ -217,6 +218,17 @@ conditionButton && actionButton;
             gamemaster.CallEventGoToMenuScene();
         }
 
+        public void CallCheckNextLevel()
+        {
+            bool _scenario = false;
+            bool _level = false;
+            if (gameInstance.IsLoadingNextPermitted(out _scenario, out _level))
+            {
+                if (_scenario) gamemaster.CallEventGoToNextScenario();
+                else if (_level) gamemaster.CallEventGoToNextLevel();
+            }
+        }
+
         public void CallRestartLevel()
         {
             gamemaster.CallEventRestartLevel();   
@@ -259,6 +271,25 @@ conditionButton && actionButton;
         {
             if (AllUiCompsAreValid == false) return;
             WinnerUiPanel.SetActive(true);
+            bool _nextScenario = false;
+            bool _nextLevel = false;
+            if(gameInstance.IsLoadingNextPermitted(out _nextScenario, out _nextLevel))
+            {
+                NextLevelButton.SetActive(true);
+                Text _btnText = NextLevelButton.GetComponentInChildren<Text>();
+                if (_btnText && _nextScenario)
+                {
+                    _btnText.text = "Go To Next Scenario";
+                }
+                else if (_btnText && _nextLevel)
+                {
+                    _btnText.text = "Go To Next Level";
+                }
+            }
+            else
+            {
+                NextLevelButton.SetActive(false);
+            }
         }
 
         void ActivateGameOverUi()

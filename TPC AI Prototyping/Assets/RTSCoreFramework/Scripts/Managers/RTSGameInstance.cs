@@ -82,6 +82,37 @@ namespace RTSCoreFramework
         {
             LoadLevel(LevelIndex.Main_Menu, ScenarioIndex.No_Scenario);
         }
+
+        public void GoToNextLevel()
+        {
+            //TODO:RTSPrototype Implement GoToNextLevel Functionality
+
+        }
+
+        public void GoToNextScenario()
+        {
+            //TODO:RTSPrototype Implement GoToNextScenario Functionality
+
+        }
+        #endregion
+
+        #region Getters/Checks
+        public bool IsLoadingNextPermitted(out bool _nextScenario, out bool _nextLevel)
+        {
+            _nextScenario = IsLoadingNextScenarioPermitted();
+            _nextLevel = IsLoadingNextLevelPermitted();
+            return _nextScenario || _nextLevel;
+        }
+
+        private bool IsLoadingNextScenarioPermitted()
+        {
+            return false;
+        }
+
+        private bool IsLoadingNextLevelPermitted()
+        {
+            return false;
+        }
         #endregion
 
         #region Initialization

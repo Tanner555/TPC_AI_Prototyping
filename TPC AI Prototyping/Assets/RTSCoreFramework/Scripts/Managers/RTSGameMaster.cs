@@ -80,6 +80,8 @@ namespace RTSCoreFramework
         public delegate void GameManagerEventHandler();
         public event GameManagerEventHandler RestartLevelEvent;
         public event GameManagerEventHandler GoToMenuSceneEvent;
+        public event GameManagerEventHandler GoToNextLevelEvent;
+        public event GameManagerEventHandler GoToNextScenarioEvent;
         public event GameManagerEventHandler GameOverEvent;
         public event GameManagerEventHandler EventAllEnemiesAreDead;
         public event GameManagerEventHandler EventAllObjectivesCompleted;
@@ -140,6 +142,30 @@ namespace RTSCoreFramework
         private void WaitToGoToMenuScene()
         {
             gameInstance.GoToMainMenu();
+        }
+
+        public void CallEventGoToNextLevel()
+        {
+            CallOnToggleIsGamePaused(false);
+            if (GoToNextLevelEvent != null) GoToNextLevelEvent();
+            Invoke("WaitToGoToNextLevel", 0.2f);
+        }
+
+        private void WaitToGoToNextLevel()
+        {
+            gameInstance.GoToNextLevel();
+        }
+
+        public void CallEventGoToNextScenario()
+        {
+            CallOnToggleIsGamePaused(false);
+            if (GoToNextScenarioEvent != null) GoToNextScenarioEvent();
+            Invoke("WaitToGoToNextScenario", 0.2f);
+        }
+
+        private void WaitToGoToNextScenario()
+        {
+            gameInstance.GoToNextScenario();
         }
 
         public void CallEventGameOver()
