@@ -29,7 +29,10 @@ namespace RTSPrototype
             }
         }
 
-        public AllyMemberWrapper currentTargettedEnemyWrapper { get; protected set; }
+        public AllyMemberWrapper currentTargettedEnemyWrapper
+        {
+            get { return (AllyMemberWrapper)currentTargettedEnemy; }
+        }
         #endregion
 
         #region UnityMessages
@@ -61,20 +64,6 @@ namespace RTSPrototype
             this.enabled = false;
         }      
 
-        #endregion
-
-        #region Overrides
-        protected override void HandleCommandAttackEnemy(AllyMember enemy)
-        {
-            base.HandleCommandAttackEnemy(enemy);
-            currentTargettedEnemyWrapper = (AllyMemberWrapper)enemy;
-        }
-
-        protected override void HandleStopTargetting()
-        {
-            base.HandleStopTargetting();
-            currentTargettedEnemyWrapper = null;
-        }
         #endregion
 
         #region Initialization

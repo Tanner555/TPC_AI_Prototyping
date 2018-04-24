@@ -170,6 +170,11 @@ namespace RTSPrototype
         {
             bIsShooting = _enable;
         }
+
+        void HandleAllyDeath()
+        {
+            Destroy(this);
+        }
         #endregion
 
         #region NavMeshMovement
@@ -331,6 +336,7 @@ namespace RTSPrototype
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
             myEventHandler.EventCommandMove += MoveToDestination;
+            myEventHandler.EventAllyDied += HandleAllyDeath;
             gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
         }
 
@@ -341,6 +347,7 @@ namespace RTSPrototype
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;
             myEventHandler.EventCommandMove -= MoveToDestination;
+            myEventHandler.EventAllyDied -= HandleAllyDeath;
             gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
         }
         #endregion
