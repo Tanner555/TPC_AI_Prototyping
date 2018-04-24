@@ -965,60 +965,49 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4939287684927452, guid: b03dc26493b56644d948bff75db2d842, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -7.7040005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4939287684927452, guid: b03dc26493b56644d948bff75db2d842, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 84.731
-      objectReference: {fileID: 0}
-    - target: {fileID: 4939287684927452, guid: b03dc26493b56644d948bff75db2d842, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.708
-      objectReference: {fileID: 0}
-    - target: {fileID: 114252040430868704, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114269664268726430, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301875693343704, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114290357314114964, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114792887121494188, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114233307031470328, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114591419229318492, guid: b03dc26493b56644d948bff75db2d842,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1095465778626376, guid: b03dc26493b56644d948bff75db2d842, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b03dc26493b56644d948bff75db2d842, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &791686236 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114269664268726430, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: 7faacfeb0b4948a4987bb1d34308216f, type: 3}
+--- !u!114 &791686237 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114301875693343704, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: a4f5ff720a361cd45bc5ffd8a7310845, type: 3}
+--- !u!114 &791686238 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114290357314114964, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: 852a867ae0549ca4eb0839ca0a525896, type: 3}
+--- !u!114 &791686239 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114792887121494188, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: a9d092077bf0dc8498482f6d3a098b92, type: 3}
+--- !u!114 &791686240 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114233307031470328, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: 17783bbf98a9a7b499f06ac4bf22e60b, type: 3}
+--- !u!114 &791686241 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114591419229318492, guid: b03dc26493b56644d948bff75db2d842,
+    type: 2}
+  m_PrefabInternal: {fileID: 791686235}
+  m_Script: {fileID: 11500000, guid: 71141e42ab8703c49bc923531eb8ffaa, type: 3}
 --- !u!1 &807285096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3443,13 @@ MonoBehaviour:
   RTSManagersObject: {fileID: 362947157}
   RTSCoreCanvas: {fileID: 57342866}
   RTSMainCamera: {fileID: 1852181751}
+  CameraCompsToEnable:
+  - {fileID: 791686241}
+  - {fileID: 791686240}
+  - {fileID: 791686239}
+  - {fileID: 791686238}
+  - {fileID: 791686237}
+  - {fileID: 791686236}
   Scenario_1_Spawners: {fileID: 1205845919}
   Scenario_2_Spawners: {fileID: 1671489736}
   Scenario_3_Spawners: {fileID: 0}

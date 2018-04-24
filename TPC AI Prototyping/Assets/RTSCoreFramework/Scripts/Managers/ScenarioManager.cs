@@ -26,6 +26,9 @@ namespace RTSCoreFramework
         GameObject RTSCoreCanvas;
         [SerializeField]
         GameObject RTSMainCamera;
+        [Header("Drag Camera Comps Here to Enable Them at Runtime")]
+        [SerializeField]
+        List<Behaviour> CameraCompsToEnable;
         [Header("Scenario Dependent Game Objects")]
         [SerializeField]
         GameObject Scenario_1_Spawners;
@@ -87,7 +90,16 @@ namespace RTSCoreFramework
         {
             RTSManagersObject.SetActive(true);
             RTSCoreCanvas.SetActive(true);
-            RTSMainCamera.SetActive(true);
+            //Activate MainCamera if it's not currently active in scene
+            if (RTSMainCamera.activeSelf == false)
+                RTSMainCamera.SetActive(true);
+
+            //Enable Camera Components
+            foreach (var _comp in CameraCompsToEnable)
+            {
+                _comp.enabled = true;
+            }
+
             if (_scenarioSpawners != null)
             {
                 _scenarioSpawners.SetActive(true);

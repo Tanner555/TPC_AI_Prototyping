@@ -42,13 +42,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_LocalRotation: {x: -0.047701824, y: 0.70549595, z: -0.047701824, w: -0.70549595}
-  m_LocalPosition: {x: 16.01945, y: 6.7757215, z: 2.888324}
+  m_LocalRotation: {x: 0.045479707, y: -0.6726314, z: -0.049824957, w: -0.7368963}
+  m_LocalPosition: {x: 7.37, y: 12.19, z: 23.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -7.7040005, y: 84.731, z: 0.708}
 --- !u!20 &20966796609738634
 Camera:
   m_ObjectHideFlags: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17783bbf98a9a7b499f06ac4bf22e60b, type: 3}
   m_Name: 
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7faacfeb0b4948a4987bb1d34308216f, type: 3}
   m_Name: 
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 852a867ae0549ca4eb0839ca0a525896, type: 3}
   m_Name: 
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4f5ff720a361cd45bc5ffd8a7310845, type: 3}
   m_Name: 
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71141e42ab8703c49bc923531eb8ffaa, type: 3}
   m_Name: 
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9d092077bf0dc8498482f6d3a098b92, type: 3}
   m_Name: 
