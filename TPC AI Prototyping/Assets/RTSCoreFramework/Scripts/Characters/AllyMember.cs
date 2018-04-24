@@ -254,9 +254,16 @@ namespace RTSCoreFramework
                 AllyMember _firstAlly = partyManager.FindPartyMembers(true, this);
                 if (_firstAlly != null)
                 {
-                    //Only Switch Player If Ally Shot is the Current Player
-                    if(bIsCurrentPlayer)
+                    //Fixes Enemy PartyManager not setting AllyInCommand
+                    if (bIsInGeneralCommanderParty)
+                    {
+                        if (bIsCurrentPlayer)
+                            partyManager.SetAllyInCommand(_firstAlly);
+                    }
+                    else
+                    {
                         partyManager.SetAllyInCommand(_firstAlly);
+                    }
                 }
                 else
                 {
