@@ -257,6 +257,7 @@ namespace RTSCoreFramework
                     //Fixes Enemy PartyManager not setting AllyInCommand
                     if (bIsInGeneralCommanderParty)
                     {
+                        //Only Switch Player If Ally Killed is the Current Player
                         if (bIsCurrentPlayer)
                             partyManager.SetAllyInCommand(_firstAlly);
                     }
