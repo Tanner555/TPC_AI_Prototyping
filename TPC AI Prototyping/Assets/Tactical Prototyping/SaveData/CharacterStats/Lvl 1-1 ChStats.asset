@@ -17,8 +17,8 @@ MonoBehaviour:
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
       type: 3}
-    MaxHealth: 100
-    Health: 100
+    MaxHealth: 1000
+    Health: 1000
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
@@ -27,8 +27,8 @@ MonoBehaviour:
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
       type: 3}
-    MaxHealth: 100
-    Health: 100
+    MaxHealth: 1000
+    Health: 1000
     EquippedWeapon: 0
     PrimaryWeapon: 3
     SecondaryWeapon: 4
@@ -47,8 +47,8 @@ MonoBehaviour:
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: c1ee90923a530864cb7a6f70a5500b68,
       type: 3}
-    MaxHealth: 100
-    Health: 100
+    MaxHealth: 1000
+    Health: 1000
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
