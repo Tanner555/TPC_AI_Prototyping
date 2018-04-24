@@ -774,6 +774,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1420484503237202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4844861298532302}
+  m_Layer: 8
+  m_Name: LOSGObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1421074366598226
 GameObject:
   m_ObjectHideFlags: 1
@@ -2181,13 +2196,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
   m_LocalRotation: {x: -0, y: 0.03655579, z: -0, w: 0.99933165}
-  m_LocalPosition: {x: 19.288305, y: 7, z: 20.459167}
+  m_LocalPosition: {x: 41.438473, y: 7, z: 18.483917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224609842509933388}
   - {fileID: 4319494164551940}
   - {fileID: 4680713756615116}
   - {fileID: 4404401070770418}
+  - {fileID: 4844861298532302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2824,6 +2840,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4478206227469870}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4844861298532302
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420484503237202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.141, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4289548942628634}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4846962461379678
 Transform:
@@ -5548,6 +5577,7 @@ MonoBehaviour:
   Debug_DoNotShoot: 0
   chestTransform: {fileID: 4574132470760152}
   headTransform: {fileID: 4574132470760152}
+  LOSTransform: {fileID: 4844861298532302}
   _myCharacterHealth: {fileID: 0}
 --- !u!114 &114076645445030852
 MonoBehaviour:

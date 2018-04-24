@@ -22,8 +22,8 @@ MonoBehaviour:
     CharacterType: 2
     Tactics:
     - order: 1
-      condition: 'Enemy: WithinSightRange'
-      action: 'Self: Attack Targetted Enemy'
+      condition: 'Leader: Within Follow Distance'
+      action: 'Self: FollowLeader'
   - CharacterName: Evil Assault Villian 1
     CharacterType: 25
     Tactics:

@@ -20,6 +20,9 @@ namespace RTSCoreFramework
         protected Transform chestTransform;
         [SerializeField]
         protected Transform headTransform;
+        [SerializeField]
+        [Tooltip("Used as a start point for raycasting")]
+        protected Transform LOSTransform;
 
         //Gun Properties, Can Delete in the Future
         protected float lowAmmoThreshold = 14.0f;
