@@ -56,6 +56,7 @@ namespace RTSCoreFramework
         //Camera Follow Transforms
         public Transform ChestTransform { get { return chestTransform; } }
         public Transform HeadTransform { get { return headTransform; } }
+        public Transform MyLOSTransform { get { return LOSTransform; } }
 
         public virtual AllyMember enemyTarget
         {

@@ -48,6 +48,7 @@ namespace RTSCoreFramework
         //AllyMember Transforms
         Transform headTransform { get { return allyMember.HeadTransform; } }
         Transform chestTransform { get { return allyMember.ChestTransform; } }
+        Transform losTransform { get { return allyMember.MyLOSTransform; } }
 
         //Layer Props
         public LayerMask allyLayers
@@ -266,7 +267,7 @@ namespace RTSCoreFramework
 
         #region AITacticsHelpers
         protected virtual AllyMember FindClosestEnemy()
-        {
+        {      
             AllyMember _closestEnemy = null;
             if (headTransform == null)
             {
@@ -301,7 +302,7 @@ namespace RTSCoreFramework
         bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
             RaycastHit _myHit;
-            bool _bHit = Physics.Linecast(chestTransform.position,
+            bool _bHit = Physics.Linecast(losTransform.position,
                         _enemy.ChestTransform.position, out _myHit);
             _hit = _myHit;
             bool _valid = _bHit && _myHit.transform != null &&
@@ -309,6 +310,11 @@ namespace RTSCoreFramework
             if (_valid)
             {
                 AllyMember _hitAlly = _myHit.transform.root.GetComponent<AllyMember>();
+                if (_hitAlly == allyMember)
+                {
+                    Debug.Log(allyMember.CharacterName +
+                        " Has LOS With Himself.");
+                }
                 //TODO: RTSPrototype Fix hasLosWithinRange() hitting self instead of enemy
                 return _hitAlly == allyMember || _hitAlly.IsEnemyFor(allyMember);
             }
