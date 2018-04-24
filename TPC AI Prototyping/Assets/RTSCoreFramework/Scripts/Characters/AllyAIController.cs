@@ -202,8 +202,19 @@ namespace RTSCoreFramework
         public bool Tactics_IsEnemyWithinSightRange()
         {
             AllyMember _closestEnemy = FindClosestEnemy();
-            if(_closestEnemy != null) currentTargettedEnemy = _closestEnemy;
-            return (_closestEnemy != null);
+            bool _valid = _closestEnemy != null && _closestEnemy.IsAlive;
+            if (_valid) {
+                currentTargettedEnemy = _closestEnemy;
+            }
+            else
+            {
+                if (currentTargettedEnemy == null ||
+                    !currentTargettedEnemy.IsAlive)
+                {
+                    currentTargettedEnemy = null;
+                }
+            }
+            return (_valid);
         }
         
         public void Tactics_MoveToLeader()
