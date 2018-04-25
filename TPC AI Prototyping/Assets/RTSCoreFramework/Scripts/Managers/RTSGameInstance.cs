@@ -26,7 +26,17 @@ namespace RTSCoreFramework
         {
             get { return currentScenarioSettingsDictionary; }
         }
-        
+
+        public LevelIndex CurrentLevel
+        {
+            get { return currentLevel; }
+        }
+
+        public ScenarioIndex CurrentScenario
+        {
+            get { return currentScenario; }
+        }
+
         //Used To Protect Against Invalid Retrieval of CurrentScenarioSettings
         protected bool bCurrentScenarioIsValid
         {
@@ -46,10 +56,16 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        //Used For Quick References, May use public methods in the future
-        public LevelIndex CurrentLevel = LevelIndex.Main_Menu;
-        public ScenarioIndex CurrentScenario = ScenarioIndex.No_Scenario;
-
+        [Header("Current Level Info")]
+        [SerializeField]
+        protected LevelIndex currentLevel = LevelIndex.Main_Menu;
+        [SerializeField]
+        protected ScenarioIndex currentScenario = ScenarioIndex.No_Scenario;
+        [Header("FrameRateLimiter")]
+        [SerializeField]
+        protected bool UseFrameRateLimit = true;
+        [SerializeField]
+        protected int FrameRateLimit = 60;
         [Header("Data Containing Level Settings")]
         [SerializeField]
         protected LevelSettingsData levelSettingsData;
@@ -71,12 +87,13 @@ namespace RTSCoreFramework
             }
 
             InitializeDictionaryValues();
+            UpdateFrameRateLimit();
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            UpdateFrameRateLimit();
         }
         #endregion
 
@@ -86,8 +103,8 @@ namespace RTSCoreFramework
             if(levelSettingsDictionary.ContainsKey(_level))
             {
                 var _levelSettings = levelSettingsDictionary[_level];
-                CurrentLevel = _level;
-                CurrentScenario = _scenario;
+                currentLevel = _level;
+                currentScenario = _scenario;
                 UpdateScenarioDictionary();
                 SceneManager.LoadScene(_levelSettings.LevelBuildIndex);
             }
@@ -243,6 +260,20 @@ namespace RTSCoreFramework
             foreach (var _scenarioSettings in _currentLevelSettings.ScenarioSettingsList)
             {
                 currentScenarioSettingsDictionary.Add(_scenarioSettings.Scenario, _scenarioSettings);
+            }
+        }
+
+        void UpdateFrameRateLimit()
+        {
+            if (UseFrameRateLimit == false) return;
+            if (QualitySettings.vSyncCount != 0)
+            {
+                //Frame Limit Doesn't Work If VSync Is Set Above 0
+                QualitySettings.vSyncCount = 0;
+            }
+            if (Application.targetFrameRate != FrameRateLimit)
+            {
+                Application.targetFrameRate = FrameRateLimit;
             }
         }
         #endregion
