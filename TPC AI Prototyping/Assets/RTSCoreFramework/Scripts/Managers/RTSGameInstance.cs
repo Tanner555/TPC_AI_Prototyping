@@ -82,18 +82,18 @@ namespace RTSCoreFramework
 
         #region LevelManagement
         public void LoadLevel(LevelIndex _level, ScenarioIndex _scenario)
-        {
-            var _levelSettings = levelSettingsDictionary[_level];
-            if(_levelSettings.Scene != null)
+        {          
+            if(levelSettingsDictionary.ContainsKey(_level))
             {
+                var _levelSettings = levelSettingsDictionary[_level];
                 CurrentLevel = _level;
                 CurrentScenario = _scenario;
                 UpdateScenarioDictionary();
-                SceneManager.LoadScene(_levelSettings.Scene.name);
+                SceneManager.LoadScene(_levelSettings.LevelBuildIndex);
             }
             else
             {
-                Debug.Log("There is no scene for Level " + _levelSettings.LevelName);
+                Debug.Log("There is no key for LevelIndex " + _level.ToString());
                 return;
             }
         }

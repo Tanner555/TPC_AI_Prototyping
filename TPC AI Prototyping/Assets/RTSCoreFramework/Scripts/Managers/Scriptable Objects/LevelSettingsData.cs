@@ -40,8 +40,9 @@ namespace RTSCoreFramework
     {
         public string LevelName;
         public LevelIndex Level;
+        [Tooltip("Used To Load Level Since Scene Assets Cannot Be Used In Builds")]
+        public int LevelBuildIndex;
         public Sprite LevelImage;
-        public Object Scene;
         public List<ScenarioSettings> ScenarioSettingsList;
     }
 
