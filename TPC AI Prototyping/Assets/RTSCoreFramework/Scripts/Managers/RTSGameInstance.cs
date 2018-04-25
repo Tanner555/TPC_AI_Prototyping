@@ -17,6 +17,18 @@ namespace RTSCoreFramework
         #region Properties
         public static RTSGameInstance thisInstance { get; protected set; }
 
+        protected int RefreshRate
+        {
+            get
+            {
+                if (_refreshRate == -1)
+                    _refreshRate = Screen.currentResolution.refreshRate;
+
+                return _refreshRate;
+            }
+        }
+        private int _refreshRate = -1;
+
         public Dictionary<LevelIndex, LevelSettings> LevelSettingsDictionary
         {
             get { return levelSettingsDictionary; }
@@ -61,9 +73,6 @@ namespace RTSCoreFramework
         protected LevelIndex currentLevel = LevelIndex.Main_Menu;
         [SerializeField]
         protected ScenarioIndex currentScenario = ScenarioIndex.No_Scenario;
-        [Header("FrameRateLimiter")]
-        [SerializeField]
-        protected bool UseFrameRateLimit = true;
         [SerializeField]
         protected int FrameRateLimit = 60;
         [Header("Data Containing Level Settings")]
@@ -265,15 +274,14 @@ namespace RTSCoreFramework
 
         void UpdateFrameRateLimit()
         {
-            if (UseFrameRateLimit == false) return;
             if (QualitySettings.vSyncCount != 0)
             {
                 //Frame Limit Doesn't Work If VSync Is Set Above 0
                 QualitySettings.vSyncCount = 0;
             }
-            if (Application.targetFrameRate != FrameRateLimit)
+            if (Application.targetFrameRate != RefreshRate)
             {
-                Application.targetFrameRate = FrameRateLimit;
+                Application.targetFrameRate = RefreshRate;
             }
         }
         #endregion
