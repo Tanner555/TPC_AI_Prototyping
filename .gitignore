@@ -10,6 +10,9 @@
 # ProCore (for Unity 2017.3)
 /TPC AI Prototyping/Assets/ProCore
 /TPC AI Prototyping/Assets/ProCore.meta
+# Unity Logs Viewer (See Console Logs in Builds)
+/TPC AI Prototyping/Assets/Unity-Logs-Viewer
+/TPC AI Prototyping/Assets/Unity-Logs-Viewer.meta
 # Power UI, No Longer Used
 /TPC AI Prototyping/Assets/PowerUI
 # Moon Sharp, No Longer Used
