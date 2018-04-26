@@ -13,6 +13,11 @@
 # Unity Logs Viewer (See Console Logs in Builds)
 /TPC AI Prototyping/Assets/Unity-Logs-Viewer
 /TPC AI Prototyping/Assets/Unity-Logs-Viewer.meta
+# Fungus
+/TPC AI Prototyping/Assets/Fungus
+/TPC AI Prototyping/Assets/Fungus.meta
+/TPC AI Prototyping/Assets/FungusExamples
+/TPC AI Prototyping/Assets/FungusExamples.meta
 # StreamingAssets (Folder Keeps Appearing In My Project)
 /TPC AI Prototyping/Assets/StreamingAssets
 /TPC AI Prototyping/Assets/StreamingAssets.meta
