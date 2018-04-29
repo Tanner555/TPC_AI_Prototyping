@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RTSCoreFramework
+namespace RTSCoreFramework.Utilities
 {
     public class RTSTimer
     {
@@ -22,6 +22,23 @@ namespace RTSCoreFramework
         public bool IsTimerFinished()
         {
             return Time.time > currentTimer;
+        }
+    }
+
+    public class RTSInvoker
+    {
+        private static MonoBehaviour invokeCaller = null;
+
+        public static void InvokeInRealTime(ref MonoBehaviour caller, string methodName, float time)
+        {
+            invokeCaller = caller;
+            caller.StartCoroutine(InvokeFromCoroutine(methodName, time));
+        }
+
+        static IEnumerator InvokeFromCoroutine(string methodName, float time)
+        {
+            yield return new WaitForSecondsRealtime(time);
+            invokeCaller.Invoke(methodName, 0.0f);
         }
     }
 }

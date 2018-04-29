@@ -38,20 +38,28 @@ namespace RTSCoreFramework
         #region Testing
         //private void Start()
         //{
-        //    Time.timeScale = 0f;
-        //    StartCoroutine(CallTest1(0.4f));
-        //    var _chart = GameObject.FindObjectOfType<Fungus.Flowchart>();
-        //    if (_chart != null)
-        //    {
-        //        _chart.SendFungusMessage("Start");
-        //    }
+        //    //Time.timeScale = 0f;
+        //    //InvokeInRealTime("Test1", 0.1f);
+        //    //MonoBehaviour _caller = (MonoBehaviour)this;
+        //    //Utilities.RTSInvoker.InvokeInRealTime(ref _caller, "Test1", 0.1f);
+        //    //StartCoroutine(CallTest1(0.4f));
+        //    //var _chart = GameObject.FindObjectOfType<Fungus.Flowchart>();
+        //    //if (_chart != null)
+        //    //{
+        //    //    _chart.SendFungusMessage("Start");
+        //    //}
 
         //}
 
-        //IEnumerator CallTest1(float _delay)
+        //void InvokeInRealTime(string methodName, float time)
         //{
-        //    yield return new WaitForSecondsRealtime(_delay);
-        //    Invoke("Test1", 0.0f);
+        //    StartCoroutine(InvokeFromCoroutine(methodName, time));
+        //}
+
+        //IEnumerator InvokeFromCoroutine(string methodName, float time)
+        //{
+        //    yield return new WaitForSecondsRealtime(time);
+        //    Invoke(methodName, 0.0f);
         //}
 
         //void Test1()
