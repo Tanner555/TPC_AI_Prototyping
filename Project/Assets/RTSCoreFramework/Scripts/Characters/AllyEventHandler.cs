@@ -91,6 +91,10 @@ namespace RTSCoreFramework
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
+        //Called by Opsive Shooter Script, then another class
+        //handles the hitscan firing.
+        public event GeneralVector3Handler OnTryHitscanFire;
+        //Tries Using Primary Item, Not Currently Called
         public event GeneralEventHandler OnTryFire;
         public event GeneralEventHandler OnTryReload;
         public event GeneralEventHandler OnTryCrouch;
@@ -116,6 +120,8 @@ namespace RTSCoreFramework
         public event TwoIntArgsHandler OnAmmoChanged;
         public event TwoIntArgsHandler OnHealthChanged;
 
+        public delegate void RTSTakeDamageHandler(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject);
+        public event RTSTakeDamageHandler OnAllyTakeDamage;
         #endregion
 
         #region UnityMessages
@@ -208,6 +214,14 @@ namespace RTSCoreFramework
         public void CallOnSwitchToNextItem()
         {
             if (OnSwitchToNextItem != null) OnSwitchToNextItem();
+        }
+        /// <summary>
+        /// Need to changes string ref in Shootable Weapon script
+        /// if I change the name of this method.
+        /// </summary>
+        public void CallOnTryHitscanFire(Vector3 _force)
+        {
+            if (OnTryHitscanFire != null) OnTryHitscanFire(_force);
         }
 
         public void CallOnTryFire()
@@ -405,6 +419,12 @@ namespace RTSCoreFramework
         public void CallOnHealthChanged(int _current, int _max)
         {
             if (OnHealthChanged != null) OnHealthChanged(_current, _max);
+        }
+
+        public void CallOnAllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
+        {
+            if (OnAllyTakeDamage != null)
+                OnAllyTakeDamage(amount, position, force, _instigator, hitGameObject);
         }
         #endregion
 

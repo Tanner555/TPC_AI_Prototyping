@@ -205,6 +205,30 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnTryHitscanFire(Vector3 _force)
+        {
+            RaycastHit _hit;
+            var _target = enemyTarget;
+            bool _validShot = ChestTransform != null &&
+                _target != null;
+            if (_validShot && Physics.Linecast(MyLOSTransform.position, _target.ChestTransform.position, out _hit))
+            {
+                var _root = _hit.transform.root;
+                //If Hit Self
+                if (_root == transform)
+                {
+                    Debug.Log(CharacterName.ToString()
+                        + " is shooting himself.");
+                }
+                bool _isEnemy = _root.tag == gamemode.AllyTag;
+                if (_isEnemy)
+                {
+                    _target.allyEventHandler.CallOnAllyTakeDamage(
+                        GetDamageRate(), _hit.point, _force, this, _hit.transform.gameObject);
+                }
+            }
+        }
+
         public virtual void AllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             SetDamageInstigator(_instigator);
@@ -353,6 +377,8 @@ namespace RTSCoreFramework
             allyEventHandler.EventAllyDied += AllyOnDeath;
             allyEventHandler.EventPartySwitching += OnPartySwitch;
             allyEventHandler.OnAmmoChanged += OnEquippedWeaponAmmoChanged;
+            allyEventHandler.OnTryHitscanFire += OnTryHitscanFire;
+            allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
         }
 
         protected virtual void UnSubFromEvents()
@@ -360,6 +386,8 @@ namespace RTSCoreFramework
             allyEventHandler.EventAllyDied -= AllyOnDeath;
             allyEventHandler.EventPartySwitching -= OnPartySwitch;
             allyEventHandler.OnAmmoChanged -= OnEquippedWeaponAmmoChanged;
+            allyEventHandler.OnTryHitscanFire -= OnTryHitscanFire;
+            allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
         }
         #endregion
 

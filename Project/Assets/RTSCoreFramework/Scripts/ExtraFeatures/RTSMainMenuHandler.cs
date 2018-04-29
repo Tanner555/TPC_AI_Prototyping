@@ -34,5 +34,31 @@ namespace RTSCoreFramework
         {
             Application.Quit();
         }
+
+        #region Testing
+        //private void Start()
+        //{
+        //    Time.timeScale = 0f;
+        //    StartCoroutine(CallTest1(0.4f));
+        //    var _chart = GameObject.FindObjectOfType<Fungus.Flowchart>();
+        //    if (_chart != null)
+        //    {
+        //        _chart.SendFungusMessage("Start");
+        //    }
+
+        //}
+
+        //IEnumerator CallTest1(float _delay)
+        //{
+        //    yield return new WaitForSecondsRealtime(_delay);
+        //    Invoke("Test1", 0.0f);
+        //}
+
+        //void Test1()
+        //{
+        //    Debug.Log("Start From Test1");
+        //}
+        #endregion
+
     }
 }
