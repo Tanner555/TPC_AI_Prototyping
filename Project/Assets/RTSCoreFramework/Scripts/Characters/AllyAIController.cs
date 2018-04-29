@@ -194,7 +194,10 @@ namespace RTSCoreFramework
         {
             //Temp fix for PartyManager Delaying AllyInCommand Init Methods
             var _allyInCommand = allyInCommand;
-            if (_allyInCommand == null) return false;
+            if (_allyInCommand == null) {
+                Debug.Log("IsWithinFollowingDistance: Ally In Command is Null");
+                return false;
+            }
 
             return Vector3.Distance(transform.position,
                 _allyInCommand.transform.position) <= followDistance;
