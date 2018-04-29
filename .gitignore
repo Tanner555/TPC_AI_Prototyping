@@ -30,7 +30,9 @@
 /Project/Assets/Plugins
 # Unity Standard Assets and Post Processing
 /Project/Assets/PostProcessing
+/Project/Assets/PostProcessing.meta
 /Project/Assets/Standard Assets
+/Project/Assets/Standard Assets.meta
 # Tactical Shooter AI, No Longer Used
 /Project/Assets/Tactical Shooter AI
 # UFPS, No Longer Used

@@ -8293,6 +8293,7 @@ MonoBehaviour:
   SelectionLight: {fileID: 108052761356784774}
   waypointRendererMaterial: {fileID: 2100000, guid: 6d824634677c23d40b27f91a5aef6ce7,
     type: 2}
+  BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
 --- !u!114 &114911107101201148
 MonoBehaviour:
   m_ObjectHideFlags: 1

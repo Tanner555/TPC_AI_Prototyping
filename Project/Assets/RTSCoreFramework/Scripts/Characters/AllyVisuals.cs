@@ -19,6 +19,8 @@ namespace RTSCoreFramework
         private Color waypointStartColor = Color.yellow;
         private Color waypointEndColor = Color.yellow;
         private LineRenderer waypointRenderer;
+        [Header("Ally Damage Effects")]
+        public GameObject BloodParticles;
 
         RTSGameMaster gamemaster
         {
@@ -74,6 +76,7 @@ namespace RTSCoreFramework
             myEventHandler.EventPartySwitching -= OnPartySwitch;
             myEventHandler.EventCommandAttackEnemy -= OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
+            myEventHandler.OnAllyTakeDamage -= SpawnBloodParticles;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -91,6 +94,7 @@ namespace RTSCoreFramework
             myEventHandler.EventPartySwitching += OnPartySwitch;
             myEventHandler.EventCommandAttackEnemy += OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
+            myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventEnableCameraMovement += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -124,6 +128,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        void SpawnBloodParticles(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
+        {
+            if (BloodParticles == null) return;
+            GameObject.Instantiate(BloodParticles, position, Quaternion.identity);
+        }
+
         void SetupWaypointRenderer(Vector3 _point)
         {
             if (IsInvoking("UpdateWaypointRenderer"))
