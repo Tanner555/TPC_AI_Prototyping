@@ -1223,11 +1223,11 @@ GameObject:
   - component: {fileID: 114326457860138848}
   - component: {fileID: 114637046136929584}
   - component: {fileID: 114548611130069228}
-  - component: {fileID: 114176505884411434}
   - component: {fileID: 114981557185281530}
   - component: {fileID: 114983068936097046}
   - component: {fileID: 114192841167202860}
   - component: {fileID: 114721911958027200}
+  - component: {fileID: 114849587454891326}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -5285,7 +5285,7 @@ MonoBehaviour:
   m_DefaultImpactSound: {fileID: 0}
 --- !u!114 &114118242432156082
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -5592,34 +5592,6 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 0
---- !u!114 &114176505884411434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768055428005526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 6
-  m_InputName: Crouch
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
-  m_StatePrefix: Crouch
-  m_StartState: 
-  m_IdleState: Movement
-  m_MovementState: Movement
-  m_StopState: 
-  m_ColliderHeightAdjustment: -0.4
-  m_ConcurrentAbility: 1
-  m_CanHaveItemEquipped: 1
-  m_CanUseIK: 1
-  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114192841167202860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5949,7 +5921,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114289333403305254
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -6992,7 +6964,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &114483047170152196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7016,7 +6988,7 @@ MonoBehaviour:
   m_IgnoreColliders: []
 --- !u!114 &114548611130069228
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7551,7 +7523,7 @@ MonoBehaviour:
     m_Abilities: []
 --- !u!114 &114637046136929584
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7645,7 +7617,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114713235223828240
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}
@@ -7927,6 +7899,34 @@ MonoBehaviour:
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
+--- !u!114 &114849587454891326
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6713357df83b343986254b6e769057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114893377957937744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7992,9 +7992,9 @@ MonoBehaviour:
   - {fileID: 114548611130069228}
   - {fileID: 114981557185281530}
   - {fileID: 114289333403305254}
-  - {fileID: 114176505884411434}
+  - {fileID: 114849587454891326}
   - {fileID: 114483047170152196}
-  m_SelectedAbility: 3
+  m_SelectedAbility: 6
 --- !u!114 &114925658411416062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8320,7 +8320,7 @@ MonoBehaviour:
   m_DroppedItemsParent: {fileID: 0}
 --- !u!114 &114981557185281530
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768055428005526}

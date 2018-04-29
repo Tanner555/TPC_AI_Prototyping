@@ -894,10 +894,10 @@ GameObject:
   - component: {fileID: 114367440867516650}
   - component: {fileID: 114026391534509768}
   - component: {fileID: 114342628504177224}
-  - component: {fileID: 114767309043329046}
   - component: {fileID: 114192351338335698}
   - component: {fileID: 114161254777440462}
   - component: {fileID: 114026581900362700}
+  - component: {fileID: 114623554653784126}
   m_Layer: 8
   m_Name: Pink Robot
   m_TagString: Ally
@@ -5430,7 +5430,7 @@ MonoBehaviour:
     type: 2}
 --- !u!114 &114026581900362700
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -5448,7 +5448,7 @@ MonoBehaviour:
   m_Indicator: {fileID: 0}
 --- !u!114 &114056903438044656
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -5457,7 +5457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679bf183e5d16764780c710541fe14ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Index: 2
+  m_Index: 5
   m_InputName: Change Speeds
   m_StartType: 2
   m_StopType: 2
@@ -5977,7 +5977,7 @@ MonoBehaviour:
     m_RotationOrder: 4
 --- !u!114 &114161254777440462
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -6009,7 +6009,7 @@ MonoBehaviour:
   m_PopDistance: {x: 0.3, y: 0, z: 3}
 --- !u!114 &114192351338335698
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   - {fileID: 114161254777440462}
   - {fileID: 114192351338335698}
   - {fileID: 114056903438044656}
-  - {fileID: 114767309043329046}
+  - {fileID: 114623554653784126}
   - {fileID: 114872855573280074}
   m_SelectedAbility: 6
 --- !u!114 &114523265218413204
@@ -6868,6 +6868,34 @@ MonoBehaviour:
   m_MinWidth: 0.3
   m_MaxWidth: 0.5
   m_PulseSpeed: 0.5
+--- !u!114 &114623554653784126
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6713357df83b343986254b6e769057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114654262727679264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7867,7 +7895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114736277984060244
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -7876,7 +7904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1121139791ef946b19dcf710f21c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Index: 0
+  m_Index: 1
   m_InputName: 
   m_StartType: 0
   m_StopType: 1
@@ -7895,34 +7923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6b8039500a22b43a2eb33f06b6290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114767309043329046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1497344684296414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 6
-  m_InputName: Crouch
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
-  m_StatePrefix: Crouch
-  m_StartState: 
-  m_IdleState: Movement
-  m_MovementState: Movement
-  m_StopState: 
-  m_ColliderHeightAdjustment: -0.4
-  m_ConcurrentAbility: 1
-  m_CanHaveItemEquipped: 1
-  m_CanUseIK: 1
-  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114804419344320448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7949,7 +7949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114872855573280074
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -7958,7 +7958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c6067b743e80c4fa161fe4d557c43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Index: 3
+  m_Index: 7
   m_InputName: 
   m_StartType: 1
   m_StopType: 1
@@ -8003,7 +8003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114907406613321782
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -8012,7 +8012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9db9d1e20a3e5f42beb79b5387baa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Index: 1
+  m_Index: 2
   m_InputName: Jump
   m_StartType: 2
   m_StopType: 0

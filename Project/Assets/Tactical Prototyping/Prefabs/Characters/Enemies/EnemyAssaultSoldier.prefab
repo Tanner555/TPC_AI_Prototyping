@@ -1376,11 +1376,11 @@ GameObject:
   - component: {fileID: 114500960538715752}
   - component: {fileID: 114365759644294196}
   - component: {fileID: 114689182436087296}
-  - component: {fileID: 114353107095760730}
   - component: {fileID: 114939998160306228}
   - component: {fileID: 114862791138248778}
   - component: {fileID: 114525557394550478}
   - component: {fileID: 114709272656685310}
+  - component: {fileID: 114594257064235068}
   m_Layer: 8
   m_Name: EnemyAssaultSoldier
   m_TagString: Ally
@@ -6110,7 +6110,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &114215177812978064
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6153,7 +6153,7 @@ MonoBehaviour:
   m_PulseSpeed: 0.5
 --- !u!114 &114234195813627858
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6505,7 +6505,7 @@ MonoBehaviour:
     m_CanReplay: 0
 --- !u!114 &114317458611840042
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6553,34 +6553,6 @@ MonoBehaviour:
   m_FootPositionAdjustmentSpeed: 20
   m_FootRotationAdjustmentSpeed: 10
   m_FootWeightAdjustmentSpeed: 5
---- !u!114 &114353107095760730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825627822260076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 6
-  m_InputName: Crouch
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
-  m_StatePrefix: Crouch
-  m_StartState: 
-  m_IdleState: Movement
-  m_MovementState: Movement
-  m_StopState: 
-  m_ColliderHeightAdjustment: -0.4
-  m_ConcurrentAbility: 1
-  m_CanHaveItemEquipped: 1
-  m_CanUseIK: 1
-  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114355252261387292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6596,7 +6568,7 @@ MonoBehaviour:
   followDistance: 5
 --- !u!114 &114365759644294196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6625,7 +6597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114394860583792196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6899,9 +6871,9 @@ MonoBehaviour:
   - {fileID: 114689182436087296}
   - {fileID: 114939998160306228}
   - {fileID: 114215177812978064}
-  - {fileID: 114353107095760730}
+  - {fileID: 114594257064235068}
   - {fileID: 114234195813627858}
-  m_SelectedAbility: 3
+  m_SelectedAbility: 6
 --- !u!114 &114482820141488904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7576,6 +7548,34 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114594257064235068
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825627822260076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6713357df83b343986254b6e769057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114611439409555324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7828,7 +7828,7 @@ MonoBehaviour:
   m_DynamicPixelsPerUnit: 1
 --- !u!114 &114689182436087296
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -8236,7 +8236,7 @@ MonoBehaviour:
   m_Footsteps: []
 --- !u!114 &114939998160306228
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}

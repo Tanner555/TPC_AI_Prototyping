@@ -1363,11 +1363,11 @@ GameObject:
   - component: {fileID: 114911107101201148}
   - component: {fileID: 114269516441092220}
   - component: {fileID: 114158992663278294}
-  - component: {fileID: 114301417828063028}
   - component: {fileID: 114337753060850616}
   - component: {fileID: 114505142003567552}
   - component: {fileID: 114893248757319296}
   - component: {fileID: 114940800323444018}
+  - component: {fileID: 114373444521230562}
   m_Layer: 8
   m_Name: Blue Silly Pants
   m_TagString: Ally
@@ -5146,9 +5146,9 @@ MonoBehaviour:
   - {fileID: 114158992663278294}
   - {fileID: 114337753060850616}
   - {fileID: 114815830175392318}
-  - {fileID: 114301417828063028}
+  - {fileID: 114373444521230562}
   - {fileID: 114473590096971394}
-  m_SelectedAbility: 3
+  m_SelectedAbility: 6
 --- !u!114 &114050705213877726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6449,7 +6449,7 @@ MonoBehaviour:
     m_CanReplay: 0
 --- !u!114 &114158992663278294
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -6550,7 +6550,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &114269516441092220
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -6582,34 +6582,6 @@ MonoBehaviour:
   - {fileID: 1122728735778270}
   - {fileID: 1780157951426444}
   m_Footsteps: []
---- !u!114 &114301417828063028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1712568748307802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792177ff505609545b7d53dc1db4ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 6
-  m_InputName: Crouch
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
-  m_StatePrefix: Crouch
-  m_StartState: 
-  m_IdleState: Movement
-  m_MovementState: Movement
-  m_StopState: 
-  m_ColliderHeightAdjustment: -0.4
-  m_ConcurrentAbility: 1
-  m_CanHaveItemEquipped: 1
-  m_CanUseIK: 1
-  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114318541859586470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6915,7 +6887,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114337753060850616
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -6932,6 +6904,34 @@ MonoBehaviour:
   m_SpeedMultiplier: 1
   m_Indicator: {fileID: 21300088, guid: 0bc6c6bd93187444bb1c45e410184ad6, type: 3}
   m_UnequipCurrentItem: 0
+--- !u!114 &114373444521230562
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6713357df83b343986254b6e769057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 6
+  m_InputName: Crouch
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_StatePrefix: Crouch
+  m_StartState: 
+  m_IdleState: Movement
+  m_MovementState: Movement
+  m_StopState: 
+  m_ColliderHeightAdjustment: -0.4
+  m_ConcurrentAbility: 1
+  m_CanHaveItemEquipped: 1
+  m_CanUseIK: 1
+  m_UseHeightChangeUpperBodyStates: 1
 --- !u!114 &114453718869523398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7029,7 +7029,7 @@ MonoBehaviour:
   m_TracerLocation: {fileID: 0}
 --- !u!114 &114473590096971394
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -7654,7 +7654,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 0
 --- !u!114 &114646617548109750
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -8210,7 +8210,7 @@ MonoBehaviour:
   _myCharacterHealth: {fileID: 0}
 --- !u!114 &114815830175392318
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
@@ -8335,7 +8335,7 @@ MonoBehaviour:
   m_PulseSpeed: 0.5
 --- !u!114 &114939782792276948
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712568748307802}
