@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RTSCoreFramework
+namespace BaseFramework
 {
     public class ScenarioManager : MonoBehaviour
     {
         #region Properties
-        RTSGameInstance gameInstance
+        GameInstance gameInstance
         {
-            get { return RTSGameInstance.thisInstance; }
+            get { return GameInstance.thisInstance; }
         }
 
         ScenarioIndex levelScenario

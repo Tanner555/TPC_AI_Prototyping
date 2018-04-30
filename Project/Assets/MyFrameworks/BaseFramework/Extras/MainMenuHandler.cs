@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace RTSCoreFramework
+namespace BaseFramework
 {
     /// <summary>
     /// Temporary Class For Handling the Main Menu
     /// Will Likely Replace in the Future with a Global
     /// Game Manager Class
     /// </summary>
-    public class RTSMainMenuHandler : MonoBehaviour
+    public class MainMenuHandler : MonoBehaviour
     {
-        RTSGameInstance gameInstance
+        GameInstance gameInstance
         {
-            get { return RTSGameInstance.thisInstance; }
+            get { return GameInstance.thisInstance; }
         }
 
         [SerializeField]

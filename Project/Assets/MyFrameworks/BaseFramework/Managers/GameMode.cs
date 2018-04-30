@@ -59,8 +59,8 @@ namespace BaseFramework
         {
             StartServices();
 
-            if (uiManager == null)
-                Debug.LogWarning("There is no uimanager in the scene!");
+            //if (uiManager == null)
+            //    Debug.LogWarning("There is no uimanager in the scene!");
         }
 
         // Update is called once per frame

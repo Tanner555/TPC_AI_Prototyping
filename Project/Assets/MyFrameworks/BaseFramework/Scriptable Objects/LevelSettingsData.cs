@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RTSCoreFramework
+namespace BaseFramework
 {
     public enum LevelIndex
     {
