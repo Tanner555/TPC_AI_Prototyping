@@ -7,6 +7,17 @@ namespace BaseFramework
     public class UiManager : MonoBehaviour
     {
         #region Properties
+        public UiMaster uiMaster
+        {
+            get
+            {
+                if (UiManager.thisInstance != null)
+                    return UiMaster.thisInstance;
+
+                return GetComponent<UiMaster>();
+            }
+        }
+
         public static UiManager thisInstance
         {
             get; protected set;

@@ -7,13 +7,9 @@ namespace RTSCoreFramework
 {
     public class RTSUiMaster : UiMaster
     {
-        #region DelegatesAndEvents
-        public delegate void GeneralEventHandler();
-        public delegate void MenuToggleHandler(bool enable);
-        public event MenuToggleHandler EventMenuToggle;
+        #region DelegatesAndEvents     
         //public event MenuToggleHandler EventInventoryUIToggle;
         public event MenuToggleHandler EventIGBPIToggle;
-        public event MenuToggleHandler EventAnyUIToggle;
         //IGBPI Events
         public delegate void UI_PanelHandler(IGBPI_UI_Panel _info);
         public delegate void UI_MovePanelHandler(IGBPI_UI_Panel _info, int _order);
@@ -31,25 +27,15 @@ namespace RTSCoreFramework
         #endregion
 
         #region Properties
-        public RTSUiManager uiManager
-        {
-            get { return RTSUiManager.thisInstance; }
-        }
-
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
 
-        RTSGameMaster gamemaster
-        {
-            get { return RTSGameMaster.thisInstance; }
-        }
-
         //For Ui Conflict Checking
-        public virtual bool isUiAlreadyInUse
+        public override bool isUiAlreadyInUse
         {
             get { return isPauseMenuOn || isIGBPIOn; }
         }
         //Override Inside Wrapper Class
-        public virtual bool isPauseMenuOn
+        public override bool isPauseMenuOn
         {
             get { return uiManager.MenuUiPanel.activeSelf; }
         }
@@ -60,6 +46,16 @@ namespace RTSCoreFramework
         #endregion
 
         #region OverrideAndHideProperties
+        new RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
+
+        new public RTSUiManager uiManager
+        {
+            get { return RTSUiManager.thisInstance; }
+        }
+
         new public static RTSUiMaster thisInstance
         {
             get { return UiMaster.thisInstance as RTSUiMaster; }
@@ -79,17 +75,9 @@ namespace RTSCoreFramework
         #endregion
 
         #region EventCalls-General/Toggles
-        public virtual void CallEventMenuToggle()
+        protected override void WaitToCallEventMenuToggle()
         {
-            //If Ui Item isn't being used or Pause Menu is turned on
-            if (isUiAlreadyInUse == false || isPauseMenuOn)
-                WaitToCallEventMenuToggle();
-        }
-
-        private void WaitToCallEventMenuToggle()
-        {
-            CallEventAnyUIToggle(!isPauseMenuOn);
-            if (EventMenuToggle != null) EventMenuToggle(!isPauseMenuOn);
+            base.WaitToCallEventMenuToggle();
             EnableRayCaster(!isPauseMenuOn);
         }
 
@@ -102,11 +90,6 @@ namespace RTSCoreFramework
                 if (EventIGBPIToggle != null) EventIGBPIToggle(!isIGBPIOn);
                 EnableRayCaster(!isIGBPIOn);
             }
-        }
-
-        private void CallEventAnyUIToggle(bool _enabled)
-        {
-            if (EventAnyUIToggle != null) EventAnyUIToggle(_enabled);
         }
 
         #endregion

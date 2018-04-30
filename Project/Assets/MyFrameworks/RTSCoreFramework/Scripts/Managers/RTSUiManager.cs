@@ -8,19 +8,6 @@ namespace RTSCoreFramework
 {
     public class RTSUiManager : UiManager
     {
-        #region Components
-        public RTSUiMaster uiMaster
-        {
-            get
-            {
-                if(RTSUiMaster.thisInstance != null)
-                    return RTSUiMaster.thisInstance;
-
-                return GetComponent<RTSUiMaster>();
-            }
-        }
-        #endregion
-
         #region Properties
         public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
@@ -64,6 +51,17 @@ conditionButton && actionButton && IGBPITitleText;
         #endregion
 
         #region OverrideAndHideProperties
+        new public RTSUiMaster uiMaster
+        {
+            get
+            {
+                if (RTSUiMaster.thisInstance != null)
+                    return RTSUiMaster.thisInstance;
+
+                return GetComponent<RTSUiMaster>();
+            }
+        }
+
         new public static RTSUiManager thisInstance
         {
             get { return UiManager.thisInstance as RTSUiManager; }
