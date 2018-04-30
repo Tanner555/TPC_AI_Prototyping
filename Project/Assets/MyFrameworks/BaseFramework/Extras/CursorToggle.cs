@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RTSCoreFramework;
 
-namespace RTSCoreFramework.ExtraFeatures
+namespace BaseFramework
 {
-    public class RTSCursorToggle : MonoBehaviour
+    public class CursorToggle : MonoBehaviour
     {
-        private RTSGameMaster gamemaster
+        private GameMaster gamemaster
         {
-            get { return RTSGameMaster.thisInstance; }
+            get { return GameMaster.thisInstance; }
         }
 
         private void Start()
