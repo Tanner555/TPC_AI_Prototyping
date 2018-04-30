@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSGameInstance : MonoBehaviour
+    public class RTSGameInstance : GameInstance
     {
         #region Dictionaries
         //Used to Retrieve Information About a Level
@@ -14,21 +15,14 @@ namespace RTSCoreFramework
         protected Dictionary<ScenarioIndex, ScenarioSettings> currentScenarioSettingsDictionary = new Dictionary<ScenarioIndex, ScenarioSettings>();
         #endregion
 
-        #region Properties
-        public static RTSGameInstance thisInstance { get; protected set; }
-
-        protected int RefreshRate
+        #region OverrideAndHideProperties
+        new public static RTSGameInstance thisInstance
         {
-            get
-            {
-                if (_refreshRate == -1)
-                    _refreshRate = Screen.currentResolution.refreshRate;
-
-                return _refreshRate;
-            }
+            get { return GameInstance.thisInstance as RTSGameInstance; }
         }
-        private int _refreshRate = -1;
+        #endregion
 
+        #region Properties
         public Dictionary<LevelIndex, LevelSettings> LevelSettingsDictionary
         {
             get { return levelSettingsDictionary; }
@@ -82,27 +76,17 @@ namespace RTSCoreFramework
 
         #region UnityMessages
         // Use this for initialization
-        void OnEnable()
+        protected override void OnEnable()
         {
-            if(thisInstance == null)
-            {
-                thisInstance = this;
-                GameObject.DontDestroyOnLoad(this);
-            }
-            else
-            {
-                Debug.Log("More than one game instance in scene, destroying instance");
-                DestroyImmediate(this.gameObject);
-            }
-
+            base.OnEnable();
             InitializeDictionaryValues();
             UpdateFrameRateLimit();
         }
 
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
-            UpdateFrameRateLimit();
+            base.Update();
         }
         #endregion
 

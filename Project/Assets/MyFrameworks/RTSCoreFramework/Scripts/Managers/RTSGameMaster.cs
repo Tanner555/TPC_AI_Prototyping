@@ -10,34 +10,26 @@ namespace RTSCoreFramework
     public class RTSGameMaster : GameMaster
     {
         #region Properties
-        public RTSGameInstance gameInstance
-        {
-            get { return RTSGameInstance.thisInstance; }
-        }
-
-        public RTSGameMode gamemode
-        {
-            get { return RTSGameMode.thisInstance; }
-        }
-
-        RTSUiMaster uiMaster
-        {
-            get { return RTSUiMaster.thisInstance; }
-        }
-
         public RTSCamRaycaster rayCaster { get { return RTSCamRaycaster.thisInstance; } }
-
-        //Access Properties
-        public bool bIsGamePaused
-        {
-            get { return _bIsGamePaused; }
-            set { _bIsGamePaused = value; }
-        }
-        private bool _bIsGamePaused = false;
 
         #endregion
 
         #region OverrideAndHideProperties
+        new public RTSGameInstance gameInstance
+        {
+            get { return RTSGameInstance.thisInstance; }
+        }
+
+        new public RTSGameMode gamemode
+        {
+            get { return RTSGameMode.thisInstance; }
+        }
+
+        new RTSUiMaster uiMaster
+        {
+            get { return RTSUiMaster.thisInstance; }
+        }
+
         new public static RTSGameMaster thisInstance
         {
             get { return GameMaster.thisInstance as RTSGameMaster; }
@@ -45,16 +37,8 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        public bool isGameOver;
         public bool isInventoryUIOn;
-        public bool isMenuOn;
 
-        /// <summary>
-        /// Temporary Field to load the main menu
-        /// Will Probably Change in the Future
-        /// </summary>
-        [SerializeField]
-        public Object MainMenuScene;
         #endregion
 
         #region UnityMessages
