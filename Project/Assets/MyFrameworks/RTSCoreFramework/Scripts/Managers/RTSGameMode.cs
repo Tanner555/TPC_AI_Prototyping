@@ -98,9 +98,19 @@ namespace RTSCoreFramework
         {
             get
             {
-                return RTSGameMaster.thisInstance;
+                if (_gameMaster == null)
+                {
+                    if (RTSGameMaster.thisInstance != null)
+                        _gameMaster = RTSGameMaster.thisInstance;
+                    else if (GetComponent<RTSGameMaster>() != null)
+                        _gameMaster = GetComponent<RTSGameMaster>();
+                    else
+                        _gameMaster = RTSGameMaster.FindObjectOfType<RTSGameMaster>();
+                }
+                return _gameMaster;
             }
         }
+        private RTSGameMaster _gameMaster = null;
         new public RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
         new public RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
         new protected RTSGameInstance gameInstance

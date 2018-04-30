@@ -27,14 +27,19 @@ namespace BaseFramework
         {
             get
             {
-                if (GameMaster.thisInstance != null)
-                    return GameMaster.thisInstance;
-                else if (GetComponent<GameMaster>() != null)
-                    return GetComponent<GameMaster>();
-                else
-                    return GameObject.FindObjectOfType<GameMaster>();
+                if (_gameMaster == null)
+                {
+                    if (GameMaster.thisInstance != null)
+                        _gameMaster = GameMaster.thisInstance;
+                    else if (GetComponent<GameMaster>() != null)
+                        _gameMaster = GetComponent<GameMaster>();
+                    else
+                        _gameMaster = GameObject.FindObjectOfType<GameMaster>();
+                }
+                return _gameMaster;
             }
         }
+        private GameMaster _gameMaster = null;
 
         public static GameMode thisInstance
         {
