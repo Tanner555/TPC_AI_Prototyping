@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSGameMaster : MonoBehaviour
+    public class RTSGameMaster : GameMaster
     {
         #region Properties
         public RTSGameInstance gameInstance
         {
             get { return RTSGameInstance.thisInstance; }
-        }
-
-        public static RTSGameMaster thisInstance
-        {
-            get; protected set;
         }
 
         public RTSGameMode gamemode
@@ -41,6 +37,13 @@ namespace RTSCoreFramework
 
         #endregion
 
+        #region OverrideAndHideProperties
+        new public static RTSGameMaster thisInstance
+        {
+            get { return GameMaster.thisInstance as RTSGameMaster; }
+        }
+        #endregion
+
         #region Fields
         public bool isGameOver;
         public bool isInventoryUIOn;
@@ -55,24 +58,27 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        protected virtual void OnEnable()
+        protected override void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of GameManagerMaster in scene.");
-            else
-                thisInstance = this;
-
+            base.OnEnable();
 
         }
 
-        protected virtual void Start()
+        protected override void Start()
         {
+            base.Start();
             SubToEvents();
         }
 
-        protected virtual void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             UnsubFromEvents();
+        }
+
+        protected override void Update()
+        {
+            base.Update();
         }
         #endregion
 

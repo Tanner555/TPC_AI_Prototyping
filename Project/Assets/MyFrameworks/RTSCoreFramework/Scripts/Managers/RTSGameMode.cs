@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSGameMode : MonoBehaviour
+    public class RTSGameMode : GameMode
     {
         #region Enums
         [HideInInspector]
@@ -90,33 +91,37 @@ namespace RTSCoreFramework
 
         #endregion
 
+        #region OverrideAndHideProperties
+        //GameMode must access GameMaster sooner than On Start
+        //To Subscribe Events and Prevent Errors when AllySwitching
+        new public RTSGameMaster gamemaster
+        {
+            get
+            {
+                return RTSGameMaster.thisInstance;
+            }
+        }
+        new public RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
+        new public RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
+        new protected RTSGameInstance gameInstance
+        {
+            get { return RTSGameInstance.thisInstance; }
+        }
+        //Static GameMode Instance For Easy Access
+        [HideInInspector]
+        new public static RTSGameMode thisInstance
+        {
+            get { return GameMode.thisInstance as RTSGameMode; }
+        }
+        #endregion
+
         #region Properties
         public PartyManager GeneralInCommand { get; protected set; }
         public AllyMember CurrentPlayer
         {
             get { return GeneralInCommand.AllyInCommand; }
         }
-        //GameMode must access GameMaster sooner than On Start
-        //To Subscribe Events and Prevent Errors when AllySwitching
-        public RTSGameMaster gamemaster
-        {
-            get
-            {
-                if (RTSGameMaster.thisInstance != null)
-                    return RTSGameMaster.thisInstance;
-                else if (GetComponent<RTSGameMaster>() != null)
-                    return GetComponent<RTSGameMaster>();
-                else
-                    return GameObject.FindObjectOfType<RTSGameMaster>();
-            }
-        }
-        public RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
-        //Static GameMode Instance For Easy Access
-        [HideInInspector]
-        public static RTSGameMode thisInstance
-        {
-            get; protected set;
-        }
+        
         public bool IsSpectatingEnemy
         {
             get { return GeneralInCommand.PartyMembers.Count <= 0; }
@@ -176,15 +181,9 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        protected virtual void OnEnable()
+        protected override void OnEnable()
         {
-            ResetGameModeStats();
-            InitializeGameModeValues();
-            SubscribeToEvents();
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of RTSGameMode in scene.");
-            else
-                thisInstance = (RTSGameMode)this;
+            base.OnEnable();
 
             PartyManager firstGeneralFound = FindGenerals(false, null);
             if (firstGeneralFound == null)
@@ -208,22 +207,21 @@ namespace RTSCoreFramework
             }
         }
 
-        protected virtual void OnDisable()
+        protected override void OnDisable()
         {
-            UnsubscribeFromEvents();
+            base.OnDisable();
         }
         //// Use this for initialization
-        protected virtual void Start()
+        protected override void Start()
         {
-            if (uiManager == null)
-                Debug.LogWarning("There is no uimanager in the scene!");
+            base.Start();
 
-            StartServices();
         }
 
         //// Update is called once per frame
-        protected virtual void Update()
+        protected override void Update()
         {
+            base.Update();
             if (MatchState == ERTSGameState.EWaitingToStart)
             {
                 waitingTillBeginMatch();
@@ -432,8 +430,9 @@ namespace RTSCoreFramework
         #endregion
 
         #region Updaters and Resetters
-        public void UpdateGameModeStats()
+        protected override void UpdateGameModeStats()
         {
+            base.UpdateGameModeStats();
             EFactions allyFac = EFactions.Faction_Allies;
             EFactions enemyFac = EFactions.Faction_Enemies;
             GetFactionKills(true, allyFac);
@@ -444,8 +443,9 @@ namespace RTSCoreFramework
             GetFactionDeaths(true, enemyFac);
         }
 
-        public void ResetGameModeStats()
+        protected override void ResetGameModeStats()
         {
+            base.ResetGameModeStats();
             Ally_Kills = 0;
             Enemy_Kills = 0;
             Ally_Points = 0;
@@ -693,8 +693,9 @@ namespace RTSCoreFramework
         #endregion
 
         #region GameModeSetupFunctions
-        public void InitializeGameModeValues()
+        protected override void InitializeGameModeValues()
         {
+            base.InitializeGameModeValues();
             DefaultKillPoints = 3;
             DefaultFriendlyFirePoints = -1;
             DefaultMatchTimeLimit = 60.0f * 5.0f;
@@ -703,18 +704,21 @@ namespace RTSCoreFramework
             SetMatchState(waitingstate);
         }
 
-        protected virtual void SubscribeToEvents()
+        protected override void SubscribeToEvents()
         {
+            base.SubscribeToEvents();
             gamemaster.OnAllySwitch += ProcessAllySwitch;
         }
 
-        protected virtual void UnsubscribeFromEvents()
+        protected override void UnsubscribeFromEvents()
         {
+            base.UnsubscribeFromEvents();
             gamemaster.OnAllySwitch -= ProcessAllySwitch;
         }
 
-        protected virtual void StartServices()
+        protected override void StartServices()
         {
+            base.StartServices();
             //InvokeRepeating("SE_UpdateTargetUI", 0.1f, 0.1f);
         }
         #endregion
