@@ -14,12 +14,12 @@ namespace RTSCoreFramework.ExtraFeatures
 
         private void Start()
         {
-            gamemaster.EventEnableCameraMovement += setCursorLock;
+            gamemaster.EventHoldingRightMouseDown += setCursorLock;
         }
 
         private void OnDisable()
         {
-            gamemaster.EventEnableCameraMovement -= setCursorLock;
+            gamemaster.EventHoldingRightMouseDown -= setCursorLock;
         }
 
         void ToggleCursorState()

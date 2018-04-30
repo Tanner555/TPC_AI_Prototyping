@@ -58,7 +58,7 @@ namespace RTSPrototype
         protected void OnDisable()
         {
             //Temp Fix For Party Man Delay Init Methods
-            //gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
+            //gamemaster.EventHoldingRightMouseDown -= ToggleMoveCamera;
             gamemaster.EventEnableCameraZoom -= ToggleZoomCamera;
         }
 
@@ -69,7 +69,7 @@ namespace RTSPrototype
 
         protected void Start()
         {
-            gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
+            gamemaster.EventHoldingRightMouseDown += ToggleMoveCamera;
             gamemaster.EventEnableCameraZoom += ToggleZoomCamera;
         }
 

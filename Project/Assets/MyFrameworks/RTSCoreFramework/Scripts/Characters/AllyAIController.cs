@@ -426,7 +426,7 @@ namespace RTSCoreFramework
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventCommandMove += HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
-            gamemaster.EventEnableCameraMovement += OnEnableCameraMovement;
+            gamemaster.EventHoldingRightMouseDown += OnEnableCameraMovement;
         }
 
         protected virtual void UnSubFromEvents()
@@ -436,7 +436,7 @@ namespace RTSCoreFramework
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventCommandMove -= HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
-            gamemaster.EventEnableCameraMovement -= OnEnableCameraMovement;
+            gamemaster.EventHoldingRightMouseDown -= OnEnableCameraMovement;
         }
 
         protected virtual void StartServices()

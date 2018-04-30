@@ -337,7 +337,7 @@ namespace RTSPrototype
             myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
             myEventHandler.EventCommandMove += MoveToDestination;
             myEventHandler.EventAllyDied += HandleAllyDeath;
-            gamemaster.EventEnableCameraMovement += ToggleMoveCamera;
+            gamemaster.EventHoldingRightMouseDown += ToggleMoveCamera;
         }
 
         void UnsubFromEvents()
@@ -348,7 +348,7 @@ namespace RTSPrototype
             myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;
             myEventHandler.EventCommandMove -= MoveToDestination;
             myEventHandler.EventAllyDied -= HandleAllyDeath;
-            gamemaster.EventEnableCameraMovement -= ToggleMoveCamera;
+            gamemaster.EventHoldingRightMouseDown -= ToggleMoveCamera;
         }
         #endregion
     }

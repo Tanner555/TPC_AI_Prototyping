@@ -17,13 +17,13 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            gameMaster.EventEnableCameraMovement += DisableCrosshairsHandler;
+            gameMaster.EventHoldingRightMouseDown += DisableCrosshairsHandler;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            gameMaster.EventEnableCameraMovement -= DisableCrosshairsHandler;
+            gameMaster.EventHoldingRightMouseDown -= DisableCrosshairsHandler;
         }
 
         void DisableCrosshairsHandler(bool enableCamera)

@@ -78,7 +78,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage -= SpawnBloodParticles;
             gamemaster.GameOverEvent -= HandleGameOver;
-            gamemaster.EventEnableCameraMovement -= HandleCameraMovement;
+            gamemaster.EventHoldingRightMouseDown -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
         }
         // Use this for initialization
@@ -96,7 +96,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
             gamemaster.GameOverEvent += HandleGameOver;
-            gamemaster.EventEnableCameraMovement += HandleCameraMovement;
+            gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
         }
         #endregion

@@ -93,7 +93,8 @@ namespace BaseFramework
         public event TwoBoolArgsHandler EventEnableCameraZoom;
         //Camera and Pause
         public event OneBoolArgsHandler OnToggleIsGamePaused;
-        public event OneBoolArgsHandler EventEnableCameraMovement;
+        public event OneBoolArgsHandler EventHoldingLeftMouseDown;
+        public event OneBoolArgsHandler EventHoldingRightMouseDown;
         #endregion
 
         #region EventCalls
@@ -199,11 +200,19 @@ namespace BaseFramework
             Time.timeScale = 0f;
         }
 
-        public void CallEventEnableCameraMovement(bool enable)
+        public void CallEventHoldingRightMouseDown(bool _holding)
         {
-            if (EventEnableCameraMovement != null)
+            if (EventHoldingRightMouseDown != null)
             {
-                EventEnableCameraMovement(enable);
+                EventHoldingRightMouseDown(_holding);
+            }
+        }
+
+        public void CallEventHoldingLeftMouseDown(bool _holding)
+        {
+            if (EventHoldingLeftMouseDown != null)
+            {
+                EventHoldingLeftMouseDown(_holding);
             }
         }
 

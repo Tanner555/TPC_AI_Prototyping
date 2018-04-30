@@ -133,6 +133,7 @@ namespace BaseFramework
                     {
                         //OnMouseDown Code Goes Here
                         isLMHeldPastThreshold = true;
+                        gamemaster.CallEventHoldingLeftMouseDown(true);
                     }
                 }
             }
@@ -145,6 +146,7 @@ namespace BaseFramework
                     {
                         //When MouseDown Code Exits
                         isLMHeldPastThreshold = false;
+                        gamemaster.CallEventHoldingLeftMouseDown(false);
                     }
                     else
                     {
@@ -174,7 +176,7 @@ namespace BaseFramework
                     {
                         //OnMouseDown Code Goes Here
                         isRMHeldPastThreshold = true;
-                        gamemaster.CallEventEnableCameraMovement(true);
+                        gamemaster.CallEventHoldingRightMouseDown(true);
                     }
                 }
             }
@@ -187,7 +189,7 @@ namespace BaseFramework
                     {
                         //When MouseDown Code Exits
                         isRMHeldPastThreshold = false;
-                        gamemaster.CallEventEnableCameraMovement(false);
+                        gamemaster.CallEventHoldingRightMouseDown(false);
                     }
                     else
                     {
@@ -270,7 +272,7 @@ namespace BaseFramework
                 if (isRMHeldPastThreshold)
                 {
                     isRMHeldPastThreshold = false;
-                    gamemaster.CallEventEnableCameraMovement(false);
+                    gamemaster.CallEventHoldingRightMouseDown(false);
                 }
                 if (isLMHeldPastThreshold)
                 {
@@ -290,7 +292,7 @@ namespace BaseFramework
                 if (isRMHeldPastThreshold)
                 {
                     isRMHeldPastThreshold = false;
-                    gamemaster.CallEventEnableCameraMovement(false);
+                    gamemaster.CallEventHoldingRightMouseDown(false);
                 }
                 if (isLMHeldPastThreshold)
                 {

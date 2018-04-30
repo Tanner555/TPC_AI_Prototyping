@@ -34,14 +34,14 @@ namespace RTSPrototype
         protected override void Start()
         {
             base.Start();
-            gameMaster.EventEnableCameraMovement += DisableMouseCursor;
+            gameMaster.EventHoldingRightMouseDown += DisableMouseCursor;
             gameMaster.OnAllySwitch += OnAllySwitchEnableHandler;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            gameMaster.EventEnableCameraMovement -= DisableMouseCursor;
+            gameMaster.EventHoldingRightMouseDown -= DisableMouseCursor;
             gameMaster.OnAllySwitch -= OnAllySwitchEnableHandler;
         }
 

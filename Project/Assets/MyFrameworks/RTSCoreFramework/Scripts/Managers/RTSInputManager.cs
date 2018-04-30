@@ -161,7 +161,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region InputCalls
-
         //void CallInventoryToggle() { uiMaster.CallEventInventoryUIToggle(); }
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
