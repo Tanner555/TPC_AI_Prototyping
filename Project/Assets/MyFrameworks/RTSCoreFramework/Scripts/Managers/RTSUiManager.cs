@@ -8,13 +8,9 @@ namespace RTSCoreFramework
 {
     public class RTSUiManager : UiManager
     {
-        #region Properties
-        public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
-        public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
-
+        #region Properties      
         public IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         public RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
-        public RTSGameInstance gameInstance { get { return RTSGameInstance.thisInstance; } }
         public RTSStatHandler statHandler { get { return RTSStatHandler.thisInstance; } }
 
         //UGBPI
@@ -29,7 +25,7 @@ namespace RTSCoreFramework
             get; protected set;
         }
 
-        public bool AllUiCompsAreValid
+        public override bool AllUiCompsAreValid
         {
             get { return IGBPICompsAreValid && CharacterStatsPanels &&
                     CharacterStatsPrefab && MenuUiPanel && WinnerUiPanel &&
@@ -51,6 +47,10 @@ conditionButton && actionButton && IGBPITitleText;
         #endregion
 
         #region OverrideAndHideProperties
+        new public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
+        new public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
+        new public RTSGameInstance gameInstance { get { return RTSGameInstance.thisInstance; } }
+
         new public RTSUiMaster uiMaster
         {
             get
@@ -75,7 +75,6 @@ conditionButton && actionButton && IGBPITitleText;
         }
         choiceEditModes ChoiceEditMode = choiceEditModes.none;
         string choiceFilterNameNone = "Filters";
-        bool hasStarted = false;
         //Used as a parameter for adding a dropdown instance
         bool usePanelCreationValues = false;
         IGBPIPanelValue panelCreationValues;
@@ -118,23 +117,16 @@ conditionButton && actionButton && IGBPITitleText;
 
             UI_Panel_Members = new List<IGBPI_UI_Panel>();
             DisableIGBPIEditButtons();
-
-            SubToEvents();
         }
 
         protected override void Start()
         {
             base.Start();
-            if (hasStarted == false)
-            {
-                hasStarted = true;
-            }
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            UnsubEvents();
         }
         #endregion
 
@@ -676,8 +668,9 @@ conditionButton && actionButton && IGBPITitleText;
         #endregion
 
         #region Initialization
-        void SubToEvents()
+        protected override void SubToEvents()
         {
+            base.SubToEvents();
             //Toggles
             uiMaster.EventMenuToggle += TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
@@ -694,8 +687,9 @@ conditionButton && actionButton && IGBPITitleText;
             uiMaster.RegisterAllyToCharacterStatMonitor += RegisterAllyToCharacterStatMonitor;
         }
 
-        void UnsubEvents()
+        protected override void UnsubEvents()
         {
+            base.UnsubEvents();
             //Toggles
             uiMaster.EventMenuToggle -= TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
