@@ -81,16 +81,8 @@ conditionButton && actionButton && IGBPITitleText;
         #endregion
 
         #region UIGameObjects
-        [Header("Main Ui GameObjects")]
-        public GameObject MenuUiPanel;
-        public GameObject IGBPIUi;
-
-        [Header("Winner/GameOver UI")]
-        public GameObject WinnerUiPanel;
-        public GameObject NextLevelButton;
-        public GameObject GameOverUiPanel;
-
         [Header("IGBPI Objects")]
+        public GameObject IGBPIUi;
         public GameObject UI_Panel_Prefab;
         public GameObject ButtonChoicePrefab;
         public Transform behaviorContentTransform;
@@ -207,37 +199,7 @@ conditionButton && actionButton && IGBPITitleText;
         }
         #endregion
 
-        #region ButtonCalls-MainMenu
-        public void CallGoToMainMenu()
-        {
-            gamemaster.CallEventGoToMenuScene();
-        }
-
-        public void CallCheckNextLevel()
-        {
-            bool _scenario = false;
-            bool _level = false;
-            if (gameInstance.IsLoadingNextPermitted(out _scenario, out _level))
-            {
-                if (_scenario) gamemaster.CallEventGoToNextScenario();
-                else if (_level) gamemaster.CallEventGoToNextLevel();
-            }
-        }
-
-        public void CallRestartLevel()
-        {
-            gamemaster.CallEventRestartLevel();   
-        }
-        #endregion
-
         #region Handlers-General/Toggles
-        //Toggles Ui GameObjects
-        void TogglePauseMenuUi(bool enable)
-        {
-            if (MenuUiPanel != null)
-                MenuUiPanel.SetActive(enable);
-        }
-
         void ToggleInventoryUi(bool enable)
         {
             //if (InventoryUi != null)
@@ -267,38 +229,6 @@ conditionButton && actionButton && IGBPITitleText;
                     gamemode.CurrentPlayer.CharacterType.ToString() +
                     "'s Tactics";
             }
-        }
-
-        //Winner / GameOver Activations
-        void ActivateWinnerUi()
-        {
-            if (AllUiCompsAreValid == false) return;
-            WinnerUiPanel.SetActive(true);
-            bool _nextScenario = false;
-            bool _nextLevel = false;
-            if(gameInstance.IsLoadingNextPermitted(out _nextScenario, out _nextLevel))
-            {
-                NextLevelButton.SetActive(true);
-                Text _btnText = NextLevelButton.GetComponentInChildren<Text>();
-                if (_btnText && _nextScenario)
-                {
-                    _btnText.text = "Go To Next Scenario";
-                }
-                else if (_btnText && _nextLevel)
-                {
-                    _btnText.text = "Go To Next Level";
-                }
-            }
-            else
-            {
-                NextLevelButton.SetActive(false);
-            }
-        }
-
-        void ActivateGameOverUi()
-        {
-            if (AllUiCompsAreValid == false) return;
-            GameOverUiPanel.SetActive(true);
         }
         #endregion
 
@@ -672,11 +602,8 @@ conditionButton && actionButton && IGBPITitleText;
         {
             base.SubToEvents();
             //Toggles
-            uiMaster.EventMenuToggle += TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle += ToggleInventoryUi;
             uiMaster.EventIGBPIToggle += ToggleIGBPIUi;
-            gamemaster.EventAllObjectivesCompleted += ActivateWinnerUi;
-            gamemaster.GameOverEvent += ActivateGameOverUi;
             //IGBPI
             uiMaster.EventAddDropdownInstance += AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance += DeregisterDropdownMenu;
@@ -691,11 +618,8 @@ conditionButton && actionButton && IGBPITitleText;
         {
             base.UnsubEvents();
             //Toggles
-            uiMaster.EventMenuToggle -= TogglePauseMenuUi;
             //uiMaster.EventInventoryUIToggle -= ToggleInventoryUi;
             uiMaster.EventIGBPIToggle -= ToggleIGBPIUi;
-            gamemaster.EventAllObjectivesCompleted -= ActivateWinnerUi;
-            gamemaster.GameOverEvent -= ActivateGameOverUi;
             //IGBPI
             uiMaster.EventAddDropdownInstance -= AddDropdownInstance;
             uiMaster.EventRemoveDropdownInstance -= DeregisterDropdownMenu;

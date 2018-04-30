@@ -42,8 +42,7 @@ namespace BaseFramework
         //Override Inside Wrapper Class
         public virtual bool isPauseMenuOn
         {
-            //get { return uiManager.MenuUiPanel.activeSelf; }
-            get { return false; }
+            get { return uiManager.MenuUiPanel.activeSelf; }
         }
 
         public UiManager uiManager
@@ -71,10 +70,20 @@ namespace BaseFramework
                 thisInstance = this;
         }
 
+        protected virtual void Start()
+        {
+            
+        }
+
         // Update is called once per frame
         protected virtual void Update()
         {
 
+        }
+
+        protected virtual void OnDisable()
+        {
+            
         }
         #endregion
     }

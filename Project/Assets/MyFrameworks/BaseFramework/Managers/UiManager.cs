@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BaseFramework
 {
@@ -15,7 +16,8 @@ namespace BaseFramework
         {
             get
             {
-                return false;
+                return MenuUiPanel && WinnerUiPanel &&
+                  NextLevelButton && GameOverUiPanel;
             }
         }
 
@@ -23,7 +25,7 @@ namespace BaseFramework
         {
             get
             {
-                if (UiManager.thisInstance != null)
+                if (UiMaster.thisInstance != null)
                     return UiMaster.thisInstance;
 
                 return GetComponent<UiMaster>();
@@ -38,6 +40,17 @@ namespace BaseFramework
 
         #region Fields
         bool hasStarted = false;
+        #endregion
+
+        #region UIGameObjects
+        [Header("Main Ui GameObjects")]
+        public GameObject MenuUiPanel;
+
+        [Header("Winner/GameOver UI")]
+        public GameObject WinnerUiPanel;
+        public GameObject NextLevelButton;
+        public GameObject GameOverUiPanel;
+
         #endregion
 
         #region UnityMessages
@@ -71,15 +84,85 @@ namespace BaseFramework
         }
         #endregion
 
+        #region ButtonCalls-MainMenu
+        public virtual void CallGoToMainMenu()
+        {
+            gamemaster.CallEventGoToMenuScene();
+        }
+
+        public virtual void CallCheckNextLevel()
+        {
+            bool _scenario = false;
+            bool _level = false;
+            if (gameInstance.IsLoadingNextPermitted(out _scenario, out _level))
+            {
+                if (_scenario) gamemaster.CallEventGoToNextScenario();
+                else if (_level) gamemaster.CallEventGoToNextLevel();
+            }
+        }
+
+        public virtual void CallRestartLevel()
+        {
+            gamemaster.CallEventRestartLevel();
+        }
+        #endregion
+
+        #region Handlers-General/Toggles
+        //Toggles Ui GameObjects
+        protected virtual void TogglePauseMenuUi(bool enable)
+        {
+            if (MenuUiPanel != null)
+                MenuUiPanel.SetActive(enable);
+        }
+
+        //Winner / GameOver Activations
+        protected virtual void ActivateWinnerUi()
+        {
+            if (AllUiCompsAreValid == false) return;
+            WinnerUiPanel.SetActive(true);
+            bool _nextScenario = false;
+            bool _nextLevel = false;
+            if (gameInstance.IsLoadingNextPermitted(out _nextScenario, out _nextLevel))
+            {
+                NextLevelButton.SetActive(true);
+                Text _btnText = NextLevelButton.GetComponentInChildren<Text>();
+                if (_btnText && _nextScenario)
+                {
+                    _btnText.text = "Go To Next Scenario";
+                }
+                else if (_btnText && _nextLevel)
+                {
+                    _btnText.text = "Go To Next Level";
+                }
+            }
+            else
+            {
+                NextLevelButton.SetActive(false);
+            }
+        }
+
+        protected virtual void ActivateGameOverUi()
+        {
+            if (AllUiCompsAreValid == false) return;
+            GameOverUiPanel.SetActive(true);
+        }
+        #endregion
+
         #region Initialization
         protected virtual void SubToEvents()
         {
-
+            //Toggles
+            uiMaster.EventMenuToggle += TogglePauseMenuUi;
+            gamemaster.EventAllObjectivesCompleted += ActivateWinnerUi;
+            gamemaster.GameOverEvent += ActivateGameOverUi;
         }
 
         protected virtual void UnsubEvents()
         {
-
+            //Toggles
+            uiMaster.EventMenuToggle -= TogglePauseMenuUi;
+            gamemaster.EventAllObjectivesCompleted -= ActivateWinnerUi;
+            gamemaster.GameOverEvent -= ActivateGameOverUi;
         }
         #endregion
     }
