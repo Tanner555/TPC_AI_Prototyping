@@ -7,44 +7,32 @@ namespace RTSCoreFramework
 {
     public class RTSInputManager : InputManager
     {
-        #region Properties
-        RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
-
-        RTSUiManager uiManager
-        {
-            get { return RTSUiManager.thisInstance; }
-        }
-
-        RTSGameMode gamemode
-        {
-            get { return RTSGameMode.thisInstance; }
-        }
-
-        RTSGameMaster gamemaster
-        {
-            get { return RTSGameMaster.thisInstance; }
-        }
-
+        #region Properties       
         RTSCamRaycaster raycaster
         {
             get { return RTSCamRaycaster.thisInstance; }
         }
 
-        //Time Properties
-        float CurrentGameTime
-        {
-            get { return Time.unscaledTime; }
-        }
-
-        //Mouse Setup - Scrolling
-        private bool bScrollAxisIsPositive
-        {
-            get { return scrollInputAxisValue >= 0.0f; }
-        }
-
         #endregion
 
         #region OverrideAndHideProperties
+        new protected RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
+
+        new protected RTSUiManager uiManager
+        {
+            get { return RTSUiManager.thisInstance; }
+        }
+
+        new protected RTSGameMode gamemode
+        {
+            get { return RTSGameMode.thisInstance; }
+        }
+
+        new protected RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
+
         new public static RTSInputManager thisInstance
         {
             get { return InputManager.thisInstance as RTSInputManager; }
@@ -52,33 +40,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        //Handles Right Mouse Down Input
-        [Header("Right Mouse Down Config")]
-        public float RMHeldThreshold = 0.15f;
-        private bool isRMHeldDown = false;
-        private bool isRMHeldPastThreshold = false;
-        private float RMCurrentTimer = 5f;
-        //Handles Left Mouse Down Input
-        [Header("Left Mouse Down Config")]
-        public float LMHeldThreshold = 0.15f;
-        private bool isLMHeldDown = false;
-        private bool isLMHeldPastThreshold = false;
-        private float LMCurrentTimer = 5f;
-        //Handles Mouse ScrollWheel Input
-        //Scroll Input
-        private string scrollInputName = "Mouse ScrollWheel";
-        private float scrollInputAxisValue = 0.0f;
-        private bool bScrollWasPreviouslyPositive = false;
-        private bool bScrollIsCurrentlyPositive = false;
-        //Scroll Timer Handling
-        private bool isScrolling = false;
-        //Used to Fix First Scroll Not Working Issue
-        private bool bBeganScrolling = false;
-        //Stop Scroll Functionality
-        [Header("Mouse ScrollWheel Config")]
-        public float scrollStoppedThreshold = 0.15f;
-        private bool isNotScrollingPastThreshold = false;
-        private float noScrollCurrentTimer = 5f;
         //Handles Multi Unit Selection
         [Header("Selection Config")]
         [SerializeField]
@@ -89,21 +50,19 @@ namespace RTSCoreFramework
         private bool isSprinting = false;
         //private AllyMoveSpeed setupMoveSpeed;
         private AllyMember setupSprintAlly = null;
-        //UI is enabled
-        private bool UiIsEnabled = false;
         #endregion
 
         #region UnityMessages
         protected override void Start()
         {
             base.Start();
-            uiMaster.EventIGBPIToggle += HandleUiActiveSelf;
+            
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            uiMaster.EventIGBPIToggle -= HandleUiActiveSelf;
+            
         }
         // Update is called once per frame
         protected override void Update()
@@ -353,50 +312,8 @@ namespace RTSCoreFramework
 
         #endregion
 
-        #region Handlers
-        void HandleUiActiveSelf(bool _state)
-        {
-            UiIsEnabled = _state;
-            if (_state == true)
-            {
-                if (isRMHeldPastThreshold)
-                {
-                    isRMHeldPastThreshold = false;
-                    gamemaster.CallEventEnableCameraMovement(false);
-                }
-                if (isLMHeldPastThreshold)
-                {
-                    isLMHeldPastThreshold = false;
-                    //gamemaster.CallEventEnableSelectionBox(false);
-                }
-                isLMHeldDown = false;
-                isRMHeldDown = false;
-            }
-        }
-
-        void HandleUiActiveSelf()
-        {
-            UiIsEnabled = uiMaster.isUiAlreadyInUse;
-            if (uiMaster.isUiAlreadyInUse)
-            {
-                if (isRMHeldPastThreshold)
-                {
-                    isRMHeldPastThreshold = false;
-                    gamemaster.CallEventEnableCameraMovement(false);
-                }
-                if (isLMHeldPastThreshold)
-                {
-                    isLMHeldPastThreshold = false;
-                    //gamemaster.CallEventEnableSelectionBox(false);
-                }
-                isLMHeldDown = false;
-                isRMHeldDown = false;
-            }
-        }
-        #endregion
-
         #region InputCalls
-        void CallMenuToggle() { uiMaster.CallEventMenuToggle(); }
+
         //void CallInventoryToggle() { uiMaster.CallEventInventoryUIToggle(); }
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
@@ -405,7 +322,6 @@ namespace RTSCoreFramework
         //void CallSelectNextWeapon() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnSwitchToNextItem(); }
         void CallTryFire() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryFire(); }
         void CallTryReload() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryReload(); }
-        void CallToggleIsGamePaused() { gamemaster.CallOnToggleIsGamePaused(); }
         void CallCoverToggle() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallOnTryCrouch(); }
         void CallSprintToggle() { gamemode.GeneralInCommand.AllyInCommand.allyEventHandler.CallEventToggleIsSprinting(); }
 
