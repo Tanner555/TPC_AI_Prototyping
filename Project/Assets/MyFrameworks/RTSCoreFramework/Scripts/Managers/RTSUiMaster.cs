@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSUiMaster : MonoBehaviour
+    public class RTSUiMaster : UiMaster
     {
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
@@ -30,11 +31,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region Properties
-        public static RTSUiMaster thisInstance
-        {
-            get; protected set;
-        }
-
         public RTSUiManager uiManager
         {
             get { return RTSUiManager.thisInstance; }
@@ -63,20 +59,22 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region OverrideAndHideProperties
+        new public static RTSUiMaster thisInstance
+        {
+            get { return UiMaster.thisInstance as RTSUiMaster; }
+        }
+        #endregion
+
         #region Fields
         public bool isDraggingIGBPI = false;
         #endregion
 
         #region UnityMessages
         // Use this for initialization
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of UIManagerMaster in scene.");
-            else
-            {
-                thisInstance = this;
-            }
+            base.OnEnable();
         }
         #endregion
 

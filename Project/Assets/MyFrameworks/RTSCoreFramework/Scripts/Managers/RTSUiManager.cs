@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSUiManager : MonoBehaviour
+    public class RTSUiManager : UiManager
     {
         #region Components
         public RTSUiMaster uiMaster
@@ -21,11 +22,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region Properties
-        public static RTSUiManager thisInstance
-        {
-            get; protected set;
-        }
-
         public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
 
@@ -64,7 +60,14 @@ choiceNavigateLeft && choiceNavigateRight &&
 conditionButton && actionButton && IGBPITitleText;
             }
         }
-        
+
+        #endregion
+
+        #region OverrideAndHideProperties
+        new public static RTSUiManager thisInstance
+        {
+            get { return UiManager.thisInstance as RTSUiManager; }
+        }
         #endregion
 
         #region Fields
@@ -109,13 +112,9 @@ conditionButton && actionButton && IGBPITitleText;
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of UIManager in scene.");
-            else
-                thisInstance = this;
-
+            base.OnEnable();
             if (!AllUiCompsAreValid)
                 Debug.LogError("Please drag components into their slots");
 
@@ -125,16 +124,18 @@ conditionButton && actionButton && IGBPITitleText;
             SubToEvents();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             if (hasStarted == false)
             {
                 hasStarted = true;
             }
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             UnsubEvents();
         }
         #endregion

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSInputManager : MonoBehaviour
+    public class RTSInputManager : InputManager
     {
         #region Properties
         RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
@@ -41,6 +42,13 @@ namespace RTSCoreFramework
             get { return scrollInputAxisValue >= 0.0f; }
         }
 
+        #endregion
+
+        #region OverrideAndHideProperties
+        new public static RTSInputManager thisInstance
+        {
+            get { return InputManager.thisInstance as RTSInputManager; }
+        }
         #endregion
 
         #region Fields
@@ -86,18 +94,21 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             uiMaster.EventIGBPIToggle += HandleUiActiveSelf;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             uiMaster.EventIGBPIToggle -= HandleUiActiveSelf;
         }
         // Update is called once per frame
-        void Update()
+        protected override void Update()
         {
+            base.Update();
             InputSetup();
             LeftMouseDownSetup();
             RightMouseDownSetup();
