@@ -91,13 +91,174 @@ namespace BaseFramework
         // Update is called once per frame
         protected virtual void Update()
         {
-
+            InputSetup();
+            LeftMouseDownSetup();
+            RightMouseDownSetup();
+            StopMouseScrollWheelSetup();
         }
 
         protected virtual void OnDisable()
         {
             
         }
+        #endregion
+
+        #region InputSetup
+        protected virtual void InputSetup()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                CallMenuToggle();
+        }
+
+        #endregion
+
+        #region MouseSetup
+        void LeftMouseDownSetup()
+        {
+            if (UiIsEnabled) return;
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                if (isRMHeldDown) return;
+                if (isLMHeldDown == false)
+                {
+                    isLMHeldDown = true;
+                    LMCurrentTimer = CurrentGameTime + LMHeldThreshold;
+                }
+
+                if (CurrentGameTime > LMCurrentTimer)
+                {
+                    //Calls Every Update
+                    //CreateSelectionSquare();
+                    if (isLMHeldPastThreshold == false)
+                    {
+                        //OnMouseDown Code Goes Here
+                        isLMHeldPastThreshold = true;
+                    }
+                }
+            }
+            else
+            {
+                if (isLMHeldDown == true)
+                {
+                    isLMHeldDown = false;
+                    if (isLMHeldPastThreshold == true)
+                    {
+                        //When MouseDown Code Exits
+                        isLMHeldPastThreshold = false;
+                    }
+                    else
+                    {
+                        //Mouse Button Was Let Go Before the Threshold
+                        //Call the Click Event
+                        gamemaster.CallEventOnLeftClick();
+                    }
+                }
+            }
+        }
+
+        void RightMouseDownSetup()
+        {
+            if (UiIsEnabled) return;
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                if (isLMHeldDown) return;
+                if (isRMHeldDown == false)
+                {
+                    isRMHeldDown = true;
+                    RMCurrentTimer = CurrentGameTime + RMHeldThreshold;
+                }
+
+                if (CurrentGameTime > RMCurrentTimer)
+                {
+                    if (isRMHeldPastThreshold == false)
+                    {
+                        //OnMouseDown Code Goes Here
+                        isRMHeldPastThreshold = true;
+                        gamemaster.CallEventEnableCameraMovement(true);
+                    }
+                }
+            }
+            else
+            {
+                if (isRMHeldDown == true)
+                {
+                    isRMHeldDown = false;
+                    if (isRMHeldPastThreshold == true)
+                    {
+                        //When MouseDown Code Exits
+                        isRMHeldPastThreshold = false;
+                        gamemaster.CallEventEnableCameraMovement(false);
+                    }
+                    else
+                    {
+                        //Mouse Button Was Let Go Before the Threshold
+                        //Call the Click Event
+                        gamemaster.CallEventOnRightClick();
+                    }
+                }
+            }
+
+        }
+
+        void StopMouseScrollWheelSetup()
+        {
+            if (UiIsEnabled) return;
+            scrollInputAxisValue = Input.GetAxis(scrollInputName);
+            if (Mathf.Abs(scrollInputAxisValue) > 0.0f)
+            {
+                if (isLMHeldDown) return;
+                bScrollIsCurrentlyPositive = bScrollAxisIsPositive;
+
+                //Fixes First Scroll Not Working Issue
+                if (bBeganScrolling == false)
+                {
+                    bBeganScrolling = true;
+                    gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                }
+
+                if (bScrollWasPreviouslyPositive != bScrollIsCurrentlyPositive)
+                {
+                    gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                    bScrollWasPreviouslyPositive = bScrollAxisIsPositive;
+                }
+
+                if (isScrolling == false)
+                {
+                    isScrolling = true;
+                    if (isNotScrollingPastThreshold == true)
+                    {
+                        //When ScrollWheel Code Starts
+                        isNotScrollingPastThreshold = false;
+                        gamemaster.CallEventEnableCameraZoom(true, bScrollAxisIsPositive);
+                        bScrollWasPreviouslyPositive = bScrollAxisIsPositive;
+                    }
+                    else
+                    {
+                        //Scroll Wheel Started Before the Stop Threshold
+                        //Do nothing for now
+                    }
+                }
+            }
+            else
+            {
+                if (isScrolling == true)
+                {
+                    isScrolling = false;
+                    noScrollCurrentTimer = CurrentGameTime + scrollStoppedThreshold;
+                }
+
+                if (CurrentGameTime > noScrollCurrentTimer)
+                {
+                    if (isNotScrollingPastThreshold == false)
+                    {
+                        //OnScrollWheel Stopping Code Goes Here
+                        isNotScrollingPastThreshold = true;
+                        gamemaster.CallEventEnableCameraZoom(false, bScrollAxisIsPositive);
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Handlers

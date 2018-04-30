@@ -70,9 +70,6 @@ namespace RTSCoreFramework
         public event GameManagerEventHandler EventAllEnemiesAreDead;
         //public event OneBoolArgsHandler EventEnableSelectionBox;
 
-        public delegate void TwoBoolArgsHandler(bool enable, bool isPositive);
-        public event TwoBoolArgsHandler EventEnableCameraZoom;
-
         //Used by CamRaycaster to broadcast mouse hit type
         public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event RtsHitTypeAndRayCastHitHandler OnMouseCursorChange;
@@ -114,11 +111,6 @@ namespace RTSCoreFramework
         {
             EnableRayCaster(false);
             base.CallEventAllObjectivesCompleted();
-        }
-
-        public void CallEventEnableCameraZoom(bool enable, bool isPositive)
-        {
-            if (EventEnableCameraZoom != null) EventEnableCameraZoom(enable, isPositive);
         }
 
         public void CallOnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
@@ -198,8 +190,9 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventOnLeftClickSendHit()
+        public override void CallEventOnLeftClick()
         {
+            base.CallEventOnLeftClick();
             if (rayCaster != null && rayCaster.enabled == true &&
                 !EventSystem.current.IsPointerOverGameObject())
             {
@@ -248,8 +241,9 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventOnRightClickSendHit()
+        public override void CallEventOnRightClick()
         {
+            base.CallEventOnRightClick();
             if (rayCaster != null && rayCaster.enabled == true &&
                 !EventSystem.current.IsPointerOverGameObject())
             {

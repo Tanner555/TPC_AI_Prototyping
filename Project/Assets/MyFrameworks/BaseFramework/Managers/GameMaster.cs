@@ -78,14 +78,20 @@ namespace BaseFramework
 
         #region Events and Delegates
         public delegate void GameManagerEventHandler();
+        public delegate void OneBoolArgsHandler(bool enable);
+        public delegate void TwoBoolArgsHandler(bool enable, bool isPositive);
+        //Levels, Scenarios, Progression
         public event GameManagerEventHandler RestartLevelEvent;
         public event GameManagerEventHandler GoToMenuSceneEvent;
         public event GameManagerEventHandler GoToNextLevelEvent;
         public event GameManagerEventHandler GoToNextScenarioEvent;
         public event GameManagerEventHandler GameOverEvent;
         public event GameManagerEventHandler EventAllObjectivesCompleted;
-
-        public delegate void OneBoolArgsHandler(bool enable);
+        //Input
+        public event GameManagerEventHandler OnLeftClickNoSend;
+        public event GameManagerEventHandler OnRightClickNoSend;
+        public event TwoBoolArgsHandler EventEnableCameraZoom;
+        //Camera and Pause
         public event OneBoolArgsHandler OnToggleIsGamePaused;
         public event OneBoolArgsHandler EventEnableCameraMovement;
         #endregion
@@ -199,6 +205,21 @@ namespace BaseFramework
             {
                 EventEnableCameraMovement(enable);
             }
+        }
+
+        public virtual void CallEventOnLeftClick()
+        {
+            if (OnLeftClickNoSend != null) OnLeftClickNoSend();
+        }
+
+        public virtual void CallEventOnRightClick()
+        {
+            if (OnRightClickNoSend != null) OnRightClickNoSend();
+        }
+
+        public void CallEventEnableCameraZoom(bool enable, bool isPositive)
+        {
+            if (EventEnableCameraZoom != null) EventEnableCameraZoom(enable, isPositive);
         }
         #endregion
 
