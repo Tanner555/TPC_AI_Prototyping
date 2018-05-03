@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace RTSCoreFramework
 {
@@ -15,18 +16,18 @@ namespace RTSCoreFramework
         [SerializeField]
         private Image PrimaryWeaponUIImage;
         [SerializeField]
-        private Text PrimaryLoadedText;
+        private TextMeshProUGUI PrimaryLoadedText;
         [SerializeField]
-        private Text PrimaryUnloadedText;
+        private TextMeshProUGUI PrimaryUnloadedText;
         [Header("Secondary Weapon UI")]
         [SerializeField]
         private GameObject SecondaryWeaponGameObject;
         [SerializeField]
         private Image SecondaryWeaponUIImage;
         [SerializeField]
-        private Text SecondaryLoadedText;
+        private TextMeshProUGUI SecondaryLoadedText;
         [SerializeField]
-        private Text SecondaryUnloadedText;
+        private TextMeshProUGUI SecondaryUnloadedText;
         #endregion
 
         #region Fields

@@ -13,6 +13,12 @@
 # ProCore (for Unity 2017.3)
 /Project/Assets/ProCore
 /Project/Assets/ProCore.meta
+# ProCore (for Unity 2018.1)
+/Project/Assets/ProBuilder Data
+/Project/Assets/ProBuilder Data.meta
+# TextMeshPro
+/Project/Assets/TextMesh Pro
+/Project/Assets/TextMesh Pro.meta
 # Unity Logs Viewer (See Console Logs in Builds)
 /Project/Assets/Unity-Logs-Viewer
 /Project/Assets/Unity-Logs-Viewer.meta

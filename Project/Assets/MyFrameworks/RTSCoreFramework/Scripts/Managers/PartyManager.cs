@@ -15,7 +15,7 @@ namespace RTSCoreFramework
         public int PartyPoints;
         public int PartyDeaths;
         #endregion
-
+        
         #region Properties
         protected RTSGameMode gamemode
         {
