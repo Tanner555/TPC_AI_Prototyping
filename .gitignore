@@ -8,8 +8,19 @@
 # Plugins Folder
 /Project/Assets/Plugins
 /Project/Assets/Plugins.meta
+# Gizmos Folder
+/Project/Assets/Gizmos
+/Project/Assets/Gizmos.meta
 # Node Canvas
 /Project/Assets/ParadoxNotion
+# Behavior Designer
+/Project/Assets/Behavior Designer
+/Project/Assets/Behavior Designer.meta
+/Project/Assets/Behavior Designer Movement
+/Project/Assets/Behavior Designer Movement.meta
+# Chronos
+/Project/Assets/Chronos
+/Project/Assets/Chronos.meta
 # ProCore (for Unity 2017.3)
 /Project/Assets/ProCore
 /Project/Assets/ProCore.meta
@@ -38,8 +49,6 @@
 /Project/Assets/StreamingAssets.meta
 # Power UI, No Longer Used
 /Project/Assets/PowerUI
-# Moon Sharp, No Longer Used
-/Project/Assets/Plugins
 # Unity Standard Assets and Post Processing
 /Project/Assets/PostProcessing
 /Project/Assets/PostProcessing.meta
@@ -53,6 +62,7 @@
 /Project/Assets/AssetStoreTools*
 # Third Person Controller
 /Project/Assets/Third Person Controller
+/Project/Assets/Third Person Controller.meta
 /Project/Assets/BackupTPCScripts
 # Models Used For Testing
 /Project/Assets/ModelsAndAssets
@@ -69,7 +79,6 @@
 /Project/Assets/ORK Framework/gameplay_source_code.zip.meta
 /Project/Assets/ORK Framework/README.txt
 /Project/Assets/ORK Framework/README.txt.meta
-/Project/Assets/Gizmos
 
 # Map Data Used Inside My RTS Framework
 /Project/Assets/Tactical Prototyping/Maps/RTSMainMenu
