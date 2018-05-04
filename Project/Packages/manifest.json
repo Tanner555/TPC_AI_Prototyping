@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.unity.probuilder": "3.0.6",
-    "com.unity.textmeshpro": "1.2.2"
+    "com.unity.textmeshpro": "1.2.2",
+    "com.unity.postprocessing": "2.0.5-preview",
+    "com.unity.progrids": "3.0.1-preview"
   }
 }

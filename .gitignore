@@ -19,6 +19,12 @@
 # TextMeshPro
 /Project/Assets/TextMesh Pro
 /Project/Assets/TextMesh Pro.meta
+# Volumetric Lighting
+/Project/Assets/Volumetric Lighting
+/Project/Assets/Volumetric Lighting.meta
+# ShaderForge
+/Project/Assets/ShaderForge
+/Project/Assets/ShaderForge.meta
 # Unity Logs Viewer (See Console Logs in Builds)
 /Project/Assets/Unity-Logs-Viewer
 /Project/Assets/Unity-Logs-Viewer.meta
