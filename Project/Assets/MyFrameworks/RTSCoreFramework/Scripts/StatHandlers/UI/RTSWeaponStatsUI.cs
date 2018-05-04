@@ -232,7 +232,7 @@ namespace RTSCoreFramework
 
         void UnsubFromEvents()
         {
-            //Temporary Hides Error When Exiting Playmode
+            ///Temporary Hides Error When Exiting Playmode
             if (gameMaster == null) return;
             gameMaster.OnRegisterUiTarget -= OnRegisterUiTarget;
             gameMaster.OnDeregisterUiTarget -= OnDeregisterUiTarget;

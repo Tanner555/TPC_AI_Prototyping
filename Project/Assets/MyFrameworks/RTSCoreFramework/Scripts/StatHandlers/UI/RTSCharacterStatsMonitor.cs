@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace RTSCoreFramework
 {
@@ -64,15 +65,15 @@ namespace RTSCoreFramework
         [SerializeField]
         GameObject UiAbilitySlider;
         [SerializeField]
-        Text CurrentHealthText;
+        TextMeshProUGUI CurrentHealthText;
         [SerializeField]
-        Text MaxHealthText;
+        TextMeshProUGUI MaxHealthText;
         [SerializeField]
-        Text CurrentAbilityText;
+        TextMeshProUGUI CurrentAbilityText;
         [SerializeField]
-        Text MaxAbilityText;
+        TextMeshProUGUI MaxAbilityText;
         [SerializeField]
-        Text CharacterNameText;
+        TextMeshProUGUI CharacterNameText;
         //Ui Target Info
         AllyMember uiTarget = null;
         //Colors
