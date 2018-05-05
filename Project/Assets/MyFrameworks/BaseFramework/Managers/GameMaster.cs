@@ -170,7 +170,7 @@ namespace BaseFramework
             {
                 OnToggleIsGamePaused(bIsGamePaused);
             }
-            Time.timeScale = bIsGamePaused ? 0f : 1f;
+            Invoke("ToggleTimeScale", 0.05f);
         }
 
         public void CallOnToggleIsGamePaused(bool _enable)
@@ -180,24 +180,13 @@ namespace BaseFramework
             {
                 OnToggleIsGamePaused(bIsGamePaused);
             }
-            //Time.timeScale = bIsGamePaused ? 0f : 1f;
-            if (bIsGamePaused)
-            {
-                Invoke("ToggleTimeScale", 0.2f);
-            }
-            else
-            {
-                //Cannot Invoke Methods While Timescale is 0
-                //Time.timeScale = bIsGamePaused ? 0f : 1f;
-                Time.timeScale = 1f;
-            }
+            Invoke("ToggleTimeScale", 0.05f);
         }
 
         //Temporary Fix, Needs to Change In Future
         protected virtual void ToggleTimeScale()
         {
-            //Time.timeScale = bIsGamePaused ? 0f : 1f;
-            Time.timeScale = 0f;
+            Time.timeScale = bIsGamePaused ? 0f : 1f;
         }
 
         public void CallEventHoldingRightMouseDown(bool _holding)

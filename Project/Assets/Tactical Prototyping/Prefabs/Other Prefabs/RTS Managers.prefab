@@ -54,9 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4807102168982228}
   - component: {fileID: 114218957903503726}
-  - component: {fileID: 114142273811661268}
-  - component: {fileID: 114435293813522060}
+  - component: {fileID: 114941602951163418}
   - component: {fileID: 114189638851984324}
+  - component: {fileID: 114435293813522060}
   - component: {fileID: 114786682207096632}
   - component: {fileID: 114416084807247614}
   - component: {fileID: 114925828901233208}
@@ -109,21 +109,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114142273811661268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909704301872178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8d834b463c40847bdd0de01e09cf00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGameOver: 0
-  isInventoryUIOn: 0
-  isMenuOn: 0
-  MainMenuScene: {fileID: 102900000, guid: 755f27ea593b7d047a01bb33d9ff5223, type: 3}
 --- !u!114 &114181219453061748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -295,3 +280,15 @@ MonoBehaviour:
     type: 2}
   partyStatsData: {fileID: 11400000, guid: 0f2685a46a552374c94e463e1995dfe2, type: 2}
   weaponStatsData: {fileID: 11400000, guid: 78f598e6d98d1b04aa98c1f8522dac9b, type: 2}
+--- !u!114 &114941602951163418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909704301872178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9ab650514f09243892c64f6ea9a550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInventoryUIOn: 0
