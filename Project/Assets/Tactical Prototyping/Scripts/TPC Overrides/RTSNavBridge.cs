@@ -1,6 +1,7 @@
 ﻿using Opsive.ThirdPersonController;
 using RTSCoreFramework;
 using UnityEngine;
+using Chronos;
 
 namespace RTSPrototype
 {
@@ -83,11 +84,33 @@ namespace RTSPrototype
         float myHorizontalMovement = 0.0f;
         float myForwardMovement = 0.0f;
         Vector3 myDirection = Vector3.zero;
+
+        //Pause Functionality
+        private Timeline myTimeLine
+        {
+            get
+            {
+                if (_myTimeLine == null)
+                {
+                    _myTimeLine = GetComponent<Timeline>();
+                }
+                return _myTimeLine;
+            }
+        }
+        private Timeline _myTimeLine = null;
+        private bool bPauseCommandMoveCached = false;
+        private Vector3 pausedCommandMoveLocation;
+        private bool bIsTimelinePaused
+        {
+            get { return myTimeLine.timeScale == 0; }
+        }
+
         #endregion
 
         #region UnityMessages
         protected override void FixedUpdate()
         {
+            if (bIsTimelinePaused) return;
             CheckForFreeMovement();
             UpdateMovementOrRotate();
         }
@@ -126,8 +149,28 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        void OnToggleGamePaused(bool _isPaused)
+        {
+            //UnPausing and Command Moving During Pause
+            if(_isPaused == false && bPauseCommandMoveCached)
+            {
+                Invoke("TriggerCommandMoveFromPause", 0.1f);
+            }
+            bPauseCommandMoveCached = false;
+        }
+
+        void TriggerCommandMoveFromPause()
+        {
+            MoveToDestination(pausedCommandMoveLocation);
+        }
+
         void MoveToDestination(Vector3 _destination)
         {
+            if(bIsTimelinePaused)
+            {
+                bPauseCommandMoveCached = true;
+                pausedCommandMoveLocation = _destination;
+            }
             if (allyMember.isSurfaceWalkable(_destination))
             {
                 m_NavMeshAgent.ResetPath();
@@ -338,6 +381,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandMove += MoveToDestination;
             myEventHandler.EventAllyDied += HandleAllyDeath;
             gamemaster.EventHoldingRightMouseDown += ToggleMoveCamera;
+            gamemaster.OnToggleIsGamePaused += OnToggleGamePaused;
         }
 
         void UnsubFromEvents()
@@ -349,6 +393,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandMove -= MoveToDestination;
             myEventHandler.EventAllyDied -= HandleAllyDeath;
             gamemaster.EventHoldingRightMouseDown -= ToggleMoveCamera;
+            gamemaster.OnToggleIsGamePaused -= OnToggleGamePaused;
         }
         #endregion
     }
