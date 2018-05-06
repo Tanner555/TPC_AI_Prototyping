@@ -70,6 +70,12 @@ namespace RTSCoreFramework
         public Sprite MyEquippedWeaponIcon { get; protected set; }
         public Sprite MyUnequippedWeaponIcon { get; protected set; }
 
+        //Pause Functionality
+        public virtual bool bAllyIsPaused
+        {
+            get { return false; }
+        }
+
         protected bool bHasStartedFromDelay = false;
         
         #endregion

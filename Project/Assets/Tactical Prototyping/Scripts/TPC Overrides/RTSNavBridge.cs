@@ -84,25 +84,12 @@ namespace RTSPrototype
         float myHorizontalMovement = 0.0f;
         float myForwardMovement = 0.0f;
         Vector3 myDirection = Vector3.zero;
-
         //Pause Functionality
-        private Timeline myTimeLine
-        {
-            get
-            {
-                if (_myTimeLine == null)
-                {
-                    _myTimeLine = GetComponent<Timeline>();
-                }
-                return _myTimeLine;
-            }
-        }
-        private Timeline _myTimeLine = null;
         private bool bPauseCommandMoveCached = false;
         private Vector3 pausedCommandMoveLocation;
         private bool bIsTimelinePaused
         {
-            get { return myTimeLine.timeScale == 0; }
+            get { return myEventHandler.bAllyIsPaused; }
         }
 
         #endregion

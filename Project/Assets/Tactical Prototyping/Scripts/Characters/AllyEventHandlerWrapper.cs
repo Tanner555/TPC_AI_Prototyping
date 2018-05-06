@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Opsive.ThirdPersonController;
 using RTSCoreFramework;
+using Chronos;
 
 namespace RTSPrototype
 {
@@ -17,6 +18,27 @@ namespace RTSPrototype
         private SharedProperty<int> m_FirstExtensionItemCount = null;
         private SharedProperty<Item> m_CurrentPrimaryItem = null;
         private SharedProperty<Item> m_CurrentDualWieldItem = null;
+        #endregion
+
+        #region Properties
+        //Pause Functionality
+        private Timeline myTimeLine
+        {
+            get
+            {
+                if (_myTimeLine == null)
+                {
+                    _myTimeLine = GetComponent<Timeline>();
+                }
+                return _myTimeLine;
+            }
+        }
+        private Timeline _myTimeLine = null;
+
+        public override bool bAllyIsPaused
+        {
+            get { return myTimeLine.timeScale == 0; }
+        }
         #endregion
 
         #region UnityMessages
