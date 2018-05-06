@@ -54,7 +54,8 @@ namespace BaseFramework
         #endregion
 
         #region Fields
-
+        protected float loadLevelDelay = 0.2f;
+        protected float timePauseDelay = 0.05f;
         #endregion
 
         #region UnityMessages
@@ -110,7 +111,7 @@ namespace BaseFramework
         {
             CallOnToggleIsGamePaused(false);
             if (RestartLevelEvent != null) RestartLevelEvent();
-            Invoke("WaitToRestartLevel", 0.2f);
+            Invoke("WaitToRestartLevel", loadLevelDelay);
         }
 
         private void WaitToRestartLevel()
@@ -122,7 +123,7 @@ namespace BaseFramework
         {
             CallOnToggleIsGamePaused(false);
             if (GoToMenuSceneEvent != null) GoToMenuSceneEvent();
-            Invoke("WaitToGoToMenuScene", 0.2f);
+            Invoke("WaitToGoToMenuScene", loadLevelDelay);
         }
 
         private void WaitToGoToMenuScene()
@@ -134,7 +135,7 @@ namespace BaseFramework
         {
             CallOnToggleIsGamePaused(false);
             if (GoToNextLevelEvent != null) GoToNextLevelEvent();
-            Invoke("WaitToGoToNextLevel", 0.2f);
+            Invoke("WaitToGoToNextLevel", loadLevelDelay);
         }
 
         private void WaitToGoToNextLevel()
@@ -146,7 +147,7 @@ namespace BaseFramework
         {
             CallOnToggleIsGamePaused(false);
             if (GoToNextScenarioEvent != null) GoToNextScenarioEvent();
-            Invoke("WaitToGoToNextScenario", 0.2f);
+            Invoke("WaitToGoToNextScenario", loadLevelDelay);
         }
 
         private void WaitToGoToNextScenario()
@@ -178,12 +179,18 @@ namespace BaseFramework
 
         public void CallOnToggleIsGamePaused(bool _enable)
         {
+            StartCoroutine(PauseCheckerCoroutine(_enable, false));
+        }
+
+        //Used As a Wrapper For Pause Checker Coroutine Functionality
+        private void Implement_CallOnToggleIsGamePaused(bool _enable)
+        {
             bIsGamePaused = _enable;
             if (OnToggleIsGamePaused != null)
             {
                 OnToggleIsGamePaused(bIsGamePaused);
             }
-            Invoke("ToggleGamePauseTimeScale", 0.05f);
+            Invoke("ToggleGamePauseTimeScale", timePauseDelay);
         }
 
         //Override this functionality in wrapper class
@@ -199,18 +206,24 @@ namespace BaseFramework
 
         public void CallOnTogglebIsInPauseControlMode(bool _enable)
         {
+            StartCoroutine(PauseCheckerCoroutine(_enable, true));
+        }
+
+        //Used As a Wrapper For Pause Checker Coroutine Functionality
+        private void Implement_CallOnTogglebIsInPauseControlMode(bool _enable)
+        {
             bIsInPauseControlMode = _enable;
-            if(OnTogglebIsInPauseControlMode != null)
+            if (OnTogglebIsInPauseControlMode != null)
             {
                 OnTogglebIsInPauseControlMode(bIsInPauseControlMode);
             }
-            Invoke("TogglePauseControlModeTimeScale", 0.05f);
+            Invoke("TogglePauseControlModeTimeScale", timePauseDelay);
         }
 
         //Override this functionality in wrapper class
         protected virtual void TogglePauseControlModeTimeScale()
         {
-            Time.timeScale = bIsGamePaused ? 0f : 1f;
+            Time.timeScale = bIsInPauseControlMode ? 0f : 1f;
         }
 
         public void CallEventHoldingRightMouseDown(bool _holding)
@@ -254,6 +267,37 @@ namespace BaseFramework
         protected virtual void UnsubFromEvents()
         {
             
+        }
+        #endregion
+
+        #region Helpers
+        IEnumerator PauseCheckerCoroutine(bool _enable, bool _isInControl)
+        {
+            //Requesting Toggle InControl Pause While Game is Paused
+            if (_isInControl && bIsGamePaused) yield break;
+            else if (_isInControl)
+            {
+                //Implement IsInControlPause Functionality
+                Implement_CallOnTogglebIsInPauseControlMode(_enable);
+                yield break;
+            }
+            //Requesting Toggle Game Pause While InControl Pause is Active
+            else if (_isInControl == false && bIsInPauseControlMode)
+            {
+                //Turn Off PauseControlMode
+                Implement_CallOnTogglebIsInPauseControlMode(false);
+                yield return new WaitForSecondsRealtime(timePauseDelay);
+                //Implement GamePause Functionality
+                Implement_CallOnToggleIsGamePaused(_enable);
+                yield break;
+            }
+            else if(_isInControl == false)
+            {
+                //Implement GamePause Functionality
+                Implement_CallOnToggleIsGamePaused(_enable);
+                yield break;
+            }
+            yield break;
         }
         #endregion
     }

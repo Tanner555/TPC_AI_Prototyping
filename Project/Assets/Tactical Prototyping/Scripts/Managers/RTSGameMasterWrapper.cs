@@ -44,7 +44,7 @@ namespace RTSCoreFramework
         {
             if (allyClocks != null)
             {
-                allyClocks.localTimeScale = bIsGamePaused ?
+                allyClocks.localTimeScale = bIsInPauseControlMode ?
                     0f : 1f;
             }
             else

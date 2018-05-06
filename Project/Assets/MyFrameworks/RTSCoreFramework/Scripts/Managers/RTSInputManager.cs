@@ -95,7 +95,7 @@ namespace RTSCoreFramework
             if (Input.GetKeyDown(KeyCode.R))
                 CallTryReload();
             if (Input.GetKeyDown(KeyCode.Space))
-                CallToggleIsGamePaused();
+                CallToggleIsInPauseControl();
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 CallSprintToggle();
 
@@ -162,6 +162,7 @@ namespace RTSCoreFramework
 
         #region InputCalls
         //void CallInventoryToggle() { uiMaster.CallEventInventoryUIToggle(); }
+        void CallToggleIsInPauseControl() { gamemaster.CallOnTogglebIsInPauseControlMode(); }
         void CallIGBPIToggle() { uiMaster.CallEventIGBPIToggle(); }
         void CallPossessAllyAdd() { gamemode.GeneralInCommand.PossessAllyAdd(); }
         void CallPossessAllySubtract() { gamemode.GeneralInCommand.PossessAllySubtract(); }
