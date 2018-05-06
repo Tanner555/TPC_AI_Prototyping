@@ -172,7 +172,7 @@ namespace RTSCoreFramework
                         dataHandler.IGBPI_Actions[_data.action]));
                 }
             }
-
+            
             if (AllyTacticsList.Count > 0)
                 InvokeRepeating("ExecuteAllyTacticsList", 0.05f, 1f / executionsPerSec);
         }
@@ -195,6 +195,11 @@ namespace RTSCoreFramework
                 UnsubFromEvents();
                 Destroy(this);
             }
+
+            // Pause Ally Tactics If Ally Is Paused
+            // Due to the Game Pausing Or Control Pause Mode
+            // Is Active
+            if (myEventHandler.bAllyIsPaused) return;
 
             //Temporary Fix for PartyManager Delaying Initial AllyInCommand Methods
             if (allyInCommand == null) return;

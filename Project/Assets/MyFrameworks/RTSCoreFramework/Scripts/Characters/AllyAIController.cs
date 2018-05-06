@@ -360,7 +360,12 @@ namespace RTSCoreFramework
 
         protected virtual void UpdateBattleBehavior()
         {
-            if(currentTargettedEnemy == null || 
+            // Pause Ally Tactics If Ally Is Paused
+            // Due to the Game Pausing Or Control Pause Mode
+            // Is Active
+            if (myEventHandler.bAllyIsPaused) return;
+
+            if (currentTargettedEnemy == null || 
                 currentTargettedEnemy.IsAlive == false ||
                 myEventHandler.bIsFreeMoving)
             {
@@ -414,6 +419,11 @@ namespace RTSCoreFramework
 
         protected virtual void MakeFireRequest()
         {
+            // Pause Ally Tactics If Ally Is Paused
+            // Due to the Game Pausing Or Control Pause Mode
+            // Is Active
+            if (myEventHandler.bAllyIsPaused) return;
+
             myEventHandler.CallOnTryFire();
         }
         #endregion
