@@ -165,12 +165,7 @@ namespace BaseFramework
 
         public void CallOnToggleIsGamePaused()
         {
-            bIsGamePaused = !bIsGamePaused;
-            if (OnToggleIsGamePaused != null)
-            {
-                OnToggleIsGamePaused(bIsGamePaused);
-            }
-            Invoke("ToggleTimeScale", 0.05f);
+            CallOnToggleIsGamePaused(!bIsGamePaused);
         }
 
         public void CallOnToggleIsGamePaused(bool _enable)
@@ -183,7 +178,7 @@ namespace BaseFramework
             Invoke("ToggleTimeScale", 0.05f);
         }
 
-        //Temporary Fix, Needs to Change In Future
+        //Override this functionality in wrapper class
         protected virtual void ToggleTimeScale()
         {
             Time.timeScale = bIsGamePaused ? 0f : 1f;
