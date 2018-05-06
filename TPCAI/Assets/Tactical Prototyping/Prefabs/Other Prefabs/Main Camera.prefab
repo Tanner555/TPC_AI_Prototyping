@@ -29,7 +29,6 @@ GameObject:
   - component: {fileID: 114301875693343704}
   - component: {fileID: 114269664268726430}
   - component: {fileID: 114624794874455344}
-  - component: {fileID: 114229205806758820}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -79,7 +78,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 1
@@ -93,19 +92,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095465778626376}
   m_Enabled: 1
---- !u!114 &114229205806758820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1095465778626376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Resolution: 0
-  DefaultSpotCookie: {fileID: 2800000, guid: 5157bf6d690b6df458f6c0ce0c06d329, type: 3}
 --- !u!114 &114233307031470328
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,98 +1,101 @@
-/Project/[Ll]ibrary/
-/Project/[Tt]emp/
-/Project/[Oo]bj/
-/Project/[Bb]uild/
-/Project/[Bb]uilds/
-/Project/.vs/
+/TPCAI/[Ll]ibrary/
+/TPCAI/[Tt]emp/
+/TPCAI/[Oo]bj/
+/TPCAI/[Bb]uild/
+/TPCAI/[Bb]uilds/
+/TPCAI/.vs/
 
 # Plugins Folder
-/Project/Assets/Plugins
-/Project/Assets/Plugins.meta
+/TPCAI/Assets/Plugins
+/TPCAI/Assets/Plugins.meta
 # Gizmos Folder
-/Project/Assets/Gizmos
-/Project/Assets/Gizmos.meta
+/TPCAI/Assets/Gizmos
+/TPCAI/Assets/Gizmos.meta
+# Light Weight Renderer Pipeline Preview
+/TPCAI/Assets/LPPreview
+/TPCAI/Assets/LPPreview.meta
 # Node Canvas
-/Project/Assets/ParadoxNotion
+/TPCAI/Assets/ParadoxNotion
 # Behavior Designer
-/Project/Assets/Behavior Designer
-/Project/Assets/Behavior Designer.meta
-/Project/Assets/Behavior Designer Movement
-/Project/Assets/Behavior Designer Movement.meta
+/TPCAI/Assets/Behavior Designer
+/TPCAI/Assets/Behavior Designer.meta
+/TPCAI/Assets/Behavior Designer Movement
+/TPCAI/Assets/Behavior Designer Movement.meta
 # Chronos
-/Project/Assets/Chronos
-/Project/Assets/Chronos.meta
+/TPCAI/Assets/Chronos
+/TPCAI/Assets/Chronos.meta
 # ProCore (for Unity 2017.3)
-/Project/Assets/ProCore
-/Project/Assets/ProCore.meta
+/TPCAI/Assets/ProCore
+/TPCAI/Assets/ProCore.meta
 # ProCore (for Unity 2018.1)
-/Project/Assets/ProBuilder Data
-/Project/Assets/ProBuilder Data.meta
+/TPCAI/Assets/ProBuilder Data
+/TPCAI/Assets/ProBuilder Data.meta
 # TextMeshPro
-/Project/Assets/TextMesh Pro
-/Project/Assets/TextMesh Pro.meta
+/TPCAI/Assets/TextMesh Pro
+/TPCAI/Assets/TextMesh Pro.meta
 # Volumetric Lighting
-/Project/Assets/Volumetric Lighting
-/Project/Assets/Volumetric Lighting.meta
+/TPCAI/Assets/Volumetric Lighting
+/TPCAI/Assets/Volumetric Lighting.meta
 # ShaderForge
-/Project/Assets/ShaderForge
-/Project/Assets/ShaderForge.meta
+/TPCAI/Assets/ShaderForge
+/TPCAI/Assets/ShaderForge.meta
 # Unity Logs Viewer (See Console Logs in Builds)
-/Project/Assets/Unity-Logs-Viewer
-/Project/Assets/Unity-Logs-Viewer.meta
+/TPCAI/Assets/Unity-Logs-Viewer
+/TPCAI/Assets/Unity-Logs-Viewer.meta
 # Fungus
-/Project/Assets/Fungus
-/Project/Assets/Fungus.meta
-/Project/Assets/FungusExamples
-/Project/Assets/FungusExamples.meta
-# StreamingAssets (Folder Keeps Appearing In My Project)
-/Project/Assets/StreamingAssets
-/Project/Assets/StreamingAssets.meta
+/TPCAI/Assets/Fungus
+/TPCAI/Assets/Fungus.meta
+/TPCAI/Assets/FungusExamples
+/TPCAI/Assets/FungusExamples.meta
+# StreamingAssets (Folder Keeps Appearing In My TPCAI)
+/TPCAI/Assets/StreamingAssets
+/TPCAI/Assets/StreamingAssets.meta
 # Power UI, No Longer Used
-/Project/Assets/PowerUI
+/TPCAI/Assets/PowerUI
 # Unity Standard Assets and Post Processing
-/Project/Assets/PostProcessing
-/Project/Assets/PostProcessing.meta
-/Project/Assets/Standard Assets
-/Project/Assets/Standard Assets.meta
+/TPCAI/Assets/PostProcessing
+/TPCAI/Assets/PostProcessing.meta
+/TPCAI/Assets/Standard Assets
+/TPCAI/Assets/Standard Assets.meta
 # Tactical Shooter AI, No Longer Used
-/Project/Assets/Tactical Shooter AI
+/TPCAI/Assets/Tactical Shooter AI
 # UFPS, No Longer Used
-/Project/Assets/UFPS
+/TPCAI/Assets/UFPS
 # Asset Shore Tools
-/Project/Assets/AssetStoreTools*
+/TPCAI/Assets/AssetStoreTools*
 # Third Person Controller
-/Project/Assets/Third Person Controller
-/Project/Assets/Third Person Controller.meta
-/Project/Assets/BackupTPCScripts
+/TPCAI/Assets/Third Person Controller
+/TPCAI/Assets/Third Person Controller.meta
+/TPCAI/Assets/BackupTPCScripts
 # Models Used For Testing
-/Project/Assets/ModelsAndAssets
-/Project/Assets/ModelsAndAssets.meta
+/TPCAI/Assets/ModelsAndAssets
+/TPCAI/Assets/ModelsAndAssets.meta
 # ORK Framework, No Longer Used
-/Project/Assets/_ORK_Project_Backups
-/Project/Assets/ORK Framework/DLL
-/Project/Assets/ORK Framework/DLL.meta
-/Project/Assets/ORK Framework/demo.unitypackage
-/Project/Assets/ORK Framework/demo.unitypackage.meta
-/Project/Assets/ORK Framework/EditorData.asset
-/Project/Assets/ORK Framework/EditorData.asset.meta
-/Project/Assets/ORK Framework/gameplay_source_code.zip
-/Project/Assets/ORK Framework/gameplay_source_code.zip.meta
-/Project/Assets/ORK Framework/README.txt
-/Project/Assets/ORK Framework/README.txt.meta
+/TPCAI/Assets/_ORK_TPCAI_Backups
+/TPCAI/Assets/ORK Framework/DLL
+/TPCAI/Assets/ORK Framework/DLL.meta
+/TPCAI/Assets/ORK Framework/demo.unitypackage
+/TPCAI/Assets/ORK Framework/demo.unitypackage.meta
+/TPCAI/Assets/ORK Framework/EditorData.asset
+/TPCAI/Assets/ORK Framework/EditorData.asset.meta
+/TPCAI/Assets/ORK Framework/gameplay_source_code.zip
+/TPCAI/Assets/ORK Framework/gameplay_source_code.zip.meta
+/TPCAI/Assets/ORK Framework/README.txt
+/TPCAI/Assets/ORK Framework/README.txt.meta
 
 # Map Data Used Inside My RTS Framework
-/Project/Assets/Tactical Prototyping/Maps/RTSMainMenu
-/Project/Assets/Tactical Prototyping/Maps/Lvl 1-Training
-/Project/Assets/Tactical Prototyping/Maps/TPS Demo Map
+/TPCAI/Assets/Tactical Prototyping/Maps/RTSMainMenu
+/TPCAI/Assets/Tactical Prototyping/Maps/Lvl 1-Training
+/TPCAI/Assets/Tactical Prototyping/Maps/TPS Demo Map
 
 # No Longer Used
-/Project/Assets/Tactical Prototyping/Maps/0 RTSMainMenu
-/Project/Assets/Tactical Prototyping/Maps/1 RTSProtoMap
-/Project/Assets/Tactical Prototyping/Maps/0 Main Menu
-/Project/Assets/Tactical Prototyping/Maps/1 Town
-/Project/Assets/Tactical Prototyping/Maps/2 Field
-/Project/Assets/Tactical Prototyping/Maps/3 Game Over
-/Project/Assets/Tactical Prototyping/Maps/4 Battle Arena
+/TPCAI/Assets/Tactical Prototyping/Maps/0 RTSMainMenu
+/TPCAI/Assets/Tactical Prototyping/Maps/1 RTSProtoMap
+/TPCAI/Assets/Tactical Prototyping/Maps/0 Main Menu
+/TPCAI/Assets/Tactical Prototyping/Maps/1 Town
+/TPCAI/Assets/Tactical Prototyping/Maps/2 Field
+/TPCAI/Assets/Tactical Prototyping/Maps/3 Game Over
+/TPCAI/Assets/Tactical Prototyping/Maps/4 Battle Arena
 
 # Autogenerated VS/MD solution and project files
 ExportedObj/
