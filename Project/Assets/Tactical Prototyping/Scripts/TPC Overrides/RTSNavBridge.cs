@@ -136,7 +136,7 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
-        void OnToggleGamePaused(bool _isPaused)
+        void OnTogglePauseCommandMode(bool _isPaused)
         {
             //UnPausing and Command Moving During Pause
             if(_isPaused == false && bPauseCommandMoveCached)
@@ -368,7 +368,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandMove += MoveToDestination;
             myEventHandler.EventAllyDied += HandleAllyDeath;
             gamemaster.EventHoldingRightMouseDown += ToggleMoveCamera;
-            gamemaster.OnToggleIsGamePaused += OnToggleGamePaused;
+            gamemaster.OnTogglebIsInPauseControlMode += OnTogglePauseCommandMode;
         }
 
         void UnsubFromEvents()
@@ -380,7 +380,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandMove -= MoveToDestination;
             myEventHandler.EventAllyDied -= HandleAllyDeath;
             gamemaster.EventHoldingRightMouseDown -= ToggleMoveCamera;
-            gamemaster.OnToggleIsGamePaused -= OnToggleGamePaused;
+            gamemaster.OnTogglebIsInPauseControlMode -= OnTogglePauseCommandMode;
         }
         #endregion
     }
