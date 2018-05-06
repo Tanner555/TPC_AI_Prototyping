@@ -32,9 +32,16 @@ namespace BaseFramework
         public virtual bool bIsGamePaused
         {
             get { return _bIsGamePaused; }
-            set { _bIsGamePaused = value; }
+            protected set { _bIsGamePaused = value; }
         }
         private bool _bIsGamePaused = false;
+
+        public virtual bool bIsInPauseControlMode
+        {
+            get { return _bIsInPauseControlMode; }
+            protected set { _bIsInPauseControlMode = value; }
+        }
+        private bool _bIsInPauseControlMode = false;
 
         public virtual bool isGameOver
         {
@@ -93,6 +100,7 @@ namespace BaseFramework
         public event TwoBoolArgsHandler EventEnableCameraZoom;
         //Camera and Pause
         public event OneBoolArgsHandler OnToggleIsGamePaused;
+        public event OneBoolArgsHandler OnTogglebIsInPauseControlMode;
         public event OneBoolArgsHandler EventHoldingLeftMouseDown;
         public event OneBoolArgsHandler EventHoldingRightMouseDown;
         #endregion
@@ -175,11 +183,32 @@ namespace BaseFramework
             {
                 OnToggleIsGamePaused(bIsGamePaused);
             }
-            Invoke("ToggleTimeScale", 0.05f);
+            Invoke("ToggleGamePauseTimeScale", 0.05f);
         }
 
         //Override this functionality in wrapper class
-        protected virtual void ToggleTimeScale()
+        protected virtual void ToggleGamePauseTimeScale()
+        {
+            Time.timeScale = bIsGamePaused ? 0f : 1f;
+        }
+
+        public void CallOnTogglebIsInPauseControlMode()
+        {
+            CallOnTogglebIsInPauseControlMode(!bIsInPauseControlMode);
+        }
+
+        public void CallOnTogglebIsInPauseControlMode(bool _enable)
+        {
+            bIsInPauseControlMode = _enable;
+            if(OnTogglebIsInPauseControlMode != null)
+            {
+                OnTogglebIsInPauseControlMode(bIsInPauseControlMode);
+            }
+            Invoke("TogglePauseControlModeTimeScale", 0.05f);
+        }
+
+        //Override this functionality in wrapper class
+        protected virtual void TogglePauseControlModeTimeScale()
         {
             Time.timeScale = bIsGamePaused ? 0f : 1f;
         }
