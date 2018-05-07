@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace BaseFramework
 {
-    public class GameInstance : MonoBehaviour
+    public class GameInstance : DontDestroyOnLoadBaseSingleton<GameInstance>
     {
         #region Dictionaries
         //Used to Retrieve Information About a Level
@@ -15,11 +15,6 @@ namespace BaseFramework
         #endregion
 
         #region Properties
-        public static GameInstance thisInstance
-        {
-            get; protected set;
-        }
-
         public Dictionary<LevelIndex, LevelSettings> LevelSettingsDictionary
         {
             get { return levelSettingsDictionary; }
@@ -86,15 +81,11 @@ namespace BaseFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            if (thisInstance == null)
-            {
-                thisInstance = this;
-                GameObject.DontDestroyOnLoad(this);
-            }
-            else
+            //Check If There's More Than One Instance in Scene
+            if(bHasInstance && thisInstance != this)
             {
                 Debug.Log("More than one game instance in scene, destroying instance");
-                DestroyImmediate(this.gameObject);
+                DestroyImmediate(this.gameObject); 
             }
 
             InitializeDictionaryValues();
