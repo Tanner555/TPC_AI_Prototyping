@@ -85,7 +85,7 @@ namespace BaseFramework
 
         protected virtual void Start()
         {
-            
+            SubToEvents();
         }
 
         // Update is called once per frame
@@ -99,7 +99,7 @@ namespace BaseFramework
 
         protected virtual void OnDisable()
         {
-            
+            UnsubFromEvents();
         }
         #endregion
 
@@ -264,23 +264,20 @@ namespace BaseFramework
         #endregion
 
         #region Handlers
+        protected virtual void HandleGamePaused(bool _isPaused)
+        {
+            if (_isPaused)
+            {
+                ResetMouseSetup();
+            }
+        }
+
         protected virtual void HandleUiActiveSelf(bool _state)
         {
             UiIsEnabled = _state;
             if (_state == true)
             {
-                if (isRMHeldPastThreshold)
-                {
-                    isRMHeldPastThreshold = false;
-                    gamemaster.CallEventHoldingRightMouseDown(false);
-                }
-                if (isLMHeldPastThreshold)
-                {
-                    isLMHeldPastThreshold = false;
-                    //gamemaster.CallEventEnableSelectionBox(false);
-                }
-                isLMHeldDown = false;
-                isRMHeldDown = false;
+                ResetMouseSetup();
             }
         }
 
@@ -289,18 +286,7 @@ namespace BaseFramework
             UiIsEnabled = uiMaster.isUiAlreadyInUse;
             if (uiMaster.isUiAlreadyInUse)
             {
-                if (isRMHeldPastThreshold)
-                {
-                    isRMHeldPastThreshold = false;
-                    gamemaster.CallEventHoldingRightMouseDown(false);
-                }
-                if (isLMHeldPastThreshold)
-                {
-                    isLMHeldPastThreshold = false;
-                    //gamemaster.CallEventEnableSelectionBox(false);
-                }
-                isLMHeldDown = false;
-                isRMHeldDown = false;
+                ResetMouseSetup();
             }
         }
         #endregion
@@ -308,6 +294,49 @@ namespace BaseFramework
         #region InputCalls
         protected void CallMenuToggle() { uiMaster.CallEventMenuToggle(); }
         protected void CallToggleIsGamePaused() { gamemaster.CallOnToggleIsGamePaused(); }
+        #endregion
+
+        #region Initialization
+        void SubToEvents()
+        {
+            gamemaster.OnToggleIsGamePaused += HandleGamePaused;
+            uiMaster.EventAnyUIToggle += HandleUiActiveSelf;
+        }
+
+        void UnsubFromEvents()
+        {
+            gamemaster.OnToggleIsGamePaused -= HandleGamePaused;
+            uiMaster.EventAnyUIToggle -= HandleUiActiveSelf;
+        }
+        #endregion
+
+        #region Helpers
+        /// <summary>
+        /// Used Whenever Mouse Setup Needs to be disabled,
+        /// Such as when a UI Menu (Pause Menu) is Active
+        /// </summary>
+        void ResetMouseSetup()
+        {
+            if (isRMHeldPastThreshold)
+            {
+                isRMHeldPastThreshold = false;
+                gamemaster.CallEventHoldingRightMouseDown(false);
+            }
+            if (isLMHeldPastThreshold)
+            {
+                isLMHeldPastThreshold = false;
+                gamemaster.CallEventHoldingLeftMouseDown(false);
+            }
+
+            isLMHeldDown = false;
+            isRMHeldDown = false;
+            //Reset Scrolling
+            isScrolling = false;
+            isNotScrollingPastThreshold = true;
+            bBeganScrolling = false;
+            noScrollCurrentTimer = 0.0f;
+            gamemaster.CallEventEnableCameraZoom(false, bScrollAxisIsPositive);
+        }
         #endregion
     }
 }
