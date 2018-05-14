@@ -71,8 +71,6 @@ namespace BaseFramework
         protected LevelIndex currentLevel = LevelIndex.Main_Menu;
         [SerializeField]
         protected ScenarioIndex currentScenario = ScenarioIndex.No_Scenario;
-        [SerializeField]
-        protected int FrameRateLimit = 60;
         [Header("Data Containing Level Settings")]
         [SerializeField]
         protected LevelSettingsData levelSettingsData;
