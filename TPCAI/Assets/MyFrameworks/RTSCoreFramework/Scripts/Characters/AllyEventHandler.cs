@@ -30,6 +30,10 @@ namespace RTSCoreFramework
         public bool bIsCommandMoving { get; protected set; }
         public bool bIsAIMoving { get; protected set; }
         public bool bIsFreeMoving { get; protected set; }
+        public bool bIsAttacking
+        {
+            get { return bIsCommandAttacking || bIsAiAttacking; }
+        }
         public bool bIsCommandAttacking { get; protected set; }
         public bool bIsAiAttacking { get; protected set; }
         public bool bIsAimingToShoot { get; protected set; }
@@ -100,7 +104,7 @@ namespace RTSCoreFramework
         //Called by Opsive Shooter Script, then another class
         //handles the hitscan firing.
         public event GeneralVector3Handler OnTryHitscanFire;
-        //Tries Using Primary Item, Not Currently Called
+        //Tries Using Primary Item, Used By RTSItemHandler
         public event GeneralEventHandler OnTryFire;
         public event GeneralEventHandler OnTryReload;
         public event GeneralEventHandler OnTryCrouch;
