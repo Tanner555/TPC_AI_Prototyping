@@ -1,0 +1,6 @@
+In Assets Folder
+In ModelsAndAssets Folder
+Environment Folder
+This is where environment assets are stored
+Models Folder
+This is where custom models are stored
