@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.unity.render-pipelines.lightweight": "1.1.8-preview",
-    "com.unity.textmeshpro": "1.2.2",
+    "com.unity.render-pipelines.lightweight": "1.1.10-preview",
+    "com.unity.textmeshpro": "1.2.3",
     "com.unity.probuilder": "3.0.8",
-    "com.unity.progrids": "3.0.2-preview"
+    "com.unity.progrids": "3.0.3-preview.0"
   }
 }
