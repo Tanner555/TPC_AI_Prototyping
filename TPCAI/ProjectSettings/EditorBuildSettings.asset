@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Tactical Prototyping/Maps/RTSMainMenu.unity
+    guid: 3b88171009ee08643858d27b4aeb7966
+  - enabled: 1
+    path: Assets/Tactical Prototyping/Maps/Lvl 1-Training.unity
+    guid: 3a6bbbac7e5589b4cab41ac4b6f6ce46
   m_configObjects: {}
