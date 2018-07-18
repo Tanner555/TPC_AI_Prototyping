@@ -27,6 +27,9 @@ namespace RTSCoreFramework
         [Header("Data Containing Weapon Stats")]
         [SerializeField]
         protected WeaponStatsData weaponStatsData;
+
+        //Used For Initialization
+        bool bInitializedDictionaries = false;
         #endregion
 
         #region Properties
@@ -39,7 +42,11 @@ namespace RTSCoreFramework
 
         public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
         {
-            get { return weaponStatDictionary; }
+            get
+            {
+                CheckForDictionaryInit();
+                return weaponStatDictionary;
+            }
         }
 
         /// <summary>
@@ -47,7 +54,11 @@ namespace RTSCoreFramework
         /// </summary>
         public CharacterTacticsData DebugGET_CharacterTacticsData
         {
-            get { return characterTacticsData; }
+            get
+            {
+                CheckForDictionaryInit();
+                return characterTacticsData;
+            }
         }
         // I'll probably use public methods to access and update stats
         //public Dictionary<RTSCharacterType, CharacterStats> GetCharacterStats
@@ -63,16 +74,18 @@ namespace RTSCoreFramework
         #region Getters
         public CharacterStats RetrieveCurrentPlayerStats()
         {
+            CheckForDictionaryInit();
             var _cPlayer = gamemode.CurrentPlayer;
             return RetrieveCharacterStats(_cPlayer, _cPlayer.CharacterType);
         }
 
         public CharacterTactics RetrieveCurrentPlayerTactics()
         {
+            CheckForDictionaryInit();
             var _cPlayer = gamemode.CurrentPlayer;
             return RetrieveCharacterTactics(_cPlayer, _cPlayer.CharacterType);
         }
-        
+
         /// <summary>
         ///  Used to retrieve an Anonymous Character's Stats, that may update
         ///  from a specific character instance if the instance is the player's
@@ -83,6 +96,7 @@ namespace RTSCoreFramework
         /// <returns></returns>
         public CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
         {
+            CheckForDictionaryInit();
             return RetrieveAnonymousCharacterStats(_cType);
         }
         /// <summary>
@@ -93,6 +107,7 @@ namespace RTSCoreFramework
         /// <returns></returns>
         public CharacterStats RetrieveAnonymousCharacterStats(ECharacterType _cType)
         {
+            CheckForDictionaryInit();
             if (CharacterStatDictionary.ContainsKey(_cType))
             {
                 return CharacterStatDictionary[_cType];
@@ -107,6 +122,7 @@ namespace RTSCoreFramework
 
         public CharacterTactics RetrieveCharacterTactics(AllyMember _ally, ECharacterType _cType)
         {
+            CheckForDictionaryInit();
             return RetrieveAnonymousCharacterTactics(_cType);
         }
 
@@ -118,6 +134,7 @@ namespace RTSCoreFramework
         /// <returns></returns>
         public CharacterTactics RetrieveAnonymousCharacterTactics(ECharacterType _cType)
         {
+            CheckForDictionaryInit();
             if (CharacterTacticsDictionary.ContainsKey(_cType))
             {
                 return CharacterTacticsDictionary[_cType];
@@ -131,6 +148,7 @@ namespace RTSCoreFramework
 
         public PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
         {
+            CheckForDictionaryInit();
             if (PartyStatDictionary.ContainsKey(_commander))
             {
                 return PartyStatDictionary[_commander];
@@ -152,7 +170,6 @@ namespace RTSCoreFramework
             else
                 thisInstance = this;
 
-            InitializeDictionaryValues();
         }
 
         // Use this for initialization
@@ -169,6 +186,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region Initialization
+        /// <summary>
+        /// Used to check for initialization of dictionaries
+        /// </summary>
+        void CheckForDictionaryInit()
+        {
+            if (bInitializedDictionaries == false)
+            {
+                InitializeDictionaryValues();
+                bInitializedDictionaries = true;
+            }
+        }
+
         void InitializeDictionaryValues()
         {
             //Transfer Values From Serialized List To A Dictionary
