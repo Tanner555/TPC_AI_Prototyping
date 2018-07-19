@@ -111,6 +111,12 @@ namespace RTSCoreFramework
         }
         private int _AllyMaxStamina = 0;
 
+        public virtual int AllyMinStamina
+        {
+            get { return _AllyMinStamina; }
+        }
+        private int _AllyMinStamina = 0;
+
         public virtual bool IsAlive
         {
             get { return AllyHealth > AllyMinHealth; }
@@ -280,7 +286,7 @@ namespace RTSCoreFramework
         public virtual void AllyHeal(int amount)
         {
             if (IsAlive == false) return;
-            if (AllyHealth > AllyMinHealth)
+            if (AllyHealth < AllyMaxHealth)
             {
                 AllyHealth = Mathf.Min(AllyMaxHealth, AllyHealth + amount);
             }
@@ -288,10 +294,24 @@ namespace RTSCoreFramework
 
         public virtual void AllyHeal(int amount, AllyMember _healer)
         {
+            AllyHeal(amount);
+        }
+
+        public virtual void AllyRegainStamina(int amount)
+        {
             if (IsAlive == false) return;
-            if (AllyHealth > AllyMinHealth)
+            if (AllyStamina < AllyMaxStamina)
             {
-                AllyHealth = Mathf.Min(AllyMaxHealth, AllyHealth + amount);
+                AllyStamina = Mathf.Min(AllyMaxStamina, AllyStamina + amount);
+            }
+        }
+
+        public virtual void AllyDrainStamina(int amount)
+        {
+            if (IsAlive == false) return;
+            if (AllyStamina > AllyMinStamina)
+            {
+                AllyStamina = Mathf.Max(AllyMinStamina, AllyStamina - amount);
             }
         }
 
