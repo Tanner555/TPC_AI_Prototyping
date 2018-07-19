@@ -150,7 +150,8 @@ namespace RTSCoreFramework
         #region BooleanProperties
         protected virtual bool AllComponentsAreValid
         {
-            get {
+            get
+            {
                 return allyEventHandler && aiController &&
                   allyStatController;
             }
@@ -263,6 +264,24 @@ namespace RTSCoreFramework
             }
         }
 
+        public virtual void AllyHeal(int amount)
+        {
+            if (IsAlive == false) return;
+            if (AllyHealth > AllyMinHealth)
+            {
+                AllyHealth = Mathf.Min(AllyMaxHealth, AllyHealth + amount);
+            }
+        }
+
+        public virtual void AllyHeal(int amount, AllyMember _healer)
+        {
+            if (IsAlive == false) return;
+            if (AllyHealth > AllyMinHealth)
+            {
+                AllyHealth = Mathf.Min(AllyMaxHealth, AllyHealth + amount);
+            }
+        }
+
         protected virtual void SetDamageInstigator(AllyMember _instigator)
         {
             if (_instigator != null && _instigator != DamageInstigator)
@@ -310,7 +329,7 @@ namespace RTSCoreFramework
                 }
                 //Add to death count
                 PartyDeaths += 1;
-                
+
                 gamemode.ProcessAllyDeath(this);
                 Invoke("DestroyAlly", 0.1f);
             }
