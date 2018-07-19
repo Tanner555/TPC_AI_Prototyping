@@ -44,7 +44,7 @@ namespace RTSCoreFramework
             get
             {
                 //For Faster Access when using OnEnable method
-                if(RTSStatHandler.thisInstance != null) 
+                if (RTSStatHandler.thisInstance != null)
                     return RTSStatHandler.thisInstance;
 
                 return GameObject.FindObjectOfType<RTSStatHandler>();
@@ -54,7 +54,7 @@ namespace RTSCoreFramework
 
         #region AccessProperties
         //Health
-        public int Stat_Health
+        public virtual int Stat_Health
         {
             get { return myCharacterStats.Health; }
             set
@@ -63,33 +63,33 @@ namespace RTSCoreFramework
                 CallOnHealthChanged();
             }
         }
-        public int Stat_MaxHealth
+        public virtual int Stat_MaxHealth
         {
             get { return myCharacterStats.MaxHealth; }
         }
         //Weapons
-        public EEquipType Stat_EquipType
+        public virtual EEquipType Stat_EquipType
         {
             get { return myCharacterStats.EquippedWeapon; }
         }
-        public EWeaponType Stat_PrimaryWeapon
+        public virtual EWeaponType Stat_PrimaryWeapon
         {
             get { return myCharacterStats.PrimaryWeapon; }
         }
-        public EWeaponType Stat_SecondaryWeapon
+        public virtual EWeaponType Stat_SecondaryWeapon
         {
             get { return myCharacterStats.SecondaryWeapon; }
         }
         //Other Character Stats
-        public ECharacterType Stat_CharacterType
+        public virtual ECharacterType Stat_CharacterType
         {
             get { return myCharacterStats.CharacterType; }
         }
-        public string Stat_CharacterName
+        public virtual string Stat_CharacterName
         {
             get { return myCharacterStats.CharacterType.ToString(); }
         }
-        public Sprite Stat_CharacterPortrait
+        public virtual Sprite Stat_CharacterPortrait
         {
             get { return myCharacterStats.CharacterPortrait; }
         }
@@ -97,40 +97,40 @@ namespace RTSCoreFramework
 
         #region UnityMessages
         // Use this for initialization
-        void OnEnable()
+        protected virtual void OnEnable()
         {
             InitializeCharacterStats();
             SubToEvents();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             Invoke("OnDelayStart", 0.5f);
             RetrieveAllWeaponStats();
             UpdateUnequippedWeaponType();
         }
 
-        private void OnDelayStart()
+        protected virtual void OnDelayStart()
         {
             //Equip whatever the ally is holding
             eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
             CallOnHealthChanged();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             UnsubFromEvents();
         }
         #endregion
 
         #region Getters
-        public int CalculateDamageRate()
+        public virtual int CalculateDamageRate()
         {
             var _weapon = GetWeaponStats();
             return _weapon.DamageRate;
         }
 
-        private WeaponStats GetWeaponStats()
+        protected virtual WeaponStats GetWeaponStats()
         {
             switch (myCharacterStats.EquippedWeapon)
             {
@@ -143,7 +143,7 @@ namespace RTSCoreFramework
             }
         }
 
-        private WeaponStats GetWeaponStatsFromWeaponType(EWeaponType _weaponType)
+        protected virtual WeaponStats GetWeaponStatsFromWeaponType(EWeaponType _weaponType)
         {
             return allWeaponStats[_weaponType];
         }
@@ -172,7 +172,7 @@ namespace RTSCoreFramework
             var _weapon = myCharacterStats.EquippedWeapon == EEquipType.Primary ?
                 myCharacterStats.PrimaryWeapon : myCharacterStats.SecondaryWeapon;
             eventHandler.CallOnWeaponChanged(myCharacterStats.EquippedWeapon, _weapon, true);
-            
+
         }
         void HandleWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
@@ -193,28 +193,28 @@ namespace RTSCoreFramework
         #endregion
 
         #region Helpers
-        void CallOnHealthChanged()
+        protected virtual void CallOnHealthChanged()
         {
             eventHandler.CallOnHealthChanged(myCharacterStats.Health, myCharacterStats.MaxHealth);
         }
         #endregion
 
         #region Initialization
-        void SubToEvents()
+        protected virtual void SubToEvents()
         {
             eventHandler.OnEquipTypeChanged += HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged += HandleWeaponChanged;
         }
-        void UnsubFromEvents()
+        protected virtual void UnsubFromEvents()
         {
             eventHandler.OnEquipTypeChanged -= HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged -= HandleWeaponChanged;
         }
-        void InitializeCharacterStats()
+        protected virtual void InitializeCharacterStats()
         {
             myCharacterStats = statHandler.RetrieveCharacterStats(allyMember, characterType);
         }
-        void RetrieveAllWeaponStats()
+        protected virtual void RetrieveAllWeaponStats()
         {
             allWeaponStats = statHandler.WeaponStatDictionary;
         }

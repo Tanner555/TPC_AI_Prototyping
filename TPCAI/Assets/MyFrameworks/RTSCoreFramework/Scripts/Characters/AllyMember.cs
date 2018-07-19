@@ -229,6 +229,20 @@ namespace RTSCoreFramework
             }
         }
 
+        public virtual void AllyTakeDamage(int amount, AllyMember _instigator)
+        {
+            SetDamageInstigator(_instigator);
+            if (IsAlive == false) return;
+            if (AllyHealth > AllyMinHealth)
+            {
+                AllyHealth = Mathf.Max(AllyMinHealth, AllyHealth - amount);
+            }
+            if (IsAlive == false)
+            {
+                allyEventHandler.CallEventAllyDied();
+            }
+        }
+
         public virtual void AllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             SetDamageInstigator(_instigator);
