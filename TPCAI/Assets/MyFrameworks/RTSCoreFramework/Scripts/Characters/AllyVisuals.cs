@@ -14,38 +14,38 @@ namespace RTSCoreFramework
         public Light SelectionLight;
         [Header("Ally Waypoint Navigation")]
         public Material waypointRendererMaterial;
-        private float waypointStartWidth = 0.05f;
-        private float waypointEndWidth = 0.05f;
-        private Color waypointStartColor = Color.yellow;
-        private Color waypointEndColor = Color.yellow;
-        private LineRenderer waypointRenderer;
+        protected float waypointStartWidth = 0.05f;
+        protected float waypointEndWidth = 0.05f;
+        protected Color waypointStartColor = Color.yellow;
+        protected Color waypointEndColor = Color.yellow;
+        protected LineRenderer waypointRenderer;
         [Header("Ally Damage Effects")]
         public GameObject BloodParticles;
 
-        RTSGameMaster gamemaster
+        protected RTSGameMaster gamemaster
         {
             get { return RTSGameMaster.thisInstance; }
         }
 
-        AllyMember thisAlly
+        protected AllyMember thisAlly
         {
             get { return GetComponent<AllyMember>(); }
         }
 
-        AllyEventHandler myEventHandler
+        protected AllyEventHandler myEventHandler
         {
             get { return GetComponent<AllyEventHandler>(); }
         }
 
-        RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
+        protected RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
 
-        bool friend
+        protected bool friend
         {
             get { return thisAlly.bIsInGeneralCommanderParty; }
         }
 
         //NavMesh used for Waypoint Rendering
-        NavMeshAgent myNavMesh
+        protected NavMeshAgent myNavMesh
         {
             get
             {
@@ -57,15 +57,20 @@ namespace RTSCoreFramework
         }
         NavMeshAgent _myNavMesh = null;
 
-        bool cameraIsMoving = false;
+        protected bool cameraIsMoving = false;
 
-        bool bHasSwitched = false;
+        protected bool bHasSwitched = false;
 
-        float waypointUpdateRate = 0.5f;
+        protected float waypointUpdateRate = 0.5f;
         #endregion
 
         #region UnityMessages
-        private void OnDisable()
+        protected virtual void OnEnable()
+        {
+
+        }
+
+        protected virtual void OnDisable()
         {
             myEventHandler.OnHoverOver -= OnCursEnter;
             myEventHandler.OnHoverLeave -= OnCursExit;
@@ -82,7 +87,7 @@ namespace RTSCoreFramework
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
         }
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
             SelectionLight.enabled = false;
             myEventHandler.OnHoverOver += OnCursEnter;
@@ -116,7 +121,6 @@ namespace RTSCoreFramework
             {
                 SelectionLight.color = selEnemyColor;
             }
-
         }
 
         void OnCursExit()
@@ -128,13 +132,13 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
-        void SpawnBloodParticles(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
+        protected virtual void SpawnBloodParticles(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             if (BloodParticles == null) return;
             GameObject.Instantiate(BloodParticles, position, Quaternion.identity);
         }
 
-        void SetupWaypointRenderer(Vector3 _point)
+        protected virtual void SetupWaypointRenderer(Vector3 _point)
         {
             if (IsInvoking("UpdateWaypointRenderer"))
             {
@@ -143,18 +147,18 @@ namespace RTSCoreFramework
             InvokeRepeating("UpdateWaypointRenderer", 0.1f, waypointUpdateRate);
         }
 
-        void DisableWaypointRenderer()
+        protected virtual void DisableWaypointRenderer()
         {
             if (IsInvoking("UpdateWaypointRenderer"))
                 CancelInvoke("UpdateWaypointRenderer");
 
-            if(waypointRenderer != null)
+            if (waypointRenderer != null)
             {
                 waypointRenderer.enabled = false;
             }
         }
 
-        void DisableWaypointRenderer(AllyMember _ally)
+        protected virtual void DisableWaypointRenderer(AllyMember _ally)
         {
             if (waypointRenderer != null)
             {
@@ -162,7 +166,7 @@ namespace RTSCoreFramework
             }
         }
 
-        void CheckToDisableWaypointRenderer(bool _isFreeMoving)
+        protected virtual void CheckToDisableWaypointRenderer(bool _isFreeMoving)
         {
             //If Free Moving, Need to disable waypoint renderer
             if (_isFreeMoving)
@@ -171,36 +175,36 @@ namespace RTSCoreFramework
             }
         }
 
-        void OnPartySwitch()
+        protected virtual void OnPartySwitch()
         {
             DisableWaypointRenderer();
             bHasSwitched = true;
             Invoke("SetbHasSwitchedToFalse", 0.2f);
         }
 
-        void OnCmdAttackEnemy(AllyMember _ally)
+        protected virtual void OnCmdAttackEnemy(AllyMember _ally)
         {
             DisableWaypointRenderer();
             bHasSwitched = true;
             Invoke("SetbHasSwitchedToFalse", 0.2f);
         }
 
-        void SetbHasSwitchedToFalse()
+        protected virtual void SetbHasSwitchedToFalse()
         {
             bHasSwitched = false;
         }
 
-        void HandleDeath()
+        protected virtual void HandleDeath()
         {
             DestroyOnDeath();
         }
 
-        void HandleGameOver()
+        protected virtual void HandleGameOver()
         {
             DestroyOnDeath();
         }
 
-        void DestroyOnDeath()
+        protected virtual void DestroyOnDeath()
         {
             if (SelectionLight != null)
             {
@@ -215,13 +219,13 @@ namespace RTSCoreFramework
             Destroy(this);
         }
 
-        void HandleCameraMovement(bool _isMoving)
+        protected virtual void HandleCameraMovement(bool _isMoving)
         {
             cameraIsMoving = _isMoving;
             SelectionLight.enabled = false;
         }
 
-        void HandleUIEnable(bool _enabled)
+        protected virtual void HandleUIEnable(bool _enabled)
         {
             if (_enabled && SelectionLight != null && SelectionLight.enabled)
             {
@@ -231,7 +235,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region Helpers
-        void UpdateWaypointRenderer()
+        protected virtual void UpdateWaypointRenderer()
         {
             if (bHasSwitched || myNavMesh == null ||
                 myNavMesh.path == null ||
