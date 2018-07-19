@@ -30,6 +30,10 @@ namespace RTSCoreFramework
         public int MaxHealth;
         public int Health;
 
+        [Header("Stamina Stats")]
+        public int MaxStamina;
+        public int Stamina;
+
         [Header("Weapon Equipped")]
         public EEquipType EquippedWeapon;
 

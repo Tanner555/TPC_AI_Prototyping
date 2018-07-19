@@ -67,6 +67,20 @@ namespace RTSCoreFramework
         {
             get { return myCharacterStats.MaxHealth; }
         }
+        //Stamina
+        public virtual int Stat_Stamina
+        {
+            get { return myCharacterStats.Stamina; }
+            set
+            {
+                myCharacterStats.Stamina = value;
+                CallOnStaminaChanged();
+            }
+        }
+        public virtual int Stat_MaxStamina
+        {
+            get { return myCharacterStats.MaxStamina; }
+        }
         //Weapons
         public virtual EEquipType Stat_EquipType
         {
@@ -115,6 +129,7 @@ namespace RTSCoreFramework
             //Equip whatever the ally is holding
             eventHandler.CallOnEquipTypeChanged(myCharacterStats.EquippedWeapon);
             CallOnHealthChanged();
+            CallOnStaminaChanged();
         }
 
         protected virtual void OnDisable()
@@ -196,6 +211,11 @@ namespace RTSCoreFramework
         protected virtual void CallOnHealthChanged()
         {
             eventHandler.CallOnHealthChanged(myCharacterStats.Health, myCharacterStats.MaxHealth);
+        }
+
+        protected virtual void CallOnStaminaChanged()
+        {
+            eventHandler.CallOnStaminaChanged(myCharacterStats.Stamina, myCharacterStats.MaxStamina);
         }
         #endregion
 

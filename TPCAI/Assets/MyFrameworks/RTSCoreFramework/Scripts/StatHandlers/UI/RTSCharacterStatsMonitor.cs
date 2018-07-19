@@ -12,7 +12,8 @@ namespace RTSCoreFramework
         #region Properties
         bool AllCompsAreValid
         {
-            get {
+            get
+            {
                 return UiCharacterPortrait && UiHealthSlider && UiAbilitySlider
                   && CurrentHealthText && MaxHealthText && CurrentAbilityText
                   && MaxAbilityText && CharacterNameText && UiCharacterPortraitPanel;
@@ -108,7 +109,7 @@ namespace RTSCoreFramework
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (uiTarget != null && uiTargetHandler && 
+            if (uiTarget != null && uiTargetHandler &&
                 !uiTarget.bIsCurrentPlayer)
             {
                 uiTargetHandler.CallEventOnHoverLeave();
@@ -117,9 +118,9 @@ namespace RTSCoreFramework
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            bool _leftClick = eventData.button == 
+            bool _leftClick = eventData.button ==
                 PointerEventData.InputButton.Left;
-            if (_leftClick && uiTarget != null && uiTargetHandler && 
+            if (_leftClick && uiTarget != null && uiTargetHandler &&
                 !uiTarget.bIsCurrentPlayer &&
                 uiTarget.partyManager != null)
             {
@@ -132,7 +133,7 @@ namespace RTSCoreFramework
         #region HookingUiTarget-Initialization
         public void HookAllyCharacter(AllyMember _targetToSet)
         {
-            if(AllCompsAreValid == false)
+            if (AllCompsAreValid == false)
             {
                 Debug.LogError(@"Cannot Hook Character Because
                 Not All Components Are Set In The Inspector");
@@ -143,7 +144,7 @@ namespace RTSCoreFramework
                 SetupUITargetHandlers(uiTarget, _targetToSet);
                 uiTarget = _targetToSet;
                 //Set Character Portrait
-                if(uiTarget.CharacterPortrait != null)
+                if (uiTarget.CharacterPortrait != null)
                 {
                     UiCharacterPortrait.sprite = uiTarget.CharacterPortrait;
                 }
@@ -181,6 +182,7 @@ namespace RTSCoreFramework
             SetAllyIsUiTarget(_target, true);
             //Sub to Current UiTarget Handlers
             _handler.OnHealthChanged += UiTargetHandle_OnHealthChanged;
+            _handler.OnStaminaChanged += UiTargetHandle_OnStaminaChanged;
             _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander += UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom += UiTargetHandle_SwitchFromCommander;
@@ -201,6 +203,7 @@ namespace RTSCoreFramework
             SetAllyIsUiTarget(_target, false);
             //Unsub From Previous UiTarget Handlers
             _handler.OnHealthChanged -= UiTargetHandle_OnHealthChanged;
+            _handler.OnStaminaChanged -= UiTargetHandle_OnStaminaChanged;
             _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander -= UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom -= UiTargetHandle_SwitchFromCommander;
@@ -232,7 +235,19 @@ namespace RTSCoreFramework
             Slider _slider = UiHealthSlider.GetComponent<Slider>();
             if (_slider != null)
             {
-                _slider = UiHealthSlider.GetComponent<Slider>();
+                _slider.maxValue = _max;
+                _slider.value = _current;
+            }
+        }
+
+        protected virtual void UiTargetHandle_OnStaminaChanged(int _current, int _max)
+        {
+            if (AllCompsAreValid == false) return;
+            CurrentAbilityText.text = _current.ToString();
+            MaxAbilityText.text = _max.ToString();
+            Slider _slider = UiAbilitySlider.GetComponent<Slider>();
+            if (_slider != null)
+            {
                 _slider.maxValue = _max;
                 _slider.value = _current;
             }
@@ -240,7 +255,7 @@ namespace RTSCoreFramework
 
         protected virtual void UiTargetHandle_OnAllyDeath()
         {
-            if(uiTarget != null && uiTarget.bAllyIsUiTarget)
+            if (uiTarget != null && uiTarget.bAllyIsUiTarget)
             {
                 UnsubscribeFromUiTargetHandlers(uiTarget);
             }
@@ -258,7 +273,7 @@ namespace RTSCoreFramework
 
         protected virtual void UiTargetHandle_OnHoverOver()
         {
-            if(bIsHighlighted == false && uiTarget != null &&
+            if (bIsHighlighted == false && uiTarget != null &&
                 !uiTarget.bIsCurrentPlayer)
             {
                 SetToHighlightColor();
@@ -302,7 +317,7 @@ namespace RTSCoreFramework
         #region Helpers
         void SetToHighlightColor()
         {
-            if(AllCompsAreValid && PortraitPanelImage != null)
+            if (AllCompsAreValid && PortraitPanelImage != null)
             {
                 bIsHighlighted = true;
                 PortraitPanelImage.color = HighlightColor;

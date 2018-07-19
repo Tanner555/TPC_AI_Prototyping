@@ -39,9 +39,12 @@ namespace RTSCoreFramework
         public bool bIsAimingToShoot { get; protected set; }
         public bool bCanEnableAITactics
         {
-            get { return (bIsCommandMoving || 
-                    bIsFreeMoving) == false && 
-                    bIsCommandAttacking == false; }
+            get
+            {
+                return (bIsCommandMoving ||
+                  bIsFreeMoving) == false &&
+                  bIsCommandAttacking == false;
+            }
         }
 
         //Ui Target Info
@@ -50,7 +53,8 @@ namespace RTSCoreFramework
         public EEquipType MyEquippedType { get; protected set; }
         public EEquipType MyUnequippedType
         {
-            get {
+            get
+            {
                 return MyEquippedType == EEquipType.Primary ?
                   EEquipType.Secondary : EEquipType.Primary;
             }
@@ -81,7 +85,7 @@ namespace RTSCoreFramework
         }
 
         protected bool bHasStartedFromDelay = false;
-        
+
         #endregion
 
         #region DelegatesAndEvents
@@ -129,6 +133,7 @@ namespace RTSCoreFramework
         public delegate void TwoIntArgsHandler(int _firstNum, int _secondNum);
         public event TwoIntArgsHandler OnAmmoChanged;
         public event TwoIntArgsHandler OnHealthChanged;
+        public event TwoIntArgsHandler OnStaminaChanged;
 
         public delegate void RTSTakeDamageHandler(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject);
         public event RTSTakeDamageHandler OnAllyTakeDamage;
@@ -212,7 +217,7 @@ namespace RTSCoreFramework
             if (bCanEnableAITactics)
             {
                 CallEventToggleAllyTactics(true);
-            }          
+            }
             if (EventFinishedMoving != null) EventFinishedMoving();
         }
 
@@ -391,9 +396,10 @@ namespace RTSCoreFramework
                 MyUnequippedWeaponType = MyEquippedWeaponType;
             }
             MyEquippedWeaponType = _weaponType;
-            if(globalStatHandler && 
+            if (globalStatHandler &&
                 globalStatHandler.WeaponStatDictionary.ContainsKey(MyEquippedWeaponType) &&
-                globalStatHandler.WeaponStatDictionary.ContainsKey(MyUnequippedWeaponType)){
+                globalStatHandler.WeaponStatDictionary.ContainsKey(MyUnequippedWeaponType))
+            {
                 MyEquippedWeaponIcon =
                 globalStatHandler.WeaponStatDictionary
                 [MyEquippedWeaponType].WeaponIcon;
@@ -404,7 +410,7 @@ namespace RTSCoreFramework
                     [MyUnequippedWeaponType].WeaponIcon;
                 }
             }
-            
+
             if (OnWeaponChanged != null)
             {
                 OnWeaponChanged(_eType, _weaponType, _equipped);
@@ -413,7 +419,7 @@ namespace RTSCoreFramework
 
         protected void CallOnAmmoChanged(int _loaded, int _unloaded)
         {
-            if(MyEquippedType == EEquipType.Primary)
+            if (MyEquippedType == EEquipType.Primary)
             {
                 PrimaryLoadedAmmoAmount = _loaded;
                 PrimaryUnloadedAmmoAmount = _unloaded;
@@ -429,6 +435,11 @@ namespace RTSCoreFramework
         public void CallOnHealthChanged(int _current, int _max)
         {
             if (OnHealthChanged != null) OnHealthChanged(_current, _max);
+        }
+
+        public void CallOnStaminaChanged(int _current, int _max)
+        {
+            if (OnStaminaChanged != null) OnStaminaChanged(_current, _max);
         }
 
         public void CallOnAllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
@@ -448,7 +459,7 @@ namespace RTSCoreFramework
         /// <param name="_unloaded"></param>
         public void UpdateWeaponAmmoCount(EEquipType _eType, int _loaded, int _unloaded)
         {
-            if(_eType == EEquipType.Primary)
+            if (_eType == EEquipType.Primary)
             {
                 PrimaryLoadedAmmoAmount = _loaded;
                 PrimaryUnloadedAmmoAmount = _unloaded;
