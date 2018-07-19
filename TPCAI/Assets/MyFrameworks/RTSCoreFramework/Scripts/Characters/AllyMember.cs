@@ -98,6 +98,19 @@ namespace RTSCoreFramework
         }
         private int _allyMinHealth = 0;
 
+        public virtual int AllyStamina
+        {
+            get { return _AllyStamina; }
+            protected set { _AllyStamina = value; }
+        }
+        private int _AllyStamina = 0;
+
+        public virtual int AllyMaxStamina
+        {
+            get { return _AllyMaxStamina; }
+        }
+        private int _AllyMaxStamina = 0;
+
         public virtual bool IsAlive
         {
             get { return AllyHealth > AllyMinHealth; }
