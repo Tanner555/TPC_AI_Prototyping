@@ -8,9 +8,39 @@ namespace RTSCoreFramework
     public class AllyAIController : MonoBehaviour
     {
         #region Components
-        protected NavMeshAgent myNavAgent;
-        protected AllyEventHandler myEventHandler;
-        protected AllyMember allyMember;
+        protected NavMeshAgent myNavAgent
+        {
+            get
+            {
+                if (_myNavAgent == null)
+                    _myNavAgent = GetComponent<NavMeshAgent>();
+
+                return _myNavAgent;
+            }
+        }
+        private NavMeshAgent _myNavAgent = null;
+        protected AllyEventHandler myEventHandler
+        {
+            get
+            {
+                if (_myEventHandler == null)
+                    _myEventHandler = GetComponent<AllyEventHandler>();
+
+                return _myEventHandler;
+            }
+        }
+        private AllyEventHandler _myEventHandler = null;
+        protected AllyMember allyMember
+        {
+            get
+            {
+                if (_allyMember == null)
+                    _allyMember = GetComponent<AllyMember>();
+
+                return _allyMember;
+            }
+        }
+        private AllyMember _allyMember = null;
         #endregion
 
         #region Fields
@@ -97,7 +127,10 @@ namespace RTSCoreFramework
         // Use this for initialization
         protected virtual void Start()
         {
-            SetInitialReferences();
+            if (!AllCompsAreValid)
+            {
+                Debug.LogError("Not all comps are valid!");
+            }
             SubToEvents();
             StartServices();
         }
@@ -180,7 +213,7 @@ namespace RTSCoreFramework
 
         protected virtual void OnEnableCameraMovement(bool _enable)
         {
-            
+
         }
 
         protected virtual void TogglebIsShooting(bool _enable)
@@ -194,7 +227,8 @@ namespace RTSCoreFramework
         {
             //Temp fix for PartyManager Delaying AllyInCommand Init Methods
             var _allyInCommand = allyInCommand;
-            if (_allyInCommand == null) {
+            if (_allyInCommand == null)
+            {
                 Debug.Log("IsWithinFollowingDistance: Ally In Command is Null");
                 return false;
             }
@@ -207,7 +241,8 @@ namespace RTSCoreFramework
         {
             AllyMember _closestEnemy = FindClosestEnemy();
             bool _valid = _closestEnemy != null && _closestEnemy.IsAlive;
-            if (_valid) {
+            if (_valid)
+            {
                 currentTargettedEnemy = _closestEnemy;
             }
             else
@@ -220,7 +255,7 @@ namespace RTSCoreFramework
             }
             return (_valid);
         }
-        
+
         public void Tactics_MoveToLeader()
         {
             if (allyMember.bIsGeneralInCommand) return;
@@ -239,13 +274,13 @@ namespace RTSCoreFramework
 
         public void AttackTargettedEnemy()
         {
-            if(currentTargettedEnemy != null &&
+            if (currentTargettedEnemy != null &&
                 currentTargettedEnemy.IsAlive)
             {
-                if(myEventHandler.bIsAiAttacking == false)
+                if (myEventHandler.bIsAiAttacking == false)
                     myEventHandler.CallEventAICommandAttackEnemy(currentTargettedEnemy);
             }
-            else if(myEventHandler.bIsAiAttacking)
+            else if (myEventHandler.bIsAiAttacking)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
             }
@@ -270,7 +305,7 @@ namespace RTSCoreFramework
 
         #region AITacticsHelpers
         protected virtual AllyMember FindClosestEnemy()
-        {      
+        {
             AllyMember _closestEnemy = null;
             if (headTransform == null)
             {
@@ -301,7 +336,7 @@ namespace RTSCoreFramework
 
             return _closestEnemy;
         }
-        
+
         bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
             RaycastHit _myHit;
@@ -365,7 +400,7 @@ namespace RTSCoreFramework
             // Is Active
             if (myEventHandler.bAllyIsPaused) return;
 
-            if (currentTargettedEnemy == null || 
+            if (currentTargettedEnemy == null ||
                 currentTargettedEnemy.IsAlive == false ||
                 myEventHandler.bIsFreeMoving)
             {
@@ -374,7 +409,7 @@ namespace RTSCoreFramework
                 return;
             }
             RaycastHit _hit;
-            if(hasLOSWithinRange(currentTargettedEnemy, out _hit))
+            if (hasLOSWithinRange(currentTargettedEnemy, out _hit))
             {
                 if (bIsShooting == false)
                 {
@@ -386,12 +421,12 @@ namespace RTSCoreFramework
                 if (bIsShooting == true)
                     StopShootingBehavior();
 
-                if(bIsMoving == false)
+                if (bIsMoving == false)
                 {
                     myEventHandler.CallEventAIMove(currentTargettedEnemy.transform.position);
                 }
             }
-            
+
         }
 
         protected virtual void StartBattleBehavior()
@@ -457,18 +492,6 @@ namespace RTSCoreFramework
         protected virtual void CancelServices()
         {
             CancelInvoke();
-        }
-
-        protected virtual void SetInitialReferences()
-        {
-            myNavAgent = GetComponent<NavMeshAgent>();
-            myEventHandler = GetComponent<AllyEventHandler>();
-            allyMember = GetComponent<AllyMember>();
-
-            if (!AllCompsAreValid)
-            {
-                Debug.LogError("Not all comps are valid!");
-            }
         }
         #endregion
 
