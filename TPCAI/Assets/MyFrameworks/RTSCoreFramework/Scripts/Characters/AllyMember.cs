@@ -29,7 +29,6 @@ namespace RTSCoreFramework
         protected float firerate = 0.3f;
 
         //Other private variables
-        protected bool hasStarted = false;
         protected bool ExecutingShootingBehavior;
         protected bool wantsFreedomToMove;
         protected float freeMoveThreshold;
@@ -187,10 +186,7 @@ namespace RTSCoreFramework
         protected virtual void OnEnable()
         {
             SetInitialReferences();
-            if (hasStarted == true)
-            {
-                SubToEvents();
-            }
+            SubToEvents();
 
         }
 
@@ -203,13 +199,10 @@ namespace RTSCoreFramework
         protected virtual void Start()
         {
             if (gamemode == null)
-                Debug.LogError("No gamemode on ai player!");
-
-            if (hasStarted == false)
             {
-                SubToEvents();
-                hasStarted = true;
+                Debug.LogError("No gamemode on ai player!");
             }
+
             //Add Ally to PartyMembers Rather than Finding them
             //To Make Spawning Easier
             if (partyManager != null) partyManager.AddPartyMember(this);

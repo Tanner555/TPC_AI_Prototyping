@@ -121,7 +121,7 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-
+            SubToEvents();
         }
 
         // Use this for initialization
@@ -131,7 +131,6 @@ namespace RTSCoreFramework
             {
                 Debug.LogError("Not all comps are valid!");
             }
-            SubToEvents();
             StartServices();
         }
 
