@@ -195,7 +195,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventToggleIsShooting(bool _enable)
+        public virtual void CallEventToggleIsShooting(bool _enable)
         {
             bIsAimingToShoot = _enable;
             if (EventToggleIsShooting != null)
@@ -204,13 +204,13 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventToggleIsSprinting()
+        public virtual void CallEventToggleIsSprinting()
         {
             bIsSprinting = !bIsSprinting;
             if (EventToggleIsSprinting != null) EventToggleIsSprinting();
         }
 
-        public void CallEventFinishedMoving()
+        public virtual void CallEventFinishedMoving()
         {
             bIsCommandMoving = false;
             bIsAIMoving = false;
@@ -221,12 +221,12 @@ namespace RTSCoreFramework
             if (EventFinishedMoving != null) EventFinishedMoving();
         }
 
-        public void CallOnSwitchToPrevItem()
+        public virtual void CallOnSwitchToPrevItem()
         {
             if (OnSwitchToPrevItem != null) OnSwitchToPrevItem();
         }
 
-        public void CallOnSwitchToNextItem()
+        public virtual void CallOnSwitchToNextItem()
         {
             if (OnSwitchToNextItem != null) OnSwitchToNextItem();
         }
@@ -234,38 +234,38 @@ namespace RTSCoreFramework
         /// Need to changes string ref in Shootable Weapon script
         /// if I change the name of this method.
         /// </summary>
-        public void CallOnTryHitscanFire(Vector3 _force)
+        public virtual void CallOnTryHitscanFire(Vector3 _force)
         {
             if (OnTryHitscanFire != null) OnTryHitscanFire(_force);
         }
 
-        public void CallOnTryFire()
+        public virtual void CallOnTryFire()
         {
             if (OnTryFire != null) OnTryFire();
         }
 
-        public void CallOnTryReload()
+        public virtual void CallOnTryReload()
         {
             if (OnTryReload != null) OnTryReload();
         }
 
-        public void CallOnTryCrouch()
+        public virtual void CallOnTryCrouch()
         {
             if (OnTryCrouch != null) OnTryCrouch();
         }
 
-        public void CallOnTryAim(bool _enable)
+        public virtual void CallOnTryAim(bool _enable)
         {
             if (OnTryAim != null) OnTryAim(_enable);
         }
 
-        public void CallEventSwitchingFromCom()
+        public virtual void CallEventSwitchingFromCom()
         {
             if (bIsFreeMoving) CallEventTogglebIsFreeMoving(false);
             if (EventSwitchingFromCom != null) EventSwitchingFromCom();
         }
 
-        public void CallEventPartySwitching()
+        public virtual void CallEventPartySwitching()
         {
             if (EventPartySwitching != null) EventPartySwitching();
         }
@@ -276,22 +276,22 @@ namespace RTSCoreFramework
             if (EventSetAsCommander != null) EventSetAsCommander();
         }
 
-        public void CallEventKilledEnemy()
+        public virtual void CallEventKilledEnemy()
         {
             if (EventKilledEnemy != null) EventKilledEnemy();
         }
 
-        public void CallEventOnHoverOver(rtsHitType hitType, RaycastHit hit)
+        public virtual void CallEventOnHoverOver(rtsHitType hitType, RaycastHit hit)
         {
             CallEventOnHoverOver();
         }
 
-        public void CallEventOnHoverLeave(rtsHitType hitType, RaycastHit hit)
+        public virtual void CallEventOnHoverLeave(rtsHitType hitType, RaycastHit hit)
         {
             CallEventOnHoverLeave();
         }
 
-        public void CallEventOnHoverOver()
+        public virtual void CallEventOnHoverOver()
         {
             if (OnHoverOver != null)
             {
@@ -299,7 +299,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventOnHoverLeave()
+        public virtual void CallEventOnHoverLeave()
         {
             if (OnHoverLeave != null)
             {
@@ -307,7 +307,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventCommandMove(rtsHitType hitType, RaycastHit hit)
+        public virtual void CallEventCommandMove(rtsHitType hitType, RaycastHit hit)
         {
             bIsAimingToShoot = bIsCommandAttacking = bIsAiAttacking = false;
             bIsCommandMoving = true;
@@ -315,7 +315,7 @@ namespace RTSCoreFramework
             CallEventCommandMove(hit.point);
         }
 
-        public void CallEventAIMove(Vector3 _point)
+        public virtual void CallEventAIMove(Vector3 _point)
         {
             bIsAimingToShoot = false;
             bIsCommandAttacking = false;
@@ -324,12 +324,12 @@ namespace RTSCoreFramework
             CallEventCommandMove(_point);
         }
 
-        private void CallEventCommandMove(Vector3 _point)
+        protected virtual void CallEventCommandMove(Vector3 _point)
         {
             if (EventCommandMove != null) EventCommandMove(_point);
         }
 
-        public void CallEventPlayerCommandAttackEnemy(AllyMember ally)
+        public virtual void CallEventPlayerCommandAttackEnemy(AllyMember ally)
         {
             bIsAIMoving = bIsCommandMoving = false;
             bIsCommandAttacking = true;
@@ -337,7 +337,7 @@ namespace RTSCoreFramework
             CallEventCommandAttackEnemy(ally);
         }
 
-        public void CallEventAICommandAttackEnemy(AllyMember ally)
+        public virtual void CallEventAICommandAttackEnemy(AllyMember ally)
         {
             bIsAIMoving = bIsCommandMoving = false;
             bIsAiAttacking = true;
@@ -345,7 +345,7 @@ namespace RTSCoreFramework
             CallEventCommandAttackEnemy(ally);
         }
 
-        private void CallEventCommandAttackEnemy(AllyMember ally)
+        protected virtual void CallEventCommandAttackEnemy(AllyMember ally)
         {
             if (EventCommandAttackEnemy != null)
             {
@@ -353,13 +353,13 @@ namespace RTSCoreFramework
             }
         }
 
-        public void CallEventStopTargettingEnemy()
+        public virtual void CallEventStopTargettingEnemy()
         {
             bIsCommandAttacking = bIsAiAttacking = bIsAimingToShoot = false;
             if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
         }
 
-        public void CallEventTogglebIsFreeMoving(bool _enable)
+        public virtual void CallEventTogglebIsFreeMoving(bool _enable)
         {
             bIsFreeMoving = _enable;
             //If Free Moving Is Enabled, Diable Tactics
@@ -369,26 +369,26 @@ namespace RTSCoreFramework
         }
 
         //Event handler controls bIsTacticsEnabled, makes code more centralized
-        private void CallEventToggleAllyTactics(bool _enable)
+        protected virtual void CallEventToggleAllyTactics(bool _enable)
         {
             bIsTacticsEnabled = _enable;
             if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);
         }
 
-        public void CallOnEquipTypeChanged(EEquipType _eType)
+        public virtual void CallOnEquipTypeChanged(EEquipType _eType)
         {
             MyEquippedType = _eType;
             if (OnEquipTypeChanged != null) OnEquipTypeChanged(_eType);
         }
 
-        public void CallToggleEquippedWeapon()
+        public virtual void CallToggleEquippedWeapon()
         {
             var _toggleType = MyEquippedType == EEquipType.Primary ?
                 EEquipType.Secondary : EEquipType.Primary;
             CallOnEquipTypeChanged(_toggleType);
         }
 
-        public void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        public virtual void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
         {
             //If MyEquippedWeaponType Hasn't Been Set, Do Not Update MyUnequippedWeaponType
             if (MyEquippedWeaponType != EWeaponType.NoWeaponType)
@@ -417,7 +417,7 @@ namespace RTSCoreFramework
             }
         }
 
-        protected void CallOnAmmoChanged(int _loaded, int _unloaded)
+        protected virtual void CallOnAmmoChanged(int _loaded, int _unloaded)
         {
             if (MyEquippedType == EEquipType.Primary)
             {
@@ -432,17 +432,17 @@ namespace RTSCoreFramework
             if (OnAmmoChanged != null) OnAmmoChanged(_loaded, _unloaded);
         }
 
-        public void CallOnHealthChanged(int _current, int _max)
+        public virtual void CallOnHealthChanged(int _current, int _max)
         {
             if (OnHealthChanged != null) OnHealthChanged(_current, _max);
         }
 
-        public void CallOnStaminaChanged(int _current, int _max)
+        public virtual void CallOnStaminaChanged(int _current, int _max)
         {
             if (OnStaminaChanged != null) OnStaminaChanged(_current, _max);
         }
 
-        public void CallOnAllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
+        public virtual void CallOnAllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             if (OnAllyTakeDamage != null)
                 OnAllyTakeDamage(amount, position, force, _instigator, hitGameObject);
