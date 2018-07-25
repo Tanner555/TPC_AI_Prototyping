@@ -7,40 +7,40 @@ namespace RTSCoreFramework
     public class AllyTacticsController : MonoBehaviour
     {
         #region Properties
-        AllyEventHandler myEventHandler
+        protected AllyEventHandler myEventHandler
         {
             get
             {
-                if(_myEventHandler == null)
+                if (_myEventHandler == null)
                     _myEventHandler = GetComponent<AllyEventHandler>();
 
                 return _myEventHandler;
             }
         }
         private AllyEventHandler _myEventHandler = null;
-        AllyMember allyMember
+        protected AllyMember allyMember
         {
             get
             {
-                if(_allyMember == null) 
+                if (_allyMember == null)
                     _allyMember = GetComponent<AllyMember>();
 
                 return _allyMember;
             }
         }
         private AllyMember _allyMember = null;
-        AllyAIController aiController
+        protected AllyAIController aiController
         {
             get
             {
-                if(_aiController == null)
+                if (_aiController == null)
                     _aiController = GetComponent<AllyAIController>();
 
                 return _aiController;
             }
         }
         private AllyAIController _aiController = null;
-        RTSStatHandler statHandler
+        protected RTSStatHandler statHandler
         {
             get
             {
@@ -51,14 +51,14 @@ namespace RTSCoreFramework
                 return GameObject.FindObjectOfType<RTSStatHandler>();
             }
         }
-        RTSGameMaster gameMaster { get { return RTSGameMaster.thisInstance; } }
-        RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
-        RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
-        RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
-        RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
-        IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
-        PartyManager myPartyManager { get { return allyMember ? allyMember.partyManager : null; } }
-        AllyMember allyInCommand
+        protected RTSGameMaster gameMaster { get { return RTSGameMaster.thisInstance; } }
+        protected RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
+        protected RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
+        protected RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
+        protected RTSSaveManager saveManager { get { return RTSSaveManager.thisInstance; } }
+        protected IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
+        protected PartyManager myPartyManager { get { return allyMember ? allyMember.partyManager : null; } }
+        protected AllyMember allyInCommand
         {
             get
             {
@@ -66,7 +66,7 @@ namespace RTSCoreFramework
             }
         }
 
-        bool AllyComponentsAreReady
+        protected bool AllyComponentsAreReady
         {
             get
             {
@@ -77,16 +77,16 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        bool hasStarted = false;
-        bool bEnableTactics = true;
-        bool bPreviouslyEnabledTactics = false;
-        private List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
+        protected bool hasStarted = false;
+        protected bool bEnableTactics = true;
+        protected bool bPreviouslyEnabledTactics = false;
+        protected List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
         public List<AllyTacticsItem> AllyTacticsList;
         public int executionsPerSec = 5;
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (hasStarted == true)
             {
@@ -96,14 +96,14 @@ namespace RTSCoreFramework
             }
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             UnsubFromEvents();
             UnLoadAndCancelTactics();
         }
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
             if (hasStarted == false)
             {
@@ -115,14 +115,14 @@ namespace RTSCoreFramework
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
 
         }
         #endregion
 
         #region Handlers
-        void OnSaveTactics()
+        protected virtual void OnSaveTactics()
         {
             if (bEnableTactics)
             {
@@ -130,14 +130,14 @@ namespace RTSCoreFramework
             }
         }
 
-        void HandleAllyDeath()
+        protected virtual void HandleAllyDeath()
         {
             UnsubFromEvents();
             UnLoadAndCancelTactics();
             Destroy(this);
         }
 
-        void HandleToggleTactics(bool _enable)
+        protected virtual void HandleToggleTactics(bool _enable)
         {
             bPreviouslyEnabledTactics = bEnableTactics;
             bEnableTactics = _enable;
@@ -154,7 +154,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region TacticsMethods
-        void LoadAndExecuteAllyTactics()
+        protected virtual void LoadAndExecuteAllyTactics()
         {
             UnLoadAndCancelTactics();
             var _tactics = statHandler.RetrieveCharacterTactics(
@@ -172,12 +172,12 @@ namespace RTSCoreFramework
                         dataHandler.IGBPI_Actions[_data.action]));
                 }
             }
-            
+
             if (AllyTacticsList.Count > 0)
                 InvokeRepeating("ExecuteAllyTacticsList", 0.05f, 1f / executionsPerSec);
         }
 
-        void UnLoadAndCancelTactics()
+        protected virtual void UnLoadAndCancelTactics()
         {
             if (IsInvoking("ExecuteAllyTacticsList"))
             {
@@ -186,7 +186,7 @@ namespace RTSCoreFramework
             AllyTacticsList.Clear();
         }
 
-        void ExecuteAllyTacticsList()
+        protected virtual void ExecuteAllyTacticsList()
         {
             if (!AllyComponentsAreReady)
             {
@@ -221,7 +221,7 @@ namespace RTSCoreFramework
             }
         }
 
-        AllyTacticsItem EvaluateTacticalConditionOrders(List<AllyTacticsItem> _tactics)
+        protected virtual AllyTacticsItem EvaluateTacticalConditionOrders(List<AllyTacticsItem> _tactics)
         {
             int _order = int.MaxValue;
             AllyTacticsItem _exeTactic = null;
@@ -239,19 +239,19 @@ namespace RTSCoreFramework
         #endregion
 
         #region Initialization
-        void SetInitialReferences()
+        protected virtual void SetInitialReferences()
         {
 
         }
 
-        void SubToEvents()
+        protected virtual void SubToEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete += OnSaveTactics;
             myEventHandler.EventToggleAllyTactics += HandleToggleTactics;
             myEventHandler.EventAllyDied += HandleAllyDeath;
         }
 
-        void UnsubFromEvents()
+        protected virtual void UnsubFromEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete -= OnSaveTactics;
             myEventHandler.EventToggleAllyTactics -= HandleToggleTactics;
