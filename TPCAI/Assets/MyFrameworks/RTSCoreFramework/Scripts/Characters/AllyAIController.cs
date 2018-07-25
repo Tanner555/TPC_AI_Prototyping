@@ -258,6 +258,17 @@ namespace RTSCoreFramework
         public void Tactics_MoveToLeader()
         {
             if (allyMember.bIsGeneralInCommand) return;
+
+            //Temporarily Fixes Bug with Ally Attacking 
+            //An Enemy After They Are Set To Command 
+            //After Tactics Have Been Followed when Switching
+            //From Command
+            if (IsInvoking("UpdateBattleBehavior"))
+            {
+                StopBattleBehavior();
+                myEventHandler.CallEventStopTargettingEnemy();
+            }
+
             if (IsWithinFollowingDistance() == false)
             {
                 myEventHandler.CallEventAIMove(allyInCommand.transform.position);
