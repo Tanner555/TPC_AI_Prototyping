@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSStatHandler : MonoBehaviour
+    public class RTSStatHandler : BaseSingleton<RTSStatHandler>
     {
         #region Dictionaries
         //Used to Retrieve Information from A Character and Commander Enum
@@ -29,18 +30,16 @@ namespace RTSCoreFramework
         protected WeaponStatsData weaponStatsData;
 
         //Used For Initialization
-        bool bInitializedDictionaries = false;
+        protected bool bInitializedDictionaries = false;
         #endregion
 
         #region Properties
-        public static RTSStatHandler thisInstance { get; protected set; }
-
-        RTSGameMode gamemode
+        protected RTSGameMode gamemode
         {
             get { return RTSGameMode.thisInstance; }
         }
 
-        public Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
+        public virtual Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
         {
             get
             {
@@ -52,7 +51,7 @@ namespace RTSCoreFramework
         /// <summary>
         /// Used Only For Debugging, Need to implement actual saving in the future
         /// </summary>
-        public CharacterTacticsData DebugGET_CharacterTacticsData
+        public virtual CharacterTacticsData DebugGET_CharacterTacticsData
         {
             get
             {
@@ -72,14 +71,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters
-        public CharacterStats RetrieveCurrentPlayerStats()
+        public virtual CharacterStats RetrieveCurrentPlayerStats()
         {
             CheckForDictionaryInit();
             var _cPlayer = gamemode.CurrentPlayer;
             return RetrieveCharacterStats(_cPlayer, _cPlayer.CharacterType);
         }
 
-        public CharacterTactics RetrieveCurrentPlayerTactics()
+        public virtual CharacterTactics RetrieveCurrentPlayerTactics()
         {
             CheckForDictionaryInit();
             var _cPlayer = gamemode.CurrentPlayer;
@@ -94,7 +93,7 @@ namespace RTSCoreFramework
         /// <param name="_ally"></param>
         /// <param name="_cType"></param>
         /// <returns></returns>
-        public CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
+        public virtual CharacterStats RetrieveCharacterStats(AllyMember _ally, ECharacterType _cType)
         {
             CheckForDictionaryInit();
             return RetrieveAnonymousCharacterStats(_cType);
@@ -105,7 +104,7 @@ namespace RTSCoreFramework
         /// </summary>
         /// <param name="_cType"></param>
         /// <returns></returns>
-        public CharacterStats RetrieveAnonymousCharacterStats(ECharacterType _cType)
+        public virtual CharacterStats RetrieveAnonymousCharacterStats(ECharacterType _cType)
         {
             CheckForDictionaryInit();
             if (CharacterStatDictionary.ContainsKey(_cType))
@@ -120,7 +119,7 @@ namespace RTSCoreFramework
             };
         }
 
-        public CharacterTactics RetrieveCharacterTactics(AllyMember _ally, ECharacterType _cType)
+        public virtual CharacterTactics RetrieveCharacterTactics(AllyMember _ally, ECharacterType _cType)
         {
             CheckForDictionaryInit();
             return RetrieveAnonymousCharacterTactics(_cType);
@@ -132,7 +131,7 @@ namespace RTSCoreFramework
         /// </summary>
         /// <param name="_cType"></param>
         /// <returns></returns>
-        public CharacterTactics RetrieveAnonymousCharacterTactics(ECharacterType _cType)
+        public virtual CharacterTactics RetrieveAnonymousCharacterTactics(ECharacterType _cType)
         {
             CheckForDictionaryInit();
             if (CharacterTacticsDictionary.ContainsKey(_cType))
@@ -146,7 +145,7 @@ namespace RTSCoreFramework
             };
         }
 
-        public PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
+        public virtual PartyStats RetrievePartyStats(PartyManager _party, RTSGameMode.ECommanders _commander)
         {
             CheckForDictionaryInit();
             if (PartyStatDictionary.ContainsKey(_commander))
@@ -163,23 +162,24 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of RTSStatHandler in scene.");
-            else
-                thisInstance = this;
 
         }
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            
+
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
+        {
+
+        }
+
+        protected virtual void OnDisable()
         {
 
         }
@@ -189,7 +189,7 @@ namespace RTSCoreFramework
         /// <summary>
         /// Used to check for initialization of dictionaries
         /// </summary>
-        void CheckForDictionaryInit()
+        protected virtual void CheckForDictionaryInit()
         {
             if (bInitializedDictionaries == false)
             {
@@ -198,7 +198,7 @@ namespace RTSCoreFramework
             }
         }
 
-        void InitializeDictionaryValues()
+        protected virtual void InitializeDictionaryValues()
         {
             //Transfer Values From Serialized List To A Dictionary
             //Character Data
@@ -212,7 +212,7 @@ namespace RTSCoreFramework
                 CharacterStatDictionary.Add(_stat.CharacterType, _stat);
             }
             //Tactics Data
-            if(CharacterTacticsDictionary == null)
+            if (CharacterTacticsDictionary == null)
             {
                 Debug.LogError("No Tactics Data on StatHandler");
                 return;

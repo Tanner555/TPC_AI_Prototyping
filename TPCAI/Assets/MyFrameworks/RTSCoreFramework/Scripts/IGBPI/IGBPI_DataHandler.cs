@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class IGBPI_DataHandler : MonoBehaviour
+    public class IGBPI_DataHandler : BaseSingleton<IGBPI_DataHandler>
     {
         #region Enums
         public enum ConditionFilters
         {
             Standard = 0, AllyHealth = 1, AllyGun = 2,
-            TargetedEnemy = 3
+            TargetedEnemy = 3, AllyStamina = 4,
+            AllyAbilities = 5
         }
         public enum ActionFilters
         {
-            Movement, Weapon, AI, Debugging
+            Movement = 0, Weapon = 1, AI = 2,
+            Debugging = 3, Abilities = 4
         }
 
         public ConditionFilters conditionFilter { get; protected set; }
@@ -81,15 +84,19 @@ namespace RTSCoreFramework
         #endregion
 
         #region Properties
-        public static IGBPI_DataHandler thisInstance { get; protected set; }
-        RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
+        protected RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
         #endregion
 
         #region ConditionDictionary
-        public Dictionary<string, IGBPI_Condition> IGBPI_Conditions = new Dictionary<string, IGBPI_Condition>()
+        public virtual Dictionary<string, IGBPI_Condition> IGBPI_Conditions
+        {
+            get { return _IGBPI_Conditions; }
+        }
+
+        protected Dictionary<string, IGBPI_Condition> _IGBPI_Conditions = new Dictionary<string, IGBPI_Condition>()
         {
             {"Self: Any", new IGBPI_Condition((_ally) => true, ConditionFilters.Standard) },
-            {"Leader: Not Within Follow Distance", new IGBPI_Condition((_ally) => 
+            {"Leader: Not Within Follow Distance", new IGBPI_Condition((_ally) =>
             { return !_ally.aiController.IsWithinFollowingDistance(); }, ConditionFilters.Standard) },
             {"Leader: Within Follow Distance", new IGBPI_Condition((_ally) =>
             { return _ally.aiController.IsWithinFollowingDistance(); }, ConditionFilters.Standard) },
@@ -111,13 +118,18 @@ namespace RTSCoreFramework
             { return _ally.CurrentEquipedAmmo == 0; }, ConditionFilters.AllyGun) },
             {"Self: CurAmmo > 0", new IGBPI_Condition((_ally) =>
             { return _ally.CurrentEquipedAmmo > 0; }, ConditionFilters.AllyGun) },
-            {"Enemy: WithinSightRange", new IGBPI_Condition((_ally) => 
+            {"Enemy: WithinSightRange", new IGBPI_Condition((_ally) =>
             { return _ally.aiController.Tactics_IsEnemyWithinSightRange(); }, ConditionFilters.TargetedEnemy)  },
         };
         #endregion
 
         #region ActionDictionary
-        public Dictionary<string, IGBPI_Action> IGBPI_Actions = new Dictionary<string, IGBPI_Action>()
+        public virtual Dictionary<string, IGBPI_Action> IGBPI_Actions
+        {
+            get { return _IGBPI_Actions; }
+        }
+
+        protected Dictionary<string, IGBPI_Action> _IGBPI_Actions = new Dictionary<string, IGBPI_Action>()
         {
             {"Self: Attack Targetted Enemy", new IGBPI_Action((_ally) =>
             { _ally.aiController.AttackTargettedEnemy(); }, ActionFilters.AI) },
@@ -129,27 +141,29 @@ namespace RTSCoreFramework
             { _ally.allyEventHandler.CallOnSwitchToPrevItem(); }, ActionFilters.Weapon) },
             {"Self: FollowLeader", new IGBPI_Action((_ally) =>
             { _ally.aiController.Tactics_MoveToLeader(); }, ActionFilters.Movement) },
-            {"Debug: Log True Message", new IGBPI_Action((_ally) => 
+            {"Debug: Log True Message", new IGBPI_Action((_ally) =>
             Debug.Log("Condition is true, called from: " + _ally), ActionFilters.Debugging) }
         };
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            if (thisInstance == null)
-                thisInstance = this;
-            else
-                Debug.LogError("More than one DataHandler in scene");
+
         }
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
 
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
+        {
+
+        }
+
+        protected virtual void OnDisable()
         {
 
         }

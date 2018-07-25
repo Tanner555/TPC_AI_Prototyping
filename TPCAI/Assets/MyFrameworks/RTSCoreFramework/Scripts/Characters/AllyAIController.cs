@@ -222,7 +222,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region AITacticsCommands
-        public bool IsWithinFollowingDistance()
+        public virtual bool IsWithinFollowingDistance()
         {
             //Temp fix for PartyManager Delaying AllyInCommand Init Methods
             var _allyInCommand = allyInCommand;
@@ -236,7 +236,7 @@ namespace RTSCoreFramework
                 _allyInCommand.transform.position) <= followDistance;
         }
 
-        public bool Tactics_IsEnemyWithinSightRange()
+        public virtual bool Tactics_IsEnemyWithinSightRange()
         {
             AllyMember _closestEnemy = FindClosestEnemy();
             bool _valid = _closestEnemy != null && _closestEnemy.IsAlive;
@@ -255,7 +255,7 @@ namespace RTSCoreFramework
             return (_valid);
         }
 
-        public void Tactics_MoveToLeader()
+        public virtual void Tactics_MoveToLeader()
         {
             if (allyMember.bIsGeneralInCommand) return;
 
@@ -282,7 +282,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public void AttackTargettedEnemy()
+        public virtual void AttackTargettedEnemy()
         {
             if (currentTargettedEnemy != null &&
                 currentTargettedEnemy.IsAlive)
@@ -347,7 +347,7 @@ namespace RTSCoreFramework
             return _closestEnemy;
         }
 
-        bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
+        protected virtual bool hasLOSWithinRange(AllyMember _enemy, out RaycastHit _hit)
         {
             RaycastHit _myHit;
             bool _bHit = Physics.Linecast(losTransform.position,
@@ -364,12 +364,14 @@ namespace RTSCoreFramework
                         " Has LOS With Himself.");
                 }
                 //TODO: RTSPrototype Fix hasLosWithinRange() hitting self instead of enemy
-                return _hitAlly == allyMember || _hitAlly.IsEnemyFor(allyMember);
+                return _hitAlly != null &&
+                    (_hitAlly == allyMember ||
+                    _hitAlly.IsEnemyFor(allyMember));
             }
             return false;
         }
 
-        AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
+        protected virtual AllyMember DetermineClosestAllyFromList(List<AllyMember> _allies)
         {
             AllyMember _closestAlly = null;
             float _closestDistance = Mathf.Infinity;
