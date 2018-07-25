@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -19,6 +19,8 @@ MonoBehaviour:
       type: 3}
     MaxHealth: 1000
     Health: 1000
+    MaxStamina: 100
+    Stamina: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
@@ -29,6 +31,8 @@ MonoBehaviour:
       type: 3}
     MaxHealth: 1000
     Health: 1000
+    MaxStamina: 100
+    Stamina: 100
     EquippedWeapon: 0
     PrimaryWeapon: 3
     SecondaryWeapon: 4
@@ -39,6 +43,8 @@ MonoBehaviour:
       type: 3}
     MaxHealth: 100
     Health: 100
+    MaxStamina: 100
+    Stamina: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
@@ -49,6 +55,8 @@ MonoBehaviour:
       type: 3}
     MaxHealth: 1000
     Health: 1000
+    MaxStamina: 100
+    Stamina: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
     SecondaryWeapon: 1
