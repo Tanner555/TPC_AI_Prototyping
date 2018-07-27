@@ -6,7 +6,7 @@ using RTSCoreFramework;
 namespace RTSPrototype
 {
     /// <summary>
-    /// Use to document what code changes I make to certain classes
+    /// Used to document what code changes I make to certain classes
     /// and functions inside Opsive's third person controller
     /// </summary>
     /// 
@@ -37,6 +37,30 @@ namespace RTSPrototype
         //    var fireDirection = FireDirection();
         //    var _force = fireDirection * m_HitscanImpactForce;
         //    rootAllyTransform.SendMessage("CallOnTryHitscanFire", _force, SendMessageOptions.RequireReceiver);
+        //}
+
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-MeleeWeapon: Inside Attack() method, comment out all of the code.
+        /// This method references the Health script that my game doesn't use. 
+        /// </summary>
+        //protected virtual void Attack(Transform hitTransform, Vector3 hitPoint, Vector3 hitNormal)
+        //{
+        //    Comment out the method code
+        //}
+
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-MeleeWeapon: Inside TryUse() method, inside the second if statement
+        /// right before where the method returns true, add this message call to the rootally
+        /// </summary>
+        //public override bool TryUse()
+        //{
+        //    if (!m_InUse && m_LastAttackTime + m_AttackDelay < Time.time)
+        //    {
+        //        .....
+        //        .....
+        //        rootAllyTransform.SendMessage("CallOnTryMeleeAttack", SendMessageOptions.RequireReceiver);
+        //        return true;
+        //    }
         //}
 
         /// <summary>

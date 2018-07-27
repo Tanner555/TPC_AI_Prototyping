@@ -108,6 +108,9 @@ namespace RTSCoreFramework
         //Called by Opsive Shooter Script, then another class
         //handles the hitscan firing.
         public event GeneralVector3Handler OnTryHitscanFire;
+        //Called by Opsive Shooter Script, then another class
+        //handles the attacking.
+        public event GeneralEventHandler OnTryMeleeAttack;
         //Tries Using Primary Item, Used By RTSItemHandler
         public event GeneralEventHandler OnTryFire;
         public event GeneralEventHandler OnTryReload;
@@ -237,6 +240,14 @@ namespace RTSCoreFramework
         public virtual void CallOnTryHitscanFire(Vector3 _force)
         {
             if (OnTryHitscanFire != null) OnTryHitscanFire(_force);
+        }
+        /// <summary>
+        /// Need to changes string ref in Melee Weapon script
+        /// if I change the name of this method.
+        /// </summary>
+        public virtual void CallOnTryMeleeAttack()
+        {
+            if (OnTryMeleeAttack != null) OnTryMeleeAttack();
         }
 
         public virtual void CallOnTryFire()

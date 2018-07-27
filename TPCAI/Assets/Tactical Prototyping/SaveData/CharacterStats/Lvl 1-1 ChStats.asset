@@ -22,7 +22,7 @@ MonoBehaviour:
     MaxStamina: 100
     Stamina: 100
     EquippedWeapon: 0
-    PrimaryWeapon: 2
+    PrimaryWeapon: 0
     SecondaryWeapon: 1
   - CharacterType: 1
     CharacterPrefab: {fileID: 1768055428005526, guid: 9a4d6a79cda7e9548a317034fd6997fa,

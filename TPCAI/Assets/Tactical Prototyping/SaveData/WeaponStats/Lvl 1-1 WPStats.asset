@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -14,8 +14,8 @@ MonoBehaviour:
   WeaponStatList:
   - WeaponType: 0
     WeaponIcon: {fileID: 21300070, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 5
-    Accuracy: 2
+    DamageRate: 25
+    Accuracy: 50
   - WeaponType: 1
     WeaponIcon: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 15

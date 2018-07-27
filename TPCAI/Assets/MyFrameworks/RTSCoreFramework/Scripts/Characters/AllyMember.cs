@@ -242,6 +242,30 @@ namespace RTSCoreFramework
             }
         }
 
+        protected virtual void OnTryMeleeAttack()
+        {
+            RaycastHit _hit;
+            var _target = enemyTarget;
+            bool _validShot = ChestTransform != null &&
+                _target != null;
+            if (_validShot && Physics.Linecast(MyLOSTransform.position, _target.ChestTransform.position, out _hit))
+            {
+                var _root = _hit.transform.root;
+                //If Hit Self
+                if (_root == transform)
+                {
+                    Debug.Log(CharacterName.ToString()
+                        + " is shooting himself.");
+                }
+                bool _isEnemy = _root.tag == gamemode.AllyTag;
+                if (_isEnemy)
+                {
+                    _target.allyEventHandler.CallOnAllyTakeDamage(
+                        GetDamageRate(), _hit.point, Vector3.zero, this, _hit.transform.gameObject);
+                }
+            }
+        }
+
         public virtual void AllyTakeDamage(int amount, AllyMember _instigator)
         {
             SetDamageInstigator(_instigator);
@@ -437,6 +461,7 @@ namespace RTSCoreFramework
             allyEventHandler.EventPartySwitching += OnPartySwitch;
             allyEventHandler.OnAmmoChanged += OnEquippedWeaponAmmoChanged;
             allyEventHandler.OnTryHitscanFire += OnTryHitscanFire;
+            allyEventHandler.OnTryMeleeAttack += OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
         }
 
@@ -446,6 +471,7 @@ namespace RTSCoreFramework
             allyEventHandler.EventPartySwitching -= OnPartySwitch;
             allyEventHandler.OnAmmoChanged -= OnEquippedWeaponAmmoChanged;
             allyEventHandler.OnTryHitscanFire -= OnTryHitscanFire;
+            allyEventHandler.OnTryMeleeAttack -= OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
         }
         #endregion
