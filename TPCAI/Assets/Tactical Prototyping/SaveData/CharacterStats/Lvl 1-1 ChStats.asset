@@ -50,7 +50,7 @@ MonoBehaviour:
     Stamina: 100
     EquippedWeapon: 0
     PrimaryWeapon: 2
-    SecondaryWeapon: 3
+    SecondaryWeapon: 0
   - name: Silly Girl Medic
     CharacterType: 2
     CharacterPrefab: {fileID: 1497344684296414, guid: 0461d4feeb2792744b75b45278f266de,

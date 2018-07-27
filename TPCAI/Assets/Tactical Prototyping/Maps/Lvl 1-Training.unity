@@ -19088,6 +19088,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114591419229318492, guid: b03dc26493b56644d948bff75db2d842,
+        type: 2}
+      propertyPath: m_CameraStates.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4939287684927452, guid: b03dc26493b56644d948bff75db2d842, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -19131,6 +19136,17 @@ Prefab:
     - target: {fileID: 4939287684927452, guid: b03dc26493b56644d948bff75db2d842, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591419229318492, guid: b03dc26493b56644d948bff75db2d842,
+        type: 2}
+      propertyPath: m_CameraStates.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 933bfb9f2ba3fa0478dd3c9a2c04ace3,
+        type: 2}
+    - target: {fileID: 114591419229318492, guid: b03dc26493b56644d948bff75db2d842,
+        type: 2}
+      propertyPath: m_SelectedCameraState
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b03dc26493b56644d948bff75db2d842, type: 2}

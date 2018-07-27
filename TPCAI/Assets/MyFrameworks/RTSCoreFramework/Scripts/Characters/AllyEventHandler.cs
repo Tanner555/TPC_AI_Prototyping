@@ -207,6 +207,10 @@ namespace RTSCoreFramework
             {
                 EventToggleIsShooting(_enable);
             }
+            if (bIsMeleeingEnemy)
+            {
+                CallEventToggleIsMeleeing(false);
+            }
         }
 
         public virtual void CallEventToggleIsMeleeing(bool _enable)
@@ -215,6 +219,10 @@ namespace RTSCoreFramework
             if(EventToggleIsMeleeing != null)
             {
                 EventToggleIsMeleeing(_enable);
+            }
+            if (bIsAimingToShoot)
+            {
+                CallEventToggleIsShooting(false);
             }
         }
 
@@ -382,6 +390,8 @@ namespace RTSCoreFramework
         {
             bIsCommandAttacking = bIsAiAttacking = bIsAimingToShoot = false;
             if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
+            CallEventToggleIsShooting(false);
+            CallEventToggleIsMeleeing(false);
         }
 
         public virtual void CallEventTogglebIsFreeMoving(bool _enable)

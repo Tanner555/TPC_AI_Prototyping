@@ -16,7 +16,7 @@ MonoBehaviour:
     WeaponType: 0
     WeaponUsage: 0
     WeaponIcon: {fileID: 21300070, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 15
+    DamageRate: 20
     Accuracy: 25
     AttackRate: 1
     MeleeAttackDistance: 4
@@ -24,15 +24,15 @@ MonoBehaviour:
     WeaponType: 1
     WeaponUsage: 0
     WeaponIcon: {fileID: 21300014, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 25
+    DamageRate: 20
     Accuracy: 35
-    AttackRate: 1
+    AttackRate: 0.25
     MeleeAttackDistance: 4
   - name: Pistol
     WeaponType: 2
     WeaponUsage: 1
     WeaponIcon: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 25
+    DamageRate: 15
     Accuracy: 150
     AttackRate: 0.25
     MeleeAttackDistance: 10
@@ -40,9 +40,9 @@ MonoBehaviour:
     WeaponType: 3
     WeaponUsage: 1
     WeaponIcon: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 25
+    DamageRate: 15
     Accuracy: 45
-    AttackRate: 0.2
+    AttackRate: 0.25
     MeleeAttackDistance: 10
   - name: Shotgun
     WeaponType: 4

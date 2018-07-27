@@ -201,6 +201,7 @@ namespace RTSCoreFramework
         {
             if (IsInvoking("UpdateBattleBehavior"))
             {
+                myEventHandler.CallEventFinishedMoving();
                 myEventHandler.CallEventStopTargettingEnemy();
             }
         }
