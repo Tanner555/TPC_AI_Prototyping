@@ -88,6 +88,19 @@ namespace RTSPrototype
             }
         }
 
+        public override float WeaponAttackRate
+        {
+            get { return allyStatController.GetWeaponAttackRate(); }
+        }
+
+        public override float MaxMeleeAttackDistance
+        {
+            get
+            {
+                return allyStatController.GetMeleeMaxAttackDistance();
+            }
+        }
+
         public override string CharacterName
         {
             get

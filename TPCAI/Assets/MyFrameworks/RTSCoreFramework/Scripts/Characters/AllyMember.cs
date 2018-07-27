@@ -136,6 +136,16 @@ namespace RTSCoreFramework
             }
         }
 
+        public virtual float WeaponAttackRate
+        {
+            get { return 0f; }
+        }
+
+        public virtual float MaxMeleeAttackDistance
+        {
+            get { return 0f; }
+        }
+
         //Character Stat Properties
         public virtual string CharacterName
         {

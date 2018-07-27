@@ -150,6 +150,16 @@ namespace RTSCoreFramework
             return GetWeaponStats().WeaponUsage;
         }
 
+        public virtual float GetWeaponAttackRate()
+        {
+            return GetWeaponStats().AttackRate;
+        }
+
+        public virtual float GetMeleeMaxAttackDistance()
+        {
+            return GetWeaponStats().MeleeAttackDistance;
+        }
+
         protected virtual WeaponStats GetWeaponStats()
         {
             switch (myCharacterStats.EquippedWeapon)

@@ -178,9 +178,17 @@ namespace RTSCoreFramework
             myNavAgent.path.status == NavMeshPathStatus.PathComplete;
         }
 
-        public virtual float GetFiringRate()
+        public virtual float GetAttackRate()
         {
-            return defaultFireRepeatRate;
+            return allyMember.WeaponAttackRate;
+        }
+
+        protected virtual bool IsTargetInMeleeRange(GameObject _target)
+        {
+            bool _isCarryingMelee = allyMember.bIsCarryingMeleeWeapon;
+            if (_isCarryingMelee == false) return false;
+            float _distanceToTarget = (_target.transform.position - transform.position).magnitude;
+            return _distanceToTarget <= allyMember.MaxMeleeAttackDistance;
         }
         #endregion
 
@@ -472,7 +480,7 @@ namespace RTSCoreFramework
         protected virtual void StartShootingBehavior()
         {
             myEventHandler.CallEventToggleIsShooting(true);
-            InvokeRepeating("MakeFireRequest", 0.0f, GetFiringRate());
+            InvokeRepeating("MakeFireRequest", 0.0f, GetAttackRate());
         }
 
         protected virtual void StopShootingBehavior()

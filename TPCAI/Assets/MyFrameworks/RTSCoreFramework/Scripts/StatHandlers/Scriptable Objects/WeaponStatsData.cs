@@ -36,10 +36,11 @@ namespace RTSCoreFramework
         [Header("Weapon Stats")]
         public int DamageRate;
         public int Accuracy;
-        public int AttackRate;
+        [Tooltip("Example: 0.1 = 10 times a second, 2 = Once every 2 seconds")]
+        public float AttackRate;
         [Header("Melee Weapon Stats")]
         //Used For Determine Distance Required to use Melee Weapon
-        public int MeleeAttackDistance;
+        public float MeleeAttackDistance;
     }
 
     [CreateAssetMenu(menuName = "RTSPrototype/WeaponStatsData")]
