@@ -7,6 +7,8 @@ namespace RTSCoreFramework
     [System.Serializable]
     public struct PartyStats
     {
+        public string name;
+
         [Tooltip("Used to Identify the Commander")]
         public RTSGameMode.ECommanders Commander;
 

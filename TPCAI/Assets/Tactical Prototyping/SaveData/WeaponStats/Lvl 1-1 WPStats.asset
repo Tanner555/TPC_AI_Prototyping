@@ -12,23 +12,45 @@ MonoBehaviour:
   m_Name: Lvl 1-1 WPStats
   m_EditorClassIdentifier: 
   WeaponStatList:
-  - WeaponType: 0
+  - name: Fist
+    WeaponType: 0
+    WeaponUsage: 0
     WeaponIcon: {fileID: 21300070, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 25
-    Accuracy: 50
-  - WeaponType: 1
-    WeaponIcon: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 15
+    Accuracy: 50
+    MeleeAttackDistance: 10
+  - name: Knife
+    WeaponType: 1
+    WeaponUsage: 0
+    WeaponIcon: {fileID: 21300014, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 25
     Accuracy: 35
-  - WeaponType: 2
-    WeaponIcon: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    MeleeAttackDistance: 10
+  - name: Pistol
+    WeaponType: 2
+    WeaponUsage: 1
+    WeaponIcon: {fileID: 21300012, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 25
     Accuracy: 150
-  - WeaponType: 3
-    WeaponIcon: {fileID: 21300112, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
-    DamageRate: 75
+    MeleeAttackDistance: 0
+  - name: Assault Rifle
+    WeaponType: 3
+    WeaponUsage: 1
+    WeaponIcon: {fileID: 21300090, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 25
     Accuracy: 45
-  - WeaponType: 4
+    MeleeAttackDistance: 0
+  - name: Shotgun
+    WeaponType: 4
+    WeaponUsage: 1
+    WeaponIcon: {fileID: 21300112, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 100
+    Accuracy: 100
+    MeleeAttackDistance: 0
+  - name: Sniper Rifle
+    WeaponType: 5
+    WeaponUsage: 1
     WeaponIcon: {fileID: 21300132, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 100
     Accuracy: 100
+    MeleeAttackDistance: 0

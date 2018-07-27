@@ -20,6 +20,7 @@ namespace RTSCoreFramework
     [System.Serializable]
     public struct CharacterStats
     {
+        public string name;
         [Tooltip("Used to Identify a Character")]
         public ECharacterType CharacterType;
         [Tooltip("Used to Spawn a Character")]

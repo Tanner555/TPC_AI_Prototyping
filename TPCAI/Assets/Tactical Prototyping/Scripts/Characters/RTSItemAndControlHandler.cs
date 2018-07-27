@@ -27,6 +27,7 @@ namespace RTSPrototype
         public ItemType ShotgunType;
         public ItemType SniperRifleType;
         public ItemType FistType;
+        public ItemType KnifeType;
 
         public const string AssaultRifleName = "Assault Rifle";
         public string AssaultRifName { get { return AssaultRifleName; } }
@@ -179,6 +180,8 @@ namespace RTSPrototype
             {
                 case EWeaponType.Fist:
                     return FistType;
+                case EWeaponType.Knife:
+                    return KnifeType;
                 case EWeaponType.Pistol:
                     return PistolType;
                 case EWeaponType.AssaultRifle:

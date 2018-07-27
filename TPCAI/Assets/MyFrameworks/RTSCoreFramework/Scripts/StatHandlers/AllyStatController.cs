@@ -145,6 +145,11 @@ namespace RTSCoreFramework
             return _weapon.DamageRate;
         }
 
+        public virtual EWeaponUsage GetWeaponUsage()
+        {
+            return GetWeaponStats().WeaponUsage;
+        }
+
         protected virtual WeaponStats GetWeaponStats()
         {
             switch (myCharacterStats.EquippedWeapon)

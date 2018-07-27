@@ -80,6 +80,14 @@ namespace RTSPrototype
             }
         }
 
+        public override bool bIsCarryingMeleeWeapon
+        {
+            get
+            {
+                return allyStatController.GetWeaponUsage() == EWeaponUsage.Melee;
+            }
+        }
+
         public override string CharacterName
         {
             get

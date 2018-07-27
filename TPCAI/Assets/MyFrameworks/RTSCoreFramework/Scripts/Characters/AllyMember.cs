@@ -127,6 +127,15 @@ namespace RTSCoreFramework
             get { return 0; }
         }
 
+        //Other Weapon Properties
+        public virtual bool bIsCarryingMeleeWeapon
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         //Character Stat Properties
         public virtual string CharacterName
         {
