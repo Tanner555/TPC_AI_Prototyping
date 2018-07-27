@@ -17,9 +17,9 @@ MonoBehaviour:
     WeaponUsage: 0
     WeaponIcon: {fileID: 21300070, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 15
-    Accuracy: 50
+    Accuracy: 25
     AttackRate: 1
-    MeleeAttackDistance: 10
+    MeleeAttackDistance: 4
   - name: Knife
     WeaponType: 1
     WeaponUsage: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
     DamageRate: 25
     Accuracy: 35
     AttackRate: 1
-    MeleeAttackDistance: 10
+    MeleeAttackDistance: 4
   - name: Pistol
     WeaponType: 2
     WeaponUsage: 1

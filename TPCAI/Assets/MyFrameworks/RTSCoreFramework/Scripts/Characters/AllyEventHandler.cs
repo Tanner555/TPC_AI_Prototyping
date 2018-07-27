@@ -37,6 +37,7 @@ namespace RTSCoreFramework
         public bool bIsCommandAttacking { get; protected set; }
         public bool bIsAiAttacking { get; protected set; }
         public bool bIsAimingToShoot { get; protected set; }
+        public bool bIsMeleeingEnemy { get; protected set; }
         public bool bCanEnableAITactics
         {
             get
@@ -102,6 +103,7 @@ namespace RTSCoreFramework
         public event GeneralOneBoolHandler EventToggleAllyTactics;
         public event GeneralOneBoolHandler EventTogglebIsFreeMoving;
         public event GeneralOneBoolHandler EventToggleIsShooting;
+        public event GeneralOneBoolHandler EventToggleIsMeleeing;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
@@ -112,7 +114,7 @@ namespace RTSCoreFramework
         //handles the attacking.
         public event GeneralEventHandler OnTryMeleeAttack;
         //Tries Using Primary Item, Used By RTSItemHandler
-        public event GeneralEventHandler OnTryFire;
+        public event GeneralEventHandler OnTryUseWeapon;
         public event GeneralEventHandler OnTryReload;
         public event GeneralEventHandler OnTryCrouch;
         public event GeneralOneBoolHandler OnTryAim;
@@ -207,6 +209,15 @@ namespace RTSCoreFramework
             }
         }
 
+        public virtual void CallEventToggleIsMeleeing(bool _enable)
+        {
+            bIsMeleeingEnemy = _enable;
+            if(EventToggleIsMeleeing != null)
+            {
+                EventToggleIsMeleeing(_enable);
+            }
+        }
+
         public virtual void CallEventToggleIsSprinting()
         {
             bIsSprinting = !bIsSprinting;
@@ -250,9 +261,12 @@ namespace RTSCoreFramework
             if (OnTryMeleeAttack != null) OnTryMeleeAttack();
         }
 
-        public virtual void CallOnTryFire()
+        /// <summary>
+        /// Called To Fire The TPC Weapon, Doesn't Do Damage Automatically
+        /// </summary>
+        public virtual void CallOnTryUseWeapon()
         {
-            if (OnTryFire != null) OnTryFire();
+            if (OnTryUseWeapon != null) OnTryUseWeapon();
         }
 
         public virtual void CallOnTryReload()

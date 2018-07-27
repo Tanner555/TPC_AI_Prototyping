@@ -190,7 +190,7 @@ namespace RTSCoreFramework
             _handler.OnHoverLeave += UiTargetHandle_OnHoverLeave;
             //Notify Character Actions
             _handler.EventCommandAttackEnemy += UiTargetHandle_Attacking;
-            _handler.OnTryFire += UiTargetHandle_Attacking;
+            _handler.OnTryUseWeapon += UiTargetHandle_Attacking;
             _handler.EventStopTargettingEnemy += UiTargetHandle_Nothing;
             _handler.EventCommandMove += UiTargetHandle_CommandMove;
             _handler.EventFinishedMoving += UiTargetHandle_Nothing;
@@ -211,7 +211,7 @@ namespace RTSCoreFramework
             _handler.OnHoverLeave -= UiTargetHandle_OnHoverLeave;
             //Notify Character Actions
             _handler.EventCommandAttackEnemy -= UiTargetHandle_Attacking;
-            _handler.OnTryFire -= UiTargetHandle_Attacking;
+            _handler.OnTryUseWeapon -= UiTargetHandle_Attacking;
             _handler.EventStopTargettingEnemy -= UiTargetHandle_Nothing;
             _handler.EventCommandMove -= UiTargetHandle_CommandMove;
             _handler.EventFinishedMoving -= UiTargetHandle_Nothing;

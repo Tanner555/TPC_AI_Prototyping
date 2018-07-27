@@ -121,7 +121,7 @@ namespace RTSPrototype
             myInventory.SwitchItem(true, false);
         }
 
-        void OnTryFire()
+        void OnTryUseWeapon()
         {
             if (!AllCompsAreValid) return;
             if (!itemHandler.TryUseItem(typeof(PrimaryItemType)))
@@ -250,7 +250,7 @@ namespace RTSPrototype
             myEventHandler.OnTryAim += OnSetAimHandler;
             myEventHandler.OnSwitchToPrevItem += OnSwitchPrevItem;
             myEventHandler.OnSwitchToNextItem += OnSwitchNextItem;
-            myEventHandler.OnTryFire += OnTryFire;
+            myEventHandler.OnTryUseWeapon += OnTryUseWeapon;
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
             myEventHandler.OnWeaponChanged += OnWeaponTypeChanged;
@@ -261,7 +261,7 @@ namespace RTSPrototype
             myEventHandler.OnTryAim -= OnSetAimHandler;
             myEventHandler.OnSwitchToPrevItem -= OnSwitchPrevItem;
             myEventHandler.OnSwitchToNextItem -= OnSwitchNextItem;
-            myEventHandler.OnTryFire -= OnTryFire;
+            myEventHandler.OnTryUseWeapon -= OnTryUseWeapon;
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
             myEventHandler.OnWeaponChanged -= OnWeaponTypeChanged;

@@ -73,6 +73,7 @@ namespace RTSPrototype
         
         //See if need to rotate or continue moving
         bool bIsShooting = false;
+        bool bIsMeleeing = false;
         //LookRotation Local Variable
         Quaternion lookRotation;
         //Sprinting
@@ -201,6 +202,11 @@ namespace RTSPrototype
             bIsShooting = _enable;
         }
 
+        void TogglebIsMeleeing(bool _enable)
+        {
+            bIsMeleeing = _enable;
+        }
+
         void HandleAllyDeath()
         {
             Destroy(this);
@@ -275,7 +281,7 @@ namespace RTSPrototype
             if (!_isFreeMoving)
             {
                 //Change localRotation if targetting is active
-                if (bIsShooting && isTargeting && targetTransform != null)
+                if ((bIsShooting || bIsMeleeing) && isTargeting && targetTransform != null)
                 {
                     //Stand Still and Rotate towards Target
                     m_NavMeshAgent.updatePosition = false;
@@ -364,6 +370,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
+            myEventHandler.EventToggleIsMeleeing += TogglebIsMeleeing;
             myEventHandler.EventToggleIsSprinting += OnToggleSprinting;
             myEventHandler.EventCommandMove += MoveToDestination;
             myEventHandler.EventAllyDied += HandleAllyDeath;
@@ -376,6 +383,7 @@ namespace RTSPrototype
             myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
+            myEventHandler.EventToggleIsMeleeing -= TogglebIsMeleeing;
             myEventHandler.EventToggleIsSprinting -= OnToggleSprinting;
             myEventHandler.EventCommandMove -= MoveToDestination;
             myEventHandler.EventAllyDied -= HandleAllyDeath;

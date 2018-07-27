@@ -45,6 +45,10 @@ namespace RTSCoreFramework
 
         #region Fields
         protected bool bIsShooting = false;
+        protected bool bIsMeleeing
+        {
+            get { return myEventHandler.bIsMeleeingEnemy; }
+        }
         protected float defaultFireRepeatRate = 0.25f;
         //Used for finding closest ally
         [Header("AI Finder Properties")]
@@ -210,6 +214,7 @@ namespace RTSCoreFramework
         {
             currentTargettedEnemy = null;
             StopBattleBehavior();
+            CancelInvoke();
         }
 
         protected virtual void HandleOnMoveAlly(Vector3 _point)
@@ -440,7 +445,22 @@ namespace RTSCoreFramework
             if (allyMember.bIsCarryingMeleeWeapon)
             {
                 //Melee Behavior
-
+                if (IsTargetInMeleeRange(currentTargettedEnemy.gameObject))
+                {
+                    if(bIsMeleeing == false)
+                    {
+                        StartMeleeAttackBehavior();
+                    }
+                }
+                else
+                {
+                    if (bIsMeleeing == true)
+                    {
+                        StopMeleeAttackBehavior();
+                    }
+                    
+                    myEventHandler.CallEventAIMove(currentTargettedEnemy.transform.position);
+                }
             }
             else
             {
@@ -489,6 +509,18 @@ namespace RTSCoreFramework
             CancelInvoke("MakeFireRequest");
         }
 
+        protected virtual void StartMeleeAttackBehavior()
+        {
+            myEventHandler.CallEventToggleIsMeleeing(true);
+            InvokeRepeating("MakeMeleeAttackRequest", 0.0f, GetAttackRate());
+        }
+
+        protected virtual void StopMeleeAttackBehavior()
+        {
+            myEventHandler.CallEventToggleIsMeleeing(false);
+            CancelInvoke("MakeMeleeAttackRequest");
+        }
+
         protected virtual void MakeFireRequest()
         {
             // Pause Ally Tactics If Ally Is Paused
@@ -496,7 +528,17 @@ namespace RTSCoreFramework
             // Is Active
             if (myEventHandler.bAllyIsPaused) return;
 
-            myEventHandler.CallOnTryFire();
+            myEventHandler.CallOnTryUseWeapon();
+        }
+
+        protected virtual void MakeMeleeAttackRequest()
+        {
+            // Pause Ally Tactics If Ally Is Paused
+            // Due to the Game Pausing Or Control Pause Mode
+            // Is Active
+            if (myEventHandler.bAllyIsPaused) return;
+            
+            myEventHandler.CallOnTryUseWeapon();
         }
         #endregion
 
