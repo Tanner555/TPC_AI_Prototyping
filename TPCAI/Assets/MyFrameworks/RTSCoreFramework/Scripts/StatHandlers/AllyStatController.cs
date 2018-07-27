@@ -191,10 +191,11 @@ namespace RTSCoreFramework
             myCharacterStats.EquippedWeapon = _eType;
             var _weapon = myCharacterStats.EquippedWeapon == EEquipType.Primary ?
                 myCharacterStats.PrimaryWeapon : myCharacterStats.SecondaryWeapon;
-            eventHandler.CallOnWeaponChanged(myCharacterStats.EquippedWeapon, _weapon, true);
+            var _wUsage = GetWeaponStatsFromWeaponType(_weapon).WeaponUsage;
+            eventHandler.CallOnWeaponChanged(myCharacterStats.EquippedWeapon, _weapon, _wUsage, true);
 
         }
-        void HandleWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        void HandleWeaponChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
         {
             switch (_eType)
             {

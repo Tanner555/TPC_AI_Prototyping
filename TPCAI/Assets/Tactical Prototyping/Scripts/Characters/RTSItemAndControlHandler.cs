@@ -97,7 +97,7 @@ namespace RTSPrototype
                 _loaded, _unloaded);
         }
 
-        void OnWeaponTypeChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        void OnWeaponTypeChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
         {
             if (_equipped)
             {

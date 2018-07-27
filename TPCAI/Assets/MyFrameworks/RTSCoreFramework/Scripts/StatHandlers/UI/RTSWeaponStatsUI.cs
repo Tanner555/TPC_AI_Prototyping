@@ -176,7 +176,7 @@ namespace RTSCoreFramework
             SecondaryUnloadedText.text = uiTargetHandler.SecondaryUnloadedAmmoAmount.ToString();
         }
 
-        void OnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        void OnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
         {
             if (_equipped)
             {

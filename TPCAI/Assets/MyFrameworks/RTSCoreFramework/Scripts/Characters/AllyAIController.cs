@@ -185,6 +185,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
+        {
+            if (IsInvoking("UpdateBattleBehavior"))
+            {
+                myEventHandler.CallEventStopTargettingEnemy();
+            }
+        }
+
         protected virtual void HandleCommandAttackEnemy(AllyMember enemy)
         {
             CommandAttackEnemy(enemy);
@@ -420,25 +428,34 @@ namespace RTSCoreFramework
                 myEventHandler.CallEventFinishedMoving();
                 return;
             }
-            RaycastHit _hit;
-            if (hasLOSWithinRange(currentTargettedEnemy, out _hit))
+
+            if (allyMember.bIsCarryingMeleeWeapon)
             {
-                if (bIsShooting == false)
-                {
-                    StartShootingBehavior();
-                }
+                //Melee Behavior
+
             }
             else
             {
-                if (bIsShooting == true)
-                    StopShootingBehavior();
-
-                if (bIsMoving == false)
+                //Shooting Behavior
+                RaycastHit _hit;
+                if (hasLOSWithinRange(currentTargettedEnemy, out _hit))
                 {
-                    myEventHandler.CallEventAIMove(currentTargettedEnemy.transform.position);
+                    if (bIsShooting == false)
+                    {
+                        StartShootingBehavior();
+                    }
+                }
+                else
+                {
+                    if (bIsShooting == true)
+                        StopShootingBehavior();
+
+                    if (bIsMoving == false)
+                    {
+                        myEventHandler.CallEventAIMove(currentTargettedEnemy.transform.position);
+                    }
                 }
             }
-
         }
 
         protected virtual void StartBattleBehavior()
@@ -483,6 +500,7 @@ namespace RTSCoreFramework
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventCommandMove += HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
+            myEventHandler.OnWeaponChanged += OnWeaponChanged;
             gamemaster.EventHoldingRightMouseDown += OnEnableCameraMovement;
         }
 
@@ -493,6 +511,7 @@ namespace RTSCoreFramework
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventCommandMove -= HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
+            myEventHandler.OnWeaponChanged -= OnWeaponChanged;
             gamemaster.EventHoldingRightMouseDown -= OnEnableCameraMovement;
         }
 

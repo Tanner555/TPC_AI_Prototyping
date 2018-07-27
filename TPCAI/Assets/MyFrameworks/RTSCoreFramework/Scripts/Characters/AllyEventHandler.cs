@@ -129,7 +129,7 @@ namespace RTSCoreFramework
         public event AllyHandler EventCommandAttackEnemy;
 
         public delegate void EEquipTypeHandler(EEquipType _eType);
-        public delegate void EWeaponTypeHandler(EEquipType _eType, EWeaponType _weaponType, bool _equipped);
+        public delegate void EWeaponTypeHandler(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped);
         public event EEquipTypeHandler OnEquipTypeChanged;
         public event EWeaponTypeHandler OnWeaponChanged;
 
@@ -399,7 +399,7 @@ namespace RTSCoreFramework
             CallOnEquipTypeChanged(_toggleType);
         }
 
-        public virtual void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, bool _equipped)
+        public virtual void CallOnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
         {
             //If MyEquippedWeaponType Hasn't Been Set, Do Not Update MyUnequippedWeaponType
             if (MyEquippedWeaponType != EWeaponType.NoWeaponType)
@@ -424,7 +424,7 @@ namespace RTSCoreFramework
 
             if (OnWeaponChanged != null)
             {
-                OnWeaponChanged(_eType, _weaponType, _equipped);
+                OnWeaponChanged(_eType, _weaponType, _wUsage, _equipped);
             }
         }
 
