@@ -52,7 +52,7 @@ namespace RTSCoreFramework
                 SpawnCharacterPrefab(_stats.CharacterPrefab, _stats.CharacterType.ToString());
             }
 
-            Destroy(this, 0.5f);
+            Destroy(gameObject, 0.5f);
         }
 
         private void OnDrawGizmos()
