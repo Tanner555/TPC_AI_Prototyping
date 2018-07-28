@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
   m_ApplyIgnoreLayerMask: 1
   m_IgnoreLayerMask:
     serializedVersion: 2
-    m_Bits: 1740636137
+    m_Bits: 1870661409
   m_ApplyMoveSmoothing: 1
   m_MoveSmoothing: 0.1
   m_ApplyCameraOffset: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_ApplyRecoil: 1
   m_RecoilSpring: 0.01
   m_RecoilDampening: 0.05
-  m_ApplyObstructionCheck: 1
+  m_ApplyObstructionCheck: 0
   m_ObstructionCheck: 1
   m_ApplyStaticHeight: 1
   m_StaticHeight: 0
