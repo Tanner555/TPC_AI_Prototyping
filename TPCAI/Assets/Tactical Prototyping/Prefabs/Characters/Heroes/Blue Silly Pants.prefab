@@ -1369,6 +1369,7 @@ GameObject:
   - component: {fileID: 114940800323444018}
   - component: {fileID: 114373444521230562}
   - component: {fileID: 114082143539537428}
+  - component: {fileID: 114836408625781914}
   m_Layer: 8
   m_Name: Blue Silly Pants
   m_TagString: Ally
@@ -8439,6 +8440,22 @@ MonoBehaviour:
   m_StaminaDecreaseRate: 0.5
   m_StaminaIncreaseRate: 0.1
   m_AutoStartController: 0
+--- !u!114 &114836408625781914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1faf2fbdae471644fad00e9459ba1977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
+  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  energyBar: {fileID: 0}
+  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114839641392372228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8498,6 +8515,7 @@ MonoBehaviour:
   waypointRendererMaterial: {fileID: 2100000, guid: 6d824634677c23d40b27f91a5aef6ce7,
     type: 2}
   BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
+  myHealthBar: {fileID: 0}
 --- !u!114 &114911107101201148
 MonoBehaviour:
   m_ObjectHideFlags: 1

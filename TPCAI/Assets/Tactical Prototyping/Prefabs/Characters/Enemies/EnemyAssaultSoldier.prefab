@@ -1418,6 +1418,7 @@ GameObject:
   - component: {fileID: 114709272656685310}
   - component: {fileID: 114594257064235068}
   - component: {fileID: 114821859043118370}
+  - component: {fileID: 114774996527581152}
   m_Layer: 8
   m_Name: EnemyAssaultSoldier
   m_TagString: Ally
@@ -8144,6 +8145,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114774996527581152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825627822260076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1faf2fbdae471644fad00e9459ba1977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
+  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  energyBar: {fileID: 0}
+  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114793830129677780
 MonoBehaviour:
   m_ObjectHideFlags: 1

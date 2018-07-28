@@ -1229,6 +1229,7 @@ GameObject:
   - component: {fileID: 114721911958027200}
   - component: {fileID: 114849587454891326}
   - component: {fileID: 114344190564520972}
+  - component: {fileID: 114664965263493996}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -5787,6 +5788,7 @@ MonoBehaviour:
   waypointRendererMaterial: {fileID: 2100000, guid: 6d824634677c23d40b27f91a5aef6ce7,
     type: 2}
   BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
+  myHealthBar: {fileID: 0}
 --- !u!114 &114213171426606734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7789,6 +7791,22 @@ MonoBehaviour:
     m_TransitionDuration: 0.2
     m_SpeedMultiplier: 1
     m_CanReplay: 0
+--- !u!114 &114664965263493996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1faf2fbdae471644fad00e9459ba1977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
+  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  energyBar: {fileID: 0}
+  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114684289601923948
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -72,6 +72,15 @@ namespace BaseFramework
         protected float noScrollCurrentTimer = 5f;
         //UI is enabled
         protected bool UiIsEnabled = false;
+        //Number Key Input
+        protected List<int> NumberKeys = new List<int>
+        {
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+        };
+        protected List<string> NumberKeyNames = new List<string>
+        {
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+        };
         #endregion
 
         #region UnityMessages
@@ -107,7 +116,16 @@ namespace BaseFramework
         protected virtual void InputSetup()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
+            {
                 CallMenuToggle();
+            }
+            foreach (int _key in NumberKeys)
+            {
+                if (Input.GetKeyDown(_key.ToString()))
+                {
+                    CallOnNumberKeyPress(_key);
+                }
+            }
         }
 
         #endregion
@@ -294,6 +312,7 @@ namespace BaseFramework
         #region InputCalls
         protected void CallMenuToggle() { uiMaster.CallEventMenuToggle(); }
         protected void CallToggleIsGamePaused() { gamemaster.CallOnToggleIsGamePaused(); }
+        protected void CallOnNumberKeyPress(int _index) { gamemaster.CallOnNumberKeyPress(_index); }
         #endregion
 
         #region Initialization

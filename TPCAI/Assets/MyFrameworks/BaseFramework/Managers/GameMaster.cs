@@ -80,6 +80,7 @@ namespace BaseFramework
         public delegate void GameManagerEventHandler();
         public delegate void OneBoolArgsHandler(bool enable);
         public delegate void TwoBoolArgsHandler(bool enable, bool isPositive);
+        public delegate void OneIntParamHandler(int _number);
         //Levels, Scenarios, Progression
         public event GameManagerEventHandler RestartLevelEvent;
         public event GameManagerEventHandler GoToMenuSceneEvent;
@@ -91,11 +92,13 @@ namespace BaseFramework
         public event GameManagerEventHandler OnLeftClickNoSend;
         public event GameManagerEventHandler OnRightClickNoSend;
         public event TwoBoolArgsHandler EventEnableCameraZoom;
+        public event OneIntParamHandler OnNumberKeyPress;
         //Camera and Pause
         public event OneBoolArgsHandler OnToggleIsGamePaused;
         public event OneBoolArgsHandler OnTogglebIsInPauseControlMode;
         public event OneBoolArgsHandler EventHoldingLeftMouseDown;
         public event OneBoolArgsHandler EventHoldingRightMouseDown;
+        
         #endregion
 
         #region EventCalls
@@ -247,6 +250,11 @@ namespace BaseFramework
         public void CallEventEnableCameraZoom(bool enable, bool isPositive)
         {
             if (EventEnableCameraZoom != null) EventEnableCameraZoom(enable, isPositive);
+        }
+
+        public void CallOnNumberKeyPress(int _number)
+        {
+            if (OnNumberKeyPress != null) OnNumberKeyPress(_number);
         }
         #endregion
 
