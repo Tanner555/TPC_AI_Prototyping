@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace RTSCoreFramework
 {
@@ -21,6 +22,8 @@ namespace RTSCoreFramework
         protected LineRenderer waypointRenderer;
         [Header("Ally Damage Effects")]
         public GameObject BloodParticles;
+        [SerializeField]
+        Image myHealthBar;
 
         protected RTSGameMaster gamemaster
         {
@@ -82,6 +85,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy -= OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage -= SpawnBloodParticles;
+            myEventHandler.OnHealthChanged -= OnHealthUpdate;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventHoldingRightMouseDown -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -100,6 +104,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy += OnCmdAttackEnemy;
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
+            myEventHandler.OnHealthChanged += OnHealthUpdate;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -132,6 +137,15 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnHealthUpdate(int _current, int _max)
+        {
+            if (myHealthBar != null && myHealthBar.enabled)
+            {
+                float _healthAsPercentage = ((float)_current / (float)_max);
+                myHealthBar.fillAmount = _healthAsPercentage;
+            }
+        }
+
         protected virtual void SpawnBloodParticles(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)
         {
             if (BloodParticles == null) return;
