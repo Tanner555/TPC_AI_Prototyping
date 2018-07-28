@@ -9,12 +9,12 @@ namespace RTSCoreFramework
     public class AllySpecialAbilities : MonoBehaviour
     {
         #region Properties
-        RTSGameMaster gamemaster
+        protected RTSGameMaster gamemaster
         {
             get { return RTSGameMaster.thisInstance; }
         }
 
-        AllyEventHandler eventhandler
+        protected AllyEventHandler eventhandler
         {
             get
             {
@@ -25,7 +25,7 @@ namespace RTSCoreFramework
             }
         }
         AllyEventHandler _eventhandler = null;
-        AllyMember allymember
+        protected AllyMember allymember
         {
             get
             {
@@ -37,7 +37,7 @@ namespace RTSCoreFramework
         }
         AllyMember _allymember = null;
 
-        bool bIsDead
+        protected virtual bool bIsDead
         {
             get
             {
@@ -47,15 +47,15 @@ namespace RTSCoreFramework
         }
 
         //Stamina
-        int AllyStamina
+        protected virtual int AllyStamina
         {
             get { return allymember.AllyStamina; }
         }
-        int AllyMaxStamina
+        protected virtual int AllyMaxStamina
         {
             get { return allymember.AllyMaxStamina; }
         }
-        float energyAsPercent { get { return AllyStamina / AllyMaxStamina; } }
+        protected virtual float energyAsPercent { get { return AllyStamina / AllyMaxStamina; } }
 
         //AudioSource
         protected virtual AudioSource audioSource
@@ -78,19 +78,19 @@ namespace RTSCoreFramework
         #region Fields
         [SerializeField] AbilityConfig[] abilities;
         //Once per second
-        float addStaminaRepeatRate = 1f;
-        int regenPointsPerSecond = 10;
-        [SerializeField] AudioClip outOfEnergy;
+        protected float addStaminaRepeatRate = 1f;
+        protected int regenPointsPerSecond = 10;
+        [SerializeField] protected AudioClip outOfEnergy;
         
         /// <summary>
         /// Allows me to store a behavior on this script
         /// instead of depending on the config for behavior reference
         /// </summary>
-        Dictionary<AbilityConfig, AbilityBehaviour> AbilityDictionary = new Dictionary<AbilityConfig, AbilityBehaviour>();
+        protected Dictionary<AbilityConfig, AbilityBehaviour> AbilityDictionary = new Dictionary<AbilityConfig, AbilityBehaviour>();
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             InitializeAbilityDictionary();
             InvokeRepeating("SE_AddEnergyPoints", 1f, addStaminaRepeatRate);
@@ -99,7 +99,7 @@ namespace RTSCoreFramework
             gamemaster.OnNumberKeyPress += OnKeyPress;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             eventhandler.EventAllyDied -= OnAllyDeath;
             gamemaster.OnNumberKeyPress -= OnKeyPress;
@@ -107,7 +107,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region AbilitiesAndEnergy
-        public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
+        public virtual void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
             var energyCost = abilities[abilityIndex].GetEnergyCost();
 
@@ -122,26 +122,26 @@ namespace RTSCoreFramework
             }
         }
 
-        public int GetNumberOfAbilities()
+        public virtual int GetNumberOfAbilities()
         {
             return abilities.Length;
         }
 
-        public void ConsumeEnergy(float amount)
+        public virtual void ConsumeEnergy(float amount)
         {
             allymember.AllyDrainStamina((int)amount);
         }
         #endregion
 
         #region Services
-        void SE_AddEnergyPoints()
+        protected virtual void SE_AddEnergyPoints()
         {
             allymember.AllyRegainStamina(regenPointsPerSecond);
         }
         #endregion
 
         #region Handlers
-        void OnKeyPress(int _key)
+        protected virtual void OnKeyPress(int _key)
         {
             if (bIsDead) return;
 
@@ -153,14 +153,24 @@ namespace RTSCoreFramework
             //AttemptSpecialAbility(_key);
         }
 
-        void OnAllyDeath()
+        protected virtual void OnAllyDeath()
         {
             CancelInvoke();
         }
         #endregion
 
+        #region TemporaryCode
+        /// <summary>
+        /// Temporarily Used to Mute Errors relating to animation events.
+        /// </summary>
+        public void Hit()
+        {
+
+        }
+        #endregion
+
         #region DictionaryBehavior
-        public AbilityBehaviour AddAbilityBehaviorFromConfig(AbilityConfig _config, GameObject objectToattachTo)
+        public virtual AbilityBehaviour AddAbilityBehaviorFromConfig(AbilityConfig _config, GameObject objectToattachTo)
         {
             AbilityBehaviour _behaviourComponent =
                 _config.AddBehaviourComponent(objectToattachTo);
@@ -168,7 +178,7 @@ namespace RTSCoreFramework
             return _behaviourComponent;
         }
 
-        void InitializeAbilityDictionary()
+        protected virtual void InitializeAbilityDictionary()
         {
             for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
             {

@@ -899,7 +899,9 @@ GameObject:
   - component: {fileID: 114026581900362700}
   - component: {fileID: 114623554653784126}
   - component: {fileID: 114672028672960424}
-  - component: {fileID: 114270147490186732}
+  - component: {fileID: 114718506449872950}
+  - component: {fileID: 114250792873897466}
+  - component: {fileID: 114572575480086458}
   m_Layer: 8
   m_Name: Pink Robot
   m_TagString: Ally
@@ -6278,6 +6280,24 @@ MonoBehaviour:
   m_CanUseSecondaryItem: 1
   m_CanToggleFlashlight: 1
   m_CanToggleLaserSight: 1
+--- !u!114 &114250792873897466
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f2b8774b47cb443ab5bc81275c0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 8
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114252608379302686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6289,21 +6309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd2d7578fe0a9d4a99c67da9bb8228c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114270147490186732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1497344684296414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1faf2fbdae471644fad00e9459ba1977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
-  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
-  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114301570860401764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7057,7 +7062,9 @@ MonoBehaviour:
   - {fileID: 114056903438044656}
   - {fileID: 114623554653784126}
   - {fileID: 114872855573280074}
-  m_SelectedAbility: 6
+  - {fileID: 114250792873897466}
+  - {fileID: 114572575480086458}
+  m_SelectedAbility: 8
 --- !u!114 &114523265218413204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7074,6 +7081,24 @@ MonoBehaviour:
   m_MinWidth: 0.3
   m_MaxWidth: 0.5
   m_PulseSpeed: 0.5
+--- !u!114 &114572575480086458
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80631e053ca54064aaf297b2ee9ea5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 9
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114623554653784126
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -7639,6 +7664,21 @@ MonoBehaviour:
   m_ImpactForce: 5
   m_DefaultDust: {fileID: 0}
   m_DefaultImpactSound: {fileID: 0}
+--- !u!114 &114718506449872950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdf756456958c4499027ecc2d345adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
+  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114722701776207164
 MonoBehaviour:
   m_ObjectHideFlags: 1

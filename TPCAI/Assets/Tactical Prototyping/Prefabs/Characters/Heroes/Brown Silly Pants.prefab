@@ -1229,7 +1229,9 @@ GameObject:
   - component: {fileID: 114721911958027200}
   - component: {fileID: 114849587454891326}
   - component: {fileID: 114344190564520972}
-  - component: {fileID: 114664965263493996}
+  - component: {fileID: 114308427103009158}
+  - component: {fileID: 114575118344290714}
+  - component: {fileID: 114400433465007122}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -6127,6 +6129,21 @@ MonoBehaviour:
   m_StaminaDecreaseRate: 0.5
   m_StaminaIncreaseRate: 0.1
   m_AutoStartController: 0
+--- !u!114 &114308427103009158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdf756456958c4499027ecc2d345adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities:
+  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
+  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114317109200002504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6814,6 +6831,24 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114400433465007122
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80631e053ca54064aaf297b2ee9ea5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 9
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114406654147334474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7215,6 +7250,24 @@ MonoBehaviour:
   m_NormalizedStrafeSpeed: -0.5
   m_StrafeCoverOffset: {x: 0.1, y: 0, z: 0.5}
   m_PopDistance: {x: 0.3, y: 0, z: 3}
+--- !u!114 &114575118344290714
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f2b8774b47cb443ab5bc81275c0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 8
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114575844101820432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7791,21 +7844,6 @@ MonoBehaviour:
     m_TransitionDuration: 0.2
     m_SpeedMultiplier: 1
     m_CanReplay: 0
---- !u!114 &114664965263493996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768055428005526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1faf2fbdae471644fad00e9459ba1977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
-  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
-  outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114684289601923948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8212,7 +8250,9 @@ MonoBehaviour:
   - {fileID: 114289333403305254}
   - {fileID: 114849587454891326}
   - {fileID: 114483047170152196}
-  m_SelectedAbility: 6
+  - {fileID: 114575118344290714}
+  - {fileID: 114400433465007122}
+  m_SelectedAbility: 9
 --- !u!114 &114925658411416062
 MonoBehaviour:
   m_ObjectHideFlags: 1
