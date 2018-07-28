@@ -26,7 +26,7 @@ MonoBehaviour:
     WeaponIcon: {fileID: 21300014, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
     DamageRate: 20
     Accuracy: 35
-    AttackRate: 0.25
+    AttackRate: 1
     MeleeAttackDistance: 4
   - name: Pistol
     WeaponType: 2
