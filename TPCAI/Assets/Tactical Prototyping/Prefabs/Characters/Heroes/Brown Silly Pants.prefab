@@ -4990,7 +4990,7 @@ Animator:
   m_GameObject: {fileID: 1768055428005526}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8a6abf87266ced04dbd7a08a8fa0f443, type: 3}
-  m_Controller: {fileID: 9100000, guid: c4d45b2807e7f674cac65937c395709d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8755ad7b4e5eacc41ae6a8e27560decb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
@@ -7805,7 +7805,6 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
   - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
-  energyBar: {fileID: 0}
   outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114684289601923948
 MonoBehaviour:
