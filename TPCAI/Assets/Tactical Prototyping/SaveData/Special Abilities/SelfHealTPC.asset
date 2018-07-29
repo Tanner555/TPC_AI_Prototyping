@@ -8,12 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9125e4c8a8894b94dad45994c15b6912, type: 3}
-  m_Name: Ability_AreaOfEffect
+  m_Script: {fileID: 11500000, guid: 2d4c55d152016f640b76f27e7a6c089c, type: 3}
+  m_Name: SelfHealTPC
   m_EditorClassIdentifier: 
-  energyCost: 10
+  energyCost: 50
   particlePrefab: {fileID: 0}
   abilityAnimation: {fileID: 0}
   audioClips: []
-  radius: 5
-  damageToEachTarget: 15
+  extraHealth: 50

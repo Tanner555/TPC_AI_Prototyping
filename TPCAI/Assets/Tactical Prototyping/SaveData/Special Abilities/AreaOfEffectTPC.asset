@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882bf5c530484d64d9896e4259d39478, type: 3}
   m_Name: AreaOfEffectTPC
   m_EditorClassIdentifier: 
-  energyCost: 10
+  energyCost: 50
   particlePrefab: {fileID: 0}
   abilityAnimation: {fileID: 0}
   audioClips: []
-  TPCAbility: {fileID: 0}
   radius: 5
   damageToEachTarget: 15
