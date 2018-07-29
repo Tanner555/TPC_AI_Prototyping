@@ -6,8 +6,10 @@ using RTSCoreFramework;
 
 namespace RTSPrototype
 {
-    public class AbilityConfigTPC : MonoBehaviour
+    public abstract class AbilityConfigTPC : AbilityConfig
     {
+        public abstract override AbilityBehaviour AddBehaviourComponent(GameObject objectToAttachTo);
+
 
     }
 }

@@ -6,11 +6,11 @@ namespace RTSCoreFramework
 {
     public abstract class AbilityConfig : ScriptableObject
     {
-        [Header("Spcial Ability General")]
-        [SerializeField] float energyCost = 10f;
-        [SerializeField] GameObject particlePrefab;
-        [SerializeField] AnimationClip abilityAnimation;
-        [SerializeField] AudioClip[] audioClips;
+        [Header("Special Ability General")]
+        [SerializeField] protected float energyCost = 10f;
+        [SerializeField] protected GameObject particlePrefab;
+        [SerializeField] protected AnimationClip abilityAnimation;
+        [SerializeField] protected AudioClip[] audioClips;
 
         /// <summary>
         /// Determines Behavior To Be Added
@@ -19,23 +19,24 @@ namespace RTSCoreFramework
         /// <returns></returns>
         public abstract AbilityBehaviour AddBehaviourComponent(GameObject objectToAttachTo);
 
-        public float GetEnergyCost()
+        public virtual float GetEnergyCost()
         {
             return energyCost;
         }
 
-        public GameObject GetParticlePrefab()
+        public virtual GameObject GetParticlePrefab()
         {
             return particlePrefab;
         }
 
-        public AnimationClip GetAbilityAnimation()
+        public virtual AnimationClip GetAbilityAnimation()
         {
             return abilityAnimation;
         }
 
-        public AudioClip GetRandomAbilitySound()
+        public virtual AudioClip GetRandomAbilitySound()
         {
+            if (audioClips.Length <= 0) return null;
             return audioClips[Random.Range(0, audioClips.Length)];
         }
     }

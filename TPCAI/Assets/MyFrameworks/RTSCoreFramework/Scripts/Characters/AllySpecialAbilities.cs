@@ -145,12 +145,13 @@ namespace RTSCoreFramework
         {
             if (bIsDead) return;
 
-            if (_key == 0 ||
-                _key > GetNumberOfAbilities() ||
+            //This fixes a bug with retrieving the wrong ability index
+            int _index = _key - 1;
+            if (_index < 0 ||
+                _index > GetNumberOfAbilities() - 1 ||
                 allymember.bIsCurrentPlayer == false) return;
 
-            //Debug.Log($"Attempting Special Ability Index: {_key}");
-            //AttemptSpecialAbility(_key);
+            AttemptSpecialAbility(_index);
         }
 
         protected virtual void OnAllyDeath()

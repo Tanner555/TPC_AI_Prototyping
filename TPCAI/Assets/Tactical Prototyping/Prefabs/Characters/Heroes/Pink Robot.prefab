@@ -7676,8 +7676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 11400000, guid: 6d03d879d5f4a484e94e55da581b51fe, type: 2}
-  - {fileID: 11400000, guid: 437b1afa5327c7f45bc87848c49f9458, type: 2}
+  - {fileID: 11400000, guid: 4eb34dd7d9924604cbc39b6ad31d6007, type: 2}
+  - {fileID: 11400000, guid: c1785d55da55d5947bec63704402f9f7, type: 2}
   outOfEnergy: {fileID: 8300000, guid: 788ae1a998355294f90f4fa8357e9d41, type: 3}
 --- !u!114 &114722701776207164
 MonoBehaviour:

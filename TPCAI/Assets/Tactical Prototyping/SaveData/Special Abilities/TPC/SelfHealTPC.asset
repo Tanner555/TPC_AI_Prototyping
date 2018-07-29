@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4c55d152016f640b76f27e7a6c089c, type: 3}
+  m_Name: SelfHealTPC
+  m_EditorClassIdentifier: 
+  energyCost: 10
+  particlePrefab: {fileID: 0}
+  abilityAnimation: {fileID: 0}
+  audioClips: []
+  TPCAbility: {fileID: 0}
+  extraHealth: 50

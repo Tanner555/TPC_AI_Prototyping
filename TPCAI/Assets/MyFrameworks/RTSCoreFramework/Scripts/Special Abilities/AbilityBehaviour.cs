@@ -5,33 +5,54 @@ namespace RTSCoreFramework
 {
     public abstract class AbilityBehaviour : MonoBehaviour
     {
+        #region Properties
+        protected virtual AudioSource audioSource
+        {
+            get
+            {
+                if (_audioSource == null)
+                {
+                    _audioSource = GetComponent<AudioSource>();
+                    if (_audioSource == null)
+                        _audioSource = gameObject.AddComponent<AudioSource>();
+
+                }
+                return _audioSource;
+            }
+        }
+        private AudioSource _audioSource = null;
+        #endregion
+
+        #region Fields
         protected AbilityConfig config;
 
-        const string ATTACK_TRIGGER = "Attack";
-        const string DEFAULT_ATTACK_STATE = "DEFAULT ATTACK";
-        const float PARTICLE_CLEAN_UP_DELAY = 20f;
+        protected const string ATTACK_TRIGGER = "Attack";
+        protected const string DEFAULT_ATTACK_STATE = "DEFAULT ATTACK";
+        protected const float PARTICLE_CLEAN_UP_DELAY = 20f;
+        #endregion
 
         public abstract void Use(GameObject target = null);
 
-        public void SetConfig(AbilityConfig configToSet)
+        public virtual void SetConfig(AbilityConfig configToSet)
         {
             config = configToSet;
         }
 
-        protected void PlayParticleEffect()
+        protected virtual void PlayParticleEffect()
         {
-            var particlePrefab = config.GetParticlePrefab();
-            var particleObject = Instantiate(
-                particlePrefab,
+            var _particlePrefab = config.GetParticlePrefab();
+            if (_particlePrefab == null) return;
+            var _particleObject = Instantiate(
+                _particlePrefab,
                 transform.position,
-                particlePrefab.transform.rotation
+                _particlePrefab.transform.rotation
             );
-            particleObject.transform.parent = transform; // set world space in prefab if required
-            particleObject.GetComponent<ParticleSystem>().Play();
-            StartCoroutine(DestroyParticleWhenFinished(particleObject));
+            _particleObject.transform.parent = transform; // set world space in prefab if required
+            _particleObject.GetComponent<ParticleSystem>().Play();
+            StartCoroutine(DestroyParticleWhenFinished(_particleObject));
         }
 
-        IEnumerator DestroyParticleWhenFinished(GameObject particlePrefab)
+        protected virtual IEnumerator DestroyParticleWhenFinished(GameObject particlePrefab)
         {
             while (particlePrefab.GetComponent<ParticleSystem>().isPlaying)
             {
@@ -41,9 +62,9 @@ namespace RTSCoreFramework
             yield return new WaitForEndOfFrame();
         }
 
-        protected void PlayAbilityAnimation()
+        protected virtual void PlayAbilityAnimation()
         {
-            //TODO:RTSPrototype: Add Ability Animations Functionality
+            //Override To Add Ability Animations Functionality
             //var animatorOverrideController = GetComponent<RPGCharacter>().GetOverrideController();
             //var animator = GetComponent<Animator>();
             //animator.runtimeAnimatorController = animatorOverrideController;
@@ -51,10 +72,10 @@ namespace RTSCoreFramework
             //animator.SetTrigger(ATTACK_TRIGGER);
         }
 
-        protected void PlayAbilitySound()
+        protected virtual void PlayAbilitySound()
         {
             var abilitySound = config.GetRandomAbilitySound();
-            var audioSource = GetComponent<AudioSource>();
+            if (abilitySound == null) return;
             audioSource.PlayOneShot(abilitySound);
         }
     }
