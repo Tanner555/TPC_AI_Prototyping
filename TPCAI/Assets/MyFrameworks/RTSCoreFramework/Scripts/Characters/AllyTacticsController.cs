@@ -77,7 +77,6 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        protected bool hasStarted = false;
         protected bool bEnableTactics = false;
         protected bool bPreviouslyEnabledTactics = false;
         protected List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
@@ -88,12 +87,8 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            if (hasStarted == true)
-            {
-                SetInitialReferences();
-                SubToEvents();
-                LoadAndExecuteAllyTactics();
-            }
+            SetInitialReferences();
+            SubToEvents();
         }
 
         protected virtual void OnDisable()
@@ -105,13 +100,7 @@ namespace RTSCoreFramework
         // Use this for initialization
         protected virtual void Start()
         {
-            if (hasStarted == false)
-            {
-                SetInitialReferences();
-                SubToEvents();
-                LoadAndExecuteAllyTactics();
-                hasStarted = true;
-            }
+
         }
 
         // Update is called once per frame

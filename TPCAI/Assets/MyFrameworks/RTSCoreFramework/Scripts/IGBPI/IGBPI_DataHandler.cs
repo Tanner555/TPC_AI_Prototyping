@@ -101,17 +101,17 @@ namespace RTSCoreFramework
             {"Leader: Within Follow Distance", new IGBPI_Condition((_ally) =>
             { return _ally.aiController.IsWithinFollowingDistance(); }, ConditionFilters.Standard) },
             {"Self: Health < 100", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 100; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 1; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 90", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 90; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 0.90; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 75", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 75; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 0.75; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 50", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 50; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 0.50; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 25", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 25; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 0.25; }, ConditionFilters.AllyHealth) },
             {"Self: Health < 10", new IGBPI_Condition((_ally) =>
-            { return _ally.AllyHealth < 10; }, ConditionFilters.AllyHealth) },
+            { return _ally.HealthAsPercentage < 0.10; }, ConditionFilters.AllyHealth) },
             {"Self: CurAmmo < 10", new IGBPI_Condition((_ally) =>
             { return _ally.CurrentEquipedAmmo < 10; }, ConditionFilters.AllyGun) },
             {"Self: CurAmmo = 0", new IGBPI_Condition((_ally) =>

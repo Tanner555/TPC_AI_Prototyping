@@ -97,6 +97,11 @@ namespace RTSCoreFramework
         }
         private int _allyMinHealth = 0;
 
+        public virtual float HealthAsPercentage
+        {
+            get { return ((float)AllyHealth / (float)AllyMaxHealth); }
+        }
+
         public virtual int AllyStamina
         {
             get { return _AllyStamina; }
