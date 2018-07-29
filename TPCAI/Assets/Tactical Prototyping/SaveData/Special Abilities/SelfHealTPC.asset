@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Name: SelfHealTPC
   m_EditorClassIdentifier: 
   energyCost: 50
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 1770094935522392, guid: 54cafe32d2548dd46ab8ca2e9835aa3c,
+    type: 2}
   abilityAnimation: {fileID: 0}
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 748a98aabdf596d4082afd73839ab472, type: 3}
   extraHealth: 50

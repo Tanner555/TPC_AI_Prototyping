@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: AreaOfEffectTPC
   m_EditorClassIdentifier: 
   energyCost: 50
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 1977060658541122, guid: 19e62b43a3dcdf340adbf95fc64a5a08,
+    type: 2}
   abilityAnimation: {fileID: 0}
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: c4402350d3880b24ea82a9fd25bdc11b, type: 3}
   radius: 5
-  damageToEachTarget: 15
+  damageToEachTarget: 50
