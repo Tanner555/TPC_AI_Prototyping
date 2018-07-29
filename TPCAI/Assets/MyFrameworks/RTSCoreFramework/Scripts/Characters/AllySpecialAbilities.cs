@@ -96,12 +96,14 @@ namespace RTSCoreFramework
             InvokeRepeating("SE_AddEnergyPoints", 1f, addStaminaRepeatRate);
 
             eventhandler.EventAllyDied += OnAllyDeath;
+            eventhandler.OnTrySpecialAbility += HandleOnTrySpecialAbility;
             gamemaster.OnNumberKeyPress += OnKeyPress;
         }
 
         protected virtual void OnDisable()
         {
             eventhandler.EventAllyDied -= OnAllyDeath;
+            eventhandler.OnTrySpecialAbility -= HandleOnTrySpecialAbility;
             gamemaster.OnNumberKeyPress -= OnKeyPress;
         }
         #endregion
@@ -109,15 +111,21 @@ namespace RTSCoreFramework
         #region AbilitiesAndEnergy
         public virtual void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
-            var energyCost = abilities[abilityIndex].GetEnergyCost();
+            var _config = abilities[abilityIndex];
+            var _behaviour = AbilityDictionary[_config];
+            AttemptSpecialAbility(_config, _behaviour);
+        }
+
+        public virtual void AttemptSpecialAbility(AbilityConfig _config, AbilityBehaviour _behaviour, GameObject target = null)
+        {
+            var energyCost = _config.GetEnergyCost();
 
             if (energyCost <= AllyStamina)
             {
-                var _abilityBehaviour = AbilityDictionary[abilities[abilityIndex]];
-                if (_abilityBehaviour.CanUseAbility())
+                if (_behaviour.CanUseAbility())
                 {
                     ConsumeEnergy(energyCost);
-                    _abilityBehaviour.Use(target);
+                    _behaviour.Use(target);
                 }
             }
             else
@@ -145,6 +153,17 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void HandleOnTrySpecialAbility(System.Type _type)
+        {
+            foreach (var _config in AbilityDictionary.Keys)
+            {
+                if(_config.GetType().Equals(_type))
+                {
+                    AttemptSpecialAbility(_config, AbilityDictionary[_config]);
+                }
+            }
+        }
+
         protected virtual void OnKeyPress(int _key)
         {
             if (bIsDead) return;

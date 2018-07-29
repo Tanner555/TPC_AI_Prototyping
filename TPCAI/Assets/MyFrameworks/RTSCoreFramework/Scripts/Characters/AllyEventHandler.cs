@@ -119,6 +119,10 @@ namespace RTSCoreFramework
         public event GeneralEventHandler OnTryCrouch;
         public event GeneralOneBoolHandler OnTryAim;
 
+        //For Special Abilities
+        public delegate void OneSystemTypeArgHandler(System.Type _type);
+        public event OneSystemTypeArgHandler OnTrySpecialAbility;
+
         //May use delegate in the future
         //public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event GeneralEventHandler OnHoverOver;
@@ -286,6 +290,11 @@ namespace RTSCoreFramework
         public virtual void CallOnTryAim(bool _enable)
         {
             if (OnTryAim != null) OnTryAim(_enable);
+        }
+
+        public virtual void CallOnTrySpecialAbility(System.Type _type)
+        {
+            if (OnTrySpecialAbility != null) OnTrySpecialAbility(_type);
         }
 
         public virtual void CallEventSwitchingFromCom()
