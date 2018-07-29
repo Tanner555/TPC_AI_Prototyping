@@ -113,8 +113,12 @@ namespace RTSCoreFramework
 
             if (energyCost <= AllyStamina)
             {
-                ConsumeEnergy(energyCost);
-                AbilityDictionary[abilities[abilityIndex]].Use(target);
+                var _abilityBehaviour = AbilityDictionary[abilities[abilityIndex]];
+                if (_abilityBehaviour.CanUseAbility())
+                {
+                    ConsumeEnergy(energyCost);
+                    _abilityBehaviour.Use(target);
+                }
             }
             else
             {

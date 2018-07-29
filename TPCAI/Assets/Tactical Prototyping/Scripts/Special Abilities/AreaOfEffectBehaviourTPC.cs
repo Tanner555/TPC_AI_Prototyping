@@ -70,7 +70,7 @@ namespace RTSPrototype
             }
         }
 
-        public override Opsive.ThirdPersonController.Abilities.Ability GetTPCAbility()
+        protected override Opsive.ThirdPersonController.Abilities.Ability GetTPCAbility()
         {
             return GetComponent<RTSAreaEffectAbility>();
         }

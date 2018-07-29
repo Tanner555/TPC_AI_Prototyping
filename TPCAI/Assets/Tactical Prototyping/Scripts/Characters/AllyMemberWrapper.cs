@@ -71,6 +71,17 @@ namespace RTSPrototype
             get { return allyStatController.Stat_MaxHealth; }
         }
 
+        public override int AllyStamina
+        {
+            get { return allyStatController.Stat_Stamina; }
+            protected set { allyStatController.Stat_Stamina = value; }
+        }
+
+        public override int AllyMaxStamina
+        {
+            get { return allyStatController.Stat_MaxStamina; }
+        }
+
         public override int CurrentEquipedAmmo
         {
             get

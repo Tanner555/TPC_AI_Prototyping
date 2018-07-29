@@ -31,6 +31,13 @@ namespace RTSCoreFramework
         protected const float PARTICLE_CLEAN_UP_DELAY = 20f;
         #endregion
 
+        #region Getters
+        public virtual bool CanUseAbility()
+        {
+            return false;
+        }
+        #endregion
+
         public abstract void Use(GameObject target = null);
 
         public virtual void SetConfig(AbilityConfig configToSet)

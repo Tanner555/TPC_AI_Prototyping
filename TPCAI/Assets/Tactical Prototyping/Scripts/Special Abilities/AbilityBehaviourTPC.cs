@@ -10,19 +10,35 @@ namespace RTSPrototype
     {
         public override abstract void Use(GameObject target = null);
 
+        public Opsive.ThirdPersonController.Abilities.Ability TPCAbility
+        {
+            get
+            {
+                if (_TPCAbility == null)
+                    _TPCAbility = GetTPCAbility();
+
+                return _TPCAbility;
+            }
+        }
+        private Opsive.ThirdPersonController.Abilities.Ability _TPCAbility = null;
+
         protected override void PlayAbilityAnimation()
         {
-            var _tpcAbility = GetTPCAbility();
-            if(_tpcAbility != null && _tpcAbility.CanStartAbility())
+            if(CanUseAbility())
             {
-                _tpcAbility.StartAbility();
+                TPCAbility.StartAbility();
             }
         }
 
-        public virtual Opsive.ThirdPersonController.Abilities.Ability GetTPCAbility()
+        protected virtual Opsive.ThirdPersonController.Abilities.Ability GetTPCAbility()
         {
             //Override To Get the Actual TPC Ability
             return null;
+        }
+
+        public override bool CanUseAbility()
+        {
+            return TPCAbility != null && TPCAbility.CanStartAbility();
         }
     }
 }
