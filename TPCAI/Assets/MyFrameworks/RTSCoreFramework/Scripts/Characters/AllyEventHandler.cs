@@ -236,10 +236,6 @@ namespace RTSCoreFramework
         {
             bIsCommandMoving = false;
             bIsAIMoving = false;
-            if (bCanEnableAITactics)
-            {
-                CallEventToggleAllyTactics(true);
-            }
             if (EventFinishedMoving != null) EventFinishedMoving();
         }
 
@@ -397,14 +393,15 @@ namespace RTSCoreFramework
         public virtual void CallEventTogglebIsFreeMoving(bool _enable)
         {
             bIsFreeMoving = _enable;
-            //If Free Moving Is Enabled, Diable Tactics
-            bool _enableTactics = !_enable && bCanEnableAITactics;
-            CallEventToggleAllyTactics(_enableTactics);
             if (EventTogglebIsFreeMoving != null) EventTogglebIsFreeMoving(_enable);
         }
 
-        //Event handler controls bIsTacticsEnabled, makes code more centralized
-        protected virtual void CallEventToggleAllyTactics(bool _enable)
+        /// <summary>
+        /// Event handler controls bIsTacticsEnabled, makes code more centralized.
+        /// Now is called inside TacticsController, Rather than being Handled by Controller
+        /// </summary>
+        /// <param name="_enable"></param>
+        public virtual void CallEventToggleAllyTactics(bool _enable)
         {
             bIsTacticsEnabled = _enable;
             if (EventToggleAllyTactics != null) EventToggleAllyTactics(_enable);

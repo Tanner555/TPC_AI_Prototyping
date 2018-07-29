@@ -78,7 +78,7 @@ namespace RTSCoreFramework
 
         #region Fields
         protected bool hasStarted = false;
-        protected bool bEnableTactics = true;
+        protected bool bEnableTactics = false;
         protected bool bPreviouslyEnabledTactics = false;
         protected List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
         public List<AllyTacticsItem> AllyTacticsList;
@@ -122,6 +122,21 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void HandleAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
+        {
+            if (allyMember.partyManager != _party) return;
+
+            if (allyMember == _toSet &&
+                _toSet.bIsInGeneralCommanderParty)
+            {
+                CallToggleTactics(false);
+            }
+            else
+            {
+                CallToggleTactics(true);
+            }
+        }
+
         protected virtual void OnSaveTactics()
         {
             if (bEnableTactics)
@@ -137,17 +152,27 @@ namespace RTSCoreFramework
             Destroy(this);
         }
 
-        protected virtual void HandleToggleTactics(bool _enable)
+        #endregion
+
+        #region OldHandlers
+        //Used For Reference Only
+        protected virtual void HandleEventTogglebIsFreeMoving(bool _enable)
         {
-            bPreviouslyEnabledTactics = bEnableTactics;
-            bEnableTactics = _enable;
-            if (bEnableTactics)
+            bool _canEnableTactics = (myEventHandler.bIsCommandMoving ||
+                  myEventHandler.bIsFreeMoving) == false &&
+                  myEventHandler.bIsCommandAttacking == false;
+            bool _enableTactics = !_enable && _canEnableTactics;
+            CallToggleTactics(_enable);
+        }
+
+        protected virtual void HandleFinishMoving()
+        {
+            bool _canEnableTactics = (myEventHandler.bIsCommandMoving ||
+                 myEventHandler.bIsFreeMoving) == false &&
+                 myEventHandler.bIsCommandAttacking == false;
+            if (_canEnableTactics)
             {
-                LoadAndExecuteAllyTactics();
-            }
-            else
-            {
-                UnLoadAndCancelTactics();
+                CallToggleTactics(true);
             }
         }
 
@@ -236,6 +261,21 @@ namespace RTSCoreFramework
             return _exeTactic;
         }
 
+        protected virtual void CallToggleTactics(bool _enable)
+        {
+            bPreviouslyEnabledTactics = bEnableTactics;
+            bEnableTactics = _enable;
+            if (bEnableTactics)
+            {
+                LoadAndExecuteAllyTactics();
+            }
+            else
+            {
+                UnLoadAndCancelTactics();
+            }
+            myEventHandler.CallEventToggleAllyTactics(_enable);
+        }
+
         #endregion
 
         #region Initialization
@@ -247,15 +287,25 @@ namespace RTSCoreFramework
         protected virtual void SubToEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete += OnSaveTactics;
-            myEventHandler.EventToggleAllyTactics += HandleToggleTactics;
+            gameMaster.OnAllySwitch += HandleAllySwitch;
             myEventHandler.EventAllyDied += HandleAllyDeath;
+            //Reference Only
+            //myEventHandler.EventTogglebIsFreeMoving += HandleEventTogglebIsFreeMoving;
+            //myEventHandler.EventFinishedMoving += HandleFinishMoving;
+            //No Longer Handling Toggle Event, But Sending it Instead
+            //myEventHandler.EventToggleAllyTactics += CallToggleTactics;
         }
 
         protected virtual void UnsubFromEvents()
         {
             uiMaster.EventOnSaveIGBPIComplete -= OnSaveTactics;
-            myEventHandler.EventToggleAllyTactics -= HandleToggleTactics;
+            gameMaster.OnAllySwitch -= HandleAllySwitch;
             myEventHandler.EventAllyDied -= HandleAllyDeath;
+            //Reference Only
+            //myEventHandler.EventTogglebIsFreeMoving -= HandleEventTogglebIsFreeMoving;
+            //myEventHandler.EventFinishedMoving -= HandleFinishMoving;
+            //No Longer Handling Toggle Event, But Sending it Instead
+            //myEventHandler.EventToggleAllyTactics -= CallToggleTactics;
         }
         #endregion
 
