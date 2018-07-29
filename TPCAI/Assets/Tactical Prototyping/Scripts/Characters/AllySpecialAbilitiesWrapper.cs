@@ -16,44 +16,19 @@ namespace RTSPrototype
             if(_key == 1)
             {
                 var _area = GetComponent<RTSAreaEffectAbility>();
-                if(_area != null)
+                if(_area != null && _area.CanStartAbility())
                 {
-                    Debug.Log("Casting Area of Effect");
                     _area.StartAbility();
-                    Invoke("StopAreaEffectAbility", 1f);
                 }
             }
             if(_key == 2)
             {
                 var _heal = GetComponent<RTSSelfHealAbility>();
-                if(_heal != null)
+                if(_heal != null && _heal.CanStartAbility())
                 {
-                    Debug.Log("Casting Heal");
                     _heal.StartAbility();
-                    Invoke("StopHealAbility", 1f);
                 }
             }
         }
-
-        void StopAreaEffectAbility()
-        {
-            var _areaeffect = GetComponent<RTSAreaEffectAbility>();
-            if (_areaeffect != null)
-            {
-                Debug.Log("Stop Area Effect");
-                _areaeffect.StopAbility();
-            }
-        }
-
-        void StopHealAbility()
-        {
-            var _heal = GetComponent<RTSSelfHealAbility>();
-            if (_heal != null)
-            {
-                Debug.Log("Stop Healing");
-                _heal.StopAbility();
-            }
-        }
-
     }
 }

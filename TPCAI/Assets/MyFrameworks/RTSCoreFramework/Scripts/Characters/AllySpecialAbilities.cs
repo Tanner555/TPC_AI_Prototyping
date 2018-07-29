@@ -149,7 +149,7 @@ namespace RTSCoreFramework
                 _key > GetNumberOfAbilities() ||
                 allymember.bIsCurrentPlayer == false) return;
 
-            Debug.Log($"Attempting Special Ability Index: {_key}");
+            //Debug.Log($"Attempting Special Ability Index: {_key}");
             //AttemptSpecialAbility(_key);
         }
 

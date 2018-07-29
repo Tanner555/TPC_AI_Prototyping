@@ -23,5 +23,21 @@ namespace RTSPrototype
 
             return "AreaEffect.Movement";
         }
+
+        public override bool CanStartAbility()
+        {
+            return base.CanStartAbility() && this.IsActive == false;
+        }
+
+        protected override void AbilityStarted()
+        {
+            base.AbilityStarted();
+            Invoke("StopAbilityInvoke", 1f);
+        }
+
+        void StopAbilityInvoke()
+        {
+            this.StopAbility();
+        }
     }
 }
