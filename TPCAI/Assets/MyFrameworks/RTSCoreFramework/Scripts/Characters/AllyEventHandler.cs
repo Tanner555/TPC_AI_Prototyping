@@ -38,6 +38,7 @@ namespace RTSCoreFramework
         public bool bIsAiAttacking { get; protected set; }
         public bool bIsAimingToShoot { get; protected set; }
         public bool bIsMeleeingEnemy { get; protected set; }
+        public bool bIsUsingAbility { get; protected set; }
         public bool bCanEnableAITactics
         {
             get
@@ -104,6 +105,7 @@ namespace RTSCoreFramework
         public event GeneralOneBoolHandler EventTogglebIsFreeMoving;
         public event GeneralOneBoolHandler EventToggleIsShooting;
         public event GeneralOneBoolHandler EventToggleIsMeleeing;
+        public event GeneralOneBoolHandler EventToggleIsUsingAbility;
         //Opsive TPC Events
         public event GeneralEventHandler OnSwitchToPrevItem;
         public event GeneralEventHandler OnSwitchToNextItem;
@@ -157,6 +159,8 @@ namespace RTSCoreFramework
             bIsFreeMoving = false;
             bIsCommandAttacking = false;
             bIsAiAttacking = false;
+            bIsMeleeingEnemy = false;
+            bIsUsingAbility = false;
         }
 
         protected virtual void Start()
@@ -228,6 +232,12 @@ namespace RTSCoreFramework
             {
                 CallEventToggleIsShooting(false);
             }
+        }
+
+        public virtual void CallEventToggleIsUsingAbility(bool _enable)
+        {
+            bIsUsingAbility = _enable;
+            if (EventToggleIsUsingAbility != null) EventToggleIsUsingAbility(_enable);
         }
 
         public virtual void CallEventToggleIsSprinting()
