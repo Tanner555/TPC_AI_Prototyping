@@ -290,7 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentScenario: -1
-  FrameRateLimit: 60
   levelSettingsData: {fileID: 11400000, guid: 82d2cad50bbbd42428daffb8dcfa9412, type: 2}
 --- !u!4 &408444148
 Transform:
