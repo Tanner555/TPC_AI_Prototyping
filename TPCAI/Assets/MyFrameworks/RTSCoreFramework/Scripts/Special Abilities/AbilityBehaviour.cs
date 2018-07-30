@@ -21,6 +21,31 @@ namespace RTSCoreFramework
             }
         }
         private AudioSource _audioSource = null;
+
+        protected AllyMember allyMember
+        {
+            get
+            {
+                if (_allyMember == null)
+                    _allyMember = GetComponent<AllyMember>();
+
+                return _allyMember;
+            }
+        }
+        private AllyMember _allyMember = null;
+
+        protected AllyEventHandler allyEventHandler
+        {
+            get
+            {
+                if (_allyEventHandler == null)
+                    _allyEventHandler = GetComponent<AllyEventHandler>();
+
+                return _allyEventHandler;
+            }
+        }
+        private AllyEventHandler _allyEventHandler = null;
+
         #endregion
 
         #region Fields
@@ -77,6 +102,11 @@ namespace RTSCoreFramework
             //animator.runtimeAnimatorController = animatorOverrideController;
             //animatorOverrideController[DEFAULT_ATTACK_STATE] = config.GetAbilityAnimation();
             //animator.SetTrigger(ATTACK_TRIGGER);
+        }
+
+        protected virtual void StopAbilityAnimation()
+        {
+            //Override To Add Ability Animations Functionality
         }
 
         protected virtual void PlayAbilitySound()

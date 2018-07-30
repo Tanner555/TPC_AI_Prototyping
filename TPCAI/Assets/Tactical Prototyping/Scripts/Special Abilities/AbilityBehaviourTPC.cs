@@ -27,7 +27,15 @@ namespace RTSPrototype
             if(CanUseAbility())
             {
                 TPCAbility.StartAbility();
+                allyEventHandler.CallEventToggleIsUsingAbility(true);
+                Invoke("StopAbilityAnimation", config.GetAbilityAnimationTime());
             }
+        }
+
+        protected override void StopAbilityAnimation()
+        {
+            TPCAbility.StopAbility();
+            allyEventHandler.CallEventToggleIsUsingAbility(false);
         }
 
         protected virtual Opsive.ThirdPersonController.Abilities.Ability GetTPCAbility()

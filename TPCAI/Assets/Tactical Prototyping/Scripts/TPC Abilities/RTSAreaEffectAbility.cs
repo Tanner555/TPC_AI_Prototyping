@@ -28,16 +28,5 @@ namespace RTSPrototype
         {
             return base.CanStartAbility() && this.IsActive == false;
         }
-
-        protected override void AbilityStarted()
-        {
-            base.AbilityStarted();
-            Invoke("StopAbilityInvoke", 1f);
-        }
-
-        void StopAbilityInvoke()
-        {
-            this.StopAbility();
-        }
     }
 }

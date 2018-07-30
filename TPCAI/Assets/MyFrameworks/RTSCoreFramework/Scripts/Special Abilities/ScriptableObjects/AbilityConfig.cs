@@ -11,6 +11,7 @@ namespace RTSCoreFramework
         [SerializeField] protected GameObject particlePrefab;
         [SerializeField] protected AnimationClip abilityAnimation;
         [SerializeField] protected AudioClip[] audioClips;
+        [SerializeField] protected float AbilityAnimationTime = 1f;
 
         /// <summary>
         /// Determines Behavior To Be Added
@@ -38,6 +39,11 @@ namespace RTSCoreFramework
         {
             if (audioClips.Length <= 0) return null;
             return audioClips[Random.Range(0, audioClips.Length)];
+        }
+
+        public virtual float GetAbilityAnimationTime()
+        {
+            return AbilityAnimationTime;
         }
     }
 }
