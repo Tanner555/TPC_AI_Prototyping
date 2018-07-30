@@ -9,7 +9,6 @@ namespace RTSCoreFramework
         [Header("Special Ability General")]
         [SerializeField] protected float energyCost = 10f;
         [SerializeField] protected GameObject particlePrefab;
-        [SerializeField] protected AnimationClip abilityAnimation;
         [SerializeField] protected AudioClip[] audioClips;
         [SerializeField] protected float AbilityAnimationTime = 1f;
 
@@ -28,11 +27,6 @@ namespace RTSCoreFramework
         public virtual GameObject GetParticlePrefab()
         {
             return particlePrefab;
-        }
-
-        public virtual AnimationClip GetAbilityAnimation()
-        {
-            return abilityAnimation;
         }
 
         public virtual AudioClip GetRandomAbilitySound()

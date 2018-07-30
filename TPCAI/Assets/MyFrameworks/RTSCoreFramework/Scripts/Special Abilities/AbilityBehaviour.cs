@@ -51,8 +51,6 @@ namespace RTSCoreFramework
         #region Fields
         protected AbilityConfig config;
 
-        protected const string ATTACK_TRIGGER = "Attack";
-        protected const string DEFAULT_ATTACK_STATE = "DEFAULT ATTACK";
         protected const float PARTICLE_CLEAN_UP_DELAY = 20f;
         #endregion
 
@@ -97,11 +95,6 @@ namespace RTSCoreFramework
         protected virtual void PlayAbilityAnimation()
         {
             //Override To Add Ability Animations Functionality
-            //var animatorOverrideController = GetComponent<RPGCharacter>().GetOverrideController();
-            //var animator = GetComponent<Animator>();
-            //animator.runtimeAnimatorController = animatorOverrideController;
-            //animatorOverrideController[DEFAULT_ATTACK_STATE] = config.GetAbilityAnimation();
-            //animator.SetTrigger(ATTACK_TRIGGER);
         }
 
         protected virtual void StopAbilityAnimation()
