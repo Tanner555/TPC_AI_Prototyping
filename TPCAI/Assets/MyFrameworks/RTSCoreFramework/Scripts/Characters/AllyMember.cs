@@ -268,6 +268,12 @@ namespace RTSCoreFramework
 
         protected virtual void OnTryMeleeAttack()
         {
+            float _delay = Mathf.Max(0.1f, WeaponAttackRate - 0.5f);
+            Invoke("OnTryMeleeAttackDelay", _delay);
+        }
+
+        protected virtual void OnTryMeleeAttackDelay()
+        {
             RaycastHit _hit;
             var _target = enemyTarget;
             bool _validShot = ChestTransform != null &&

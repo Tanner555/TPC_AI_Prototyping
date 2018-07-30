@@ -83,4 +83,4 @@ MonoBehaviour:
     DamageRate: 20
     Accuracy: 35
     AttackRate: 1
-    MeleeAttackDistance: 2
+    MeleeAttackDistance: 3
