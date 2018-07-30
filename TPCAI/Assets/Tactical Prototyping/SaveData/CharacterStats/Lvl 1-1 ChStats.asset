@@ -62,5 +62,5 @@ MonoBehaviour:
     MaxStamina: 100
     Stamina: 100
     EquippedWeapon: 0
-    PrimaryWeapon: 1
+    PrimaryWeapon: 8
     SecondaryWeapon: 3

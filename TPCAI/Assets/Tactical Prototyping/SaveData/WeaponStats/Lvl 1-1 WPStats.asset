@@ -60,3 +60,27 @@ MonoBehaviour:
     Accuracy: 100
     AttackRate: 1
     MeleeAttackDistance: 10
+  - name: Axe
+    WeaponType: 6
+    WeaponUsage: 0
+    WeaponIcon: {fileID: 21300120, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 20
+    Accuracy: 35
+    AttackRate: 1
+    MeleeAttackDistance: 2
+  - name: Crossbow
+    WeaponType: 7
+    WeaponUsage: 1
+    WeaponIcon: {fileID: 21300124, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 100
+    Accuracy: 100
+    AttackRate: 1
+    MeleeAttackDistance: 10
+  - name: Katana
+    WeaponType: 8
+    WeaponUsage: 0
+    WeaponIcon: {fileID: 21300116, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
+    DamageRate: 20
+    Accuracy: 35
+    AttackRate: 1
+    MeleeAttackDistance: 2

@@ -8,6 +8,7 @@ namespace RTSCoreFramework
     {
         Fist = 0, Knife = 1, Pistol = 2,
         AssaultRifle = 3, Shotgun = 4, SniperRifle = 5,
+        Axe = 6, Crossbow = 7, Katana = 8,
         //Used For Null Error Checking
         NoWeaponType = -1
     }
