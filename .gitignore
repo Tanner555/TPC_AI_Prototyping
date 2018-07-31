@@ -47,9 +47,9 @@
 /TPCAI/Assets/Fungus.meta
 /TPCAI/Assets/FungusExamples
 /TPCAI/Assets/FungusExamples.meta
-# StreamingAssets (Folder Keeps Appearing In My TPCAI)
-/TPCAI/Assets/StreamingAssets
-/TPCAI/Assets/StreamingAssets.meta
+# StreamingAssets (Ignore Build Files and Other Unnecessary Stuff)
+/TPCAI/Assets/StreamingAssets/build_info.txt
+/TPCAI/Assets/StreamingAssets/build_info.txt.meta
 # Power UI, No Longer Used
 /TPCAI/Assets/PowerUI
 # Unity Standard Assets and Post Processing
