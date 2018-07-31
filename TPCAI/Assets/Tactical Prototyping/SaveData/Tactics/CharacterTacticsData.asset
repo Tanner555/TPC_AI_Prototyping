@@ -24,6 +24,9 @@ MonoBehaviour:
     - order: 1
       condition: 'Self: Health < 90'
       action: 'Self: Heal'
+    - order: 2
+      condition: 'Self: Any'
+      action: 'Self: FollowLeader'
   - CharacterName: Evil Assault Villian 1
     CharacterType: 25
     Tactics:

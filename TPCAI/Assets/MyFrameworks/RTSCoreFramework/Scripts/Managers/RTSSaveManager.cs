@@ -5,9 +5,9 @@ using BaseFramework;
 
 namespace RTSCoreFramework
 {
-    public class RTSSaveManager : MonoBehaviour
+    public class RTSSaveManager : BaseSingleton<RTSSaveManager>
     {
-        public static RTSSaveManager thisInstance { get; protected set; }
+        #region Properties
         protected IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         protected RTSStatHandler statHandler { get { return RTSStatHandler.thisInstance; } }
         protected virtual string tacticsXMLPath
@@ -17,16 +17,16 @@ namespace RTSCoreFramework
                 return $"{Application.dataPath}/StreamingAssets/XML/tactics_data.xml";
             }
         }
+        #endregion
 
+        #region UnityMessages
         protected virtual void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogError("More than one save manager in scene");
-            else
-                thisInstance = this;
 
         }
+        #endregion
 
+        #region PublicAccessors
         public virtual List<IGBPIPanelValue> Load_IGBPI_PanelValues(ECharacterType _cType)
         {
             CharacterTactics _tactics;
@@ -34,6 +34,24 @@ namespace RTSCoreFramework
             return ValidateIGBPIValues(_tactics.Tactics);
         }
 
+        public virtual void Save_IGBPI_PanelValues(ECharacterType _cType, List<IGBPI_UI_Panel> _panels)
+        {
+            CharacterTactics _tactics;
+            if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
+            List<IGBPIPanelValue> _saveValues = new List<IGBPIPanelValue>();
+            foreach (var _panel in _panels)
+            {
+                _saveValues.Add(new IGBPIPanelValue(
+                    _panel.orderText.text,
+                    _panel.conditionText.text,
+                    _panel.actionText.text
+                ));
+            }
+            Save_IGBPI_Values(_cType, _saveValues);
+        }
+        #endregion
+
+        #region SaveHelpers
         protected virtual List<IGBPIPanelValue> ValidateIGBPIValues(List<IGBPIPanelValue> _values)
         {
             List<IGBPIPanelValue> _validValues = new List<IGBPIPanelValue>();
@@ -62,7 +80,7 @@ namespace RTSCoreFramework
             var _Debug_CharacterTacticsObject = statHandler.DebugGET_CharacterTacticsData;
             int _index = _Debug_CharacterTacticsObject.CharacterTacticsList.IndexOf(_tactics);
             _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.Clear();
-            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.AddRange(ValidateIGBPIValues(_values));         
+            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.AddRange(ValidateIGBPIValues(_values));
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(_Debug_CharacterTacticsObject);
             UnityEditor.AssetDatabase.SaveAssets();
@@ -74,22 +92,6 @@ namespace RTSCoreFramework
             Save_IGBPI_Values(_cType, _values);
             yield return new WaitForSecondsRealtime(0.5f);
             Debug.Log("Finished Saving");
-        }
-
-        public virtual void Save_IGBPI_PanelValues(ECharacterType _cType, List<IGBPI_UI_Panel> _panels)
-        {
-            CharacterTactics _tactics;
-            if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
-            List<IGBPIPanelValue> _saveValues = new List<IGBPIPanelValue>();
-            foreach (var _panel in _panels)
-            {
-                _saveValues.Add(new IGBPIPanelValue(
-                    _panel.orderText.text,
-                    _panel.conditionText.text,
-                    _panel.actionText.text
-                ));
-            }
-            Save_IGBPI_Values(_cType, _saveValues);
         }
 
         protected virtual bool isIGBPISavingPermitted(ECharacterType _cType, out CharacterTactics _tactics)
@@ -117,7 +119,9 @@ namespace RTSCoreFramework
         {
             return GetTacticsFromCharacter(_cType).Tactics;
         }
-
+        #endregion
+        
+        #region XMLHelpers
         protected virtual void SaveXMLTactics(List<CharacterTactics> _cTacticsList)
         {
             MyXmlManager.SaveXML<List<CharacterTactics>>(_cTacticsList, tacticsXMLPath);
@@ -127,5 +131,6 @@ namespace RTSCoreFramework
         {
             return MyXmlManager.LoadXML<List<CharacterTactics>>(tacticsXMLPath);
         }
+        #endregion
     }
 }
