@@ -10,19 +10,37 @@ namespace RTSCoreFramework
         #region Properties
         protected IGBPI_DataHandler dataHandler { get { return IGBPI_DataHandler.thisInstance; } }
         protected RTSStatHandler statHandler { get { return RTSStatHandler.thisInstance; } }
+        protected virtual string persistentSavePath
+        {
+            get { return $"{Application.persistentDataPath}"; }
+        }
+
+        protected virtual string streamingDataSavePath
+        {
+            get
+            {
+                return $"{Application.dataPath}/StreamingAssets";
+            }
+        }
+
         protected virtual string tacticsXMLPath
         {
             get
             {
-                return $"{Application.dataPath}/StreamingAssets/XML/tactics_data.xml";
+                return $"{persistentSavePath}/tactics_data.xml";
             }
+        }
+
+        protected virtual string defaultTacticsXMLPath
+        {
+            get { return $"{streamingDataSavePath}/XML/default_tactics_data.xml"; }
         }
         #endregion
 
         #region UnityMessages
         protected virtual void OnEnable()
         {
-
+            
         }
         #endregion
 
@@ -168,6 +186,8 @@ namespace RTSCoreFramework
             var _tacticsList = MyXmlManager.LoadXML<List<CharacterTactics>>(tacticsXMLPath);
             if(_tacticsList == null)
             {
+                var _defaultTacticsList = MyXmlManager.LoadXML<List<CharacterTactics>>(defaultTacticsXMLPath);
+                if (_defaultTacticsList != null) return _defaultTacticsList;
                 return new List<CharacterTactics>();
             }
             return _tacticsList;
