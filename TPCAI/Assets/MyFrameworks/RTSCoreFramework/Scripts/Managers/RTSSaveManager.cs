@@ -195,6 +195,21 @@ namespace RTSCoreFramework
 
         #region CharacterStats
 
+        #region CStatProperties
+        protected virtual string CStatXMLPath
+        {
+            get
+            {
+                return $"{persistentSavePath}/characterstats_data.xml";
+            }
+        }
+
+        protected virtual string defaultCStatXMLPath
+        {
+            get { return $"{streamingDataSavePath}/XML/default_characterstats_data.xml"; }
+        }
+        #endregion 
+
         #region CStatsHelpers
         protected virtual CharacterStatsSimple ConvertCharacterStatsToSimple(CharacterStats _stats)
         {
@@ -210,6 +225,38 @@ namespace RTSCoreFramework
                 PrimaryWeapon = _stats.PrimaryWeapon,
                 SecondaryWeapon = _stats.SecondaryWeapon
             };
+        }
+        #endregion
+
+        #region CStatsPublicAccessors
+        public virtual void SaveCharacterStats(List<CharacterStatsSimple> _cStatsList)
+        {
+            SaveXMLCStats(_cStatsList);
+            Debug.Log("Saved Character Stats");
+        }
+
+        public virtual List<CharacterStatsSimple> LoadCharacterStats()
+        {
+            return LoadXMLCStats();
+        }
+        #endregion
+
+        #region CStatsXMLHelpers
+        protected virtual void SaveXMLCStats(List<CharacterStatsSimple> _cStatsList)
+        {
+            MyXmlManager.SaveXML<List<CharacterStatsSimple>>(_cStatsList, CStatXMLPath);
+        }
+
+        protected virtual List<CharacterStatsSimple> LoadXMLCStats()
+        {
+            var _cStatList = MyXmlManager.LoadXML<List<CharacterStatsSimple>>(CStatXMLPath);
+            if (_cStatList == null)
+            {
+                var _defaultCStatList = MyXmlManager.LoadXML<List<CharacterStatsSimple>>(defaultCStatXMLPath);
+                if (_defaultCStatList != null) return _defaultCStatList;
+                return new List<CharacterStatsSimple>();
+            }
+            return _cStatList;
         }
         #endregion
 

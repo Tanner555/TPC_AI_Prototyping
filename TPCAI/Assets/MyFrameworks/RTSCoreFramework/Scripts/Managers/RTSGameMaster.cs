@@ -68,6 +68,7 @@ namespace RTSCoreFramework
 
         #region Events and Delegates
         public event GameManagerEventHandler EventAllEnemiesAreDead;
+        public event GameManagerEventHandler EventUpdateCharacterStats;
         //public event OneBoolArgsHandler EventEnableSelectionBox;
 
         //Used by CamRaycaster to broadcast mouse hit type
@@ -100,6 +101,11 @@ namespace RTSCoreFramework
         {
             EnableRayCaster(false);
             base.CallEventGameOver();
+        }
+
+        public virtual void CallEventUpdateCharacterStats()
+        {
+            if (EventUpdateCharacterStats != null) EventUpdateCharacterStats();
         }
 
         public void CallEventAllEnemiesAreDead()

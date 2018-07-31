@@ -36,6 +36,11 @@ namespace RTSCoreFramework
             get { return RTSGameMode.thisInstance; }
         }
 
+        protected RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
+        }
+
         public virtual Dictionary<EWeaponType, WeaponStats> WeaponStatDictionary
         {
             get
@@ -159,6 +164,27 @@ namespace RTSCoreFramework
             {
                 CharacterTacticsDictionary.Add(_stat.CharacterType, _stat);
             }
+        }
+
+        public void UpdateCharacterStatsDictionary(List<CharacterStatsSimple> _cStatList)
+        {
+            foreach (var _stats in _cStatList)
+            {
+                if (CharacterStatDictionary.ContainsKey(_stats.CharacterType))
+                {
+                    var _c = CharacterStatDictionary[_stats.CharacterType];
+                    _c.name = _stats.name;
+                    _c.CharacterType = _stats.CharacterType;
+                    _c.MaxHealth = _stats.MaxHealth;
+                    _c.Health = _stats.Health;
+                    _c.MaxStamina = _stats.MaxStamina;
+                    _c.Stamina = _stats.Stamina;
+                    _c.EquippedWeapon = _stats.EquippedWeapon;
+                    _c.PrimaryWeapon = _stats.PrimaryWeapon;
+                    _c.SecondaryWeapon = _stats.SecondaryWeapon;
+                }
+            }
+            gamemaster.CallEventUpdateCharacterStats();
         }
         #endregion
 

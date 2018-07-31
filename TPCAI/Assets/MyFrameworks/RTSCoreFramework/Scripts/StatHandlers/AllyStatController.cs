@@ -15,7 +15,7 @@ namespace RTSCoreFramework
         #endregion
 
         #region SetupProperties
-        AllyMember allyMember
+        protected AllyMember allyMember
         {
             get
             {
@@ -27,7 +27,7 @@ namespace RTSCoreFramework
         }
         AllyMember __allyMember = null;
 
-        AllyEventHandler eventHandler
+        protected AllyEventHandler eventHandler
         {
             get
             {
@@ -39,7 +39,7 @@ namespace RTSCoreFramework
         }
         AllyEventHandler __eventHandler = null;
 
-        RTSStatHandler statHandler
+        protected RTSStatHandler statHandler
         {
             get
             {
@@ -49,6 +49,11 @@ namespace RTSCoreFramework
 
                 return GameObject.FindObjectOfType<RTSStatHandler>();
             }
+        }
+
+        protected RTSGameMaster gamemaster
+        {
+            get { return RTSGameMaster.thisInstance; }
         }
         #endregion
 
@@ -240,11 +245,14 @@ namespace RTSCoreFramework
         {
             eventHandler.OnEquipTypeChanged += HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged += HandleWeaponChanged;
+            gamemaster.EventUpdateCharacterStats += InitializeCharacterStats;
+            
         }
         protected virtual void UnsubFromEvents()
         {
             eventHandler.OnEquipTypeChanged -= HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged -= HandleWeaponChanged;
+            gamemaster.EventUpdateCharacterStats -= InitializeCharacterStats;
         }
         protected virtual void InitializeCharacterStats()
         {
