@@ -19,9 +19,6 @@ namespace RTSCoreFramework
         [Header("Data Containing Character Stats")]
         [SerializeField]
         protected CharacterStatsData characterStatsData;
-        [Header("Data Containing Character Tactics")]
-        [SerializeField]
-        protected CharacterTacticsData characterTacticsData;
         [Header("Data Containing Party Stats")]
         [SerializeField]
         protected PartyStatsData partyStatsData;
@@ -48,16 +45,9 @@ namespace RTSCoreFramework
             }
         }
 
-        /// <summary>
-        /// Used Only For Debugging, Need to implement actual saving in the future
-        /// </summary>
-        public virtual CharacterTacticsData DebugGET_CharacterTacticsData
+        protected RTSSaveManager saveManager
         {
-            get
-            {
-                CheckForDictionaryInit();
-                return characterTacticsData;
-            }
+            get { return RTSSaveManager.thisInstance; }
         }
         // I'll probably use public methods to access and update stats
         //public Dictionary<RTSCharacterType, CharacterStats> GetCharacterStats
@@ -212,12 +202,7 @@ namespace RTSCoreFramework
                 CharacterStatDictionary.Add(_stat.CharacterType, _stat);
             }
             //Tactics Data
-            if (CharacterTacticsDictionary == null)
-            {
-                Debug.LogError("No Tactics Data on StatHandler");
-                return;
-            }
-            foreach (var _stat in characterTacticsData.CharacterTacticsList)
+            foreach (var _stat in saveManager.LoadCharacterTacticsList())
             {
                 CharacterTacticsDictionary.Add(_stat.CharacterType, _stat);
             }

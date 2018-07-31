@@ -27,6 +27,24 @@ namespace RTSCoreFramework
         #endregion
 
         #region PublicAccessors
+        public virtual List<CharacterTactics> LoadCharacterTacticsList()
+        {
+            List<CharacterTactics> _tacticsList = new List<CharacterTactics>();
+            foreach (var _checkCharacter in LoadXMLTactics())
+            {
+                if(_checkCharacter.CharacterType != ECharacterType.NoCharacterType)
+                {
+                    _tacticsList.Add(new CharacterTactics
+                    {
+                        CharacterName = _checkCharacter.CharacterName,
+                        CharacterType = _checkCharacter.CharacterType,
+                        Tactics = ValidateIGBPIValues(_checkCharacter.Tactics)
+                    });
+                }
+            }
+            return _tacticsList;
+        }
+
         public virtual List<IGBPIPanelValue> Load_IGBPI_PanelValues(ECharacterType _cType)
         {
             CharacterTactics _tactics;
@@ -75,16 +93,33 @@ namespace RTSCoreFramework
         {
             CharacterTactics _tactics;
             if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
-            //TODO: RTSPrototype Find Another Way to Save IGBPI Values
-            //Serializable Objects cannot be used in builds
-            var _Debug_CharacterTacticsObject = statHandler.DebugGET_CharacterTacticsData;
-            int _index = _Debug_CharacterTacticsObject.CharacterTacticsList.IndexOf(_tactics);
-            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.Clear();
-            _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.AddRange(ValidateIGBPIValues(_values));
-#if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(_Debug_CharacterTacticsObject);
-            UnityEditor.AssetDatabase.SaveAssets();
-#endif
+
+            List<CharacterTactics> _allCharacterTactics = LoadCharacterTacticsList();
+            int _indexOf = -1;
+            CharacterTactics _characterToChange = new CharacterTactics
+            {
+                CharacterName = "",
+                CharacterType = ECharacterType.NoCharacterType,
+                Tactics = new List<IGBPIPanelValue>()
+            };
+            foreach (var _checkCharacter in _allCharacterTactics)
+            {
+                if (_cType != ECharacterType.NoCharacterType &&
+                    _checkCharacter.CharacterType == _cType)
+                {
+                    _indexOf = _allCharacterTactics.IndexOf(_checkCharacter);
+                    _characterToChange.CharacterName = _checkCharacter.CharacterName;
+                    _characterToChange.CharacterType = _checkCharacter.CharacterType;
+                    _characterToChange.Tactics = ValidateIGBPIValues(_values);
+                }
+            }
+
+            if (_characterToChange.CharacterType != ECharacterType.NoCharacterType &&
+                _indexOf != -1)
+            {
+                _allCharacterTactics[_indexOf] = _characterToChange;
+                SaveXMLTactics(_allCharacterTactics);
+            }
         }
 
         protected virtual IEnumerator YieldSave_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
@@ -129,7 +164,12 @@ namespace RTSCoreFramework
 
         protected virtual List<CharacterTactics> LoadXMLTactics()
         {
-            return MyXmlManager.LoadXML<List<CharacterTactics>>(tacticsXMLPath);
+            var _tacticsList = MyXmlManager.LoadXML<List<CharacterTactics>>(tacticsXMLPath);
+            if(_tacticsList == null)
+            {
+                return new List<CharacterTactics>();
+            }
+            return _tacticsList;
         }
         #endregion
     }
