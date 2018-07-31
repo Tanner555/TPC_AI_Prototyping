@@ -34,7 +34,7 @@ namespace RTSCoreFramework
             return ValidateIGBPIValues(_tactics.Tactics);
         }
 
-        public virtual List<IGBPIPanelValue> ValidateIGBPIValues(List<IGBPIPanelValue> _values)
+        protected virtual List<IGBPIPanelValue> ValidateIGBPIValues(List<IGBPIPanelValue> _values)
         {
             List<IGBPIPanelValue> _validValues = new List<IGBPIPanelValue>();
             bool _changedSaveFile = false;
@@ -53,7 +53,7 @@ namespace RTSCoreFramework
             return _validValues;
         }
 
-        public virtual void Save_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
+        protected virtual void Save_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
         {
             CharacterTactics _tactics;
             if (!isIGBPISavingPermitted(_cType, out _tactics)) return;
@@ -61,8 +61,6 @@ namespace RTSCoreFramework
             //Serializable Objects cannot be used in builds
             var _Debug_CharacterTacticsObject = statHandler.DebugGET_CharacterTacticsData;
             int _index = _Debug_CharacterTacticsObject.CharacterTacticsList.IndexOf(_tactics);
-            //Testing Save For Now, Change Location in Future
-            SaveXMLTactics(_Debug_CharacterTacticsObject.CharacterTacticsList);
             _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.Clear();
             _Debug_CharacterTacticsObject.CharacterTacticsList[_index].Tactics.AddRange(ValidateIGBPIValues(_values));         
 #if UNITY_EDITOR
@@ -71,7 +69,7 @@ namespace RTSCoreFramework
 #endif
         }
 
-        public virtual IEnumerator YieldSave_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
+        protected virtual IEnumerator YieldSave_IGBPI_Values(ECharacterType _cType, List<IGBPIPanelValue> _values)
         {
             Save_IGBPI_Values(_cType, _values);
             yield return new WaitForSecondsRealtime(0.5f);
