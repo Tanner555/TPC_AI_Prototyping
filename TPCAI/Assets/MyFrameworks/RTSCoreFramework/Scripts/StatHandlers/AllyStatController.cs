@@ -43,11 +43,7 @@ namespace RTSCoreFramework
         {
             get
             {
-                //For Faster Access when using OnEnable method
-                if (RTSStatHandler.thisInstance != null)
-                    return RTSStatHandler.thisInstance;
-
-                return GameObject.FindObjectOfType<RTSStatHandler>();
+                return RTSStatHandler.thisInstance;
             }
         }
 

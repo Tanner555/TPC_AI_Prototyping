@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BaseFramework
 {
-    public class UiMaster : MonoBehaviour
+    public class UiMaster : BaseSingleton<UiMaster>
     {
         #region DelegatesAndEvents
         public delegate void GeneralEventHandler();
@@ -54,20 +54,12 @@ namespace BaseFramework
         {
             get { return GameMaster.thisInstance; }
         }
-
-        public static UiMaster thisInstance
-        {
-            get; protected set;
-        }
         #endregion
 
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of UiMaster in scene.");
-            else
-                thisInstance = this;
+
         }
 
         protected virtual void Start()

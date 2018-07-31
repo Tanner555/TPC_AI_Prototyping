@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace BaseFramework
 {
-    public class UiManager : MonoBehaviour
+    public class UiManager : BaseSingleton<UiManager>
     {
         #region Properties
         public GameMaster gamemaster { get { return GameMaster.thisInstance; } }
@@ -25,16 +25,8 @@ namespace BaseFramework
         {
             get
             {
-                if (UiMaster.thisInstance != null)
-                    return UiMaster.thisInstance;
-
-                return GetComponent<UiMaster>();
+                return UiMaster.thisInstance;
             }
-        }
-
-        public static UiManager thisInstance
-        {
-            get; protected set;
         }
         #endregion
 
@@ -56,11 +48,6 @@ namespace BaseFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            if (thisInstance != null)
-                Debug.LogWarning("More than one instance of UiManager in scene.");
-            else
-                thisInstance = this;
-
             SubToEvents();
         }
 

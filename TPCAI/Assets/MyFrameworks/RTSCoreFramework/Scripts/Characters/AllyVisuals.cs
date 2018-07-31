@@ -32,13 +32,27 @@ namespace RTSCoreFramework
 
         protected AllyMember thisAlly
         {
-            get { return GetComponent<AllyMember>(); }
+            get
+            {
+                if (_thisAlly == null)
+                    _thisAlly = GetComponent<AllyMember>();
+
+                return _thisAlly;
+            }
         }
+        private AllyMember _thisAlly = null;
 
         protected AllyEventHandler myEventHandler
         {
-            get { return GetComponent<AllyEventHandler>(); }
+            get
+            {
+                if(_myEventHandler == null)
+                    _myEventHandler = GetComponent<AllyEventHandler>();
+
+                return _myEventHandler;
+            }
         }
+        private AllyEventHandler _myEventHandler = null;
 
         protected RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
 
