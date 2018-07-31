@@ -277,10 +277,18 @@ namespace RTSCoreFramework
                 Debug.LogError("No CharacterStats Data on StatHandler");
                 return;
             }
-            foreach (var _stat in characterStatsData.CharacterStatList)
+
+            foreach (var _simple in saveManager.LoadCharacterStats())
             {
-                CharacterStatDictionary.Add(_stat.CharacterType, _stat);
+                foreach (var _nonPersistent in characterStatsData.CharacterStatList)
+                {
+                    if (_simple.CharacterType == _nonPersistent.CharacterType)
+                    {
+                        CharacterStatDictionary.Add(_simple.CharacterType, ConvertToCharacterStats(_simple, _nonPersistent));
+                    }
+                }
             }
+
             //Tactics Data
             foreach (var _stat in saveManager.LoadCharacterTacticsList())
             {

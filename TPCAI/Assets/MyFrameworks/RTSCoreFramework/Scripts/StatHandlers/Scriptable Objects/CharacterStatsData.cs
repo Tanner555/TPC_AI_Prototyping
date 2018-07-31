@@ -88,6 +88,6 @@ namespace RTSCoreFramework
     {
         [Header("Character Stats")]
         [SerializeField]
-        public List<CharacterStats> CharacterStatList;
+        public List<CharacterStatsNonPersistent> CharacterStatList;
     }
 }
