@@ -195,6 +195,42 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Helpers
+        protected virtual CharacterStats ConvertToCharacterStats(CharacterStatsSimple _simple, CharacterStatsNonPersistent _nonPersistent)
+        {
+            return new CharacterStats
+            {
+                name = _simple.name,
+                CharacterType = _simple.CharacterType,
+                CharacterPrefab = _nonPersistent.CharacterPrefab,
+                CharacterPortrait = _nonPersistent.CharacterPortrait,
+                MaxHealth = _simple.MaxHealth,
+                Health = _simple.Health,
+                MaxStamina = _simple.MaxStamina,
+                Stamina = _simple.Stamina,
+                EquippedWeapon = _simple.EquippedWeapon,
+                PrimaryWeapon = _simple.PrimaryWeapon,
+                SecondaryWeapon = _simple.SecondaryWeapon
+            };
+        }
+
+        protected virtual CharacterStatsSimple ConvertCharacterStatsToSimple(CharacterStats _stats)
+        {
+            return new CharacterStatsSimple
+            {
+                name = _stats.name,
+                CharacterType = _stats.CharacterType,
+                MaxHealth = _stats.MaxHealth,
+                Health = _stats.Health,
+                MaxStamina = _stats.MaxStamina,
+                Stamina = _stats.Stamina,
+                EquippedWeapon = _stats.EquippedWeapon,
+                PrimaryWeapon = _stats.PrimaryWeapon,
+                SecondaryWeapon = _stats.SecondaryWeapon
+            };
+        }
+        #endregion
+
         #region UnityMessages
         protected virtual void OnEnable()
         {
