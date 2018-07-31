@@ -438,7 +438,9 @@ conditionButton && actionButton && IGBPITitleText;
                     Debug.Log("Save Successful");
                 }
                 else
+                {
                     Debug.Log("There is no IGBPI Data to save");
+                }
             }
         }
 

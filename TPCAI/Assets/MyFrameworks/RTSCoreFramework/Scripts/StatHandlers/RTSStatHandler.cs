@@ -151,6 +151,17 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Setters
+        public void UpdateTacticsDictionary(List<CharacterTactics> _cTacticsList)
+        {
+            CharacterTacticsDictionary.Clear();
+            foreach (var _stat in _cTacticsList)
+            {
+                CharacterTacticsDictionary.Add(_stat.CharacterType, _stat);
+            }
+        }
+        #endregion
+
         #region UnityMessages
         protected virtual void OnEnable()
         {

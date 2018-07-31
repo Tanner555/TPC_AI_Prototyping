@@ -118,6 +118,7 @@ namespace RTSCoreFramework
                 _indexOf != -1)
             {
                 _allCharacterTactics[_indexOf] = _characterToChange;
+                statHandler.UpdateTacticsDictionary(_allCharacterTactics);
                 SaveXMLTactics(_allCharacterTactics);
             }
         }
