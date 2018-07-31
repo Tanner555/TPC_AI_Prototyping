@@ -1,99 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace BaseFramework.Testing
+namespace BaseFramework
 {
-    public class MyXmlManager : MonoBehaviour
+    public static class MyXmlManager
     {
-        public static MyXmlManager thisInstance;
-
-        private void Awake()
-        {
-            thisInstance = this;
-        }
-
-        private void Update()
-        {
-            //if (Input.GetKeyDown(KeyCode.Alpha1))
-            //{
-            //    Debug.Log("Saving Items");
-            //    SaveItems();
-            //}
-            //else if (Input.GetKeyDown(KeyCode.Alpha2))
-            //{
-            //    Debug.Log("Loading Items");
-            //    LoadItems();
-            //}
-        }
-
-        //List of Items
-        public ItemDatabase itemDB;
-
-        //Save Function
-        public void SaveItems()
+        /// <summary>
+        /// Used To Save Anonymous XML Data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="_object"></param>
+        /// <param name="_filePath"></param>
+        public static void SaveXML<T>(T _object, string _filePath)
         {
             //Open a new XML File
-            var _serializer = new XmlSerializer(typeof(ItemDatabase));
+            var _serializer = new XmlSerializer(typeof(T));
             //dataPath = editor save
             //persistentDataPath = game save
-            using (FileStream _stream = new FileStream(Application.dataPath +
-                "/StreamingAssets/XML/item_data.xml", FileMode.Create))
+            if(_filePath == "")
             {
-                _serializer.Serialize(_stream, itemDB);
+                Debug.LogError("Path is empty");
+                return;
             }
-
+            using (FileStream _stream = new FileStream(_filePath, FileMode.Create))
+            {
+                _serializer.Serialize(_stream, _object);
+            }
         }
 
-        //Load Function
-        public void LoadItems()
+        /// <summary>
+        /// Used To Load Anonymous XML Data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="_object"></param>
+        /// <param name="_filePath"></param>
+        public static T LoadXML<T>(string _filePath)
         {
             //Open a new XML File
-            var _serializer = new XmlSerializer(typeof(ItemDatabase));
+            var _serializer = new XmlSerializer(typeof(T));
             //dataPath = editor save
             //persistentDataPath = game save
-            string _fpath = Application.dataPath + "/StreamingAssets/XML/item_data.xml";
-            if (File.Exists(_fpath))
+            if (File.Exists(_filePath))
             {
-                using (FileStream _stream = new FileStream(_fpath, FileMode.Open))
+                using (FileStream _stream = new FileStream(_filePath, FileMode.Open))
                 {
-                    itemDB = _serializer.Deserialize(_stream) as ItemDatabase;
+                    var _object = _serializer.Deserialize(_stream);
+                    return (T)_object;
                 }
             }
+            else
+            {
+                Debug.LogError("File Path Doesn't Exist");
+                return default(T);
+            }
         }
-    }
-}
-
-namespace BaseFramework.Testing
-{
-    /// <summary>
-    /// Temp Class For Tutorial
-    /// </summary>
-    [System.Serializable]
-    public class ItemEntry
-    {
-        public string itemName;
-        public EMyTestMaterial MyMaterial;
-        public int itemValue;
-    }
-    
-    [System.Serializable]
-    public class ItemDatabase
-    {
-        [XmlArray("CombatEquipment")]
-        public List<ItemEntry> ItemEntryList = new List<ItemEntry>();
-    }
-
-    public enum EMyTestMaterial
-    {
-        Wood,
-        Copper,
-        Iron,
-        Steel,
-        Obsidian
     }
 }
