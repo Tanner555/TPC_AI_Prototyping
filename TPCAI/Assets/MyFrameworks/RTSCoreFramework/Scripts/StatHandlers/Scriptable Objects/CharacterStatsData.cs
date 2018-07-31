@@ -43,6 +43,32 @@ namespace RTSCoreFramework
         public EWeaponType SecondaryWeapon;
     }
 
+    /// <summary>
+    /// Used For Parsing Into XML Data
+    /// </summary>
+    [System.Serializable]
+    public struct CharacterStatsSimple
+    {
+        public string name;
+        [Tooltip("Used to Identify a Character")]
+        public ECharacterType CharacterType;
+
+        [Header("Health Stats")]
+        public int MaxHealth;
+        public int Health;
+
+        [Header("Stamina Stats")]
+        public int MaxStamina;
+        public int Stamina;
+
+        [Header("Weapon Equipped")]
+        public EEquipType EquippedWeapon;
+
+        [Header("Weapon Stats")]
+        public EWeaponType PrimaryWeapon;
+        public EWeaponType SecondaryWeapon;
+    }
+
     [CreateAssetMenu(menuName = "RTSPrototype/CharacterStatsData")]
     public class CharacterStatsData : ScriptableObject
     {

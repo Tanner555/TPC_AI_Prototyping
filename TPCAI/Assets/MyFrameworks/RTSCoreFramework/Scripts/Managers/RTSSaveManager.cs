@@ -22,7 +22,11 @@ namespace RTSCoreFramework
                 return $"{Application.dataPath}/StreamingAssets";
             }
         }
+        #endregion
 
+        #region IGBPI
+
+        #region IGBPIProps
         protected virtual string tacticsXMLPath
         {
             get
@@ -37,20 +41,13 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region UnityMessages
-        protected virtual void OnEnable()
-        {
-            
-        }
-        #endregion
-
-        #region PublicAccessors
+        #region IGBPIPublicAccessors
         public virtual List<CharacterTactics> LoadCharacterTacticsList()
         {
             List<CharacterTactics> _tacticsList = new List<CharacterTactics>();
             foreach (var _checkCharacter in LoadXMLTactics())
             {
-                if(_checkCharacter.CharacterType != ECharacterType.NoCharacterType)
+                if (_checkCharacter.CharacterType != ECharacterType.NoCharacterType)
                 {
                     _tacticsList.Add(new CharacterTactics
                     {
@@ -87,7 +84,7 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region SaveHelpers
+        #region IGBPISaveHelpers
         protected virtual List<IGBPIPanelValue> ValidateIGBPIValues(List<IGBPIPanelValue> _values)
         {
             List<IGBPIPanelValue> _validValues = new List<IGBPIPanelValue>();
@@ -174,8 +171,8 @@ namespace RTSCoreFramework
             return GetTacticsFromCharacter(_cType).Tactics;
         }
         #endregion
-        
-        #region XMLHelpers
+
+        #region IGBPIXMLHelpers
         protected virtual void SaveXMLTactics(List<CharacterTactics> _cTacticsList)
         {
             MyXmlManager.SaveXML<List<CharacterTactics>>(_cTacticsList, tacticsXMLPath);
@@ -184,13 +181,44 @@ namespace RTSCoreFramework
         protected virtual List<CharacterTactics> LoadXMLTactics()
         {
             var _tacticsList = MyXmlManager.LoadXML<List<CharacterTactics>>(tacticsXMLPath);
-            if(_tacticsList == null)
+            if (_tacticsList == null)
             {
                 var _defaultTacticsList = MyXmlManager.LoadXML<List<CharacterTactics>>(defaultTacticsXMLPath);
                 if (_defaultTacticsList != null) return _defaultTacticsList;
                 return new List<CharacterTactics>();
             }
             return _tacticsList;
+        }
+        #endregion
+
+        #endregion
+
+        #region CharacterStats
+
+        #region CStatsHelpers
+        protected virtual CharacterStatsSimple ConvertCharacterStatsToSimple(CharacterStats _stats)
+        {
+            return new CharacterStatsSimple
+            {
+                name = _stats.name,
+                CharacterType = _stats.CharacterType,
+                MaxHealth = _stats.MaxHealth,
+                Health = _stats.Health,
+                MaxStamina = _stats.MaxStamina,
+                Stamina = _stats.Stamina,
+                EquippedWeapon = _stats.EquippedWeapon,
+                PrimaryWeapon = _stats.PrimaryWeapon,
+                SecondaryWeapon = _stats.SecondaryWeapon
+            };
+        }
+        #endregion
+
+        #endregion
+
+        #region UnityMessages
+        protected virtual void OnEnable()
+        {
+            
         }
         #endregion
     }
