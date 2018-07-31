@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BaseFramework;
+using System.Linq;
 
 namespace RTSCoreFramework
 {
@@ -112,6 +113,12 @@ namespace RTSCoreFramework
                 CharacterType = ECharacterType.NoCharacterType,
                 Health = 0
             };
+        }
+
+        public virtual List<CharacterStats> GetAllCharacterStats()
+        {
+            CheckForDictionaryInit();
+            return CharacterStatDictionary.Values.ToList();
         }
 
         public virtual CharacterTactics RetrieveCharacterTactics(AllyMember _ally, ECharacterType _cType)

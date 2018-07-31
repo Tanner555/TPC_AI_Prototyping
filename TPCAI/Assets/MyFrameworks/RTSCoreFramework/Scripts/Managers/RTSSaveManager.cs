@@ -229,7 +229,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region CStatsPublicAccessors
-        public virtual void SaveCharacterStats(List<CharacterStatsSimple> _cStatsList)
+        public virtual void SaveCharacterStats(List<CharacterStats> _allCStats)
+        {
+            List<CharacterStatsSimple> _simpleStatsList = new List<CharacterStatsSimple>();
+            foreach (var _stats in _allCStats)
+            {
+                var _simpleStats = ConvertCharacterStatsToSimple(_stats);
+                _simpleStatsList.Add(_simpleStats);
+            }
+            SaveSimpleCharacterStats(_simpleStatsList);
+        }
+
+        public virtual void SaveSimpleCharacterStats(List<CharacterStatsSimple> _cStatsList)
         {
             SaveXMLCStats(_cStatsList);
             Debug.Log("Saved Character Stats");
@@ -264,6 +275,16 @@ namespace RTSCoreFramework
 
         #region UnityMessages
         protected virtual void OnEnable()
+        {
+            
+        }
+
+        protected virtual void Start()
+        {
+            Invoke("DelayStart", 0.5f);
+        }
+
+        protected virtual void DelayStart()
         {
             
         }
