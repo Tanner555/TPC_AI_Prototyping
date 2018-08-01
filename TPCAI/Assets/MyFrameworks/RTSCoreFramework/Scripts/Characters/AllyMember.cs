@@ -167,6 +167,8 @@ namespace RTSCoreFramework
             get { return null; }
         }
 
+        protected Dictionary<AbilityConfig, AbilityBehaviour> AbilityDictionary = new Dictionary<AbilityConfig, AbilityBehaviour>();
+
         //AI Props
         public float FollowDistance { get { return aiController.followDistance; } }
 
@@ -430,6 +432,27 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters - Finders
+        public bool CanUseAbility(System.Type _type)
+        {
+            if (AllyStamina <= AllyMinStamina) return false;
+            AbilityConfig _config = GetAbilityConfig(_type);
+            return _config != null &&
+                AllyStamina >= _config.GetEnergyCost() &&
+                AbilityDictionary[_config].CanUseAbility();
+        }
+
+        public AbilityConfig GetAbilityConfig(System.Type _type)
+        {
+            foreach (var _config in AbilityDictionary.Keys)
+            {
+                if (_config.GetType().Equals(_type))
+                {
+                    return _config;
+                }
+            }
+            return null;
+        }
+
         public PartyManager FindPartyManager()
         {
             PartyManager _foundPMan = null;
@@ -459,6 +482,14 @@ namespace RTSCoreFramework
         public virtual bool isSurfaceWalkable(Vector3 _point)
         {
             return aiController.isSurfaceWalkable(_point);
+        }
+        #endregion
+
+        #region Setters - Updaters
+        public void UpdateAbilityDictionary(Dictionary<AbilityConfig, AbilityBehaviour> _abilityDic)
+        {
+            AbilityDictionary.Clear();
+            AbilityDictionary = _abilityDic;
         }
         #endregion
 

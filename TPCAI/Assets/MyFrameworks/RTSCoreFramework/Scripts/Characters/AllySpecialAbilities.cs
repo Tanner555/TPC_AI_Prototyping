@@ -212,6 +212,7 @@ namespace RTSCoreFramework
                         abilities[abilityIndex], this.gameObject
                     ));
             }
+            allymember.UpdateAbilityDictionary(AbilityDictionary);
         }
         #endregion
     }
