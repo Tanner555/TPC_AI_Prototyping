@@ -366,7 +366,6 @@ namespace RTSCoreFramework
         public virtual void CallEventAIMove(Vector3 _point)
         {
             bIsAimingToShoot = false;
-            bIsCommandAttacking = false;
             bIsAIMoving = true;
             bIsCommandMoving = false;
             CallEventCommandMove(_point);
