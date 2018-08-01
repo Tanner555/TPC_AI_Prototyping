@@ -132,15 +132,15 @@ namespace RTSCoreFramework
         protected Dictionary<string, IGBPI_Action> _IGBPI_Actions = new Dictionary<string, IGBPI_Action>()
         {
             {"Self: Attack Targetted Enemy", new IGBPI_Action((_ally) =>
-            { _ally.aiController.AttackTargettedEnemy(); },
-                (_ally) => true,
-                ActionFilters.AI) },
+                { _ally.aiController.AttackTargettedEnemy(); },
+                (_ally) => { return _ally.bIsCarryingMeleeWeapon ||
+                _ally.CurrentEquipedAmmo > 0; },
+            ActionFilters.AI) },
             //{"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
             //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
             {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); },
-                (_ally) => { return _ally.bIsCarryingMeleeWeapon ||
-                _ally.CurrentEquipedAmmo > 0; },
+                (_ally) => true,
                 ActionFilters.Weapon) },
             {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToPrevItem(); },

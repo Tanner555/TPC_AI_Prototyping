@@ -112,7 +112,7 @@ namespace RTSCoreFramework
             get { return myEventHandler.bIsNavMoving; }
         }
 
-        protected bool bShouldUpdateBattleBehavior
+        protected bool bStopUpdatingBattleBehavior
         {
             get
             {
@@ -448,7 +448,7 @@ namespace RTSCoreFramework
             // Is Active
             if (myEventHandler.bAllyIsPaused) return;
 
-            if (bShouldUpdateBattleBehavior)
+            if (bStopUpdatingBattleBehavior)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
                 myEventHandler.CallEventFinishedMoving();
