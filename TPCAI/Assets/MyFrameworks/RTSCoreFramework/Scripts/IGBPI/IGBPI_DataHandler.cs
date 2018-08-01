@@ -139,7 +139,8 @@ namespace RTSCoreFramework
             //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
             {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); },
-                (_ally) => true,
+                (_ally) => { return _ally.bIsCarryingMeleeWeapon ||
+                _ally.CurrentEquipedAmmo > 0; },
                 ActionFilters.Weapon) },
             {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToPrevItem(); },

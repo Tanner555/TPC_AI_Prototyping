@@ -112,6 +112,20 @@ namespace RTSCoreFramework
             get { return myEventHandler.bIsNavMoving; }
         }
 
+        protected bool bShouldUpdateBattleBehavior
+        {
+            get
+            {
+                return currentTargettedEnemy == null ||
+                currentTargettedEnemy.IsAlive == false ||
+                myEventHandler.bIsFreeMoving ||
+                //Carrying Ranged Weapon and
+                //Doesn't Have Any Ammo Left 
+                ((allyMember.bIsCarryingMeleeWeapon == false &&
+                allyMember.CurrentEquipedAmmo > 0) == false);
+            }
+        }
+
         protected virtual bool AllCompsAreValid
         {
             get
@@ -434,9 +448,7 @@ namespace RTSCoreFramework
             // Is Active
             if (myEventHandler.bAllyIsPaused) return;
 
-            if (currentTargettedEnemy == null ||
-                currentTargettedEnemy.IsAlive == false ||
-                myEventHandler.bIsFreeMoving)
+            if (bShouldUpdateBattleBehavior)
             {
                 myEventHandler.CallEventStopTargettingEnemy();
                 myEventHandler.CallEventFinishedMoving();

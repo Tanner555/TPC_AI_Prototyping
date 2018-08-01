@@ -406,6 +406,7 @@ namespace RTSCoreFramework
             if (EventStopTargettingEnemy != null) EventStopTargettingEnemy();
             CallEventToggleIsShooting(false);
             CallEventToggleIsMeleeing(false);
+            CallOnTryAim(false);
         }
 
         public virtual void CallEventTogglebIsFreeMoving(bool _enable)

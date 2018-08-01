@@ -20,6 +20,18 @@ namespace RTSPrototype
             get { return (RTSGameModeWrapper)RTSGameModeWrapper.thisInstance; }
         }
 
+        Opsive.ThirdPersonController.Abilities.HeightChange HeightChangeTPCAbility
+        {
+            get
+            {
+                if (_HeightChangeTPCAbility == null)
+                    _HeightChangeTPCAbility = GetComponent<Opsive.ThirdPersonController.Abilities.HeightChange>();
+
+                return _HeightChangeTPCAbility;
+            }
+        }
+        Opsive.ThirdPersonController.Abilities.HeightChange _HeightChangeTPCAbility = null;
+
         bool isAiming = false;
         [Header("Gun Types")]
         public ItemType AssualtRifleType;
@@ -133,6 +145,12 @@ namespace RTSPrototype
             }
         }
 
+        void OnStopTargetingEnemy()
+        {
+            if (!AllCompsAreValid) return;
+            itemHandler.TryStopUse(true);
+        }
+
         void OnTryReload()
         {
             if (!AllCompsAreValid) return;
@@ -144,8 +162,7 @@ namespace RTSPrototype
 
         void OnTryCrouch()
         {
-            //var _ability = FindAbility(typeof(HeightChange));
-            var _ability = GetComponent<Opsive.ThirdPersonController.Abilities.HeightChange>();
+            var _ability = HeightChangeTPCAbility;
             if (_ability != null)
             {
                 if (!_ability.IsActive)
@@ -159,6 +176,15 @@ namespace RTSPrototype
                 {
                     myController.TryStopAbility(_ability);
                 }
+            }
+        }
+
+        void OnToggleSpecialAbility(bool _isActive)
+        {
+            var _ability = HeightChangeTPCAbility;
+            if (_ability != null && _ability.IsActive)
+            {
+                myController.TryStopAbility(_ability);
             }
         }
         #endregion
@@ -263,6 +289,8 @@ namespace RTSPrototype
             myEventHandler.OnTryReload += OnTryReload;
             myEventHandler.OnTryCrouch += OnTryCrouch;
             myEventHandler.OnWeaponChanged += OnWeaponTypeChanged;
+            myEventHandler.EventStopTargettingEnemy += OnStopTargetingEnemy;
+            myEventHandler.EventToggleIsUsingAbility += OnToggleSpecialAbility;
         }
 
         void UnsubFromEvents()
@@ -274,6 +302,8 @@ namespace RTSPrototype
             myEventHandler.OnTryReload -= OnTryReload;
             myEventHandler.OnTryCrouch -= OnTryCrouch;
             myEventHandler.OnWeaponChanged -= OnWeaponTypeChanged;
+            myEventHandler.EventStopTargettingEnemy -= OnStopTargetingEnemy;
+            myEventHandler.EventToggleIsUsingAbility -= OnToggleSpecialAbility;
         }
         #endregion
     }
