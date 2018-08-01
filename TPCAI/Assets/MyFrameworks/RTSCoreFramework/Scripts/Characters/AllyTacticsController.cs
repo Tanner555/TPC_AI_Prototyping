@@ -214,6 +214,9 @@ namespace RTSCoreFramework
             // Due to the Game Pausing Or Control Pause Mode
             // Is Active
             if (myEventHandler.bAllyIsPaused) return;
+            //Don't Want to Execute Tactics While in the 
+            //Middle of an Ability Use
+            if (myEventHandler.bIsUsingAbility) return;
 
             //Temporary Fix for PartyManager Delaying Initial AllyInCommand Methods
             if (allyInCommand == null) return;
@@ -221,8 +224,13 @@ namespace RTSCoreFramework
             evalTactics.Clear();
             foreach (var _tactic in AllyTacticsList)
             {
-                if (_tactic.condition.action(allyMember))
+                //If Condition is True and 
+                //Can Perform The Given Action
+                if (_tactic.condition.action(allyMember) &&
+                    _tactic.action.canPerformAction(allyMember))
+                {
                     evalTactics.Add(_tactic);
+                }
             }
             if (evalTactics.Count > 0)
             {

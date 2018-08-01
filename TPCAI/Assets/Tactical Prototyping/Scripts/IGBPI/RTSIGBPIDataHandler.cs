@@ -39,9 +39,13 @@ namespace RTSPrototype
                     _appendedActionDictionary = base.IGBPI_Actions.AddRange(new Dictionary<string, IGBPI_Action>
                     {
                         { "Self: Area of Effect", new IGBPI_Action((_ally) =>
-                        { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(AreaOfEffectConfigTPC)); }, ActionFilters.Abilities)},
+                        { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(AreaOfEffectConfigTPC)); },
+                        (_ally) => _ally.AllyStamina >= 50/*_ally.AllyMinStamina*/,
+                        ActionFilters.Abilities)},
                         { "Self: Heal", new IGBPI_Action((_ally) => 
-                        { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(SelfHealConfigTPC)); }, ActionFilters.Abilities)}
+                        { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(SelfHealConfigTPC)); },
+                        (_ally) => _ally.AllyStamina >= 50/*_ally.AllyMinStamina*/,
+                        ActionFilters.Abilities)}
                     });
                 }
                 return _appendedActionDictionary;

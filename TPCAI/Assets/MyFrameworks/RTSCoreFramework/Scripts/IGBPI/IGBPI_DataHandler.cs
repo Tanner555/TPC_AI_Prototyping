@@ -132,17 +132,27 @@ namespace RTSCoreFramework
         protected Dictionary<string, IGBPI_Action> _IGBPI_Actions = new Dictionary<string, IGBPI_Action>()
         {
             {"Self: Attack Targetted Enemy", new IGBPI_Action((_ally) =>
-            { _ally.aiController.AttackTargettedEnemy(); }, ActionFilters.AI) },
+            { _ally.aiController.AttackTargettedEnemy(); },
+                (_ally) => true,
+                ActionFilters.AI) },
             //{"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
             //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
             {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
-            { _ally.allyEventHandler.CallOnSwitchToNextItem(); }, ActionFilters.Weapon) },
+            { _ally.allyEventHandler.CallOnSwitchToNextItem(); },
+                (_ally) => true,
+                ActionFilters.Weapon) },
             {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
-            { _ally.allyEventHandler.CallOnSwitchToPrevItem(); }, ActionFilters.Weapon) },
+            { _ally.allyEventHandler.CallOnSwitchToPrevItem(); },
+                (_ally) => true,
+                ActionFilters.Weapon) },
             {"Self: FollowLeader", new IGBPI_Action((_ally) =>
-            { _ally.aiController.Tactics_MoveToLeader(); }, ActionFilters.Movement) },
+            { _ally.aiController.Tactics_MoveToLeader(); },
+                (_ally) => true,
+                ActionFilters.Movement) },
             {"Debug: Log True Message", new IGBPI_Action((_ally) =>
-            Debug.Log("Condition is true, called from: " + _ally), ActionFilters.Debugging) }
+            Debug.Log("Condition is true, called from: " + _ally),
+                (_ally) => true,
+                ActionFilters.Debugging) }
         };
         #endregion
 
@@ -193,11 +203,15 @@ namespace RTSCoreFramework
         public struct IGBPI_Action
         {
             public Action<AllyMember> action;
+            public Func<AllyMember, bool> canPerformAction;
             public ActionFilters filter;
 
-            public IGBPI_Action(Action<AllyMember> action, ActionFilters filter)
+            public IGBPI_Action(Action<AllyMember> action, 
+                Func<AllyMember, bool> canPerformAction, 
+                ActionFilters filter)
             {
                 this.action = action;
+                this.canPerformAction = canPerformAction;
                 this.filter = filter;
             }
         }
