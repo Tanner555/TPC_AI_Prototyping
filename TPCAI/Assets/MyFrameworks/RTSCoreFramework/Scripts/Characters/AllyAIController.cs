@@ -112,6 +112,10 @@ namespace RTSCoreFramework
             get { return myEventHandler.bIsNavMoving; }
         }
 
+        protected bool bCarryingRangeAndNoAmmoLeft =>
+            allyMember.bIsCarryingMeleeWeapon ?
+                false : allyMember.CurrentEquipedAmmo <= 0;
+
         protected bool bStopUpdatingBattleBehavior
         {
             get
@@ -121,8 +125,7 @@ namespace RTSCoreFramework
                 myEventHandler.bIsFreeMoving ||
                 //Carrying Ranged Weapon and
                 //Doesn't Have Any Ammo Left 
-                ((allyMember.bIsCarryingMeleeWeapon == false &&
-                allyMember.CurrentEquipedAmmo > 0) == false);
+                bCarryingRangeAndNoAmmoLeft;
             }
         }
 
