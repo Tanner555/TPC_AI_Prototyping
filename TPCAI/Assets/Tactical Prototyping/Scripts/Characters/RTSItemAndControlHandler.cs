@@ -49,6 +49,8 @@ namespace RTSPrototype
         const string PistolName = "Pistol";
         const string ShotgunName = "Shotgun";
         const string SniperRifleName = "Sniper Rifle";
+
+        protected bool bIsReloading = false;
         #endregion
 
         #region Components
@@ -139,7 +141,15 @@ namespace RTSPrototype
         void OnTryUseWeapon()
         {
             if (!AllCompsAreValid) return;
-            if (!itemHandler.TryUseItem(typeof(PrimaryItemType)))
+            if(allyMember.bIsCarryingMeleeWeapon == false &&
+                myInventory.GetCurrentItemCount(typeof(PrimaryItemType), true) <= 0)
+            {
+                if (bIsReloading == false)
+                {
+                    myEventHandler.CallOnTryReload();
+                }
+            }
+            else if (!itemHandler.TryUseItem(typeof(PrimaryItemType)))
             {
                 Debug.Log("Couldn't fire primary weapon");
             }
@@ -153,11 +163,19 @@ namespace RTSPrototype
 
         void OnTryReload()
         {
+            Debug.Log("Try Reloading");
             if (!AllCompsAreValid) return;
+            bIsReloading = true;
+            Invoke("ResetIsReloading", 5f);
             if (!itemHandler.TryReload())
             {
                 Debug.Log("Couldn't reload primary weapon");
             }
+        }
+
+        void ResetIsReloading()
+        {
+            bIsReloading = false;
         }
 
         void OnTryCrouch()
