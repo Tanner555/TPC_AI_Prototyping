@@ -145,6 +145,7 @@ namespace RTSCoreFramework
         public event TwoIntArgsHandler OnAmmoChanged;
         public event TwoIntArgsHandler OnHealthChanged;
         public event TwoIntArgsHandler OnStaminaChanged;
+        public event TwoIntArgsHandler OnActiveTimeChanged;
 
         public delegate void RTSTakeDamageHandler(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject);
         public event RTSTakeDamageHandler OnAllyTakeDamage;
@@ -491,6 +492,11 @@ namespace RTSCoreFramework
         public virtual void CallOnStaminaChanged(int _current, int _max)
         {
             if (OnStaminaChanged != null) OnStaminaChanged(_current, _max);
+        }
+
+        public virtual void CallOnActiveTimeChanged(int _current, int _max)
+        {
+            if (OnActiveTimeChanged != null) OnActiveTimeChanged(_current, _max);
         }
 
         public virtual void CallOnAllyTakeDamage(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject)

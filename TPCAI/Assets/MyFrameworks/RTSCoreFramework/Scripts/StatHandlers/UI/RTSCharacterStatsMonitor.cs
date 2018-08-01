@@ -58,7 +58,7 @@ namespace RTSCoreFramework
             get
             {
                 if (_UiHealthSliderComponent == null)
-                    _UiHealthSliderComponent = GetComponent<Slider>();
+                    _UiHealthSliderComponent = UiHealthSlider.GetComponent<Slider>();
 
                 return _UiHealthSliderComponent;
             }
@@ -70,7 +70,7 @@ namespace RTSCoreFramework
             get
             {
                 if (_UiAbilitySliderComponent == null)
-                    _UiAbilitySliderComponent = GetComponent<Slider>();
+                    _UiAbilitySliderComponent = UiAbilitySlider.GetComponent<Slider>();
 
                 return _UiAbilitySliderComponent;
             }
@@ -82,7 +82,7 @@ namespace RTSCoreFramework
             get
             {
                 if (_UiActiveTimeSliderComponent == null)
-                    _UiActiveTimeSliderComponent = GetComponent<Slider>();
+                    _UiActiveTimeSliderComponent = UiActiveTimeSlider.GetComponent<Slider>();
 
                 return _UiActiveTimeSliderComponent;
             }
@@ -124,6 +124,7 @@ namespace RTSCoreFramework
         Color NormalPortraitPanelColor;
         //hover info fields
         bool bIsHighlighted = false;
+        float updateActiveTimeSliderRate = 0.2f;
         #endregion
 
         #region UnityMessages
@@ -203,6 +204,7 @@ namespace RTSCoreFramework
             {
                 SubscribeToUiTargetHandlers(_currentTarget);
                 TransferCharacterStatsToText(_currentTarget);
+                StartServices();
             }
         }
 
@@ -221,6 +223,7 @@ namespace RTSCoreFramework
             //Sub to Current UiTarget Handlers
             _handler.OnHealthChanged += UiTargetHandle_OnHealthChanged;
             _handler.OnStaminaChanged += UiTargetHandle_OnStaminaChanged;
+            _handler.OnActiveTimeChanged += UiTargetHandle_OnActiveTimeChanged;
             _handler.EventAllyDied += UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander += UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom += UiTargetHandle_SwitchFromCommander;
@@ -242,6 +245,7 @@ namespace RTSCoreFramework
             //Unsub From Previous UiTarget Handlers
             _handler.OnHealthChanged -= UiTargetHandle_OnHealthChanged;
             _handler.OnStaminaChanged -= UiTargetHandle_OnStaminaChanged;
+            _handler.OnActiveTimeChanged -= UiTargetHandle_OnActiveTimeChanged;
             _handler.EventAllyDied -= UiTargetHandle_OnAllyDeath;
             _handler.EventSetAsCommander -= UiTargetHandle_SetAsCommander;
             _handler.EventSwitchingFromCom -= UiTargetHandle_SwitchFromCommander;
@@ -291,11 +295,23 @@ namespace RTSCoreFramework
             }
         }
 
+        protected virtual void UiTargetHandle_OnActiveTimeChanged(int _current, int _max)
+        {
+            if (AllCompsAreValid == false) return;
+            Slider _slider = UiActiveTimeSliderComponent;
+            if (_slider != null)
+            {
+                _slider.maxValue = _max;
+                _slider.value = _current;
+            }
+        }
+
         protected virtual void UiTargetHandle_OnAllyDeath()
         {
             if (uiTarget != null && uiTarget.bAllyIsUiTarget)
             {
                 UnsubscribeFromUiTargetHandlers(uiTarget);
+                StopServices();
             }
         }
 
@@ -352,18 +368,19 @@ namespace RTSCoreFramework
         }
         #endregion
 
-        #region Helpers
-        protected virtual void SetUiActiveTimeSlider(int _current, int _max)
+        #region Services
+        protected virtual void StartServices()
         {
-            if (AllCompsAreValid == false) return;
-            Slider _slider = UiActiveTimeSliderComponent;
-            if (_slider != null)
-            {
-                _slider.maxValue = _max;
-                _slider.value = _current;
-            }
+
         }
 
+        protected virtual void StopServices()
+        {
+            
+        }
+        #endregion
+
+        #region Helpers
         protected virtual void SetToHighlightColor()
         {
             if (AllCompsAreValid && PortraitPanelImage != null)

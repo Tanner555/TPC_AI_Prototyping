@@ -121,6 +121,27 @@ namespace RTSCoreFramework
         }
         private int _AllyMinStamina = 0;
 
+        public virtual int AllyActiveTimeBar
+        {
+            get { return _AllyActiveTimeBar; }
+            set
+            {
+                _AllyActiveTimeBar = value;
+                allyEventHandler.CallOnActiveTimeChanged(_AllyActiveTimeBar, AllyMaxActiveTimeBar);
+            }
+        }
+        private int _AllyActiveTimeBar = 0;
+
+        public virtual int AllyMaxActiveTimeBar
+        {
+            get { return 100; }
+        }
+
+        public virtual int AllyMinActiveTimeBar
+        {
+            get { return 0; }
+        }
+
         public virtual bool IsAlive
         {
             get { return AllyHealth > AllyMinHealth; }
@@ -212,13 +233,14 @@ namespace RTSCoreFramework
         protected virtual void OnEnable()
         {
             SetInitialReferences();
+            InitializeAllyValues();
             SubToEvents();
-
         }
 
         protected virtual void OnDisable()
         {
             UnSubFromEvents();
+            StopServices();
         }
 
         // Use this for initialization
@@ -235,6 +257,7 @@ namespace RTSCoreFramework
             //Create Overrideable Late Start to Accommodate 
             //Assets Having Long StartUp 
             Invoke("OnDelayStart", 0.5f);
+            StartServices();
         }
 
         protected virtual void OnDelayStart()
@@ -493,6 +516,16 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Services
+        protected virtual void SE_UpdateActiveTimeBar()
+        {
+            if (AllyActiveTimeBar < AllyMaxActiveTimeBar)
+            {
+                AllyActiveTimeBar = Mathf.Min(AllyActiveTimeBar + 5, AllyMaxActiveTimeBar);
+            }
+        }
+        #endregion
+
         #region Initialization
         protected virtual void SetInitialReferences()
         {
@@ -516,6 +549,11 @@ namespace RTSCoreFramework
 
         }
 
+        protected virtual void InitializeAllyValues()
+        {
+            AllyActiveTimeBar = 0;
+        }
+
         protected virtual void SubToEvents()
         {
             allyEventHandler.EventAllyDied += AllyOnDeath;
@@ -534,6 +572,16 @@ namespace RTSCoreFramework
             allyEventHandler.OnTryHitscanFire -= OnTryHitscanFire;
             allyEventHandler.OnTryMeleeAttack -= OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
+        }
+
+        protected virtual void StartServices()
+        {
+            InvokeRepeating("SE_UpdateActiveTimeBar", 0.5f, 0.2f);
+        }
+
+        protected virtual void StopServices()
+        {
+            CancelInvoke();
         }
         #endregion
 
