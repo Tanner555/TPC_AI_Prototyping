@@ -52,6 +52,42 @@ namespace RTSCoreFramework
             }
         }
         Image _PortraitPanelImage = null;
+
+        Slider UiHealthSliderComponent
+        {
+            get
+            {
+                if (_UiHealthSliderComponent == null)
+                    _UiHealthSliderComponent = GetComponent<Slider>();
+
+                return _UiHealthSliderComponent;
+            }
+        }
+        private Slider _UiHealthSliderComponent = null;
+
+        Slider UiAbilitySliderComponent
+        {
+            get
+            {
+                if (_UiAbilitySliderComponent == null)
+                    _UiAbilitySliderComponent = GetComponent<Slider>();
+
+                return _UiAbilitySliderComponent;
+            }
+        }
+        private Slider _UiAbilitySliderComponent = null;
+
+        Slider UiActiveTimeSliderComponent
+        {
+            get
+            {
+                if (_UiActiveTimeSliderComponent == null)
+                    _UiActiveTimeSliderComponent = GetComponent<Slider>();
+
+                return _UiActiveTimeSliderComponent;
+            }
+        }
+        private Slider _UiActiveTimeSliderComponent = null;
         #endregion
 
         #region Fields
@@ -65,6 +101,8 @@ namespace RTSCoreFramework
         GameObject UiHealthSlider;
         [SerializeField]
         GameObject UiAbilitySlider;
+        [SerializeField]
+        GameObject UiActiveTimeSlider;
         [SerializeField]
         TextMeshProUGUI CurrentHealthText;
         [SerializeField]
@@ -232,7 +270,7 @@ namespace RTSCoreFramework
             if (AllCompsAreValid == false) return;
             CurrentHealthText.text = _current.ToString();
             MaxHealthText.text = _max.ToString();
-            Slider _slider = UiHealthSlider.GetComponent<Slider>();
+            Slider _slider = UiHealthSliderComponent;
             if (_slider != null)
             {
                 _slider.maxValue = _max;
@@ -245,7 +283,7 @@ namespace RTSCoreFramework
             if (AllCompsAreValid == false) return;
             CurrentAbilityText.text = _current.ToString();
             MaxAbilityText.text = _max.ToString();
-            Slider _slider = UiAbilitySlider.GetComponent<Slider>();
+            Slider _slider = UiAbilitySliderComponent;
             if (_slider != null)
             {
                 _slider.maxValue = _max;
@@ -315,7 +353,18 @@ namespace RTSCoreFramework
         #endregion
 
         #region Helpers
-        void SetToHighlightColor()
+        protected virtual void SetUiActiveTimeSlider(int _current, int _max)
+        {
+            if (AllCompsAreValid == false) return;
+            Slider _slider = UiActiveTimeSliderComponent;
+            if (_slider != null)
+            {
+                _slider.maxValue = _max;
+                _slider.value = _current;
+            }
+        }
+
+        protected virtual void SetToHighlightColor()
         {
             if (AllCompsAreValid && PortraitPanelImage != null)
             {
@@ -324,7 +373,7 @@ namespace RTSCoreFramework
             }
         }
 
-        void SetToSelectedColor()
+        protected virtual void SetToSelectedColor()
         {
             if (AllCompsAreValid && PortraitPanelImage != null)
             {
@@ -333,7 +382,7 @@ namespace RTSCoreFramework
             }
         }
 
-        void SetToNormalColor()
+        protected virtual void SetToNormalColor()
         {
             if (AllCompsAreValid && PortraitPanelImage != null)
             {
