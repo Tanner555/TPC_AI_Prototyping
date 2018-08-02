@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +8,38 @@ namespace RTSCoreFramework
     public class AllyActionQueueController : MonoBehaviour
     {
         #region Fields
-
+        protected bool bHasCommandActionItem = false;
+        protected bool bHasAIActionItem = false;
+        protected bool bActionBarIsFull = false;
         #endregion
 
         #region ActionQueueProperties
-        protected virtual bool bActionBarIsFull
+        public RTSActionItem CommandActionItem
         {
-            get { return allyMember.ActiveTimeBarIsFull(); }
+            get; protected set;
+        }
+
+        public RTSActionItem AIActionItem
+        {
+            get; protected set;
+        }
+
+        protected bool bCommandActionIsReady
+        {
+            get { return (bHasCommandActionItem && CommandActionItem != null); }
+        }
+
+        protected bool bAIActionIsReady
+        {
+            get { return (bHasAIActionItem && AIActionItem != null); }
+        }
+
+        protected bool bHasAnyActions
+        {
+            get
+            {
+                return bCommandActionIsReady || bAIActionIsReady;
+            }
         }
         #endregion
 
@@ -83,10 +109,12 @@ namespace RTSCoreFramework
         {
             SetInitialReferences();
             SubToEvents();
+            StartServices();
         }
 
         protected virtual void OnDisable()
         {
+            StopServices();
             UnsubFromEvents();
         }
 
@@ -95,18 +123,77 @@ namespace RTSCoreFramework
         {
 
         }
-
-        // Update is called once per frame
-        protected virtual void Update()
-        {
-
-        }
         #endregion
 
         #region Handlers
         protected virtual void OnActiveTimeBarIsFull()
         {
-            
+            bActionBarIsFull = true;
+        }
+
+        protected virtual void OnActiveTimeBarDepletion()
+        {
+            bActionBarIsFull = false;
+        }
+
+        protected virtual void OnAddActionItemToQueue(RTSActionItem _actionItem)
+        {
+            if (_actionItem == null) return;
+
+            if (_actionItem.isCommandAction)
+            {
+                CommandActionItem = _actionItem;
+                bHasCommandActionItem = true;
+            }
+            else
+            {
+                AIActionItem = _actionItem;
+                bHasCommandActionItem = false;
+                CommandActionItem = null;
+            }
+        }
+
+        protected virtual void OnRemoveCommandActionFromQueue()
+        {
+            bHasCommandActionItem = false;
+            CommandActionItem = null;
+        }
+
+        protected virtual void OnRemoveAIActionFromQueue()
+        {
+            bHasAIActionItem = false;
+            AIActionItem = null;
+        }
+        #endregion
+
+        #region Services
+        protected virtual void SE_UpdateActionQueue()
+        {
+            if (bHasAnyActions == false) return;
+
+            RTSActionItem _actionToPerform = bCommandActionIsReady ?
+                CommandActionItem : AIActionItem;
+
+            if (_actionToPerform.preparationIsComplete(allyMember))
+            {
+                //Action Either Doesn't Require Action Bar To Be
+                //Full OR Action Bar is Already Full and Ready
+                if (_actionToPerform.requiresFullActionBar == false ||
+                    bActionBarIsFull)
+                {
+                    _actionToPerform.actionToPerform(allyMember);
+                }
+            }
+        }
+
+        protected virtual void StartServices()
+        {
+            InvokeRepeating("SE_UpdateActionQueue", 1f, 0.2f);
+        }
+
+        protected virtual void StopServices()
+        {
+            CancelInvoke();
         }
         #endregion
 
@@ -119,12 +206,57 @@ namespace RTSCoreFramework
         protected virtual void SubToEvents()
         {
             myEventHandler.OnActiveTimeBarIsFull += OnActiveTimeBarIsFull;
+            myEventHandler.OnActiveTimeBarDepletion += OnActiveTimeBarDepletion;
+            myEventHandler.OnAddActionItemToQueue += OnAddActionItemToQueue;
+            myEventHandler.OnRemoveCommandActionFromQueue += OnRemoveCommandActionFromQueue;
+            myEventHandler.OnRemoveAIActionFromQueue += OnRemoveAIActionFromQueue;
         }
 
         protected virtual void UnsubFromEvents()
         {
             myEventHandler.OnActiveTimeBarIsFull -= OnActiveTimeBarIsFull;
+            myEventHandler.OnActiveTimeBarDepletion -= OnActiveTimeBarDepletion;
+            myEventHandler.OnAddActionItemToQueue -= OnAddActionItemToQueue;
+            myEventHandler.OnRemoveCommandActionFromQueue -= OnRemoveCommandActionFromQueue;
+            myEventHandler.OnRemoveAIActionFromQueue -= OnRemoveAIActionFromQueue;
         }
         #endregion
     }
+
+    #region ActionItemClass
+    /// <summary>
+    /// Used For Queueing Actions Inside AllyActionQueueController
+    /// </summary>
+    public class RTSActionItem
+    {
+        public Action<AllyMember> actionToPerform;
+        /// <summary>
+        /// Not Being Performed By AI
+        /// </summary>
+        public bool isCommandAction;
+        public bool requiresFullActionBar;
+        /// <summary>
+        /// Use (_ally) => true If No Preparation is Required
+        /// </summary>
+        public Func<AllyMember, bool> preparationIsComplete;
+
+        public RTSActionItem(
+            Action<AllyMember> actionToPerform,
+            bool isCommandAction,
+            bool requiresFullActionBar,
+            Func<AllyMember, bool> preparationIsComplete
+            )
+        {
+            this.actionToPerform = actionToPerform;
+            this.isCommandAction = isCommandAction;
+            this.requiresFullActionBar = requiresFullActionBar;
+            this.preparationIsComplete = preparationIsComplete;
+        }
+
+        private RTSActionItem()
+        {
+
+        }
+    }
+    #endregion
 }

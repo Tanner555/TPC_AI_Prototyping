@@ -126,8 +126,12 @@ namespace RTSCoreFramework
         public event OneSystemTypeArgHandler OnTrySpecialAbility;
 
         //For Active Time Bar Functionality
+        public delegate void OneRTSActionItemArgHandler(RTSActionItem _actionItem);
         public event GeneralEventHandler OnActiveTimeBarIsFull;
         public event GeneralEventHandler OnActiveTimeBarDepletion;
+        public event GeneralEventHandler OnRemoveCommandActionFromQueue;
+        public event GeneralEventHandler OnRemoveAIActionFromQueue;
+        public event OneRTSActionItemArgHandler OnAddActionItemToQueue;
 
         //May use delegate in the future
         //public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
@@ -320,6 +324,21 @@ namespace RTSCoreFramework
         public virtual void CallOnActiveTimeBarDepletion()
         {
             if (OnActiveTimeBarDepletion != null) OnActiveTimeBarDepletion();
+        }
+
+        public virtual void CallOnRemoveCommandActionFromQueue()
+        {
+            if (OnRemoveCommandActionFromQueue != null) OnRemoveCommandActionFromQueue();
+        }
+
+        public virtual void CallOnRemoveAIActionFromQueue()
+        {
+            if (OnRemoveAIActionFromQueue != null) OnRemoveAIActionFromQueue();
+        }
+
+        public virtual void CallOnAddActionItemToQueue(RTSActionItem _actionItem)
+        {
+            if (OnAddActionItemToQueue != null) OnAddActionItemToQueue(_actionItem);
         }
 
         public virtual void CallEventSwitchingFromCom()
