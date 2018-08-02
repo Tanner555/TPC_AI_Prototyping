@@ -263,6 +263,10 @@ namespace RTSCoreFramework
                 {
                     myEventHandler.CallOnRemoveAIActionFromQueue();
                 }
+                //Setting Previous To Null Is Equivalent To
+                //A Boolean That Gets Set To True Once an 
+                //Action Gets Added And False When Removing
+                previousExecutionItem = null;
                 currentExecutionItem = null;
             }
         }

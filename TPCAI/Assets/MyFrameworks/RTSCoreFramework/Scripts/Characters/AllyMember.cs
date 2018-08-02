@@ -630,6 +630,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnTryMeleeAttack += OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
             allyEventHandler.OnActiveTimeBarDepletion += OnActiveTimeBarDepletion;
+            allyEventHandler.OnToggleActiveTimeRegeneration += OnToggleActiveTimeRegeneration;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch += HandleOnAllySwitch;
         }
@@ -644,6 +645,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnTryMeleeAttack -= OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
             allyEventHandler.OnActiveTimeBarDepletion -= OnActiveTimeBarDepletion;
+            allyEventHandler.OnToggleActiveTimeRegeneration -= OnToggleActiveTimeRegeneration;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch -= HandleOnAllySwitch;
         }

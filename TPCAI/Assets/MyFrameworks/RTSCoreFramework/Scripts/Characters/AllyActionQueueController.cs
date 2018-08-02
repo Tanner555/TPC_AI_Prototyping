@@ -155,12 +155,12 @@ namespace RTSCoreFramework
             {
                 //Stops Previous Action Item If It Exists 
                 //and Isn't The Current Item
-                //if(PreviousCommandActionItem != null &&
-                //    PreviousCommandActionItem != _actionItem)
-                //{
-                //    PreviousCommandActionItem.stopPerformingTask(allyMember);
-                //}
-                //PreviousCommandActionItem = CommandActionItem;
+                if (PreviousCommandActionItem != null &&
+                    PreviousCommandActionItem != _actionItem)
+                {
+                    PreviousCommandActionItem.stopPerformingTask(allyMember);
+                }
+                PreviousCommandActionItem = CommandActionItem;
 
                 //Sets Necessary Toggles and Handlers
                 CommandActionItem = _actionItem;
@@ -170,12 +170,12 @@ namespace RTSCoreFramework
             {
                 //Stops Previous Action Item If It Exists 
                 //and Isn't The Current Item
-                //if(PreviousAIActionItem != null &&
-                //    PreviousAIActionItem != _actionItem)
-                //{
-                //    PreviousAIActionItem.stopPerformingTask(allyMember);
-                //}
-                //PreviousAIActionItem = AIActionItem;
+                if (PreviousAIActionItem != null &&
+                    PreviousAIActionItem != _actionItem)
+                {
+                    PreviousAIActionItem.stopPerformingTask(allyMember);
+                }
+                PreviousAIActionItem = AIActionItem;
 
                 //Sets Necessary Toggles and Handlers
                 AIActionItem = _actionItem;
@@ -187,7 +187,11 @@ namespace RTSCoreFramework
             if (_actionItem.requiresFullActionBar ||
                 _actionItem.requiresActiveBarRegeneration)
             {
-                myEventHandler.CallOnToggleActiveTimeRegeneration(_actionItem.requiresFullActionBar);
+                myEventHandler.CallOnToggleActiveTimeRegeneration(true);
+            }
+            else
+            {
+                myEventHandler.CallOnToggleActiveTimeRegeneration(false);
             }
 
             //Only Start Services If Action Requires Full Bar
@@ -210,10 +214,10 @@ namespace RTSCoreFramework
         protected virtual void OnRemoveCommandActionFromQueue()
         {
             //Stops Action Item If It Exists 
-            //if (CommandActionItem != null)
-            //{
-            //    CommandActionItem.stopPerformingTask(allyMember);
-            //}
+            if (CommandActionItem != null)
+            {
+                CommandActionItem.stopPerformingTask(allyMember);
+            }
             bHasCommandActionItem = false;
             CommandActionItem = null;
         }
@@ -221,10 +225,10 @@ namespace RTSCoreFramework
         protected virtual void OnRemoveAIActionFromQueue()
         {
             //Stops Action Item If It Exists 
-            //if (AIActionItem != null)
-            //{
-            //    AIActionItem.stopPerformingTask(allyMember);
-            //}
+            if (AIActionItem != null)
+            {
+                AIActionItem.stopPerformingTask(allyMember);
+            }
             bHasAIActionItem = false;
             AIActionItem = null;
         }
