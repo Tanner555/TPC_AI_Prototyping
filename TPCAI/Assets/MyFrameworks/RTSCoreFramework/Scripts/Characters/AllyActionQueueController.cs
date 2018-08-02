@@ -231,18 +231,19 @@ namespace RTSCoreFramework
         protected virtual void OnToggleTactics(bool _enable)
         {
             //Only If Turning Tactics Off
-            if (_enable) return;
+            if(_enable == false)
+            {
+                RemoveQueuesAndCancelServices();
+            }
+        }
 
-            if (bHasCommandActionItem)
-                myEventHandler.CallOnRemoveCommandActionFromQueue();
-            if (bHasAIActionItem)
-                myEventHandler.CallOnRemoveAIActionFromQueue();
-            if (bIsInvokingWait)
-                InvokeWaitingForActionBarToFill(false);
-            if (bIsInvokingMultExecutions)
-                InvokeUpdateMultipleExecuteAction(false);
-            if (allyMember.bActiveTimeBarIsRegenerating)
-                myEventHandler.CallOnToggleActiveTimeRegeneration(false);
+        protected virtual void OnToggleFreeMovement(bool _enable)
+        {
+            //Only When Enabling Free Movement
+            if (_enable)
+            {
+                RemoveQueuesAndCancelServices();
+            }
         }
 
         protected virtual void OnRemoveCommandActionFromQueue()
@@ -378,6 +379,20 @@ namespace RTSCoreFramework
         #endregion
 
         #region Helpers
+        protected virtual void RemoveQueuesAndCancelServices()
+        {
+            if (bHasCommandActionItem)
+                myEventHandler.CallOnRemoveCommandActionFromQueue();
+            if (bHasAIActionItem)
+                myEventHandler.CallOnRemoveAIActionFromQueue();
+            if (bIsInvokingWait)
+                InvokeWaitingForActionBarToFill(false);
+            if (bIsInvokingMultExecutions)
+                InvokeUpdateMultipleExecuteAction(false);
+            if (allyMember.bActiveTimeBarIsRegenerating)
+                myEventHandler.CallOnToggleActiveTimeRegeneration(false);
+        }
+
         protected virtual void PerformTask(RTSActionItem _item)
         {
             if (_item.preparationIsComplete(allyMember))
@@ -401,6 +416,7 @@ namespace RTSCoreFramework
             myEventHandler.OnRemoveCommandActionFromQueue += OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue += OnRemoveAIActionFromQueue;
             myEventHandler.EventToggleAllyTactics += OnToggleTactics;
+            myEventHandler.EventTogglebIsFreeMoving += OnToggleFreeMovement;
             myEventHandler.EventAllyDied += OnDeath;
         }
 
@@ -412,6 +428,7 @@ namespace RTSCoreFramework
             myEventHandler.OnRemoveCommandActionFromQueue -= OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue -= OnRemoveAIActionFromQueue;
             myEventHandler.EventToggleAllyTactics -= OnToggleTactics;
+            myEventHandler.EventTogglebIsFreeMoving -= OnToggleFreeMovement;
             myEventHandler.EventAllyDied -= OnDeath;
         }
         #endregion
