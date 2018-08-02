@@ -277,6 +277,7 @@ namespace RTSCoreFramework
         /// </summary>
         public virtual void CallOnTryHitscanFire(Vector3 _force)
         {
+            CallOnActiveTimeBarDepletion();
             if (OnTryHitscanFire != null) OnTryHitscanFire(_force);
         }
         /// <summary>
@@ -285,6 +286,7 @@ namespace RTSCoreFramework
         /// </summary>
         public virtual void CallOnTryMeleeAttack()
         {
+            CallOnActiveTimeBarDepletion();
             if (OnTryMeleeAttack != null) OnTryMeleeAttack();
         }
 
