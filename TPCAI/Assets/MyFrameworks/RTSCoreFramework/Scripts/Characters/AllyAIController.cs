@@ -539,22 +539,28 @@ namespace RTSCoreFramework
 
         protected virtual void MakeFireRequest()
         {
-            // Pause Ally Tactics If Ally Is Paused
-            // Due to the Game Pausing Or Control Pause Mode
-            // Is Active
-            if (myEventHandler.bAllyIsPaused) return;
+            if (allyMember.ActiveTimeBarIsFull())
+            {
+                // Pause Ally Tactics If Ally Is Paused
+                // Due to the Game Pausing Or Control Pause Mode
+                // Is Active
+                if (myEventHandler.bAllyIsPaused) return;
 
-            myEventHandler.CallOnTryUseWeapon();
+                myEventHandler.CallOnTryUseWeapon();
+            }
         }
 
         protected virtual void MakeMeleeAttackRequest()
         {
-            // Pause Ally Tactics If Ally Is Paused
-            // Due to the Game Pausing Or Control Pause Mode
-            // Is Active
-            if (myEventHandler.bAllyIsPaused) return;
-            
-            myEventHandler.CallOnTryUseWeapon();
+            if (allyMember.ActiveTimeBarIsFull())
+            {
+                // Pause Ally Tactics If Ally Is Paused
+                // Due to the Game Pausing Or Control Pause Mode
+                // Is Active
+                if (myEventHandler.bAllyIsPaused) return;
+
+                myEventHandler.CallOnTryUseWeapon();
+            }
         }
         #endregion
 
