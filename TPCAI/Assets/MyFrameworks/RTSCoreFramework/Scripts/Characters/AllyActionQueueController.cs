@@ -250,9 +250,17 @@ namespace RTSCoreFramework
         public bool isCommandAction;
         public bool requiresFullActionBar;
         /// <summary>
+        /// Set to False if Action Should Only Be Executed Once
+        /// </summary>
+        public bool executeMultipleTimes;
+        /// <summary>
         /// Use (_ally) => true If No Preparation is Required
         /// </summary>
         public Func<AllyMember, bool> preparationIsComplete;
+        /// <summary>
+        /// Essential To Telling When the Given Task Is Completed
+        /// </summary>
+        public Func<AllyMember, bool> taskIsFinished;
 
         public RTSActionItem(
             Action<AllyMember> actionToPerform,
@@ -260,7 +268,9 @@ namespace RTSCoreFramework
             ActionFilters actionFilter,
             bool isCommandAction,
             bool requiresFullActionBar,
-            Func<AllyMember, bool> preparationIsComplete
+            bool executeMultipleTimes,
+            Func<AllyMember, bool> preparationIsComplete,
+            Func<AllyMember, bool> taskIsFinished
             )
         {
             this.actionToPerform = actionToPerform;
@@ -268,7 +278,9 @@ namespace RTSCoreFramework
             this.actionFilter = actionFilter;
             this.isCommandAction = isCommandAction;
             this.requiresFullActionBar = requiresFullActionBar;
+            this.executeMultipleTimes = executeMultipleTimes;
             this.preparationIsComplete = preparationIsComplete;
+            this.taskIsFinished = taskIsFinished;
         }
 
         private RTSActionItem()
