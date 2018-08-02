@@ -37,6 +37,7 @@ namespace RTSCoreFramework
 
         #region Properties
         public RTSGameMode gamemode { get { return RTSGameMode.thisInstance; } }
+        public RTSGameMaster gamemaster { get { return RTSGameMaster.thisInstance; } }
         public AllyMember DamageInstigator { get; protected set; }
         //Faction Properties
         public PartyManager partyManager
@@ -222,7 +223,7 @@ namespace RTSCoreFramework
             }
         }
 
-        public bool bIsCurrentPlayer { get { return partyManager ? partyManager.AllyIsCurrentPlayer(this) : false; } }
+        public bool bIsCurrentPlayer { get; protected set; } = false;
         public bool bIsGeneralInCommand { get { return partyManager ? partyManager.AllyIsGeneralInCommand(this) : false; } }
         public bool bIsInGeneralCommanderParty { get { return partyManager.bIsCurrentPlayerCommander; } }
         //Ui Target Info
@@ -267,6 +268,19 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        /// <summary>
+        /// Called Before AllyInCommand has been set
+        /// </summary>
+        /// <param name="_party"></param>
+        /// <param name="_toSet"></param>
+        /// <param name="_current"></param>
+        protected virtual void HandleOnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
+        {
+            if (_party != partyManager) return;
+
+            bIsCurrentPlayer = _toSet == this && _toSet.bIsInGeneralCommanderParty;
+        }
+
         protected virtual void OnTryHitscanFire(Vector3 _force)
         {
             RaycastHit _hit;
@@ -394,7 +408,9 @@ namespace RTSCoreFramework
                 DamageInstigator = _instigator;
             }
         }
-
+        /// <summary>
+        /// Called After AllyInCommand has been set
+        /// </summary>
         protected virtual void OnPartySwitch()
         {
             //Switch Tags Depending on whether isCurrentPlayer
@@ -557,21 +573,27 @@ namespace RTSCoreFramework
         protected virtual void SubToEvents()
         {
             allyEventHandler.EventAllyDied += AllyOnDeath;
+            //Called After AllyInCommand has been set
             allyEventHandler.EventPartySwitching += OnPartySwitch;
             allyEventHandler.OnAmmoChanged += OnEquippedWeaponAmmoChanged;
             allyEventHandler.OnTryHitscanFire += OnTryHitscanFire;
             allyEventHandler.OnTryMeleeAttack += OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
+            //Called Before AllyInCommand has been set
+            gamemaster.OnAllySwitch += HandleOnAllySwitch;
         }
 
         protected virtual void UnSubFromEvents()
         {
             allyEventHandler.EventAllyDied -= AllyOnDeath;
+            //Called After AllyInCommand has been set
             allyEventHandler.EventPartySwitching -= OnPartySwitch;
             allyEventHandler.OnAmmoChanged -= OnEquippedWeaponAmmoChanged;
             allyEventHandler.OnTryHitscanFire -= OnTryHitscanFire;
             allyEventHandler.OnTryMeleeAttack -= OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
+            //Called Before AllyInCommand has been set
+            gamemaster.OnAllySwitch -= HandleOnAllySwitch;
         }
 
         protected virtual void StartServices()

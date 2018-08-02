@@ -314,6 +314,9 @@ namespace RTSCoreFramework
             if (EventSwitchingFromCom != null) EventSwitchingFromCom();
         }
 
+        /// <summary>
+        /// Called After AllyInCommand Has Been Set By the PartyManager
+        /// </summary>
         public virtual void CallEventPartySwitching()
         {
             if (EventPartySwitching != null) EventPartySwitching();

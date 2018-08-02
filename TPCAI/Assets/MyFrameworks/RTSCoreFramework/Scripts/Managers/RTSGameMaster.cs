@@ -119,6 +119,12 @@ namespace RTSCoreFramework
             base.CallEventAllObjectivesCompleted();
         }
 
+        /// <summary>
+        /// Called Before The AllyInCommand has been set by RTSGameMaster
+        /// </summary>
+        /// <param name="_party"></param>
+        /// <param name="_toSet"></param>
+        /// <param name="_current"></param>
         public void CallOnAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
             if (OnAllySwitch != null)

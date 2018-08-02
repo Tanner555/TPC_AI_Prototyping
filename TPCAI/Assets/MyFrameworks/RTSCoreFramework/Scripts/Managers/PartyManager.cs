@@ -184,7 +184,7 @@ namespace RTSCoreFramework
 
             if (_validSet)
             {
-                gamemaster.CallOnAllySwitch((PartyManager)this, _setToCommand, AllyInCommand);
+                gamemaster.CallOnAllySwitch(this, _setToCommand, AllyInCommand);
                 if (AllyInCommand != null)
                     AllyInCommand.GetComponent<AllyEventHandler>().CallEventSwitchingFromCom();
 
