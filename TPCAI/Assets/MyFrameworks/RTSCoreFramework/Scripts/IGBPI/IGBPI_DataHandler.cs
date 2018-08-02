@@ -123,25 +123,25 @@ namespace RTSCoreFramework
                 { _ally.aiController.AttackTargettedEnemy(); },
                 (_ally) => { return _ally.bIsCarryingMeleeWeapon ||
                 _ally.CurrentEquipedAmmo > 0; },
-            ActionFilters.AI, false, false, false, _ally => true, _ally => _ally.bIsAttacking == false) },
+            ActionFilters.AI, false, false, true, false, _ally => true, _ally => _ally.bIsAttacking == false, _ally => _ally.allyEventHandler.CallEventStopTargettingEnemy()) },
             //{"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
             //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
             {"Self: SwitchToNextWeapon", new RTSActionItem((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); },
                 (_ally) => true,
-                ActionFilters.Weapon, false, false, false, _ally => true, _ally => true) },
+                ActionFilters.Weapon, false, false, false, false, _ally => true, _ally => true, _ally => { }) },
             {"Self: SwitchToPrevWeapon", new RTSActionItem((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToPrevItem(); },
                 (_ally) => true,
-                ActionFilters.Weapon, false, false, false, _ally => true, _ally => true) },
+                ActionFilters.Weapon, false, false, false, false, _ally => true, _ally => true, _ally => { }) },
             {"Self: FollowLeader", new RTSActionItem((_ally) =>
             { _ally.aiController.Tactics_MoveToLeader(); },
                 (_ally) => true,
-                ActionFilters.Movement, false, false, true, _ally => true, _ally => false) },
+                ActionFilters.Movement, false, false, false, true, _ally => true, _ally => false, _ally => _ally.allyEventHandler.CallEventFinishedMoving()) },
             {"Debug: Log True Message", new RTSActionItem((_ally) =>
             Debug.Log("Condition is true, called from: " + _ally.CharacterName),
                 (_ally) => true,
-                ActionFilters.Debugging, false, false, false, _ally => true, _ally => true) }
+                ActionFilters.Debugging, false, false, false, false, _ally => true, _ally => true, _ally => { }) }
         };
         #endregion
 

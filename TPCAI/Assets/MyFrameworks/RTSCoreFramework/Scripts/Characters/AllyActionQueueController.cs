@@ -11,6 +11,7 @@ namespace RTSCoreFramework
         protected bool bHasCommandActionItem = false;
         protected bool bHasAIActionItem = false;
         protected bool bActionBarIsFull = false;
+        protected bool bIsUsingServices = false;
         #endregion
 
         #region ActionQueueProperties
@@ -19,9 +20,19 @@ namespace RTSCoreFramework
             get; protected set;
         }
 
+        protected RTSActionItem PreviousCommandActionItem
+        {
+            get; set;
+        }
+
         public RTSActionItem AIActionItem
         {
             get; protected set;
+        }
+
+        protected RTSActionItem PreviousAIActionItem
+        {
+            get; set;
         }
 
         protected bool bCommandActionIsReady
@@ -142,25 +153,78 @@ namespace RTSCoreFramework
 
             if (_actionItem.isCommandAction)
             {
+                //Stops Previous Action Item If It Exists 
+                //and Isn't The Current Item
+                //if(PreviousCommandActionItem != null &&
+                //    PreviousCommandActionItem != _actionItem)
+                //{
+                //    PreviousCommandActionItem.stopPerformingTask(allyMember);
+                //}
+                //PreviousCommandActionItem = CommandActionItem;
+
+                //Sets Necessary Toggles and Handlers
                 CommandActionItem = _actionItem;
                 bHasCommandActionItem = true;
             }
             else
             {
+                //Stops Previous Action Item If It Exists 
+                //and Isn't The Current Item
+                //if(PreviousAIActionItem != null &&
+                //    PreviousAIActionItem != _actionItem)
+                //{
+                //    PreviousAIActionItem.stopPerformingTask(allyMember);
+                //}
+                //PreviousAIActionItem = AIActionItem;
+
+                //Sets Necessary Toggles and Handlers
                 AIActionItem = _actionItem;
                 bHasCommandActionItem = false;
                 CommandActionItem = null;
+            }
+
+            //Only Toggle When Necessary
+            if (_actionItem.requiresFullActionBar ||
+                _actionItem.requiresActiveBarRegeneration)
+            {
+                myEventHandler.CallOnToggleActiveTimeRegeneration(_actionItem.requiresFullActionBar);
+            }
+
+            //Only Start Services If Action Requires Full Bar
+            if (_actionItem.requiresFullActionBar)
+            {
+                if(bIsUsingServices == false)
+                    StartServices();
+
+
+            }
+            else
+            {
+                if(bIsUsingServices)
+                    StopServices();
+
+                _actionItem.actionToPerform(allyMember);
             }
         }
 
         protected virtual void OnRemoveCommandActionFromQueue()
         {
+            //Stops Action Item If It Exists 
+            //if (CommandActionItem != null)
+            //{
+            //    CommandActionItem.stopPerformingTask(allyMember);
+            //}
             bHasCommandActionItem = false;
             CommandActionItem = null;
         }
 
         protected virtual void OnRemoveAIActionFromQueue()
         {
+            //Stops Action Item If It Exists 
+            //if (AIActionItem != null)
+            //{
+            //    AIActionItem.stopPerformingTask(allyMember);
+            //}
             bHasAIActionItem = false;
             AIActionItem = null;
         }
@@ -194,11 +258,13 @@ namespace RTSCoreFramework
 
         protected virtual void StartServices()
         {
+            bIsUsingServices = true;
             InvokeRepeating("SE_UpdateActionQueue", 1f, 0.2f);
         }
 
         protected virtual void StopServices()
         {
+            bIsUsingServices = false;
             CancelInvoke();
         }
         #endregion
@@ -248,7 +314,15 @@ namespace RTSCoreFramework
         /// Not Being Performed By AI
         /// </summary>
         public bool isCommandAction;
+        /// <summary>
+        /// Full Action Bar is Needed To Perform Action
+        /// </summary>
         public bool requiresFullActionBar;
+        /// <summary>
+        /// Action requires Action Bar Regeneration, But 
+        /// Doesn't Necessarily Need a Full Bar to Perform
+        /// </summary>
+        public bool requiresActiveBarRegeneration;
         /// <summary>
         /// Set to False if Action Should Only Be Executed Once
         /// </summary>
@@ -262,6 +336,11 @@ namespace RTSCoreFramework
         /// Will Execute Once Even If Task Is Already Finished
         /// </summary>
         public Func<AllyMember, bool> taskIsFinished;
+        /// <summary>
+        /// Optional Action That Will Stop The Execution Of A Task.
+        /// Use (_ally) => {} if Stopping Isn't Needed
+        /// </summary>
+        public Action<AllyMember> stopPerformingTask;
 
         public RTSActionItem(
             Action<AllyMember> actionToPerform,
@@ -269,19 +348,23 @@ namespace RTSCoreFramework
             ActionFilters actionFilter,
             bool isCommandAction,
             bool requiresFullActionBar,
+            bool requiresActiveBarRegeneration,
             bool executeMultipleTimes,
             Func<AllyMember, bool> preparationIsComplete,
-            Func<AllyMember, bool> taskIsFinished
+            Func<AllyMember, bool> taskIsFinished,
+            Action<AllyMember> stopPerformingTask
             )
         {
             this.actionToPerform = actionToPerform;
             this.canPerformAction = canPerformAction;
             this.actionFilter = actionFilter;
             this.isCommandAction = isCommandAction;
+            this.requiresActiveBarRegeneration = requiresActiveBarRegeneration;
             this.requiresFullActionBar = requiresFullActionBar;
             this.executeMultipleTimes = executeMultipleTimes;
             this.preparationIsComplete = preparationIsComplete;
             this.taskIsFinished = taskIsFinished;
+            this.stopPerformingTask = stopPerformingTask;
         }
 
         private RTSActionItem()

@@ -197,7 +197,6 @@ namespace RTSCoreFramework
 
         //AI Props
         public float FollowDistance { get { return aiController.followDistance; } }
-
         #endregion
 
         #region PlayerComponents
@@ -241,6 +240,7 @@ namespace RTSCoreFramework
         public bool bIsCommandMoving { get { return allyEventHandler.bIsCommandMoving; } }
         public bool bIsAIMoving { get { return allyEventHandler.bIsAIMoving; } }
         public bool bIsUsingAbility { get { return allyEventHandler.bIsUsingAbility; } }
+        public bool bActiveTimeBarIsRegenerating => allyEventHandler.bActiveTimeBarIsRegenerating;
         #endregion
 
         #region UnityMessages
@@ -292,7 +292,10 @@ namespace RTSCoreFramework
         {
             if (_enable)
             {
-                InvokeRepeating("SE_UpdateActiveTimeBar", 0.5f, 0.2f);
+                if (IsInvoking("SE_UpdateActiveTimeBar") == false)
+                {
+                    InvokeRepeating("SE_UpdateActiveTimeBar", 0.5f, 0.2f);
+                }
             }
             else
             {

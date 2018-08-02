@@ -23,6 +23,7 @@ namespace RTSCoreFramework
 
         #region FieldsAndProps
         public bool bIsSprinting { get; protected set; }
+        public bool bActiveTimeBarIsRegenerating { get; protected set; }
         public bool bIsTacticsEnabled { get; protected set; }
         //Is moving through nav mesh agent, regardless of
         //whether it's ai or a command
@@ -171,6 +172,7 @@ namespace RTSCoreFramework
             bIsAiAttacking = false;
             bIsMeleeingEnemy = false;
             bIsUsingAbility = false;
+            bActiveTimeBarIsRegenerating = false;
         }
 
         protected virtual void Start()
@@ -346,7 +348,11 @@ namespace RTSCoreFramework
 
         public virtual void CallOnToggleActiveTimeRegeneration(bool _enable)
         {
-            if (OnToggleActiveTimeRegeneration != null) OnToggleActiveTimeRegeneration(_enable);
+            if(_enable != bActiveTimeBarIsRegenerating)
+            {
+                bActiveTimeBarIsRegenerating = _enable;
+                if (OnToggleActiveTimeRegeneration != null) OnToggleActiveTimeRegeneration(_enable);
+            }
         }
 
         public virtual void CallEventSwitchingFromCom()

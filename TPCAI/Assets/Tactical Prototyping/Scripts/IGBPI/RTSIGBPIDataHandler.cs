@@ -41,11 +41,11 @@ namespace RTSPrototype
                         { "Self: Area of Effect", new RTSActionItem((_ally) =>
                         { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(AreaOfEffectConfigTPC)); },
                         (_ally) => _ally.CanUseAbility(typeof(AreaOfEffectConfigTPC)),
-                        ActionFilters.Abilities, false, true, false, _ally => true, _ally => _ally.bIsUsingAbility)},
+                        ActionFilters.Abilities, false, true, true, false, _ally => true, _ally => _ally.bIsUsingAbility, _ally => { })},
                         { "Self: Heal", new RTSActionItem((_ally) => 
                         { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(SelfHealConfigTPC)); },
                         (_ally) => _ally.CanUseAbility(typeof(SelfHealConfigTPC)),
-                        ActionFilters.Abilities, false, true, false, _ally => true, _ally => _ally.bIsUsingAbility)}
+                        ActionFilters.Abilities, false, true, true, false, _ally => true, _ally => _ally.bIsUsingAbility, _ally => { })}
                     });
                 }
                 return _appendedActionDictionary;
