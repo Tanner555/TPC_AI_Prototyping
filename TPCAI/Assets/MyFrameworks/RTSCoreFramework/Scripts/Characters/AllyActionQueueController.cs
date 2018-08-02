@@ -12,6 +12,8 @@ namespace RTSCoreFramework
         protected bool bHasAIActionItem = false;
         protected bool bActionBarIsFull = false;
         protected bool bIsUsingServices = false;
+        protected bool bIsInvokingWait = false;
+        protected bool bIsInvokingMultExecutions = false;
         #endregion
 
         #region ActionQueueProperties
@@ -165,6 +167,9 @@ namespace RTSCoreFramework
                 //Sets Necessary Toggles and Handlers
                 CommandActionItem = _actionItem;
                 bHasCommandActionItem = true;
+
+                AIActionItem = null;
+                bHasAIActionItem = false;
             }
             else
             {
@@ -179,6 +184,8 @@ namespace RTSCoreFramework
 
                 //Sets Necessary Toggles and Handlers
                 AIActionItem = _actionItem;
+                bHasAIActionItem = true;
+
                 bHasCommandActionItem = false;
                 CommandActionItem = null;
             }
@@ -194,25 +201,56 @@ namespace RTSCoreFramework
                 myEventHandler.CallOnToggleActiveTimeRegeneration(false);
             }
 
-            //Only Start Services If Action Requires Full Bar
+            //Start Invoking If Action Requires Full Bar
+            //Or Multiple Executions Are Required
             if (_actionItem.requiresFullActionBar)
             {
-                if(bIsUsingServices == false)
-                    StartServices();
+                if (bIsInvokingWait == false)
+                    InvokeWaitingForActionBarToFill(true);
 
 
             }
             else
             {
-                if(bIsUsingServices)
-                    StopServices();
+                if(bIsInvokingWait)
+                    InvokeWaitingForActionBarToFill(false);
 
                 _actionItem.actionToPerform(allyMember);
             }
+
+            if (_actionItem.executeMultipleTimes)
+            {
+                if (bIsInvokingMultExecutions == false)
+                    InvokeUpdateMultipleExecuteAction(true);
+            }
+            else
+            {
+                if (bIsInvokingMultExecutions)
+                    InvokeUpdateMultipleExecuteAction(false);
+            }
+        }
+
+        protected virtual void OnToggleTactics(bool _enable)
+        {
+            //Only If Turning Tactics Off
+            if (_enable) return;
+
+            if (bHasCommandActionItem)
+                myEventHandler.CallOnRemoveCommandActionFromQueue();
+            if (bHasAIActionItem)
+                myEventHandler.CallOnRemoveAIActionFromQueue();
+            if (bIsInvokingWait)
+                InvokeWaitingForActionBarToFill(false);
+            if (bIsInvokingMultExecutions)
+                InvokeUpdateMultipleExecuteAction(false);
+            if (allyMember.bActiveTimeBarIsRegenerating)
+                myEventHandler.CallOnToggleActiveTimeRegeneration(false);
         }
 
         protected virtual void OnRemoveCommandActionFromQueue()
         {
+            InvokeWaitingForActionBarToFill(false);
+            InvokeUpdateMultipleExecuteAction(false);
             //Stops Action Item If It Exists 
             if (CommandActionItem != null)
             {
@@ -260,10 +298,64 @@ namespace RTSCoreFramework
             //}
         }
 
+        protected virtual void SE_WaitForActionBarToFill()
+        {
+
+        }
+
+        protected virtual void SE_UpdateMultipleExecuteAction()
+        {
+            if (bCommandActionIsReady)
+            {
+                CommandActionItem.actionToPerform(allyMember);
+            }
+            else if (bAIActionIsReady)
+            {
+                AIActionItem.actionToPerform(allyMember);
+            }
+        }
+
+        protected virtual void InvokeWaitingForActionBarToFill(bool _invoke)
+        {
+            bIsInvokingWait = _invoke;
+            if (_invoke)
+            {
+                if (IsInvoking("SE_WaitForActionBarToFill") == false)
+                {
+                    InvokeRepeating("SE_WaitForActionBarToFill", 1f, 0.2f);
+                }
+            }
+            else
+            {
+                if (IsInvoking("SE_WaitForActionBarToFill"))
+                {
+                    CancelInvoke("SE_WaitForActionBarToFill");
+                }
+            }
+        }
+
+        protected virtual void InvokeUpdateMultipleExecuteAction(bool _invoke)
+        {
+            bIsInvokingMultExecutions = _invoke;
+            if (_invoke)
+            {
+                if (IsInvoking("SE_UpdateMultipleExecuteAction") == false)
+                {
+                    InvokeRepeating("SE_UpdateMultipleExecuteAction", 1f, 0.2f);
+                }
+            }
+            else
+            {
+                if (IsInvoking("SE_UpdateMultipleExecuteAction"))
+                {
+                    CancelInvoke("SE_UpdateMultipleExecuteAction");
+                }
+            }
+        }
+
         protected virtual void StartServices()
         {
             bIsUsingServices = true;
-            InvokeRepeating("SE_UpdateActionQueue", 1f, 0.2f);
         }
 
         protected virtual void StopServices()
@@ -286,6 +378,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAddActionItemToQueue += OnAddActionItemToQueue;
             myEventHandler.OnRemoveCommandActionFromQueue += OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue += OnRemoveAIActionFromQueue;
+            myEventHandler.EventToggleAllyTactics += OnToggleTactics;
             myEventHandler.EventAllyDied += OnDeath;
         }
 
@@ -296,6 +389,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAddActionItemToQueue -= OnAddActionItemToQueue;
             myEventHandler.OnRemoveCommandActionFromQueue -= OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue -= OnRemoveAIActionFromQueue;
+            myEventHandler.EventToggleAllyTactics -= OnToggleTactics;
             myEventHandler.EventAllyDied -= OnDeath;
         }
         #endregion
