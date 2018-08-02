@@ -164,6 +164,12 @@ namespace RTSCoreFramework
             bHasAIActionItem = false;
             AIActionItem = null;
         }
+
+        protected virtual void OnDeath()
+        {
+            StopServices();
+            Destroy(this);
+        }
         #endregion
 
         #region Services
@@ -210,6 +216,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAddActionItemToQueue += OnAddActionItemToQueue;
             myEventHandler.OnRemoveCommandActionFromQueue += OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue += OnRemoveAIActionFromQueue;
+            myEventHandler.EventAllyDied += OnDeath;
         }
 
         protected virtual void UnsubFromEvents()
@@ -219,6 +226,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAddActionItemToQueue -= OnAddActionItemToQueue;
             myEventHandler.OnRemoveCommandActionFromQueue -= OnRemoveCommandActionFromQueue;
             myEventHandler.OnRemoveAIActionFromQueue -= OnRemoveAIActionFromQueue;
+            myEventHandler.EventAllyDied -= OnDeath;
         }
         #endregion
     }
