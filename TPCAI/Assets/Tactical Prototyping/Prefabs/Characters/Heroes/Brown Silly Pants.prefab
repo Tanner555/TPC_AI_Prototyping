@@ -1232,6 +1232,7 @@ GameObject:
   - component: {fileID: 114308427103009158}
   - component: {fileID: 114575118344290714}
   - component: {fileID: 114400433465007122}
+  - component: {fileID: 114048101128537100}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -5186,6 +5187,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114048101128537100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504d3ffdf81632f45bbac0f9f53614a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114109928230667462
 MonoBehaviour:
   m_ObjectHideFlags: 1

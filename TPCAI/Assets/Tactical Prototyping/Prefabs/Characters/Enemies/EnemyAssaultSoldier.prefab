@@ -1421,6 +1421,7 @@ GameObject:
   - component: {fileID: 114008258900290678}
   - component: {fileID: 114568733539667156}
   - component: {fileID: 114290110442897160}
+  - component: {fileID: 114428847573765634}
   m_Layer: 8
   m_Name: EnemyAssaultSoldier
   m_TagString: Ally
@@ -7063,6 +7064,17 @@ MonoBehaviour:
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
+--- !u!114 &114428847573765634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825627822260076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504d3ffdf81632f45bbac0f9f53614a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114468977125403584
 MonoBehaviour:
   m_ObjectHideFlags: 1

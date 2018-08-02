@@ -471,6 +471,11 @@ namespace RTSCoreFramework
         #endregion
 
         #region Getters - Finders
+        public bool ActiveTimeBarIsFull()
+        {
+            return AllyActiveTimeBar >= AllyMaxActiveTimeBar;
+        }
+
         public bool CanUseAbility(System.Type _type)
         {
             if (AllyStamina <= AllyMinStamina) return false;
