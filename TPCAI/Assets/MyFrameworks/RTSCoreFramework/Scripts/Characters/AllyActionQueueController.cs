@@ -248,8 +248,6 @@ namespace RTSCoreFramework
 
         protected virtual void OnRemoveCommandActionFromQueue()
         {
-            InvokeWaitingForActionBarToFill(false);
-            InvokeUpdateMultipleExecuteAction(false);
             //Stops Action Item If It Exists 
             if (CommandActionItem != null)
             {
@@ -257,6 +255,10 @@ namespace RTSCoreFramework
             }
             bHasCommandActionItem = false;
             CommandActionItem = null;
+            if (bHasAnyActions == false)
+            {
+                CancelServicesAndTurnOffRegeneration();
+            }
         }
 
         protected virtual void OnRemoveAIActionFromQueue()
@@ -268,6 +270,10 @@ namespace RTSCoreFramework
             }
             bHasAIActionItem = false;
             AIActionItem = null;
+            if (bHasAnyActions == false)
+            {
+                CancelServicesAndTurnOffRegeneration();
+            }
         }
 
         protected virtual void OnDeath()
@@ -278,41 +284,27 @@ namespace RTSCoreFramework
         #endregion
 
         #region Services
-        protected virtual void SE_UpdateActionQueue()
-        {
-            //if (bHasAnyActions == false) return;
-
-            //RTSActionItem _actionToPerform = bCommandActionIsReady ?
-            //    CommandActionItem : AIActionItem;
-
-            //if (_actionToPerform.preparationIsComplete(allyMember))
-            //{
-            //    //Action Either Doesn't Require Action Bar To Be
-            //    //Full OR Action Bar is Already Full and Ready
-            //    if (_actionToPerform.requiresFullActionBar == false ||
-            //        bActionBarIsFull)
-            //    {
-            //        _actionToPerform.actionToPerform(allyMember);
-            //    }
-            //}
-        }
-
         protected virtual void SE_WaitForActionBarToFill()
         {
             if (bHasAnyActions == false)
             {
-                CancelInvoke("SE_WaitForActionBarToFill");
+                if(IsInvoking("SE_WaitForActionBarToFill"))
+                    CancelInvoke("SE_WaitForActionBarToFill");
             }
             if (bActionBarIsFull)
             {
                 if (bCommandActionIsReady)
                 {
-                    PerformTask(CommandActionItem, false);
+                    PerformTask(CommandActionItem, true);
+                    myEventHandler.CallOnRemoveCommandActionFromQueue();
                 }else if (bAIActionIsReady)
                 {
-                    PerformTask(AIActionItem, false);
+                    PerformTask(AIActionItem, true);
+                    myEventHandler.CallOnRemoveAIActionFromQueue();
                 }
-                CancelInvoke("SE_WaitForActionBarToFill");
+
+                if (IsInvoking("SE_WaitForActionBarToFill"))
+                    CancelInvoke("SE_WaitForActionBarToFill");
             }
         }
 
@@ -325,6 +317,10 @@ namespace RTSCoreFramework
             else if (bAIActionIsReady)
             {
                 PerformTask(AIActionItem, false);
+            }
+            else
+            {
+                CancelServicesAndTurnOffRegeneration();
             }
         }
 
@@ -393,14 +389,28 @@ namespace RTSCoreFramework
                 myEventHandler.CallOnToggleActiveTimeRegeneration(false);
         }
 
+        protected virtual void CancelServicesAndTurnOffRegeneration()
+        {
+            if (bIsInvokingWait)
+                InvokeWaitingForActionBarToFill(false);
+            if (bIsInvokingMultExecutions)
+                InvokeUpdateMultipleExecuteAction(false);
+            if (allyMember.bActiveTimeBarIsRegenerating)
+                myEventHandler.CallOnToggleActiveTimeRegeneration(false);
+        }
+
         protected virtual void PerformTask(RTSActionItem _item, bool _firstTime)
         {
             if (_item.preparationIsComplete(allyMember))
             {
+                //Perform Task If....
                 //First Time Performing Task Or 
                 //Task Is Not Finished Yet
-                if (_firstTime ||
-                    _item.taskIsFinished(allyMember) == false)
+                if (_firstTime)
+                {
+                    _item.actionToPerform(allyMember);
+                }
+                else if (_item.taskIsFinished(allyMember) == false)
                 {
                     _item.actionToPerform(allyMember);
                 }

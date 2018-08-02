@@ -111,11 +111,20 @@ namespace RTSCoreFramework
         #region AbilitiesAndEnergy
         public virtual void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
-            if (allymember.ActiveTimeBarIsFull())
+            var _config = abilities[abilityIndex];
+            var _behaviour = AbilityDictionary[_config];
+            //Getting Ready To Queue Action
+            var energyCost = _config.GetEnergyCost();
+            if (energyCost <= AllyStamina &&
+                _behaviour.CanUseAbility())
             {
-                var _config = abilities[abilityIndex];
-                var _behaviour = AbilityDictionary[_config];
-                AttemptSpecialAbility(_config, _behaviour);
+                eventhandler.CallOnAddActionItemToQueue(
+                    new RTSActionItem(
+                        _ally => AttemptSpecialAbility(_config, _behaviour), 
+                        _ally => energyCost <= AllyStamina && _behaviour.CanUseAbility(),
+                        ActionFilters.Abilities, true, true, true, false, _ally => true,
+                        _ally => true, _ally => { }
+                    ));
             }
         }
 
