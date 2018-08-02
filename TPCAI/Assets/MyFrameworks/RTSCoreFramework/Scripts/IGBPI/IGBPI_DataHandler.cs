@@ -112,36 +112,36 @@ namespace RTSCoreFramework
         #endregion
 
         #region ActionDictionary
-        public virtual Dictionary<string, IGBPI_Action> IGBPI_Actions
+        public virtual Dictionary<string, RTSActionItem> IGBPI_Actions
         {
             get { return _IGBPI_Actions; }
         }
 
-        protected Dictionary<string, IGBPI_Action> _IGBPI_Actions = new Dictionary<string, IGBPI_Action>()
+        protected Dictionary<string, RTSActionItem> _IGBPI_Actions = new Dictionary<string, RTSActionItem>()
         {
-            {"Self: Attack Targetted Enemy", new IGBPI_Action((_ally) =>
+            {"Self: Attack Targetted Enemy", new RTSActionItem((_ally) =>
                 { _ally.aiController.AttackTargettedEnemy(); },
                 (_ally) => { return _ally.bIsCarryingMeleeWeapon ||
                 _ally.CurrentEquipedAmmo > 0; },
-            ActionFilters.AI) },
+            ActionFilters.AI, false, false, false, _ally => true, _ally => _ally.bIsAttacking == false) },
             //{"Self: Attack Nearest Enemy", new IGBPI_Action((_ally) =>
             //{ _ally.aiController.Tactics_AttackClosestEnemy(); }, ActionFilters.AI) },
-            {"Self: SwitchToNextWeapon", new IGBPI_Action((_ally) =>
+            {"Self: SwitchToNextWeapon", new RTSActionItem((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToNextItem(); },
                 (_ally) => true,
-                ActionFilters.Weapon) },
-            {"Self: SwitchToPrevWeapon", new IGBPI_Action((_ally) =>
+                ActionFilters.Weapon, false, false, false, _ally => true, _ally => true) },
+            {"Self: SwitchToPrevWeapon", new RTSActionItem((_ally) =>
             { _ally.allyEventHandler.CallOnSwitchToPrevItem(); },
                 (_ally) => true,
-                ActionFilters.Weapon) },
-            {"Self: FollowLeader", new IGBPI_Action((_ally) =>
+                ActionFilters.Weapon, false, false, false, _ally => true, _ally => true) },
+            {"Self: FollowLeader", new RTSActionItem((_ally) =>
             { _ally.aiController.Tactics_MoveToLeader(); },
                 (_ally) => true,
-                ActionFilters.Movement) },
-            {"Debug: Log True Message", new IGBPI_Action((_ally) =>
-            Debug.Log("Condition is true, called from: " + _ally),
+                ActionFilters.Movement, false, false, true, _ally => true, _ally => false) },
+            {"Debug: Log True Message", new RTSActionItem((_ally) =>
+            Debug.Log("Condition is true, called from: " + _ally.CharacterName),
                 (_ally) => true,
-                ActionFilters.Debugging) }
+                ActionFilters.Debugging, false, false, false, _ally => true, _ally => true) }
         };
         #endregion
 
@@ -189,21 +189,21 @@ namespace RTSCoreFramework
             }
         }
 
-        public struct IGBPI_Action
-        {
-            public Action<AllyMember> action;
-            public Func<AllyMember, bool> canPerformAction;
-            public ActionFilters filter;
+        //public struct IGBPI_Action
+        //{
+        //    public Action<AllyMember> action;
+        //    public Func<AllyMember, bool> canPerformAction;
+        //    public ActionFilters filter;
 
-            public IGBPI_Action(Action<AllyMember> action, 
-                Func<AllyMember, bool> canPerformAction, 
-                ActionFilters filter)
-            {
-                this.action = action;
-                this.canPerformAction = canPerformAction;
-                this.filter = filter;
-            }
-        }
+        //    public IGBPI_Action(Action<AllyMember> action, 
+        //        Func<AllyMember, bool> canPerformAction, 
+        //        ActionFilters filter)
+        //    {
+        //        this.action = action;
+        //        this.canPerformAction = canPerformAction;
+        //        this.filter = filter;
+        //    }
+        //}
         #endregion
     }
 

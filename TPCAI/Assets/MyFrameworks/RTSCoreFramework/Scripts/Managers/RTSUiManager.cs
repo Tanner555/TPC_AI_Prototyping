@@ -514,7 +514,7 @@ conditionButton && actionButton && IGBPITitleText;
             List<string> _filteredKeys = new List<string>();
             foreach (var _item in dataHandler.IGBPI_Actions)
             {
-                if (_item.Value.filter == _filter)
+                if (_item.Value.actionFilter == _filter)
                     _filteredKeys.Add(_item.Key);
             }
             foreach (var _key in _filteredKeys)

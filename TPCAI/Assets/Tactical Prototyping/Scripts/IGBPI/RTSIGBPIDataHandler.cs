@@ -28,24 +28,24 @@ namespace RTSPrototype
         #endregion
 
         #region ActionDictionary
-        Dictionary<string, IGBPI_Action> _appendedActionDictionary;
+        Dictionary<string, RTSActionItem> _appendedActionDictionary;
 
-        public override Dictionary<string, IGBPI_Action> IGBPI_Actions
+        public override Dictionary<string, RTSActionItem> IGBPI_Actions
         {
             get
             {
                 if (_appendedActionDictionary == null || _appendedActionDictionary.Count <= 0)
                 {
-                    _appendedActionDictionary = base.IGBPI_Actions.AddRange(new Dictionary<string, IGBPI_Action>
+                    _appendedActionDictionary = base.IGBPI_Actions.AddRange(new Dictionary<string, RTSActionItem>
                     {
-                        { "Self: Area of Effect", new IGBPI_Action((_ally) =>
+                        { "Self: Area of Effect", new RTSActionItem((_ally) =>
                         { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(AreaOfEffectConfigTPC)); },
                         (_ally) => _ally.CanUseAbility(typeof(AreaOfEffectConfigTPC)),
-                        ActionFilters.Abilities)},
-                        { "Self: Heal", new IGBPI_Action((_ally) => 
+                        ActionFilters.Abilities, false, true, false, _ally => true, _ally => _ally.bIsUsingAbility)},
+                        { "Self: Heal", new RTSActionItem((_ally) => 
                         { _ally.allyEventHandler.CallOnTrySpecialAbility(typeof(SelfHealConfigTPC)); },
                         (_ally) => _ally.CanUseAbility(typeof(SelfHealConfigTPC)),
-                        ActionFilters.Abilities)}
+                        ActionFilters.Abilities, false, true, false, _ally => true, _ally => _ally.bIsUsingAbility)}
                     });
                 }
                 return _appendedActionDictionary;

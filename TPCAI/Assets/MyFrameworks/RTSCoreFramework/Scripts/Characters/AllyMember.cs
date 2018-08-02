@@ -240,6 +240,7 @@ namespace RTSCoreFramework
         public bool bIsFreeMoving { get { return allyEventHandler.bIsFreeMoving; } }
         public bool bIsCommandMoving { get { return allyEventHandler.bIsCommandMoving; } }
         public bool bIsAIMoving { get { return allyEventHandler.bIsAIMoving; } }
+        public bool bIsUsingAbility { get { return allyEventHandler.bIsUsingAbility; } }
         #endregion
 
         #region UnityMessages

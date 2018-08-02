@@ -70,6 +70,18 @@ namespace RTSCoreFramework
                   gamemode && gameMaster && uiManager && saveManager;
             }
         }
+
+        /// <summary>
+        /// Previous Item Is Either Null Or Doesn't Equal Current Item
+        /// </summary>
+        protected bool bCanAddActionItemToQueue
+        {
+            get
+            {
+                return previousExecutionItem == null ||
+                    previousExecutionItem != currentExecutionItem;
+            }
+        }
         #endregion
 
         #region Fields
@@ -78,6 +90,8 @@ namespace RTSCoreFramework
         protected List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
         public List<AllyTacticsItem> AllyTacticsList;
         public int executionsPerSec = 5;
+        protected AllyTacticsItem currentExecutionItem = null;
+        protected AllyTacticsItem previousExecutionItem = null;
         #endregion
 
         #region UnityMessages
@@ -230,12 +244,26 @@ namespace RTSCoreFramework
             }
             if (evalTactics.Count > 0)
             {
-                var _currentExecution = EvaluateTacticalConditionOrders(evalTactics);
-                if (_currentExecution != null &&
-                    _currentExecution.action.action != null)
+                previousExecutionItem = currentExecutionItem;
+                currentExecutionItem = EvaluateTacticalConditionOrders(evalTactics);
+                //Execution Item isn't null and Previous Entry Doesn't Equal Current One
+                //Prevents AddActionItem Event Being Called Constantly
+                if (currentExecutionItem != null &&
+                    currentExecutionItem.action != null &&
+                    currentExecutionItem.action.actionToPerform != null &&
+                    bCanAddActionItemToQueue
+                    )
                 {
-                    _currentExecution.action.action(allyMember);
+                    myEventHandler.CallOnAddActionItemToQueue(currentExecutionItem.action);
                 }
+            }
+            else
+            {
+                if(currentExecutionItem != null)
+                {
+                    myEventHandler.CallOnRemoveAIActionFromQueue();
+                }
+                currentExecutionItem = null;
             }
         }
 
@@ -308,11 +336,11 @@ namespace RTSCoreFramework
         {
             public int order;
             public IGBPI_DataHandler.IGBPI_Condition condition;
-            public IGBPI_DataHandler.IGBPI_Action action;
+            public RTSActionItem action;
 
             public AllyTacticsItem(int order,
                 IGBPI_DataHandler.IGBPI_Condition condition,
-                IGBPI_DataHandler.IGBPI_Action action)
+                RTSActionItem action)
             {
                 this.order = order;
                 this.condition = condition;
