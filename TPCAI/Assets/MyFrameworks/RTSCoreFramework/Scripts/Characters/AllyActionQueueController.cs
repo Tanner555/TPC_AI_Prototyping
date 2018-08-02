@@ -10,7 +10,14 @@ namespace RTSCoreFramework
 
         #endregion
 
-        #region Properties
+        #region ActionQueueProperties
+        protected virtual bool bActionBarIsFull
+        {
+            get { return allyMember.ActiveTimeBarIsFull(); }
+        }
+        #endregion
+
+        #region ComponentProperties
         protected AllyEventHandler myEventHandler
         {
             get
@@ -96,6 +103,13 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Handlers
+        protected virtual void OnActiveTimeBarIsFull()
+        {
+            
+        }
+        #endregion
+
         #region Initialization
         protected virtual void SetInitialReferences()
         {
@@ -104,12 +118,12 @@ namespace RTSCoreFramework
 
         protected virtual void SubToEvents()
         {
-            
+            myEventHandler.OnActiveTimeBarIsFull += OnActiveTimeBarIsFull;
         }
 
         protected virtual void UnsubFromEvents()
         {
-
+            myEventHandler.OnActiveTimeBarIsFull -= OnActiveTimeBarIsFull;
         }
         #endregion
     }

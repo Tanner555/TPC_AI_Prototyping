@@ -33,6 +33,10 @@ namespace RTSCoreFramework
         protected bool wantsFreedomToMove;
         protected float freeMoveThreshold;
         protected float DefaultShootDelay;
+
+        //Active Time Bar
+        protected bool bActiveTimeBarFullBeenCalled = false;
+        protected int ActiveTimeBarRefillRate = 5;
         #endregion
 
         #region Properties
@@ -268,6 +272,13 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnActiveTimeBarDepletion()
+        {
+            //Reset Active Time Bar
+            AllyActiveTimeBar = AllyMinActiveTimeBar;
+            bActiveTimeBarFullBeenCalled = false;
+        }
+
         /// <summary>
         /// Called Before AllyInCommand has been set
         /// </summary>
@@ -542,7 +553,13 @@ namespace RTSCoreFramework
         {
             if (AllyActiveTimeBar < AllyMaxActiveTimeBar)
             {
-                AllyActiveTimeBar = Mathf.Min(AllyActiveTimeBar + 5, AllyMaxActiveTimeBar);
+                AllyActiveTimeBar = Mathf.Min(AllyActiveTimeBar + ActiveTimeBarRefillRate, AllyMaxActiveTimeBar);
+            }
+            else if(bActiveTimeBarFullBeenCalled == false)
+            {
+                bActiveTimeBarFullBeenCalled = true;
+                //Reached Max and Haven't Called Event
+                allyEventHandler.CallOnActiveTimeBarIsFull();
             }
         }
         #endregion
@@ -584,6 +601,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnTryHitscanFire += OnTryHitscanFire;
             allyEventHandler.OnTryMeleeAttack += OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
+            allyEventHandler.OnActiveTimeBarDepletion += OnActiveTimeBarDepletion;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch += HandleOnAllySwitch;
         }
@@ -597,6 +615,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnTryHitscanFire -= OnTryHitscanFire;
             allyEventHandler.OnTryMeleeAttack -= OnTryMeleeAttack;
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
+            allyEventHandler.OnActiveTimeBarDepletion -= OnActiveTimeBarDepletion;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch -= HandleOnAllySwitch;
         }

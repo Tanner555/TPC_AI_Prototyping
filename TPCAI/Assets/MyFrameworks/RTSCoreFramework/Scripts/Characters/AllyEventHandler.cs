@@ -125,6 +125,10 @@ namespace RTSCoreFramework
         public delegate void OneSystemTypeArgHandler(System.Type _type);
         public event OneSystemTypeArgHandler OnTrySpecialAbility;
 
+        //For Active Time Bar Functionality
+        public event GeneralEventHandler OnActiveTimeBarIsFull;
+        public event GeneralEventHandler OnActiveTimeBarDepletion;
+
         //May use delegate in the future
         //public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
         public event GeneralEventHandler OnHoverOver;
@@ -306,6 +310,16 @@ namespace RTSCoreFramework
         public virtual void CallOnTrySpecialAbility(System.Type _type)
         {
             if (OnTrySpecialAbility != null) OnTrySpecialAbility(_type);
+        }
+
+        public virtual void CallOnActiveTimeBarIsFull()
+        {
+            if (OnActiveTimeBarIsFull != null) OnActiveTimeBarIsFull();
+        }
+
+        public virtual void CallOnActiveTimeBarDepletion()
+        {
+            if (OnActiveTimeBarDepletion != null) OnActiveTimeBarDepletion();
         }
 
         public virtual void CallEventSwitchingFromCom()
