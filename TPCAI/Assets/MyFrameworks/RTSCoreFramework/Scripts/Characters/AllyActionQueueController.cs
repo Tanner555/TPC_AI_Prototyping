@@ -213,7 +213,7 @@ namespace RTSCoreFramework
                 if(bIsInvokingWait)
                     InvokeWaitingForActionBarToFill(false);
 
-                PerformTask(_actionItem);
+                PerformTask(_actionItem, true);
             }
 
             if (_actionItem.executeMultipleTimes)
@@ -307,10 +307,10 @@ namespace RTSCoreFramework
             {
                 if (bCommandActionIsReady)
                 {
-                    PerformTask(CommandActionItem);
+                    PerformTask(CommandActionItem, false);
                 }else if (bAIActionIsReady)
                 {
-                    PerformTask(AIActionItem);
+                    PerformTask(AIActionItem, false);
                 }
                 CancelInvoke("SE_WaitForActionBarToFill");
             }
@@ -320,11 +320,11 @@ namespace RTSCoreFramework
         {
             if (bCommandActionIsReady)
             {
-                PerformTask(CommandActionItem);
+                PerformTask(CommandActionItem, false);
             }
             else if (bAIActionIsReady)
             {
-                PerformTask(AIActionItem);
+                PerformTask(AIActionItem, false);
             }
         }
 
@@ -393,11 +393,21 @@ namespace RTSCoreFramework
                 myEventHandler.CallOnToggleActiveTimeRegeneration(false);
         }
 
-        protected virtual void PerformTask(RTSActionItem _item)
+        protected virtual void PerformTask(RTSActionItem _item, bool _firstTime)
         {
             if (_item.preparationIsComplete(allyMember))
             {
-                _item.actionToPerform(allyMember);
+                //First Time Performing Task Or 
+                //Task Is Not Finished Yet
+                if (_firstTime ||
+                    _item.taskIsFinished(allyMember) == false)
+                {
+                    _item.actionToPerform(allyMember);
+                }
+                else
+                {
+                    _item.stopPerformingTask(allyMember);
+                }
             }
         }
         #endregion
