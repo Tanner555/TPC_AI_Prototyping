@@ -275,7 +275,7 @@ namespace RTSCoreFramework
 
         protected virtual void OnDelayStart()
         {
-
+            AllyActiveTimeBar = 0;
         }
         #endregion
 
@@ -285,6 +285,22 @@ namespace RTSCoreFramework
             //Reset Active Time Bar
             AllyActiveTimeBar = AllyMinActiveTimeBar;
             bActiveTimeBarFullBeenCalled = false;
+        }
+
+        protected virtual void OnToggleActiveTimeRegeneration(bool _enable)
+        {
+            if (_enable)
+            {
+                InvokeRepeating("SE_UpdateActiveTimeBar", 0.5f, 0.2f);
+            }
+            else
+            {
+                if (IsInvoking("SE_UpdateActiveTimeBar"))
+                {
+                    CancelInvoke("SE_UpdateActiveTimeBar");
+                }
+                allyEventHandler.CallOnActiveTimeBarDepletion();
+            }
         }
 
         /// <summary>
@@ -630,7 +646,7 @@ namespace RTSCoreFramework
 
         protected virtual void StartServices()
         {
-            InvokeRepeating("SE_UpdateActiveTimeBar", 0.5f, 0.2f);
+            
         }
 
         protected virtual void StopServices()

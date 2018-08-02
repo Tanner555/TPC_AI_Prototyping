@@ -111,9 +111,12 @@ namespace RTSCoreFramework
         #region AbilitiesAndEnergy
         public virtual void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
-            var _config = abilities[abilityIndex];
-            var _behaviour = AbilityDictionary[_config];
-            AttemptSpecialAbility(_config, _behaviour);
+            if (allymember.ActiveTimeBarIsFull())
+            {
+                var _config = abilities[abilityIndex];
+                var _behaviour = AbilityDictionary[_config];
+                AttemptSpecialAbility(_config, _behaviour);
+            }
         }
 
         public virtual void AttemptSpecialAbility(AbilityConfig _config, AbilityBehaviour _behaviour, GameObject target = null)

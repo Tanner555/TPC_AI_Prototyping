@@ -132,6 +132,7 @@ namespace RTSCoreFramework
         public event GeneralEventHandler OnRemoveCommandActionFromQueue;
         public event GeneralEventHandler OnRemoveAIActionFromQueue;
         public event OneRTSActionItemArgHandler OnAddActionItemToQueue;
+        public event GeneralOneBoolHandler OnToggleActiveTimeRegeneration;
 
         //May use delegate in the future
         //public delegate void RtsHitTypeAndRayCastHitHandler(rtsHitType hitType, RaycastHit hit);
@@ -341,6 +342,11 @@ namespace RTSCoreFramework
         public virtual void CallOnAddActionItemToQueue(RTSActionItem _actionItem)
         {
             if (OnAddActionItemToQueue != null) OnAddActionItemToQueue(_actionItem);
+        }
+
+        public virtual void CallOnToggleActiveTimeRegeneration(bool _enable)
+        {
+            if (OnToggleActiveTimeRegeneration != null) OnToggleActiveTimeRegeneration(_enable);
         }
 
         public virtual void CallEventSwitchingFromCom()
