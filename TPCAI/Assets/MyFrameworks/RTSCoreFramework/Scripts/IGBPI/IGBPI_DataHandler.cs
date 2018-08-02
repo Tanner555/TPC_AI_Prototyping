@@ -10,18 +10,6 @@ namespace RTSCoreFramework
     public class IGBPI_DataHandler : BaseSingleton<IGBPI_DataHandler>
     {
         #region Enums
-        public enum ConditionFilters
-        {
-            Standard = 0, AllyHealth = 1, AllyGun = 2,
-            TargetedEnemy = 3, AllyStamina = 4,
-            AllyAbilities = 5
-        }
-        public enum ActionFilters
-        {
-            Movement = 0, Weapon = 1, AI = 2,
-            Debugging = 3, Abilities = 4
-        }
-
         public ConditionFilters conditionFilter { get; protected set; }
         public ActionFilters actionFilter { get; protected set; }
 
@@ -218,4 +206,18 @@ namespace RTSCoreFramework
         }
         #endregion
     }
+
+    #region OutsideClassEnums
+    public enum ConditionFilters
+    {
+        Standard = 0, AllyHealth = 1, AllyGun = 2,
+        TargetedEnemy = 3, AllyStamina = 4,
+        AllyAbilities = 5
+    }
+    public enum ActionFilters
+    {
+        Movement = 0, Weapon = 1, AI = 2,
+        Debugging = 3, Abilities = 4
+    }
+    #endregion
 }

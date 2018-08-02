@@ -237,7 +237,13 @@ namespace RTSCoreFramework
     /// </summary>
     public class RTSActionItem
     {
+        //These Variables Are From The IGBPI_Action Struct
         public Action<AllyMember> actionToPerform;
+        /// <summary>
+        /// Use (_ally) => true If No Additional Condition is Needed
+        /// </summary>
+        public Func<AllyMember, bool> canPerformAction;
+        public ActionFilters actionFilter;
         /// <summary>
         /// Not Being Performed By AI
         /// </summary>
@@ -250,12 +256,16 @@ namespace RTSCoreFramework
 
         public RTSActionItem(
             Action<AllyMember> actionToPerform,
+            Func<AllyMember, bool> canPerformAction,
+            ActionFilters actionFilter,
             bool isCommandAction,
             bool requiresFullActionBar,
             Func<AllyMember, bool> preparationIsComplete
             )
         {
             this.actionToPerform = actionToPerform;
+            this.canPerformAction = canPerformAction;
+            this.actionFilter = actionFilter;
             this.isCommandAction = isCommandAction;
             this.requiresFullActionBar = requiresFullActionBar;
             this.preparationIsComplete = preparationIsComplete;
