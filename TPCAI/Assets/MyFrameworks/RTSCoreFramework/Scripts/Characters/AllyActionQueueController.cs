@@ -175,21 +175,21 @@ namespace RTSCoreFramework
         #region Services
         protected virtual void SE_UpdateActionQueue()
         {
-            if (bHasAnyActions == false) return;
+            //if (bHasAnyActions == false) return;
 
-            RTSActionItem _actionToPerform = bCommandActionIsReady ?
-                CommandActionItem : AIActionItem;
+            //RTSActionItem _actionToPerform = bCommandActionIsReady ?
+            //    CommandActionItem : AIActionItem;
 
-            if (_actionToPerform.preparationIsComplete(allyMember))
-            {
-                //Action Either Doesn't Require Action Bar To Be
-                //Full OR Action Bar is Already Full and Ready
-                if (_actionToPerform.requiresFullActionBar == false ||
-                    bActionBarIsFull)
-                {
-                    _actionToPerform.actionToPerform(allyMember);
-                }
-            }
+            //if (_actionToPerform.preparationIsComplete(allyMember))
+            //{
+            //    //Action Either Doesn't Require Action Bar To Be
+            //    //Full OR Action Bar is Already Full and Ready
+            //    if (_actionToPerform.requiresFullActionBar == false ||
+            //        bActionBarIsFull)
+            //    {
+            //        _actionToPerform.actionToPerform(allyMember);
+            //    }
+            //}
         }
 
         protected virtual void StartServices()
@@ -258,7 +258,8 @@ namespace RTSCoreFramework
         /// </summary>
         public Func<AllyMember, bool> preparationIsComplete;
         /// <summary>
-        /// Essential To Telling When the Given Task Is Completed
+        /// Essential To Telling When the Given Task Is Completed.
+        /// Will Execute Once Even If Task Is Already Finished
         /// </summary>
         public Func<AllyMember, bool> taskIsFinished;
 

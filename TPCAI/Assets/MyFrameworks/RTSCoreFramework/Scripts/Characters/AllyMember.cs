@@ -232,6 +232,14 @@ namespace RTSCoreFramework
         public bool bIsInGeneralCommanderParty { get { return partyManager.bIsCurrentPlayerCommander; } }
         //Ui Target Info
         public bool bAllyIsUiTarget { get { return allyEventHandler.bAllyIsUiTarget; } }
+        //Other Easy Getter Properties
+        public bool bIsAttacking { get { return allyEventHandler.bIsAttacking; } }
+        public bool bIsAIAttacking { get { return allyEventHandler.bIsAiAttacking; } }
+        public bool bIsCommandAttacking { get { return allyEventHandler.bIsCommandAttacking; } }
+        public bool bIsNavMoving { get { return allyEventHandler.bIsNavMoving; } }
+        public bool bIsFreeMoving { get { return allyEventHandler.bIsFreeMoving; } }
+        public bool bIsCommandMoving { get { return allyEventHandler.bIsCommandMoving; } }
+        public bool bIsAIMoving { get { return allyEventHandler.bIsAIMoving; } }
         #endregion
 
         #region UnityMessages
