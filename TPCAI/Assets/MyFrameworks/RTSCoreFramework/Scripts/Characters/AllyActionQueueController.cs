@@ -230,8 +230,10 @@ namespace RTSCoreFramework
 
         protected virtual void OnToggleTactics(bool _enable)
         {
-            //Only If Turning Tactics Off
-            if(_enable == false)
+            //Only If Turning Tactics Off AND
+            //Command Action Is Not Ready
+            if(_enable == false && 
+                bCommandActionIsReady == false)
             {
                 RemoveQueuesAndCancelServices();
             }

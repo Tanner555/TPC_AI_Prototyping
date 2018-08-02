@@ -288,7 +288,12 @@ namespace RTSCoreFramework
                 case rtsHitType.Enemy:
                     GameObject _root = hit.collider.gameObject.transform.root.gameObject;
                     AllyMember _enemy = _root.GetComponent<AllyMember>();
-                    AllyInCommand.allyEventHandler.CallEventPlayerCommandAttackEnemy(_enemy);
+                    //Adding Command Attack Event Call To ActionItem Queue
+                    AllyInCommand.allyEventHandler.CallOnAddActionItemToQueue(new RTSActionItem(
+                        _ally => _ally.allyEventHandler.CallEventPlayerCommandAttackEnemy(_enemy),
+                        _ally => true, ActionFilters.AI, true, false, true, false, _ally => true,
+                        _ally => _ally.bIsAttacking == false, _ally => _ally.allyEventHandler.CallEventStopTargettingEnemy()
+                        ));
                     break;
                 case rtsHitType.Cover:
                     break;
