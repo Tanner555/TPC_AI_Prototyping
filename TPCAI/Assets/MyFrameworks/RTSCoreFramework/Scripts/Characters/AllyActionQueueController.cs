@@ -207,15 +207,13 @@ namespace RTSCoreFramework
             {
                 if (bIsInvokingWait == false)
                     InvokeWaitingForActionBarToFill(true);
-
-
             }
             else
             {
                 if(bIsInvokingWait)
                     InvokeWaitingForActionBarToFill(false);
 
-                _actionItem.actionToPerform(allyMember);
+                PerformTask(_actionItem);
             }
 
             if (_actionItem.executeMultipleTimes)
@@ -300,18 +298,32 @@ namespace RTSCoreFramework
 
         protected virtual void SE_WaitForActionBarToFill()
         {
-
+            if (bHasAnyActions == false)
+            {
+                CancelInvoke("SE_WaitForActionBarToFill");
+            }
+            if (bActionBarIsFull)
+            {
+                if (bCommandActionIsReady)
+                {
+                    PerformTask(CommandActionItem);
+                }else if (bAIActionIsReady)
+                {
+                    PerformTask(AIActionItem);
+                }
+                CancelInvoke("SE_WaitForActionBarToFill");
+            }
         }
 
         protected virtual void SE_UpdateMultipleExecuteAction()
         {
             if (bCommandActionIsReady)
             {
-                CommandActionItem.actionToPerform(allyMember);
+                PerformTask(CommandActionItem);
             }
             else if (bAIActionIsReady)
             {
-                AIActionItem.actionToPerform(allyMember);
+                PerformTask(AIActionItem);
             }
         }
 
@@ -365,6 +377,16 @@ namespace RTSCoreFramework
         }
         #endregion
 
+        #region Helpers
+        protected virtual void PerformTask(RTSActionItem _item)
+        {
+            if (_item.preparationIsComplete(allyMember))
+            {
+                _item.actionToPerform(allyMember);
+            }
+        }
+        #endregion
+
         #region Initialization
         protected virtual void SetInitialReferences()
         {
@@ -401,12 +423,18 @@ namespace RTSCoreFramework
     /// </summary>
     public class RTSActionItem
     {
-        //These Variables Are From The IGBPI_Action Struct
+        /// <summary>
+        /// From IGBPI_Action Struct.
+        /// </summary>
         public Action<AllyMember> actionToPerform;
         /// <summary>
+        /// From IGBPI_Action Struct.
         /// Use (_ally) => true If No Additional Condition is Needed
         /// </summary>
         public Func<AllyMember, bool> canPerformAction;
+        /// <summary>
+        /// From IGBPI_Action Struct.
+        /// </summary>
         public ActionFilters actionFilter;
         /// <summary>
         /// Not Being Performed By AI
