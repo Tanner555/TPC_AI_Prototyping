@@ -213,7 +213,7 @@ namespace RTSCoreFramework
                 if(bIsInvokingWait)
                     InvokeWaitingForActionBarToFill(false);
 
-                PerformTask(_actionItem, true);
+                PerformTaskIfPrepared(_actionItem, true);
             }
 
             if (_actionItem.executeMultipleTimes)
@@ -293,20 +293,33 @@ namespace RTSCoreFramework
                 if(IsInvoking("SE_WaitForActionBarToFill"))
                     CancelInvoke("SE_WaitForActionBarToFill");
             }
-            if (bActionBarIsFull)
+            else if (bActionBarIsFull)
             {
+                bool _actionWasPerformed = false;
                 if (bCommandActionIsReady)
                 {
-                    PerformTask(CommandActionItem, true);
-                    myEventHandler.CallOnRemoveCommandActionFromQueue();
+                    //Only Remove Action If Preparation Is Complete
+                    if (PerformTaskIfPrepared(CommandActionItem, true))
+                    {
+                        _actionWasPerformed = true;
+                        myEventHandler.CallOnRemoveCommandActionFromQueue();
+                    }
                 }else if (bAIActionIsReady)
                 {
-                    PerformTask(AIActionItem, true);
-                    myEventHandler.CallOnRemoveAIActionFromQueue();
+                    //Only Remove Action If Preparation Is Complete
+                    if (PerformTaskIfPrepared(AIActionItem, true))
+                    {
+                        _actionWasPerformed = true;
+                        myEventHandler.CallOnRemoveAIActionFromQueue();
+                    }
                 }
 
-                if (IsInvoking("SE_WaitForActionBarToFill"))
+                //Only Cancel Invoke If Action Was 
+                //Peformed And IsInvoking Current Method
+                if (_actionWasPerformed && IsInvoking("SE_WaitForActionBarToFill"))
+                {
                     CancelInvoke("SE_WaitForActionBarToFill");
+                }
             }
         }
 
@@ -314,11 +327,11 @@ namespace RTSCoreFramework
         {
             if (bCommandActionIsReady)
             {
-                PerformTask(CommandActionItem, false);
+                PerformTaskIfPrepared(CommandActionItem, false);
             }
             else if (bAIActionIsReady)
             {
-                PerformTask(AIActionItem, false);
+                PerformTaskIfPrepared(AIActionItem, false);
             }
             else
             {
@@ -401,7 +414,14 @@ namespace RTSCoreFramework
                 myEventHandler.CallOnToggleActiveTimeRegeneration(false);
         }
 
-        protected virtual void PerformTask(RTSActionItem _item, bool _firstTime)
+        /// <summary>
+        /// Performs Task If Preparation Is Complete.
+        /// Boolean Indicates Task Preparation is Complete.
+        /// </summary>
+        /// <param name="_item"></param>
+        /// <param name="_firstTime"></param>
+        /// <returns></returns>
+        protected virtual bool PerformTaskIfPrepared(RTSActionItem _item, bool _firstTime)
         {
             if (_item.preparationIsComplete(allyMember))
             {
@@ -420,7 +440,9 @@ namespace RTSCoreFramework
                 {
                     _item.stopPerformingTask(allyMember);
                 }
+                return true;
             }
+            return false;
         }
         #endregion
 
