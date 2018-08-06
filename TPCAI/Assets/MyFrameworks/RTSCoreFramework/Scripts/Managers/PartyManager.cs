@@ -292,8 +292,11 @@ namespace RTSCoreFramework
                     AllyInCommand.allyEventHandler.CallOnAddActionItemToQueue(new RTSActionItem(
                         _ally => _ally.allyEventHandler.CallEventPlayerCommandAttackEnemy(_enemy),
                         _ally => true, ActionFilters.AI, true, false, true, false, _ally => true,
-                        _ally => _ally.bIsAttacking == false, _ally => _ally.allyEventHandler.CallEventStopTargettingEnemy()
-                        ));
+                        _ally => _ally.bIsAttacking == false, (_ally) =>
+                        {
+                            _ally.allyEventHandler.CallEventStopTargettingEnemy();
+                            _ally.allyEventHandler.CallEventFinishedMoving();
+                        }));
                     break;
                 case rtsHitType.Cover:
                     break;

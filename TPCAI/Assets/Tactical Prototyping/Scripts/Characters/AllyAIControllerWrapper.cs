@@ -15,25 +15,25 @@ namespace RTSPrototype
         {
             get
             {
-                if (_allyMember == null)
-                    _allyMember = GetComponent<AllyMemberWrapper>();
+                if (__allyMember == null)
+                    __allyMember = GetComponent<AllyMemberWrapper>();
 
-                return _allyMember;
+                return __allyMember;
             }
         }
-        private AllyMemberWrapper _allyMember = null;
+        private AllyMemberWrapper __allyMember = null;
 
         new AllyEventHandlerWrapper myEventHandler
         {
             get
             {
-                if (_myEventHandler == null)
-                    _myEventHandler = GetComponent<AllyEventHandlerWrapper>();
+                if (__myEventHandler == null)
+                    __myEventHandler = GetComponent<AllyEventHandlerWrapper>();
 
-                return _myEventHandler;
+                return __myEventHandler;
             }
         }
-        private AllyEventHandlerWrapper _myEventHandler = null;
+        private AllyEventHandlerWrapper __myEventHandler = null;
 
         RigidbodyCharacterController myRigidbodyTPC
         {
