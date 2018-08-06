@@ -168,8 +168,9 @@ namespace RTSCoreFramework
                 CommandActionItem = _actionItem;
                 bHasCommandActionItem = true;
 
-                AIActionItem = null;
-                bHasAIActionItem = false;
+                //This way AI Will Not Continue Operating
+                //If a Player Command Is Issued
+                CancelServicesAndTurnOffRegeneration();
             }
             else
             {
@@ -185,9 +186,6 @@ namespace RTSCoreFramework
                 //Sets Necessary Toggles and Handlers
                 AIActionItem = _actionItem;
                 bHasAIActionItem = true;
-
-                bHasCommandActionItem = false;
-                CommandActionItem = null;
             }
 
             //Only Toggle When Necessary
