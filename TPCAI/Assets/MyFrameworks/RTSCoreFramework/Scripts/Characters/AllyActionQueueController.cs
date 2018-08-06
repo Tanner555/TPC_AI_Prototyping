@@ -490,6 +490,8 @@ namespace RTSCoreFramework
         public Action<AllyMember> actionToPerform;
         /// <summary>
         /// From IGBPI_Action Struct.
+        /// Only Needed For Testing Action Condition Inside 
+        /// AllyTacticsController Script.
         /// Use (_ally) => true If No Additional Condition is Needed
         /// </summary>
         public Func<AllyMember, bool> canPerformAction;
