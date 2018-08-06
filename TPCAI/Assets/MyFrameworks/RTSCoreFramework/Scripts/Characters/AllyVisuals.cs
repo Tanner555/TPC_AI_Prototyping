@@ -256,6 +256,16 @@ namespace RTSCoreFramework
                 waypointRenderer.enabled = true;
                 Destroy(waypointRenderer);
             }
+            if(myHealthBar != null)
+            {
+                myHealthBar.enabled = true;
+                Destroy(myHealthBar);
+            }
+            if(myActiveTimeBar != null)
+            {
+                myActiveTimeBar.enabled = true;
+                Destroy(myActiveTimeBar);
+            }
             Destroy(this);
         }
 
