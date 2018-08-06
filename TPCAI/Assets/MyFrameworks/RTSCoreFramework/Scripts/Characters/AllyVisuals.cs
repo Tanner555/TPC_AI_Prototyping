@@ -84,7 +84,20 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-
+            myEventHandler.OnHoverOver += OnCursEnter;
+            myEventHandler.OnHoverLeave += OnCursExit;
+            myEventHandler.EventAllyDied += HandleDeath;
+            myEventHandler.EventCommandMove += SetupWaypointRenderer;
+            myEventHandler.EventTogglebIsFreeMoving += CheckToDisableWaypointRenderer;
+            myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
+            myEventHandler.EventPartySwitching += OnPartySwitch;
+            myEventHandler.EventCommandAttackEnemy += OnCmdAttackEnemy;
+            myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
+            myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
+            myEventHandler.OnHealthChanged += OnHealthUpdate;
+            gamemaster.GameOverEvent += HandleGameOver;
+            gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
+            uiMaster.EventAnyUIToggle += HandleUIEnable;
         }
 
         protected virtual void OnDisable()
@@ -108,20 +121,6 @@ namespace RTSCoreFramework
         protected virtual void Start()
         {
             SelectionLight.enabled = false;
-            myEventHandler.OnHoverOver += OnCursEnter;
-            myEventHandler.OnHoverLeave += OnCursExit;
-            myEventHandler.EventAllyDied += HandleDeath;
-            myEventHandler.EventCommandMove += SetupWaypointRenderer;
-            myEventHandler.EventTogglebIsFreeMoving += CheckToDisableWaypointRenderer;
-            myEventHandler.EventFinishedMoving += DisableWaypointRenderer;
-            myEventHandler.EventPartySwitching += OnPartySwitch;
-            myEventHandler.EventCommandAttackEnemy += OnCmdAttackEnemy;
-            myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
-            myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
-            myEventHandler.OnHealthChanged += OnHealthUpdate;
-            gamemaster.GameOverEvent += HandleGameOver;
-            gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
-            uiMaster.EventAnyUIToggle += HandleUIEnable;
         }
         #endregion
 

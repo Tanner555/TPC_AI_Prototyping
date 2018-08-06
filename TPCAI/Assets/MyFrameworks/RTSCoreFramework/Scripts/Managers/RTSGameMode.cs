@@ -96,21 +96,9 @@ namespace RTSCoreFramework
         //To Subscribe Events and Prevent Errors when AllySwitching
         new public RTSGameMaster gamemaster
         {
-            get
-            {
-                if (_gameMaster == null)
-                {
-                    if (RTSGameMaster.thisInstance != null)
-                        _gameMaster = RTSGameMaster.thisInstance;
-                    else if (GetComponent<RTSGameMaster>() != null)
-                        _gameMaster = GetComponent<RTSGameMaster>();
-                    else
-                        _gameMaster = RTSGameMaster.FindObjectOfType<RTSGameMaster>();
-                }
-                return _gameMaster;
-            }
+            get { return RTSGameMaster.thisInstance; }
         }
-        private RTSGameMaster _gameMaster = null;
+
         new public RTSUiManager uiManager { get { return RTSUiManager.thisInstance; } }
         new public RTSUiMaster uiMaster { get { return RTSUiMaster.thisInstance; } }
         new protected RTSGameInstance gameInstance

@@ -21,25 +21,11 @@ namespace BaseFramework
         {
             get { return GameInstance.thisInstance; }
         }
-        //GameMode must access GameMaster sooner than On Start
-        //To Subscribe Events and Prevent Errors
+
         public GameMaster gamemaster
         {
-            get
-            {
-                if (_gameMaster == null)
-                {
-                    if (GameMaster.thisInstance != null)
-                        _gameMaster = GameMaster.thisInstance;
-                    else if (GetComponent<GameMaster>() != null)
-                        _gameMaster = GetComponent<GameMaster>();
-                    else
-                        _gameMaster = GameObject.FindObjectOfType<GameMaster>();
-                }
-                return _gameMaster;
-            }
+            get { return GameMaster.thisInstance; }
         }
-        private GameMaster _gameMaster = null;
 
         public static GameMode thisInstance
         {
