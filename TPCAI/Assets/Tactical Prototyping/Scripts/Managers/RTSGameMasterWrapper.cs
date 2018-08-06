@@ -7,11 +7,7 @@ using Chronos;
 namespace RTSCoreFramework
 {
     public class RTSGameMasterWrapper : RTSGameMaster
-    {
-        #region Fields
-        string allyClocksName = "Allies";
-        #endregion
-        
+    {       
         #region Properties
         GlobalClock allyClocks
         {
@@ -24,6 +20,16 @@ namespace RTSCoreFramework
             }
         }
         GlobalClock _allyClocks = null;
+
+        public string allyClocksName
+        {
+            get { return "Allies"; }
+        }
+
+        public static new RTSGameMasterWrapper thisInstance
+        {
+            get { return (RTSGameMasterWrapper)RTSGameMaster.thisInstance; }
+        }
         #endregion
 
         #region EventCalls

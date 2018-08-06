@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RTSCoreFramework;
 using Opsive.ThirdPersonController;
+using Chronos;
 
 namespace RTSPrototype
 {
@@ -57,6 +58,31 @@ namespace RTSPrototype
             }
         }
         private Inventory _myInventory = null;
+
+        private Timeline myTimeLine
+        {
+            get
+            {
+                if (_myTimeLine == null)
+                {
+                    _myTimeLine = GetComponent<Timeline>();
+                }
+                return _myTimeLine;
+            }
+        }
+        private Timeline _myTimeLine = null;
+
+        protected string AllyClockKey
+        {
+            get { return gamemaster.allyClocksName; }
+        }
+        #endregion
+
+        #region InstanceProperties
+        protected new RTSGameMasterWrapper gamemaster
+        {
+            get { return RTSGameMasterWrapper.thisInstance; }
+        }
         #endregion
 
         #region Properties
@@ -157,7 +183,8 @@ namespace RTSPrototype
 
         protected override void Start()
         {
-            base.Start();       
+            base.Start();
+
         }
 
         protected override void OnDelayStart()

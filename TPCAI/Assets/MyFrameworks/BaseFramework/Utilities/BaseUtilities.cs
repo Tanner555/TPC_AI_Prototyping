@@ -82,5 +82,25 @@ namespace BaseFramework
             return source;
         }
         #endregion
+
+        #region GetAllTransforms
+        public static List<Transform> GetAllTransforms(Transform parent)
+        {
+            var transformList = new List<Transform>();
+            BuildTransformList(transformList, parent);
+            return transformList;
+        }
+
+        private static void BuildTransformList(ICollection<Transform> transforms, Transform parent)
+        {
+            if (parent == null) { return; }
+            foreach (Transform t in parent)
+            {
+                transforms.Add(t);
+                BuildTransformList(transforms, t);
+            }
+        }
+
+        #endregion
     }
 }
