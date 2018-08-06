@@ -24,6 +24,8 @@ namespace RTSCoreFramework
         public GameObject BloodParticles;
         [SerializeField]
         Image myHealthBar;
+        [SerializeField]
+        Image myActiveTimeBar;
 
         protected RTSGameMaster gamemaster
         {
@@ -95,6 +97,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy += DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
             myEventHandler.OnHealthChanged += OnHealthUpdate;
+            myEventHandler.OnActiveTimeChanged += OnActiveTimeBarUpdate;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -113,6 +116,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandAttackEnemy -= DisableWaypointRenderer;
             myEventHandler.OnAllyTakeDamage -= SpawnBloodParticles;
             myEventHandler.OnHealthChanged -= OnHealthUpdate;
+            myEventHandler.OnActiveTimeChanged -= OnActiveTimeBarUpdate;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventHoldingRightMouseDown -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -156,6 +160,15 @@ namespace RTSCoreFramework
             {
                 float _healthAsPercentage = ((float)_current / (float)_max);
                 myHealthBar.fillAmount = _healthAsPercentage;
+            }
+        }
+
+        protected virtual void OnActiveTimeBarUpdate(int _current, int _max)
+        {
+            if(myActiveTimeBar != null && myActiveTimeBar.enabled)
+            {
+                float _activeTimeAsPercentage = ((float)_current / (float)_max);
+                myActiveTimeBar.fillAmount = _activeTimeAsPercentage;
             }
         }
 
