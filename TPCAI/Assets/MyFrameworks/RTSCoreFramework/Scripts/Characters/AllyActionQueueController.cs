@@ -162,7 +162,10 @@ namespace RTSCoreFramework
                 {
                     PreviousCommandActionItem.stopPerformingTask(allyMember);
                 }
-                PreviousCommandActionItem = CommandActionItem;
+
+                //Set Prev Action Item To Param If Current Is Null
+                PreviousCommandActionItem = CommandActionItem == null ?
+                    _actionItem : CommandActionItem;
 
                 //Sets Necessary Toggles and Handlers
                 CommandActionItem = _actionItem;
@@ -170,7 +173,7 @@ namespace RTSCoreFramework
 
                 //This way AI Will Not Continue Operating
                 //If a Player Command Is Issued
-                CancelServicesAndTurnOffRegeneration();
+                CancelExecutionServices();
             }
             else
             {
@@ -181,7 +184,10 @@ namespace RTSCoreFramework
                 {
                     PreviousAIActionItem.stopPerformingTask(allyMember);
                 }
-                PreviousAIActionItem = AIActionItem;
+
+                //Set Prev Action Item To Param If Current Is Null
+                PreviousAIActionItem = AIActionItem == null ?
+                    _actionItem : AIActionItem;
 
                 //Sets Necessary Toggles and Handlers
                 AIActionItem = _actionItem;
@@ -410,6 +416,19 @@ namespace RTSCoreFramework
                 InvokeUpdateMultipleExecuteAction(false);
             if (allyMember.bActiveTimeBarIsRegenerating)
                 myEventHandler.CallOnToggleActiveTimeRegeneration(false);
+        }
+
+        /// <summary>
+        /// This is just a way to cancel the main action item
+        /// execution services. I might use stop services method
+        /// in the future.
+        /// </summary>
+        protected virtual void CancelExecutionServices()
+        {
+            if (bIsInvokingWait)
+                InvokeWaitingForActionBarToFill(false);
+            if (bIsInvokingMultExecutions)
+                InvokeUpdateMultipleExecuteAction(false);
         }
 
         /// <summary>
