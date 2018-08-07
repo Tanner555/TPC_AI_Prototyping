@@ -13,6 +13,11 @@ namespace RTSPrototype
             get { return RTSGameMaster.thisInstance; }
         }
 
+        RTSGameMode gamemode
+        {
+            get { return RTSGameMode.thisInstance; }
+        }
+
         AllyEventHandler eventhandler
         {
             get
@@ -52,7 +57,8 @@ namespace RTSPrototype
                 transform.position,
                 (config as AreaOfEffectConfigTPC).GetRadius(),
                 Vector3.up,
-                (config as AreaOfEffectConfigTPC).GetRadius()
+                (config as AreaOfEffectConfigTPC).GetRadius(), 
+                gamemode.AllyLayers
             );
 
             foreach (RaycastHit hit in hits)
@@ -65,7 +71,10 @@ namespace RTSPrototype
                     damageable.IsEnemyFor(allymember))
                 {
                     float damageToDeal = (config as AreaOfEffectConfigTPC).GetDamageToEachTarget();
-                    damageable.AllyTakeDamage((int)damageToDeal, allymember);
+                    damageable.allyEventHandler.CallOnAllyTakeDamage(
+                        (int)damageToDeal, hit.point, Vector3.zero,
+                        allymember, hit.transform.gameObject
+                        );
                 }
             }
         }
