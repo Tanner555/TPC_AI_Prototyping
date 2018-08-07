@@ -9,6 +9,7 @@ Environment Assets
  - Metal textures pack
  - Stylized foliages pack
  - Yughues Free Palm Trees
+ - Yughues Free Sand Materials
 Models Folder
 This is where custom and asset store models are stored
 Model Assets

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tactical Prototyping/Maps/Lvl 1-Training.unity
     guid: 3a6bbbac7e5589b4cab41ac4b6f6ce46
+  - enabled: 1
+    path: Assets/Tactical Prototyping/Maps/SandLevel1.unity
+    guid: 303cc6f2b97454c4594b0867604f991a
   m_configObjects: {}
