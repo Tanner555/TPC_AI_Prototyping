@@ -12,4 +12,4 @@ Environment Assets
 Models Folder
 This is where custom and asset store models are stored
 Model Assets
- - Mixamo - Melee Axe Pack
+ - Mixamo - Melee Axe and Magic Pack
