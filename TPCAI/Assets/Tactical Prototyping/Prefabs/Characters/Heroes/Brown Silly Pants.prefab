@@ -1221,7 +1221,6 @@ GameObject:
   - component: {fileID: 114483047170152196}
   - component: {fileID: 114957371378726032}
   - component: {fileID: 114326457860138848}
-  - component: {fileID: 114637046136929584}
   - component: {fileID: 114548611130069228}
   - component: {fileID: 114981557185281530}
   - component: {fileID: 114983068936097046}
@@ -1233,6 +1232,7 @@ GameObject:
   - component: {fileID: 114575118344290714}
   - component: {fileID: 114400433465007122}
   - component: {fileID: 114048101128537100}
+  - component: {fileID: 114268427963885804}
   m_Layer: 8
   m_Name: Brown Silly Pants
   m_TagString: Ally
@@ -5803,6 +5803,7 @@ MonoBehaviour:
     type: 2}
   BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
   myHealthBar: {fileID: 0}
+  myActiveTimeBar: {fileID: 0}
 --- !u!114 &114213171426606734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6114,6 +6115,24 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114268427963885804
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768055428005526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe90268fb4a9dc442b020e0d88100157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114289333403305254
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -7789,24 +7808,6 @@ MonoBehaviour:
           m_ForceRootMotion: 0
       m_GroupOrder: 0
     m_Abilities: []
---- !u!114 &114637046136929584
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768055428005526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 0
-  m_InputName: 
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
 --- !u!114 &114654137710943568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8254,7 +8255,7 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
-  - {fileID: 114637046136929584}
+  - {fileID: 114268427963885804}
   - {fileID: 114118242432156082}
   - {fileID: 114713235223828240}
   - {fileID: 114548611130069228}
@@ -8264,7 +8265,7 @@ MonoBehaviour:
   - {fileID: 114483047170152196}
   - {fileID: 114575118344290714}
   - {fileID: 114400433465007122}
-  m_SelectedAbility: 9
+  m_SelectedAbility: 0
 --- !u!114 &114925658411416062
 MonoBehaviour:
   m_ObjectHideFlags: 1

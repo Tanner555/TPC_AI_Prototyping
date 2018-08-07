@@ -1267,13 +1267,13 @@ GameObject:
   - component: {fileID: 114342628504177224}
   - component: {fileID: 114192351338335698}
   - component: {fileID: 114161254777440462}
-  - component: {fileID: 114026581900362700}
   - component: {fileID: 114623554653784126}
   - component: {fileID: 114672028672960424}
   - component: {fileID: 114718506449872950}
   - component: {fileID: 114250792873897466}
   - component: {fileID: 114572575480086458}
   - component: {fileID: 114300782525255288}
+  - component: {fileID: 114134252129676090}
   m_Layer: 8
   m_Name: Pink Robot
   m_TagString: Ally
@@ -7497,27 +7497,10 @@ MonoBehaviour:
     type: 2}
   BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
   myHealthBar: {fileID: 0}
---- !u!114 &114026581900362700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1497344684296414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 0
-  m_InputName: 
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
+  myActiveTimeBar: {fileID: 0}
 --- !u!114 &114056903438044656
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -7821,6 +7804,24 @@ MonoBehaviour:
   m_ToggleLaserSightInputName: Toggle Laser Sight
   m_ActivateLaserSightOnAim: 0
   m_DisableCrosshairsWhenLaserSightActive: 1
+--- !u!114 &114134252129676090
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497344684296414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe90268fb4a9dc442b020e0d88100157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114134930885395982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8052,7 +8053,7 @@ MonoBehaviour:
     m_RotationOrder: 4
 --- !u!114 &114161254777440462
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -8084,7 +8085,7 @@ MonoBehaviour:
   m_PopDistance: {x: 0.3, y: 0, z: 3}
 --- !u!114 &114192351338335698
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -8168,7 +8169,7 @@ MonoBehaviour:
   m_CanToggleLaserSight: 1
 --- !u!114 &114250792873897466
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -9271,7 +9272,7 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
-  - {fileID: 114026581900362700}
+  - {fileID: 114134252129676090}
   - {fileID: 114736277984060244}
   - {fileID: 114907406613321782}
   - {fileID: 114161254777440462}
@@ -9281,7 +9282,7 @@ MonoBehaviour:
   - {fileID: 114872855573280074}
   - {fileID: 114250792873897466}
   - {fileID: 114572575480086458}
-  m_SelectedAbility: 8
+  m_SelectedAbility: 0
 --- !u!114 &114523265218413204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9300,7 +9301,7 @@ MonoBehaviour:
   m_PulseSpeed: 0.5
 --- !u!114 &114572575480086458
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -9318,7 +9319,7 @@ MonoBehaviour:
   m_Indicator: {fileID: 0}
 --- !u!114 &114623554653784126
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -10374,7 +10375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114736277984060244
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -10689,7 +10690,7 @@ MonoBehaviour:
   m_DefaultImpactSound: {fileID: 0}
 --- !u!114 &114872855573280074
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}
@@ -10743,7 +10744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114907406613321782
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497344684296414}

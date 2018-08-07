@@ -1427,7 +1427,6 @@ GameObject:
   - component: {fileID: 114234195813627858}
   - component: {fileID: 114355252261387292}
   - component: {fileID: 114500960538715752}
-  - component: {fileID: 114365759644294196}
   - component: {fileID: 114689182436087296}
   - component: {fileID: 114939998160306228}
   - component: {fileID: 114862791138248778}
@@ -1439,6 +1438,7 @@ GameObject:
   - component: {fileID: 114568733539667156}
   - component: {fileID: 114290110442897160}
   - component: {fileID: 114428847573765634}
+  - component: {fileID: 114787149911574980}
   m_Layer: 8
   m_Name: EnemyAssaultSoldier
   m_TagString: Ally
@@ -6385,7 +6385,7 @@ MonoBehaviour:
     m_Bits: 4294967295
 --- !u!114 &114215177812978064
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6428,7 +6428,7 @@ MonoBehaviour:
   m_PulseSpeed: 0.5
 --- !u!114 &114234195813627858
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6753,7 +6753,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
 --- !u!114 &114290110442897160
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6820,7 +6820,7 @@ MonoBehaviour:
     m_CanReplay: 0
 --- !u!114 &114317458611840042
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -6881,24 +6881,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 40
   followDistance: 5
---- !u!114 &114365759644294196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825627822260076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 0
-  m_InputName: 
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
 --- !u!114 &114378024222260316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6912,7 +6894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &114394860583792196
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -7191,7 +7173,7 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
-  - {fileID: 114365759644294196}
+  - {fileID: 114787149911574980}
   - {fileID: 114317458611840042}
   - {fileID: 114394860583792196}
   - {fileID: 114689182436087296}
@@ -7201,7 +7183,7 @@ MonoBehaviour:
   - {fileID: 114234195813627858}
   - {fileID: 114568733539667156}
   - {fileID: 114290110442897160}
-  m_SelectedAbility: 8
+  m_SelectedAbility: 0
 --- !u!114 &114482820141488904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7884,7 +7866,7 @@ MonoBehaviour:
   m_DisableCrosshairsWhenLaserSightActive: 1
 --- !u!114 &114568733539667156
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -7902,7 +7884,7 @@ MonoBehaviour:
   m_Indicator: {fileID: 0}
 --- !u!114 &114594257064235068
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -8196,7 +8178,7 @@ MonoBehaviour:
   m_DynamicPixelsPerUnit: 1
 --- !u!114 &114689182436087296
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}
@@ -8297,6 +8279,24 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114787149911574980
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825627822260076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe90268fb4a9dc442b020e0d88100157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114793830129677780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8683,7 +8683,7 @@ MonoBehaviour:
   m_Footsteps: []
 --- !u!114 &114939998160306228
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825627822260076}

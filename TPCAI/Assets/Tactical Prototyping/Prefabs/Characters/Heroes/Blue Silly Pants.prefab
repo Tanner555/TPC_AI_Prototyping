@@ -1361,7 +1361,6 @@ GameObject:
   - component: {fileID: 114473590096971394}
   - component: {fileID: 114318541859586470}
   - component: {fileID: 114911107101201148}
-  - component: {fileID: 114269516441092220}
   - component: {fileID: 114158992663278294}
   - component: {fileID: 114337753060850616}
   - component: {fileID: 114505142003567552}
@@ -1373,6 +1372,7 @@ GameObject:
   - component: {fileID: 114002244757225364}
   - component: {fileID: 114620862926452122}
   - component: {fileID: 114777788433883964}
+  - component: {fileID: 114479271866549460}
   m_Layer: 8
   m_Name: Blue Silly Pants
   m_TagString: Ally
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
   m_Abilities:
-  - {fileID: 114269516441092220}
+  - {fileID: 114479271866549460}
   - {fileID: 114939782792276948}
   - {fileID: 114646617548109750}
   - {fileID: 114158992663278294}
@@ -5353,7 +5353,7 @@ MonoBehaviour:
   - {fileID: 114473590096971394}
   - {fileID: 114664732747762758}
   - {fileID: 114002244757225364}
-  m_SelectedAbility: 8
+  m_SelectedAbility: 0
 --- !u!114 &114050705213877726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6769,24 +6769,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114269516441092220
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1712568748307802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c05dd4786c76de48939219671936ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Index: 0
-  m_InputName: 
-  m_StartType: 1
-  m_StopType: 1
-  m_TransitionDuration: 0.2
-  m_SpeedMultiplier: 1
-  m_Indicator: {fileID: 0}
 --- !u!114 &114277628777102000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7272,6 +7254,24 @@ MonoBehaviour:
   m_DisableColliders: 1
   m_RegisterDeathEvent: 1
   m_IgnoreColliders: []
+--- !u!114 &114479271866549460
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712568748307802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe90268fb4a9dc442b020e0d88100157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 1
+  m_StopType: 1
+  m_TransitionDuration: 0.2
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
 --- !u!114 &114492238304884668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8570,6 +8570,7 @@ MonoBehaviour:
     type: 2}
   BloodParticles: {fileID: 100002, guid: cc65ce65de1de864e9e71c480c5bb94f, type: 2}
   myHealthBar: {fileID: 0}
+  myActiveTimeBar: {fileID: 0}
 --- !u!114 &114911107101201148
 MonoBehaviour:
   m_ObjectHideFlags: 1
