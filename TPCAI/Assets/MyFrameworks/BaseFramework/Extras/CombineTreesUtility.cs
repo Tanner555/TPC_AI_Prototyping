@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CombineTreesUtility : MonoBehaviour {
@@ -9,9 +10,47 @@ public class CombineTreesUtility : MonoBehaviour {
     //The object that is going to hold the combined mesh
     public GameObject combinedObj;
 
+    private string LeafsName = "leafs";
+    private string TrunkName = "trunk";
+
+    private Material LeafMaterial = null;
+    private Material TrunkMaterial = null;
+
     void Start()
     {
         CombineTrees();
+        //Prepare To Save Assets
+        saveMesh();
+        savePrefab();
+        //Try Adding Materials
+        TryAddingMaterials();
+        //Save Assets
+        AssetDatabase.SaveAssets();
+    }
+
+    void savePrefab()
+    {
+        Debug.Log("Saving Prefab?");
+        PrefabUtility.CreatePrefab("Assets/Tactical Prototyping/Prefabs/Generated/" + combinedObj.transform.name + ".prefab", combinedObj);
+    }
+
+    void saveMesh()
+    {
+        Debug.Log("Saving Mesh?");
+        AssetDatabase.CreateAsset(combinedObj.GetComponent<MeshFilter>().mesh, "Assets/Tactical Prototyping/Prefabs/Generated/" + combinedObj.transform.name + " mesh" + ".asset");
+    }
+
+    void TryAddingMaterials()
+    {
+        if(LeafMaterial != null && TrunkMaterial != null)
+        {
+            Debug.Log($"Attempt Adding Materials");
+            var _renderer = combinedObj.GetComponent<MeshRenderer>();
+            _renderer.materials = new Material[]
+            {
+                LeafMaterial, TrunkMaterial
+            };
+        }
     }
 
     //Similar to Unity's reference, but with different materials
@@ -25,6 +64,7 @@ public class CombineTreesUtility : MonoBehaviour {
         //Loop through the array with trees
         for (int i = 0; i < treesArray.Length; i++)
         {
+            Debug.Log($"Processing Tree {treesArray[i].name}");
             GameObject currentTree = treesArray[i];
 
             //Deactivate the tree 
@@ -36,6 +76,7 @@ public class CombineTreesUtility : MonoBehaviour {
             //Loop through all children
             for (int j = 0; j < meshFilters.Length; j++)
             {
+                Debug.Log($"Processing MeshFilter: {meshFilters[j].name}");
                 MeshFilter meshFilter = meshFilters[j];
 
                 CombineInstance combine = new CombineInstance();
@@ -46,21 +87,25 @@ public class CombineTreesUtility : MonoBehaviour {
                 //Modify the material name, because Unity adds (Instance) to the end of the name
                 string materialName = meshRender.material.name.Replace(" (Instance)", "");
 
-                if (materialName == "Leaf")
+                if (materialName.ToLower().Contains(LeafsName))
                 {
+                    Debug.Log($"Adding Leaf Model To Leaf List");
                     combine.mesh = meshFilter.mesh;
                     combine.transform = meshFilter.transform.localToWorldMatrix;
 
                     //Add it to the list of leaf mesh data
                     leafList.Add(combine);
+                    LeafMaterial = meshRender.material;
                 }
-                else if (materialName == "Wood")
+                else if (materialName.ToLower().Contains(TrunkName))
                 {
+                    Debug.Log($"Adding Trunk Model To Wood List");
                     combine.mesh = meshFilter.mesh;
                     combine.transform = meshFilter.transform.localToWorldMatrix;
 
                     //Add it to the list of wood mesh data
                     woodList.Add(combine);
+                    TrunkMaterial = meshRender.material;
                 }
             }
         }
