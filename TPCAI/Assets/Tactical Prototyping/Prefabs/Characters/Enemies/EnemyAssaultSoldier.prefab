@@ -5491,9 +5491,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4847054563010040}
   m_FireMode: 0
   m_FireRate: 2
-  m_BurstRate: 5
+  m_BurstDelay: 0.2
   m_ClipSize: 1
   m_FireCount: 1
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -5767,9 +5768,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4067369723429212}
   m_FireMode: 0
   m_FireRate: 4
-  m_BurstRate: 1
+  m_BurstDelay: 0.2
   m_ClipSize: 8
   m_FireCount: 8
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -6305,9 +6307,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4778956507735432}
   m_FireMode: 0
   m_FireRate: 4
-  m_BurstRate: 1
+  m_BurstDelay: 0.2
   m_ClipSize: 30
   m_FireCount: 1
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -6667,9 +6670,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4999030272903582}
   m_FireMode: 0
   m_FireRate: 4
-  m_BurstRate: 1
+  m_BurstDelay: 0.2
   m_ClipSize: 30
   m_FireCount: 1
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -6910,6 +6914,7 @@ MonoBehaviour:
   m_TransitionDuration: 0.2
   m_SpeedMultiplier: 1
   m_Indicator: {fileID: 0}
+  m_ImmediateJump: 0
   m_Force: 5
   m_DoubleJumpForce: 0
   m_RecurrenceDelay: 0.2
@@ -7441,9 +7446,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4306904878072978}
   m_FireMode: 0
   m_FireRate: 1
-  m_BurstRate: 5
+  m_BurstDelay: 0.2
   m_ClipSize: 8
   m_FireCount: 1
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0
@@ -7802,9 +7808,10 @@ MonoBehaviour:
   m_FirePoint: {fileID: 4017921511651582}
   m_FireMode: 1
   m_FireRate: 10
-  m_BurstRate: 5
+  m_BurstDelay: 0.2
   m_ClipSize: 50
   m_FireCount: 1
+  m_BurstCount: 5
   m_FireType: 0
   m_FireOnUsedEvent: 0
   m_WaitForEndUseEvent: 0

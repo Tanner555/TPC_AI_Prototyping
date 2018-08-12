@@ -12,7 +12,18 @@ namespace RTSCoreFramework
         [Header("Ally Highlighting")]
         public Color selAllyColor;
         public Color selEnemyColor;
-        public Light SelectionLight;
+        protected GameObject AllyIndicatorSpotlightInstance = null;
+        public Light SelectionLight
+        {
+            get
+            {
+                if (_SelectionLight == null)
+                    _SelectionLight = AllyIndicatorSpotlightInstance.GetComponent<Light>();
+
+                return _SelectionLight;
+            }
+        }
+        private Light _SelectionLight = null;
         [Header("Ally Waypoint Navigation")]
         public Material waypointRendererMaterial;
         protected float waypointStartWidth = 0.05f;
@@ -98,6 +109,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAllyTakeDamage += SpawnBloodParticles;
             myEventHandler.OnHealthChanged += OnHealthUpdate;
             myEventHandler.OnActiveTimeChanged += OnActiveTimeBarUpdate;
+            myEventHandler.InitializeAllyComponents += OnAllyInitComponents;
             gamemaster.GameOverEvent += HandleGameOver;
             gamemaster.EventHoldingRightMouseDown += HandleCameraMovement;
             uiMaster.EventAnyUIToggle += HandleUIEnable;
@@ -117,6 +129,7 @@ namespace RTSCoreFramework
             myEventHandler.OnAllyTakeDamage -= SpawnBloodParticles;
             myEventHandler.OnHealthChanged -= OnHealthUpdate;
             myEventHandler.OnActiveTimeChanged -= OnActiveTimeBarUpdate;
+            myEventHandler.InitializeAllyComponents -= OnAllyInitComponents;
             gamemaster.GameOverEvent -= HandleGameOver;
             gamemaster.EventHoldingRightMouseDown -= HandleCameraMovement;
             uiMaster.EventAnyUIToggle -= HandleUIEnable;
@@ -154,6 +167,17 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnAllyInitComponents(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {    
+            selAllyColor = _allFields.AllyHighlightColor;
+            selEnemyColor = _allFields.EnemyHighlightColor;
+            AllyIndicatorSpotlightInstance = _specific.AllyIndicatorSpotlightInstance;
+            waypointRendererMaterial = _allFields.WaypointRendererMaterial;
+            BloodParticles = _allFields.BloodParticles;
+            myHealthBar = _specific.EnemyHealthBarImage;
+            myActiveTimeBar = _specific.EnemyActiveBarImage;
+        }
+
         protected virtual void OnHealthUpdate(int _current, int _max)
         {
             if (myHealthBar != null && myHealthBar.enabled)
@@ -271,6 +295,7 @@ namespace RTSCoreFramework
 
         protected virtual void HandleCameraMovement(bool _isMoving)
         {
+            if (SelectionLight == null) return;
             cameraIsMoving = _isMoving;
             SelectionLight.enabled = false;
         }

@@ -54,12 +54,77 @@ namespace RTSPrototype
         #endregion
 
         #region Components
-        AllyEventHandlerWrapper myEventHandler;
-        ItemHandler itemHandler;
-        Inventory myInventory; 
-        RigidbodyCharacterController myController;
-        RTSNavBridge myNavBidge;
-        AllyMember allyMember;
+        AllyEventHandlerWrapper myEventHandler
+        {
+            get
+            {
+                if (_myEventHandler == null)
+                    _myEventHandler = GetComponent<AllyEventHandlerWrapper>();
+
+                return _myEventHandler;
+            }    
+        }
+        private AllyEventHandlerWrapper _myEventHandler = null;
+
+        ItemHandler itemHandler
+        {
+            get
+            {
+                if (_itemHandler == null)
+                    _itemHandler = GetComponent<ItemHandler>();
+
+                return _itemHandler;
+            }
+        }
+        ItemHandler _itemHandler = null;
+
+        Inventory myInventory
+        {
+            get
+            {
+                if (_myInventory == null)
+                    _myInventory = GetComponent<Inventory>();
+
+                return _myInventory;
+            }
+        }
+        Inventory _myInventory = null;
+
+        RigidbodyCharacterController myController
+        {
+            get
+            {
+                if (_myController == null)
+                    _myController = GetComponent<RigidbodyCharacterController>();
+
+                return _myController;
+            }
+        }
+        RigidbodyCharacterController _myController = null;
+
+        RTSNavBridge myNavBidge
+        {
+            get
+            {
+                if (_myNavBidge == null)
+                    _myNavBidge = GetComponent<RTSNavBridge>();
+
+                return _myNavBidge;
+            }
+        }
+        RTSNavBridge _myNavBidge = null;
+
+        AllyMember allyMember
+        {
+            get
+            {
+                if (_allyMember == null)
+                    _allyMember = GetComponent<AllyMember>();
+
+                return _allyMember;
+            }
+        }
+        AllyMember _allyMember = null;
 
         bool AllCompsAreValid
         {
@@ -72,7 +137,7 @@ namespace RTSPrototype
         #region UnityMessages
         private void Awake()
         {
-            InitialSetup();
+            //InitialSetup();
             
         }
 
@@ -98,6 +163,20 @@ namespace RTSPrototype
         #endregion
 
         #region Handlers
+        void InitializeAllyWeaponItems(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            var _tpcAllyCompsToInit = (RTSAllyComponentsAllCharacterFieldsWrapper)_allFields;
+            AssualtRifleType = _tpcAllyCompsToInit.AssualtRifleType;
+            PistolType = _tpcAllyCompsToInit.PistolType;
+            ShotgunType = _tpcAllyCompsToInit.ShotgunType;
+            SniperRifleType = _tpcAllyCompsToInit.SniperRifleType;
+            FistType = _tpcAllyCompsToInit.FistType;
+            KnifeType = _tpcAllyCompsToInit.KnifeType;
+            AxeType = _tpcAllyCompsToInit.AxeType;
+            CrossbowType = _tpcAllyCompsToInit.CrossbowType;
+            KatanaType = _tpcAllyCompsToInit.KatanaType;
+        }
+
         /// <summary>
         /// No Event Yet, But considering using this as a handler when
         /// picking up ammo. Used to Update Unequipped Ammo When Weapon Switch
@@ -280,21 +359,21 @@ namespace RTSPrototype
             }
         }
         #endregion
-
+        
         #region Initialization
         void InitialSetup()
         {
-            myEventHandler = GetComponent<AllyEventHandlerWrapper>();
-            itemHandler = GetComponent<ItemHandler>();
-            myInventory = GetComponent<Inventory>();
-            myController = GetComponent<RigidbodyCharacterController>();
-            myNavBidge = GetComponent<RTSNavBridge>();
-            allyMember = GetComponent<AllyMember>();
+            //myEventHandler = GetComponent<AllyEventHandlerWrapper>();
+            //itemHandler = GetComponent<ItemHandler>();
+            //myInventory = GetComponent<Inventory>();
+            //myController = GetComponent<RigidbodyCharacterController>();
+            //myNavBidge = GetComponent<RTSNavBridge>();
+            //allyMember = GetComponent<AllyMember>();
 
-            if (!AllCompsAreValid)
-            {
-                Debug.LogError("Not all Components can be found");
-            }
+            //if (!AllCompsAreValid)
+            //{
+            //    Debug.LogError("Not all Components can be found");
+            //}
         }
 
         void SubToEvents()
@@ -309,6 +388,7 @@ namespace RTSPrototype
             myEventHandler.OnWeaponChanged += OnWeaponTypeChanged;
             myEventHandler.EventStopTargettingEnemy += OnStopTargetingEnemy;
             myEventHandler.EventToggleIsUsingAbility += OnToggleSpecialAbility;
+            myEventHandler.InitializeAllyComponents += InitializeAllyWeaponItems;
         }
 
         void UnsubFromEvents()
@@ -322,6 +402,7 @@ namespace RTSPrototype
             myEventHandler.OnWeaponChanged -= OnWeaponTypeChanged;
             myEventHandler.EventStopTargettingEnemy -= OnStopTargetingEnemy;
             myEventHandler.EventToggleIsUsingAbility -= OnToggleSpecialAbility;
+            myEventHandler.InitializeAllyComponents -= InitializeAllyWeaponItems;
         }
         #endregion
     }

@@ -7,6 +7,23 @@ using Chronos;
 
 namespace RTSPrototype
 {
+    #region RTSAllyComponentsAllCharacterFields
+    [System.Serializable]
+    public class RTSAllyComponentsAllCharacterFieldsWrapper : RTSAllyComponentsAllCharacterFields
+    {
+        [Header("GunTypes")]
+        public ItemType AssualtRifleType;
+        public ItemType PistolType;
+        public ItemType ShotgunType;
+        public ItemType SniperRifleType;
+        public ItemType FistType;
+        public ItemType KnifeType;
+        public ItemType AxeType;
+        public ItemType CrossbowType;
+        public ItemType KatanaType;
+    }
+    #endregion
+
     public class AllyEventHandlerWrapper : AllyEventHandler
     {
         #region TPSSharedProperties

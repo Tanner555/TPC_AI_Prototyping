@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4021046113315580}
   - component: {fileID: 33291582174517962}
   - component: {fileID: 23467428381360242}
-  - component: {fileID: 64614928245221138}
   m_Layer: 0
   m_Name: PalmTreeDualBendedOneSided
   m_TagString: Untagged
@@ -85,17 +84,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550435328642040}
   m_Mesh: {fileID: 4300000, guid: 86c3cd45fc6fd3b4d9ed2096adc009f2, type: 2}
---- !u!64 &64614928245221138
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1550435328642040}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 31e0cf65c1498bb459ad7f1c13ad1abc, type: 3}

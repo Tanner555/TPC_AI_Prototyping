@@ -114,15 +114,12 @@ namespace RTSCoreFramework
         // Use this for initialization
         protected virtual void OnEnable()
         {
-            InitializeCharacterStats();
             SubToEvents();
         }
 
         protected virtual void Start()
         {
             Invoke("OnDelayStart", 0.5f);
-            RetrieveAllWeaponStats();
-            UpdateUnequippedWeaponType();
         }
 
         protected virtual void OnDelayStart()
@@ -181,6 +178,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void InitializeAllyStatController(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            characterType = _specific.CharacterType;
+            InitializeCharacterStats();
+            RetrieveAllWeaponStats();
+            UpdateUnequippedWeaponType();
+        }
+
         /// <summary>
         /// It's not really a Handler right now. When the game starts,
         /// this method is called to update the unequipped weapon type
@@ -241,6 +246,7 @@ namespace RTSCoreFramework
         {
             eventHandler.OnEquipTypeChanged += HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged += HandleWeaponChanged;
+            eventHandler.InitializeAllyComponents += InitializeAllyStatController;
             gamemaster.EventUpdateCharacterStats += InitializeCharacterStats;
             
         }
@@ -248,6 +254,7 @@ namespace RTSCoreFramework
         {
             eventHandler.OnEquipTypeChanged -= HandleEquipTypeChanged;
             eventHandler.OnWeaponChanged -= HandleWeaponChanged;
+            eventHandler.InitializeAllyComponents -= InitializeAllyStatController;
             gamemaster.EventUpdateCharacterStats -= InitializeCharacterStats;
         }
         protected virtual void InitializeCharacterStats()

@@ -214,6 +214,12 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void OnAllyInitComps(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            sightRange = _allFields.sightRange;
+            followDistance = _allFields.followDistance;
+        }
+
         protected virtual void OnWeaponChanged(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped)
         {
             if (IsInvoking("UpdateBattleBehavior"))
@@ -573,6 +579,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove += HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving += HandleOnAIStopMoving;
             myEventHandler.OnWeaponChanged += OnWeaponChanged;
+            myEventHandler.InitializeAllyComponents += OnAllyInitComps;
             gamemaster.EventHoldingRightMouseDown += OnEnableCameraMovement;
         }
 
@@ -584,6 +591,7 @@ namespace RTSCoreFramework
             myEventHandler.EventCommandMove -= HandleOnMoveAlly;
             myEventHandler.EventFinishedMoving -= HandleOnAIStopMoving;
             myEventHandler.OnWeaponChanged -= OnWeaponChanged;
+            myEventHandler.InitializeAllyComponents -= OnAllyInitComps;
             gamemaster.EventHoldingRightMouseDown -= OnEnableCameraMovement;
         }
 

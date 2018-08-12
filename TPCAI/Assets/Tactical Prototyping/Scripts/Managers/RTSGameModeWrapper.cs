@@ -8,6 +8,13 @@ namespace RTSPrototype
 {
     public class RTSGameModeWrapper : RTSGameMode
     {
+        #region Properties
+        public static new RTSGameModeWrapper thisInstance
+        {
+            get { return RTSGameMode.thisInstance as RTSGameModeWrapper; }
+        }
+        #endregion
+
         #region UnityMessages
         protected override void OnEnable()
         {

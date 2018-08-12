@@ -14,53 +14,25 @@ MonoBehaviour:
   CharacterStatList:
   - name: Blue Silly Pants
     CharacterType: 0
-    CharacterPrefab: {fileID: 1712568748307802, guid: b79383dd7a5bd6c44b682fac0b95ec07,
+    CharacterPrefab: {fileID: 1896254550176018, guid: 3439a33de21675845a06e54bfab3810c,
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
       type: 3}
-    MaxHealth: 1000
-    Health: 1000
-    MaxStamina: 100
-    Stamina: 100
-    EquippedWeapon: 0
-    PrimaryWeapon: 1
-    SecondaryWeapon: 3
   - name: Brown Silly Pants
     CharacterType: 1
-    CharacterPrefab: {fileID: 1768055428005526, guid: 9a4d6a79cda7e9548a317034fd6997fa,
+    CharacterPrefab: {fileID: 1896254550176018, guid: 3439a33de21675845a06e54bfab3810c,
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
       type: 3}
-    MaxHealth: 1000
-    Health: 1000
-    MaxStamina: 100
-    Stamina: 100
-    EquippedWeapon: 0
-    PrimaryWeapon: 3
-    SecondaryWeapon: 4
   - name: Evil Assault Villain 1
     CharacterType: 25
-    CharacterPrefab: {fileID: 1825627822260076, guid: ba668e5df35b7684392f86da7a48d39c,
+    CharacterPrefab: {fileID: 1896254550176018, guid: 3439a33de21675845a06e54bfab3810c,
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: 5a5c856d9b992f54fa51023dbfe68770,
       type: 3}
-    MaxHealth: 100
-    Health: 100
-    MaxStamina: 100
-    Stamina: 100
-    EquippedWeapon: 0
-    PrimaryWeapon: 2
-    SecondaryWeapon: 0
   - name: Silly Girl Medic
     CharacterType: 2
-    CharacterPrefab: {fileID: 1497344684296414, guid: 0461d4feeb2792744b75b45278f266de,
+    CharacterPrefab: {fileID: 1896254550176018, guid: 3439a33de21675845a06e54bfab3810c,
       type: 2}
     CharacterPortrait: {fileID: 21300000, guid: c1ee90923a530864cb7a6f70a5500b68,
       type: 3}
-    MaxHealth: 1000
-    Health: 1000
-    MaxStamina: 100
-    Stamina: 100
-    EquippedWeapon: 0
-    PrimaryWeapon: 8
-    SecondaryWeapon: 3

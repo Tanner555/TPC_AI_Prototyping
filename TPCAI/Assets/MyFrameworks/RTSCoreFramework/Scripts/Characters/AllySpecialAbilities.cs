@@ -76,11 +76,11 @@ namespace RTSCoreFramework
         #endregion
 
         #region Fields
-        [SerializeField] AbilityConfig[] abilities;
+        [SerializeField] public AbilityConfig[] abilities;
         //Once per second
         protected float addStaminaRepeatRate = 1f;
         protected int regenPointsPerSecond = 10;
-        [SerializeField] protected AudioClip outOfEnergy;
+        [SerializeField] public AudioClip outOfEnergy;
         
         /// <summary>
         /// Allows me to store a behavior on this script
@@ -92,11 +92,9 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            InitializeAbilityDictionary();
-            InvokeRepeating("SE_AddEnergyPoints", 1f, addStaminaRepeatRate);
-
             eventhandler.EventAllyDied += OnAllyDeath;
             eventhandler.OnTrySpecialAbility += HandleOnTrySpecialAbility;
+            eventhandler.InitializeAllyComponents += InitializeSpecialAbilties;
             gamemaster.OnNumberKeyPress += OnKeyPress;
         }
 
@@ -104,6 +102,7 @@ namespace RTSCoreFramework
         {
             eventhandler.EventAllyDied -= OnAllyDeath;
             eventhandler.OnTrySpecialAbility -= HandleOnTrySpecialAbility;
+            eventhandler.InitializeAllyComponents -= InitializeSpecialAbilties;
             gamemaster.OnNumberKeyPress -= OnKeyPress;
         }
         #endregion
@@ -166,6 +165,14 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void InitializeSpecialAbilties(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            abilities = _allFields.specialAbilitiesArray;
+            outOfEnergy = _allFields.outOfEnergySoundClip;
+            InitializeAbilityDictionary();
+            InvokeRepeating("SE_AddEnergyPoints", 1f, addStaminaRepeatRate);
+        }
+
         protected virtual void HandleOnTrySpecialAbility(System.Type _type)
         {
             foreach (var _config in AbilityDictionary.Keys)

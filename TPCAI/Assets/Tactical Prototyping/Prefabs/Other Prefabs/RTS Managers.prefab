@@ -165,7 +165,7 @@ MonoBehaviour:
     m_Bits: 3288334593
   ignoreInvisibleLayersAndAllies:
     serializedVersion: 2
-    m_Bits: 671087817
+    m_Bits: 666894337
   singleAllyLayerName: Ally
   singleCurrentPlayerLayerName: CurrentPlayerAlly
 --- !u!114 &114369450698923008
@@ -276,8 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatsData: {fileID: 11400000, guid: e70711de95bfbf54da9cd2b552ee2cd4, type: 2}
-  characterTacticsData: {fileID: 11400000, guid: f32bc367da7d40c45bc3368638434c63,
-    type: 2}
   partyStatsData: {fileID: 11400000, guid: 0f2685a46a552374c94e463e1995dfe2, type: 2}
   weaponStatsData: {fileID: 11400000, guid: 78f598e6d98d1b04aa98c1f8522dac9b, type: 2}
 --- !u!114 &114941602951163418

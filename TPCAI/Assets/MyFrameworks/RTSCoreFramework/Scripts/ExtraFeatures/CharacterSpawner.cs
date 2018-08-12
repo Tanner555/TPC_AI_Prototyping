@@ -16,22 +16,17 @@ namespace RTSCoreFramework
         public Color FriendlyColor = Color.green;
         public Color EnemyColor = Color.red;
         public float GizmosRadius = 1.5f;
+        //Used For Adding Components and setting up character
+        public GameObject spawnedGameObject = null;
         #endregion
 
         #region Properties
-        RTSStatHandler statHandler
+        protected RTSStatHandler statHandler
         {
-            get
-            {
-                //For Faster Access when using OnEnable method
-                if (RTSStatHandler.thisInstance != null)
-                    return RTSStatHandler.thisInstance;
-
-                return GameObject.FindObjectOfType<RTSStatHandler>();
-            }
+            get { return RTSStatHandler.thisInstance; }
         }
 
-        Color gizmosColor
+        protected Color gizmosColor
         {
             get
             {
@@ -41,21 +36,17 @@ namespace RTSCoreFramework
         #endregion
 
         #region UnityMessages
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            CharacterStats _stats;
-            if (statHandler != null && (_stats =
-                statHandler.RetrieveAnonymousCharacterStats(CharacterType))
-                .CharacterType != ECharacterType.NoCharacterType &&
-                _stats.CharacterPrefab != null)
-            {
-                SpawnCharacterPrefab(_stats.CharacterPrefab, _stats.CharacterType.ToString());
-            }
-
-            Destroy(gameObject, 0.5f);
+            StartCoroutine(GetReadyToInitializeAllyMember());
         }
 
-        private void OnDrawGizmos()
+        protected virtual void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+        protected virtual void OnDrawGizmos()
         {
             Gizmos.color = gizmosColor;
             Gizmos.DrawWireSphere(transform.position, GizmosRadius);
@@ -63,13 +54,70 @@ namespace RTSCoreFramework
         #endregion
 
         #region Helpers
-        void SpawnCharacterPrefab(GameObject _character, string _name)
+        protected virtual GameObject SpawnCharacterPrefab(GameObject _character, string _name)
         {
             GameObject _spawnedC = Instantiate(_character, transform.position, transform.rotation) as GameObject;
             if (isFriendlyAlly)
             {
                 _spawnedC.name = _name;
             }
+            return _spawnedC;
+        }
+        #endregion
+
+        #region Initialization
+        protected virtual IEnumerator GetReadyToInitializeAllyMember()
+        {
+            yield return new WaitForSeconds(0);
+            CharacterStats _stats;
+            if (statHandler != null && (_stats =
+                statHandler.RetrieveAnonymousCharacterStats(CharacterType))
+                .CharacterType != ECharacterType.NoCharacterType &&
+                _stats.CharacterPrefab != null)
+            {
+                //Spawn The GameObject From Stats
+                spawnedGameObject = SpawnCharacterPrefab(_stats.CharacterPrefab, _stats.CharacterType.ToString());
+                //From CharacterBuilder-BuildCharacter
+                yield return StartCoroutine(CharacterBuilder_BuildCharacter());
+                //From CharacterSetup-SetupCharacter
+                yield return StartCoroutine(CharacterSetup_SetupCharacter());
+                //From ItemBuilder-BuildItem
+                yield return StartCoroutine(ItemBuilder_BuildItem());
+                //From CharacterBuilder-UpdateCharacter
+                yield return StartCoroutine(CharacterBuilder_UpdateCharacter());
+                //From CharacterSetup-UpdateCharacterSetup
+                yield return StartCoroutine(CharacterSetup_UpdateCharacterSetup());
+            }
+            //Wait For All Initialization To Complete
+            //Before Destroying This gameObject.
+            Destroy(gameObject, 0.5f);
+        }
+        #endregion
+
+        #region MethodsToOverride
+        protected virtual IEnumerator CharacterBuilder_BuildCharacter()
+        {
+            yield return new WaitForSeconds(0);
+        }
+
+        protected virtual IEnumerator CharacterSetup_SetupCharacter()
+        {
+            yield return new WaitForSeconds(0);
+        }
+
+        protected virtual IEnumerator ItemBuilder_BuildItem()
+        {
+            yield return new WaitForSeconds(0);
+        }
+
+        protected virtual IEnumerator CharacterBuilder_UpdateCharacter()
+        {
+            yield return new WaitForSeconds(0);
+        }
+
+        protected virtual IEnumerator CharacterSetup_UpdateCharacterSetup()
+        {
+            yield return new WaitForSeconds(0);
         }
         #endregion
     }

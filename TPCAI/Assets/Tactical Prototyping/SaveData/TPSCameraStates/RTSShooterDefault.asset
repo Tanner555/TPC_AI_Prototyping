@@ -58,7 +58,7 @@ MonoBehaviour:
   m_BreakForce: 0.7
   m_UseHumanoidTargetLock: 0
   m_HumanoidTargetLockBone: 0
-  m_ApplyRecoil: 1
+  m_ApplyRecoil: 0
   m_RecoilSpring: 0.01
   m_RecoilDampening: 0.05
   m_ApplyObstructionCheck: 0

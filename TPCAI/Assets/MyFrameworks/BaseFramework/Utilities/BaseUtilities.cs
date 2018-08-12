@@ -102,5 +102,19 @@ namespace BaseFramework
         }
 
         #endregion
+
+        #region SaveSerializedObject
+#if UNITY_EDITOR
+        /// <summary>
+        /// Only Useful If Saving Inside the Editor
+        /// </summary>
+        /// <param name="_object"></param>
+        public static void SaveSerializedObject(UnityEngine.Object _object)
+        {
+            UnityEditor.EditorUtility.SetDirty(_object);
+            UnityEditor.AssetDatabase.SaveAssets();
+        }
+#endif
+        #endregion
     }
 }

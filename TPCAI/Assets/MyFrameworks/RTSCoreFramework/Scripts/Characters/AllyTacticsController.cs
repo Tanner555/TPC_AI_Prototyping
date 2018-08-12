@@ -88,7 +88,7 @@ namespace RTSCoreFramework
         protected bool bEnableTactics = false;
         protected bool bPreviouslyEnabledTactics = false;
         protected List<AllyTacticsItem> evalTactics = new List<AllyTacticsItem>();
-        public List<AllyTacticsItem> AllyTacticsList;
+        public List<AllyTacticsItem> AllyTacticsList = new List<AllyTacticsItem>();
         public int executionsPerSec = 5;
         protected AllyTacticsItem currentExecutionItem = null;
         protected AllyTacticsItem previousExecutionItem = null;
@@ -121,6 +121,11 @@ namespace RTSCoreFramework
         #endregion
 
         #region Handlers
+        protected virtual void HandleInitAllyComps(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            executionsPerSec = _allFields.tacticsExecutionsPerSecond;
+        }
+
         protected virtual void HandleAllySwitch(PartyManager _party, AllyMember _toSet, AllyMember _current)
         {
             if (allyMember.partyManager != _party) return;
@@ -314,6 +319,7 @@ namespace RTSCoreFramework
             uiMaster.EventOnSaveIGBPIComplete += OnSaveTactics;
             gameMaster.OnAllySwitch += HandleAllySwitch;
             myEventHandler.EventAllyDied += HandleAllyDeath;
+            myEventHandler.InitializeAllyComponents += HandleInitAllyComps;
             //Reference Only
             //myEventHandler.EventTogglebIsFreeMoving += HandleEventTogglebIsFreeMoving;
             //myEventHandler.EventFinishedMoving += HandleFinishMoving;
@@ -326,6 +332,7 @@ namespace RTSCoreFramework
             uiMaster.EventOnSaveIGBPIComplete -= OnSaveTactics;
             gameMaster.OnAllySwitch -= HandleAllySwitch;
             myEventHandler.EventAllyDied -= HandleAllyDeath;
+            myEventHandler.InitializeAllyComponents -= HandleInitAllyComps;
             //Reference Only
             //myEventHandler.EventTogglebIsFreeMoving -= HandleEventTogglebIsFreeMoving;
             //myEventHandler.EventFinishedMoving -= HandleFinishMoving;

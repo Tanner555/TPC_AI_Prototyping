@@ -5,6 +5,80 @@ using UnityEngine.UI;
 
 namespace RTSCoreFramework
 {
+    #region RTSAllyComponentSpecificFields
+    [System.Serializable]
+    public class RTSAllyComponentSpecificFields
+    {
+        [Header("Base Ally Fields")]
+        public ECharacterType CharacterType;
+        public RTSGameMode.EFactions AllyFaction;
+        public RTSGameMode.ECommanders GeneralCommander;
+        
+        [Header("Child Prefab Info")]
+        //HealthBar
+        public bool bBuildEnemyHealthBar = false;
+
+        [HideInInspector]
+        public Transform LOSChildObjectTransform = null;
+        //I'll Try Setting These Images When I instantiate the prefab
+        [HideInInspector]
+        public Image EnemyHealthBarImage = null;
+        [HideInInspector]
+        public Image EnemyActiveBarImage = null;
+
+        /// <summary>
+        /// Use For Instance Functionality - Turning Light on and off.
+        /// </summary>
+        [HideInInspector]
+        public GameObject AllyIndicatorSpotlightInstance = null;
+    }
+    #endregion
+
+    #region RTSAllyComponentsAllCharacterFields
+    [System.Serializable]
+    public class RTSAllyComponentsAllCharacterFields
+    {
+        [Header("AI Fields")]
+        public float sightRange = 0f;
+        public float followDistance = 0f;
+
+        [Header("Special Abilities")]
+        public AbilityConfig[] specialAbilitiesArray;
+        public AudioClip outOfEnergySoundClip;
+
+        [Header("Tactics")]
+        public int tacticsExecutionsPerSecond = 5;
+
+        [Header("Child Prefab Info")]
+        //LOSObject
+        public bool bBuildLOSChildObject = true;
+        public Vector3 LOSChildObjectPosition = Vector3.zero;
+        public Vector3 LOSChildObjectRotation = Vector3.zero;
+        //HealthBar
+        public GameObject EnemyHealthBarPrefab = null;
+        public Vector3 EnemyHealthBarPosition = Vector3.zero;
+        public Vector3 EnemyHealthBarRotation = Vector3.zero;
+        public Vector2 EnemyHealthSizeDelta = new Vector2(100, 100);
+        public Vector3 EnemyHealthLocalScale = new Vector3(0.07f, 0.07f, 0.07f);
+        //Spotlight
+        public bool bBuildAllyIndicatorSpotlight = true;
+        /// <summary>
+        /// Use For Instantiating
+        /// </summary>
+        public GameObject AllyIndicatorSpotlightPrefab = null;
+
+        public Vector3 AllyIndicatorSpotlightPosition = Vector3.zero;
+        public Vector3 AllyIndicatorSpotlightRotation = Vector3.zero;
+        public Color AllyHighlightColor = Color.green;
+        public Color EnemyHighlightColor = Color.red;
+        //Waypoint Renderer
+        public Material WaypointRendererMaterial = null;
+        //Blood
+        public GameObject BloodParticles = null;
+
+    }
+    #endregion
+
     public class AllyEventHandler : MonoBehaviour
     {
         #region InstanceProperties
@@ -159,6 +233,9 @@ namespace RTSCoreFramework
 
         public delegate void RTSTakeDamageHandler(int amount, Vector3 position, Vector3 force, AllyMember _instigator, GameObject hitGameObject);
         public event RTSTakeDamageHandler OnAllyTakeDamage;
+
+        public delegate void RTSAllyComponentInitializationHandler(RTSAllyComponentSpecificFields _specificComps, RTSAllyComponentsAllCharacterFields _allAllyComps);
+        public event RTSAllyComponentInitializationHandler InitializeAllyComponents;
         #endregion
 
         #region UnityMessages
@@ -553,6 +630,11 @@ namespace RTSCoreFramework
         {
             if (OnAllyTakeDamage != null)
                 OnAllyTakeDamage(amount, position, force, _instigator, hitGameObject);
+        }
+
+        public virtual void CallInitializeAllyComponents(RTSAllyComponentSpecificFields _specificComps, RTSAllyComponentsAllCharacterFields _allAllyComps)
+        {
+            if (InitializeAllyComponents != null) InitializeAllyComponents(_specificComps, _allAllyComps);
         }
         #endregion
 

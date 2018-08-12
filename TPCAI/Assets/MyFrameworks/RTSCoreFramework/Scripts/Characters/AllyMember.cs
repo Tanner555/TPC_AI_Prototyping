@@ -58,9 +58,46 @@ namespace RTSCoreFramework
         public int FactionPlayerCount { get { return gamemode.GetAllyFactionPlayerCount((AllyMember)this); } }
         public int GeneralPlayerCount { get { return gamemode.GetAllyGeneralPlayerCount((AllyMember)this); } }
         //Camera Follow Transforms
-        public Transform ChestTransform { get { return chestTransform; } }
-        public Transform HeadTransform { get { return headTransform; } }
-        public Transform MyLOSTransform { get { return LOSTransform; } }
+        public Transform ChestTransform
+        {
+            get
+            {
+                if (chestTransform != null) return chestTransform;
+                //Try To Find Spine1 Object On UMA Character
+                Transform _chest = myAnimator.GetBoneTransform(HumanBodyBones.Chest);
+                if (_chest != null)
+                {
+                    chestTransform = _chest;
+                    return chestTransform;
+                }
+                //Return Empty If No Spine is Found
+                return transform;
+            }
+        }
+        public Transform HeadTransform
+        {
+            get
+            {
+                if (headTransform != null) return headTransform;
+                //Try To Find Head Object On UMA Character
+                Transform _head = myAnimator.GetBoneTransform(HumanBodyBones.Head);
+                if (_head != null)
+                {
+                    headTransform = _head;
+                    return headTransform;
+                }
+                //Return Empty If No Spine is Found
+                return transform;
+            }
+        }
+        public Transform MyLOSTransform
+        {
+            get
+            {
+                if (LOSTransform != null) return LOSTransform;
+                return this.transform;
+            }
+        }
 
         public virtual AllyMember enemyTarget
         {
@@ -211,9 +248,52 @@ namespace RTSCoreFramework
             }
         }
         Rigidbody _myRigidbody = null;
-        public AllyEventHandler allyEventHandler { get; protected set; }
-        public AllyAIController aiController { get; protected set; }
-        protected AllyStatController allyStatController { get; set; }
+        public AllyEventHandler allyEventHandler
+        {
+            get
+            {
+                if (_allyEventHandler == null)
+                    _allyEventHandler = GetComponent<AllyEventHandler>();
+
+                return _allyEventHandler;
+            }
+        }
+        AllyEventHandler _allyEventHandler = null;
+        public AllyAIController aiController
+        {
+            get
+            {
+                if (_aiController == null)
+                    _aiController = GetComponent<AllyAIController>();
+
+                return _aiController;
+            }
+        }
+        AllyAIController _aiController = null;
+
+        protected AllyStatController allyStatController
+        {
+            get
+            {
+                if (_allyStatController == null)
+                    _allyStatController = GetComponent<AllyStatController>();
+
+                return _allyStatController;
+            }
+        }
+        AllyStatController _allyStatController = null;
+
+        protected Animator myAnimator
+        {
+            get
+            {
+                if (_myAnimator == null)
+                    _myAnimator = GetComponent<Animator>();
+
+                return _myAnimator;
+            }
+        }
+        Animator _myAnimator = null;
         #endregion
 
         #region BooleanProperties
@@ -246,7 +326,7 @@ namespace RTSCoreFramework
         #region UnityMessages
         protected virtual void OnEnable()
         {
-            SetInitialReferences();
+            //SetInitialReferences();
             InitializeAllyValues();
             SubToEvents();
         }
@@ -260,6 +340,25 @@ namespace RTSCoreFramework
         // Use this for initialization
         protected virtual void Start()
         {
+
+        }
+
+        protected virtual void OnDelayStart()
+        {
+            AllyActiveTimeBar = 0;
+        }
+        #endregion
+
+        #region Handlers
+        protected virtual void InitializeAlly(RTSAllyComponentSpecificFields _specific, RTSAllyComponentsAllCharacterFields _allFields)
+        {
+            AllyFaction = _specific.AllyFaction;
+            GeneralCommander = _specific.GeneralCommander;
+            if (_allFields.bBuildLOSChildObject)
+            {
+                LOSTransform = _specific.LOSChildObjectTransform;
+            }
+
             if (gamemode == null)
             {
                 Debug.LogError("No gamemode on ai player!");
@@ -274,13 +373,6 @@ namespace RTSCoreFramework
             StartServices();
         }
 
-        protected virtual void OnDelayStart()
-        {
-            AllyActiveTimeBar = 0;
-        }
-        #endregion
-
-        #region Handlers
         protected virtual void OnActiveTimeBarDepletion()
         {
             //Reset Active Time Bar
@@ -595,9 +687,9 @@ namespace RTSCoreFramework
         #region Initialization
         protected virtual void SetInitialReferences()
         {
-            allyEventHandler = GetComponent<AllyEventHandler>();
-            aiController = GetComponent<AllyAIController>();
-            allyStatController = GetComponent<AllyStatController>();
+            //allyEventHandler = GetComponent<AllyEventHandler>();
+            //aiController = GetComponent<AllyAIController>();
+            //allyStatController = GetComponent<AllyStatController>();
 
             if (partyManager == null)
                 Debug.LogError("No partymanager on allymember!");
@@ -631,6 +723,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnAllyTakeDamage += AllyTakeDamage;
             allyEventHandler.OnActiveTimeBarDepletion += OnActiveTimeBarDepletion;
             allyEventHandler.OnToggleActiveTimeRegeneration += OnToggleActiveTimeRegeneration;
+            allyEventHandler.InitializeAllyComponents += InitializeAlly;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch += HandleOnAllySwitch;
         }
@@ -646,6 +739,7 @@ namespace RTSCoreFramework
             allyEventHandler.OnAllyTakeDamage -= AllyTakeDamage;
             allyEventHandler.OnActiveTimeBarDepletion -= OnActiveTimeBarDepletion;
             allyEventHandler.OnToggleActiveTimeRegeneration -= OnToggleActiveTimeRegeneration;
+            allyEventHandler.InitializeAllyComponents -= InitializeAlly;
             //Called Before AllyInCommand has been set
             gamemaster.OnAllySwitch -= HandleOnAllySwitch;
         }
