@@ -516,5 +516,30 @@ namespace RTSPrototype
         //}
         #endregion
 
+        #region SimpleBugFixes
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-RigidbodyCharacterController: Before For Loop,
+        /// Check If LinkedColliders Array is Equal To Null
+        /// </summary>
+        //void EnableCollider(bool _enable)
+        //{
+        //    if (m_LinkedColliders == null) return;
+        //}
+
+        /// <summary>
+        /// RTSPrototype-OpsiveTPC-Die (Ability): Before For Loop,
+        /// Check If LinkedColliders Array is Equal To Null
+        /// </summary>
+        //void Awake()
+        //{
+        //    if (m_IgnoreColliders != null)
+        //    {
+        //        for (int j = 0; j < m_IgnoreColliders.Length; ++j)
+        //        {
+        //            ......
+        //        }
+        //    }
+        //}
+        #endregion
     }
 }
