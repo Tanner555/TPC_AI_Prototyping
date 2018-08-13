@@ -62,8 +62,6 @@ namespace RTSPrototype
         [SerializeField] protected PhysicMaterial m_MaxFrictionMaterial;
         [Tooltip("A reference to the frictionless material")]
         [SerializeField] protected PhysicMaterial m_FrictionlessMaterial;
-        [SerializeField] protected float capsuleColliderRadius = 0.0f;
-        [SerializeField] protected float capsuleColliderHeight = 0.0f;
         #endregion
 
         #region CharacterSetupFields
@@ -151,17 +149,8 @@ namespace RTSPrototype
 #if !(UNITY_4_6 || UNITY_5_0)
             isNetworked = m_IsNetworked;
 #endif
-            // The UMAAnimatorMonitor should be used instead of the AnimatorMonitor
-            //spawnedGameObject.AddComponent<UMAAnimatorMonitor>();
             spawnedGameObject.AddComponent<AnimatorMonitor>();
             CharacterBuilder.BuildHumanoidCharacter(spawnedGameObject, m_AIAgent, isNetworked, m_MovementType, m_AnimatorController, m_MaxFrictionMaterial, m_FrictionlessMaterial);
-
-            // Use the UMA supplied character radius and height.
-            var capsuleCollider = spawnedGameObject.GetComponent<CapsuleCollider>();
-            //capsuleCollider.radius = umaData.characterRadius;
-            //capsuleCollider.height = umaData.characterHeight;
-            capsuleCollider.radius = capsuleColliderRadius;
-            capsuleCollider.height = capsuleColliderHeight;
         }
         #endregion
 
@@ -285,25 +274,11 @@ namespace RTSPrototype
             // Stop the character from moving so it will reinitialize correctly.
             spawnedGameObject.GetComponent<RigidbodyCharacterController>().StopMovement();
 
-            // Use the UMA supplied character radius and height.
-            var capsuleCollider = spawnedGameObject.GetComponent<CapsuleCollider>();
-            //capsuleCollider.radius = spawnedGameObject.characterRadius;
-            //capsuleCollider.height = spawnedGameObject.characterHeight;
-            capsuleCollider.radius = capsuleColliderRadius;
-            capsuleCollider.height = capsuleColliderHeight;
-
             // After UMA updates it may not assign the correct animator controller - make sure it does.
             var characterAnimator = spawnedGameObject.GetComponent<Animator>();
             characterAnimator.runtimeAnimatorController = m_AnimatorController;
             characterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
 
-            // CharacterIK references the Animator so it needs to be reassigned.
-            CharacterIK characterIK;
-            if ((characterIK = spawnedGameObject.GetComponent<CharacterIK>()) != null)
-            {
-                DestroyImmediate(characterIK, true);
-                spawnedGameObject.AddComponent<CharacterIK>();
-            }
             Inventory _inventory;
             if ((_inventory = spawnedGameObject.GetComponent<Inventory>()) != null)
             {
@@ -322,14 +297,6 @@ namespace RTSPrototype
         #region CharacterSetup_UpdateCharacterSetup
         protected override IEnumerator CharacterSetup_UpdateCharacterSetup()
         {
-            var controller = spawnedGameObject.GetComponent<RigidbodyCharacterController>();
-            DestroyAllAbilities(controller);
-
-            controller.Abilities = new Abilities.Ability[0];
-
-            // Add the ability again.
-            AddAllAbilities(controller);
-
             spawnedGameObject.layer = gamemode.SingleAllyLayer;
             spawnedGameObject.tag = gamemode.AllyTag;
 
