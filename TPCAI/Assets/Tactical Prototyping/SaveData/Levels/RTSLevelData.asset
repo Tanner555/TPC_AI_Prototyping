@@ -35,3 +35,12 @@ MonoBehaviour:
       Scenario: 0
     - ScenarioName: Time For A Challenge
       Scenario: 1
+  - LevelName: RTS Adventure
+    Level: 3
+    LevelBuildIndex: 3
+    LevelImage: {fileID: 0}
+    ScenarioSettingsList:
+    - ScenarioName: Just Getting Started
+      Scenario: 0
+    - ScenarioName: Time For A Challenge
+      Scenario: 1
