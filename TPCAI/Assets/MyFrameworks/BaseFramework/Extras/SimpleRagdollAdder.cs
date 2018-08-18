@@ -10,7 +10,8 @@ namespace BaseFramework
     /// </summary>
     public class SimpleRagdollAdder : MonoBehaviour
     {
-        [Header("Character Ragdoll Will Be Added To")]
+        [Tooltip("Character Ragdoll Will Be Added To")]
+        [Header("Character")]
         public GameObject myCharacter = null;
     }
 }
