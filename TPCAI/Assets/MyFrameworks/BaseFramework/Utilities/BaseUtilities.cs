@@ -103,6 +103,24 @@ namespace BaseFramework
 
         #endregion
 
+        #region TextAssetToStringList
+        public static List<string> TextAssetToList(TextAsset ta)
+        {
+            var listToReturn = new List<string>();
+            var arrayString = ta.text.Split('\n');
+            foreach (var line in arrayString)
+            {
+                listToReturn.Add(line);
+            }
+            return listToReturn;
+        }
+
+        public static string[] TextAssetToArray(TextAsset ta)
+        {
+            return TextAssetToList(ta).ToArray();
+        }
+        #endregion
+
         #region SaveSerializedObject
 #if UNITY_EDITOR
         /// <summary>

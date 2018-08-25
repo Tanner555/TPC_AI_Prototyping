@@ -61,7 +61,7 @@ MonoBehaviour:
   m_ApplyRecoil: 0
   m_RecoilSpring: 0.01
   m_RecoilDampening: 0.05
-  m_ApplyObstructionCheck: 0
+  m_ApplyObstructionCheck: 1
   m_ObstructionCheck: 1
   m_ApplyStaticHeight: 1
   m_StaticHeight: 0
