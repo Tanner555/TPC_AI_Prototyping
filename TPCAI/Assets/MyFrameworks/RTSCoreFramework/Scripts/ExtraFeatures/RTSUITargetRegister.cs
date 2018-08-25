@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using TMPro;
 
 namespace RTSCoreFramework
 {
@@ -11,7 +8,7 @@ namespace RTSCoreFramework
     /// Used To Simplify The UiTarget Registering Process.
     /// Inherit To Add Specific Functionality.
     /// </summary>
-    public class RTSUITargetRegister : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class RTSUITargetRegister : MonoBehaviour
     {
         #region Fields
         //UiTargetInfo
@@ -45,21 +42,6 @@ namespace RTSCoreFramework
         protected virtual void OnDisable()
         {
             UnsubFromEvents();
-        }
-
-        public virtual void OnPointerEnter(PointerEventData eventData)
-        {
-
-        }
-
-        public virtual void OnPointerExit(PointerEventData eventData)
-        {
-
-        }
-
-        public virtual void OnPointerClick(PointerEventData eventData)
-        {
-
         }
         #endregion
 

@@ -7,7 +7,7 @@ using TMPro;
 
 namespace RTSCoreFramework
 {
-    public class RTSWeaponStatsUI : RTSUITargetRegister
+    public class RTSWeaponStatsUI : RTSUITargetRegister, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         #region UIGameObjects
         [Header("Primary Weapon UI")]
@@ -72,27 +72,24 @@ namespace RTSCoreFramework
                 currentColor = WeaponStatsUiImage.color;
         }
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            base.OnPointerEnter(eventData);
             if (WeaponStatsUiImage != null)
             {
                 WeaponStatsUiImage.color = hoverColor;
             }
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public void OnPointerExit(PointerEventData eventData)
         {
-            base.OnPointerExit(eventData);
             if (WeaponStatsUiImage != null)
             {
                 WeaponStatsUiImage.color = currentColor;
             }
         }
 
-        public override void OnPointerClick(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            base.OnPointerClick(eventData);
             if(currentUiTarget != null && bHasRegisteredTarget)
             {
                 currentUiTarget.allyEventHandler.CallToggleEquippedWeapon();
