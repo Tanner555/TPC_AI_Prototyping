@@ -74,11 +74,11 @@ namespace RTSCoreFramework
         {
             if (_target == currentUiTarget && bHasRegisteredTarget)
             {
-                OnDeregisterUiTarget(_target, _handler, _party);
+                OnDeregisterUiTarget(_target, _handler);
             }
         }
 
-        protected virtual void OnDeregisterUiTarget(AllyMember _target, AllyEventHandler _handler, PartyManager _party)
+        protected virtual void OnDeregisterUiTarget(AllyMember _target, AllyEventHandler _handler)
         {
             bHasRegisteredTarget = false;
         }
@@ -89,7 +89,7 @@ namespace RTSCoreFramework
         protected virtual void SubToEvents()
         {
             gameMaster.OnRegisterUiTarget += OnRegisterUiTarget;
-            gameMaster.OnDeregisterUiTarget += OnDeregisterUiTarget;
+            gameMaster.OnDeregisterUiTarget += OnCheckToDeregisterUiTarget;
         }
 
         protected virtual void UnsubFromEvents()
@@ -97,7 +97,13 @@ namespace RTSCoreFramework
             ///Temporary Hides Error When Exiting Playmode
             if (gameMaster == null) return;
             gameMaster.OnRegisterUiTarget -= OnRegisterUiTarget;
-            gameMaster.OnDeregisterUiTarget -= OnDeregisterUiTarget;
+            gameMaster.OnDeregisterUiTarget -= OnCheckToDeregisterUiTarget;
+
+            //UnRegister From UiTarget If It Still Exists
+            if(currentUiTarget != null && uiTargetHandler != null && bHasRegisteredTarget)
+            {
+                OnDeregisterUiTarget(currentUiTarget, uiTargetHandler);
+            }
         }
         #endregion
     }

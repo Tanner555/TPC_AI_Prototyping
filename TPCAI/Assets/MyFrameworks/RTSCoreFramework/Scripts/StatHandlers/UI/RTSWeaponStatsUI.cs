@@ -109,9 +109,9 @@ namespace RTSCoreFramework
             UpdateWeaponUiGameObjects(uiTargetHandler.MyEquippedType);
         }
 
-        protected override void OnDeregisterUiTarget(AllyMember _target, AllyEventHandler _handler, PartyManager _party)
+        protected override void OnDeregisterUiTarget(AllyMember _target, AllyEventHandler _handler)
         {
-            base.OnDeregisterUiTarget(_target, _handler, _party);
+            base.OnDeregisterUiTarget(_target, _handler);
             _handler.OnAmmoChanged -= OnAmmoChanged;
             _handler.OnWeaponChanged -= OnWeaponChanged;
         }
