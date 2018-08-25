@@ -179,6 +179,16 @@ namespace RTSPrototype
                 LookAtTarget(_ally.transform);
         }
 
+        protected virtual void UpdateTargettedEnemy(AllyMember _ally)
+        {
+            if (_ally == null) return;
+            Transform _allyTransform = _ally.transform;
+            if(_allyTransform != targetTransform)
+            {
+                targetTransform = _allyTransform;
+            }
+        }
+
         void OnToggleSprinting()
         {
             bIsSprinting = myEventHandler.bIsSprinting;
@@ -368,6 +378,7 @@ namespace RTSPrototype
         void SubToEvents()
         {
             myEventHandler.EventCommandAttackEnemy += OnCommandAttack;
+            myEventHandler.OnUpdateTargettedEnemy += UpdateTargettedEnemy;
             myEventHandler.EventStopTargettingEnemy += OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting += TogglebIsShooting;
             myEventHandler.EventToggleIsMeleeing += TogglebIsMeleeing;
@@ -381,6 +392,7 @@ namespace RTSPrototype
         void UnsubFromEvents()
         {
             myEventHandler.EventCommandAttackEnemy -= OnCommandAttack;
+            myEventHandler.OnUpdateTargettedEnemy -= UpdateTargettedEnemy;
             myEventHandler.EventStopTargettingEnemy -= OnCommandStopTargetting;
             myEventHandler.EventToggleIsShooting -= TogglebIsShooting;
             myEventHandler.EventToggleIsMeleeing -= TogglebIsMeleeing;

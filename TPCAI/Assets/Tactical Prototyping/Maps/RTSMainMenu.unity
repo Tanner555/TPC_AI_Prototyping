@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b323c07ee76285b4ebd5db0c51268268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: 2
+  loadLevel: 1
   scenario: 0
 --- !u!114 &1518882900
 MonoBehaviour:

@@ -75,7 +75,16 @@ namespace RTSCoreFramework
             get { return RTSGameMode.thisInstance; }
         }
 
-        public AllyMember currentTargettedEnemy { get; protected set; }
+        public AllyMember currentTargettedEnemy
+        {
+            get { return __currentTargettedEnemy; }
+            set
+            {
+                __currentTargettedEnemy = value;
+                myEventHandler.CallOnUpdateTargettedEnemy(__currentTargettedEnemy);
+            }
+        }
+        private AllyMember __currentTargettedEnemy = null;
         public AllyMember previousTargettedEnemy { get; protected set; }
         public AllyMember allyInCommand { get { return allyMember.partyManager.AllyInCommand; } }
 
@@ -224,8 +233,27 @@ namespace RTSCoreFramework
         {
             if (IsInvoking("UpdateBattleBehavior"))
             {
+                bool _commandAttackRestart = myEventHandler.bIsCommandAttacking ? true : false;
+                AllyMember _currentTargetRestart = currentTargettedEnemy;
                 myEventHandler.CallEventFinishedMoving();
                 myEventHandler.CallEventStopTargettingEnemy();
+                StartCoroutine(OnWeaponChangedDelay(_commandAttackRestart, _currentTargetRestart));
+            }
+        }
+
+        /// <summary>
+        /// Used To Delay The Restarting of Attacking Enemy Target
+        /// </summary>
+        protected virtual IEnumerator OnWeaponChangedDelay(bool _isCommand, AllyMember _ally)
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (_isCommand)
+            {
+                myEventHandler.CallEventPlayerCommandAttackEnemy(_ally);
+            }
+            else
+            {
+                myEventHandler.CallEventAICommandAttackEnemy(_ally);
             }
         }
 

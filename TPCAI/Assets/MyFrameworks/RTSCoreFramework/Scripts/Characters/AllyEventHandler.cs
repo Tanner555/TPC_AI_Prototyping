@@ -219,6 +219,7 @@ namespace RTSCoreFramework
 
         public delegate void AllyHandler(AllyMember ally);
         public event AllyHandler EventCommandAttackEnemy;
+        public event AllyHandler OnUpdateTargettedEnemy;
 
         public delegate void EEquipTypeHandler(EEquipType _eType);
         public delegate void EWeaponTypeHandler(EEquipType _eType, EWeaponType _weaponType, EWeaponUsage _wUsage, bool _equipped);
@@ -526,6 +527,11 @@ namespace RTSCoreFramework
             {
                 EventCommandAttackEnemy(ally);
             }
+        }
+
+        public virtual void CallOnUpdateTargettedEnemy(AllyMember _ally)
+        {
+            if (OnUpdateTargettedEnemy != null) OnUpdateTargettedEnemy(_ally);
         }
 
         public virtual void CallEventStopTargettingEnemy()
