@@ -8,8 +8,8 @@
     <MaxStamina>100</MaxStamina>
     <Stamina>100</Stamina>
     <EquippedWeapon>Primary</EquippedWeapon>
-    <PrimaryWeapon>Knife</PrimaryWeapon>
-    <SecondaryWeapon>AssaultRifle</SecondaryWeapon>
+    <PrimaryWeapon>Katana</PrimaryWeapon>
+    <SecondaryWeapon>Pistol</SecondaryWeapon>
   </CharacterStatsSimple>
   <CharacterStatsSimple>
     <name>Brown Silly Pants</name>
@@ -19,8 +19,8 @@
     <MaxStamina>100</MaxStamina>
     <Stamina>100</Stamina>
     <EquippedWeapon>Primary</EquippedWeapon>
-    <PrimaryWeapon>AssaultRifle</PrimaryWeapon>
-    <SecondaryWeapon>Shotgun</SecondaryWeapon>
+    <PrimaryWeapon>Katana</PrimaryWeapon>
+    <SecondaryWeapon>Pistol</SecondaryWeapon>
   </CharacterStatsSimple>
   <CharacterStatsSimple>
     <name>Evil Assault Villain 1</name>
@@ -30,8 +30,8 @@
     <MaxStamina>100</MaxStamina>
     <Stamina>100</Stamina>
     <EquippedWeapon>Primary</EquippedWeapon>
-    <PrimaryWeapon>Pistol</PrimaryWeapon>
-    <SecondaryWeapon>Fist</SecondaryWeapon>
+    <PrimaryWeapon>Katana</PrimaryWeapon>
+    <SecondaryWeapon>Pistol</SecondaryWeapon>
   </CharacterStatsSimple>
   <CharacterStatsSimple>
     <name>Silly Girl Medic</name>
@@ -42,6 +42,6 @@
     <Stamina>100</Stamina>
     <EquippedWeapon>Primary</EquippedWeapon>
     <PrimaryWeapon>Katana</PrimaryWeapon>
-    <SecondaryWeapon>AssaultRifle</SecondaryWeapon>
+    <SecondaryWeapon>Pistol</SecondaryWeapon>
   </CharacterStatsSimple>
 </ArrayOfCharacterStatsSimple>
