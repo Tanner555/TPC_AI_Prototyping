@@ -2665,7 +2665,7 @@ MonoBehaviour:
   m_SlopeFrictionMaterial: {fileID: 0}
   m_AirFrictionMaterial: {fileID: 0}
   m_Abilities: []
-  m_SelectedAbility: 0
+  m_SelectedAbility: -1
 --- !u!114 &114044987837140586
 MonoBehaviour:
   m_ObjectHideFlags: 1
