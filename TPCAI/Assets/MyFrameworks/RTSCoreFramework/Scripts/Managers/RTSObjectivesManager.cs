@@ -41,9 +41,9 @@ namespace RTSCoreFramework
         #region Helpers
         void CheckIfAllObjectivesAreComplete()
         {
-            if(bAllEnemiesAreDead)
+            if (bAllEnemiesAreDead)
             {
-                gamemaster.CallEventAllObjectivesCompleted();
+                //gamemaster.CallEventAllObjectivesCompleted();
             }
         }
         #endregion
