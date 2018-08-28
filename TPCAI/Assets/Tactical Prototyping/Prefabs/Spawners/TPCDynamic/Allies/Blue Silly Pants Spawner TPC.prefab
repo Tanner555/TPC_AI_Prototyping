@@ -66,8 +66,6 @@ MonoBehaviour:
     type: 2}
   m_FrictionlessMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
     type: 2}
-  capsuleColliderRadius: 0.3
-  capsuleColliderHeight: 1.8
   FirearmsToAdd:
   - TheItemName: Pistol
     m_ItemType: {fileID: 11400000, guid: b9892dc51f8bab84590e65c39cd82e88, type: 2}
@@ -88,7 +86,18 @@ MonoBehaviour:
   MeleeWeaponsToAdd:
   - TheItemName: Katana
     m_ItemType: {fileID: 11400000, guid: 5844ff10e39393d4cb91374b86d271aa, type: 2}
+  AllySpecificComponentsToSetUp:
+    CharacterType: 0
+    AllyFaction: 0
+    GeneralCommander: 0
+    bBuildEnemyHealthBar: 0
+    LOSChildObjectTransform: {fileID: 0}
+    EnemyHealthBarImage: {fileID: 0}
+    EnemyActiveBarImage: {fileID: 0}
+    AllyIndicatorSpotlightInstance: {fileID: 0}
   AllAllyComponentFieldsObject: {fileID: 11400000, guid: b2da6d069e6326344bafab09f609b37e,
+    type: 2}
+  WeaponPositionsObject: {fileID: 11400000, guid: 1a0d46880a649d94992f42dbf75ff4a6,
     type: 2}
   WeaponPositionsAndRotations:
   - AddableItemName: Katana

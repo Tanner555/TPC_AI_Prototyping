@@ -27,22 +27,6 @@ namespace RTSPrototype
     }
     #endregion
 
-    #region RTSTPCWeaponPositionClass
-    [System.Serializable]
-    public class RTSTPCWeaponPositionClass
-    {
-        [Tooltip("Not Needed For Data, For Easy Editor Access Only")]
-        [SerializeField] public string AddableItemName;
-        [Tooltip("The Third Person Controller ItemType reference")]
-        [SerializeField] public ItemType m_ItemType;
-        [Tooltip("The local position of the item")]
-        [SerializeField] public Vector3 m_LocalPosition;
-        [Tooltip("The local rotation of the item")]
-        [SerializeField] public Vector3 m_LocalRotation;
-
-    }
-    #endregion
-
     public class RTSTPCCharacterSpawner : CharacterSpawner
     {
         #region CharacterBuilderFields
@@ -88,7 +72,12 @@ namespace RTSPrototype
         #region ItemBuilderFields
         [Header("Item Builder Fields")]
         [Header("Weapon Positions and Rotations")]
-        public List<RTSTPCWeaponPositionClass> WeaponPositionsAndRotations = new List<RTSTPCWeaponPositionClass>();
+        public RTSTPCWeaponPositionObject WeaponPositionsObject;
+
+        private List<RTSTPCWeaponPositionClass> WeaponPositionsList
+        {
+            get { return WeaponPositionsObject != null ? WeaponPositionsObject.WeaponPositionsAndRotations : new List<RTSTPCWeaponPositionClass>(); }
+        }
         
         [Header("Used For AddableItem Settings")]
         public RTSAddableItemObject SerializedAddableItem;
@@ -479,7 +468,12 @@ namespace RTSPrototype
         #region ItemBuilderHelpers
         private bool AddableItemHasSpecificPosition(ItemType _itemType, out Vector3 _position, out Vector3 _rotation)
         {
-            foreach (var _wPos in WeaponPositionsAndRotations)
+            _position = Vector3.zero;
+            _rotation = Vector3.zero;
+
+            if (WeaponPositionsObject == null) return false;
+
+            foreach (var _wPos in WeaponPositionsList)
             {
                 if (_wPos.m_ItemType == _itemType)
                 {
@@ -488,8 +482,7 @@ namespace RTSPrototype
                     return true;
                 }
             }
-            _position = Vector3.zero;
-            _rotation = Vector3.zero;
+
             return false;
         }
 
