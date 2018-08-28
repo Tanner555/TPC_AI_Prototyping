@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Linq;
 
 namespace BaseFramework.Extras
 {
+#if UNITY_EDITOR
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
     public class CombineMeshesUtility : MonoBehaviour
@@ -73,4 +76,5 @@ namespace BaseFramework.Extras
             AssetDatabase.SaveAssets();
         }
     }
+#endif
 }

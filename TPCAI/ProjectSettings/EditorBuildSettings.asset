@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tactical Prototyping/Maps/SandLevel1.unity
     guid: 303cc6f2b97454c4594b0867604f991a
-  - enabled: 1
-    path: Assets/Tactical Prototyping/Maps/RTSAdventure.unity
-    guid: ee3fefecc96f27e4cbd56b0a94517167
   m_configObjects: {}

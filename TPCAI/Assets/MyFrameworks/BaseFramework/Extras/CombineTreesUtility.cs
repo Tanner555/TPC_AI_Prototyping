@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class CombineTreesUtility : MonoBehaviour {
-
+#if UNITY_EDITOR
     //Array with trees we are going to combine
     public GameObject[] treesArray;
     //The object that is going to hold the combined mesh
@@ -134,4 +136,5 @@ public class CombineTreesUtility : MonoBehaviour {
         combinedAllMesh.CombineMeshes(totalMesh, false);
         combinedObj.GetComponent<MeshFilter>().mesh = combinedAllMesh;
     }
+#endif
 }

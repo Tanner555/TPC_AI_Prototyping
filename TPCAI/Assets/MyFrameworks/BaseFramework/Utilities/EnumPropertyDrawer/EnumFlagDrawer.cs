@@ -1,10 +1,13 @@
 using System;
 using System.Reflection;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace BaseFramework
 {
+#if UNITY_EDITOR
     /// <summary>
     /// Code Originally From ChemiKhazi:
     /// https://gist.github.com/ChemiKhazi/11395776
@@ -36,4 +39,5 @@ namespace BaseFramework
             EditorGUI.EndProperty();
         }
     }
+#endif
 }
