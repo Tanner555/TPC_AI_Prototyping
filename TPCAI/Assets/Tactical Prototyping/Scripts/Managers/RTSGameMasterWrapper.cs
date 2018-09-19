@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BaseFramework;
+using RTSCoreFramework;
 using Chronos;
 
-namespace RTSCoreFramework
+namespace RTSPrototype
 {
     public class RTSGameMasterWrapper : RTSGameMaster
     {       
