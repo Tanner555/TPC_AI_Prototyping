@@ -160,6 +160,7 @@ namespace RTSCoreFramework
             if (gamemode.hasPrevHighAlly && _notAlly)
             {
                 gamemode.hasPrevHighAlly = false;
+                //TODO: RTSPrototype See if OnMouseCursor Change Should Return if PrevHighAlly is Null
                 if (gamemode.prevHighAlly == null) return;
                 //if (OnHoverLeaveAlly != null) OnHoverLeaveAlly(gamemode.prevHighAlly);
                 gamemode.prevHighAlly.allyEventHandler.CallEventOnHoverLeave(hitType, hit);

@@ -62,11 +62,17 @@ namespace RTSCoreFramework
         {
             //isInOverview = false;
             PartyMembers = new List<AllyMember>();
+
+            EventNoPartyManagers += HandleNoPartyMembers;
+            gamemaster.OnLeftClickAlly += HandleLeftClickPartyMember;
+            gamemaster.OnRightClickSendHit += HandleRightClick;
         }
 
         protected virtual void OnDisable()
         {
             EventNoPartyManagers -= HandleNoPartyMembers;
+            gamemaster.OnLeftClickAlly -= HandleLeftClickPartyMember;
+            gamemaster.OnRightClickSendHit -= HandleRightClick;
         }
 
         // Use this for initialization
@@ -75,10 +81,6 @@ namespace RTSCoreFramework
             ResetPartyStats();
             if (gamemode == null)
                 Debug.LogWarning("RTS GameMode does not exist!");
-
-            EventNoPartyManagers += HandleNoPartyMembers;
-            gamemaster.OnLeftClickAlly += HandleLeftClickPartyMember;
-            gamemaster.OnRightClickSendHit += HandleRightClick;
 
             Invoke("OnDelayStart", 0.5f);
         }
