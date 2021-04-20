@@ -275,6 +275,7 @@ namespace RTSPrototype
                 //Due To Initialization Being Called Before Setting Items
                 //Inventory Method Was Modified To Be Public
                 _inventory.Initialize();
+                _inventory.m_UnlimitedAmmo = true;
             }
 
             //Destroy TPC Behaviours Not Needed By The Ally
